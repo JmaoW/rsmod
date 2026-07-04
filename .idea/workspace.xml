@@ -7,19 +7,9 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2aee2278-fd6e-4b6f-9ead-ef058dbac139" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.data/symbols/content.sym" beforeDir="false" afterPath="$PROJECT_DIR$/.data/symbols/content.sym" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/combat/combat-scripts/src/main/kotlin/org/rsmod/api/combat/PvNCombat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/combat/combat-scripts/src/main/kotlin/org/rsmod/api/combat/PvNCombat.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/combat/combat-scripts/src/main/kotlin/org/rsmod/api/combat/PvPCombat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/combat/combat-scripts/src/main/kotlin/org/rsmod/api/combat/PvPCombat.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/combat/combat-scripts/src/main/kotlin/org/rsmod/api/combat/scripts/PlayerRetaliateScript.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/combat/combat-scripts/src/main/kotlin/org/rsmod/api/combat/scripts/PlayerRetaliateScript.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/combat/combat-weapon/src/main/kotlin/org/rsmod/api/combat/weapon/WeaponSpeeds.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/combat/combat-weapon/src/main/kotlin/org/rsmod/api/combat/weapon/WeaponSpeeds.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/src/main/kotlin/org/rsmod/api/config/refs/BaseContent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/src/main/kotlin/org/rsmod/api/config/refs/BaseContent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/src/main/kotlin/org/rsmod/api/config/refs/BaseObjs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/src/main/kotlin/org/rsmod/api/config/refs/BaseObjs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/src/main/kotlin/org/rsmod/api/config/refs/BaseSeqs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/src/main/kotlin/org/rsmod/api/config/refs/BaseSeqs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/interfaces/bank/src/main/kotlin/org/rsmod/content/interfaces/bank/PlayerExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/content/interfaces/bank/src/main/kotlin/org/rsmod/content/interfaces/bank/PlayerExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/interfaces/equipment/src/main/kotlin/org/rsmod/content/interfaces/equipment/stats/EquipmentStats.kt" beforeDir="false" afterPath="$PROJECT_DIR$/content/interfaces/equipment/src/main/kotlin/org/rsmod/content/interfaces/equipment/stats/EquipmentStats.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/interfaces/settings/src/main/kotlin/org/rsmod/content/interfaces/settings/configs/SettingComponents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/content/interfaces/settings/src/main/kotlin/org/rsmod/content/interfaces/settings/configs/SettingComponents.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/interfaces/settings/src/main/kotlin/org/rsmod/content/interfaces/settings/scripts/SettingsSideScript.kt" beforeDir="false" afterPath="$PROJECT_DIR$/content/interfaces/settings/src/main/kotlin/org/rsmod/content/interfaces/settings/scripts/SettingsSideScript.kt" afterDir="false" />
+    <list default="true" id="2aee2278-fd6e-4b6f-9ead-ef058dbac139" name="Changes" comment="Added mining&#10;&#10;Halved player attack speed&#10;&#10;Fixed settings menu not closing">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/skills/mining/src/main/kotlin/org/rsmod/content/skills/mining/configs/MiningRocks.kt" beforeDir="false" afterPath="$PROJECT_DIR$/content/skills/mining/src/main/kotlin/org/rsmod/content/skills/mining/configs/MiningRocks.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,23 +58,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000008886534551" />
-      <entry key="MS500" value="1.110304791727899" />
-      <entry key="S2" value="1.9080873138635446" />
-      <entry key="S5" value="2.632342663023417" />
-      <entry key="S10" value="3.2507154497926436" />
-      <entry key="S30" value="4.380513117279298" />
-      <entry key="S60" value="5.009365285275264" />
-      <entry key="M2" value="5.448108888121233" />
-      <entry key="M5" value="6.113753793425825" />
-      <entry key="M10" value="7.65768627310707" />
-      <entry key="M15" value="8.972652848719791" />
-      <entry key="M30" value="11.201818178644594" />
-      <entry key="H1" value="12.848585800369628" />
-      <entry key="H2" value="13.852416804567236" />
-      <entry key="H4" value="14.407005610956567" />
-      <entry key="D1" value="14.898388902162601" />
-      <entry key="W1" value="14.985414574123064" />
+      <entry key="MS100" value="1.0752660902955762" />
+      <entry key="MS500" value="2.2293667412537497" />
+      <entry key="S2" value="5.599108030662854" />
+      <entry key="S5" value="8.77416240877532" />
+      <entry key="S10" value="12.025483493722515" />
+      <entry key="S30" value="18.904777555812267" />
+      <entry key="S60" value="23.102799274670755" />
+      <entry key="M2" value="26.55257633306628" />
+      <entry key="M5" value="29.755961543580842" />
+      <entry key="M10" value="32.23835378130897" />
+      <entry key="M15" value="33.90251930269375" />
+      <entry key="M30" value="36.56356216827724" />
+      <entry key="H1" value="38.491471141374824" />
+      <entry key="H2" value="39.66227327205148" />
+      <entry key="H4" value="40.30873053063716" />
+      <entry key="D1" value="40.88153635537651" />
+      <entry key="W1" value="40.98299508616864" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -106,23 +96,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9075271643125575" />
-      <entry key="MS500" value="1.088830928307113" />
-      <entry key="S2" value="1.8986534169693192" />
-      <entry key="S5" value="2.626925914376223" />
-      <entry key="S10" value="3.2467034299257054" />
-      <entry key="S30" value="4.377960518814889" />
-      <entry key="S60" value="5.00773997769727" />
-      <entry key="M2" value="5.447172541016388" />
-      <entry key="M5" value="6.112998784295979" />
-      <entry key="M10" value="7.656577956590645" />
-      <entry key="M15" value="8.971477013310505" />
-      <entry key="M30" value="11.200853608129233" />
-      <entry key="H1" value="12.847963100424515" />
-      <entry key="H2" value="13.852062485446774" />
-      <entry key="H4" value="14.406816559312697" />
-      <entry key="D1" value="14.898355635455594" />
-      <entry key="W1" value="14.985409777229618" />
+      <entry key="MS100" value="1.039114308670349" />
+      <entry key="MS500" value="2.2090274094549494" />
+      <entry key="S2" value="5.55718821068321" />
+      <entry key="S5" value="8.739974812206684" />
+      <entry key="S10" value="12.002038858506577" />
+      <entry key="S30" value="18.89383283660463" />
+      <entry key="S60" value="23.09637481664402" />
+      <entry key="M2" value="26.548916869514652" />
+      <entry key="M5" value="29.754063482214416" />
+      <entry key="M10" value="32.23671416175112" />
+      <entry key="M15" value="33.9009949019843" />
+      <entry key="M30" value="36.562414479010066" />
+      <entry key="H1" value="38.49074955315368" />
+      <entry key="H2" value="39.6618665998466" />
+      <entry key="H4" value="40.30851440190871" />
+      <entry key="D1" value="40.88149843387367" />
+      <entry key="W1" value="40.98298962059208" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -204,10 +194,23 @@
       <option name="presentableId" value="Default" />
       <updated>1783058577864</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added mining&#10;&#10;Halved player attack speed&#10;&#10;Fixed settings menu not closing">
+      <option name="closed" value="true" />
+      <created>1783182073029</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1783182073029</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added mining&#10;&#10;Halved player attack speed&#10;&#10;Fixed settings menu not closing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mining&#10;&#10;Halved player attack speed&#10;&#10;Fixed settings menu not closing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

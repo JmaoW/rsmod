@@ -9,16 +9,16 @@ import org.rsmod.game.type.loc.LocType
 
 internal object MiningRocks : LocEditor() {
     init {
-        orePair(RockLocs.copper_rock_1, RockLocs.copper_rock_2, objs.copper_ore, levelReq = 1, xp = 17.5)
-        orePair(RockLocs.tin_rock_1, RockLocs.tin_rock_2, objs.tin_ore, levelReq = 1, xp = 17.5)
-        orePair(RockLocs.clay_rock_1, RockLocs.clay_rock_2, objs.clay, levelReq = 1, xp = 5.0)
-        orePair(RockLocs.iron_rock_1, RockLocs.iron_rock_2, objs.iron_ore, levelReq = 15, xp = 35.0)
-        orePair(RockLocs.silver_rock_1, RockLocs.silver_rock_2, objs.silver_ore, levelReq = 20, xp = 40.0)
-        orePair(RockLocs.coal_rock_1, RockLocs.coal_rock_2, objs.coal, levelReq = 30, xp = 50.0)
-        orePair(RockLocs.gold_rock_1, RockLocs.gold_rock_2, objs.gold_ore, levelReq = 40, xp = 65.0)
-        orePair(RockLocs.mithril_rock_1, RockLocs.mithril_rock_2, objs.mithril_ore, levelReq = 55, xp = 80.0)
-        orePair(RockLocs.adamantite_rock_1, RockLocs.adamantite_rock_2, objs.adamantite_ore, levelReq = 70, xp = 95.0)
-        orePair(RockLocs.runite_rock_1, RockLocs.runite_rock_2, objs.runite_ore, levelReq = 85, xp = 125.0)
+        orePair(RockLocs.copper_rock_1, RockLocs.copper_rock_2, objs.copper_ore, levelReq = 1, xp = 17.5, depleteChance = 235)
+        orePair(RockLocs.tin_rock_1, RockLocs.tin_rock_2, objs.tin_ore, levelReq = 1, xp = 17.5, depleteChance = 235)
+        orePair(RockLocs.clay_rock_1, RockLocs.clay_rock_2, objs.clay, levelReq = 1, xp = 5.0, depleteChance = 235)
+        orePair(RockLocs.iron_rock_1, RockLocs.iron_rock_2, objs.iron_ore, levelReq = 15, xp = 35.0, depleteChance = 230)
+        orePair(RockLocs.silver_rock_1, RockLocs.silver_rock_2, objs.silver_ore, levelReq = 20, xp = 40.0, depleteChance = 225)
+        orePair(RockLocs.coal_rock_1, RockLocs.coal_rock_2, objs.coal, levelReq = 30, xp = 50.0, depleteChance = 220)
+        orePair(RockLocs.gold_rock_1, RockLocs.gold_rock_2, objs.gold_ore, levelReq = 40, xp = 65.0, depleteChance = 200)
+        orePair(RockLocs.mithril_rock_1, RockLocs.mithril_rock_2, objs.mithril_ore, levelReq = 55, xp = 80.0, depleteChance = 180)
+        orePair(RockLocs.adamantite_rock_1, RockLocs.adamantite_rock_2, objs.adamantite_ore, levelReq = 70, xp = 95.0, depleteChance = 150)
+        orePair(RockLocs.runite_rock_1, RockLocs.runite_rock_2, objs.runite_ore, levelReq = 85, xp = 125.0, depleteChance = 100)
     }
 
     private fun orePair(
@@ -27,9 +27,10 @@ internal object MiningRocks : LocEditor() {
         product: org.rsmod.game.type.obj.ObjType,
         levelReq: Int,
         xp: Double,
+        depleteChance: Int,
     ) {
-        rock(rock1, RockLocs.depleted_rock_1, product, levelReq, xp)
-        rock(rock2, RockLocs.depleted_rock_2, product, levelReq, xp)
+        rock(rock1, RockLocs.depleted_rock_1, product, levelReq, xp, depleteChance)
+        rock(rock2, RockLocs.depleted_rock_2, product, levelReq, xp, depleteChance)
     }
 
     private fun rock(
@@ -38,13 +39,14 @@ internal object MiningRocks : LocEditor() {
         product: org.rsmod.game.type.obj.ObjType,
         levelReq: Int,
         xp: Double,
+        depleteChance: Int,
     ) {
         edit(type) {
             contentGroup = content.ore
             param[params.levelrequire] = levelReq
             param[params.skill_productitem] = product
             param[params.skill_xp] = PlayerStatMap.toFineXP(xp).toInt()
-            param[params.deplete_chance] = 0
+            param[params.deplete_chance] = depleteChance
             param[params.next_loc_stage] = depleted
             param[params.respawn_time] = 30
         }
