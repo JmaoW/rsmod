@@ -62,7 +62,7 @@ constructor(
 
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
-        val attackRate = speeds.actual(player)
+        val attackRate = speeds.playerAttackDelay(player)
         manager.setNextAttackDelay(player, attackRate)
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a
@@ -112,7 +112,7 @@ constructor(
 
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
-        val attackRate = speeds.actual(player)
+        val attackRate = speeds.playerAttackDelay(player)
         manager.setNextAttackDelay(player, attackRate)
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a

@@ -89,7 +89,7 @@ internal fun Player.setBankWornBonuses(wornBonuses: WornBonuses, weaponSpeeds: W
     val comps = bank_components
     val stats = wornBonuses.calculate(this)
     val speedBase = weaponSpeeds.base(this)
-    val speedActual = weaponSpeeds.actual(this)
+    val speedActual = weaponSpeeds.playerAttackDelay(this)
     val magicDmg = stats.finalMagicDmg
     val magicDmgSuffix = stats.magicDmgSuffix
     val undeadSuffix = stats.undeadSuffix

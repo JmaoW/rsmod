@@ -8,6 +8,8 @@ object SettingComponents : ComponentReferences() {
     val runbutton_orb = find("orbs:runbutton")
     val runmode = find("settings_side:runmode")
 
+    val close_button = find("settings:close")
+
     val settings_tab = find("settings_side:settings_tab")
     val audio_tab = find("settings_side:audio_tab")
     val display_tab = find("settings_side:display_tab")

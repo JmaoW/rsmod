@@ -53,6 +53,34 @@ object BaseSeqs : SeqReferences() {
         find("human_woodcutting_trailblazer_axe", 1396237693275185632)
     val human_woodcutting_crystal_axe = find("human_woodcutting_crystal_axe", 1396236516752534637)
 
+    val human_mining_bronze_pickaxe = find("human_mining_bronze_pickaxe", 3904549811009326331)
+    val human_mining_iron_pickaxe = find("human_mining_iron_pickaxe", 3904549915739267656)
+    val human_mining_steel_pickaxe = find("human_mining_steel_pickaxe", 3904550020469208981)
+    val human_mining_black_pickaxe = find("human_mining_black_pickaxe", 3905127501365672763)
+    val human_mining_mithril_pickaxe = find("human_mining_mithril_pickaxe", 3904550229929091631)
+    val human_mining_adamant_pickaxe = find("human_mining_adamant_pickaxe", 3904550125199150306)
+    val human_mining_rune_pickaxe = find("human_mining_rune_pickaxe", 3904550334659032950)
+    val human_mining_gilded_pickaxe = find("human_mining_gilded_pickaxe", 3905702416378575301)
+    val human_mining_dragon_pickaxe = find("human_mining_dragon_pickaxe", 3905097259750522423)
+    val human_mining_dragon_pickaxe_pretty = find("human_mining_dragon_pickaxe_pretty", 3905142443118830523)
+    val human_mining_3a_pickaxe = find("human_mining_3a_pickaxe", 3905514265660600501)
+    val human_mining_infernal_pickaxe = find("human_mining_infernal_pickaxe", 3905165421205799369)
+    val human_mining_crystal_pickaxe = find("human_mining_crystal_pickaxe", 3905703139353008991)
+    val human_mining_gauntlet_pickaxe_hm = find("human_mining_gauntlet_pickaxe_hm", 3905710455246168254)
+    val human_mining_zalcano_pickaxe = find("human_mining_zalcano_pickaxe", 3905702984791885907)
+    val human_mining_zalcano_dragon_pickaxe = find("human_mining_zalcano_dragon_pickaxe", 3905097259750977605)
+    val human_mining_zalcano_gilded_pickaxe = find("human_mining_zalcano_gilded_pickaxe", 3905702416379029308)
+    val human_mining_zalcano_zalcano_pickaxe = find("human_mining_zalcano_zalcano_pickaxe", 3905702984792339884)
+    val human_mining_trailblazer_pickaxe = find("human_mining_trailblazer_pickaxe", 3905774392030753738)
+    val human_mining_trailblazer_pickaxe_no_infernal =
+        find("human_mining_trailblazer_pickaxe_no_infernal", 3905790517907925787)
+    val human_mining_trailblazer_reloaded_pickaxe =
+        find("human_mining_trailblazer_reloaded_pickaxe", 3906046522648128541)
+    val human_mining_trailblazer_reloaded_pickaxe_no_infernal =
+        find("human_mining_trailblazer_reloaded_pickaxe_no_infernal", 3906046831770374708)
+    val human_mining_league_trailblazer_pickaxe =
+        find("human_mining_league_trailblazer_pickaxe", 3905776916529094383)
+
     val chatquiz1 = find("chatquiz1", 7867308265649250370)
     val chatquiz2 = find("chatquiz2", 6914569973419682947)
     val chatquiz3 = find("chatquiz3", 1596317404102498126)

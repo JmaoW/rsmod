@@ -88,7 +88,7 @@ constructor(
         val comps = equip_components
         val stats = wornBonuses.calculate(player)
         val speedBase = weaponSpeeds.base(player)
-        val speedActual = weaponSpeeds.actual(player)
+        val speedActual = weaponSpeeds.playerAttackDelay(player)
         val magicDmg = stats.finalMagicDmg
         val magicDmgSuffix = stats.magicDmgSuffix
         val undeadSuffix = stats.undeadSuffix

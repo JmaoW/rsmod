@@ -29,5 +29,15 @@ constructor(private val objTypes: ObjTypeList, private val styles: AttackStyles)
     // Avoids needing the [AttackStyle] dependency when calling `actual` unless explicitly required.
     public fun actual(player: Player): Int = actual(player, player.currentAttackStyle())
 
+    /** Returns the player-facing attack delay after applying the global player speed reduction. */
+    public fun playerAttackDelay(player: Player): Int = max(1, actual(player) / 2)
+
+    /** Returns the player-facing retaliate flinch delay after applying the same reduction. */
+    public fun playerRetaliateDelay(player: Player): Int {
+        val attackRate = base(player)
+        val rapidAdjustment = if (player.currentAttackStyle() == AttackStyle.RapidRanged) 1 else 0
+        return max(1, (attackRate / 4) - rapidAdjustment)
+    }
+
     private fun Player.currentAttackStyle(): AttackStyle? = styles.get(this)
 }
