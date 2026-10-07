@@ -13,6 +13,7 @@ import org.rsmod.api.player.vars.resyncVar
 import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.api.script.onPlayerQueueWithArgs
 import org.rsmod.content.interfaces.prayer.tab.Prayer
+import org.rsmod.content.interfaces.prayer.tab.PrayerEvents
 import org.rsmod.content.interfaces.prayer.tab.PrayerRepository
 import org.rsmod.content.interfaces.prayer.tab.configs.prayer_queues
 import org.rsmod.content.interfaces.prayer.tab.configs.prayer_sounds
@@ -83,6 +84,7 @@ private constructor(
         if (prayer.overhead != null) {
             player.overheadIcon = prayer.overhead
         }
+        publish(PrayerEvents.Enabled(player, prayer))
     }
 
     private fun ProtectedAccess.disablePrayer(prayer: Prayer) {

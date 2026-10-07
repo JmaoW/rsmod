@@ -86,6 +86,32 @@ public object ClientScripts {
 
     public fun chatDefaultRestoreInput(player: Player): Unit = player.runClientScript(2158)
 
+    /**
+     * Sets up the `skillmulti` chatbox interface ("What would you like to make?"). The client
+     * script is `skillmulti_setup`.
+     *
+     * @param type changes which quantity buttons the client offers. `0` is the standard layout: 1,
+     *   5, 10, X, and All.
+     * @param maxQuantity what the "All" button picks. Values above `28` are clamped by the client.
+     * @param objs up to ten objs to offer. Unused slots must be `-1`.
+     * @param suggestedQuantity the quantity that starts highlighted.
+     * @param titleAndNames the title, followed by the display name of each obj, joined by `|`.
+     */
+    public fun skillMultiSetup(
+        player: Player,
+        type: Int,
+        maxQuantity: Int,
+        objs: List<Int>,
+        suggestedQuantity: Int,
+        titleAndNames: String,
+    ) {
+        require(objs.size == 10) { "Expected ten obj slots. (size=${objs.size})" }
+        player.runClientScript(
+            2046,
+            listOf(type, maxQuantity) + objs + listOf(suggestedQuantity, titleAndNames),
+        )
+    }
+
     public fun topLevelMainModalOpen(
         player: Player,
         colour: Int = -1,

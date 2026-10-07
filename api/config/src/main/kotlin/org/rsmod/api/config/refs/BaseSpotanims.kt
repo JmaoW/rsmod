@@ -9,6 +9,7 @@ typealias spotanims = BaseSpotanims
 object BaseSpotanims : SpotanimReferences() {
     val osb8_skillcape_banana_spotanim = find("osb8_skillcape_banana_spotanim", 53731913)
     val smokepuff = find("smokepuff", 11485776)
+    val redemption = find("redemption_spotanim")
     val sp_attackglow_red = find("sp_attackglow_red", 8689879)
 
     val hw07_arm_from_the_ground_spotanim = find("hw07_arm_from_the_ground_spotanim", 81323324)

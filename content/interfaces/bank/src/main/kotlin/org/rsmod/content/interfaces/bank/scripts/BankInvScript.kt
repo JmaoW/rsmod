@@ -42,6 +42,7 @@ import org.rsmod.content.interfaces.bank.leftClickQtyMode
 import org.rsmod.content.interfaces.bank.selectedTab
 import org.rsmod.content.interfaces.bank.setBankWornBonuses
 import org.rsmod.content.interfaces.bank.setBanksideExtraOps
+import org.rsmod.content.interfaces.bank.syncMainTabSize
 import org.rsmod.content.interfaces.bank.util.BankSlots
 import org.rsmod.content.interfaces.bank.util.bulkShift
 import org.rsmod.content.interfaces.bank.util.leftShift
@@ -967,6 +968,8 @@ constructor(
     }
 
     private fun ProtectedAccess.notifySlotUpdate(slot: Int) {
+        // Objs banked past the last tab (by a relic) are not counted until the main tab is grown.
+        player.syncMainTabSize(bank, includeSlot = slot)
         val tab = BankTab.forSlot(this, slot)
         checkNotNull(tab) { "`slot` was not associated with a valid bank tab: $slot" }
         notifySlotUpdate(tab)

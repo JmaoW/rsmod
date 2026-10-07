@@ -47,6 +47,7 @@ import org.rsmod.api.player.input.ResumePCountDialogInput
 import org.rsmod.api.player.input.ResumePObjDialogInput
 import org.rsmod.api.player.input.ResumePStringDialogInput
 import org.rsmod.api.player.input.ResumePauseButtonInput
+import org.rsmod.api.player.input.SkillMultiChoice
 import org.rsmod.api.player.interact.HeldInteractions
 import org.rsmod.api.player.interact.WornInteractions
 import org.rsmod.api.player.isInCombat
@@ -110,6 +111,7 @@ import org.rsmod.api.player.ui.ifSetNpcHead
 import org.rsmod.api.player.ui.ifSetObj
 import org.rsmod.api.player.ui.ifSetPlayerHead
 import org.rsmod.api.player.ui.ifSetText
+import org.rsmod.api.player.ui.ifSkillMulti
 import org.rsmod.api.player.vars.VarPlayerIntMapDelegate
 import org.rsmod.api.player.vars.resyncVar
 import org.rsmod.api.player.vars.setActiveMoveSpeed
@@ -2854,6 +2856,45 @@ public class ProtectedAccess(
      */
     public suspend fun menu(title: String, vararg choices: String, hotkeys: Boolean = false): Int {
         return menu(title, hotkeys, choices.toList())
+    }
+
+    /**
+     * Opens the "What would you like to make?" chatbox interface, suspending until the [player]
+     * clicks one of the [options]. The client lets the player choose a quantity first, which is
+     * reported with the click.
+     *
+     * If the player closes the interface instead, the suspension is cancelled and this scope ends.
+     *
+     * @param options up to ten objs to offer. Their names are shown as the button labels.
+     * @param maxQuantity what the "All" button picks, from `1` to `28`.
+     * @param suggestedQuantity the quantity that starts highlighted.
+     * @throws ProtectedAccessLostException if the player could not retain protected access after
+     *   the coroutine suspension, or if the click did not come from one of the [options].
+     * @see [resumeWithModalProtectedAccess]
+     */
+    public suspend fun skillMulti(
+        title: String,
+        options: List<ObjType>,
+        maxQuantity: Int = 28,
+        suggestedQuantity: Int = maxQuantity,
+    ): SkillMultiChoice {
+        require(maxQuantity in 1..28) { "`maxQuantity` must be in 1..28. (max=$maxQuantity)" }
+        val names = options.map { context.objTypes[it].name }
+        player.ifSkillMulti(title, options, names, maxQuantity, suggestedQuantity, context.eventBus)
+        val modal = player.ui.getModalOrNull(components.chatbox_chatmodal)
+        val input = coroutine.pause(ResumePauseButtonInput::class)
+        chatDefaultRestoreInput(player)
+        val index = components.skillmulti_buttons.indexOfFirst { it.isType(input.component) }
+        if (index !in options.indices) {
+            logger.debug {
+                "Protected-access was lost due to unexpected component: " +
+                    "player=$player, received=${input.component.internalName ?: input}"
+            }
+            throw ProtectedAccessLostException()
+        }
+        val quantity = input.subcomponent.coerceIn(1, maxQuantity)
+        val choice = SkillMultiChoice(index, options[index], quantity)
+        return resumeWithModalProtectedAccess(choice, modal, components.chatbox_chatmodal)
     }
 
     /**

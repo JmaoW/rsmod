@@ -1,0 +1,49 @@
+package org.rsmod.content.other.drops
+
+import com.github.michaelbull.logging.InlineLogger
+import jakarta.inject.Inject
+import org.rsmod.api.drops.DropTables
+import org.rsmod.api.utils.io.InputStreams
+import org.rsmod.plugin.scripts.PluginScript
+import org.rsmod.plugin.scripts.ScriptContext
+
+/**
+ * Loads the drop tables when the server starts. The data files are layered: `osrs.toml` holds the
+ * real OSRS drop tables, `boosted.toml` lists which of their drops the league's relics make more
+ * likely, and `isle.toml` holds changes and additions made for the Isle of Souls.
+ */
+internal class DropsScript
+@Inject
+constructor(private val loader: DropTableLoader, private val dropTables: DropTables) :
+    PluginScript() {
+    private val logger = InlineLogger()
+
+    override fun ScriptContext.startup() {
+        val sources = DATA_FILES.map { DropSource(it, InputStreams.readAllBytes<DropsScript>(it)) }
+        val result = loader.load(sources)
+        dropTables.replaceAll(result.tables)
+
+        logger.info {
+            "Loaded drop tables for ${result.tables.size} npc types " +
+                "(${result.boostedEntries} boosted drops)."
+        }
+        if (result.unmatchedBoosts.isNotEmpty()) {
+            logger.info {
+                "${result.unmatchedBoosts.size} boosted drops have no matching monster drop yet."
+            }
+        }
+        for (warning in result.warnings.take(MAX_WARNINGS_LOGGED)) {
+            logger.warn { "Drop data: $warning" }
+        }
+        val hidden = result.warnings.size - MAX_WARNINGS_LOGGED
+        if (hidden > 0) {
+            logger.warn { "Drop data: $hidden more warnings not shown." }
+        }
+    }
+
+    private companion object {
+        /** Later files add to (or replace) the monsters of earlier files. */
+        val DATA_FILES = listOf("osrs.toml", "boosted.toml", "isle.toml")
+        const val MAX_WARNINGS_LOGGED = 25
+    }
+}

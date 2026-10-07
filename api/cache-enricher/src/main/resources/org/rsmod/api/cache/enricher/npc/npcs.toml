@@ -12122,54 +12122,106 @@ examine = 'The son of Ali M.'
 [[config]]
 npc = 'tzhaar_fightcave_swarm_1a'
 examine = 'Some kind of bat...'
+attack_type = 'Stab'
+attack_anim = 2621
+defend_anim = 2622
+death_anim = 2620
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_1b'
 examine = 'Some kind of bat...'
+attack_type = 'Stab'
+attack_anim = 2621
+defend_anim = 2622
+death_anim = 2620
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_2a'
 examine = 'Looks like living lava...'
+attack_type = 'Crush'
+attack_anim = 2625
+defend_anim = 2626
+death_anim = 2627
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_2b'
 examine = 'Looks like living lava...'
+attack_type = 'Crush'
+attack_anim = 2625
+defend_anim = 2626
+death_anim = 2627
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_2spawn'
 examine = 'Looks like living lava...'
+attack_type = 'Crush'
+attack_anim = 2625
+defend_anim = 2626
+death_anim = 2627
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_3a'
 examine = "I don't like the look of those spines..."
+attack_type = 'Stab'
+attack_anim = 2628
+defend_anim = 2629
+death_anim = 2630
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_3b'
 examine = "I don't like the look of those spines..."
+attack_type = 'Stab'
+attack_anim = 2628
+defend_anim = 2629
+death_anim = 2630
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_4a'
 examine = 'Holy reptile...'
+attack_type = 'Crush'
+attack_anim = 2637
+defend_anim = 2635
+death_anim = 2638
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_4b'
 examine = 'Holy reptile...'
+attack_type = 'Crush'
+attack_anim = 2637
+defend_anim = 2635
+death_anim = 2638
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_5a'
 examine = 'Good doggy-lizard-thing...'
+attack_type = 'Crush'
+attack_anim = 2644
+defend_anim = 2645
+death_anim = 2646
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_5b'
 examine = 'Good doggy-lizard-thing...'
+attack_type = 'Crush'
+attack_anim = 2644
+defend_anim = 2645
+death_anim = 2646
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_boss'
 examine = 'This is going to hurt...'
+attack_type = 'Crush'
+attack_anim = 2655
+defend_anim = 2653
+death_anim = 2654
 
 [[config]]
 npc = 'tzhaar_fightcave_swarm_boss_cleric'
 examine = 'Mini menace.'
+attack_type = 'Crush'
+attack_anim = 2637
+defend_anim = 2635
+death_anim = 2638
 
 [[config]]
 npc = 'godwars_zamorak_avatar'

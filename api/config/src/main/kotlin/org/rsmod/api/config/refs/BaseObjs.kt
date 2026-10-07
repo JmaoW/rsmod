@@ -414,6 +414,8 @@ object BaseObjs : ObjReferences() {
     val trailblazer_reloaded_pickaxe_empty = find("trailblazer_reloaded_pickaxe_empty")
     val trailblazer_reloaded_pickaxe_no_infernal = find("trailblazer_reloaded_pickaxe_no_infernal")
     val league_trailblazer_pickaxe = find("league_trailblazer_pickaxe")
+    val league_trailblazer_axe = find("league_trailblazer_axe")
+    val league_trailblazer_harpoon = find("league_trailblazer_harpoon")
     val zalcano_pickaxe = find("zalcano_pickaxe")
     val gauntlet_pickaxe = find("gauntlet_pickaxe")
     val gauntlet_pickaxe_hm = find("gauntlet_pickaxe_hm")

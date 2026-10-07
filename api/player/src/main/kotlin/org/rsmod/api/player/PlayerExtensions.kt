@@ -88,7 +88,7 @@ public fun Player.isInPvnCombat(): Boolean {
 
 /** @return `true` if the player is **currently** in a multi-combat area. */
 public fun Player.mapMultiway(checker: AreaChecker): Boolean {
-    return checker.inArea(areas.multiway, coords)
+    return constants.combat_multiway_everywhere || checker.inArea(areas.multiway, coords)
 }
 
 /**

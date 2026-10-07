@@ -11,9 +11,8 @@ import org.rsmod.game.entity.player.PlayerUid
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
-internal class PlayerRetaliateScript
-@Inject
-constructor(private val weaponSpeeds: WeaponSpeeds) : PluginScript() {
+internal class PlayerRetaliateScript @Inject constructor(private val weaponSpeeds: WeaponSpeeds) :
+    PluginScript() {
     override fun ScriptContext.startup() {
         onPlayerQueueWithArgs(queues.com_retaliate_npc) { autoRetaliateNpc(it.args) }
         onPlayerQueueWithArgs(queues.com_retaliate_player) { autoRetaliatePlayer(it.args) }

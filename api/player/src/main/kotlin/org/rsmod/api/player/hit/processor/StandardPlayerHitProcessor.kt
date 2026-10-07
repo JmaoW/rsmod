@@ -5,14 +5,18 @@ import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.headbars
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.queues
+import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
+import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.player.headbar.InternalPlayerHeadbars
 import org.rsmod.api.player.lefthand
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.baseHitpointsLvl
+import org.rsmod.api.player.stat.basePrayerLvl
 import org.rsmod.api.player.stat.hitpoints
+import org.rsmod.api.player.stat.prayerLvl
 import org.rsmod.api.player.torso
 import org.rsmod.api.random.GameRandom
 import org.rsmod.game.headbar.Headbar
@@ -45,12 +49,32 @@ public object StandardPlayerHitProcessor : QueuedPlayerHitProcessor {
         val queueDeath = player.hitpoints == 0 && queues.death !in player.queueList
         if (queueDeath) {
             queueDeath()
+        } else {
+            triggerRedemption()
         }
 
         player.showHitmark(hit.hitmark)
 
         val headbar = hit.createHeadbar(player.hitpoints, player.baseHitpointsLvl)
         player.showHeadbar(headbar)
+    }
+
+    /**
+     * Redemption heals the player by a quarter of their Prayer level and drains all of their Prayer
+     * points when a hit leaves them below 10% of their hitpoints.
+     */
+    private fun ProtectedAccess.triggerRedemption() {
+        if (player.vars[varbits.redemption] == 0) {
+            return
+        }
+        val hitpoints = player.hitpoints
+        if (hitpoints <= 0 || hitpoints * 10 >= player.baseHitpointsLvl) {
+            return
+        }
+
+        statHeal(stats.hitpoints, constant = player.basePrayerLvl / 4, percent = 0)
+        statSub(stats.prayer, constant = player.prayerLvl, percent = 0)
+        spotanim(spotanims.redemption)
     }
 
     private fun Hit.isValid(access: ProtectedAccess): Boolean {

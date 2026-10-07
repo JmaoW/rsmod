@@ -8,10 +8,18 @@ public object Rotations {
             dimensionA
         }
 
-    public fun rotate(angle: Int, blockAccessFlags: Int): Int =
-        if (angle == 0) {
-            blockAccessFlags
+    /**
+     * Rotates the four direction bits of [blockAccessFlags]. Any bit above them is ignored: the
+     * cache's `forceApproachFlags` (loc opcode 69) always has the 0x10 bit set on top of the
+     * directions (23, 27, 29 and 30 are the only values it takes), and letting it shift down into
+     * the direction bits would block every side of a loc turned by any angle but 0.
+     */
+    public fun rotate(angle: Int, blockAccessFlags: Int): Int {
+        val flags = blockAccessFlags and 0xF
+        return if (angle == 0) {
+            flags
         } else {
-            ((blockAccessFlags shl angle) and 0xF) or (blockAccessFlags shr (4 - angle))
+            ((flags shl angle) and 0xF) or (flags shr (4 - angle))
         }
+    }
 }

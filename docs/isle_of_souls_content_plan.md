@@ -1,0 +1,603 @@
+# Isle of Souls: Content Plan for the Event
+
+Everything we want built before the one-day team league (teams of two, ranked by shared team
+points, fastest wins ties). First written 2026-10-06 from the project notes,
+`isle_of_souls_relic_plan.md` and `isle_of_souls_teams.md`; updated the same day with your answers.
+
+**Decided so far:**
+1. **All skills** are trainable and useful in some way.
+2. **All 8 relic tiers** are expected to be unlocked, so every relic must work.
+3. **Fight Caves and Inferno**, both as shortened versions.
+4. The event runs **8-10 hours**. **No date is set**, so there is no deadline: the build order
+   below is about dependencies, not about cutting things.
+5. **Best players should be able to max during the event**, so 99s arriving quickly in the higher
+   relic tiers is fine. XP rates stay high for testing and are tuned down before the event.
+6. **The task list grows as content is added**: every wiki task that is possible on the isle goes
+   back in. It must end up able to reach the final relic tier.
+7. **Clues are a drop, not a treasure trail**: scrolls drop, reading one gives the casket straight
+   away, for everyone (section 3.5).
+8. **No Wintertodt or Tempoross** this event.
+9. **The whole isle is open from the start and there are no area unlocks** (section 5.1).
+10. **Drop tables start from the real OSRS tables**, with your own additions to chosen monsters.
+    You will supply the monster list later.
+11. **Clue caskets give exactly the real game's rewards** (section 3.5).
+12. **Many more bosses than the two instances**, including as many of the nine Raging Echoes echo
+    bosses as possible (section 3.4).
+13. **Combat masteries, all of them accessible**: all 18 masteries and the 6 passives, worded as
+    close to the original as possible, with each of the 10 mastery tasks granting 2 points
+    (section 3.6).
+
+How to use this doc: each item has a priority and a checkbox. **(decided)** means you chose it;
+**(proposed)** is my suggestion and needs your yes or no.
+
+Priority key: **P0** the event is broken without it, **P1** the event is much better with it,
+**P2** only if time is left.
+
+---
+
+## 0. Scope
+
+The decisions above add up to roughly: 17 skills still to build, 22 relics with real effects,
+two boss instances, a combat core with drop tables, clue and casket rewards, 18 combat masteries
+with 6 passives, and a task list about four times its current size. With no date set this is a long project, so each piece is still kept
+to a **minimum useful version** so the whole thing stays finishable:
+
+> A skill, relic or boss is "done" when a player can train it, it feeds at least one task, and it
+> helps with something else on the isle (a boss, another skill, a relic, shop money). Nothing more.
+
+The order matters because early items unblock everything after them (section 9).
+
+### Findings, now settled
+- **Task list size.** The current 139 tasks are worth 10,630 points; the top relic tier unlocks at
+  25,000. **(decided)** the list grows as skills, NPCs and bosses are added, until the final tier
+  is comfortably reachable. The thresholds are set last, from the finished list (section 6.2).
+- **XP rates.** Realm rate 150x with the relic multiplier ending at 16x is about 2,400x, which makes
+  level 99 roughly 5,400 raw XP. **(decided)** rates stay high while testing and are tuned down
+  before the event, with the aim that the best players can max during the 8-10 hours. Because 99s
+  are meant to come quickly late in the event, the level-99 and XP-milestone tasks (most of the 32
+  elite tasks, 6,400 points) stay in, but they will only separate teams once the final rate
+  is set (section 1.3).
+
+---
+
+## 0.1 Where we are
+
+| Area | State |
+|------|-------|
+| League screens | Done and confirmed in the real client: Leagues tab, tasks list, relic select, tracker, points, pop-ups |
+| Teams | Done, 64 tests pass, **not yet tried in a real client**: roster file, shared tasks/points/bank/loot, rankings, freeze, announcements, scoreboard |
+| Instances | `TeamInstances` done, **not yet tried in a real client** (no real content uses it yet) |
+| Skills | Mining, woodcutting, fishing, cooking, firemaking, smithing, fletching and prayer built and wired to tasks; gem cutting partly |
+| Relics | Tier 1 and tier 2 effects mostly done; tiers 3-8 have only the XP passives |
+| Combat content | Combat engine exists, but there are **no drop tables, no combat NPC content, no bosses and no two-player NPC targeting** |
+| Combat masteries | Client screen (`league_combat_mastery`) and its side-panel button are wired; **no mastery logic, points or effects yet** (section 3.6) |
+
+---
+
+## 1. Skills
+
+**(decided)** every skill trainable and useful. All 23 are listed with what "useful" means for the
+event. Effort: S = a day or less, M = a few days, L = a week or more of normal work.
+
+| Skill | State | What makes it useful (proposed) | Effort |
+|-------|-------|--------------------------------|--------|
+| Mining | Done | Ore for smithing, runes (essence), gems | done |
+| Smithing | Done | Weapons and armour for combat | done |
+| Woodcutting | Done | Logs for firemaking, fletching | done |
+| Firemaking | Done | Tasks, pyre/fire mechanics, cooking spots | done |
+| Fishing | Done | Raw food for cooking, tasks | done |
+| Cooking | Done | Food to survive combat and bosses | done |
+| Attack, Strength, Defence, Hitpoints | Engine only | Trained by killing NPCs; they decide who can beat Fight Caves/Inferno | M (needs NPCs, 4.1) |
+| Ranged | Engine only | Ammo from fletching, hunter chinchompas, dragonhide from crafting | M |
+| Magic | Elemental spells only | Combat spells, alchemy for shop money, teleports, runes from runecraft | M |
+| Prayer | Done: bury, altars (normal and chaos), Redemption, all prayers unlocked, 14 tasks (`isle_of_souls_prayer_plan.md`) | Bones from kills, altar; protection prayers are needed for Jad and Zuk | done |
+| Fletching | Done: every wiki recipe except Crafting's amethyst tips and the ogre bow (shafts, bows, stocks, shields, crossbows incl. blurite/dragon, arrows, javelins, darts, bolts, tips, broad/amethyst/dragon ammo, any feather); 18 tasks; Echo axe auto-fletch counts | Arrows, bolts, bows for ranged; Lumberjack toggle | done |
+| Crafting | Done (scope C, `isle_of_souls_crafting_plan.md`): every wiki recipe except crystal singing and golem crafting - gems (with crush), leather, d'hide + shields, snakeskin, yak, snelms, crab, Xerician, splitbark, mixed hide, Hueycoatl, battlestaves, amethyst tips, spinning, loom, pottery, glass, gold + silver jewellery on the real interfaces, birdhouses, tanner NPC; 20 tasks; `::craftkit` | Dragonhide armour, jewellery, gems for ranged, magic and boss gear. **No source for any material yet** | done |
+| Herblore | Done: cleaning, unfinished and finished potions (33 potions incl. super combat, divine, brews, stamina, extended antifire, goading, prayer regeneration), pestle and mortar, drinking with real effects, Forager perks, 30 tasks (`isle_of_souls_herblore_plan.md`) | Combat, prayer and ranging potions for bosses; Forager herbs become useful. **No source for secondaries yet** | done |
+| Runecraft | None | Runes for magic, so magic actually works | M |
+| Thieving | None | Stalls and pickpocketing as the coin source; Dodgy Deals | M |
+| Agility | None | One course on the isle, run energy, shortcuts; Corner Cutter | M |
+| Hunter | None | Chinchompas (ranged ammo), implings, fur; Animal Wrangler hunter half | M-L |
+| Slayer | None | Task assigner with bonus XP and points, Slayer relics; reuses combat NPCs | M-L |
+| Farming | None | Herb and food patches on the isle. Needs a shortened growth time (see below) | L |
+| Construction | None | Biggest unknown: see below | L |
+
+**Construction and Farming (decided as the starting point, design still open):** you called these
+the two hardest to figure out, and agreed the ideas below are a good place to start. Expect to
+revise them once the other skills exist.
+- **Construction:** instead of a player-owned house, a few **build sites** on the isle where players
+  build a small set of benefits (restore pool, range, bank chest, teleport pad) from planks and
+  nails. This gives XP, tasks and a use for woodcutting and smithing without houses or instancing.
+- **Farming:** wiki growth times run to hours, so keep herb and food patches only, with a global
+  growth-time multiplier. (You earlier decided to drop the farming-ticks *relic passive*; a global
+  setting is a different thing, but say if you want it gone too.) Overgrown depends on this.
+
+### 1.1 Finish the six skills we already have
+- [ ] **P0** Audit the 139 tasks: for each task with no trigger, build it, replace it or delete it.
+- [ ] **P0** Test all six skills in the real client end to end (smithing's skill-multi and anvil
+  interfaces have never been seen in the client).
+- [ ] **P1** Confirm Power Miner / Lumberjack toggles and firemaking never-fail in the client.
+- [ ] **(decided)** Wintertodt and Tempoross are **out** for this event. Delete their league tasks
+  (the three Tempoross kill tasks, ids 1084-1086) and any task that needs them.
+- [ ] **P2** Dark crabs, anglerfish, pizzas, pyre logs, torches/lanterns, so their tasks can come
+  back.
+
+### 1.2 Build order for new skills
+Cheapest first, and weighted by what they unlock:
+1. **Combat training** (four melee stats, ranged, magic, hitpoints, prayer): the foundation. Needs
+   section 4.1 first.
+2. **Fletching, runecraft, crafting, herblore**: small, and they make ranged, magic and potions
+   work for boss runs.
+3. **Thieving, agility**: shop money and two relics.
+4. **Slayer**: reuses the combat NPCs; unlocks two relic passives and Slayer Master.
+5. **Hunter, farming, construction**: the largest, and each unlocks only one relic. Do them last.
+
+### 1.3 Skill-wide
+- [ ] **P0 (before the event, not now)** Final XP rates **(decided: keep high for testing, tune down
+  for the event)**. Target: the best players can reach 99 in most skills within the 8-10 hours, with
+  99s coming quickly once a team is in the higher relic tiers. Set the base rate and the relic
+  multipliers together, then check the level-99 and XP-milestone task times against it.
+- [ ] **P1** Island-scoped XP and area state: needs `./gradlew packCache` run once.
+
+---
+
+## 2. Relics
+
+**(decided)** every tier can be unlocked, so all 22 relics need a working effect. Source for the
+original wording is `isle_of_souls_relic_plan.md`. Earlier decisions still stand: keep XP
+multipliers and drop-rate passives; drop minigame-points and farming-tick passives; Reloaded stays
+a repick; tier 3 teleports become island teleports.
+
+### 2.1 P0
+- [ ] Rework thresholds (section 6.2) so tier 8 is reachable in the event.
+- [ ] **Reloaded** repick flow (tier 4 is now certain to be reached).
+- [ ] Drop-rate passives need the drop-table system (section 3.1).
+- [ ] Remove any relic that cannot be finished: a selectable relic that does nothing is worse than none.
+
+### 2.2 Tier by tier
+
+| Tier | Relic | State | What it needs |
+|------|-------|-------|---------------|
+| 1 | Power Miner, Lumberjack | Done | Check toggles in client |
+| 1 | Animal Wrangler | Fishing/cooking done | Hunter half (needs hunter) |
+| 2 | Corner Cutter | Greaves only | Agility |
+| 2 | Friendly Forager | Herbs found, Herblore perks | Hunter hook |
+| 2 | Dodgy Deals | Nothing | Thieving |
+| 3 | Clue Compass, Bank Heist, Fairy's Flight | Nothing | Island teleports (destinations in section 5). There are no treasure trails, so the Compass cannot teleport to clue steps: **(proposed)** it teleports to boss entrances and other named places on the isle |
+| 3 | Passives | Nothing | 2x combat XP; slayer passives need slayer |
+| 4 | Golden God | Nothing | Alchemy (magic), altar offering (prayer) |
+| 4 | Reloaded | Nothing | Repick flow |
+| 4 | Equilibrium | Nothing | XP hook only, cheap |
+| 5 | Production Master | Nothing | Needs the production skills; cheap once they exist |
+| 5 | Treasure Arbiter | Nothing | **(decided)** clues drop more often and caskets always roll the maximum number of times (section 3.5). Needs the clue and casket system |
+| 5 | Slayer Master | Nothing | Slayer |
+| 6 | Total Recall, Banker's Note | Nothing | Both cheap; Total Recall is handy for boss runs |
+| 7 | Pocket Kingdom | Nothing | **(decided)** replaced by "Pocket Workshop": portable furnace, anvil, range and loom (no Miscellania) |
+| 7 | Grimoire | Nothing | Spellbook swap, needs the spellbooks |
+| 7 | Overgrown | Nothing | Farming |
+| 8 | Specialist | Nothing | Special attack system exists for a few weapons only |
+| 8 | Guardian | Nothing | A summoned thrall NPC with combat |
+| 8 | Last Stand | Nothing | Combat hook only |
+
+Relics that depend on a skill are built when that skill is.
+
+---
+
+## 3. Combat core and bosses
+
+### 3.1 Combat core: what exists and what to build
+A survey of the engine (2026-10-06) found more than the plan first assumed. Already there: monster
+stats come from the cache, npc melee attacks and retaliation (`NvPCombat`), aggression and hunting,
+the npc death sequence and respawn, hero points (who gets the loot), and shared team loot.
+
+Status of the build, in order:
+- [x] **Drop tables (done 2026-10-06)**: real OSRS format, layered `osrs.toml` + `boosted.toml` +
+  `isle.toml`, a roller, and the death hook. See `isle_of_souls_drops.md`.
+- [x] **Relic drop rates (done)**: the relics boost only the wiki's list of boosted item and monster
+  pairs (2x with a tier 1 relic, 5x with tier 4), not every drop. The boosted list is imported from
+  the wiki (242 pairs).
+- [x] **Wiki import tool (done)**: `tools/drops/wiki_import.py` fills `osrs.toml` and `boosted.toml`
+  for the monsters in `tools/drops/monsters.txt`, with npc ids from the wiki's infoboxes. First
+  batch of 16 pages imported (basic monsters plus the normal bosses that echo bosses pair with).
+- [x] **Multi-combat everywhere (done)**: `combat_multiway_everywhere` in `Constants.kt`, used by
+  every single-combat check.
+- [ ] **Monster list**: yours to supply; each page goes into `monsters.txt`.
+- [ ] **Monster spawns on the isle**: a spawn file for the isle (the Lumbridge module shows the
+  pattern) once the monster list exists.
+- [ ] **Kill hooks**: `NpcDeathEvents.Killed` for kill-count tasks and `NpcDropEvents.Rolled` for
+  rare-drop announcements (both already published).
+- [x] **Npc melee, ranged and magic attacks (done 2026-10-06)**: `NpcAttacks` performs an
+  `NpcAttack` with the standard accuracy and max hit formulas, protection prayers, a projectile
+  and a hit that lands with it. See `isle_of_souls_npc_combat.md`.
+- [x] **Multi-target attacks (done 2026-10-06)**: every npc type has a targeting style, set by its
+  boss script: one target (default), alternating, or all targets in range (Jad fires one
+  projectile at each teammate, each with its own roll and damage). Team instances keep it to the
+  players in the same instance. 7 integration tests.
+- [ ] **Shops**: general store and skill supply shops (the shop API exists in `api/shops`).
+- [ ] Death inside an instance (last unchecked line of the foundation checklist).
+- [ ] Kill-count task triggers via `tracker.addProgress`.
+
+### 3.2 Fight Caves **(built 2026-10-06, needs a real-client check)**
+Team instance, both players inside, Jad at the end. Built with the real 63 waves **and** the
+shortened 8 + Jad, switched by `.data/league/event-settings.json` (default full). Details, what
+differs from the plan and the client checklist are in `isle_of_souls_fight_caves_plan.md`.
+- [x] Wave lists, spawn rotations, all five monster types, Jad (telegraphed fire/rocks/bite, all
+  players targeted, healers), Tz-Kek split, win rewards (fire cape, Tokkul, pet roll), announcement.
+- [x] Death: a dead player respawns in the lobby and can walk back in; the run continues.
+- [x] Tasks: complete the cave 5 and 10 times. **Not yet:** equip a fire cape, survive a Jad hit
+  without prayer.
+- [ ] **You:** run `./gradlew packCache`, then check it in the client (list in the plan file).
+- [ ] The Inferno gatekeeper option ("Exchange fire cape") is a stub until the Inferno exists.
+
+### 3.3 Inferno (shortened) **(decided)**
+Built on the same wave system as the caves, so do it after.
+- [ ] **P1** Shortened wave list **(proposed)**: about 6-8 waves (bat, blob, melee, ranger, mager,
+  Jad-class), then TzKal-Zuk with a simplified shield mechanic.
+- [ ] Rewards: infernal cape.
+- [ ] Tasks: complete, kill Zuk.
+
+### 3.4 More bosses, including the echo bosses **(decided)**
+You plan to add many more bosses than the two instances, and as many of the Raging Echoes echo
+bosses as possible. **(decided)** No Wintertodt or Tempoross.
+
+The nine echo bosses from the
+[wiki](https://oldschool.runescape.wiki/w/Raging_Echoes_League/Echo_bosses_and_echo_equipment). Each
+one is reached by carrying the echo orb dropped by its normal version, so the normal boss has to
+exist first (build them as pairs):
+
+| Echo boss | Normal boss needed first | Difficulty in Raging Echoes | Notes |
+|-----------|--------------------------|-----------------------------|-------|
+| Kalphite Queen (Echo) | Kalphite Queen | Elite | Two-phase fight |
+| Cerberus (Echo) | Cerberus | Master | Needs the Cerberus lair |
+| King Black Dragon (Echo) | King Black Dragon | Elite | Breath attacks |
+| Grotesque Guardians (Echo) | Grotesque Guardians | Elite | Two bosses at once, rooftop |
+| Dagannoth Kings (Echo) | Dagannoth Kings | Master | Three bosses, three styles |
+| Thermonuclear smoke devil (Echo) | Thermonuclear smoke devil | Elite | Single boss, simple |
+| Corrupted Hunllef (Echo) | Corrupted Gauntlet | Master | Needs the Gauntlet, large |
+| Hespori (Echo) | Hespori | Elite | Needs farming |
+| Sol Heredit (Echo) | Colosseum | Grandmaster | Needs the Colosseum, very large |
+
+**What the cache already holds (read 2026-10-07 from the revision 233 cache, table
+`leagues_echo_bosses`, one row per echo boss).** The echo orbs and echo items exist as objects
+(`infernal_echoing_orb` to `solar_echoing_orb`, `echo_godsword`, `drygore_blowpipe`, and the rest).
+The rates below are the cache's own numbers; I assume "1 in N" but have not confirmed the unit, so
+check it against the wiki before using them.
+
+| Echo boss | Orb (rate) | Unique drops (rate) | Requirement | Where |
+|-----------|------------|---------------------|-------------|-------|
+| Cerberus | infernal (50) | echo godsword (25) | 91 Slayer | Taverley Dungeon; no slayer task needed |
+| Kalphite Queen | queenly (30) | drygore blowpipe (20) | none | Kalphite Lair |
+| Dagannoth Kings | kingly (30) | amulet of kings, ring of kings (25 each) | none | Waterbirth Island Dungeon, sixth level |
+| Thermonuclear smoke devil | explosive (50) | devil's element (25) | 93 Slayer | Smoke Devil Dungeon; no slayer task needed |
+| Grotesque Guardians | stonebound (30) | damned gloves (25) | 75 Slayer | Slayer Tower roof; no task needed, does not respawn |
+| Corrupted Hunllef | bestial (15) | crystal blessing (15) | Gauntlet completion | The Gauntlet; skips the preparation phase |
+| King Black Dragon | draconic (30) | thunder khopesh, thousand-bone door (25 each) | none | Wilderness, west of the Lava Maze |
+| Hespori | tangled (1) | tangled lizard (15) | 65 Farming (boostable) | Farming Guild; no fully grown hespori needed |
+| Sol Heredit | solar (1) | weapon of sol (5), sunlight cuffs (7) | none | Final wave of the Colosseum, waves skipped |
+
+Difficulty in the cache is 1 = Elite, 2 = Master, 3 = Grandmaster, which matches the table above.
+Each row also holds a region id and a combat-achievement id (not mapped yet).
+
+**What the cache does not hold.** No combat stats, attack patterns or mechanics (those come from
+the wiki), and no echo npc types: this cache's highest npc id is 14792, and the wiki's echo npc
+ids start at 15,000. Only parts exist (`black_dragon_echokbd`, `dagannoth_water_creature_echo`,
+`crystal_hunllef_crystals_echo_crystals`). The echo attack effects do exist as spotanims (for
+example `echo_thermy_proj`, `echo_kalphite_queen_spine`, `hespori_magic_proj_echo`,
+`dragon_ranged_echo_attack`, the `vfx_colosseum_*_echo` set), so echo fights can reuse them.
+
+**Recoloured models (feasible, not tried yet).** The echo version of a boss is the normal model
+with different colours (the King Black Dragon goes from black and red to dark blue with pink
+feet and cyan eyes). Colours live in the npc type, as `recol_s`/`recol_d` pairs (source colour in
+the model, replacement colour), and the server controls them:
+1. Add a new npc type for each echo boss, copying the normal npc and setting the recolour pairs.
+   `NpcPluginBuilder` already exposes `recol1s`, `recol1d` and so on, `NpcTypeEncoder` writes them,
+   and the cache packer puts new types into the game cache that JS5 serves to the client. Players
+   download the new definitions on their next login.
+2. Colours are 16-bit values, and the source values have to match colours in the boss model. They
+   have to be read from the model data (or copied from an existing echo definition) once per boss.
+   The cache's own `black_dragon_echokbd` already seems to carry six recolour pairs, which shows
+   the approach is the one Jagex used.
+3. Limits: recolouring is per npc type, not per instance, which is fine here because the echo is
+   its own type. It cannot add geometry, so the pink disc under the echo King Black Dragon in the
+   wiki picture is probably a separate effect (a spotanim or ground model) and needs checking.
+4. Retexturing (`retex_s`/`retex_d`) is also supported if a boss uses textures instead of flat
+   colours.
+- [ ] **P1** Make the first recoloured echo (King Black Dragon is the simplest) to prove the
+  method in the real client before doing the other eight.
+
+Suggested order, easiest first: Thermonuclear smoke devil, King Black Dragon, Cerberus, Kalphite
+Queen, Dagannoth Kings, Grotesque Guardians, then Hespori, Corrupted Gauntlet, Colosseum. The last
+three are each a whole minigame.
+
+- [ ] **P1** A shared **boss framework** built once: arena (overworld or instance), phases and
+  attack patterns, two-player targeting, drop-table hookup, kill-count tasks, death handling.
+  The Fight Caves are the first user of it, so build the framework there.
+- [ ] **P1** Echo orb and echo equipment drops, per the wiki page; echo gear you already use
+  (pickaxe, axe, harpoon) is separate.
+- [ ] **P1** Boss-kill tasks for every boss added (the Raging Echoes list has many of them).
+- [ ] Each boss: decide overworld or team instance, and whether it must work for two players.
+
+### 3.5 Clue scrolls and caskets **(decided: no treasure trails)**
+Clue scrolls drop like any other item, but reading one does not start a trail: it gives the casket
+straight away. This is how it works for every player; there are no steps, emotes or STASH units.
+- [ ] **P1** Scroll items for the tiers (beginner, easy, medium, hard, elite, master) and a
+  "read" action that swaps the scroll for the matching casket.
+- [ ] **P1** Casket opening with the real game's reward tables and roll counts **(decided: exactly
+  as in the real game)**, taken from the wiki for each tier. Items that do not exist in this
+  server's cache are **(decided)** skipped, and each one is noted in
+  `docs/isle_of_souls_missing_items.md` (same rule for drop tables).
+- [ ] **P1** Treasure Arbiter's maximum rolls (per the relic doc: 3 / 4 / 5 / 6 / 6 / 7 for
+  beginner / easy / medium / hard / elite / master) replace the random roll count.
+- [ ] **P1** Sources: monster drop tables (tier by monster level), bosses, and skilling finds (the
+  task list already has "Obtain a Bird Nest" and "Obtain a Clue Geode While Mining"; fishing
+  bottles and implings if hunter is built).
+- [ ] **P1** **Treasure Arbiter** (tier 5): clue-dropping creatures and skilling finds drop clues
+  more often (wiki: 1/15 for clue-dropping creatures and impling jars, 10x for geodes, nests and
+  bottles), and caskets always roll the maximum number of times, the same item allowed to roll
+  more than once. The wiki's other effects (shortest clues, no emote items) are not needed.
+- [ ] Rare casket rewards announced through `LeagueAnnouncer.drop`.
+- [ ] Tasks: open caskets of each tier, find geodes, nests and bottles. This is a good source of
+  tasks the isle can really support.
+
+### 3.6 Combat masteries **(decided: all accessible, 2 points per task)**
+Source: the wiki's [Combat Masteries](https://oldschool.runescape.wiki/w/Raging_Echoes_League/Combat_Masteries)
+page. Three styles (melee, ranged, magic) with six tiers each, so **18 masteries**, plus **6
+universal passives**. Each tier needs the previous tier of the same style. The wording below is the
+wiki's, and the effects are built to match it.
+
+**Points.** The real game has 10 mastery tasks worth 1 point each. **(decided)** each one is worth
+**2 points here, so 20 points in total**. **(decided)** each mastery costs **1 point** (the wiki
+does not state the cost). 20 points cover all 18 masteries with 2 spare, which is what makes "all
+accessible" true. Because everything ends up unlocked, the choice is only the order, so the order of
+the tasks is what shapes the event (see the build notes). **(decided)** points are **per player**:
+a mastery task works like any other team task, so when the team completes it, both players get the
+task and their own 2 points, and each spends them in their own order. **(decided)** These are mastery
+points and are separate from league points: the mastery tasks add nothing to the league total.
+
+**The 10 mastery tasks.** Taken from the wiki, with what each one needs on the isle:
+
+| # | Task | Needs |
+|---|------|-------|
+| 1 | Defeat a Giant | A giant on the monster list (hill, moss or fire giant) |
+| 2 | Defeat 10 monsters with combat level 100+ | Mid-to-high level monsters (4.1) |
+| 3 | Defeat Scurrius | Scurrius. **(decided)** it does not need to be soloed: a team kill completes it for both players |
+| 4 | Defeat a monster with a 55+ Slayer requirement | Slayer-only monsters on the list (for example a Turoth) |
+| 5 | Defeat TzTok-Jad in the Fight Caves | Built (3.2) |
+| 6 | Reach combat level 100 | Nothing, only combat XP |
+| 7 | Defeat one echo boss | Echo bosses (3.4) |
+| 8 | Defeat two unique echo bosses | Same |
+| 9 | Defeat three unique echo bosses | Same |
+| 10 | Defeat TzKal-Zuk | The Inferno (3.3) |
+
+Tasks 1, 2, 4 and 6 come with the combat monster ladder. Task 5 is available as soon as the caves
+are tried in a real client. Tasks 3 and 7-10 wait for their bosses, so the last points arrive late.
+With 2 points per task, tiers 1 and 2 of all three styles (6 masteries) need only 6 points, which is
+three tasks; all 18 need nine tasks.
+
+**Melee**
+
+| Tier | Effect |
+|------|--------|
+| I | Melee hits have a 25% chance to roll damage twice and take the highest result |
+| II | Melee hits have a 10% chance to generate an echo hit (additional melee hit, 50% max hit, respects accuracy, PvM only) |
+| III | Melee attack rate set to 80%, rounding down |
+| IV | Melee hits have a 5% chance to heal 40% of damage dealt |
+| V | Melee attack rate set to 50%, rounded down for 5t and above, rounded up below 4t |
+| VI | Chance to generate a melee echo increases to 20%, and echoes can generate additional echoes (up to 8 times in a row) |
+
+**Ranged**
+
+| Tier | Effect |
+|------|--------|
+| I | Damage rolls beneath 30% of max hit with ranged are increased to 30% |
+| II | Each subsequent ranged attack has its max hit increased by an additional 5%; resets after +20% |
+| III | Ranged attack rate set to 80%, rounding down |
+| IV | Every 5th ranged hit, heal 5 hitpoints |
+| V | Ranged attack rate set to 50%, rounded down for 5t and above, rounded up below 4t |
+| VI | Never miss with ranged (PvM only) |
+
+**Magic**
+
+| Tier | Effect |
+|------|--------|
+| I | When you roll above 90% of your max hit with magic, damage is increased by 50% |
+| II | Magic max hit is increased by 5% per tick in between your attacks (up to +40%) |
+| III | Magic attack rate set to 80%, rounding down |
+| IV | When you roll above 90% of your max hit with magic, heal 10% of damage dealt |
+| V | Magic attack rate set to 50%, rounded down for 5t and above, rounded up below 4t |
+| VI | Max hit with magic is increased by 1% for every 100 hitpoints remaining on the target (up to 10%); on a successful magic hit, if the target has fewer hitpoints than your max hit, you max hit |
+
+**Passives (all styles).** The first time a player reaches a tier in any style, that tier's passive
+turns on for every style:
+
+| Tier | Passive |
+|------|---------|
+| 1 | 95% chance to save weapon charges, ammunition and runes used for spells |
+| 2 | Healing from all sources is increased by 20% |
+| 3 | Accuracy with all styles is increased by 100% |
+| 4 | Damage taken is reduced by 15% |
+| 5 | Prayer point gain from all sources is increased by 25% |
+| 6 | Attacks with all styles now have 60% prayer penetration |
+
+**Build notes** (what each piece needs from the engine):
+- [ ] **P1 Mastery state and points.** Per-player mastery unlocks (varps or a save field) and a
+  point balance, with a service that grants 2 points when a mastery task is completed, checks the
+  previous tier, and spends 1 point per unlock. **(decided)** the points and unlocks are
+  per player: a team-completed mastery task grants the 2 points to both partners, who each pick
+  their own order.
+- [ ] **P1 The masteries screen.** `league_combat_mastery` exists in the cache and its side-panel
+  button is wired. Its components, varps and the unlock click have to be decoded from the client
+  cache first, the way the relics and tasks screens were; this is the main unknown.
+- [ ] **P1 Damage roll hooks** (melee I, ranged I, magic I and IV and VI, ranged II, magic II).
+  These need a mastery step inside the max hit and damage roll in `PlayerAttackManager` and
+  `SpellAttackManager`. The tier VI "max hit" rule and the 90% threshold need the rolled value and
+  the max hit available at the same point.
+- [ ] **P1 Attack rate** (III and V in each style). A multiplier on the weapon's attack speed:
+  80% of 5 ticks rounds down to 4; for 50%, 5 ticks and above round down, below 4 ticks round up
+  (so 4 ticks gives 2 and 3 ticks gives 2). Never below 1 tick. The wiki's sentence is short, so
+  I read it this way; check it against your own copy of the description.
+- [ ] **P1 Echo hits** (melee II and VI). A second, delayed hit at 50% of max hit that rolls
+  accuracy, and chains up to 8 times at tier VI. Needs a cap on hits per attack so a long chain
+  cannot lag a tick.
+- [ ] **P1 Healing and sustain hooks** (melee IV, ranged IV, magic IV, passive 2). Passive 2 raises
+  every heal (food, potions, prayer, regeneration), so it has to sit where heals are applied;
+  check whether eating food (`content/other/food`) and the other heals share one place to hook.
+- [ ] **P1 Passives 1, 3 and 4.** 95% saving of charges, ammunition and runes (a roll where ammo,
+  charges and runes are consumed; Ava's-style retrieval is separate), accuracy doubled in the
+  attack roll, and a 15% damage reduction applied to damage taken. Passive 1 also saves the
+  weapon charges, ammunition and spell runes, so it touches the magic and ranged code.
+- [ ] **P2 Passives 5 and 6.** Prayer gain +25% (altars, potions) and 60% prayer penetration. The
+  penetration only matters against targets that use protection prayers, which none of our bosses
+  do yet; it is built so it works if one does, and it is otherwise inert.
+- [ ] **P1 Tests.** One integration test per effect with an injected random source so the 25%, 10%
+  and 5% chances can be forced, plus the rounding table for the attack rate.
+- [ ] **P1 Tasks.** Wire each of the 10 tasks above to its content as that content lands: the first
+  four and task 6 with the combat ladder, task 5 with the caves, tasks 3 and 7-10 with their bosses.
+
+**Interactions to keep in mind.** Everything here is player-versus-monster, so the "PvM only"
+conditions always hold and no PvP check is needed. The effects stack with the relics: the
+**Specialist**, **Last Stand** and **Guardian** relics and the tier 3 combat XP passive all change
+combat, and tier VI echoes plus 50% attack rate plus doubled accuracy will make the Fight Caves
+and Inferno much easier than the wiki design. Do the boss balancing (3.2, 3.3 and 3.4) **with all
+masteries on**, since all of them will be unlocked in the real event.
+
+---
+
+## 4. NPCs and shops
+
+### 4.1 Required before anything else
+- [ ] **P0 Combat NPCs on the isle**: a ladder of low, mid and high level monsters so every
+  combat skill can be trained, with drops and kill tasks. They also supply slayer, bones and
+  hides.
+- [ ] **P0 Shops**: general store plus skill-supply shops (no Grand Exchange). Decide stock,
+  prices and the currency (thieving and alchemy feed it).
+- [ ] **P0 Banks** across the isle (team bank done).
+- [ ] **P1 Slayer master** (needed as soon as slayer exists).
+- [ ] **P1 Guide NPC or sign** explaining the league and teams.
+
+### 4.2 Existing
+Bankers, cows, sheep, ducks and generic people exist in `content/generic/generic-npcs`.
+
+### 4.3 Later
+- [ ] **P2** Tool leprechaun, Sage (Guardian horn retrieval), event host NPC that shows the
+  leaderboard.
+
+---
+
+## 5. Areas, teleports and the world
+
+- [ ] **P0** Run `./gradlew packCache` and check the island area, Home Teleport text and cache
+  edits show up in the client.
+- [ ] **P0** Walk the whole isle in the client: collision, banks, trees/rocks/fishing spots,
+  altars (prayer, runecraft), agility course, farming patches, build sites, boss entrances.
+- [ ] **P1** Teleport destination list for the tier 3 relics: a list of named places on the isle
+  (banks, mines, forest, bay, boss entrances). No discovery or unlocking.
+- [ ] **P1** Area unlocks: **(decided) none** (section 5.1).
+- [ ] **P1** Masteries screen: now part of the combat masteries work (section 3.6).
+- [ ] **P2** Summary screen (Rank tier progress already works from points).
+
+### 5.1 Areas **(decided: no unlocks)**
+The whole isle is open from the start and nothing is gated. The Leagues Areas button still opens
+the client's screen, which shows the real game's regions with no state. **(decided)** try hiding
+that button, and if it is too much work leave it as it is. Teleport relics list named places
+on the isle (above) and nothing about them needs unlocking. Tasks that mention a place elsewhere
+in the game ("in Tirannwn") are removed or reworded instead of mapped to areas.
+
+---
+
+## 6. Tasks, points and thresholds
+
+### 6.1 Task list
+**(decided)** The list grows as content is added: every wiki task the isle can support goes back in.
+`docs/raging_echoes_tasks.json` has 1,589 to filter from. The final list must be able to reach the
+last relic tier; if it cannot, add more tasks or lower the thresholds.
+- [ ] **P0** Finalize the existing 139 (see 1.1), including removing the Tempoross tasks.
+- [x] **2026-10-07** Added 54 tasks: the level tasks (first level up, first level N, total level, base
+  level, combat level; `LeagueLevelTasks`) and 11 that current content completes (Leagues menu, Home
+  Teleport, fire cape, Jad hit without prayer, metal weapons and sets; `LeagueGearTasks`). The list
+  is now 278 tasks worth 23,030 points. Base level, total level 1000+ and combat level 25+ cannot be
+  completed until the missing skills and combat training exist; they need no change then.
+  "Complete the Leagues Tutorial" is deliberately not a task (the tutorial is pre-completed).
+- [ ] **P0** Whenever a skill, NPC, boss or clue feature is finished, add its tasks in the same
+  step so the list never falls behind the content. Keep a running points total.
+- [ ] **P1** Balance so no skill dominates the points.
+
+### 6.2 Thresholds **(P0)**
+Currently 0 / 750 / 1,500 / 2,500 / 5,000 / 8,000 / 16,000 / 25,000 (wiki values) with 10,630
+points available. Set these **last**, from the finished task list and the final XP rates:
+1. Decide the pace: for example tier 8 around hour 6-7 of an 8-10 hour event for a strong team,
+   since the best players should be able to max.
+2. Estimate the points a strong team earns per hour from the final list.
+3. Set thresholds from that, and make sure total points available comfortably exceed the top
+   threshold, so a team can keep climbing the leaderboard to the end.
+
+---
+
+## 7. Event operations
+
+Already built; the work is rehearsing it. **8-10 hours** makes the crash plan more important.
+
+- [ ] **P0 Dress rehearsal** with at least four real clients: login, team sync, shared bank,
+  shared loot, task completion for both players, freeze/unfreeze, scoreboard, announcements.
+- [ ] **P0** Reset checklist from `isle_of_souls_teams.md` ("Before the event").
+- [ ] **P0** Hide dev commands from players (`::leagues`, `::leaguetask`, `::leaguereset`).
+- [ ] **P0 (new, long event)** Soak test: server up for 10 hours with several clients, watching
+  memory, save files and the team-bank saves.
+- [ ] **P1** Backups: where saves and `.data/league` are copied, and a restart plan if the server
+  dies mid-event (instances do not survive a restart).
+- [ ] **P1** Time limit and winner: manual `::leaguefreeze` at the end, then announcement.
+- [ ] **P2** One-page connection guide for friends (RSProx, revision 233, Blurite jav_config).
+
+---
+
+## 8. Dependencies at a glance
+
+```
+packCache + real-client check ──┬─> combat NPCs ──> drop tables ──> bosses (Caves, then Inferno)
+                                │         └──────> slayer
+                                └─> instance test ─────────────────> bosses
+fletching, runecraft, crafting, herblore ──> ranged, magic and potions work ──> bosses are beatable
+thieving, alchemy ──> shop money ──> shops
+drop tables ──> clue scrolls ──> caskets ──> Treasure Arbiter
+combat core ──> mastery effects ──> mastery tasks (Jad, echo bosses, Zuk arrive with their bosses)
+each skill ──> its relic(s) + its tasks ──> thresholds ──> rehearsal
+```
+
+---
+
+## 9. Suggested build order
+
+1. **Foundation**: `packCache`, walk the isle, run teams and the instance test in a real client.
+2. **Combat core**: combat NPCs, drop tables, two-player targeting, shops, banks.
+3. **Quick skills**: fletching, runecraft, crafting, herblore, prayer, magic extras. Clue scrolls
+   and caskets can go in right after drop tables, since they only need the drop system.
+4. **Fight Caves** (shortened), then **Inferno** (shortened) on the same wave system. **Combat
+   masteries** (3.6) go in alongside, once the combat ladder exists, so boss fights are balanced
+   with them on.
+5. **Thieving, agility, slayer** with their relics.
+6. **Hunter, farming, construction** with their relics. These are the hardest to design and each
+   unlocks only one relic, so they go last and get a design discussion first.
+7. **Tasks and thresholds** finalised alongside steps 4-6, then **rehearsal and reset**.
+
+---
+
+## 10. Open questions
+
+Still open (answered on 2026-10-06 unless noted):
+
+1. **Monster list:** *open.* You will provide it later; drop tables and the combat ladder wait for
+   it.
+2. **Boss order:** *open.* You will decide later whether the easiest-first order in 3.4 is right,
+   and which bosses are overworld versus team instances.
+3. **Missing items:** **(decided)** if a real casket reward or drop is not in this server's cache,
+   skip it, and keep a note of each skipped item in `docs/isle_of_souls_missing_items.md`
+   (created when the first one is skipped) so they can be revisited.
+4. **Construction and farming:** *open.* The build-site and fast-patch ideas are only a starting
+   point; we design them together when we reach them.
+5. **Areas button:** **(decided)** try hiding it; if that turns out to be too much work, leave the
+   empty screen as it is.
+6. **Scurrius (mastery task 3):** **(decided)** does not need to be soloed; a team kill completes
+   it for both players, like any other task.
+7. **Mastery points:** **(decided)** per player.
+8. **Mastery cost:** **(decided)** 1 point per mastery.
+9. **Echo-boss mastery tasks (7-9):** *open.* Revisited when we look into echo bosses.

@@ -19,7 +19,17 @@ internal object MiningRocks : LocEditor() {
         orePair(RockLocs.mithril_rock_1, RockLocs.mithril_rock_2, objs.mithril_ore, levelReq = 55, xp = 80.0, depleteChance = 180)
         orePair(RockLocs.adamantite_rock_1, RockLocs.adamantite_rock_2, objs.adamantite_ore, levelReq = 70, xp = 95.0, depleteChance = 150)
         orePair(RockLocs.runite_rock_1, RockLocs.runite_rock_2, objs.runite_ore, levelReq = 85, xp = 125.0, depleteChance = 100)
+
+        // Amethyst crystals deplete after a set number of ores (see [AMETHYST_ORES_PER_ROCK]), not
+        // by a per-ore chance, so `depleteChance` is unused. They respawn after 75 seconds.
+        for (crystal in listOf(RockLocs.amethyst_rock_1, RockLocs.amethyst_rock_2)) {
+            rock(crystal, RockLocs.amethyst_rock_empty, MiningOreObjs.amethyst, levelReq = 92, xp = 240.0, depleteChance = 0, respawn = 125)
+        }
     }
+
+    /** Whether [type] is one of the amethyst crystal rocks. */
+    fun isAmethyst(rock: org.rsmod.game.loc.BoundLocInfo): Boolean =
+        rock.isType(RockLocs.amethyst_rock_1) || rock.isType(RockLocs.amethyst_rock_2)
 
     private fun orePair(
         rock1: LocType,
@@ -40,6 +50,7 @@ internal object MiningRocks : LocEditor() {
         levelReq: Int,
         xp: Double,
         depleteChance: Int,
+        respawn: Int = 30,
     ) {
         edit(type) {
             contentGroup = content.ore
@@ -48,8 +59,12 @@ internal object MiningRocks : LocEditor() {
             param[params.skill_xp] = PlayerStatMap.toFineXP(xp).toInt()
             param[params.deplete_chance] = depleteChance
             param[params.next_loc_stage] = depleted
-            param[params.respawn_time] = 30
+            param[params.respawn_time] = respawn
         }
+    }
+
+    internal object MiningOreObjs : org.rsmod.api.type.refs.obj.ObjReferences() {
+        val amethyst = find("amethyst")
     }
 
     internal object RockLocs : org.rsmod.api.type.refs.loc.LocReferences() {
@@ -76,5 +91,8 @@ internal object MiningRocks : LocEditor() {
         val adamantite_rock_2 = find("adamantiterock2")
         val runite_rock_1 = find("runiterock1")
         val runite_rock_2 = find("runiterock2")
+        val amethyst_rock_1 = find("amethystrock1")
+        val amethyst_rock_2 = find("amethystrock2")
+        val amethyst_rock_empty = find("amethystrock_empty")
     }
 }

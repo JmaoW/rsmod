@@ -83,5 +83,12 @@ internal object WoodcuttingAxes : ObjEditor() {
             contentGroup = content.woodcutting_axe
             param[params.skill_anim] = seqs.human_woodcutting_crystal_axe
         }
+
+        // Granted by the league Lumberjack relic. Crystal-equivalent, usable at any level.
+        edit(objs.league_trailblazer_axe) {
+            contentGroup = content.woodcutting_axe
+            param[params.skill_anim] = seqs.human_woodcutting_league_axe
+            param[params.levelrequire] = 71
+        }
     }
 }

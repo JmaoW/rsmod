@@ -1,0 +1,8 @@
+# The shortened Fight Cave: 8 waves, then TzTok-Jad. Every monster type appears once or twice, in
+# the same order as the real cave. Edit freely: any list of waves works.
+
+[[wave]]
+number = 1
+monsters = ["tztok_jad"]
+boss = true
+

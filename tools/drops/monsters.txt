@@ -1,0 +1,21 @@
+# Wiki page names of the monsters to import, one per line. `#` starts a comment.
+# After editing, run:  python tools/drops/wiki_import.py
+#
+# First batch: a few common monsters to test the whole path, and the normal bosses that the
+# Raging Echoes echo bosses are paired with.
+Goblin
+Cow
+Hill Giant
+Moss giant
+Abyssal demon
+Greater demon
+Giant spider
+King Black Dragon
+Cerberus
+Kalphite Queen
+Thermonuclear smoke devil
+Dagannoth Rex
+Dagannoth Prime
+Dagannoth Supreme
+Grotesque Guardians | ids_from=Dusk; Dawn
+Hespori

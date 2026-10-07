@@ -18,6 +18,7 @@ import org.rsmod.api.script.onOpNpc3
 import org.rsmod.api.script.onOpNpc4
 import org.rsmod.api.script.onOpNpcU
 import org.rsmod.api.utils.format.formatAmount
+import org.rsmod.content.interfaces.bank.BankAccess
 import org.rsmod.content.interfaces.bank.scripts.BankTutorialScript
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.enums.EnumTypeMapResolver
@@ -31,6 +32,7 @@ class Banker
 private constructor(
     private val spaceShop: BankSpaceShop,
     private val tutorial: BankTutorialScript,
+    private val bankAccess: BankAccess,
 ) : PluginScript() {
     // TODO(content): Bank Tutor dialogue variation when player has a bank PIN set up.
 
@@ -69,7 +71,7 @@ private constructor(
     }
 
     private fun ProtectedAccess.openBank() {
-        ifOpenMainSidePair(main = interfaces.bank_main, side = interfaces.bank_side)
+        bankAccess.open(this)
     }
 
     private suspend fun ProtectedAccess.apTalkToBanker(npc: Npc) {
@@ -573,6 +575,9 @@ private constructor(
     }
 
     private suspend fun Dialogue.showTutorial() {
+        if (bankAccess.blocked(access)) {
+            return
+        }
         tutorial.begin(access)
         access.ifClose()
         howToUseBank()

@@ -63,7 +63,7 @@ internal object MiningPickaxes : ObjEditor() {
         )
         standard(
             objs.league_trailblazer_pickaxe,
-            levelReq = 61,
+            levelReq = 71,
             anim = seqs.human_mining_league_trailblazer_pickaxe,
         )
         standard(objs.zalcano_pickaxe, levelReq = 61, anim = seqs.human_mining_zalcano_zalcano_pickaxe)

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.content.interfaces.bank.BankTab
+import org.rsmod.content.interfaces.bank.syncMainTabSize
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.type.util.UncheckedType
 
@@ -709,5 +710,44 @@ class BankInvScriptQuirksTest {
 
             advance()
             assertEquals(expectedTab1Pt2, bank.objs.copyOf(expectedTab1Pt2.size).toList())
+        }
+
+    @Test
+    fun GameTestState.`withdraw last obj that was banked past the tab sizes`() =
+        runGameTest(BankInvScript::class) {
+            val bank = openBank(player)
+            // Objs put in the bank directly (the auto-banking relics) do not grow the tab size.
+            bank[0] = InvObj(1, 1)
+            bank[1] = InvObj(2, 1)
+            bank[2] = InvObj(3, 1)
+            player.bankTabSizeMain = 1
+
+            player.ifButton(bank_components.main_inventory, comsub = 2, op = MAIN_INV_WITHDRAW_1)
+            advance()
+
+            assertEquals(InvObj(3, 1), player.inv[0])
+            assertEquals(null, bank[2])
+            assertEquals(2, player.bankTabSizeMain)
+        }
+
+    @Test
+    fun GameTestState.`objs banked past the tab sizes grow the main tab`() =
+        runGameTest(BankInvScript::class) {
+            val bank = openBank(player)
+            for (slot in 0..5) {
+                bank[slot] = InvObj(slot + 1, 1)
+            }
+            player.bankTabSize1 = 2
+            player.bankTabSizeMain = 1
+
+            player.syncMainTabSize(bank)
+
+            assertEquals(2, player.bankTabSize1)
+            assertEquals(4, player.bankTabSizeMain)
+
+            // Already big enough: left alone.
+            bank[5] = null
+            player.syncMainTabSize(bank)
+            assertEquals(4, player.bankTabSizeMain)
         }
 }

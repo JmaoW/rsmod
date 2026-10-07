@@ -77,6 +77,10 @@
 740	settings_setting_mobile
 741	settings_setting_non_ironman
 742	settings_setting_ironman
+873	league_task_id
+874	league_task_name
+875	league_task_desc
+1017	league_task_area
 1077	settings_setting_id
 1078	settings_setting_type
 1080	settings_setting_prereqs

@@ -30,6 +30,7 @@ import org.rsmod.api.player.output.ClientScripts.confirmOverlayInit
 import org.rsmod.api.player.output.ClientScripts.ifSetTextAlign
 import org.rsmod.api.player.output.ClientScripts.menu
 import org.rsmod.api.player.output.ClientScripts.objboxSetButtons
+import org.rsmod.api.player.output.ClientScripts.skillMultiSetup
 import org.rsmod.api.player.output.ClientScripts.topLevelChatboxResetBackground
 import org.rsmod.api.player.output.ClientScripts.topLevelMainModalBackground
 import org.rsmod.api.player.output.ClientScripts.topLevelMainModalOpen
@@ -545,6 +546,35 @@ internal fun Player.ifChoice(
     ifOpenChat(interfaces.chatmenu, constants.modal_infinitewidthandheight, eventBus)
     chatboxMultiInit(this, title, joinedChoices)
     ifSetEvents(components.chatmenu_pbutton, 1..choiceCountInclusive, IfEvent.PauseButton)
+}
+
+/**
+ * Opens the `skillmulti` chatbox interface with one button per obj in [options].
+ *
+ * Every button accepts [IfEvent.PauseButton] for subcomponents `0..28`: the client picks the
+ * subcomponent to report the chosen quantity.
+ *
+ * @see [skillMultiSetup]
+ */
+internal fun Player.ifSkillMulti(
+    title: String,
+    options: List<ObjType>,
+    names: List<String>,
+    maxQuantity: Int,
+    suggestedQuantity: Int,
+    eventBus: EventBus,
+) {
+    require(options.size in 1..components.skillmulti_buttons.size) {
+        "Unsupported option count. (size=${options.size})"
+    }
+    require(options.size == names.size) { "Each option needs a name. (names=$names)" }
+    ifOpenChat(interfaces.skillmulti, constants.modal_infinitewidthandheight, eventBus)
+    val objs = List(components.skillmulti_buttons.size) { options.getOrNull(it)?.id ?: -1 }
+    val titleAndNames = (listOf(title) + names).joinToString("|")
+    skillMultiSetup(this, 0, maxQuantity, objs, suggestedQuantity, titleAndNames)
+    for (index in options.indices) {
+        ifSetEvents(components.skillmulti_buttons[index], 0..28, IfEvent.PauseButton)
+    }
 }
 
 internal fun Player.ifChatPlayer(

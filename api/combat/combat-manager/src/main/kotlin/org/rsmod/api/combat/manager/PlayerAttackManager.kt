@@ -38,6 +38,7 @@ import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.statAdvance
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.world.WorldRepository
+import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.PathingEntity
@@ -64,6 +65,7 @@ constructor(
     private val accuracy: AccuracyFormulae,
     private val maxHits: MaxHitFormulae,
     private val npcHitModifier: NpcHitModifier,
+    private val xpMods: XpModifiers,
     private val npcInteractions: NpcInteractions,
     private val npcTInteractions: NpcTInteractions,
     private val playerInteractions: PlayerInteractions,
@@ -440,7 +442,7 @@ constructor(
     }
 
     private fun statAdvance(player: Player, stat: StatType, baseXp: Double, multiplier: Double) {
-        player.statAdvance(stat, baseXp * multiplier)
+        player.statAdvance(stat, baseXp * multiplier * xpMods.get(player, stat))
     }
 
     /**

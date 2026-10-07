@@ -24,3 +24,12 @@
 23	runmode_toggle
 24	preserve_activation
 25	client_mode
+26	fight_cave_enter
+27	fight_cave_win
+28	fletching_make
+29	firemaking_light_attempt
+30	firemaking_face_fire
+31	prayer_altar_recharge
+32	prayer_bury_message
+33	herblore_make
+34	crafting_make

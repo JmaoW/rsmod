@@ -49,6 +49,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(240, 750)
             this[objs.infernal_axe_or] = rate(240, 750)
             this[objs.crystal_axe] = rate(250, 800)
+            this[objs.league_trailblazer_axe] = rate(250, 800)
         }
 
         build<ObjType, Int>("oak_tree_axes") {
@@ -66,6 +67,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(120, 375)
             this[objs.infernal_axe_or] = rate(120, 375)
             this[objs.crystal_axe] = rate(120, 375)
+            this[objs.league_trailblazer_axe] = rate(120, 375)
         }
 
         build<ObjType, Int>("willow_tree_axes") {
@@ -83,6 +85,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(60, 187)
             this[objs.infernal_axe_or] = rate(60, 187)
             this[objs.crystal_axe] = rate(60, 187)
+            this[objs.league_trailblazer_axe] = rate(60, 187)
         }
 
         build<ObjType, Int>("teak_tree_axes") {
@@ -100,6 +103,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(60, 190)
             this[objs.infernal_axe_or] = rate(60, 190)
             this[objs.crystal_axe] = rate(60, 200)
+            this[objs.league_trailblazer_axe] = rate(60, 200)
         }
 
         build<ObjType, Int>("maple_tree_axes") {
@@ -117,6 +121,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(30, 93)
             this[objs.infernal_axe_or] = rate(30, 93)
             this[objs.crystal_axe] = rate(30, 93)
+            this[objs.league_trailblazer_axe] = rate(30, 93)
         }
 
         build<ObjType, Int>("arctic_tree_axes") {
@@ -134,6 +139,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(21, 112)
             this[objs.infernal_axe_or] = rate(21, 112)
             this[objs.crystal_axe] = rate(21, 112)
+            this[objs.league_trailblazer_axe] = rate(21, 112)
         }
 
         build<ObjType, Int>("mahogany_tree_axes") {
@@ -151,6 +157,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(34, 94)
             this[objs.infernal_axe_or] = rate(34, 94)
             this[objs.crystal_axe] = rate(36, 97)
+            this[objs.league_trailblazer_axe] = rate(36, 97)
         }
 
         build<ObjType, Int>("yew_tree_axes") {
@@ -168,6 +175,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(15, 47)
             this[objs.infernal_axe_or] = rate(15, 47)
             this[objs.crystal_axe] = rate(15, 47)
+            this[objs.league_trailblazer_axe] = rate(15, 47)
         }
 
         build<ObjType, Int>("magic_tree_axes") {
@@ -185,6 +193,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(7, 22)
             this[objs.infernal_axe_or] = rate(7, 22)
             this[objs.crystal_axe] = rate(7, 22)
+            this[objs.league_trailblazer_axe] = rate(7, 22)
         }
 
         build<ObjType, Int>("redwood_tree_axes") {
@@ -202,6 +211,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(7, 30)
             this[objs.infernal_axe_or] = rate(7, 30)
             this[objs.crystal_axe] = rate(8, 35)
+            this[objs.league_trailblazer_axe] = rate(8, 35)
         }
 
         build<ObjType, Int>("hollow_tree_axes") {
@@ -219,6 +229,7 @@ internal object WoodcuttingEnumBuilder : EnumBuilder() {
             this[objs.infernal_axe] = rate(67, 101)
             this[objs.infernal_axe_or] = rate(67, 101)
             this[objs.crystal_axe] = rate(67, 101)
+            this[objs.league_trailblazer_axe] = rate(67, 101)
         }
     }
 

@@ -40,6 +40,7 @@
             <option value="$PROJECT_DIR$/api/db-gateway" />
             <option value="$PROJECT_DIR$/api/death" />
             <option value="$PROJECT_DIR$/api/death-plugin" />
+            <option value="$PROJECT_DIR$/api/drops" />
             <option value="$PROJECT_DIR$/api/game-process" />
             <option value="$PROJECT_DIR$/api/hit-plugin" />
             <option value="$PROJECT_DIR$/api/hunt" />
@@ -114,6 +115,7 @@
             <option value="$PROJECT_DIR$/content/areas/city" />
             <option value="$PROJECT_DIR$/content/areas/city/lumbridge" />
             <option value="$PROJECT_DIR$/content/areas/misc" />
+            <option value="$PROJECT_DIR$/content/areas/misc/isle-of-souls" />
             <option value="$PROJECT_DIR$/content/areas/misc/multiways" />
             <option value="$PROJECT_DIR$/content/generic" />
             <option value="$PROJECT_DIR$/content/generic/generic-locs" />
@@ -131,8 +133,11 @@
             <option value="$PROJECT_DIR$/content/interfaces/prayer-tab" />
             <option value="$PROJECT_DIR$/content/interfaces/settings" />
             <option value="$PROJECT_DIR$/content/interfaces/skill-guides" />
+            <option value="$PROJECT_DIR$/content/interfaces/world-map" />
             <option value="$PROJECT_DIR$/content/other" />
             <option value="$PROJECT_DIR$/content/other/commands" />
+            <option value="$PROJECT_DIR$/content/other/drop-tables" />
+            <option value="$PROJECT_DIR$/content/other/food" />
             <option value="$PROJECT_DIR$/content/other/login" />
             <option value="$PROJECT_DIR$/content/other/mapclock" />
             <option value="$PROJECT_DIR$/content/other/special-attacks" />
@@ -140,10 +145,16 @@
             <option value="$PROJECT_DIR$/content/other/windmill" />
             <option value="$PROJECT_DIR$/content/skills" />
             <option value="$PROJECT_DIR$/content/skills/cooking" />
+            <option value="$PROJECT_DIR$/content/skills/crafting" />
+            <option value="$PROJECT_DIR$/content/skills/firemaking" />
             <option value="$PROJECT_DIR$/content/skills/fishing" />
+            <option value="$PROJECT_DIR$/content/skills/fletching" />
+            <option value="$PROJECT_DIR$/content/skills/herblore" />
             <option value="$PROJECT_DIR$/content/skills/magic" />
             <option value="$PROJECT_DIR$/content/skills/magic/spell-attacks" />
             <option value="$PROJECT_DIR$/content/skills/mining" />
+            <option value="$PROJECT_DIR$/content/skills/prayer" />
+            <option value="$PROJECT_DIR$/content/skills/smithing" />
             <option value="$PROJECT_DIR$/content/skills/woodcutting" />
             <option value="$PROJECT_DIR$/content/travel" />
             <option value="$PROJECT_DIR$/content/travel/canoe" />

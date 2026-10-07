@@ -81,6 +81,9 @@ object BaseComponents : ComponentReferences() {
 
     val menu_list = find("menu:lj_layer1", 5050712558646226874)
 
+    /** The ten item buttons (`a` to `j`) of the `skillmulti` chatbox interface, in slot order. */
+    val skillmulti_buttons = ('a'..'j').map { find("skillmulti:$it") }
+
     val inv_items = find("inventory:items", 2716382361977651445)
 
     val combat_tab_title = find("combat_interface:title", 7028397761873724972)

@@ -22,9 +22,12 @@ import org.rsmod.game.type.stat.StatTypeList
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
-public class StatRegenScript @Inject constructor(private val statTypes: StatTypeList) :
+public class StatRegenScript
+@Inject
+constructor(private val statTypes: StatTypeList, private val holds: StatBoostHolds) :
     PluginScript() {
     private val regenStats by lazy { statTypes.values.toRegenStats() }
+    private val boostRestoreStats by lazy { statTypes.values.toBoostRestoreStats() }
 
     override fun ScriptContext.startup() {
         onPlayerLogin { player.initRegenTimers() }
@@ -53,8 +56,11 @@ public class StatRegenScript @Inject constructor(private val statTypes: StatType
     }
 
     private fun Player.statBoostRestore() {
-        for (stat in regenStats) {
+        for (stat in boostRestoreStats) {
             val base = statBase(stat)
+            if (holds.isHeld(this, stat)) {
+                continue
+            }
             val current = stat(stat)
             if (current > base) {
                 statSub(stat, constant = 1, percent = 0)
@@ -72,5 +78,10 @@ public class StatRegenScript @Inject constructor(private val statTypes: StatType
 
     private fun Collection<StatType>.toRegenStats(): List<StatType> {
         return filter { !it.isType(stats.prayer) && !it.isType(stats.hitpoints) }
+    }
+
+    /** Hitpoints are included so that overheal (such as from anglerfish) wears off over time. */
+    private fun Collection<StatType>.toBoostRestoreStats(): List<StatType> {
+        return filter { !it.isType(stats.prayer) }
     }
 }

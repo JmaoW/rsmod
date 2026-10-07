@@ -231,6 +231,13 @@ public class Player(
     public var forceDisconnect: Boolean = false
     public var manualLogout: Boolean = false
     public var pendingLogout: Boolean = false
+
+    /**
+     * Number of consecutive cycles [pendingLogout] has been set without the logout completing.
+     * Once this reaches the configured hard cap, the logout bypasses busy/delay/queue conditions so
+     * a player can never remain stuck pending logout.
+     */
+    public var pendingLogoutCycles: Int = 0
     public var loggingOut: Boolean = false
     public var pendingCloseClient: Boolean = false
     public var closeClient: Boolean = false

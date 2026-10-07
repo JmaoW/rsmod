@@ -58,4 +58,14 @@ class RotationsTest {
         assertEquals(EAST, rotate(angle = 2, WEST))
         assertEquals(SOUTH, rotate(angle = 3, WEST))
     }
+
+    @Test
+    fun `rotate ignores the bit above the direction flags`() {
+        // The cache's approach flags: 0x10 plus every side blocked but one (30 leaves north open).
+        val northOpen = 0x10 or EAST or SOUTH or WEST
+        assertEquals(EAST or SOUTH or WEST, rotate(angle = 0, northOpen))
+        assertEquals(SOUTH or WEST or NORTH, rotate(angle = 1, northOpen))
+        assertEquals(WEST or NORTH or EAST, rotate(angle = 2, northOpen))
+        assertEquals(NORTH or EAST or SOUTH, rotate(angle = 3, northOpen))
+    }
 }

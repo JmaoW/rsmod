@@ -50,7 +50,9 @@ constructor(
         val prevZone = lastProcessedZone
         val buildArea = buildArea
 
-        if (currZone != prevZone) {
+        // A player always sees at least their own zone, so an empty cache means it was cleared to
+        // request a full resend (e.g. when the observer id used for private objs changed).
+        if (currZone != prevZone || visibleZones.isEmpty()) {
             // Compute neighbouring zones based on the player's current zone.
             val currZones =
                 currZone.computeVisibleNeighbouringZones().filterWithinBuildArea(buildArea)

@@ -1,5 +1,6 @@
 package org.rsmod.api.game.process.player
 
+import com.github.michaelbull.logging.InlineLogger
 import jakarta.inject.Inject
 import org.rsmod.api.player.forceDisconnect
 import org.rsmod.api.player.output.ChatType
@@ -53,11 +54,24 @@ constructor(
     }
 
     private fun Player.processForcedDisconnect() {
-        if (forceDisconnect && !loggingOut) {
-            queueLogout()
-            closeClient()
-            forceDisconnect = false
+        if (!forceDisconnect) {
+            return
         }
+        // Clear the flag up front so a failure below cannot re-trigger this every cycle.
+        forceDisconnect = false
+
+        if (loggingOut) {
+            return
+        }
+
+        if (pendingLogout) {
+            // A forced disconnect means the player is in an error state. Do not keep waiting on
+            // busy/delay conditions for a logout that is already pending.
+            pendingLogoutCycles = PENDING_LOGOUT_HARD_CAP_PERIOD
+        } else {
+            queueLogout()
+        }
+        closeClient()
     }
 
     private fun Player.processClientDisconnect() {
@@ -67,7 +81,7 @@ constructor(
             return
         }
 
-        if (loggingOut) {
+        if (loggingOut || pendingLogout) {
             return
         }
 
@@ -95,6 +109,11 @@ constructor(
         }
         manualLogout = false
 
+        // A logout is already underway; a repeated request must not re-queue it.
+        if (pendingLogout || loggingOut) {
+            return
+        }
+
         val preventLogout = mapClock <= preventLogoutUntil
         if (preventLogout) {
             preventLogoutMessage?.let { mes(it, ChatType.Engine) }
@@ -109,12 +128,14 @@ constructor(
         check(!pendingLogout) { "`queueLogout` has already been called." }
         check(!loggingOut) { "`loggingOut` flag has already been set." }
         pendingLogout = true
+        pendingLogoutCycles = 0
     }
 
     private fun Player.closeClient() {
-        check(!pendingCloseClient) { "`closeClient` has already been called." }
-        check(!closeClient) { "`closeClient` flag has already been set." }
-        pendingCloseClient = true
+        // Safe to call more than once; the client only needs to be closed a single time.
+        if (!pendingCloseClient && !closeClient) {
+            pendingCloseClient = true
+        }
     }
 
     private fun Player.processPendingLogout() {
@@ -124,11 +145,18 @@ constructor(
         ifCloseModals(eventBus)
         forceExitAreas()
 
-        if (isAccessProtected || engineQueueList.isNotEmpty || hasNonDiscardableQueue()) {
+        val bypassConditions = pendingLogoutCycles++ >= PENDING_LOGOUT_HARD_CAP_PERIOD
+        val blocked = isAccessProtected || engineQueueList.isNotEmpty || hasNonDiscardableQueue()
+        if (blocked && !bypassConditions) {
             return
         }
 
+        if (blocked) {
+            logger.warn { "Forcing logout of $this after $pendingLogoutCycles cycles pending." }
+        }
+
         pendingLogout = false
+        pendingLogoutCycles = 0
         loggingOut = true
         logoutProcessor.process(this)
 
@@ -184,5 +212,14 @@ constructor(
          * x-logging.
          */
         private const val PREVENT_LOGOUT_HARD_CAP_PERIOD: Int = 100
+
+        /**
+         * A hard cap period (in server cycles) a player may remain in [Player.pendingLogout] while
+         * busy, delayed, or holding non-discardable queues. Once reached, the logout is completed
+         * regardless of those conditions, so a player can never be stuck pending logout.
+         */
+        private const val PENDING_LOGOUT_HARD_CAP_PERIOD: Int = 50
+
+        private val logger = InlineLogger()
     }
 }

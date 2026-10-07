@@ -10,10 +10,12 @@ import org.rsmod.api.player.output.ClientScripts.statGroupTooltip
 import org.rsmod.api.player.output.runClientScript
 import org.rsmod.api.player.ui.ifOpenMainSidePair
 import org.rsmod.api.player.ui.ifSetText
+import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.player.vars.intVarp
 import org.rsmod.content.interfaces.bank.configs.bank_components
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
+import org.rsmod.game.inv.Inventory
 import org.rsmod.game.type.obj.ObjTypeList
 
 private var Player.extraOpsSpecialBits by intVarp(varps.if1)
@@ -29,6 +31,23 @@ fun Player.openBankWithoutEvents(eventBus: EventBus) {
     disableIfEvents = true
     ifOpenMainSidePair(interfaces.bank_main, interfaces.bank_side, -1, -2, eventBus)
     disableIfEvents = false
+}
+
+/**
+ * Makes the main tab as big as it needs to be to hold every obj in [bank], and [includeSlot] (a
+ * slot that was just emptied, so no longer holds an obj but still belongs to a tab).
+ *
+ * The tab sizes only grow when an obj is deposited through the bank screen. Anything that puts objs
+ * into the bank directly (the auto-banking relics) lands after the last tab without growing the
+ * main tab, and the bank then cannot tell which tab such a slot belongs to. Everything after the
+ * sized tabs is the main tab, so it is safe to grow it to cover them.
+ */
+fun Player.syncMainTabSize(bank: Inventory, includeSlot: Int = -1) {
+    val tabsTotal = BankTab.tabs.sumOf { vars[it.sizeVarBit] }
+    val needed = maxOf(bank.lastOccupiedSlot(), includeSlot + 1) - tabsTotal
+    if (needed > vars[BankTab.Main.sizeVarBit]) {
+        VarPlayerIntMapSetter.set(this, BankTab.Main.sizeVarBit, needed)
+    }
 }
 
 internal fun Player.highlightNoClickClear() {

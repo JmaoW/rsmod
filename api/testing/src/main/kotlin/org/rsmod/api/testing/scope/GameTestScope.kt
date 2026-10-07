@@ -9,17 +9,20 @@ import com.google.inject.multibindings.Multibinder
 import jakarta.inject.Inject
 import kotlin.contracts.contract
 import kotlin.reflect.KClass
+import net.rsprot.protocol.game.incoming.buttons.If1Button
 import net.rsprot.protocol.game.incoming.buttons.If3Button
 import net.rsprot.protocol.game.incoming.buttons.IfButtonD
 import net.rsprot.protocol.game.incoming.locs.OpLoc
 import net.rsprot.protocol.game.incoming.misc.user.MoveGameClick
 import net.rsprot.protocol.game.incoming.npcs.OpNpc
 import net.rsprot.protocol.game.incoming.resumed.ResumePCountDialog
+import net.rsprot.protocol.game.incoming.resumed.ResumePauseButton
 import net.rsprot.protocol.game.outgoing.misc.player.MessageGame
 import net.rsprot.protocol.util.CombinedId
 import org.junit.jupiter.api.Assertions
 import org.rsmod.annotations.InternalApi
 import org.rsmod.api.account.character.CharacterDataStage
+import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.db.Database
 import org.rsmod.api.db.DatabaseConnection
@@ -27,12 +30,14 @@ import org.rsmod.api.game.process.GameCycle
 import org.rsmod.api.inv.map.InvMapInit
 import org.rsmod.api.market.DefaultMarketPrices
 import org.rsmod.api.market.MarketPrices
+import org.rsmod.api.net.rsprot.handlers.If1ButtonHandler
 import org.rsmod.api.net.rsprot.handlers.If3ButtonHandler
 import org.rsmod.api.net.rsprot.handlers.IfButtonDHandler
 import org.rsmod.api.net.rsprot.handlers.MoveGameClickHandler
 import org.rsmod.api.net.rsprot.handlers.OpLocHandler
 import org.rsmod.api.net.rsprot.handlers.OpNpcHandler
 import org.rsmod.api.net.rsprot.handlers.ResumePCountDialogHandler
+import org.rsmod.api.net.rsprot.handlers.ResumePauseButtonHandler
 import org.rsmod.api.npc.apPlayer2
 import org.rsmod.api.npc.hit.modifier.NpcHitModifier
 import org.rsmod.api.npc.hit.modifier.StandardNpcHitModifier
@@ -44,6 +49,7 @@ import org.rsmod.api.npc.opPlayer2
 import org.rsmod.api.player.hit.processor.DamageOnlyPlayerHitProcessor
 import org.rsmod.api.player.hit.processor.InstantPlayerHitProcessor
 import org.rsmod.api.player.interact.LocInteractions
+import org.rsmod.api.player.interact.LocTInteractions
 import org.rsmod.api.player.interact.NpcInteractions
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
@@ -114,6 +120,7 @@ import org.rsmod.game.entity.util.PathingEntityCommon
 import org.rsmod.game.entity.util.ShuffledPlayerList
 import org.rsmod.game.enums.EnumTypeMapResolver
 import org.rsmod.game.hit.HitType
+import org.rsmod.game.interact.InteractionLocT
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.inv.Inventory
 import org.rsmod.game.loc.BoundLocInfo
@@ -125,6 +132,7 @@ import org.rsmod.game.loc.LocZoneKey
 import org.rsmod.game.map.LocZoneStorage
 import org.rsmod.game.map.collision.addLoc
 import org.rsmod.game.movement.MoveSpeed
+import org.rsmod.game.movement.RouteRequestLoc
 import org.rsmod.game.queue.EngineQueueCache
 import org.rsmod.game.region.Region
 import org.rsmod.game.region.RegionListLarge
@@ -189,21 +197,25 @@ constructor(
     public val npcTypes: NpcTypeList,
     public val conRepo: ControllerRepository,
     public val npcRepo: NpcRepository,
+    public val objRepo: ObjRepository,
     private val gameCycle: GameCycle,
     private val collision: CollisionFlagMap,
     private val locZoneStorage: LocZoneStorage,
     private val locRegistry: LocRegistry,
     private val locInteractions: LocInteractions,
+    private val locTInteractions: LocTInteractions,
     private val conRegistry: ControllerRegistry,
     private val npcRegistry: NpcRegistry,
     private val npcInteractions: NpcInteractions,
     private val interfaceTypes: InterfaceTypeList,
     private val invMapInit: InvMapInit,
     private val protectedAccess: ProtectedAccessLauncher,
+    private val if1ButtonHandler: If1ButtonHandler,
     private val ifButtonHandler: If3ButtonHandler,
     private val ifButtonDHandler: IfButtonDHandler,
     private val gameClickHandler: MoveGameClickHandler,
     private val resumePCountDialog: ResumePCountDialogHandler,
+    private val resumePauseButton: ResumePauseButtonHandler,
     private val opLocHandler: OpLocHandler,
     private val opNpcHandler: OpNpcHandler,
     private val aiPlayerInteractions: AiPlayerInteractions,
@@ -387,6 +399,37 @@ constructor(
         captureClient.queue(opLocHandler, message)
     }
 
+    /**
+     * Uses [obj] from inventory [slot] on [loc]. The real handler checks that the inventory
+     * component allows targeting locs, which the test harness does not set up, so this skips those
+     * checks. The use is handled by `LocUOpScript`, which has to be included in the test.
+     */
+    public fun Player.opLocT(loc: BoundLocInfo, obj: ObjType, slot: Int) {
+        val component = components.inv_items
+        val type = checkNotNull(locTypes[loc.id]) { "Loc type not found: ${loc.id}" }
+        val opTrigger = locTInteractions.hasOpTrigger(this, loc, type, obj, component, slot)
+        val apTrigger = locTInteractions.hasApTrigger(this, loc, type, obj, component, slot)
+        interaction =
+            InteractionLocT(
+                objType = obj,
+                component = component,
+                comsub = slot,
+                target = loc,
+                hasOpTrigger = opTrigger,
+                hasApTrigger = apTrigger,
+            )
+        routeRequest =
+            RouteRequestLoc(
+                destination = loc.coords,
+                width = loc.width,
+                length = loc.length,
+                shape = loc.shapeId,
+                angle = loc.angleId,
+                forceApproachFlags = loc.forceApproachFlags,
+            )
+        faceLoc(loc)
+    }
+
     public fun Player.opNpc1(npc: Npc, controlKey: Boolean = false) {
         val message = OpNpc(npc.slotId, controlKey, op = 1)
         captureClient.queue(opNpcHandler, message)
@@ -435,6 +478,12 @@ constructor(
         captureClient.queue(ifButtonHandler, message)
     }
 
+    /** Clicks an old-style (if1) button, such as the tan buttons of the tanner interface. */
+    public fun Player.ifLegacyButton(type: ComponentType) {
+        val combinedId = CombinedId(type.interfaceId, type.component)
+        captureClient.queue(if1ButtonHandler, If1Button(combinedId))
+    }
+
     public fun Player.ifButtonD(
         fromComponent: ComponentType,
         fromComsub: Int,
@@ -477,6 +526,13 @@ constructor(
     public fun Player.resumeCountDialog(count: Int) {
         val message = ResumePCountDialog(count)
         captureClient.queue(resumePCountDialog, message)
+    }
+
+    /** Clicks a pause button, such as a dialog option or an item of the skillmulti interface. */
+    public fun Player.resumePauseButton(type: ComponentType, comsub: Int = -1) {
+        val combinedId = CombinedId(type.interfaceId, type.component)
+        val message = ResumePauseButton(combinedId, comsub)
+        captureClient.queue(resumePauseButton, message)
     }
 
     public fun Player.moveGameClick(dest: CoordGrid, keyCombination: Int = 0) {

@@ -55,6 +55,12 @@ public class EnumPluginBuilder<K : Any, V : Any>(
     public var vals: MutableMap<K, V?> = mutableMapOf()
     // Enums created through this builder are usually server-side only.
     public var transmit: Boolean = false
+    /**
+     * Overrides the cache literal used for values. This is required for literals that have no
+     * dedicated [CacheVarTypeMap.classedLiterals] entry, such as [CacheVarLiteral.STRUCT], whose
+     * values are represented as raw [Int] ids.
+     */
+    public var valLiteral: CacheVarLiteral? = null
 
     @Suppress("UNCHECKED_CAST")
     public fun build(id: Int): UnpackedEnumType<K, V> {
@@ -64,10 +70,11 @@ public class EnumPluginBuilder<K : Any, V : Any>(
                     "CacheVarTypeMap.classedLiterals: ${expectedKeyType.simpleName}"
             }
         val value =
-            checkNotNull(CacheVarTypeMap.classedLiterals[expectedValType]) {
-                "Type for value is not implemented in " +
-                    "CacheVarTypeMap.classedLiterals: ${expectedValType.simpleName}"
-            }
+            valLiteral
+                ?: checkNotNull(CacheVarTypeMap.classedLiterals[expectedValType]) {
+                    "Type for value is not implemented in " +
+                        "CacheVarTypeMap.classedLiterals: ${expectedValType.simpleName}"
+                }
         val internal = checkNotNull(internal) { "`internal` must be set." }
         val backing = EnumTypeBuilder(expectedKeyType, expectedValType, internal)
         val primitiveMap = vals.toPrimitiveMap(key, value)

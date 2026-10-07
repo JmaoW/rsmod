@@ -15,6 +15,7 @@ import org.rsmod.api.player.ui.ifSetText
 import org.rsmod.api.player.vars.boolVarBit
 import org.rsmod.api.script.onIfClose
 import org.rsmod.api.script.onIfOpen
+import org.rsmod.content.interfaces.bank.BankEvents
 import org.rsmod.content.interfaces.bank.bankCapacity
 import org.rsmod.content.interfaces.bank.configs.bank_components
 import org.rsmod.content.interfaces.bank.configs.bank_comsubs
@@ -26,7 +27,9 @@ import org.rsmod.content.interfaces.bank.disableIfEvents
 import org.rsmod.content.interfaces.bank.highlightNoClickClear
 import org.rsmod.content.interfaces.bank.setBankWornBonuses
 import org.rsmod.content.interfaces.bank.setBanksideExtraOps
+import org.rsmod.content.interfaces.bank.syncMainTabSize
 import org.rsmod.content.interfaces.bank.util.offset
+import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.interf.IfEvent
 import org.rsmod.game.type.inv.InvTypeList
@@ -41,6 +44,7 @@ constructor(
     private val objTypes: ObjTypeList,
     private val wornBonuses: WornBonuses,
     private val weaponSpeeds: WeaponSpeeds,
+    private val eventBus: EventBus,
 ) : PluginScript() {
     private val Player.bank
         get() = invMap.getOrPut(invTypes[invs.bank])
@@ -54,6 +58,11 @@ constructor(
     }
 
     private fun Player.onBankOpen() {
+        eventBus.publish(BankEvents.Opened(this))
+
+        // After the event: listeners may have just set the tab sizes.
+        syncMainTabSize(bank)
+
         if (!disableIfEvents) {
             val capacityIncrease = bank_constants.purchasable_capacity
             withdrawCert = false
@@ -74,6 +83,7 @@ constructor(
     }
 
     private fun Player.onBankClose() {
+        eventBus.publish(BankEvents.Closed(this))
         stopInvTransmit(bank)
         mesLayerClose(this, constants.meslayer_mode_objsearch)
         if (!ui.containsOverlay(bank_interfaces.tutorial_overlay)) {

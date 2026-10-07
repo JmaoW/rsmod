@@ -61,6 +61,12 @@ object Constants {
     const val combat_spell_attackrate = 5
     const val combat_activecombat_delay = 8
 
+    /**
+     * The Isle of Souls league treats every area as multi-combat: any number of npcs can attack a
+     * player, and any number of players can attack the same npc.
+     */
+    const val combat_multiway_everywhere = true
+
     const val npc_immunity_none = 0
     const val npc_venom_partial_immunity = 1
     const val npc_venom_full_immunity = 2

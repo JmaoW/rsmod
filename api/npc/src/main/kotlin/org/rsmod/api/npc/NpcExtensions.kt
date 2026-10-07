@@ -32,5 +32,5 @@ public fun Npc.isInCombat(): Boolean {
 
 /** @return `true` if the npc is **currently** in a multi-combat area. */
 public fun Npc.mapMultiway(checker: AreaChecker): Boolean {
-    return checker.inArea(areas.multiway, coords)
+    return constants.combat_multiway_everywhere || checker.inArea(areas.multiway, coords)
 }

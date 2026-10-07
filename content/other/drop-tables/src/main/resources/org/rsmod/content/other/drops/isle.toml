@@ -1,0 +1,12 @@
+# Isle of Souls changes to the drop tables. This file is applied after osrs.toml.
+#
+# A [[monster]] here ADDS its lines to the same monster in osrs.toml. Add `replace = true` to
+# throw away the OSRS table and use only the lines given here. Example:
+#
+#   [[monster]]
+#   name = "Goblin"
+#   levels = [2, 13]
+#   tertiary = [{ item = "Coins", qty = "1000-2000", chance = "1/50" }]
+#
+# Format: see DropData.kt.
+monster = []

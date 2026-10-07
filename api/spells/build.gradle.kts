@@ -12,6 +12,7 @@ dependencies {
     implementation(projects.api.combat.combatCommons)
     implementation(projects.api.combat.combatManager)
     implementation(projects.api.player)
+    implementation(projects.api.stats.xpmod)
     implementation(projects.api.type.typeEditors)
     implementation(projects.api.type.typeReferences)
     implementation(projects.api.type.typeScriptDsl)

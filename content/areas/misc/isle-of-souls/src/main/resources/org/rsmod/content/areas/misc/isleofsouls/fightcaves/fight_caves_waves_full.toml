@@ -1,0 +1,259 @@
+# The real TzHaar Fight Cave: 63 waves, from the OSRS Wiki's "TzHaar Fight Cave" wave table.
+# Wave n is made of monsters worth 1 (tz_kih), 3 (tz_kek), 7 (tok_xil), 15 (yt_mejkot) and
+# 31 (ket_zek) points that add up to n. Wave 63 is TzTok-Jad; his four Yt-HurKot healers are not
+# listed: they appear when he drops to half health.
+# Monster names are the keys used by the fight caves script (see docs/isle_of_souls_fight_caves_plan.md).
+
+[[wave]]
+number = 1
+monsters = ["tz_kih"]
+
+[[wave]]
+number = 2
+monsters = ["tz_kih", "tz_kih"]
+
+[[wave]]
+number = 3
+monsters = ["tz_kek"]
+
+[[wave]]
+number = 4
+monsters = ["tz_kek", "tz_kih"]
+
+[[wave]]
+number = 5
+monsters = ["tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 6
+monsters = ["tz_kek", "tz_kek"]
+
+[[wave]]
+number = 7
+monsters = ["tok_xil"]
+
+[[wave]]
+number = 8
+monsters = ["tok_xil", "tz_kih"]
+
+[[wave]]
+number = 9
+monsters = ["tok_xil", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 10
+monsters = ["tok_xil", "tz_kek"]
+
+[[wave]]
+number = 11
+monsters = ["tok_xil", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 12
+monsters = ["tok_xil", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 13
+monsters = ["tok_xil", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 14
+monsters = ["tok_xil", "tok_xil"]
+
+[[wave]]
+number = 15
+monsters = ["yt_mejkot"]
+
+[[wave]]
+number = 16
+monsters = ["yt_mejkot", "tz_kih"]
+
+[[wave]]
+number = 17
+monsters = ["yt_mejkot", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 18
+monsters = ["yt_mejkot", "tz_kek"]
+
+[[wave]]
+number = 19
+monsters = ["yt_mejkot", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 20
+monsters = ["yt_mejkot", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 21
+monsters = ["yt_mejkot", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 22
+monsters = ["yt_mejkot", "tok_xil"]
+
+[[wave]]
+number = 23
+monsters = ["yt_mejkot", "tok_xil", "tz_kih"]
+
+[[wave]]
+number = 24
+monsters = ["yt_mejkot", "tok_xil", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 25
+monsters = ["yt_mejkot", "tok_xil", "tz_kek"]
+
+[[wave]]
+number = 26
+monsters = ["yt_mejkot", "tok_xil", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 27
+monsters = ["yt_mejkot", "tok_xil", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 28
+monsters = ["yt_mejkot", "tok_xil", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 29
+monsters = ["yt_mejkot", "tok_xil", "tok_xil"]
+
+[[wave]]
+number = 30
+monsters = ["yt_mejkot", "yt_mejkot"]
+
+[[wave]]
+number = 31
+monsters = ["ket_zek"]
+
+[[wave]]
+number = 32
+monsters = ["ket_zek", "tz_kih"]
+
+[[wave]]
+number = 33
+monsters = ["ket_zek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 34
+monsters = ["ket_zek", "tz_kek"]
+
+[[wave]]
+number = 35
+monsters = ["ket_zek", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 36
+monsters = ["ket_zek", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 37
+monsters = ["ket_zek", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 38
+monsters = ["ket_zek", "tok_xil"]
+
+[[wave]]
+number = 39
+monsters = ["ket_zek", "tok_xil", "tz_kih"]
+
+[[wave]]
+number = 40
+monsters = ["ket_zek", "tok_xil", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 41
+monsters = ["ket_zek", "tok_xil", "tz_kek"]
+
+[[wave]]
+number = 42
+monsters = ["ket_zek", "tok_xil", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 43
+monsters = ["ket_zek", "tok_xil", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 44
+monsters = ["ket_zek", "tok_xil", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 45
+monsters = ["ket_zek", "tok_xil", "tok_xil"]
+
+[[wave]]
+number = 46
+monsters = ["ket_zek", "yt_mejkot"]
+
+[[wave]]
+number = 47
+monsters = ["ket_zek", "yt_mejkot", "tz_kih"]
+
+[[wave]]
+number = 48
+monsters = ["ket_zek", "yt_mejkot", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 49
+monsters = ["ket_zek", "yt_mejkot", "tz_kek"]
+
+[[wave]]
+number = 50
+monsters = ["ket_zek", "yt_mejkot", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 51
+monsters = ["ket_zek", "yt_mejkot", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 52
+monsters = ["ket_zek", "yt_mejkot", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 53
+monsters = ["ket_zek", "yt_mejkot", "tok_xil"]
+
+[[wave]]
+number = 54
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tz_kih"]
+
+[[wave]]
+number = 55
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 56
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tz_kek"]
+
+[[wave]]
+number = 57
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tz_kek", "tz_kih"]
+
+[[wave]]
+number = 58
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tz_kek", "tz_kih", "tz_kih"]
+
+[[wave]]
+number = 59
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tz_kek", "tz_kek"]
+
+[[wave]]
+number = 60
+monsters = ["ket_zek", "yt_mejkot", "tok_xil", "tok_xil"]
+
+[[wave]]
+number = 61
+monsters = ["ket_zek", "yt_mejkot", "yt_mejkot"]
+
+[[wave]]
+number = 62
+monsters = ["ket_zek", "ket_zek"]
+
+[[wave]]
+number = 63
+monsters = ["tztok_jad"]
+boss = true
+

@@ -253,6 +253,11 @@ class AccountLoadResponseHook(
         }
 
         player.slotId = slotId
+        if (player.newAccount) {
+            val spawn = SessionStateEvent.NewPlayerSpawn(player, player.coords)
+            eventBus.publish(spawn)
+            player.coords = spawn.coords
+        }
         eventBus.publish(SessionStart(player, session))
         val register = playerRegistry.add(player)
         if (register.isSuccess()) {

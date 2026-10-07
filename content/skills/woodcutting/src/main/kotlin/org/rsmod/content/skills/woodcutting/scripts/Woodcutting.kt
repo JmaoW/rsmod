@@ -6,6 +6,7 @@ import org.rsmod.api.config.locParam
 import org.rsmod.api.config.locXpParam
 import org.rsmod.api.config.objParam
 import org.rsmod.api.config.refs.content
+import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.controllers
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
@@ -40,6 +41,7 @@ import org.rsmod.game.type.loc.LocTypeList
 import org.rsmod.game.type.loc.UnpackedLocType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
+import org.rsmod.game.type.obj.isType
 import org.rsmod.game.type.obj.UnpackedObjType
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.map.zone.ZoneKey
@@ -125,6 +127,8 @@ constructor(
         }
 
         var cutLogs = false
+        var bankLogs = false
+        var rolled: CutRoll? = null
         val despawn: Boolean
 
         if (actionDelay < mapClock) {
@@ -132,6 +136,13 @@ constructor(
         } else if (actionDelay == mapClock) {
             val (low, high) = cutSuccessRates(type, axe, enumTypes)
             cutLogs = statRandom(stats.woodcutting, low, high, invisibleLvls)
+
+            val roll = CutRoll(player, tree, cutLogs)
+            roll.logs = objTypes[type.treeLogs]
+            publish(roll)
+            cutLogs = roll.success
+            bankLogs = roll.bank
+            rolled = roll
         }
 
         if (type.hasDespawnTimer) {
@@ -146,7 +157,13 @@ constructor(
             val xp = type.treeXp * xpMods.get(player, stats.woodcutting)
             spam("You get some ${product.name.lowercase()}.")
             statAdvance(stats.woodcutting, xp)
-            invAdd(inv, product)
+            val given = rolled?.product ?: product
+            val givenCount = rolled?.productCount ?: 1
+            if (rolled?.consume != true) {
+                if (!bankLogs || !invAdd(bank, given, givenCount).success) {
+                    invAdd(inv, given, givenCount)
+                }
+            }
             publish(CutLogs(player, tree, product))
         }
 
@@ -237,6 +254,28 @@ constructor(
     data class CutLogs(val player: Player, val tree: BoundLocInfo, val product: ObjType) :
         UnboundEvent
 
+    /**
+     * Published on every roll to cut logs, after the normal roll. Listeners can turn a failed roll
+     * into a [success], ask for the logs to be sent to the [bank] instead of the inventory, and
+     * change what the player gets: [productCount] of a [product] instead of the [logs], or nothing
+     * at all if the logs are [consume]d. The logs still count as cut.
+     */
+    class CutRoll(val player: Player, val tree: BoundLocInfo, var success: Boolean) : UnboundEvent {
+        var bank: Boolean = false
+
+        /** The logs the tree gives. Set by the woodcutting script before the event is published. */
+        var logs: ObjType? = null
+
+        /** What the player gets instead of the [logs], or `null` to get the logs themselves. */
+        var product: ObjType? = null
+
+        /** How many of the [product] (or of the logs) the player gets. */
+        var productCount: Int = 1
+
+        /** Whether the logs are used up, so the player gets nothing. */
+        var consume: Boolean = false
+    }
+
     companion object {
         var Controller.treeActivelyCutTicks: Int by intVarCon(varcons.woodcutting_tree_cut_ticks)
         var Controller.treeLastCut: Int by intVarCon(varcons.woodcutting_tree_last_cut)
@@ -281,7 +320,8 @@ constructor(
         }
 
         private fun UnpackedObjType.isUsableAxe(woodcuttingLevel: Int): Boolean =
-            isContentType(content.woodcutting_axe) && woodcuttingLevel >= axeWoodcuttingReq
+            isContentType(content.woodcutting_axe) &&
+                (woodcuttingLevel >= axeWoodcuttingReq || isType(objs.league_trailblazer_axe))
 
         private fun UnpackedLocType.resolveRespawnTime(random: GameRandom): Int {
             val fixed = treeRespawnTime

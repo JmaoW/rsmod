@@ -24,6 +24,8 @@ import org.rsmod.api.script.onOpLoc1
 import org.rsmod.api.script.onOpLoc3
 import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.stats.xpmod.XpModifiers
+import org.rsmod.content.skills.mining.configs.MiningGems
+import org.rsmod.content.skills.mining.configs.MiningRocks
 import org.rsmod.game.MapClock
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.InvObj
@@ -33,13 +35,16 @@ import org.rsmod.game.type.loc.UnpackedLocType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.obj.UnpackedObjType
+import org.rsmod.game.type.obj.isType
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.plugin.scripts.PluginScript
+import org.rsmod.map.CoordGrid
 import org.rsmod.plugin.scripts.ScriptContext
 
 // TODO:
 // - rock depletion/respawn for the remaining rock variants
-// - amethyst, sandstone, granite, and other special mining content
+// - sandstone, granite, and other special mining content
+// - expert mining gloves (one extra amethyst per crystal); the item is not in this cache
 class Mining
 @Inject
 constructor(
@@ -48,6 +53,9 @@ constructor(
     private val mapClock: MapClock,
     private val xpMods: XpModifiers,
 ) : PluginScript() {
+    /** Ores left in each amethyst crystal that has been mined from but not yet depleted. */
+    private val oresLeft = HashMap<CoordGrid, Int>()
+
     override fun ScriptContext.startup() {
         onOpLoc1(content.ore) { attempt(it.loc, it.type) }
         onOpLoc3(content.ore) { mine(it.loc, it.type) }
@@ -60,7 +68,7 @@ constructor(
             return
         }
 
-        if (inv.isFull()) {
+        if (inv.isFull() && !banksOre()) {
             val product = objTypes[type.miningProduct]
             mes("Your inventory is too full to hold any more ${product.name.lowercase()}.")
             soundSynth(synths.pillory_wrong)
@@ -96,7 +104,7 @@ constructor(
             return
         }
 
-        if (inv.isFull()) {
+        if (inv.isFull() && !banksOre()) {
             val product = objTypes[type.miningProduct]
             mes("Your inventory is too full to hold any more ${product.name.lowercase()}.")
             soundSynth(synths.pillory_wrong)
@@ -111,15 +119,34 @@ constructor(
         if (actionDelay < mapClock) {
             actionDelay = mapClock + objTypes[pickaxe].miningRollDelay
         } else if (actionDelay == mapClock) {
-            val success = mineSuccess(player.miningLvl, type.miningLevelReq, objTypes[pickaxe], random)
-            if (success) {
+            val roll = MineRoll(player, rock, mineSuccess(player.miningLvl, type.miningLevelReq, objTypes[pickaxe], random))
+            roll.ore = objTypes[type.miningProduct]
+            roll.gem = MiningGems.roll(random).takeUnless { MiningGems.isGem(roll.ore!!) }
+            publish(roll)
+            if (roll.success) {
                 val product = objTypes[type.miningProduct]
                 val xp = type.miningXp * xpMods.get(player, stats.mining)
                 spam("You mine some ${product.name.lowercase()}.")
                 statAdvance(stats.mining, xp)
-                invAdd(inv, product)
+                val given = roll.product ?: product
+                if (!roll.bank || !invAdd(bank, given).success) {
+                    invAdd(inv, given)
+                }
+                val ore = MineOre(player, rock, product)
+                publish(ore)
 
-                if (type.hasDepletedStage && random.of(1, 255) > type.miningDepleteChance) {
+                val gem = roll.gem
+                if (gem != null) {
+                    val gemName = objTypes[gem].name.lowercase()
+                    spam("You find ${if (gemName.first() in "aeiou") "an" else "a"} $gemName!")
+                    val gemGiven = roll.gemProduct ?: gem
+                    if (!roll.bank || !invAdd(bank, gemGiven).success) {
+                        invAdd(inv, gemGiven)
+                    }
+                    publish(GemFound(player, gem))
+                }
+
+                if (type.hasDepletedStage && !ore.keepRock && rockDepletes(rock, type)) {
                     val respawnTime = type.resolveRespawnTime(random)
                     locRepo.change(rock, type.miningDepletedStage, respawnTime)
                 }
@@ -129,10 +156,73 @@ constructor(
         opLoc3(rock)
     }
 
-    data class MineOre(val player: Player, val rock: BoundLocInfo, val product: ObjType) :
-        org.rsmod.events.UnboundEvent
+    /**
+     * Whether the rock depletes after the ore just mined from it. Most rocks have a chance per ore;
+     * amethyst crystals instead hold a fixed number of ores, picked when the first one is mined.
+     */
+    private fun ProtectedAccess.rockDepletes(rock: BoundLocInfo, type: UnpackedLocType): Boolean {
+        if (!MiningRocks.isAmethyst(rock)) {
+            return random.of(1, 255) > type.miningDepleteChance
+        }
+        val left = (oresLeft[rock.coords] ?: random.of(AMETHYST_MIN_ORES, AMETHYST_MAX_ORES)) - 1
+        if (left > 0) {
+            oresLeft[rock.coords] = left
+            return false
+        }
+        oresLeft.remove(rock.coords)
+        return true
+    }
+
+    /** Whether the player's ore goes straight to the bank, so a full inventory is no problem. */
+    private fun ProtectedAccess.banksOre(): Boolean {
+        val check = BankOreCheck(player)
+        publish(check)
+        return check.bank
+    }
+
+    /**
+     * Published on every roll to mine a rock, after the normal roll. Listeners can turn a failed
+     * roll into a [success], ask for the ore to be sent to the [bank] instead of the inventory,
+     * and give a different [product] in place of the [ore] (the ore still counts as mined).
+     */
+    class MineRoll(val player: Player, val rock: BoundLocInfo, var success: Boolean) :
+        org.rsmod.events.UnboundEvent {
+        var bank: Boolean = false
+
+        /** The ore the rock gives. Set by the mining script before the event is published. */
+        var ore: ObjType? = null
+
+        /** What the player gets instead of the [ore], or `null` to get the ore itself. */
+        var product: ObjType? = null
+
+        /** The uncut gem this ore comes with, or `null` for none. Only given on a success. */
+        var gem: ObjType? = null
+
+        /** What the player gets instead of the [gem], or `null` to get the gem itself. */
+        var gemProduct: ObjType? = null
+    }
+
+    /**
+     * Published before mining checks the inventory is full. Listeners set [bank] when the ore
+     * will go straight to the bank, so a full inventory does not stop the player mining.
+     */
+    class BankOreCheck(val player: Player) : org.rsmod.events.UnboundEvent {
+        var bank: Boolean = false
+    }
+
+    /** Published when a gem turns up with a mined ore, whatever is done with it afterwards. */
+    class GemFound(val player: Player, val gem: ObjType) : org.rsmod.events.UnboundEvent
+
+    /** Published once an ore has been mined. Listeners can set [keepRock] to stop it depleting. */
+    class MineOre(val player: Player, val rock: BoundLocInfo, val product: ObjType) :
+        org.rsmod.events.UnboundEvent {
+        var keepRock: Boolean = false
+    }
 
     companion object {
+        private const val AMETHYST_MIN_ORES = 2
+        private const val AMETHYST_MAX_ORES = 3
+
         val UnpackedLocType.miningLevelReq: Int by locParam(params.levelrequire)
         val UnpackedLocType.miningProduct: ObjType by locParam(params.skill_productitem)
         val UnpackedLocType.miningXp: Double by locXpParam(params.skill_xp)
@@ -171,7 +261,7 @@ constructor(
                 objs.trailblazer_reloaded_pickaxe -> 2
                 objs.trailblazer_reloaded_pickaxe_empty -> 2
                 objs.trailblazer_reloaded_pickaxe_no_infernal -> 2
-                objs.league_trailblazer_pickaxe -> 2
+                objs.league_trailblazer_pickaxe -> 1
                 objs.zalcano_pickaxe -> 2
                 objs.gauntlet_pickaxe -> 3
                 objs.gauntlet_pickaxe_hm -> 3
@@ -230,7 +320,8 @@ constructor(
         }
 
         private fun UnpackedObjType.isUsablePickaxe(miningLevel: Int): Boolean =
-            isContentType(content.mining_pickaxe) && miningLevel >= pickaxeLevelReq
+            isContentType(content.mining_pickaxe) &&
+                (miningLevel >= pickaxeLevelReq || isType(objs.league_trailblazer_pickaxe))
 
         private fun UnpackedLocType.resolveRespawnTime(random: GameRandom): Int {
             val fixed = miningRespawnTime

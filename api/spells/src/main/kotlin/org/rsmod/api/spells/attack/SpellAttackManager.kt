@@ -12,6 +12,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.vars.boolVarBit
+import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.hit.Hit
 import org.rsmod.game.proj.ProjAnim
@@ -22,7 +23,11 @@ import org.rsmod.game.type.synth.SynthType
 
 public class SpellAttackManager
 @Inject
-constructor(private val manager: PlayerAttackManager, private val runes: MagicRuneManager) {
+constructor(
+    private val manager: PlayerAttackManager,
+    private val runes: MagicRuneManager,
+    private val xpMods: XpModifiers,
+) {
     private val ProtectedAccess.autocastEnabled by boolVarBit(varbits.autocast_set)
 
     /**
@@ -75,7 +80,8 @@ constructor(private val manager: PlayerAttackManager, private val runes: MagicRu
      * [CombatAttack.Spell.spell].
      */
     public fun giveCastXp(access: ProtectedAccess, attack: CombatAttack.Spell) {
-        access.statAdvance(stats.magic, attack.spell.castXp)
+        val xp = attack.spell.castXp * xpMods.get(access.player, stats.magic)
+        access.statAdvance(stats.magic, xp)
     }
 
     /**

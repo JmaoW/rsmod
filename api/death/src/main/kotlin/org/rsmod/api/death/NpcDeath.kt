@@ -7,6 +7,9 @@ import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.varns
 import org.rsmod.api.config.refs.varps
+import org.rsmod.api.drops.DropRoller
+import org.rsmod.api.drops.DropTables
+import org.rsmod.api.drops.NpcDropEvents
 import org.rsmod.api.npc.access.StandardNpcAccess
 import org.rsmod.api.npc.vars.typePlayerUidVarn
 import org.rsmod.api.player.output.soundSynth
@@ -14,6 +17,7 @@ import org.rsmod.api.player.vars.intVarp
 import org.rsmod.api.player.vars.typeNpcUidVarp
 import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.repo.obj.ObjRepository
+import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.PlayerList
@@ -29,6 +33,9 @@ constructor(
     private val seqTypes: SeqTypeList,
     private val players: PlayerList,
     private val objRepo: ObjRepository,
+    private val dropTables: DropTables,
+    private val dropRoller: DropRoller,
+    private val eventBus: EventBus,
 ) {
     public suspend fun deathNoDrops(access: StandardNpcAccess) {
         access.death(npcRepo, seqTypes, players)
@@ -43,12 +50,28 @@ constructor(
     }
 
     private fun Npc.spawnDeathDrops(dropCoords: CoordGrid) {
-        // TODO: Drop tables.
         val hero = findHero(players)
-        if (hero != null) {
-            val duration = hero.lootDropDuration ?: constants.lootdrop_duration
-            objRepo.add(objs.bones, dropCoords, duration, hero)
+        eventBus.publish(NpcDeathEvents.Killed(this, hero))
+        if (hero == null) {
+            return
         }
+
+        val duration = hero.lootDropDuration ?: constants.lootdrop_duration
+        val table = dropTables[type]
+        if (table == null) {
+            // Monsters without a drop table keep dropping bones only.
+            objRepo.add(objs.bones, dropCoords, duration, hero)
+            return
+        }
+
+        val modify = NpcDropEvents.Modify(this, hero)
+        eventBus.publish(modify)
+
+        val drops = dropRoller.roll(table, modify.multiplier)
+        for (drop in drops) {
+            objRepo.add(drop.obj, dropCoords, duration, hero, count = drop.count)
+        }
+        eventBus.publish(NpcDropEvents.Rolled(this, hero, drops))
     }
 
     // Note: We may be able to have `Npc` as the arg instead of `StandardNpcAccess`, however we
