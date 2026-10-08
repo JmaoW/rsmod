@@ -4,6 +4,8 @@ import jakarta.inject.Inject
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.stat.PlayerSkillXP
 import org.rsmod.api.player.stat.statBase
+import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTasks
+import org.rsmod.content.areas.misc.isleofsouls.masteries.MasteryKills
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.stat.StatType
 
@@ -15,7 +17,9 @@ import org.rsmod.game.type.stat.StatType
  * the tasks for skills that are not built yet complete by themselves once those skills can be
  * trained.
  */
-class LeagueLevelTasks @Inject constructor(private val tracker: LeagueTaskTracker) {
+class LeagueLevelTasks
+@Inject
+constructor(private val tracker: LeagueTaskTracker, private val masteryTasks: LeagueMasteryTasks) {
     /** A skill of [player] has just gone up a level. */
     fun onLevelUp(player: Player) {
         tracker.complete(player, TASK_FIRST_LEVEL_UP)
@@ -50,6 +54,9 @@ class LeagueLevelTasks @Inject constructor(private val tracker: LeagueTaskTracke
         }
 
         val combat = PlayerSkillXP.calculateCombatLevel(player)
+        if (combat >= MasteryKills.COMBAT_LEVEL) {
+            masteryTasks.complete(player, MasteryKills.SLOT_COMBAT_LEVEL)
+        }
         for ((taskId, goal) in combatLevelTasks) {
             if (combat >= goal) {
                 tracker.complete(player, taskId)

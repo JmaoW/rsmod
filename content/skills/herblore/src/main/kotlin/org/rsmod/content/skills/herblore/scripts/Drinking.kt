@@ -2,6 +2,7 @@ package org.rsmod.content.skills.herblore.scripts
 
 import jakarta.inject.Inject
 import java.util.WeakHashMap
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.refs.hitmark_groups
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
@@ -9,6 +10,7 @@ import org.rsmod.api.player.events.interact.HeldObjEvents
 import org.rsmod.api.player.output.UpdateRun
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.hitpoints
+import org.rsmod.api.player.stat.statBase
 import org.rsmod.api.player.stat.statSub
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.script.onOpHeld1
@@ -41,8 +43,11 @@ import org.rsmod.plugin.scripts.ScriptContext
 // the next attack.
 class Drinking
 @Inject
-constructor(private val statTypes: StatTypeList, private val effects: PotionEffects) :
-    PluginScript() {
+constructor(
+    private val statTypes: StatTypeList,
+    private val effects: PotionEffects,
+    private val masteries: CombatMasteryEffects,
+) : PluginScript() {
     /** The cycle each player can next drink a potion. */
     private val ready = WeakHashMap<Player, Int>()
 
@@ -91,7 +96,8 @@ constructor(private val statTypes: StatTypeList, private val effects: PotionEffe
             is PotionEffect.Boost -> boost(effect.changes)
             is PotionEffect.Divine -> divine(effect)
             is PotionEffect.Restore -> restore(effect)
-            is PotionEffect.PrayerPoints -> statHeal(stats.prayer, effect.constant, effect.percent)
+            is PotionEffect.PrayerPoints ->
+                restoreStat(stats.prayer, effect.constant, effect.percent)
             is PotionEffect.RunEnergy -> restoreRunEnergy(effect.percent)
             is PotionEffect.Stamina -> stamina(effect)
             is PotionEffect.Timed -> effects.start(player, effect.effect, effect.ticks)
@@ -118,9 +124,22 @@ constructor(private val statTypes: StatTypeList, private val effects: PotionEffe
         for (stat in statTypes.values) {
             val skip = stat.isHitpoints() || (stat.isPrayer() && !effect.prayer)
             if (!skip) {
-                statHeal(stat, effect.constant, effect.percent)
+                restoreStat(stat, effect.constant, effect.percent)
             }
         }
+    }
+
+    /**
+     * Restores [stat] by [constant] plus [percent] of its base level. Prayer points are raised by
+     * the fifth combat mastery passive, which works on the number of points restored.
+     */
+    private fun ProtectedAccess.restoreStat(stat: StatType, constant: Int, percent: Int) {
+        if (!stat.isPrayer()) {
+            statHeal(stat, constant, percent)
+            return
+        }
+        val points = constant + (player.statBase(stat) * percent) / 100
+        statHeal(stat, masteries.prayerGain(player, points), 0)
     }
 
     private fun ProtectedAccess.restoreRunEnergy(percent: Int) {

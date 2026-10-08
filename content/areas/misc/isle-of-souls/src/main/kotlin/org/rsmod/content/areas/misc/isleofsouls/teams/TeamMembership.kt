@@ -2,6 +2,7 @@ package org.rsmod.content.areas.misc.isleofsouls.teams
 
 import jakarta.inject.Inject
 import org.rsmod.content.areas.misc.isleofsouls.bank.TeamBanks
+import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTasks
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.game.entity.Player
 
@@ -19,10 +20,12 @@ constructor(
     private val teams: LeagueTeams,
     private val tracker: LeagueTaskTracker,
     private val banks: TeamBanks,
+    private val masteryTasks: LeagueMasteryTasks,
 ) {
     /** Call on login and whenever [player]'s team may have changed. */
     fun refresh(player: Player) {
         tracker.syncPlayer(player)
+        masteryTasks.sync(player)
         applyObserver(player)
         banks.attach(player)
     }

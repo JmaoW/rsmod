@@ -165,5 +165,17 @@ internal object ProjAnimBuilds : ProjAnimBuilder() {
             progress = 40
             stepMultiplier = 10
         }
+
+        // The ghost of a melee mastery echo. Its flight time is set by whoever spawns it, so the
+        // timing values here are placeholders.
+        build("melee_mastery_echo") {
+            startHeight = 100
+            endHeight = 100
+            delay = 0
+            angle = 0
+            lengthAdjustment = 41
+            progress = 0
+            stepMultiplier = 0
+        }
     }
 }

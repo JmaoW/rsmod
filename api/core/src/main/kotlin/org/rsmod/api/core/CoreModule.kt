@@ -5,6 +5,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.account.AccountModule
 import org.rsmod.api.area.checker.AreaCheckerModule
 import org.rsmod.api.cache.CacheModule
+import org.rsmod.api.combat.mastery.CombatMasteryModule
 import org.rsmod.api.core.module.EntityHitModule
 import org.rsmod.api.core.module.GameMapModule
 import org.rsmod.api.core.module.PlayerModule
@@ -35,6 +36,7 @@ public object CoreModule : ExtendedModule() {
         install(AccountModule)
         install(AreaCheckerModule)
         install(CacheModule)
+        install(CombatMasteryModule)
         install(DatabaseModule)
         install(EntityHitModule)
         install(ExceptionHandlerModule)

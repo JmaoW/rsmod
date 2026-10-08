@@ -12,6 +12,11 @@ object BaseSpotanims : SpotanimReferences() {
     val redemption = find("redemption_spotanim")
     val sp_attackglow_red = find("sp_attackglow_red", 8689879)
 
+    /** The ghost that flies through the target when a melee mastery echo lands. */
+    val vfx_league_5_melee_mastery = find("vfx_league_5_melee_mastery")
+    val vfx_league_5_melee_mastery_left = find("vfx_league_5_melee_mastery_left")
+    val vfx_league_5_melee_mastery_right = find("vfx_league_5_melee_mastery_right")
+
     val hw07_arm_from_the_ground_spotanim = find("hw07_arm_from_the_ground_spotanim", 81323324)
     val skillcape_diary_spotanim = find("skillcape_diary_spotanim", 108696894)
     val trollromance_heart = find("trollromance_heart", 18465091)

@@ -22,6 +22,7 @@ import net.rsprot.protocol.util.CombinedId
 import org.junit.jupiter.api.Assertions
 import org.rsmod.annotations.InternalApi
 import org.rsmod.api.account.character.CharacterDataStage
+import org.rsmod.api.combat.mastery.CombatMasteryProvider
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.db.Database
@@ -75,6 +76,7 @@ import org.rsmod.api.registry.obj.ObjRegistry
 import org.rsmod.api.registry.player.PlayerRegistry
 import org.rsmod.api.registry.region.RegionRegistry
 import org.rsmod.api.registry.zone.ZonePlayerActivityBitSet
+import org.rsmod.api.registry.zone.ZoneUpdateMap
 import org.rsmod.api.repo.controller.ControllerRepository
 import org.rsmod.api.repo.loc.LocRepository
 import org.rsmod.api.repo.npc.NpcRepository
@@ -955,6 +957,7 @@ constructor(
             bind(RegionRepository::class.java).`in`(Scopes.SINGLETON)
             bind(ObjRegistry::class.java).`in`(Scopes.SINGLETON)
             bind(ObjRepository::class.java).`in`(Scopes.SINGLETON)
+            bind(ZoneUpdateMap::class.java).`in`(Scopes.SINGLETON)
             bind(WorldRepository::class.java).`in`(Scopes.SINGLETON)
 
             // These type lists can be modified by tests to ensure interactions pass
@@ -1003,6 +1006,10 @@ constructor(
 
             Multibinder.newSetBinder(binder(), InvisibleLevelMod::class.java)
             bind(InvisibleLevels::class.java).`in`(Scopes.SINGLETON)
+
+            Multibinder.newSetBinder(binder(), CombatMasteryProvider::class.java)
+                .addBinding()
+                .toInstance(TestCombatMasteries)
 
             Multibinder.newSetBinder(binder(), XpMod::class.java)
             bind(XpModifiers::class.java).`in`(Scopes.SINGLETON)

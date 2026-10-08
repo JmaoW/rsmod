@@ -12,6 +12,7 @@ dependencies {
     implementation(projects.api.account)
     implementation(projects.api.areaChecker)
     implementation(projects.api.cache)
+    implementation(projects.api.combat.combatMastery)
     implementation(projects.api.db)
     implementation(projects.api.gameProcess)
     implementation(projects.api.hunt)

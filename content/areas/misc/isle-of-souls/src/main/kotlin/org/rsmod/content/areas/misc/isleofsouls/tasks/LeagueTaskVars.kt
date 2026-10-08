@@ -107,6 +107,9 @@ object LeagueProgressVarps : VarpReferences() {
     val magic_logs_20 = find("isle_count_magic_logs_20")
     val cook_shark_20 = find("isle_count_cook_shark_20")
 
+    /** Monsters of combat level 100 or more defeated, for a combat mastery task. */
+    val mastery_kills_100 = find("isle_count_mastery_kills_100")
+
     val all =
         listOf(
             tin_ore,
@@ -179,6 +182,7 @@ object LeagueProgressVarps : VarpReferences() {
             magic_logs_50,
             magic_logs_20,
             cook_shark_20,
+            mastery_kills_100,
         )
 }
 
@@ -254,5 +258,6 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_magic_logs_50") {}
         build("isle_count_magic_logs_20") {}
         build("isle_count_cook_shark_20") {}
+        build("isle_count_mastery_kills_100") {}
     }
 }

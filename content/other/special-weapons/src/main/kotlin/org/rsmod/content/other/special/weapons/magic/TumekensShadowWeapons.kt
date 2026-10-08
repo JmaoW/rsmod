@@ -3,6 +3,8 @@ package org.rsmod.content.other.special.weapons.magic
 import jakarta.inject.Inject
 import org.rsmod.api.combat.commons.CombatAttack
 import org.rsmod.api.combat.manager.CombatChargeManager
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
+import org.rsmod.api.combat.mastery.MasteryStyle
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.seqs
@@ -20,16 +22,19 @@ import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
 
-class TumekensShadowWeapons @Inject constructor(private val charges: CombatChargeManager) :
+class TumekensShadowWeapons
+@Inject
+constructor(private val charges: CombatChargeManager, private val masteries: CombatMasteryEffects) :
     WeaponMap {
     override fun WeaponRepository.register(manager: WeaponAttackManager) {
         register(objs.tumekens_shadow_uncharged, UnchargedTumekensShadow(manager))
-        register(objs.tumekens_shadow, TumekensShadow(manager, charges))
+        register(objs.tumekens_shadow, TumekensShadow(manager, charges, masteries))
     }
 
     private class TumekensShadow(
         private val manager: WeaponAttackManager,
         private val charges: CombatChargeManager,
+        private val masteries: CombatMasteryEffects,
     ) : MagicWeapon {
         override suspend fun ProtectedAccess.attack(
             target: Npc,
@@ -55,7 +60,8 @@ class TumekensShadowWeapons @Inject constructor(private val charges: CombatCharg
             }
             // Tumeken's Shadow has an attack rate of 5, unlike standard powered staves which
             // typically have a rate of 4.
-            manager.setNextAttackDelay(this, 5)
+            val delay = masteries.attackDelay(player, MasteryStyle.Magic, 5)
+            manager.setNextAttackDelay(this, delay)
 
             anim(seqs.toa_sot_cast_b)
             spotanim(spotanims.tumekens_shadow_casting)

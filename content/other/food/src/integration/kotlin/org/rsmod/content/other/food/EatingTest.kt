@@ -1,6 +1,7 @@
 package org.rsmod.content.other.food
 
 import org.junit.jupiter.api.Test
+import org.rsmod.api.combat.mastery.MasteryStyle
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.timers
@@ -10,6 +11,7 @@ import org.rsmod.api.player.ui.IfOverlayButton
 import org.rsmod.api.stats.plugin.StatRegenScript
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.api.testing.scope.TestCombatMasteries
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.type.interf.IfButtonOp
 import org.rsmod.game.type.obj.UnpackedObjType
@@ -44,6 +46,18 @@ class EatingTest {
 
             check(player.hitpoints == 70) { "Expected 70 hitpoints, got ${player.hitpoints}." }
             check(player.count(obj("shark")) == 0) { "Expected the shark to be eaten." }
+        }
+
+    @Test
+    fun GameTestState.`the second mastery passive raises the healing by a fifth`() =
+        runGameTest(Eating::class, HeldOpScript::class) {
+            prepare(99, 50, "shark")
+            TestCombatMasteries.set(player, MasteryStyle.Magic, 2)
+
+            eat(0)
+            advance(ticks = 1)
+
+            check(player.hitpoints == 74) { "Expected 74 hitpoints, got ${player.hitpoints}." }
         }
 
     @Test

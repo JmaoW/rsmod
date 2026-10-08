@@ -23,4 +23,5 @@ object BaseProjAnims : ProjAnimReferences() {
     val confuse = find("confuse")
     val bind = find("bind")
     val tumekens_shadow = find("tumekens_shadow")
+    val melee_mastery_echo = find("melee_mastery_echo")
 }

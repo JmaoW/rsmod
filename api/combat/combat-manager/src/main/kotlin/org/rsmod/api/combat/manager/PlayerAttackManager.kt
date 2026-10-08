@@ -21,7 +21,9 @@ import org.rsmod.api.combat.commons.types.MeleeAttackType
 import org.rsmod.api.combat.commons.types.RangedAttackType
 import org.rsmod.api.combat.formulas.AccuracyFormulae
 import org.rsmod.api.combat.formulas.MaxHitFormulae
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.refs.params
+import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
@@ -36,6 +38,7 @@ import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.protect.clearPendingAction
 import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.statAdvance
+import org.rsmod.api.player.stat.statHeal
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.world.WorldRepository
 import org.rsmod.api.stats.xpmod.XpModifiers
@@ -64,6 +67,7 @@ constructor(
     private val worldRepo: WorldRepository,
     private val accuracy: AccuracyFormulae,
     private val maxHits: MaxHitFormulae,
+    private val masteryEffects: CombatMasteryEffects,
     private val npcHitModifier: NpcHitModifier,
     private val xpMods: XpModifiers,
     private val npcInteractions: NpcInteractions,
@@ -543,7 +547,7 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier,
+            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
             random = random,
         )
 
@@ -561,7 +565,7 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier,
+            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
             random = random,
         )
 
@@ -587,7 +591,11 @@ constructor(
         multiplier: Double,
     ): Int {
         val maxHit = calculateMeleeMaxHit(source, target, attackType, attackStyle, multiplier)
-        return random.of(1..maxHit)
+        val damage = masteryEffects.rollMelee(source, maxHit)
+        if (target is Npc) {
+            healPlayer(source, masteryEffects.meleeHitHeal(source, min(damage, target.hitpoints)))
+        }
+        return damage
     }
 
     /**
@@ -691,6 +699,75 @@ constructor(
     }
 
     /**
+     * Queues a melee hit on [target], applying damage after the specified [delay].
+     *
+     * Unlike [queueMeleeHit], this function **does not** trigger any block animation or retaliation
+     * from the [target]. It only applies the damage after the delay and awards hero points to
+     * [source], which is what a hit that is part of another attack needs (such as a mastery echo).
+     *
+     * @see [queueMeleeHit]
+     */
+    public fun queueMeleeDamage(
+        source: Player,
+        target: PathingEntity,
+        damage: Int,
+        delay: Int,
+    ): Hit {
+        val hit =
+            when (target) {
+                is Npc -> target.queueHit(source, delay, HitType.Melee, damage, npcHitModifier)
+                is Player -> target.queueHit(source, delay, HitType.Melee, damage)
+            }
+        target.heroPoints(source, min(hit.damage, hitpointsOf(target)))
+        return hit
+    }
+
+    /**
+     * Rolls and queues the echo hits that a melee mastery adds to a normal melee hit on [target],
+     * which landed after [hitDelay] cycles. Echoes land one cycle apart, after the hit they follow.
+     * They only happen against npcs. Echoes are silent, and do not grant combat experience.
+     *
+     * @return the damage of each echo queued, in order. Empty if there were none.
+     * @see [CombatMasteryEffects.rollEchoes]
+     */
+    public fun queueMeleeEchoes(
+        source: Player,
+        target: Npc,
+        attack: CombatAttack.Melee,
+        hitDelay: Int = 1,
+    ): List<Int> {
+        val maxHit = calculateMeleeMaxHit(source, target, attack.type, attack.style, 1.0)
+        val echoes =
+            masteryEffects.rollEchoes(source, maxHit) {
+                rollMeleeAccuracy(source, target, attack.type, attack.style, attack.type, 1.0)
+            }
+        for ((index, damage) in echoes.withIndex()) {
+            val landDelay = hitDelay + index + 1
+            queueMeleeDamage(source, target, damage, landDelay)
+            spawnEchoGhost(source, target, index, landDelay)
+        }
+        return echoes
+    }
+
+    /**
+     * Sends a ghost flying through [target] so that it arrives as the echo lands, [landDelay]
+     * cycles from now. The cache has three versions of it (straight, left and right), and which one
+     * flies depends on the tick and the echo's place in the chain, so repeated echoes vary.
+     */
+    private fun spawnEchoGhost(source: Player, target: Npc, index: Int, landDelay: Int) {
+        val ghost = echoGhosts[(source.currentMapClock + index).mod(echoGhosts.size)]
+        val endTime = landDelay * CLIENT_CYCLES_PER_CYCLE
+        worldRepo.projAnimTimed(
+            source = source,
+            target = target,
+            spotanim = ghost,
+            type = projanims.melee_mastery_echo,
+            startTime = endTime - ECHO_GHOST_FLIGHT,
+            endTime = endTime,
+        )
+    }
+
+    /**
      * Rolls for ranged damage against [target], handling both accuracy and damage calculations.
      *
      * This function first determines if the attack hits by calling [rollRangedAccuracy]. If the
@@ -724,15 +801,17 @@ constructor(
         blockType: RangedAttackType? = attack.type,
         boltSpecDamage: Int = 0,
     ): Int {
+        val neverMiss = masteryEffects.neverMissRanged(source, pvm = target is Npc)
         val successfulAccuracyRoll =
-            rollRangedAccuracy(
-                source = source,
-                target = target,
-                multiplier = accuracyMultiplier,
-                attackType = attackType,
-                attackStyle = attackStyle,
-                blockType = blockType,
-            )
+            neverMiss ||
+                rollRangedAccuracy(
+                    source = source,
+                    target = target,
+                    multiplier = accuracyMultiplier,
+                    attackType = attackType,
+                    attackStyle = attackStyle,
+                    blockType = blockType,
+                )
         if (!successfulAccuracyRoll) {
             return 0
         }
@@ -792,7 +871,7 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier,
+            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
             random = random,
         )
 
@@ -808,7 +887,7 @@ constructor(
             target = target,
             attackType = attackType,
             attackStyle = attackStyle,
-            specMultiplier = specMultiplier,
+            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
             random = random,
         )
 
@@ -842,10 +921,14 @@ constructor(
                 target = target,
                 attackType = attackType,
                 attackStyle = attackStyle,
-                multiplier = multiplier,
+                multiplier = multiplier * masteryEffects.rangedMaxHitMultiplier(source),
                 boltSpecDamage = boltSpecDamage,
             )
-        return random.of(1..maxHit)
+        val damage = masteryEffects.rollRanged(source, maxHit)
+        if (target is Npc) {
+            healPlayer(source, masteryEffects.rangedHitHeal(source, min(damage, target.hitpoints)))
+        }
+        return damage
     }
 
     /**
@@ -1130,6 +1213,7 @@ constructor(
             spellbook = spellbook,
             usedSunfireRune = sunfireRune,
             random = random,
+            accuracyMultiplier = masteryEffects.accuracyMultiplier(source),
         )
 
     private fun rollSpellAccuracy(
@@ -1186,7 +1270,23 @@ constructor(
                 attackRate = attackRate,
                 sunfireRune = sunfireRune,
             )
-        return random.of(hitRange)
+        val targetHitpoints = hitpointsOf(target)
+        val multiplier = masteryEffects.magicMaxHitMultiplier(source, targetHitpoints)
+        val scaledRange = masteryEffects.scale(hitRange, multiplier)
+        val damage = random.of(scaledRange)
+        val adjusted =
+            masteryEffects.adjustMagicDamage(source, damage, scaledRange.last, targetHitpoints)
+        if (target is Npc) {
+            val heal =
+                masteryEffects.magicHitHeal(
+                    source,
+                    adjusted,
+                    scaledRange.last,
+                    dealt = min(adjusted, targetHitpoints),
+                )
+            healPlayer(source, heal)
+        }
+        return adjusted
     }
 
     /**
@@ -1311,7 +1411,7 @@ constructor(
             player = source,
             target = target,
             attackStyle,
-            specMultiplier,
+            specMultiplier * masteryEffects.accuracyMultiplier(source),
             random,
         )
 
@@ -1325,7 +1425,7 @@ constructor(
             player = source,
             target = target,
             attackStyle,
-            specMultiplier,
+            specMultiplier * masteryEffects.accuracyMultiplier(source),
             random,
         )
 
@@ -1348,8 +1448,23 @@ constructor(
         baseMaxHit: Int,
         multiplier: Double,
     ): Int {
-        val maxHit = calculateStaffMaxHit(source, target, baseMaxHit, multiplier)
-        return random.of(1..maxHit)
+        val targetHitpoints = hitpointsOf(target)
+        val masteryMultiplier = masteryEffects.magicMaxHitMultiplier(source, targetHitpoints)
+        val maxHit =
+            calculateStaffMaxHit(source, target, baseMaxHit, multiplier * masteryMultiplier)
+        val damage = random.of(1..maxHit)
+        val adjusted = masteryEffects.adjustMagicDamage(source, damage, maxHit, targetHitpoints)
+        if (target is Npc) {
+            val heal =
+                masteryEffects.magicHitHeal(
+                    source,
+                    adjusted,
+                    maxHit,
+                    dealt = min(adjusted, targetHitpoints),
+                )
+            healPlayer(source, heal)
+        }
+        return adjusted
     }
 
     /**
@@ -1867,7 +1982,7 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier,
+            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
             random = random,
         )
 
@@ -1924,7 +2039,7 @@ constructor(
             target = target,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier,
+            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
             random = random,
         )
 
@@ -2044,4 +2159,32 @@ constructor(
             radius = radius,
             size = size,
         )
+
+    /** Restores [amount] hitpoints to [player], up to their base level. */
+    private fun healPlayer(player: Player, amount: Int) {
+        if (amount > 0) {
+            player.statHeal(stats.hitpoints, constant = amount, percent = 0)
+        }
+    }
+
+    private fun hitpointsOf(target: PathingEntity): Int =
+        when (target) {
+            is Npc -> target.hitpoints
+            is Player -> target.hitpoints
+        }
+
+    private companion object {
+        /** Client cycles (20ms) in one game cycle (600ms). */
+        const val CLIENT_CYCLES_PER_CYCLE = 30
+
+        /** How long the ghost animations last, in client cycles. */
+        const val ECHO_GHOST_FLIGHT = 41
+
+        val echoGhosts =
+            listOf(
+                spotanims.vfx_league_5_melee_mastery,
+                spotanims.vfx_league_5_melee_mastery_left,
+                spotanims.vfx_league_5_melee_mastery_right,
+            )
+    }
 }

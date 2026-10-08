@@ -72,6 +72,24 @@ constructor(private val zoneUpdates: ZoneUpdateMap, private val projAnims: ProjA
         return projAnim
     }
 
+    /**
+     * Spawns a projectile like [projAnim], with its [startTime] and [endTime] (client cycles after
+     * the update reaches the client) given instead of worked out from [type] and the distance.
+     */
+    public fun projAnimTimed(
+        source: Player,
+        target: Npc,
+        spotanim: SpotanimType,
+        type: ProjAnimType,
+        startTime: Int,
+        endTime: Int,
+    ): ProjAnim {
+        val base = ProjAnim.fromBoundsToNpc(source.bounds(), target, spotanim.id, projAnims[type])
+        val projAnim = base.copy(startTime = startTime, endTime = endTime)
+        projAnim(projAnim)
+        return projAnim
+    }
+
     public fun projAnimSourced(
         source: Player,
         target: Npc,

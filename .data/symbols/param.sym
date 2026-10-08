@@ -172,7 +172,6 @@
 1801	slayer_task_boss_displayname
 1802	slayer_task_boss_location
 1935	spell_maxhit
-
 65386	graceful_restore_rate
 65387	prayer_drain_effect
 65388	charged_variant
@@ -312,3 +311,4 @@
 65532	closesound
 65533	next_loc_stage
 65534	opensound
+2028	combat_mastery_desc

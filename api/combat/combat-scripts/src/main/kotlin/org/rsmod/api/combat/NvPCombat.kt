@@ -7,6 +7,7 @@ import org.rsmod.api.combat.commons.player.combatPlayDefendAnim
 import org.rsmod.api.combat.commons.player.queueCombatRetaliate
 import org.rsmod.api.combat.formulas.AccuracyFormulae
 import org.rsmod.api.combat.formulas.MaxHitFormulae
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.combat.npc.attackingPlayer
 import org.rsmod.api.combat.npc.lastAttack
 import org.rsmod.api.combat.player.aggressiveNpc
@@ -14,6 +15,8 @@ import org.rsmod.api.combat.player.lastCombat
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.npc.access.StandardNpcAccess
 import org.rsmod.api.npc.isInCombat
+import org.rsmod.api.player.hit.modifier.PlayerHitModifier
+import org.rsmod.api.player.hit.modifier.StandardPlayerHitModifier
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.player.output.soundSynth
@@ -27,6 +30,7 @@ constructor(
     private val accuracy: AccuracyFormulae,
     private val maxHits: MaxHitFormulae,
     private val objTypes: ObjTypeList,
+    private val masteries: CombatMasteryEffects,
 ) {
     fun attack(access: StandardNpcAccess, target: Player, attack: CombatAttack.NpcMelee) {
         access.attackMelee(target, attack)
@@ -75,8 +79,14 @@ constructor(
         // last entries in the queue list at the time of processing.
         target.queueCombatRetaliate(npc)
 
-        target.queueHit(npc, 1, HitType.Melee, damage)
+        target.queueHit(npc, 1, HitType.Melee, damage, modifier = hitModifier())
         target.combatPlayDefendAnim(objTypes)
+    }
+
+    /** The standard hit modifier, followed by the fourth combat mastery passive. */
+    private fun hitModifier(): PlayerHitModifier = PlayerHitModifier { target ->
+        with(StandardPlayerHitModifier) { modify(target) }
+        damage = masteries.reduceDamageTaken(target, damage)
     }
 
     private fun canAttack(target: Player): Boolean {

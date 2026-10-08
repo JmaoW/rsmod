@@ -2,6 +2,7 @@ package org.rsmod.content.skills.herblore.scripts
 
 import jakarta.inject.Inject
 import org.junit.jupiter.api.Test
+import org.rsmod.api.combat.mastery.MasteryStyle
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.interfaces
 import org.rsmod.api.config.refs.stats
@@ -15,6 +16,7 @@ import org.rsmod.api.player.ui.ifClose
 import org.rsmod.api.stats.plugin.StatRegenScript
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.api.testing.scope.TestCombatMasteries
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.type.interf.IfButtonOp
@@ -305,6 +307,25 @@ class HerbloreScriptTest {
 
             // 8 + 25% of 70.
             check(level(stats.prayer) == 35) { "Expected 35 Prayer, got ${level(stats.prayer)}." }
+            check(level(stats.attack) == 35) { "Expected 35 Attack, got ${level(stats.attack)}." }
+        }
+
+    @Test
+    fun GameTestState.`the fifth mastery passive raises the prayer points a potion restores`() =
+        runGameTest(Drinking::class, HeldOpScript::class) {
+            prepare(1, "4dose2restore" to 1)
+            player.stats[stats.prayer] = 70
+            player.stats.setCurrentLevel(stats.prayer, 10)
+            player.stats[stats.attack] = 70
+            player.stats.setCurrentLevel(stats.attack, 10)
+            TestCombatMasteries.set(player, MasteryStyle.Melee, 5)
+
+            click("4dose2restore")
+            advance(ticks = 1)
+
+            // The 25 points the potion restores are 25% more, rounded down: 31. Other stats are
+            // not affected.
+            check(level(stats.prayer) == 41) { "Expected 41 Prayer, got ${level(stats.prayer)}." }
             check(level(stats.attack) == 35) { "Expected 35 Attack, got ${level(stats.attack)}." }
         }
 

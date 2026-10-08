@@ -448,6 +448,8 @@ constructor(
      *   derived from the player's current spellbook.
      * @param usedSunfireRune Whether the player used a Sunfire rune for the spell.
      * @param random A [GameRandom] instance used to generate a random number for the hit roll.
+     * @param accuracyMultiplier A multiplier applied to the player's attack roll (`1.0` = no
+     *   change, `2.0` = double).
      * @return `true` if the attack is successful (i.e., the hit chance exceeds the random roll),
      *   `false` otherwise.
      */
@@ -458,8 +460,10 @@ constructor(
         spellbook: Spellbook?,
         usedSunfireRune: Boolean,
         random: GameRandom,
+        accuracyMultiplier: Double = 1.0,
     ): Boolean {
-        val hitChance = getSpellHitChance(player, target, spell, spellbook, usedSunfireRune)
+        val hitChance =
+            getSpellHitChance(player, target, spell, spellbook, usedSunfireRune, accuracyMultiplier)
         return isSuccessfulHit(hitChance, random)
     }
 
@@ -481,6 +485,7 @@ constructor(
         spell: ObjType,
         spellbook: Spellbook?,
         usedSunfireRune: Boolean,
+        accuracyMultiplier: Double = 1.0,
     ): Int =
         pvnMagicAccuracy.getSpellHitChance(
             player = player,
@@ -488,6 +493,7 @@ constructor(
             spell = spell,
             spellbook = spellbook,
             usedSunfireRune = usedSunfireRune,
+            accuracyMultiplier = accuracyMultiplier,
         )
 
     /**

@@ -10,6 +10,7 @@ dependencies {
     implementation(libs.fastutil)
     implementation(libs.guice)
     implementation(projects.api.combat.combatCommons)
+    implementation(projects.api.combat.combatMastery)
     implementation(projects.api.config)
     implementation(projects.api.type.typeBuilders)
     implementation(projects.api.type.typeReferences)

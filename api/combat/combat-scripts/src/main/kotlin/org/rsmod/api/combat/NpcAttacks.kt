@@ -5,6 +5,7 @@ import org.rsmod.api.combat.commons.player.combatPlayDefendAnim
 import org.rsmod.api.combat.commons.player.queueCombatRetaliate
 import org.rsmod.api.combat.formulas.AccuracyFormulae
 import org.rsmod.api.combat.formulas.MaxHitFormulae
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.combat.npc.attackingPlayer
 import org.rsmod.api.combat.npc.lastAttack
 import org.rsmod.api.combat.player.aggressiveNpc
@@ -48,6 +49,7 @@ constructor(
     private val worldRepo: WorldRepository,
     private val objTypes: ObjTypeList,
     private val targeting: NpcTargeting,
+    private val masteries: CombatMasteryEffects,
 ) {
     /**
      * Makes [npc] attack with [attack], on the players its [TargetingStyle] picks given the player
@@ -133,15 +135,13 @@ constructor(
         return true
     }
 
-    private fun impactModifier(onImpact: NpcImpactListener?): PlayerHitModifier {
-        if (onImpact == null) {
-            return StandardPlayerHitModifier
-        }
-        return PlayerHitModifier { target ->
+    private fun impactModifier(onImpact: NpcImpactListener?): PlayerHitModifier =
+        PlayerHitModifier { target ->
             with(StandardPlayerHitModifier) { modify(target) }
-            onImpact.onImpact(target, this)
+            // The fourth combat mastery passive lowers the damage taken.
+            damage = masteries.reduceDamageTaken(target, damage)
+            onImpact?.onImpact(target, this)
         }
-    }
 
     private fun rollDamage(npc: Npc, target: Player, attack: NpcAttack): Int {
         val hit =

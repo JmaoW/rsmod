@@ -5,6 +5,7 @@ import kotlin.collections.any
 import kotlin.contracts.contract
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.commons.magic.Spellbook
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.refs.categories
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
@@ -41,6 +42,7 @@ constructor(
     private val unlimited: UnlimitedRuneRepository,
     private val staffSubs: StaffSubstituteRepository,
     private val runeSubs: RuneSubstituteRepository,
+    private val masteries: CombatMasteryEffects,
 ) {
     private val Player.spellbook by enumVarBit<Spellbook>(varbits.spellbook)
 
@@ -144,6 +146,11 @@ constructor(
         // anything, so we can return `true` early.
         val allUnlimitedSources = sourced.isEmpty()
         if (allUnlimitedSources) {
+            return CastResult.Success.AllUnlimited
+        }
+
+        // The first combat mastery passive saves the runes of a cast most of the time.
+        if (masteries.savesResource(player)) {
             return CastResult.Success.AllUnlimited
         }
 

@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.combat.commons.CombatAttack
 import org.rsmod.api.combat.manager.PlayerAttackManager
 import org.rsmod.api.combat.manager.RangedAmmoManager
+import org.rsmod.api.combat.mastery.MasteryStyle
 import org.rsmod.api.combat.player.activateMagicSpecial
 import org.rsmod.api.combat.player.activateMeleeSpecial
 import org.rsmod.api.combat.player.activateRangedSpecial
@@ -62,7 +63,7 @@ constructor(
 
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
-        val attackRate = speeds.playerAttackDelay(player)
+        val attackRate = speeds.playerAttackDelay(player, MasteryStyle.Melee)
         manager.setNextAttackDelay(player, attackRate)
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a
@@ -97,6 +98,7 @@ constructor(
         manager.giveCombatXp(player, npc, attack, damage)
         manager.playWeaponFx(player, attack)
         manager.queueMeleeHit(player, npc, damage)
+        manager.queueMeleeEchoes(player, npc, attack)
         manager.continueCombat(player, npc)
     }
 
@@ -112,7 +114,7 @@ constructor(
 
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
-        val attackRate = speeds.playerAttackDelay(player)
+        val attackRate = speeds.playerAttackDelay(player, MasteryStyle.Ranged)
         manager.setNextAttackDelay(player, attackRate)
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a
@@ -234,7 +236,7 @@ constructor(
             return
         }
 
-        val attackRate = MAGIC_SPELL_ATTACK_RATE
+        val attackRate = speeds.playerSpellDelay(player)
         manager.setNextAttackDelay(player, attackRate)
 
         val spell = spellsReg[attack.spell.obj]
@@ -260,7 +262,7 @@ constructor(
 
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
-        val attackRate = MAGIC_STAFF_ATTACK_RATE
+        val attackRate = speeds.playerStaffDelay(player)
         manager.setNextAttackDelay(player, attackRate)
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a

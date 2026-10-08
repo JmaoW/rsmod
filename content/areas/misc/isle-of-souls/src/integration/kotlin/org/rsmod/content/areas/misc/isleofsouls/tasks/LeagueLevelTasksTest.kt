@@ -7,13 +7,19 @@ import org.junit.jupiter.api.Test
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTasks
+import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.game.type.stat.StatType
 
 class LeagueLevelTasksTest {
     private fun GameTestScope.tracker() = LeagueTaskTracker(eventBus, LeagueTeams(players))
 
-    private fun GameTestScope.levelTasks() = LeagueLevelTasks(tracker())
+    private fun GameTestScope.levelTasks() =
+        LeagueLevelTasks(
+            tracker(),
+            LeagueMasteryTasks(LeagueTeams(players), LeagueMasteryTracker()),
+        )
 
     private fun GameTestScope.done(taskId: Int) = tracker().isComplete(player, taskId)
 

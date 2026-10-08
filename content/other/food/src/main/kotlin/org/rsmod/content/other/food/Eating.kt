@@ -2,6 +2,7 @@ package org.rsmod.content.other.food
 
 import jakarta.inject.Inject
 import java.util.WeakHashMap
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.events.interact.HeldObjEvents
 import org.rsmod.api.player.protect.ProtectedAccess
@@ -17,7 +18,10 @@ import org.rsmod.plugin.scripts.ScriptContext
 // - the eating sound (there is no named synth for it in the symbols yet)
 // - meat, bread, pies and the other food that is not a cooked fish
 // - potions are drunk by content/skills/herblore (Drinking), which keeps its own cooldown
-class Eating @Inject constructor(private val objTypes: ObjTypeList) : PluginScript() {
+class Eating
+@Inject
+constructor(private val objTypes: ObjTypeList, private val masteries: CombatMasteryEffects) :
+    PluginScript() {
     /** The cycle each player can next eat each kind of food. */
     private val cooldowns = WeakHashMap<Player, IntArray>()
 
@@ -52,7 +56,8 @@ class Eating @Inject constructor(private val objTypes: ObjTypeList) : PluginScri
     private fun ProtectedAccess.heal(food: Food): Boolean {
         val base = player.baseHitpointsLvl
         val before = player.hitpoints
-        val amount = food.heal(base)
+        // The second combat mastery passive raises all healing.
+        val amount = masteries.healAmount(player, food.heal(base))
         if (food.overheals) {
             statBoost(stats.hitpoints, amount, 0)
         } else if (before < base) {

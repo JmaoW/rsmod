@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import org.rsmod.api.combat.mastery.MasteryStyle
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.seqs
 import org.rsmod.api.config.refs.spotanims
@@ -14,6 +15,7 @@ import org.rsmod.api.player.stat.statSub
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.factory.npcTypeFactory
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.api.testing.scope.TestCombatMasteries
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.npc.NpcMode
@@ -71,6 +73,30 @@ class NpcAttacksTest {
             advance(ticks = 2)
             assertEquals(3, s.first.damageTaken(before))
         }
+
+    @Test
+    fun GameTestState.`the fourth mastery passive lowers the damage taken`() =
+        runAttackTest { deps, s ->
+            val before = s.first.hitpoints
+            TestCombatMasteries.set(s.first, MasteryStyle.Melee, 4)
+
+            deps.attacks.attack(s.npc, s.first, melee)
+            advance(ticks = 2)
+
+            // A hit of 3 is 2 after 15% is taken off and the result is rounded down.
+            assertEquals(2, s.first.damageTaken(before))
+        }
+
+    @Test
+    fun GameTestState.`no passive, no reduction`() = runAttackTest { deps, s ->
+        val before = s.first.hitpoints
+        TestCombatMasteries.set(s.first, MasteryStyle.Melee, 3)
+
+        deps.attacks.attack(s.npc, s.first, melee)
+        advance(ticks = 2)
+
+        assertEquals(3, s.first.damageTaken(before))
+    }
 
     @Test
     fun GameTestState.`a ranged attack lands when its projectile does`() =

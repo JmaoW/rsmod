@@ -1,6 +1,7 @@
 package org.rsmod.content.areas.misc.isleofsouls
 
 import org.rsmod.api.account.character.CharacterDataStage
+import org.rsmod.api.combat.mastery.CombatMasteryProvider
 import org.rsmod.api.stats.xpmod.XpMod
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueEvent
@@ -9,6 +10,7 @@ import org.rsmod.content.areas.misc.isleofsouls.event.LeagueStandings
 import org.rsmod.content.areas.misc.isleofsouls.fightcaves.FightCaves
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstanceLoginPipeline
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
+import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTracker
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueXpMod
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.plugin.module.PluginModule
@@ -16,6 +18,7 @@ import org.rsmod.plugin.module.PluginModule
 class IsleOfSoulsModule : PluginModule() {
     override fun bind() {
         addSetBinding<XpMod>(LeagueXpMod::class.java)
+        addSetBinding<CombatMasteryProvider>(LeagueMasteryTracker::class.java)
 
         // One shared roster, progress store and set of live instances: every script must see the
         // same ones.

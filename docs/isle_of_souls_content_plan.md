@@ -70,7 +70,7 @@ The order matters because early items unblock everything after them (section 9).
 | Skills | Mining, woodcutting, fishing, cooking, firemaking, smithing, fletching and prayer built and wired to tasks; gem cutting partly |
 | Relics | Tier 1 and tier 2 effects mostly done; tiers 3-8 have only the XP passives |
 | Combat content | Combat engine exists, but there are **no drop tables, no combat NPC content, no bosses and no two-player NPC targeting** |
-| Combat masteries | Client screen (`league_combat_mastery`) and its side-panel button are wired; **no mastery logic, points or effects yet** (section 3.6) |
+| Combat masteries | Screen, unlock rules, points and the 10 mastery tasks (state only) are built and tested; **no combat effects yet** (section 3.6) |
 
 ---
 
@@ -420,38 +420,38 @@ turns on for every style:
 | 6 | Attacks with all styles now have 60% prayer penetration |
 
 **Build notes** (what each piece needs from the engine):
-- [ ] **P1 Mastery state and points.** Per-player mastery unlocks (varps or a save field) and a
+- [x] **P1 Mastery state and points.** *(built 2026-10-07, `masteries/` package)* Per-player mastery unlocks (varps or a save field) and a
   point balance, with a service that grants 2 points when a mastery task is completed, checks the
   previous tier, and spends 1 point per unlock. **(decided)** the points and unlocks are
   per player: a team-completed mastery task grants the 2 points to both partners, who each pick
   their own order.
-- [ ] **P1 The masteries screen.** `league_combat_mastery` exists in the cache and its side-panel
+- [x] **P1 The masteries screen.** *(built 2026-10-07; decoded contract in the memory note `reference-combat-mastery-screen`; the click-zone order and the redraw after an unlock still need a check in a real client)* `league_combat_mastery` exists in the cache and its side-panel
   button is wired. Its components, varps and the unlock click have to be decoded from the client
   cache first, the way the relics and tasks screens were; this is the main unknown.
-- [ ] **P1 Damage roll hooks** (melee I, ranged I, magic I and IV and VI, ranged II, magic II).
-  These need a mastery step inside the max hit and damage roll in `PlayerAttackManager` and
+- [x] **P1 Damage roll hooks** *(built 2026-10-07: melee I, ranged I, II, VI, magic I, II, VI and the
+  accuracy passive; the magic IV heal waits for the heals step)*. These need a mastery step inside the max hit and damage roll in `PlayerAttackManager` and
   `SpellAttackManager`. The tier VI "max hit" rule and the 90% threshold need the rolled value and
   the max hit available at the same point.
-- [ ] **P1 Attack rate** (III and V in each style). A multiplier on the weapon's attack speed:
+- [x] **P1 Attack rate** (III and V in each style) *(built 2026-10-07 in `WeaponSpeeds` and `CombatMasteryEffects.attackDelay`; the old player speed halving was removed first)*. A multiplier on the weapon's attack speed:
   80% of 5 ticks rounds down to 4; for 50%, 5 ticks and above round down, below 4 ticks round up
   (so 4 ticks gives 2 and 3 ticks gives 2). Never below 1 tick. The wiki's sentence is short, so
   I read it this way; check it against your own copy of the description.
-- [ ] **P1 Echo hits** (melee II and VI). A second, delayed hit at 50% of max hit that rolls
+- [x] **P1 Echo hits** (melee II and VI) *(built 2026-10-07: `PlayerAttackManager.queueMeleeEchoes`, normal melee attacks only)*. A second, delayed hit at 50% of max hit that rolls
   accuracy, and chains up to 8 times at tier VI. Needs a cap on hits per attack so a long chain
   cannot lag a tick.
-- [ ] **P1 Healing and sustain hooks** (melee IV, ranged IV, magic IV, passive 2). Passive 2 raises
+- [x] **P1 Healing and sustain hooks** *(built 2026-10-07; Redemption is not raised, its code cannot be injected)* (melee IV, ranged IV, magic IV, passive 2). Passive 2 raises
   every heal (food, potions, prayer, regeneration), so it has to sit where heals are applied;
   check whether eating food (`content/other/food`) and the other heals share one place to hook.
-- [ ] **P1 Passives 1, 3 and 4.** 95% saving of charges, ammunition and runes (a roll where ammo,
+- [x] **P1 Passives 1, 3 and 4.** *(built 2026-10-07)* 95% saving of charges, ammunition and runes (a roll where ammo,
   charges and runes are consumed; Ava's-style retrieval is separate), accuracy doubled in the
   attack roll, and a 15% damage reduction applied to damage taken. Passive 1 also saves the
   weapon charges, ammunition and spell runes, so it touches the magic and ranged code.
-- [ ] **P2 Passives 5 and 6.** Prayer gain +25% (altars, potions) and 60% prayer penetration. The
+- [x] **P2 Passives 5 and 6.** *(built 2026-10-07; 6 is a helper nothing reads yet, 5 covers potions, not altars)* Prayer gain +25% (altars, potions) and 60% prayer penetration. The
   penetration only matters against targets that use protection prayers, which none of our bosses
   do yet; it is built so it works if one does, and it is otherwise inert.
 - [ ] **P1 Tests.** One integration test per effect with an injected random source so the 25%, 10%
   and 5% chances can be forced, plus the rounding table for the attack rate.
-- [ ] **P1 Tasks.** Wire each of the 10 tasks above to its content as that content lands: the first
+- [~] **P1 Tasks.** *(2026-10-07: tasks 1-6 are wired, 7-10 wait for echo bosses and the Inferno; needs `./gradlew packCache` once for the new varp and the Scurrius text.)* Wire each of the 10 tasks above to its content as that content lands: the first
   four and task 6 with the combat ladder, task 5 with the caves, tasks 3 and 7-10 with their bosses.
 
 **Interactions to keep in mind.** Everything here is player-versus-monster, so the "PvM only"

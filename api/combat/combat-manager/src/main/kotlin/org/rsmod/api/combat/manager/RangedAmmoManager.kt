@@ -2,6 +2,7 @@ package org.rsmod.api.combat.manager
 
 import jakarta.inject.Inject
 import org.rsmod.api.combat.commons.ranged.RangedAmmunition
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.events.EventBus
@@ -22,6 +23,7 @@ constructor(
     private val collision: CollisionFlagMap,
     private val worldQueues: WorldQueueList,
     private val objRepo: ObjRepository,
+    private val masteries: CombatMasteryEffects,
 ) {
     /**
      * Validates whether the given [weapon] and [ammo] combination are usable by [player].
@@ -133,7 +135,9 @@ constructor(
         dropChance: Int,
         dropDuration: Int,
     ) {
-        val conserve = RangedAmmunition.conserveAmmo(player, objTypes, random)
+        val conserve =
+            masteries.savesResource(player) ||
+                RangedAmmunition.conserveAmmo(player, objTypes, random)
         if (!conserve) {
             RangedAmmunition.detractAmmo(player, ammoWearpos, ammoType, ammoCount, eventBus)
         }

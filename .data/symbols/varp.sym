@@ -2277,7 +2277,6 @@
 4844	slayer_misc
 4846	dom_previous_deepest_level
 4848	collection_count_unsynced
-
 65504	music_playlist
 65505	music_temp_state_3
 65506	music_temp_state_2
@@ -2387,4 +2386,4 @@
 65428	isle_count_magic_logs_50
 65427	isle_count_magic_logs_20
 65426	isle_count_cook_shark_20
-
+65425	isle_count_mastery_kills_100

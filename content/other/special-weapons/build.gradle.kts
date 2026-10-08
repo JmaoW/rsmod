@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+    implementation(projects.api.combat.combatMastery)
     implementation(projects.api.combat.combatManager)
     implementation(projects.api.pluginCommons)
     implementation(projects.api.weapons)

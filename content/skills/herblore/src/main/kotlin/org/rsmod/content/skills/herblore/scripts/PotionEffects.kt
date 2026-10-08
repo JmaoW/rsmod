@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import java.util.EnumMap
 import java.util.WeakHashMap
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.player.output.mes
@@ -31,7 +32,9 @@ import org.rsmod.game.type.stat.StatType
  * saved, so it ends on logout.
  */
 @Singleton
-class PotionEffects @Inject constructor(private val holds: StatBoostHolds) {
+class PotionEffects
+@Inject
+constructor(private val holds: StatBoostHolds, private val masteries: CombatMasteryEffects) {
     private class State {
         val ticks = EnumMap<TimedEffect, Int>(TimedEffect::class.java)
         val divineStats = HashSet<StatType>()
@@ -103,7 +106,8 @@ class PotionEffects @Inject constructor(private val holds: StatBoostHolds) {
         }
 
         if (state.regenPoints > 0 && --state.regenCountdown <= 0) {
-            player.statHeal(stats.prayer, constant = 1, percent = 0)
+            // The fifth combat mastery passive raises all prayer point gain.
+            player.statHeal(stats.prayer, constant = masteries.prayerGain(player, 1), percent = 0)
             state.regenPoints--
             state.regenCountdown = PotionEffect.REGEN_INTERVAL
         }

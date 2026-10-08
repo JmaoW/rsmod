@@ -1,6 +1,7 @@
 package org.rsmod.api.stats.plugin
 
 import jakarta.inject.Inject
+import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
@@ -24,8 +25,11 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 public class StatRegenScript
 @Inject
-constructor(private val statTypes: StatTypeList, private val holds: StatBoostHolds) :
-    PluginScript() {
+constructor(
+    private val statTypes: StatTypeList,
+    private val holds: StatBoostHolds,
+    private val masteries: CombatMasteryEffects,
+) : PluginScript() {
     private val regenStats by lazy { statTypes.values.toRegenStats() }
     private val boostRestoreStats by lazy { statTypes.values.toBoostRestoreStats() }
 
@@ -72,7 +76,9 @@ constructor(private val statTypes: StatTypeList, private val holds: StatBoostHol
         if (hitpoints >= baseHitpointsLvl) {
             return
         }
-        val amount = if (hands.isType(objs.regen_bracelet)) 2 else 1
+        val base = if (hands.isType(objs.regen_bracelet)) 2 else 1
+        // The second combat mastery passive raises all healing.
+        val amount = masteries.healAmount(this, base)
         statHeal(stats.hitpoints, constant = amount, percent = 0)
     }
 
