@@ -1,0 +1,83 @@
+id	name	members	combat	stats	statsAny	leaguesMin	leaguesMax	extendBit	extendMin	extendMax	spawns
+1	Monkeys	1	0				50				794
+2	Goblin	2	0				50				255
+3	Rats	3	0				50				852
+4	Spiders	4	0								936
+5	Birds	5	0				25				485
+6	Cows	6	0				50				107
+7	Scorpions	7	7								214
+8	Bats	8	5				50				277
+9	Wolves	9	20				50				239
+10	Zombies	10	10				50				423
+11	Skeletons	11	15								474
+12	Ghosts	12	13				50				172
+13	Bears	13	13				50				85
+14	Hill Giants	14	25				100				141
+15	Ice Giants	15	50				100				34
+16	Fire Giants	16	65								88
+17	Moss Giants	17	40				100				105
+18	Trolls	18	60								208
+19	Ice Warriors	19	45				90				57
+20	Ogres	20	40				90				129
+21	Hobgoblins	21	20				70				132
+22	Dogs	22	15				70				101
+23	Ghouls	23	25				70				22
+25	Blue Dragons	25	65								57
+26	Red Dragons	26	68								47
+27	Black Dragons	27	80					10	40	60	39
+28	Lesser Demons	28	60				110				74
+29	Greater Demons	29	70					15	200	250	80
+30	Black Demons	30	80					14	200	250	57
+31	Hellhounds	31	75				126				72
+32	Shadow warriors	32	60				100				19
+33	Werewolves	33	60				100				35
+34	Vampyres	34	35				100	49	200	250	194
+35	Dagannoth	35	75								248
+36	Turoth	36	60	55:18			100				22
+37	Cave Crawlers	37	10	10:18			50				16
+38	Banshees	38	20	15:18			50				14
+39	Crawling Hands	39	0	5:18			50				34
+40	Infernal Mages	40	40	45:18			80				15
+41	Aberrant Spectres	41	65	60:18			110	21	200	250	39
+42	Abyssal Demons	42	85	85:18				13	200	250	58
+43	Basilisks	43	25	40:18,20:1				46	200	250	40
+44	Cockatrice	44	25	25:18,20:1			80				7
+45	Kurask	45	65	70:18							28
+46	Gargoyles	46	80	75:18				27	200	250	21
+47	Pyrefiends	47	25	30:18			70				95
+48	Bloodveld	48	50	50:18				20	200	250	99
+49	Dust Devils	49	70	65:18				25	200	250	44
+50	Jellies	50	57	52:18							28
+52	Nechryael	52	85	80:18				28	200	250	53
+53	Kalphite	53	15								68
+55	Otherworldly Beings	55	40				80				6
+56	Elves	56	70								68
+57	Dwarves	57	6				45				145
+62	Cave Slimes	62	15	17:18			65				26
+63	Cave Bugs	63	0	7:18			50				36
+64	Shades	64	30				70				116
+65	Crocodiles	65	50				85				35
+66	Dark Beasts	66	90	90:18				4	110	135	29
+68	Lizards	68	0	22:18			70				56
+70	Harpie Bug Swarms	70	45	33:18,33:11			85				14
+71	Sea Snakes	71	50	40:18			90				17
+72	Skeletal Wyverns	72	70	72:18				26	50	70	22
+75	Icefiends	75	20				60				17
+76	Minotaurs	76	7				50				39
+79	Ankou	79	40			60		8	91	150	81
+80	Cave Horrors	80	85	58:18				24	200	250	70
+81	Jungle Horrors	81	65				95				50
+83	Suqahs	83	85					9	186	250	27
+86	Terror Dogs	86	60	40:18			85				9
+88	Waterfiends	88	75				110				67
+89	Spiritual Creatures	89	60	63:18	60:2,60:16		100	12	181	250	151
+90	Lizardmen	90	0			55					190
+92	Cave Kraken	92	80	87:18,50:6				29	150	200	24
+94	Aviansies	94	0		60:2,60:16			22	200	250	48
+95	Smoke Devils	95	85	93:18							37
+96	Tzhaar	96	0			60					253
+106	Fossil Island Wyverns	106	60	66:18				39	55	75	29
+111	Wyrms	111	0	62:18		60					16
+112	Drakes	112	0	84:18		75					13
+125	Crabs	125	0				50				17
+127	Metal Dragons	127,58,59,60,93,108,109	85					11	90	120	76

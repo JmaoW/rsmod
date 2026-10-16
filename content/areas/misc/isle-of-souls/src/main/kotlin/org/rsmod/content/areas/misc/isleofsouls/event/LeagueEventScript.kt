@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.rsmod.annotations.InternalApi
 import org.rsmod.api.config.refs.modlevels
 import org.rsmod.api.death.PlayerDeathEvents
+import org.rsmod.api.drops.NpcDropEvents
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.stat.statBase
 import org.rsmod.api.script.advanced.onAdvanceStat
@@ -46,6 +47,12 @@ constructor(
         }
 
         onEvent<PlayerDeathEvents.Died> { announcer.died(player) }
+
+        onEvent<NpcDropEvents.Rolled> {
+            for (drop in drops) {
+                announcer.drop(hero, drop.obj, drop.count, drop.boosted)
+            }
+        }
 
         onCommand("leaguefreeze") {
             modLevel = modlevels.admin

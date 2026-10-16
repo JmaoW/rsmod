@@ -115,14 +115,18 @@ item = "Toktz-mej-tal"
 
 [[boost]]
 source = "TzHaar-Xil"
-item = "Toktz-xil-ak and Toktz-xil-ek"
+item = "Toktz-xil-ak"
 
 [[boost]]
-source = "Steel dragons"
+source = "TzHaar-Xil"
+item = "Toktz-xil-ek"
+
+[[boost]]
+source = "Steel dragon"
 item = "Draconic visage"
 
 [[boost]]
-source = "Iron dragons"
+source = "Iron dragon"
 item = "Draconic visage"
 
 [[boost]]
@@ -139,7 +143,11 @@ item = "Dragon defender"
 
 [[boost]]
 source = "Cerberus"
-item = "Primordial and Pegasian crystals"
+item = "Primordial"
+
+[[boost]]
+source = "Cerberus"
+item = "Pegasian crystals"
 
 [[boost]]
 source = "Cerberus"
@@ -151,7 +159,15 @@ item = "Smouldering stone"
 
 [[boost]]
 source = "Kree'arra"
-item = "Armadyl armour"
+item = "Armadyl helmet"
+
+[[boost]]
+source = "Kree'arra"
+item = "Armadyl chestplate"
+
+[[boost]]
+source = "Kree'arra"
+item = "Armadyl chainskirt"
 
 [[boost]]
 source = "Kree'arra"
@@ -159,7 +175,15 @@ item = "Armadyl hilt"
 
 [[boost]]
 source = "General Graardor"
-item = "Bandos armour"
+item = "Bandos chestplate"
+
+[[boost]]
+source = "General Graardor"
+item = "Bandos tassets"
+
+[[boost]]
+source = "General Graardor"
+item = "Bandos boots"
 
 [[boost]]
 source = "General Graardor"
@@ -199,22 +223,54 @@ item = "Zamorak hilt"
 
 [[boost]]
 source = "Kree'arra"
-item = "Any Godsword shard"
+item = "Godsword shard 1"
+
+[[boost]]
+source = "Kree'arra"
+item = "Godsword shard 2"
+
+[[boost]]
+source = "Kree'arra"
+item = "Godsword shard 3"
 
 [[boost]]
 source = "General Graardor"
-item = "Any Godsword shard"
+item = "Godsword shard 1"
+
+[[boost]]
+source = "General Graardor"
+item = "Godsword shard 2"
+
+[[boost]]
+source = "General Graardor"
+item = "Godsword shard 3"
 
 [[boost]]
 source = "Commander Zilyana"
-item = "Any Godsword shard"
+item = "Godsword shard 1"
+
+[[boost]]
+source = "Commander Zilyana"
+item = "Godsword shard 2"
+
+[[boost]]
+source = "Commander Zilyana"
+item = "Godsword shard 3"
 
 [[boost]]
 source = "K'ril Tsutsaroth"
-item = "Any Godsword shard"
+item = "Godsword shard 1"
 
 [[boost]]
-source = "Spiritual mages"
+source = "K'ril Tsutsaroth"
+item = "Godsword shard 2"
+
+[[boost]]
+source = "K'ril Tsutsaroth"
+item = "Godsword shard 3"
+
+[[boost]]
+source = "Spiritual mage"
 item = "Dragon boots"
 
 [[boost]]
@@ -259,22 +315,86 @@ item = "Smouldering stone"
 
 [[boost]]
 source = "Vorkath"
-item = "Draconic and Skeletal visage"
+item = "Draconic"
+
+[[boost]]
+source = "Vorkath"
+item = "Skeletal visage"
 
 [[boost]]
 source = "Vorkath"
 item = "Dragonbone necklace"
 
 [[boost]]
-source = "Dagannoth Kings"
-item = "Dagannoth King rings"
+source = "Dagannoth Rex"
+item = "Berserker ring"
 
 [[boost]]
-source = "Dagannoth Kings"
+source = "Dagannoth Rex"
+item = "Seers ring"
+
+[[boost]]
+source = "Dagannoth Rex"
+item = "Archers ring"
+
+[[boost]]
+source = "Dagannoth Rex"
+item = "Warrior ring"
+
+[[boost]]
+source = "Dagannoth Prime"
+item = "Berserker ring"
+
+[[boost]]
+source = "Dagannoth Prime"
+item = "Seers ring"
+
+[[boost]]
+source = "Dagannoth Prime"
+item = "Archers ring"
+
+[[boost]]
+source = "Dagannoth Prime"
+item = "Warrior ring"
+
+[[boost]]
+source = "Dagannoth Supreme"
+item = "Berserker ring"
+
+[[boost]]
+source = "Dagannoth Supreme"
+item = "Seers ring"
+
+[[boost]]
+source = "Dagannoth Supreme"
+item = "Archers ring"
+
+[[boost]]
+source = "Dagannoth Supreme"
+item = "Warrior ring"
+
+[[boost]]
+source = "Dagannoth Rex"
 item = "Dagannoth King non-ring unique table items"
 
 [[boost]]
-source = "Dagannoth Kings"
+source = "Dagannoth Prime"
+item = "Dagannoth King non-ring unique table items"
+
+[[boost]]
+source = "Dagannoth Supreme"
+item = "Dagannoth King non-ring unique table items"
+
+[[boost]]
+source = "Dagannoth Rex"
+item = "Dragon Axe"
+
+[[boost]]
+source = "Dagannoth Prime"
+item = "Dragon Axe"
+
+[[boost]]
+source = "Dagannoth Supreme"
 item = "Dragon Axe"
 
 [[boost]]
@@ -398,7 +518,7 @@ source = "Cave Kraken"
 item = "Uncharged trident"
 
 [[boost]]
-source = "Nuclear smoke devil"
+source = "Thermonuclear smoke devil"
 item = "Occult necklace"
 
 [[boost]]
@@ -440,10 +560,6 @@ item = "Warped sceptre"
 [[boost]]
 source = "Warped tortoise"
 item = "Warped sceptre"
-
-[[boost]]
-source = "Hellhounds"
-item = "Smouldering stone"
 
 [[boost]]
 source = "Kalphite Queen"
@@ -520,10 +636,6 @@ item = "Abyssal lantern"
 [[boost]]
 source = "Guardians of the Rift"
 item = "Abyssal dye"
-
-[[boost]]
-source = "Barrows"
-item = "Barrows armour pieces"
 
 [[boost]]
 source = "Barrows"
@@ -631,7 +743,11 @@ item = "Elven signet"
 
 [[boost]]
 source = "The Gauntlet"
-item = "Crystal armour seed and Crystal weapon seed"
+item = "Crystal armour seed"
+
+[[boost]]
+source = "The Gauntlet"
+item = "Crystal weapon seed"
 
 [[boost]]
 source = "The Gauntlet"
@@ -639,7 +755,11 @@ item = "Enhanced crystal weapon seed"
 
 [[boost]]
 source = "The_Gauntlet#Corrupted_Gauntlet"
-item = "Crystal armour seed and Crystal weapon seed"
+item = "Crystal armour seed"
+
+[[boost]]
+source = "The_Gauntlet#Corrupted_Gauntlet"
+item = "Crystal weapon seed"
 
 [[boost]]
 source = "The_Gauntlet#Corrupted_Gauntlet"
@@ -686,24 +806,8 @@ source = "Iorwerth Warrior"
 item = "Enhanced crystal teleport seed"
 
 [[boost]]
-source = "Waterfiend"
-item = "Mist battlestaff"
-
-[[boost]]
-source = "Kurask"
-item = "Leaf-bladed sword"
-
-[[boost]]
 source = "King Kurask"
 item = "Leaf-bladed sword"
-
-[[boost]]
-source = "Kurask"
-item = "Leaf-bladed battleaxe"
-
-[[boost]]
-source = "King Kurask"
-item = "Leaf-bladed battleaxe"
 
 [[boost]]
 source = "Revenants"
@@ -731,23 +835,31 @@ item = "Yew and magic seeds"
 
 [[boost]]
 source = "Chaos Fanatic"
-item = "Malediction and Odium shards"
+item = "Malediction"
+
+[[boost]]
+source = "Chaos Fanatic"
+item = "Odium shards"
 
 [[boost]]
 source = "Crazy Archaeologist"
-item = "Malediction and Odium shards"
+item = "Malediction"
+
+[[boost]]
+source = "Crazy Archaeologist"
+item = "Odium shards"
 
 [[boost]]
 source = "Scorpia"
-item = "Malediction and Odium shards"
+item = "Malediction"
+
+[[boost]]
+source = "Scorpia"
+item = "Odium shards"
 
 [[boost]]
 source = "Crazy Archaeologist"
 item = "Fedora"
-
-[[boost]]
-source = "Spiritual mage"
-item = "Dragon boots"
 
 [[boost]]
 source = "Chaos Elemental"
@@ -847,15 +959,39 @@ item = "Wilderness weapon upgrades"
 
 [[boost]]
 source = "Callisto"
-item = "Tyrannical ring, Treasonous ring, and Ring of the gods"
+item = "Tyrannical ring"
+
+[[boost]]
+source = "Callisto"
+item = "Treasonous ring"
+
+[[boost]]
+source = "Callisto"
+item = "Ring of the gods"
 
 [[boost]]
 source = "Venenatis"
-item = "Tyrannical ring, Treasonous ring, and Ring of the gods"
+item = "Tyrannical ring"
+
+[[boost]]
+source = "Venenatis"
+item = "Treasonous ring"
+
+[[boost]]
+source = "Venenatis"
+item = "Ring of the gods"
 
 [[boost]]
 source = "Vet'ion"
-item = "Tyrannical ring, Treasonous ring, and Ring of the gods"
+item = "Tyrannical ring"
+
+[[boost]]
+source = "Vet'ion"
+item = "Treasonous ring"
+
+[[boost]]
+source = "Vet'ion"
+item = "Ring of the gods"
 
 [[boost]]
 source = "Artio"
@@ -871,15 +1007,39 @@ item = "Wilderness weapon upgrades"
 
 [[boost]]
 source = "Artio"
-item = "Tyrannical ring, Treasonous ring, and Ring of the gods"
+item = "Tyrannical ring"
+
+[[boost]]
+source = "Artio"
+item = "Treasonous ring"
+
+[[boost]]
+source = "Artio"
+item = "Ring of the gods"
 
 [[boost]]
 source = "Spindel"
-item = "Tyrannical ring, Treasonous ring, and Ring of the gods"
+item = "Tyrannical ring"
+
+[[boost]]
+source = "Spindel"
+item = "Treasonous ring"
+
+[[boost]]
+source = "Spindel"
+item = "Ring of the gods"
 
 [[boost]]
 source = "Calvar'ion"
-item = "Tyrannical ring, Treasonous ring, and Ring of the gods"
+item = "Tyrannical ring"
+
+[[boost]]
+source = "Calvar'ion"
+item = "Treasonous ring"
+
+[[boost]]
+source = "Calvar'ion"
+item = "Ring of the gods"
 
 [[boost]]
 source = "Black dragon"
@@ -894,10 +1054,6 @@ source = "King black dragon"
 item = "Draconic visage"
 
 [[boost]]
-source = "Black dragon"
-item = "Draconic visage"
-
-[[boost]]
 source = "Fountain of Rune"
 item = "Amulet of eternal glory"
 
@@ -906,32 +1062,20 @@ source = "Larran's big chest"
 item = "Dagon'hai robes"
 
 [[boost]]
-source = "Corporeal beast"
+source = "Corporeal Beast"
 item = "Holy elixir"
 
 [[boost]]
-source = "Corporeal beast"
+source = "Corporeal Beast"
 item = "Arcane sigil"
 
 [[boost]]
-source = "Corporeal beast"
+source = "Corporeal Beast"
 item = "Spectral sigil"
 
 [[boost]]
-source = "Corporeal beast"
+source = "Corporeal Beast"
 item = "Elysian sigil"
-
-[[boost]]
-source = "Abyssal demon"
-item = "Abyssal whip"
-
-[[boost]]
-source = "Abyssal demon"
-item = "Abyssal dagger"
-
-[[boost]]
-source = "Dust devil"
-item = "Dragon chainbody"
 
 [[boost]]
 source = "Zombie pirate"
@@ -991,11 +1135,15 @@ item = "Dragon thrownaxe"
 
 [[boost]]
 source = "Alchemical Hydra"
-item = "Hydra's fang, heart, and eye"
+item = "Hydra's fang"
 
 [[boost]]
-source = "Hydra"
-item = "Hydra's fang, heart, and eye"
+source = "Alchemical Hydra"
+item = "Hydra's heart"
+
+[[boost]]
+source = "Alchemical Hydra"
+item = "Hydra's eye"
 
 [[boost]]
 source = "Alchemical Hydra"
@@ -1044,18 +1192,6 @@ item = "Dragon hasta"
 [[boost]]
 source = "Brimstone chest"
 item = "Dusk Mystic"
-
-[[boost]]
-source = "Abyssal demon"
-item = "Abyssal whip"
-
-[[boost]]
-source = "Abyssal demon"
-item = "Abyssal dagger"
-
-[[boost]]
-source = "Dust devil"
-item = "Dragon chainbody"
 
 [[boost]]
 source = "Seed pack"

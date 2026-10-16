@@ -87,7 +87,7 @@ constructor(
         if (playAnim) {
             val anim = attack.anim ?: npc.visType.param(params.attack_anim)
             npc.anim(anim)
-            attack.castSpot?.let { npc.spotanim(it) }
+            attack.castSpot?.let { npc.spotanim(it, height = attack.castHeight) }
         }
         val sound = attack.sound ?: npc.visType.paramOrNull(params.attack_sound)
         sound?.let(target::soundSynth)
@@ -121,18 +121,42 @@ constructor(
         // modified when it lands, not now, so a player who switches their protection prayer in
         // response to the attack animation is protected.
         target.queueCombatRetaliate(npc)
-        target.queueImpactHit(
-            npc,
-            hitDelay,
-            attack.style.hitType(),
-            damage,
-            modifier = impactModifier(onImpact),
-        )
+        val hitType = if (attack.typeless) HitType.Typeless else attack.style.hitType()
+        target.queueImpactHit(npc, hitDelay, hitType, damage, modifier = impactModifier(onImpact))
+        for (extra in 1..attack.extraHits) {
+            val extraDamage = minOf(rollDamage(npc, target, attack), target.hitpoints)
+            target.queueImpactHit(
+                npc,
+                hitDelay + extra,
+                hitType,
+                extraDamage,
+                modifier = impactModifier(onImpact),
+            )
+        }
         // An animation delay is limited to one byte, which a long flight (Jad across the cave)
         // can exceed. The block animation then plays a little early rather than throwing.
         target.combatPlayDefendAnim(objTypes, minOf(clientDelay, MAX_ANIM_DELAY))
         attack.impactSpot?.let { target.spotanim(it, delay = clientDelay) }
         return true
+    }
+
+    /**
+     * Rolls the damage [npc] would do to another npc, [target], with [attack]: the same accuracy
+     * roll (against the target npc's defence) and the same damage range as against a player. It
+     * only rolls: the caller decides what to do with the number. [attack] must set a `maxHit`,
+     * because the max hit formulas are for players.
+     */
+    public fun rollDamage(npc: Npc, target: Npc, attack: NpcAttack): Int {
+        val maxHit = requireNotNull(attack.maxHit) { "An attack on a npc needs a maxHit: $attack" }
+        val hit =
+            attack.alwaysHits ||
+                when (attack.style) {
+                    NpcAttackStyle.Melee ->
+                        accuracy.rollMeleeAccuracy(npc, target, attack.meleeType, random)
+                    NpcAttackStyle.Ranged -> accuracy.rollRangedAccuracy(npc, target, random)
+                    NpcAttackStyle.Magic -> accuracy.rollMagicAccuracy(npc, target, random)
+                }
+        return if (hit) random.of(0..maxHit) else 0
     }
 
     private fun impactModifier(onImpact: NpcImpactListener?): PlayerHitModifier =
@@ -162,7 +186,7 @@ constructor(
                     NpcAttackStyle.Ranged -> maxHits.getRangedMaxHit(npc, target)
                     NpcAttackStyle.Magic -> maxHits.getMagicMaxHit(npc, target)
                 }
-        return random.of(0..maxHit)
+        return random.of(attack.minHit..maxHit)
     }
 
     private fun NpcAttackStyle.hitType(): HitType =

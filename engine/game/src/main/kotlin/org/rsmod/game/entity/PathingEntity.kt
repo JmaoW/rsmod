@@ -78,6 +78,20 @@ public sealed class PathingEntity {
     public var processedMapClock: Int = -1
 
     public var delay: Int = Int.MIN_VALUE
+
+    /**
+     * The map clock until which this entity is frozen. Unlike [delay], a freeze only stops the
+     * entity from moving; it can still attack, be attacked, and run its queues and timers.
+     */
+    public var frozenUntil: Int = Int.MIN_VALUE
+
+    public val isFrozen: Boolean
+        get() = frozenUntil > currentMapClock
+
+    public fun freeze(cycles: Int) {
+        this.frozenUntil = currentMapClock + cycles
+    }
+
     public var lastMovement: Int = Int.MIN_VALUE
 
     /**

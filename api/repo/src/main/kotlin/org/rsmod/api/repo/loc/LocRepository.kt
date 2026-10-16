@@ -5,6 +5,7 @@ import org.rsmod.api.registry.loc.LocRegistry
 import org.rsmod.api.registry.loc.LocRegistryResult
 import org.rsmod.api.registry.loc.isSuccess
 import org.rsmod.api.registry.region.RegionRegistry
+import org.rsmod.api.repo.RespawnSpeed
 import org.rsmod.game.MapClock
 import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.loc.LocAngle
@@ -25,6 +26,7 @@ constructor(
     private val locTypes: LocTypeList,
     private val locReg: LocRegistry,
     private val regionReg: RegionRegistry,
+    public val respawnSpeed: RespawnSpeed,
 ) {
     private val addDurations = ArrayDeque<LocCycleDuration>()
     private val delDurations = ArrayDeque<LocCycleDuration>()
@@ -86,12 +88,29 @@ constructor(
         return del(loc, duration)
     }
 
+    /**
+     * Swaps [from] for [into] and, after [duration] cycles, puts things back as they were. When
+     * [from] is a loc a script spawned (rather than one from the map), nothing else remembers it,
+     * so it is restored here.
+     */
     public fun change(from: LocInfo, into: LocType, duration: Int) {
+        val restore = duration != Int.MAX_VALUE && isSpawned(from)
         add(from.coords, into, duration, from.angle, from.shape)
+        if (restore) {
+            delDurations.removeExisting(from)
+            delDurations.add(LocCycleDuration(from, mapClock + duration, null))
+        }
     }
 
     public fun change(from: BoundLocInfo, into: LocType, duration: Int) {
-        add(from.coords, into, duration, from.angle, from.shape)
+        change(LocInfo(from.layer, from.coords, from.entity), into, duration)
+    }
+
+    private fun isSpawned(loc: LocInfo): Boolean {
+        if (RegionRegistry.inWorkingArea(loc.coords)) {
+            return false
+        }
+        return locReg.findAllSpawned(ZoneKey.from(loc.coords)).any { it == loc }
     }
 
     private fun ArrayDeque<LocCycleDuration>.removeExisting(loc: LocInfo) {

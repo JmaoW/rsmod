@@ -12,6 +12,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.vars.boolVarBit
+import org.rsmod.api.spells.events.SpellCast
 import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.hit.Hit
@@ -72,6 +73,7 @@ constructor(
         }
 
         giveCastXp(source, attack)
+        source.publish(SpellCast(source.player, attack.spell))
         return castResult
     }
 

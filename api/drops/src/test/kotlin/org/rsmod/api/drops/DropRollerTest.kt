@@ -45,7 +45,7 @@ class DropRollerTest {
     @Test
     fun `main roll picks one entry using its share of the range`() {
         val first = roller(0.10, 0.5).roll(goblin)
-        assertEquals(listOf(DropResult(bones, 1), DropResult(sword, 1)), first)
+        assertEquals(listOf(DropResult(bones, 1), DropResult(sword, 1, boosted = true)), first)
 
         val second = roller(0.30, 0.5).roll(goblin)
         assertEquals(listOf(DropResult(bones, 1), DropResult(coins, 5)), second)
@@ -63,7 +63,11 @@ class DropRollerTest {
     fun `tertiary entries are rolled independently`() {
         val results = roller(0.10, 0.005).roll(goblin)
         assertEquals(
-            listOf(DropResult(bones, 1), DropResult(sword, 1), DropResult(scroll, 1)),
+            listOf(
+                DropResult(bones, 1),
+                DropResult(sword, 1, boosted = true),
+                DropResult(scroll, 1, boosted = true),
+            ),
             results,
         )
     }
@@ -78,7 +82,11 @@ class DropRollerTest {
 
         val doubled = roller(0.99, 0.015).roll(goblin, multiplier = 2.0)
         assertEquals(
-            listOf(DropResult(bones, 1), DropResult(coins, 5), DropResult(scroll, 1)),
+            listOf(
+                DropResult(bones, 1),
+                DropResult(coins, 5),
+                DropResult(scroll, 1, boosted = true),
+            ),
             doubled,
         )
     }
@@ -88,7 +96,10 @@ class DropRollerTest {
         // Without the boost the sword covers 0 to 0.25 and the coins 0.25 to 0.75. With a 2x boost
         // the sword covers 0 to 0.50, so a roll of 0.40 is a sword instead of coins.
         assertEquals(DropResult(coins, 5), roller(0.40, 0.99).roll(goblin)[1])
-        assertEquals(DropResult(sword, 1), roller(0.40, 0.99).roll(goblin, multiplier = 2.0)[1])
+        assertEquals(
+            DropResult(sword, 1, boosted = true),
+            roller(0.40, 0.99).roll(goblin, multiplier = 2.0)[1],
+        )
 
         // A table with no boosted entries ignores the multiplier completely.
         val plain = DropTable("plain", main = listOf(DropEntry(0.5, item(coins, 5, 5))))
@@ -108,7 +119,10 @@ class DropRollerTest {
                     ),
             )
         // At 2x the entries are 0.5 and 0.75 (total 1.25): they cover 0.4 and 0.6 of the range.
-        assertEquals(DropResult(sword, 1), roller(0.39).roll(table, multiplier = 2.0)[0])
+        assertEquals(
+            DropResult(sword, 1, boosted = true),
+            roller(0.39).roll(table, multiplier = 2.0)[0],
+        )
         assertEquals(DropResult(coins, 5), roller(0.41).roll(table, multiplier = 2.0)[0])
 
         // No "nothing" gap is left: even the highest roll lands on an entry.
@@ -133,6 +147,28 @@ class DropRollerTest {
         val random = ScriptedRandom(listOf(0.0), ints = listOf(17))
         val results = DropRoller(random).roll(table)
         assertEquals(listOf(DropResult(coins, 17)), results)
+    }
+
+    @Test
+    fun `results from boosted entries are marked, with or without a multiplier`() {
+        val plain = roller(0.10, 0.5).roll(goblin)
+        assertEquals(listOf(false, true), plain.map { it.boosted })
+
+        val coinsRoll = roller(0.30, 0.5).roll(goblin)
+        assertEquals(listOf(false, false), coinsRoll.map { it.boosted })
+
+        val tertiary = roller(0.75, 0.0).roll(goblin)
+        assertEquals(listOf(scroll), tertiary.filter { it.boosted }.map { it.obj })
+    }
+
+    @Test
+    fun `items from a nested table are marked when their parent entry is boosted`() {
+        val rare = DropTable("rare", main = listOf(DropEntry(1.0, item(gem))))
+        val boosted = DropTable("a", main = listOf(DropEntry(1.0, DropOutcome.Nested(rare), true)))
+        val plain = DropTable("b", main = listOf(DropEntry(1.0, DropOutcome.Nested(rare))))
+
+        assertEquals(listOf(DropResult(gem, 1, boosted = true)), roller(0.5, 0.5).roll(boosted))
+        assertEquals(listOf(DropResult(gem, 1)), roller(0.5, 0.5).roll(plain))
     }
 
     @Test

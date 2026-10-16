@@ -115,16 +115,16 @@ class LeagueRelicTrackerTest {
         assertEquals(1.0, relics.dropMultiplier(player))
 
         choose(0)
-        assertEquals(2.0, relics.dropMultiplier(player))
+        assertEquals(5.0, relics.dropMultiplier(player))
 
         // Tier 2 and 3 relics do not change drops.
         choose(1)
         choose(2)
-        assertEquals(2.0, relics.dropMultiplier(player))
-
-        // Tier 4 replaces the 2x with 5x rather than stacking on it.
-        choose(3)
         assertEquals(5.0, relics.dropMultiplier(player))
+
+        // Tier 4 replaces the 5x with 20x rather than stacking on it.
+        choose(3)
+        assertEquals(20.0, relics.dropMultiplier(player))
     }
 
     @Test

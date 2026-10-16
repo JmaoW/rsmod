@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+"""Turns the tsps food table into Kotlin -> content/other/food/.../FoodData.kt.
+
+    python tools/food/gen_food.py
+
+`tsps_food.json` is `server/plugins/items/data/food.json` of RSPSApp/tsps (BSD-2): heals, bites, eat
+delays, combo foods, boosts and effects, from the OSRS wiki and rsprox recordings. Items are matched
+by cache name at startup, so the names are copied as they are, except for the few the revision 233
+cache calls something else (see RENAMES) and the names with accents, which are reduced to ASCII.
+Foods the cache does not have (Sailing fish, say) stay in the table and are skipped at startup.
+"""
+
+import json
+import re
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+OUT = (HERE.parents[1] / "content/other/food/src/main/kotlin/org/rsmod/content/other/food/FoodData.kt")
+
+RENAMES = {"Cooked giant crab meat": "Cooked crab meat"}
+# Hunter meats heal again this many ticks later in the wiki; the file already says 7.
+CHUNK = 40
+
+
+def ascii_name(name):
+    return RENAMES.get(name, name).encode("ascii", "ignore").decode("ascii").replace("�", "")
+
+
+def kt_str(text):
+    return '"' + text.replace("\\", "\\\\").replace('"', '\\"').replace("$", "\\$") + '"'
+
+
+def kt_heal(heal):
+    if heal is None:
+        return None
+    if isinstance(heal, (int, float)):
+        return f"Heal.Fixed({int(heal)})"
+    if "min" in heal:
+        return f"Heal.Roll({heal['min']}, {heal['max']})"
+    return f"Heal.OfLevel({heal.get('flat', 0)}, {heal.get('percent', 0)})"
+
+
+def kt_stats(prefix, mapping):
+    items = ", ".join(f"StatAmount(stats.{name}, {amount})" for name, amount in mapping.items())
+    return f"{prefix} = listOf({items})"
+
+
+def kt_effects(entry):
+    parts = []
+    if entry.get("boost"):
+        parts.append(kt_stats("boosts", entry["boost"]))
+    if entry.get("drain"):
+        parts.append(kt_stats("drains", entry["drain"]))
+    if entry.get("restore"):
+        parts.append(kt_stats("restores", entry["restore"]))
+    if entry.get("runEnergy"):
+        parts.append(f"runEnergy = {entry['runEnergy']}")
+    if entry.get("drainRandom"):
+        parts.append(f"randomDrain = {entry['drainRandom']}")
+    if not parts:
+        return None
+    return "FoodEffects(" + ", ".join(parts) + ")"
+
+
+def kt_food(food):
+    args = [f"name = {kt_str(ascii_name(food['name']))}"]
+    bites = food.get("bites")
+    if isinstance(bites, list):
+        args.append("bites = listOf(" + ", ".join(kt_str(ascii_name(b)) for b in bites) + ")")
+    elif isinstance(bites, int):
+        args.append(f"sameNameBites = {bites}")
+    if food.get("combo"):
+        args.append("kind = FoodKind.Combo")
+    delay = food.get("eatDelay")
+    if delay is not None:
+        delays = delay if isinstance(delay, list) else [delay]
+        args.append("eatDelays = listOf(" + ", ".join(str(d) for d in delays) + ")")
+    if food.get("special") == "anglerfish":
+        args.append("heal = Heal.Anglerfish")
+    elif "heal" in food:
+        args.append(f"heal = {kt_heal(food['heal'])}")
+    effects = kt_effects(food)
+    if effects:
+        args.append(f"effects = {effects}")
+    then = food.get("then")
+    if then:
+        inner = kt_effects(then) or "FoodEffects.None"
+        args.append(f"then = DelayedHeal({then['ticks']}, {then['heal']}, {inner})")
+    if food.get("outcomes"):
+        outs = []
+        for o in food["outcomes"]:
+            oargs = [f"weight = {o['weight']}"]
+            if o.get("heal") is not None:
+                oargs.append(f"heal = {kt_heal(o['heal'])}")
+            oeffects = kt_effects(o)
+            if oeffects:
+                oargs.append(f"effects = {oeffects}")
+            if o.get("message"):
+                oargs.append(f"message = {kt_str(o['message'])}")
+            if o.get("drainMessage"):
+                oargs.append(f"drainMessage = {kt_str(o['drainMessage'])}")
+            outs.append("Outcome(" + ", ".join(oargs) + ")")
+        args.append("outcomes = listOf(" + ", ".join(outs) + ")")
+    if food.get("leaves"):
+        args.append(f"leaves = {kt_str(food['leaves'])}")
+    if food.get("messages"):
+        args.append("messages = listOf(" + ", ".join(kt_str(m) for m in food["messages"]) + ")")
+    if food.get("message"):
+        args.append(f"message = {kt_str(food['message'])}")
+    if "healMessage" in food:
+        args.append("healMessage = " + ("null" if food["healMessage"] is None else kt_str(food["healMessage"])))
+    if food.get("afterMessage"):
+        args.append(f"afterMessage = {kt_str(food['afterMessage'])}")
+    if food.get("refuse"):
+        args.append(f"refuse = {kt_str(food['refuse'])}")
+    return "FoodDef(\n" + "".join(f"                {a},\n" for a in args) + "            )"
+
+
+def main():
+    foods = json.load(open(HERE / "tsps_food.json", encoding="utf-8"))["foods"]
+    chunks = [foods[i:i + CHUNK] for i in range(0, len(foods), CHUNK)]
+    lines = [
+        "// Generated by tools/food/gen_food.py from the food table of RSPSApp/tsps (BSD-2). Do not",
+        "// edit by hand: change the generator or the table and run it again.",
+        "package org.rsmod.content.other.food",
+        "",
+        "import org.rsmod.api.config.refs.stats",
+        "",
+        "/** The foods of the wiki's Food page, by cache name. Names the cache lacks are skipped. */",
+        "internal object FoodData {",
+        "    val all: List<FoodDef> =",
+        "        " + " +\n            ".join(f"part{i + 1}()" for i in range(len(chunks))),
+        "",
+    ]
+    for i, chunk in enumerate(chunks):
+        lines.append(f"    private fun part{i + 1}(): List<FoodDef> =")
+        lines.append("        listOf(")
+        for food in chunk:
+            lines.append("            " + kt_food(food) + ",")
+        lines.append("        )")
+        lines.append("")
+    lines.append("}")
+    text = "\n".join(lines).replace("\n\n}", "\n}") + "\n"
+    OUT.write_text(text.replace("\n", "\r\n"), encoding="utf-8", newline="")
+    print(len(foods), "foods ->", OUT)
+
+
+if __name__ == "__main__":
+    main()

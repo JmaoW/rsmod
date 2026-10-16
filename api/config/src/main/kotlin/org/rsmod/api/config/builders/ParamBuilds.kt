@@ -45,6 +45,8 @@ internal object ParamBuilds : ParamBuilder() {
 
         build<Int>("slayer_experience") { default = 0 }
         build<Int>("slayer_levelrequire") { default = 0 }
+        // Names the cache's own npc param 50 (the Slayer task an npc counts for).
+        build<Int>("slayer_task_id") { default = 0 }
 
         build<Boolean>("magic_defence_uses_defence_level") { default = false }
         build<String>("spell_worn_req_message")

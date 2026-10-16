@@ -92,6 +92,8 @@ object BaseVarps : VarpReferences() {
     val saved_autocast_state_staff = find("saved_autocast_state_staff")
     val saved_autocast_state_bladed_staff = find("saved_autocast_state_bladed_staff")
     val lastcombat = find("lastcombat")
+    val slayer_target = find("slayer_target")
+    val slayer_count = find("slayer_count")
     val lastcombat_pvp = find("lastcombat_pvp")
     val aggressive_npc = find("aggressive_npc")
     val generic_temp_coords_65529 = find("generic_temp_coords_65529")

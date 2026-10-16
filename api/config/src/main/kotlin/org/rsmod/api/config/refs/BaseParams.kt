@@ -102,6 +102,7 @@ object BaseParams : ParamReferences() {
     val freeze_resistance: ParamInt = find("freeze_resistance")
     val slayer_experience: ParamInt = find("slayer_experience")
     val slayer_levelrequire: ParamInt = find("slayer_levelrequire")
+    val slayer_task_id: ParamInt = find("slayer_task_id")
     val magic_defence_uses_defence_level: ParamBool = find("magic_defence_uses_defence_level")
     val spell_worn_req_message: ParamStr = find("spell_worn_req_message")
     val elemental_weakness_type: ParamInt = find("elemental_weakness_type")

@@ -7,11 +7,13 @@ import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.varns
 import org.rsmod.api.config.refs.varps
+import org.rsmod.api.drops.DropResult
 import org.rsmod.api.drops.DropRoller
 import org.rsmod.api.drops.DropTables
 import org.rsmod.api.drops.NpcDropEvents
 import org.rsmod.api.npc.access.StandardNpcAccess
 import org.rsmod.api.npc.vars.typePlayerUidVarn
+import org.rsmod.api.player.output.runClientScript
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.vars.intVarp
 import org.rsmod.api.player.vars.typeNpcUidVarp
@@ -37,6 +39,8 @@ constructor(
     private val dropRoller: DropRoller,
     private val eventBus: EventBus,
 ) {
+    private var lootEventId: Int = 0
+
     public suspend fun deathNoDrops(access: StandardNpcAccess) {
         access.death(npcRepo, seqTypes, players)
     }
@@ -61,6 +65,7 @@ constructor(
         if (table == null) {
             // Monsters without a drop table keep dropping bones only.
             objRepo.add(objs.bones, dropCoords, duration, hero)
+            hero.sendLootTrackerEntries(this, listOf(DropResult(objs.bones, 1)))
             return
         }
 
@@ -71,7 +76,24 @@ constructor(
         for (drop in drops) {
             objRepo.add(drop.obj, dropCoords, duration, hero, count = drop.count)
         }
+        hero.sendLootTrackerEntries(this, drops)
         eventBus.publish(NpcDropEvents.Rolled(this, hero, drops))
+    }
+
+    /**
+     * RuneLite's loot tracker ignores ground items for npc kills. It listens for the game's own
+     * loot tracker script (`LOOTTRACKER_ADD_LOOT`, 7192), which the game server runs once per item
+     * with `(npc id, kill id, item id, count)`. Entries that share a kill id are grouped into one
+     * kill.
+     */
+    private fun Player.sendLootTrackerEntries(npc: Npc, drops: List<DropResult>) {
+        if (drops.isEmpty()) {
+            return
+        }
+        lootEventId = (lootEventId + 1) and Int.MAX_VALUE
+        for (drop in drops) {
+            runClientScript(LOOT_TRACKER_ADD_LOOT, npc.type.id, lootEventId, drop.obj.id, drop.count)
+        }
     }
 
     // Note: We may be able to have `Npc` as the arg instead of `StandardNpcAccess`, however we
@@ -81,6 +103,8 @@ constructor(
         access.npc.spawnDeathDrops(dropCoords)
     }
 }
+
+private const val LOOT_TRACKER_ADD_LOOT: Int = 7192
 
 private var Player.lastCombat: Int by intVarp(varps.lastcombat)
 private var Player.aggressiveNpc: NpcUid? by typeNpcUidVarp(varps.aggressive_npc)
@@ -133,7 +157,7 @@ public suspend fun StandardNpcAccess.death(
     delay(seqTypes[deathAnim])
 
     if (npc.respawns) {
-        npcRepo.despawn(npc, npc.type.respawnRate)
+        npcRepo.despawn(npc, npcRepo.respawnSpeed.scale(npc.type.respawnRate))
         return
     }
 

@@ -65,6 +65,7 @@ object BaseVarBits : VarBitReferences() {
     val has_displayname_transmitter = find("has_displayname_transmitter", 89491762451420)
     val chatmodal_unclamp = find("chatmodal_unclamp", 52603174328291)
     val option_hide_rooftops = find("option_hide_rooftops", 158374502976336)
+    val desktop_shiftclickdrop_enabled = find("desktop_shiftclickdrop_enabled")
     val settings_hd_beta_enabled = find("settings_hd_beta_enabled", 195520692873859)
     val settings_hd_beta_full_hd_or_fake_sd =
         find("settings_hd_beta_full_hd_or_fake_sd", 195520692877642)

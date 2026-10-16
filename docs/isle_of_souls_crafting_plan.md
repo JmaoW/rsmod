@@ -36,9 +36,9 @@ User decisions (2026-10-06):
 
 Module `content/skills/crafting`, 18 unit and 32 integration tests, 5 league task tests. Needs a
 server restart and `packCache` (new queue, three counter varps, changed task enum). Not yet seen in
-a real client. `::craftkit <kit>` (admin) gives test materials, and a test tanner (Ellis) and one of
-each station stand just outside the Soul Wars lobby (`CraftingTestLocs`, set `ENABLED` to false to
-remove them).
+a real client. `::craftkit <kit>` (admin) gives test materials. The test tanner (Ellis) and the test
+stations that stood outside the Soul Wars lobby (`CraftingTestLocs`) were removed on 2026-10-10;
+the crafting methods now work on the stations of the map.
 
 League: 20 tasks, 1,650 points (331, 332, 333, 913, 1350, 335, 336, 1351, 1572, 334, 337, 338, 981,
 1352, 1353, 339 and the 99 / 25M / 35M / 50M XP milestones 250, 251, 1472, 1495). Left locked:

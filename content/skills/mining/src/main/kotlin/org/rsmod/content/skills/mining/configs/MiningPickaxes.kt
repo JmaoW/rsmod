@@ -28,7 +28,11 @@ internal object MiningPickaxes : ObjEditor() {
             anim = seqs.human_mining_trailblazer_pickaxe_no_infernal,
         )
         standard(objs.infernal_pickaxe, levelReq = 61, anim = seqs.human_mining_infernal_pickaxe)
-        standard(objs.infernal_pickaxe_uncharged, levelReq = 61, anim = seqs.human_mining_infernal_pickaxe)
+        standard(
+            objs.infernal_pickaxe_uncharged,
+            levelReq = 61,
+            anim = seqs.human_mining_infernal_pickaxe,
+        )
         standard(
             objs.infernal_pickaxe_or,
             levelReq = 61,
@@ -66,12 +70,24 @@ internal object MiningPickaxes : ObjEditor() {
             levelReq = 71,
             anim = seqs.human_mining_league_trailblazer_pickaxe,
         )
-        standard(objs.zalcano_pickaxe, levelReq = 61, anim = seqs.human_mining_zalcano_zalcano_pickaxe)
+        standard(
+            objs.zalcano_pickaxe,
+            levelReq = 61,
+            anim = seqs.human_mining_zalcano_zalcano_pickaxe,
+        )
         standard(objs.gauntlet_pickaxe, levelReq = 61, anim = seqs.human_mining_gauntlet_pickaxe_hm)
-        standard(objs.gauntlet_pickaxe_hm, levelReq = 61, anim = seqs.human_mining_gauntlet_pickaxe_hm)
+        standard(
+            objs.gauntlet_pickaxe_hm,
+            levelReq = 61,
+            anim = seqs.human_mining_gauntlet_pickaxe_hm,
+        )
     }
 
-    private fun standard(type: org.rsmod.game.type.obj.ObjType, levelReq: Int, anim: org.rsmod.game.type.seq.SeqType) {
+    private fun standard(
+        type: org.rsmod.game.type.obj.ObjType,
+        levelReq: Int,
+        anim: org.rsmod.game.type.seq.SeqType,
+    ) {
         edit(type) {
             contentGroup = content.mining_pickaxe
             param[params.levelrequire] = levelReq

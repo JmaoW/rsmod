@@ -73,6 +73,48 @@ object LeagueProgressVarps : VarpReferences() {
 
     val fight_caves_5 = find("isle_count_fight_caves_5")
     val fight_caves_10 = find("isle_count_fight_caves_10")
+    val inferno_5 = find("isle_count_inferno_5")
+    val inferno_10 = find("isle_count_inferno_10")
+    val inferno_15 = find("isle_count_inferno_15")
+    val zulrah_50 = find("isle_count_zulrah_50")
+    val zulrah_150 = find("isle_count_zulrah_150")
+    val zulrah_300 = find("isle_count_zulrah_300")
+
+    val magic_kills_25 = find("isle_count_magic_kills_25")
+    val magic_kills_250 = find("isle_count_magic_kills_250")
+    val magic_high_alchemy_100 = find("isle_count_magic_high_alchemy_100")
+    val magic_casts_1000 = find("isle_count_magic_casts_1000")
+
+    /** Thieving task counters: 50 pickpockets of one kind, and 15 house keys. */
+    val pickpocket_knight_50 = find("isle_count_pickpocket_knight_50")
+    val pickpocket_elf_50 = find("isle_count_pickpocket_elf_50")
+    val pickpocket_vyre_50 = find("isle_count_pickpocket_vyre_50")
+    val pickpocket_thug_50 = find("isle_count_pickpocket_thug_50")
+    val house_keys_15 = find("isle_count_house_keys_15")
+
+    /** Hunter task counters. */
+    val hunter_orange_30 = find("isle_count_hunter_orange_30")
+    val hunter_grey_50 = find("isle_count_hunter_grey_50")
+    val hunter_red_150 = find("isle_count_hunter_red_150")
+    val hunter_red_300 = find("isle_count_hunter_red_300")
+    val hunter_chinchompa_500 = find("isle_count_hunter_chinchompa_500")
+    val hunter_moonlight_50 = find("isle_count_hunter_moonlight_50")
+    val hunter_sunlight_25 = find("isle_count_hunter_sunlight_25")
+    val hunter_tecu_100 = find("isle_count_hunter_tecu_100")
+    val hunter_birdhouse_20 = find("isle_count_hunter_birdhouse_20")
+    val hunter_implings_50 = find("isle_count_hunter_implings_50")
+
+    /** Agility task counter: arena tickets in a row. */
+    val agility_arena_streak_30 = find("isle_count_agility_arena_streak_30")
+
+    /** Kill-count tasks: see [LeagueKillTasks]. */
+    val kill_bandit_30 = find("isle_count_kill_bandit_30")
+    val kill_bunny_5 = find("isle_count_kill_bunny_5")
+    val kill_gorilla_150 = find("isle_count_kill_gorilla_150")
+    val kill_gorilla_300 = find("isle_count_kill_gorilla_300")
+    val kill_gorilla_500 = find("isle_count_kill_gorilla_500")
+    val kill_scurrius_10 = find("isle_count_kill_scurrius_10")
+    val kill_scurrius_25 = find("isle_count_kill_scurrius_25")
 
     val clean_guam = find("isle_count_clean_guam")
     val clean_tarromin = find("isle_count_clean_tarromin")
@@ -106,6 +148,18 @@ object LeagueProgressVarps : VarpReferences() {
     val magic_logs_50 = find("isle_count_magic_logs_50")
     val magic_logs_20 = find("isle_count_magic_logs_20")
     val cook_shark_20 = find("isle_count_cook_shark_20")
+
+    /** Runecraft task counters: essence used, runes made at one altar, pure essence mined. */
+    val runes_essence_200 = find("isle_count_runes_essence_200")
+    val runes_essence_2500 = find("isle_count_runes_essence_2500")
+    val water_runes_50 = find("isle_count_water_runes_50")
+    val cosmic_runes_50 = find("isle_count_cosmic_runes_50")
+    val astral_runes_50 = find("isle_count_astral_runes_50")
+    val nature_runes_50 = find("isle_count_nature_runes_50")
+    val death_runes_50 = find("isle_count_death_runes_50")
+    val law_runes_50 = find("isle_count_law_runes_50")
+    val blood_runes_100 = find("isle_count_blood_runes_100")
+    val pure_essence_25 = find("isle_count_pure_essence_25")
 
     /** Monsters of combat level 100 or more defeated, for a combat mastery task. */
     val mastery_kills_100 = find("isle_count_mastery_kills_100")
@@ -153,6 +207,12 @@ object LeagueProgressVarps : VarpReferences() {
             fletch_dragon_darts,
             fight_caves_5,
             fight_caves_10,
+            inferno_5,
+            inferno_10,
+            inferno_15,
+            zulrah_50,
+            zulrah_150,
+            zulrah_300,
             clean_guam,
             clean_tarromin,
             clean_ranarr,
@@ -183,6 +243,43 @@ object LeagueProgressVarps : VarpReferences() {
             magic_logs_20,
             cook_shark_20,
             mastery_kills_100,
+            runes_essence_200,
+            runes_essence_2500,
+            water_runes_50,
+            cosmic_runes_50,
+            astral_runes_50,
+            nature_runes_50,
+            death_runes_50,
+            law_runes_50,
+            blood_runes_100,
+            pure_essence_25,
+            magic_kills_25,
+            magic_kills_250,
+            magic_high_alchemy_100,
+            magic_casts_1000,
+            pickpocket_knight_50,
+            pickpocket_elf_50,
+            pickpocket_vyre_50,
+            pickpocket_thug_50,
+            house_keys_15,
+            hunter_orange_30,
+            hunter_grey_50,
+            hunter_red_150,
+            hunter_red_300,
+            hunter_chinchompa_500,
+            hunter_moonlight_50,
+            hunter_sunlight_25,
+            hunter_tecu_100,
+            hunter_birdhouse_20,
+            hunter_implings_50,
+            agility_arena_streak_30,
+            kill_bandit_30,
+            kill_bunny_5,
+            kill_gorilla_150,
+            kill_gorilla_300,
+            kill_gorilla_500,
+            kill_scurrius_10,
+            kill_scurrius_25,
         )
 }
 
@@ -229,6 +326,12 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_fletch_dragon_darts") {}
         build("isle_count_fight_caves_5") {}
         build("isle_count_fight_caves_10") {}
+        build("isle_count_inferno_5") {}
+        build("isle_count_inferno_10") {}
+        build("isle_count_inferno_15") {}
+        build("isle_count_zulrah_50") {}
+        build("isle_count_zulrah_150") {}
+        build("isle_count_zulrah_300") {}
         build("isle_count_clean_guam") {}
         build("isle_count_clean_tarromin") {}
         build("isle_count_clean_ranarr") {}
@@ -259,5 +362,42 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_magic_logs_20") {}
         build("isle_count_cook_shark_20") {}
         build("isle_count_mastery_kills_100") {}
+        build("isle_count_runes_essence_200") {}
+        build("isle_count_runes_essence_2500") {}
+        build("isle_count_water_runes_50") {}
+        build("isle_count_cosmic_runes_50") {}
+        build("isle_count_astral_runes_50") {}
+        build("isle_count_nature_runes_50") {}
+        build("isle_count_death_runes_50") {}
+        build("isle_count_law_runes_50") {}
+        build("isle_count_blood_runes_100") {}
+        build("isle_count_pure_essence_25") {}
+        build("isle_count_magic_kills_25") {}
+        build("isle_count_magic_kills_250") {}
+        build("isle_count_magic_high_alchemy_100") {}
+        build("isle_count_magic_casts_1000") {}
+        build("isle_count_pickpocket_knight_50") {}
+        build("isle_count_pickpocket_elf_50") {}
+        build("isle_count_pickpocket_vyre_50") {}
+        build("isle_count_pickpocket_thug_50") {}
+        build("isle_count_house_keys_15") {}
+        build("isle_count_hunter_orange_30") {}
+        build("isle_count_hunter_grey_50") {}
+        build("isle_count_hunter_red_150") {}
+        build("isle_count_hunter_red_300") {}
+        build("isle_count_hunter_chinchompa_500") {}
+        build("isle_count_hunter_moonlight_50") {}
+        build("isle_count_hunter_sunlight_25") {}
+        build("isle_count_hunter_tecu_100") {}
+        build("isle_count_hunter_birdhouse_20") {}
+        build("isle_count_hunter_implings_50") {}
+        build("isle_count_agility_arena_streak_30") {}
+        build("isle_count_kill_bandit_30") {}
+        build("isle_count_kill_bunny_5") {}
+        build("isle_count_kill_gorilla_150") {}
+        build("isle_count_kill_gorilla_300") {}
+        build("isle_count_kill_gorilla_500") {}
+        build("isle_count_kill_scurrius_10") {}
+        build("isle_count_kill_scurrius_25") {}
     }
 }

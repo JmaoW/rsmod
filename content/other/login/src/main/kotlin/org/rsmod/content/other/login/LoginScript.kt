@@ -48,6 +48,7 @@ constructor(
 
     private var Player.chatboxUnlocked: Boolean by boolVarBit(varbits.has_displayname_transmitter)
     private var Player.hideRoofs by boolVarBit(varbits.option_hide_rooftops)
+    private var Player.shiftClickDrop by boolVarBit(varbits.desktop_shiftclickdrop_enabled)
 
     override fun ScriptContext.startup() {
         onEvent<SessionStateEvent.EngineLogin>(0L) { player.engineLogin() }
@@ -87,6 +88,9 @@ constructor(
         client.write(VarpReset)
         chatboxUnlocked = displayName.isNotBlank()
         hideRoofs = true
+        // The client-built settings screen never reports toggles to the server, so a saved value
+        // would just be stale. Default shift-click drop on until that can be persisted.
+        shiftClickDrop = true
         for (varp in transmitVars) {
             if (varp in vars) {
                 resyncVar(varp)

@@ -139,6 +139,7 @@ object HerbloreRecipes {
             )) {
             add(GrindRule(pestle, nest, o.crushed_nest))
         }
+        add(GrindRule(pestle, o.superior_dragon_bones, o.crushed_superior_dragon_bones))
         add(GrindRule(o.chisel, o.lava_scale, o.lava_shard, output = 3, outputMax = 6))
     }
 
@@ -206,6 +207,16 @@ object HerbloreRecipes {
                     xpPerDose = 27.5,
                 )
             )
+            add(
+                upgrade(
+                    Potions.extended_super_antifire,
+                    doses,
+                    base = Potions.super_antifire,
+                    ingredient = o.lava_shard,
+                    level = 98,
+                    xpPerDose = 40.0,
+                )
+            )
             for (divine in divineRules) {
                 add(
                     upgrade(
@@ -220,6 +231,7 @@ object HerbloreRecipes {
             }
             add(superCombat(doses))
         }
+        add(superAntifire())
         for (rule in grindRules) {
             add(
                 HerbloreRecipe(
@@ -275,6 +287,27 @@ object HerbloreRecipes {
             xp = 150.0,
             potion = Potions.super_combat,
             secondary = o.torstol,
+            anim = HerbloreSeqs.mix,
+        )
+
+    /**
+     * A super antifire potion: a full antifire potion and one crushed superior dragon bones. The
+     * wiki makes all four doses at once, whatever the doses of the antifire.
+     */
+    private fun superAntifire() =
+        HerbloreRecipe(
+            method = HerbloreMethod.Upgrade,
+            tools = emptyList(),
+            inputs =
+                listOf(
+                    HerbloreInput(Potions.antifire.dose(Potion.MAX_DOSES)),
+                    HerbloreInput(o.crushed_superior_dragon_bones),
+                ),
+            product = Potions.super_antifire.dose(Potion.MAX_DOSES),
+            level = 92,
+            xp = 130.0,
+            potion = Potions.super_antifire,
+            secondary = o.crushed_superior_dragon_bones,
             anim = HerbloreSeqs.mix,
         )
 

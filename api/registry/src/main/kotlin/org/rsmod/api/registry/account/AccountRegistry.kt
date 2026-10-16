@@ -1,5 +1,6 @@
 package org.rsmod.api.registry.account
 
+import com.github.michaelbull.logging.InlineLogger
 import jakarta.inject.Inject
 import java.util.concurrent.ConcurrentLinkedQueue
 import org.rsmod.api.account.AccountManager
@@ -16,6 +17,8 @@ constructor(
     private val playerRegistry: PlayerRegistry,
     private val accountManager: AccountManager,
 ) {
+    private val logger = InlineLogger()
+
     private val pendingLogins = ConcurrentLinkedQueue<QueuedLogin>()
     private val pendingLogouts = ConcurrentLinkedQueue<QueuedLogout>()
 
@@ -29,7 +32,23 @@ constructor(
     }
 
     public fun queueLogout(player: Player) {
-        accountManager.save(player, ::queueSaveResponse)
+        try {
+            accountManager.save(player, ::queueSaveResponse)
+        } catch (e: Exception) {
+            // The player's state could not be copied for saving. They must still leave the world,
+            // otherwise they would be stuck online in a `loggingOut` state forever. Anything since
+            // their last autosave is lost.
+            logger.error(e) { "Could not copy player for saving on logout: $player" }
+            queueSaveResponse(AccountSaveResponse.InternalShutdownError(player))
+        }
+    }
+
+    /**
+     * Saves [player] without logging them out. Must be called on the game thread, as the state to
+     * save is copied right away.
+     */
+    public fun queueAutosave(player: Player) {
+        accountManager.autosave(player)
     }
 
     public fun handleLogins(count: Int = DEFAULT_LOGINS_PER_CYCLE) {

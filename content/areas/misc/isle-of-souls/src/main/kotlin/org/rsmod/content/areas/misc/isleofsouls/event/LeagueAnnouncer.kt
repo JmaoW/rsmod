@@ -20,7 +20,7 @@ import org.rsmod.game.type.stat.StatType
 /**
  * Sends the league's server-wide announcements. What gets announced comes from the
  * [AnnouncementConfig] in `announcements.json`; the functions here are called by whatever notices
- * the thing: task completions, level-ups, deaths, and (once drop tables exist) rare drops.
+ * the thing: task completions, level-ups, deaths, and rare drops.
  *
  * To announce something new, add a function here and a message to [AnnouncementMessages], a switch
  * in [AnnouncementConfig], and call it from the place that sees the event.
@@ -114,15 +114,27 @@ constructor(
     }
 
     /**
-     * Announces a rare drop if [obj] is on the configured list. Nothing calls this yet: the engine
-     * has no drop tables, so the code that rolls drops should call it when it hands one out.
+     * Announces a drop if it is [boosted] by the relics' drop rate, is a pet, or [obj] is on the
+     * configured list. [LeagueEventScript] calls this for everything a monster's drop table hands
+     * out. Pets get their own line.
      */
-    fun drop(player: Player, obj: ObjType, count: Int) {
+    fun drop(player: Player, obj: ObjType, count: Int, boosted: Boolean = false) {
         val type = objTypes[obj]
-        if (!config.announcesDrop(type.internalName)) {
-            return
+        val pet = LeaguePets.isPet(type.name)
+        if (pet && config.dropPets) {
+            broadcast(AnnouncementMessages.pet(who(player), type.name))
+        } else if (
+            config.announcesDrop(boosted, pet = false) || config.announcesDrop(type.internalName)
+        ) {
+            broadcast(AnnouncementMessages.drop(who(player), type.name, count))
         }
-        broadcast(AnnouncementMessages.drop(who(player), type.name, count))
+    }
+
+    /** Announces a pet that did not come from a drop table (the Fight Cave and Inferno pets). */
+    fun pet(player: Player, obj: ObjType) {
+        if (config.dropPets) {
+            broadcast(AnnouncementMessages.pet(who(player), objTypes[obj].name))
+        }
     }
 
     fun leadTaken(team: TeamStanding) {

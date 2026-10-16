@@ -1,0 +1,5 @@
+.cache/
+cache_npcs.json
+cache_tables.json
+monsters.json
+__pycache__/

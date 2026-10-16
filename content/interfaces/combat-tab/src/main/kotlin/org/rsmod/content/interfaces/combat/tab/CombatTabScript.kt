@@ -1,7 +1,10 @@
 package org.rsmod.content.interfaces.combat.tab
 
 import jakarta.inject.Inject
+import java.util.Collections
+import java.util.WeakHashMap
 import org.rsmod.api.combat.commons.CombatStance
+import org.rsmod.api.combat.commons.magic.Spellbook
 import org.rsmod.api.combat.commons.styles.MeleeAttackStyle
 import org.rsmod.api.combat.manager.MagicRuneManager
 import org.rsmod.api.combat.weapon.styles.AttackStyles
@@ -16,12 +19,16 @@ import org.rsmod.api.player.protect.ProtectedAccessLauncher
 import org.rsmod.api.player.righthand
 import org.rsmod.api.player.ui.PlayerInterfaceUpdates
 import org.rsmod.api.player.ui.ifClose
+import org.rsmod.api.player.ui.ifOpenSide
+import org.rsmod.api.player.ui.ifSetEvents
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.player.vars.boolVarBit
 import org.rsmod.api.player.vars.boolVarp
+import org.rsmod.api.player.vars.enumVarBit
 import org.rsmod.api.player.vars.enumVarp
 import org.rsmod.api.player.vars.intVarBit
 import org.rsmod.api.script.advanced.onWearposChange
+import org.rsmod.api.script.onIfModalButton
 import org.rsmod.api.script.onIfOpen
 import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.api.script.onPlayerQueue
@@ -34,11 +41,14 @@ import org.rsmod.api.spells.MagicSpellRegistry
 import org.rsmod.api.spells.autocast.AutocastWeapons
 import org.rsmod.content.interfaces.combat.tab.configs.combat_components
 import org.rsmod.content.interfaces.combat.tab.configs.combat_enums
+import org.rsmod.content.interfaces.combat.tab.configs.combat_interfaces
 import org.rsmod.content.interfaces.combat.tab.configs.combat_queues
+import org.rsmod.content.interfaces.combat.tab.configs.combat_varps
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
 import org.rsmod.game.enums.EnumTypeMapResolver
 import org.rsmod.game.enums.EnumTypeNonNullMap
+import org.rsmod.game.type.interf.IfEvent
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.obj.UnpackedObjType
 import org.rsmod.game.type.obj.WeaponCategory
@@ -74,6 +84,11 @@ constructor(
     private var Player.autocastEnabled by boolVarBit(varbits.autocast_set)
     private var Player.autocastSpell by intVarBit(varbits.autocast_spell)
     private var Player.defensiveCasting by boolVarBit(varbits.autocast_defmode)
+    private val Player.spellbook by enumVarBit<Spellbook>(varbits.spellbook)
+
+    /** The players whose spell picker was opened from the "defensive" Choose spell button. */
+    private val pickingDefensive: MutableSet<Player> =
+        Collections.newSetFromMap(WeakHashMap<Player, Boolean>())
 
     private lateinit var stanceSaveVarBits: EnumTypeNonNullMap<Int, VarBitType>
 
@@ -94,6 +109,70 @@ constructor(
         onIfOverlayButton(combat_components.special_attack) { player.toggleSpecialAttack() }
         onIfOverlayButton(combat_components.special_attack_orb) { player.toggleSpecialAttack() }
         onPlayerQueue(combat_queues.sa_instant_spec) { activateInstantSpecial() }
+
+        onIfOverlayButton(combat_components.autocast_normal) { player.openSpellPicker(false) }
+        onIfOverlayButton(combat_components.autocast_defensive) { player.openSpellPicker(true) }
+        onIfOpen(combat_interfaces.autocast) {
+            // The client builds the spell buttons itself, so only their clicks need enabling.
+            player.ifSetEvents(combat_components.autocast_spells, 0..AUTOCAST_CHILDREN, IfEvent.Op1)
+        }
+        onIfModalButton(combat_components.autocast_spells) { player.selectAutocast(it.comsub) }
+    }
+
+    private fun Player.openSpellPicker(defensive: Boolean) {
+        val weapon = objTypes.getOrNull(righthand)
+        if (weapon != null) {
+            // The client lays the spells out by this varp, so it has to be set before it opens.
+            VarPlayerIntMapSetter.set(
+                this,
+                combat_varps.autocast_layout,
+                autocast.pickerLayout(weapon, spellbook),
+            )
+        }
+        val opened = protectedAccess.launch(this) { ifOpenSide(combat_interfaces.autocast) }
+        if (!opened) {
+            return
+        }
+        if (defensive) {
+            pickingDefensive += this
+        } else {
+            pickingDefensive -= this
+        }
+    }
+
+    /** Child 0 of the picker is Cancel, which also turns the current autocast off. */
+    private fun Player.selectAutocast(autocastId: Int) {
+        val defensive = pickingDefensive.remove(this)
+        ifClose(eventBus)
+
+        val weapon = objTypes.getOrNull(righthand) ?: return
+        val category = WeaponCategory.getOrUnarmed(weapon.weaponCategory)
+        val autocastVarBits = autocast.getVarBits(category) ?: return
+
+        if (autocastId == 0) {
+            autocast.reset(this, autocastVarBits)
+            autocastEnabled = false
+            autocastSpell = 0
+            defensiveCasting = false
+            return
+        }
+
+        val spell = spells.getAutocastSpell(autocastId) ?: return
+        if (spell.spellbook != spellbook) {
+            mes("You can't autocast that spell with your current active spellbook.")
+            return
+        }
+        if (!autocast.canStaffAutocast(this, weapon, autocastId)) {
+            return
+        }
+        if (!runes.canCastSpell(this, spell)) {
+            return
+        }
+
+        autocast.set(this, autocastVarBits, autocastId, defensive)
+        autocastSpell = autocastId
+        defensiveCasting = defensive
+        autocastEnabled = true
     }
 
     private fun Player.updateCombatTab() {
@@ -330,3 +409,5 @@ constructor(
         specialType = SpecialAttackType.None
     }
 }
+
+private const val AUTOCAST_CHILDREN = 100

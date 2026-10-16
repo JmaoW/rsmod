@@ -1,0 +1,4823 @@
+{
+ "masters": {
+  "turael": {
+   "masterId": 1,
+   "tasks": [
+    {
+     "row": 6721,
+     "task": "Rats",
+     "taskId": 3,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1679,
+      1680,
+      1681,
+      1682,
+      2492,
+      2510,
+      2511,
+      2512,
+      2513,
+      2854,
+      2855,
+      2856,
+      2857,
+      2858,
+      2859,
+      2860,
+      2862,
+      2863,
+      2864,
+      2865,
+      2866,
+      2867,
+      3607,
+      3608,
+      3609,
+      3969,
+      3970,
+      3971,
+      4501,
+      4534,
+      4535
+     ],
+     "spawns": 852
+    },
+    {
+     "row": 6722,
+     "task": "Monkeys",
+     "taskId": 1,
+     "weight": 6,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1038,
+      2848,
+      5263,
+      5272,
+      5273,
+      5274,
+      5275,
+      5276,
+      5281,
+      5282,
+      5283,
+      7118,
+      7119,
+      7144,
+      7145,
+      7146,
+      7147,
+      7148,
+      7149,
+      7150,
+      7151
+     ],
+     "spawns": 794
+    },
+    {
+     "row": 6723,
+     "task": "Cows",
+     "taskId": 6,
+     "weight": 8,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2790,
+      2791,
+      2792,
+      2793,
+      2794,
+      2795,
+      2801,
+      2992,
+      5842
+     ],
+     "spawns": 107
+    },
+    {
+     "row": 6724,
+     "task": "Birds",
+     "taskId": 5,
+     "weight": 6,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 25,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1173,
+      1174,
+      1175,
+      1267,
+      1338,
+      1339,
+      1838,
+      1839,
+      2001,
+      2062,
+      2063,
+      2064,
+      2065,
+      2066,
+      2067,
+      2804,
+      2805,
+      2806,
+      2993,
+      3661,
+      3662,
+      3663,
+      4927,
+      5240,
+      5241,
+      5971,
+      5972,
+      5973,
+      6739,
+      9609,
+      10494,
+      10495,
+      10496,
+      10497,
+      10541
+     ],
+     "spawns": 485
+    },
+    {
+     "row": 6725,
+     "task": "Spiders",
+     "taskId": 4,
+     "weight": 6,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      626,
+      1683,
+      1684,
+      2477,
+      2478,
+      3016,
+      3017,
+      3018,
+      3019,
+      3020,
+      3021,
+      3022,
+      3023,
+      4533,
+      4561,
+      5238,
+      5243,
+      6610,
+      8137,
+      8703,
+      8713,
+      8978,
+      10722
+     ],
+     "spawns": 936
+    },
+    {
+     "row": 6726,
+     "task": "Dwarves",
+     "taskId": 57,
+     "weight": 7,
+     "min": 10,
+     "max": 25,
+     "combat": 6,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 45,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      290,
+      291,
+      292,
+      294,
+      295,
+      296,
+      1354,
+      1355,
+      1356,
+      1401,
+      1402,
+      1403,
+      1404,
+      1405,
+      1406,
+      1407,
+      1408,
+      1409,
+      1410,
+      1411,
+      1412,
+      5185,
+      5186,
+      5187,
+      5188,
+      5189,
+      6046,
+      6047,
+      6048,
+      6049,
+      6050,
+      6051,
+      6052,
+      8496
+     ],
+     "spawns": 145
+    },
+    {
+     "row": 6727,
+     "task": "Lizards",
+     "taskId": 68,
+     "weight": 8,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [
+      [
+       22,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 70,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      458,
+      459,
+      460,
+      461,
+      462,
+      463,
+      8614
+     ],
+     "spawns": 56
+    },
+    {
+     "row": 6728,
+     "task": "Cave Bugs",
+     "taskId": 63,
+     "weight": 8,
+     "min": 10,
+     "max": 30,
+     "combat": 0,
+     "stats": [
+      [
+       7,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      481,
+      483
+     ],
+     "spawns": 36
+    },
+    {
+     "row": 6729,
+     "task": "Scorpions",
+     "taskId": 7,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 7,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2479,
+      2480,
+      3024,
+      3025,
+      3026,
+      3027,
+      4800,
+      5242,
+      5372,
+      6615,
+      6616,
+      7796
+     ],
+     "spawns": 214
+    },
+    {
+     "row": 6730,
+     "task": "Zombies",
+     "taskId": 10,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 10,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      34,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      561,
+      562,
+      563,
+      564,
+      565,
+      566,
+      567,
+      568,
+      569,
+      570,
+      571,
+      572,
+      573,
+      574,
+      575,
+      576,
+      578,
+      580,
+      581,
+      583,
+      584,
+      585,
+      587,
+      589,
+      590,
+      591,
+      592,
+      593,
+      594,
+      595,
+      596,
+      598,
+      599,
+      613,
+      614,
+      615,
+      616,
+      617,
+      618,
+      619,
+      620,
+      621,
+      622,
+      623,
+      624,
+      866,
+      867,
+      868,
+      869,
+      870,
+      871,
+      873,
+      874,
+      875,
+      876,
+      877,
+      878,
+      2145,
+      2501,
+      2502,
+      2503,
+      2504,
+      2505,
+      2506,
+      2507,
+      2508,
+      2509,
+      3980,
+      3981,
+      5346,
+      5347,
+      5348,
+      5349,
+      5350,
+      5351,
+      5647,
+      6449,
+      6450,
+      6451,
+      6452,
+      6453,
+      6454,
+      6455,
+      6456,
+      6457,
+      6458,
+      6459,
+      6460,
+      6461,
+      6462,
+      6463,
+      6464,
+      6465,
+      6466,
+      6596,
+      6597,
+      6598,
+      6741,
+      7485,
+      7486,
+      7487,
+      7488,
+      8067,
+      8068,
+      8069
+     ],
+     "spawns": 423
+    },
+    {
+     "row": 6731,
+     "task": "Bats",
+     "taskId": 8,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 5,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      509,
+      1039,
+      2827,
+      2834,
+      4504,
+      6824,
+      10888
+     ],
+     "spawns": 277
+    },
+    {
+     "row": 6732,
+     "task": "Bears",
+     "taskId": 13,
+     "weight": 7,
+     "min": 10,
+     "max": 20,
+     "combat": 13,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2838,
+      2839,
+      3423,
+      3424,
+      3425,
+      3908,
+      3909,
+      6609
+     ],
+     "spawns": 85
+    },
+    {
+     "row": 6733,
+     "task": "Ghosts",
+     "taskId": 12,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 13,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      95,
+      97,
+      99,
+      472,
+      473,
+      474,
+      505,
+      506,
+      507,
+      2527,
+      2528,
+      2529,
+      2530,
+      2531,
+      2999,
+      3964,
+      3965,
+      3966,
+      3975,
+      3976,
+      3977,
+      3978,
+      3979,
+      5370,
+      7263,
+      7264,
+      10544,
+      10545
+     ],
+     "spawns": 172
+    },
+    {
+     "row": 6734,
+     "task": "Cave Crawlers",
+     "taskId": 37,
+     "weight": 8,
+     "min": 15,
+     "max": 30,
+     "combat": 10,
+     "stats": [
+      [
+       10,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      406,
+      407,
+      408,
+      409
+     ],
+     "spawns": 16
+    },
+    {
+     "row": 6735,
+     "task": "Minotaurs",
+     "taskId": 76,
+     "weight": 7,
+     "min": 10,
+     "max": 20,
+     "combat": 7,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2481,
+      2483
+     ],
+     "spawns": 39
+    },
+    {
+     "row": 6736,
+     "task": "Icefiends",
+     "taskId": 75,
+     "weight": 8,
+     "min": 15,
+     "max": 20,
+     "combat": 20,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 60,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      3140,
+      4813
+     ],
+     "spawns": 17
+    },
+    {
+     "row": 6737,
+     "task": "Kalphite",
+     "taskId": 53,
+     "weight": 6,
+     "min": 15,
+     "max": 30,
+     "combat": 15,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      955,
+      956,
+      957,
+      958,
+      959,
+      960,
+      962,
+      963
+     ],
+     "spawns": 68
+    },
+    {
+     "row": 6738,
+     "task": "Cave Slimes",
+     "taskId": 62,
+     "weight": 8,
+     "min": 10,
+     "max": 20,
+     "combat": 15,
+     "stats": [
+      [
+       17,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 65,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      480
+     ],
+     "spawns": 26
+    },
+    {
+     "row": 6739,
+     "task": "Dogs",
+     "taskId": 22,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 15,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 70,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      112,
+      114,
+      3449,
+      4185,
+      7209
+     ],
+     "spawns": 101
+    },
+    {
+     "row": 6740,
+     "task": "Goblin",
+     "taskId": 2,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      655,
+      656,
+      657,
+      658,
+      659,
+      660,
+      661,
+      662,
+      663,
+      664,
+      665,
+      667,
+      668,
+      820,
+      2216,
+      2217,
+      2218,
+      2245,
+      2246,
+      2247,
+      2248,
+      2249,
+      2316,
+      2317,
+      2484,
+      2485,
+      2486,
+      2487,
+      2488,
+      2489,
+      3028,
+      3029,
+      3030,
+      3031,
+      3032,
+      3033,
+      3034,
+      3035,
+      3036,
+      3045,
+      3046,
+      3051,
+      3052,
+      3053,
+      3054,
+      3073,
+      3074,
+      3075,
+      3076,
+      5192,
+      5193,
+      5195,
+      5196,
+      5197,
+      5198,
+      5199,
+      5200,
+      5201,
+      5202,
+      5203,
+      5204,
+      5205,
+      5206,
+      5207,
+      5208,
+      5330,
+      5331,
+      5332,
+      5333,
+      5334,
+      5335,
+      5339,
+      6434,
+      6435,
+      6436,
+      6437
+     ],
+     "spawns": 255
+    },
+    {
+     "row": 6741,
+     "task": "Wolves",
+     "taskId": 9,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 20,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      106,
+      107,
+      108,
+      109,
+      110,
+      115,
+      232,
+      645,
+      646,
+      710,
+      711,
+      712,
+      713,
+      714,
+      715,
+      2490,
+      2491,
+      3426,
+      3912,
+      4649,
+      4650,
+      4651,
+      9181
+     ],
+     "spawns": 239
+    },
+    {
+     "row": 6742,
+     "task": "Skeletons",
+     "taskId": 11,
+     "weight": 7,
+     "min": 15,
+     "max": 30,
+     "combat": 15,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      680,
+      681,
+      872,
+      879,
+      1538,
+      1539,
+      1541,
+      1685,
+      1686,
+      1687,
+      1688,
+      2520,
+      2521,
+      2522,
+      2523,
+      2524,
+      2525,
+      2526,
+      3565,
+      3972,
+      3973,
+      3974,
+      4319,
+      4491,
+      4492,
+      4493,
+      4494,
+      4495,
+      4496,
+      4497,
+      4498,
+      5237,
+      5342,
+      5343,
+      5344,
+      5345,
+      6440,
+      6441,
+      6442,
+      6443,
+      6444,
+      6445,
+      6446,
+      6447,
+      6448,
+      6611,
+      7265,
+      8070,
+      8071,
+      8072,
+      10717,
+      10718,
+      10719,
+      10720,
+      10721
+     ],
+     "spawns": 474
+    },
+    {
+     "row": 6743,
+     "task": "Crawling Hands",
+     "taskId": 39,
+     "weight": 8,
+     "min": 15,
+     "max": 30,
+     "combat": 0,
+     "stats": [
+      [
+       5,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454
+     ],
+     "spawns": 34
+    },
+    {
+     "row": 6744,
+     "task": "Banshees",
+     "taskId": 38,
+     "weight": 8,
+     "min": 15,
+     "max": 30,
+     "combat": 20,
+     "stats": [
+      [
+       15,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      414,
+      7272
+     ],
+     "spawns": 14
+    }
+   ],
+   "dropped": [],
+   "points": {},
+   "blockCost": 40,
+   "combat": 0,
+   "slayer": 0
+  },
+  "vannaka": {
+   "masterId": 3,
+   "tasks": [
+    {
+     "row": 6529,
+     "task": "Crabs",
+     "taskId": 125,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 50,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      100,
+      102,
+      4819,
+      4822,
+      5940
+     ],
+     "spawns": 17
+    },
+    {
+     "row": 6530,
+     "task": "Spiritual Creatures",
+     "taskId": 89,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 60,
+     "stats": [
+      [
+       63,
+       18
+      ]
+     ],
+     "statsAny": [
+      [
+       60,
+       2
+      ],
+      [
+       60,
+       16
+      ]
+     ],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": [
+      6404,
+      181,
+      250
+     ],
+     "npcs": [
+      2210,
+      2211,
+      2212,
+      2242,
+      2243,
+      2244,
+      3159,
+      3160,
+      3161,
+      3166,
+      3167,
+      3168
+     ],
+     "spawns": 151
+    },
+    {
+     "row": 6531,
+     "task": "Abyssal Demons",
+     "taskId": 42,
+     "weight": 5,
+     "min": 40,
+     "max": 90,
+     "combat": 85,
+     "stats": [
+      [
+       85,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6405,
+      200,
+      250
+     ],
+     "npcs": [
+      415,
+      416,
+      5886,
+      7241
+     ],
+     "spawns": 58
+    },
+    {
+     "row": 6532,
+     "task": "Nechryael",
+     "taskId": 52,
+     "weight": 5,
+     "min": 40,
+     "max": 90,
+     "combat": 85,
+     "stats": [
+      [
+       80,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6421,
+      200,
+      250
+     ],
+     "npcs": [
+      8,
+      11,
+      7278
+     ],
+     "spawns": 53
+    },
+    {
+     "row": 6533,
+     "task": "Gargoyles",
+     "taskId": 46,
+     "weight": 5,
+     "min": 40,
+     "max": 90,
+     "combat": 80,
+     "stats": [
+      [
+       75,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6420,
+      200,
+      250
+     ],
+     "npcs": [
+      412,
+      1543,
+      7882
+     ],
+     "spawns": 21
+    },
+    {
+     "row": 6534,
+     "task": "Hobgoblins",
+     "taskId": 21,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 20,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 70,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2241,
+      3049,
+      3050,
+      3286,
+      3287,
+      3288,
+      3289,
+      4805
+     ],
+     "spawns": 132
+    },
+    {
+     "row": 6535,
+     "task": "Hill Giants",
+     "taskId": 14,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 25,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2097,
+      2098,
+      2099,
+      2100,
+      2101,
+      2102,
+      2103,
+      2137,
+      2138,
+      2139,
+      2140,
+      2141,
+      2142,
+      2235,
+      2236,
+      2463,
+      2464,
+      2465,
+      2466,
+      2467,
+      2468,
+      7261,
+      7270,
+      7271,
+      10374,
+      10375,
+      10376
+     ],
+     "spawns": 141
+    },
+    {
+     "row": 6536,
+     "task": "Ghouls",
+     "taskId": 23,
+     "weight": 7,
+     "min": 10,
+     "max": 40,
+     "combat": 25,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 70,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      289
+     ],
+     "spawns": 22
+    },
+    {
+     "row": 6537,
+     "task": "Ice Warriors",
+     "taskId": 19,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 45,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 90,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      852,
+      853,
+      854,
+      855,
+      2841,
+      2842,
+      2851
+     ],
+     "spawns": 57
+    },
+    {
+     "row": 6538,
+     "task": "Otherworldly Beings",
+     "taskId": 55,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 40,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 80,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2843
+     ],
+     "spawns": 6
+    },
+    {
+     "row": 6539,
+     "task": "Cockatrice",
+     "taskId": 44,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 25,
+     "stats": [
+      [
+       25,
+       18
+      ],
+      [
+       20,
+       1
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 80,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      419
+     ],
+     "spawns": 7
+    },
+    {
+     "row": 6540,
+     "task": "Shades",
+     "taskId": 64,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 30,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 70,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1276,
+      1279,
+      1281,
+      1283,
+      1285,
+      6143,
+      6740,
+      7258
+     ],
+     "spawns": 116
+    },
+    {
+     "row": 6541,
+     "task": "Pyrefiends",
+     "taskId": 47,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 25,
+     "stats": [
+      [
+       30,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 70,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      433,
+      434,
+      435,
+      436,
+      3139,
+      6762,
+      6795
+     ],
+     "spawns": 95
+    },
+    {
+     "row": 6544,
+     "task": "Vampyres",
+     "taskId": 34,
+     "weight": 7,
+     "min": 10,
+     "max": 20,
+     "combat": 35,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": [
+      6442,
+      200,
+      250
+     ],
+     "npcs": [
+      3137,
+      3237,
+      3692,
+      3693,
+      3694,
+      3695,
+      3717,
+      3718,
+      3719,
+      3729,
+      3730,
+      3731,
+      3732,
+      3748,
+      3749,
+      3750,
+      3751,
+      3752,
+      3753,
+      3754,
+      3755,
+      4427,
+      4428,
+      4429,
+      4430,
+      4436,
+      4437,
+      4438,
+      8300,
+      8301,
+      8302,
+      8303,
+      8304,
+      8305,
+      8306,
+      8307,
+      9727,
+      9728,
+      9731,
+      9732,
+      9735,
+      9736,
+      9737,
+      9738,
+      9739,
+      9740,
+      9741,
+      9742,
+      9756,
+      9757,
+      9758,
+      9759,
+      9760,
+      9761,
+      9762,
+      9763
+     ],
+     "spawns": 194
+    },
+    {
+     "row": 6545,
+     "task": "Basilisks",
+     "taskId": 43,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 25,
+     "stats": [
+      [
+       40,
+       18
+      ],
+      [
+       20,
+       1
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6439,
+      200,
+      250
+     ],
+     "npcs": [
+      417,
+      9293
+     ],
+     "spawns": 40
+    },
+    {
+     "row": 6548,
+     "task": "Infernal Mages",
+     "taskId": 40,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 40,
+     "stats": [
+      [
+       45,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 80,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      443,
+      444,
+      445,
+      446,
+      447
+     ],
+     "spawns": 15
+    },
+    {
+     "row": 6549,
+     "task": "Jellies",
+     "taskId": 50,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 57,
+     "stats": [
+      [
+       52,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      437,
+      438,
+      439,
+      440,
+      441,
+      442,
+      7277
+     ],
+     "spawns": 28
+    },
+    {
+     "row": 6550,
+     "task": "Ice Giants",
+     "taskId": 15,
+     "weight": 7,
+     "min": 30,
+     "max": 80,
+     "combat": 50,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2085,
+      2086,
+      2087,
+      2088,
+      2089,
+      7878,
+      7879,
+      7880
+     ],
+     "spawns": 34
+    },
+    {
+     "row": 6551,
+     "task": "Ankou",
+     "taskId": 79,
+     "weight": 8,
+     "min": 25,
+     "max": 35,
+     "combat": 40,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": 60,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6400,
+      91,
+      150
+     ],
+     "npcs": [
+      2514,
+      2515,
+      2516,
+      2517,
+      2518,
+      2519,
+      6608,
+      7257,
+      7864
+     ],
+     "spawns": 81
+    },
+    {
+     "row": 6552,
+     "task": "Turoth",
+     "taskId": 36,
+     "weight": 8,
+     "min": 30,
+     "max": 90,
+     "combat": 60,
+     "stats": [
+      [
+       55,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      427,
+      428,
+      429,
+      430
+     ],
+     "spawns": 22
+    },
+    {
+     "row": 6553,
+     "task": "Jungle Horrors",
+     "taskId": 81,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 65,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 95,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1042,
+      1043,
+      1044,
+      1045,
+      1046
+     ],
+     "spawns": 50
+    },
+    {
+     "row": 6554,
+     "task": "Lesser Demons",
+     "taskId": 28,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 60,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 110,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2005,
+      2006,
+      2007,
+      2008,
+      2018,
+      3131,
+      3982,
+      7247,
+      7248,
+      7656,
+      7657,
+      7664,
+      7865,
+      7866,
+      7867
+     ],
+     "spawns": 74
+    },
+    {
+     "row": 6555,
+     "task": "Terror Dogs",
+     "taskId": 86,
+     "weight": 6,
+     "min": 20,
+     "max": 45,
+     "combat": 60,
+     "stats": [
+      [
+       40,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 85,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      6473,
+      6474
+     ],
+     "spawns": 9
+    },
+    {
+     "row": 6556,
+     "task": "Aberrant Spectres",
+     "taskId": 41,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 65,
+     "stats": [
+      [
+       60,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 110,
+     "unlockRow": null,
+     "extension": [
+      6414,
+      200,
+      250
+     ],
+     "npcs": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      7279
+     ],
+     "spawns": 39
+    },
+    {
+     "row": 6557,
+     "task": "Blue Dragons",
+     "taskId": 25,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 65,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      241,
+      242,
+      243,
+      265,
+      266,
+      267,
+      268,
+      269,
+      5878,
+      5879,
+      5880,
+      5881,
+      5882,
+      7273
+     ],
+     "spawns": 57
+    },
+    {
+     "row": 6558,
+     "task": "Dust Devils",
+     "taskId": 49,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 70,
+     "stats": [
+      [
+       65,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6418,
+      200,
+      250
+     ],
+     "npcs": [
+      423,
+      7249
+     ],
+     "spawns": 44
+    },
+    {
+     "row": 6559,
+     "task": "Hellhounds",
+     "taskId": 31,
+     "weight": 7,
+     "min": 30,
+     "max": 60,
+     "combat": 75,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 126,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      104,
+      105,
+      1224,
+      3133,
+      7256,
+      7877
+     ],
+     "spawns": 72
+    },
+    {
+     "row": 6560,
+     "task": "Trolls",
+     "taskId": 18,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 60,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      648,
+      649,
+      650,
+      651,
+      652,
+      653,
+      654,
+      699,
+      700,
+      701,
+      702,
+      703,
+      704,
+      705,
+      925,
+      926,
+      927,
+      928,
+      931,
+      932,
+      933,
+      934,
+      935,
+      936,
+      937,
+      938,
+      939,
+      940,
+      941,
+      942,
+      1874,
+      1875,
+      1876,
+      4120,
+      4121,
+      4122,
+      4123,
+      4124,
+      4125,
+      4126,
+      4127,
+      4128,
+      4129,
+      4130,
+      4133,
+      4134,
+      4135,
+      4136,
+      4137,
+      4138,
+      4139,
+      4143,
+      5828,
+      5829,
+      5830,
+      5831
+     ],
+     "spawns": 208
+    },
+    {
+     "row": 6561,
+     "task": "Moss Giants",
+     "taskId": 17,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 40,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2090,
+      2091,
+      2092,
+      2093,
+      3851,
+      7262,
+      8195,
+      8736
+     ],
+     "spawns": 105
+    },
+    {
+     "row": 6562,
+     "task": "Sea Snakes",
+     "taskId": 71,
+     "weight": 6,
+     "min": 40,
+     "max": 90,
+     "combat": 50,
+     "stats": [
+      [
+       40,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 90,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1097,
+      1098
+     ],
+     "spawns": 17
+    },
+    {
+     "row": 6563,
+     "task": "Ogres",
+     "taskId": 20,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 40,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 90,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      1153,
+      2095,
+      2096,
+      2233,
+      4362,
+      4367,
+      4373,
+      4381,
+      7989,
+      7990,
+      7991
+     ],
+     "spawns": 129
+    },
+    {
+     "row": 6564,
+     "task": "Crocodiles",
+     "taskId": 65,
+     "weight": 6,
+     "min": 40,
+     "max": 90,
+     "combat": 50,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 85,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      4184
+     ],
+     "spawns": 35
+    },
+    {
+     "row": 6565,
+     "task": "Fire Giants",
+     "taskId": 16,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 65,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2075,
+      2076,
+      2077,
+      2078,
+      2079,
+      2080,
+      2081,
+      2082,
+      2083,
+      7251,
+      7252
+     ],
+     "spawns": 88
+    },
+    {
+     "row": 6566,
+     "task": "Kalphite",
+     "taskId": 53,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 15,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      955,
+      956,
+      957,
+      958,
+      959,
+      960,
+      962,
+      963
+     ],
+     "spawns": 68
+    },
+    {
+     "row": 6567,
+     "task": "Kurask",
+     "taskId": 45,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 65,
+     "stats": [
+      [
+       70,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      410,
+      411
+     ],
+     "spawns": 28
+    },
+    {
+     "row": 6568,
+     "task": "Bloodveld",
+     "taskId": 48,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 50,
+     "stats": [
+      [
+       50,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6413,
+      200,
+      250
+     ],
+     "npcs": [
+      484,
+      485,
+      486,
+      487,
+      3138,
+      7276
+     ],
+     "spawns": 99
+    },
+    {
+     "row": 6569,
+     "task": "Werewolves",
+     "taskId": 33,
+     "weight": 7,
+     "min": 30,
+     "max": 60,
+     "combat": 60,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      3135,
+      3136
+     ],
+     "spawns": 35
+    },
+    {
+     "row": 6570,
+     "task": "Shadow warriors",
+     "taskId": 32,
+     "weight": 8,
+     "min": 30,
+     "max": 80,
+     "combat": 60,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2853
+     ],
+     "spawns": 19
+    },
+    {
+     "row": 6571,
+     "task": "Elves",
+     "taskId": 56,
+     "weight": 7,
+     "min": 30,
+     "max": 70,
+     "combat": 70,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      3428,
+      3429,
+      5293,
+      5294,
+      5295,
+      5296,
+      9182,
+      9183,
+      9184,
+      9185,
+      9186,
+      9187,
+      9188,
+      9189,
+      9502,
+      9503
+     ],
+     "spawns": 68
+    },
+    {
+     "row": 6572,
+     "task": "Dagannoth",
+     "taskId": 35,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 75,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      970,
+      971,
+      972,
+      973,
+      974,
+      975,
+      2259,
+      2264,
+      2265,
+      2266,
+      2267,
+      3185,
+      5942,
+      5943,
+      7259,
+      7260
+     ],
+     "spawns": 248
+    },
+    {
+     "row": 6573,
+     "task": "Harpie Bug Swarms",
+     "taskId": 70,
+     "weight": 8,
+     "min": 40,
+     "max": 90,
+     "combat": 45,
+     "stats": [
+      [
+       33,
+       18
+      ],
+      [
+       33,
+       11
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 85,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      464
+     ],
+     "spawns": 14
+    }
+   ],
+   "dropped": [
+    {
+     "row": 6542,
+     "task": "Mogres",
+     "taskId": 67,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 30,
+     "stats": [
+      [
+       32,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 80,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    },
+    {
+     "row": 6543,
+     "task": "Molanisks",
+     "taskId": 87,
+     "weight": 7,
+     "min": 40,
+     "max": 50,
+     "combat": 50,
+     "stats": [
+      [
+       39,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 90,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    },
+    {
+     "row": 6546,
+     "task": "Fever Spiders",
+     "taskId": 69,
+     "weight": 7,
+     "min": 30,
+     "max": 90,
+     "combat": 40,
+     "stats": [
+      [
+       42,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 85,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    },
+    {
+     "row": 6547,
+     "task": "Brine Rats",
+     "taskId": 84,
+     "weight": 7,
+     "min": 40,
+     "max": 90,
+     "combat": 45,
+     "stats": [
+      [
+       47,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    }
+   ],
+   "points": {
+    "1": 8,
+    "10": 40,
+    "50": 120,
+    "100": 200,
+    "250": 280,
+    "1000": 400
+   },
+   "blockCost": 60,
+   "combat": 40,
+   "slayer": 0
+  },
+  "duradel": {
+   "masterId": 5,
+   "tasks": [
+    {
+     "row": 6491,
+     "task": "Vampyres",
+     "taskId": 34,
+     "weight": 8,
+     "min": 100,
+     "max": 210,
+     "combat": 35,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": 6443,
+     "extension": [
+      6442,
+      200,
+      250
+     ],
+     "npcs": [
+      3137,
+      3237,
+      3692,
+      3693,
+      3694,
+      3695,
+      3717,
+      3718,
+      3719,
+      3729,
+      3730,
+      3731,
+      3732,
+      3748,
+      3749,
+      3750,
+      3751,
+      3752,
+      3753,
+      3754,
+      3755,
+      4427,
+      4428,
+      4429,
+      4430,
+      4436,
+      4437,
+      4438,
+      8300,
+      8301,
+      8302,
+      8303,
+      8304,
+      8305,
+      8306,
+      8307,
+      9727,
+      9728,
+      9731,
+      9732,
+      9735,
+      9736,
+      9737,
+      9738,
+      9739,
+      9740,
+      9741,
+      9742,
+      9756,
+      9757,
+      9758,
+      9759,
+      9760,
+      9761,
+      9762,
+      9763
+     ],
+     "spawns": 194
+    },
+    {
+     "row": 6492,
+     "task": "Basilisks",
+     "taskId": 43,
+     "weight": 7,
+     "min": 130,
+     "max": 200,
+     "combat": 25,
+     "stats": [
+      [
+       40,
+       18
+      ],
+      [
+       20,
+       1
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6440,
+     "extension": [
+      6439,
+      200,
+      250
+     ],
+     "npcs": [
+      417,
+      9293
+     ],
+     "spawns": 40
+    },
+    {
+     "row": 6493,
+     "task": "Drakes",
+     "taskId": 112,
+     "weight": 8,
+     "min": 50,
+     "max": 110,
+     "combat": 0,
+     "stats": [
+      [
+       84,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": 75,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      8612
+     ],
+     "spawns": 13
+    },
+    {
+     "row": 6494,
+     "task": "Wyrms",
+     "taskId": 111,
+     "weight": 8,
+     "min": 100,
+     "max": 160,
+     "combat": 0,
+     "stats": [
+      [
+       62,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": 60,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      8610
+     ],
+     "spawns": 16
+    },
+    {
+     "row": 6495,
+     "task": "Red Dragons",
+     "taskId": 26,
+     "weight": 8,
+     "min": 30,
+     "max": 65,
+     "combat": 68,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6408,
+     "extension": null,
+     "npcs": [
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      7274
+     ],
+     "spawns": 47
+    },
+    {
+     "row": 6496,
+     "task": "Lizardmen",
+     "taskId": 90,
+     "weight": 10,
+     "min": 130,
+     "max": 210,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": 55,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6423,
+     "extension": null,
+     "npcs": [
+      6766,
+      6767,
+      6914,
+      6915,
+      6916,
+      6917,
+      6918,
+      6919,
+      7744,
+      7745,
+      8563,
+      8564,
+      8565
+     ],
+     "spawns": 190
+    },
+    {
+     "row": 6497,
+     "task": "Elves",
+     "taskId": 56,
+     "weight": 4,
+     "min": 110,
+     "max": 170,
+     "combat": 70,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      3428,
+      3429,
+      5293,
+      5294,
+      5295,
+      5296,
+      9182,
+      9183,
+      9184,
+      9185,
+      9186,
+      9187,
+      9188,
+      9189,
+      9502,
+      9503
+     ],
+     "spawns": 68
+    },
+    {
+     "row": 6498,
+     "task": "Blue Dragons",
+     "taskId": 25,
+     "weight": 4,
+     "min": 110,
+     "max": 170,
+     "combat": 65,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      241,
+      242,
+      243,
+      265,
+      266,
+      267,
+      268,
+      269,
+      5878,
+      5879,
+      5880,
+      5881,
+      5882,
+      7273
+     ],
+     "spawns": 57
+    },
+    {
+     "row": 6499,
+     "task": "Waterfiends",
+     "taskId": 88,
+     "weight": 2,
+     "min": 130,
+     "max": 200,
+     "combat": 75,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 110,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2916,
+      2917
+     ],
+     "spawns": 67
+    },
+    {
+     "row": 6500,
+     "task": "Cave Horrors",
+     "taskId": 80,
+     "weight": 4,
+     "min": 130,
+     "max": 200,
+     "combat": 85,
+     "stats": [
+      [
+       58,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6417,
+      200,
+      250
+     ],
+     "npcs": [
+      1047,
+      1048,
+      1049,
+      1050,
+      1051
+     ],
+     "spawns": 70
+    },
+    {
+     "row": 6501,
+     "task": "Trolls",
+     "taskId": 18,
+     "weight": 6,
+     "min": 130,
+     "max": 200,
+     "combat": 60,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      648,
+      649,
+      650,
+      651,
+      652,
+      653,
+      654,
+      699,
+      700,
+      701,
+      702,
+      703,
+      704,
+      705,
+      925,
+      926,
+      927,
+      928,
+      931,
+      932,
+      933,
+      934,
+      935,
+      936,
+      937,
+      938,
+      939,
+      940,
+      941,
+      942,
+      1874,
+      1875,
+      1876,
+      4120,
+      4121,
+      4122,
+      4123,
+      4124,
+      4125,
+      4126,
+      4127,
+      4128,
+      4129,
+      4130,
+      4133,
+      4134,
+      4135,
+      4136,
+      4137,
+      4138,
+      4139,
+      4143,
+      5828,
+      5829,
+      5830,
+      5831
+     ],
+     "spawns": 208
+    },
+    {
+     "row": 6502,
+     "task": "Dust Devils",
+     "taskId": 49,
+     "weight": 5,
+     "min": 130,
+     "max": 200,
+     "combat": 70,
+     "stats": [
+      [
+       65,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6418,
+      200,
+      250
+     ],
+     "npcs": [
+      423,
+      7249
+     ],
+     "spawns": 44
+    },
+    {
+     "row": 6503,
+     "task": "Kurask",
+     "taskId": 45,
+     "weight": 4,
+     "min": 130,
+     "max": 200,
+     "combat": 65,
+     "stats": [
+      [
+       70,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      410,
+      411
+     ],
+     "spawns": 28
+    },
+    {
+     "row": 6504,
+     "task": "Ankou",
+     "taskId": 79,
+     "weight": 5,
+     "min": 50,
+     "max": 80,
+     "combat": 40,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": 60,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6400,
+      91,
+      150
+     ],
+     "npcs": [
+      2514,
+      2515,
+      2516,
+      2517,
+      2518,
+      2519,
+      6608,
+      7257,
+      7864
+     ],
+     "spawns": 81
+    },
+    {
+     "row": 6506,
+     "task": "Hellhounds",
+     "taskId": 31,
+     "weight": 10,
+     "min": 130,
+     "max": 200,
+     "combat": 75,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 126,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      104,
+      105,
+      1224,
+      3133,
+      7256,
+      7877
+     ],
+     "spawns": 72
+    },
+    {
+     "row": 6507,
+     "task": "Dagannoth",
+     "taskId": 35,
+     "weight": 9,
+     "min": 130,
+     "max": 200,
+     "combat": 75,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      970,
+      971,
+      972,
+      973,
+      974,
+      975,
+      2259,
+      2264,
+      2265,
+      2266,
+      2267,
+      3185,
+      5942,
+      5943,
+      7259,
+      7260
+     ],
+     "spawns": 248
+    },
+    {
+     "row": 6508,
+     "task": "Fire Giants",
+     "taskId": 16,
+     "weight": 7,
+     "min": 130,
+     "max": 200,
+     "combat": 65,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      2075,
+      2076,
+      2077,
+      2078,
+      2079,
+      2080,
+      2081,
+      2082,
+      2083,
+      7251,
+      7252
+     ],
+     "spawns": 88
+    },
+    {
+     "row": 6509,
+     "task": "Suqahs",
+     "taskId": 83,
+     "weight": 8,
+     "min": 60,
+     "max": 90,
+     "combat": 85,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6401,
+      186,
+      250
+     ],
+     "npcs": [
+      787,
+      788,
+      789,
+      790,
+      791,
+      792,
+      793
+     ],
+     "spawns": 27
+    },
+    {
+     "row": 6510,
+     "task": "Skeletal Wyverns",
+     "taskId": 72,
+     "weight": 7,
+     "min": 20,
+     "max": 40,
+     "combat": 70,
+     "stats": [
+      [
+       72,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6419,
+      50,
+      70
+     ],
+     "npcs": [
+      465,
+      466,
+      467,
+      468
+     ],
+     "spawns": 22
+    },
+    {
+     "row": 6511,
+     "task": "Fossil Island Wyverns",
+     "taskId": 106,
+     "weight": 7,
+     "min": 20,
+     "max": 50,
+     "combat": 60,
+     "stats": [
+      [
+       66,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6431,
+      55,
+      75
+     ],
+     "npcs": [
+      7792,
+      7793,
+      7794,
+      7795
+     ],
+     "spawns": 29
+    },
+    {
+     "row": 6512,
+     "task": "Greater Demons",
+     "taskId": 29,
+     "weight": 9,
+     "min": 130,
+     "max": 200,
+     "combat": 70,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6407,
+      200,
+      250
+     ],
+     "npcs": [
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      3129,
+      3130,
+      7244,
+      7245,
+      7246,
+      7871,
+      7872,
+      7873
+     ],
+     "spawns": 80
+    },
+    {
+     "row": 6513,
+     "task": "Black Dragons",
+     "taskId": 27,
+     "weight": 9,
+     "min": 10,
+     "max": 20,
+     "combat": 80,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6402,
+      40,
+      60
+     ],
+     "npcs": [
+      239,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      1871,
+      1872,
+      7275,
+      7861,
+      7955
+     ],
+     "spawns": 39
+    },
+    {
+     "row": 6514,
+     "task": "Aviansies",
+     "taskId": 94,
+     "weight": 8,
+     "min": 120,
+     "max": 200,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [
+      [
+       60,
+       2
+      ],
+      [
+       60,
+       16
+      ]
+     ],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6410,
+     "extension": [
+      6415,
+      200,
+      250
+     ],
+     "npcs": [
+      3162,
+      3163,
+      3164,
+      3165,
+      3169,
+      3170,
+      3171,
+      3172,
+      3173,
+      3174,
+      3175,
+      3176,
+      3177,
+      3178,
+      3179,
+      3180,
+      3181,
+      3182,
+      3183
+     ],
+     "spawns": 48
+    },
+    {
+     "row": 6515,
+     "task": "Spiritual Creatures",
+     "taskId": 89,
+     "weight": 7,
+     "min": 130,
+     "max": 200,
+     "combat": 60,
+     "stats": [
+      [
+       63,
+       18
+      ]
+     ],
+     "statsAny": [
+      [
+       60,
+       2
+      ],
+      [
+       60,
+       16
+      ]
+     ],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": [
+      6404,
+      181,
+      250
+     ],
+     "npcs": [
+      2210,
+      2211,
+      2212,
+      2242,
+      2243,
+      2244,
+      3159,
+      3160,
+      3161,
+      3166,
+      3167,
+      3168
+     ],
+     "spawns": 151
+    },
+    {
+     "row": 6516,
+     "task": "Bloodveld",
+     "taskId": 48,
+     "weight": 8,
+     "min": 130,
+     "max": 200,
+     "combat": 50,
+     "stats": [
+      [
+       50,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6413,
+      200,
+      250
+     ],
+     "npcs": [
+      484,
+      485,
+      486,
+      487,
+      3138,
+      7276
+     ],
+     "spawns": 99
+    },
+    {
+     "row": 6517,
+     "task": "Black Demons",
+     "taskId": 30,
+     "weight": 8,
+     "min": 130,
+     "max": 200,
+     "combat": 80,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6406,
+      200,
+      250
+     ],
+     "npcs": [
+      240,
+      2048,
+      2049,
+      2050,
+      2051,
+      2052,
+      3132,
+      5874,
+      5875,
+      5876,
+      5877,
+      7242,
+      7243,
+      7876
+     ],
+     "spawns": 57
+    },
+    {
+     "row": 6518,
+     "task": "Gargoyles",
+     "taskId": 46,
+     "weight": 8,
+     "min": 130,
+     "max": 200,
+     "combat": 80,
+     "stats": [
+      [
+       75,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6420,
+      200,
+      250
+     ],
+     "npcs": [
+      412,
+      1543,
+      7882
+     ],
+     "spawns": 21
+    },
+    {
+     "row": 6519,
+     "task": "Aberrant Spectres",
+     "taskId": 41,
+     "weight": 7,
+     "min": 130,
+     "max": 200,
+     "combat": 65,
+     "stats": [
+      [
+       60,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 110,
+     "unlockRow": null,
+     "extension": [
+      6414,
+      200,
+      250
+     ],
+     "npcs": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      7279
+     ],
+     "spawns": 39
+    },
+    {
+     "row": 6520,
+     "task": "Cave Kraken",
+     "taskId": 92,
+     "weight": 9,
+     "min": 100,
+     "max": 120,
+     "combat": 80,
+     "stats": [
+      [
+       87,
+       18
+      ],
+      [
+       50,
+       6
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6422,
+      150,
+      200
+     ],
+     "npcs": [
+      492,
+      493,
+      494,
+      496
+     ],
+     "spawns": 24
+    },
+    {
+     "row": 6521,
+     "task": "Smoke Devils",
+     "taskId": 95,
+     "weight": 9,
+     "min": 130,
+     "max": 200,
+     "combat": 85,
+     "stats": [
+      [
+       93,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      498,
+      499
+     ],
+     "spawns": 37
+    },
+    {
+     "row": 6522,
+     "task": "Nechryael",
+     "taskId": 52,
+     "weight": 9,
+     "min": 130,
+     "max": 200,
+     "combat": 85,
+     "stats": [
+      [
+       80,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6421,
+      200,
+      250
+     ],
+     "npcs": [
+      8,
+      11,
+      7278
+     ],
+     "spawns": 53
+    },
+    {
+     "row": 6523,
+     "task": "Kalphite",
+     "taskId": 53,
+     "weight": 9,
+     "min": 130,
+     "max": 200,
+     "combat": 15,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [
+      955,
+      956,
+      957,
+      958,
+      959,
+      960,
+      962,
+      963
+     ],
+     "spawns": 68
+    },
+    {
+     "row": 6524,
+     "task": "Abyssal Demons",
+     "taskId": 42,
+     "weight": 12,
+     "min": 130,
+     "max": 200,
+     "combat": 85,
+     "stats": [
+      [
+       85,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6405,
+      200,
+      250
+     ],
+     "npcs": [
+      415,
+      416,
+      5886,
+      7241
+     ],
+     "spawns": 58
+    },
+    {
+     "row": 6525,
+     "task": "Dark Beasts",
+     "taskId": 66,
+     "weight": 11,
+     "min": 10,
+     "max": 20,
+     "combat": 90,
+     "stats": [
+      [
+       90,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6399,
+      110,
+      135
+     ],
+     "npcs": [
+      4005
+     ],
+     "spawns": 29
+    },
+    {
+     "row": 6527,
+     "task": "Tzhaar",
+     "taskId": 96,
+     "weight": 10,
+     "min": 130,
+     "max": 199,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": 60,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6411,
+     "extension": null,
+     "npcs": [
+      2154,
+      2155,
+      2156,
+      2157,
+      2158,
+      2159,
+      2160,
+      2161,
+      2162,
+      2163,
+      2164,
+      2165,
+      2166,
+      2167,
+      2168,
+      2169,
+      2170,
+      2171,
+      2172,
+      2173,
+      2174,
+      2175,
+      2176,
+      2177,
+      2178,
+      2179,
+      3127,
+      7679,
+      7682,
+      7683,
+      7684,
+      7685,
+      7686,
+      7687,
+      7704
+     ],
+     "spawns": 253
+    },
+    {
+     "row": 6528,
+     "task": "Metal Dragons",
+     "taskId": 127,
+     "weight": 14,
+     "min": 35,
+     "max": 45,
+     "combat": 85,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6403,
+      90,
+      120
+     ],
+     "npcs": [
+      270,
+      271,
+      7253,
+      272,
+      273,
+      7254,
+      274,
+      275,
+      7255,
+      2919,
+      8030,
+      8031
+     ],
+     "spawns": 76
+    }
+   ],
+   "dropped": [
+    {
+     "row": 6489,
+     "task": "Araxytes",
+     "taskId": 124,
+     "weight": 10,
+     "min": 60,
+     "max": 80,
+     "combat": 0,
+     "stats": [
+      [
+       92,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6448,
+      200,
+      250
+     ],
+     "npcs": [],
+     "spawns": 0
+    },
+    {
+     "row": 6490,
+     "task": "Warped Creatures",
+     "taskId": 122,
+     "weight": 8,
+     "min": 130,
+     "max": 200,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6447,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    },
+    {
+     "row": 6505,
+     "task": "Mutated Zygomites",
+     "taskId": 74,
+     "weight": 2,
+     "min": 20,
+     "max": 30,
+     "combat": 60,
+     "stats": [
+      [
+       57,
+       18
+      ]
+     ],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": 100,
+     "unlockRow": null,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    },
+    {
+     "row": 6526,
+     "task": "Boss",
+     "taskId": 98,
+     "weight": 12,
+     "min": -1,
+     "max": -1,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": null,
+     "leaguesMaxCombat": null,
+     "unlockRow": 6412,
+     "extension": null,
+     "npcs": [],
+     "spawns": 0
+    }
+   ],
+   "points": {
+    "1": 15,
+    "10": 75,
+    "50": 225,
+    "100": 375,
+    "250": 525,
+    "1000": 750
+   },
+   "blockCost": 100,
+   "combat": 100,
+   "slayer": 50
+  }
+ },
+ "superiors": [
+  {
+   "npc": 7402,
+   "name": "Abhorrent spectre",
+   "level": 253,
+   "taskId": 41,
+   "task": "Aberrant spectres"
+  },
+  {
+   "npc": 7403,
+   "name": "Repugnant spectre",
+   "level": 335,
+   "taskId": 41,
+   "task": "Aberrant spectres"
+  },
+  {
+   "npc": 7410,
+   "name": "Greater abyssal demon",
+   "level": 342,
+   "taskId": 42,
+   "task": "Abyssal demons"
+  },
+  {
+   "npc": 12451,
+   "name": "Greater abyssal demon",
+   "level": 319,
+   "taskId": 42,
+   "task": "Abyssal demons"
+  },
+  {
+   "npc": 7390,
+   "name": "Screaming banshee",
+   "level": 70,
+   "taskId": 38,
+   "task": "Banshees"
+  },
+  {
+   "npc": 7391,
+   "name": "Screaming twisted banshee",
+   "level": 144,
+   "taskId": 38,
+   "task": "Banshees"
+  },
+  {
+   "npc": 7395,
+   "name": "Monstrous basilisk",
+   "level": 135,
+   "taskId": 43,
+   "task": "Basilisks"
+  },
+  {
+   "npc": 9258,
+   "name": "Basilisk Sentinel",
+   "level": 358,
+   "taskId": 43,
+   "task": "Basilisks"
+  },
+  {
+   "npc": 9287,
+   "name": "Monstrous Basilisk",
+   "level": 135,
+   "taskId": 43,
+   "task": "Basilisks"
+  },
+  {
+   "npc": 9288,
+   "name": "Monstrous Basilisk",
+   "level": 135,
+   "taskId": 43,
+   "task": "Basilisks"
+  },
+  {
+   "npc": 7397,
+   "name": "Insatiable Bloodveld",
+   "level": 202,
+   "taskId": 48,
+   "task": "Bloodveld"
+  },
+  {
+   "npc": 7398,
+   "name": "Insatiable mutated Bloodveld",
+   "level": 278,
+   "taskId": 48,
+   "task": "Bloodveld"
+  },
+  {
+   "npc": 7389,
+   "name": "Chasm Crawler",
+   "level": 68,
+   "taskId": 37,
+   "task": "Cave crawlers"
+  },
+  {
+   "npc": 14031,
+   "name": "Chasm Crawler",
+   "level": 68,
+   "taskId": 37,
+   "task": "Cave crawlers"
+  },
+  {
+   "npc": 7401,
+   "name": "Cave abomination",
+   "level": 206,
+   "taskId": 80,
+   "task": "Cave horrors"
+  },
+  {
+   "npc": 7393,
+   "name": "Cockathrice",
+   "level": 89,
+   "taskId": 44,
+   "task": "Cockatrice"
+  },
+  {
+   "npc": 7388,
+   "name": "Crushing hand",
+   "level": 45,
+   "taskId": 39,
+   "task": "Crawling hands"
+  },
+  {
+   "npc": 7409,
+   "name": "Night beast",
+   "level": 374,
+   "taskId": 66,
+   "task": "Dark beasts"
+  },
+  {
+   "npc": 12459,
+   "name": "Night beast",
+   "level": 332,
+   "taskId": 66,
+   "task": "Dark beasts"
+  },
+  {
+   "npc": 7404,
+   "name": "Choke devil",
+   "level": 264,
+   "taskId": 49,
+   "task": "Dust devils"
+  },
+  {
+   "npc": 7407,
+   "name": "Marble gargoyle",
+   "level": 349,
+   "taskId": 46,
+   "task": "Gargoyles"
+  },
+  {
+   "npc": 7408,
+   "name": "Marble gargoyle",
+   "level": 349,
+   "taskId": 46,
+   "task": "Gargoyles"
+  },
+  {
+   "npc": 7396,
+   "name": "Malevolent Mage",
+   "level": 162,
+   "taskId": 40,
+   "task": "Infernal mages"
+  },
+  {
+   "npc": 7399,
+   "name": "Vitreous Jelly",
+   "level": 206,
+   "taskId": 50,
+   "task": "Jellies"
+  },
+  {
+   "npc": 7400,
+   "name": "Vitreous warped Jelly",
+   "level": 241,
+   "taskId": 50,
+   "task": "Jellies"
+  },
+  {
+   "npc": 7405,
+   "name": "King kurask",
+   "level": 295,
+   "taskId": 45,
+   "task": "Kurask"
+  },
+  {
+   "npc": 7394,
+   "name": "Flaming pyrelord",
+   "level": 97,
+   "taskId": 47,
+   "task": "Pyrefiends"
+  },
+  {
+   "npc": 7392,
+   "name": "Giant rockslug",
+   "level": 86,
+   "taskId": 51,
+   "task": "Rockslugs"
+  },
+  {
+   "npc": 7406,
+   "name": "Nuclear smoke devil",
+   "level": 280,
+   "taskId": 95,
+   "task": "Smoke devils"
+  }
+ ],
+ "unlocks": [
+  {
+   "row": 6392,
+   "name": "Gargoyle Smasher",
+   "bit": 0,
+   "cost": 120,
+   "description": "Automatically smash Gargoyles when they're on critical health, if you have the right tool.",
+   "refundable": false,
+   "icon": 4147,
+   "position": [
+    0,
+    0
+   ],
+   "rowName": "slayer_rewards_autokill_gargoyles"
+  },
+  {
+   "row": 6393,
+   "name": "Slug Salter",
+   "bit": 1,
+   "cost": 10,
+   "description": "Automatically salt Rockslugs when they're on critical health, if you have salt.",
+   "refundable": false,
+   "icon": 4136,
+   "position": [
+    0,
+    1
+   ],
+   "rowName": "slayer_rewards_autokill_rockslugs"
+  },
+  {
+   "row": 6394,
+   "name": "Reptile Freezer",
+   "bit": 2,
+   "cost": 10,
+   "description": "Automatically freeze Desert Lizards when they're on critical health, if you have ice water.",
+   "refundable": false,
+   "icon": 6695,
+   "position": [
+    0,
+    2
+   ],
+   "rowName": "slayer_rewards_autokill_desertlizards"
+  },
+  {
+   "row": 6395,
+   "name": "'Shroom Sprayer",
+   "bit": 3,
+   "cost": 110,
+   "description": "Automatically spray Mutated Zygomites when they're on critical health, if you have fungicide.",
+   "refundable": false,
+   "icon": 7420,
+   "position": [
+    0,
+    3
+   ],
+   "rowName": "slayer_rewards_autokill_zygomites"
+  },
+  {
+   "row": 6399,
+   "name": "Need More Darkness",
+   "bit": 4,
+   "cost": 100,
+   "description": "Whenever you get a Dark Beast task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 6637,
+   "position": [
+    1,
+    0
+   ],
+   "rowName": "slayer_rewards_longer_darkbeasts"
+  },
+  {
+   "row": 6396,
+   "name": "Malevolent Masquerade",
+   "bit": 5,
+   "cost": 400,
+   "description": "Learn to combine the protective Slayer headgear and Slayer gem into one universal helmet, with level 55 Crafting.",
+   "refundable": false,
+   "icon": 11864,
+   "position": [
+    0,
+    5
+   ],
+   "rowName": "slayer_helm_unlocked"
+  },
+  {
+   "row": 6397,
+   "name": "Ring Bling",
+   "bit": 6,
+   "cost": 150,
+   "description": "Learn to craft your own Slayer Rings, with level 75 Crafting.",
+   "refundable": false,
+   "icon": 11866,
+   "position": [
+    0,
+    6
+   ],
+   "rowName": "slayer_ring_unlocked"
+  },
+  {
+   "row": 6398,
+   "name": "Broader Fletching",
+   "bit": 7,
+   "cost": 300,
+   "description": "Learn to fletch broad arrows (with level 52 Fletching), broad bolts (with level 55 Fletching) and amethyst broad bolts (with level 76 Fletching).",
+   "refundable": false,
+   "icon": 4455,
+   "position": [
+    0,
+    4
+   ],
+   "rowName": "slayer_ammo_unlocked"
+  },
+  {
+   "row": 6400,
+   "name": "Ankou Very Much",
+   "bit": 8,
+   "cost": 100,
+   "description": "Whenever you get a Ankou task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 6784,
+   "position": [
+    1,
+    1
+   ],
+   "rowName": "slayer_rewards_longer_ankou"
+  },
+  {
+   "row": 6401,
+   "name": "Suq-a-nother One",
+   "bit": 9,
+   "cost": 100,
+   "description": "Whenever you get a Suqah task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 9081,
+   "position": [
+    1,
+    2
+   ],
+   "rowName": "slayer_rewards_longer_suqah"
+  },
+  {
+   "row": 6402,
+   "name": "Fire & Darkness",
+   "bit": 10,
+   "cost": 50,
+   "description": "Whenever you get a Black Dragon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 1648,
+   "position": [
+    1,
+    3
+   ],
+   "rowName": "slayer_rewards_longer_blackdragons"
+  },
+  {
+   "row": 6403,
+   "name": "Pedal to the Metals",
+   "bit": 11,
+   "cost": 200,
+   "description": "Whenever you get a Metal Dragon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 8142,
+   "position": [
+    1,
+    4
+   ],
+   "rowName": "slayer_rewards_longer_metaldragons"
+  },
+  {
+   "row": 6404,
+   "name": "Spiritual Fervour",
+   "bit": 12,
+   "cost": 100,
+   "description": "Whenever you get a Spiritual Creature task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 11844,
+   "position": [
+    1,
+    5
+   ],
+   "rowName": "slayer_rewards_longer_spiritualgwd"
+  },
+  {
+   "row": 6405,
+   "name": "Augment My Abbies",
+   "bit": 13,
+   "cost": 100,
+   "description": "Whenever you get an Abyssal Demon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4149,
+   "position": [
+    1,
+    16
+   ],
+   "rowName": "slayer_rewards_longer_abyssaldemons"
+  },
+  {
+   "row": 6406,
+   "name": "It's Dark in Here",
+   "bit": 14,
+   "cost": 100,
+   "description": "Whenever you get a Black Demon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 1667,
+   "position": [
+    1,
+    8
+   ],
+   "rowName": "slayer_rewards_longer_blackdemons"
+  },
+  {
+   "row": 6407,
+   "name": "Greater Challenge",
+   "bit": 15,
+   "cost": 100,
+   "description": "Whenever you get a Greater Demon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 8138,
+   "position": [
+    1,
+    7
+   ],
+   "rowName": "slayer_rewards_longer_greaterdemons"
+  },
+  {
+   "row": 6409,
+   "name": "I Hope You Mith Me",
+   "bit": 16,
+   "cost": 80,
+   "description": "Konar, Duradel and Nieve will be able to assign Mithril Dragons as your task.",
+   "refundable": true,
+   "icon": 3687,
+   "position": [
+    -1,
+    -1
+   ],
+   "rowName": "slayer_rewards_unlock_mithrildragons"
+  },
+  {
+   "row": 6410,
+   "name": "Watch the Birdie",
+   "bit": 17,
+   "cost": 80,
+   "description": "Konar, Duradel, Nieve, Chaeldar and Krystilia will be able to assign Aviansies as your task.",
+   "refundable": true,
+   "icon": 3851,
+   "position": [
+    0,
+    8
+   ],
+   "rowName": "slayer_rewards_unlock_aviansies"
+  },
+  {
+   "row": 6411,
+   "name": "Hot Stuff",
+   "bit": 18,
+   "cost": 100,
+   "description": "Duradel, Nieve and Chaeldar will be able to assign TzHaar as your task. You may also be offered a chance to slay TzTok-Jad or TzKal-Zuk.",
+   "refundable": true,
+   "icon": 3903,
+   "position": [
+    0,
+    9
+   ],
+   "rowName": "slayer_rewards_unlock_tzhaar"
+  },
+  {
+   "row": 6412,
+   "name": "Like a Boss",
+   "bit": 19,
+   "cost": 200,
+   "description": "Konar, Duradel, Nieve and Krystilia will be able to assign boss monsters as your task. They will choose which boss you must kill.",
+   "refundable": true,
+   "icon": 3064,
+   "position": [
+    0,
+    11
+   ],
+   "rowName": "slayer_rewards_unlock_bosses"
+  },
+  {
+   "row": 6413,
+   "name": "Bleed Me Dry",
+   "bit": 20,
+   "cost": 75,
+   "description": "Whenever you get a Bloodveld task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4141,
+   "position": [
+    1,
+    9
+   ],
+   "rowName": "slayer_rewards_longer_bloodveld"
+  },
+  {
+   "row": 6414,
+   "name": "Smell Ya Later",
+   "bit": 21,
+   "cost": 100,
+   "description": "Whenever you get a Aberrant Spectre task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4144,
+   "position": [
+    1,
+    10
+   ],
+   "rowName": "slayer_rewards_longer_aberrantspectres"
+  },
+  {
+   "row": 6415,
+   "name": "Birds of a Feather",
+   "bit": 22,
+   "cost": 100,
+   "description": "Whenever you get an Aviansie task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 3851,
+   "position": [
+    1,
+    6
+   ],
+   "rowName": "slayer_rewards_longer_aviansies"
+  },
+  {
+   "row": 6416,
+   "name": "I Really Mith You",
+   "bit": 23,
+   "cost": 120,
+   "description": "Whenever you get a Mithril Dragon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 3687,
+   "position": [
+    -1,
+    -1
+   ],
+   "rowName": "slayer_rewards_longer_mithrildragons"
+  },
+  {
+   "row": 6417,
+   "name": "Horrorific",
+   "bit": 24,
+   "cost": 100,
+   "description": "Whenever you get a Cave Horror task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 8900,
+   "position": [
+    1,
+    11
+   ],
+   "rowName": "slayer_rewards_longer_cavehorrors"
+  },
+  {
+   "row": 6418,
+   "name": "To Dust You Shall Return",
+   "bit": 25,
+   "cost": 100,
+   "description": "Whenever you get a Dust Devil task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4145,
+   "position": [
+    1,
+    12
+   ],
+   "rowName": "slayer_rewards_longer_dustdevils"
+  },
+  {
+   "row": 6419,
+   "name": "Wyver-nother one",
+   "bit": 26,
+   "cost": 100,
+   "description": "Whenever you get a Skeletal Wyvern task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 6811,
+   "position": [
+    1,
+    13
+   ],
+   "rowName": "slayer_rewards_longer_skeletalwyverns"
+  },
+  {
+   "row": 6420,
+   "name": "Get Smashed",
+   "bit": 27,
+   "cost": 100,
+   "description": "Whenever you get a Gargoyle task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4147,
+   "position": [
+    1,
+    14
+   ],
+   "rowName": "slayer_rewards_longer_gargoyles"
+  },
+  {
+   "row": 6421,
+   "name": "Nechs Please",
+   "bit": 28,
+   "cost": 100,
+   "description": "Whenever you get a Nechryael task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4148,
+   "position": [
+    1,
+    15
+   ],
+   "rowName": "slayer_rewards_longer_nechryael"
+  },
+  {
+   "row": 6422,
+   "name": "Krack On",
+   "bit": 29,
+   "cost": 100,
+   "description": "Whenever you get a Cave Kraken task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 3272,
+   "position": [
+    1,
+    17
+   ],
+   "rowName": "slayer_rewards_longer_cavekraken"
+  },
+  {
+   "row": 6423,
+   "name": "Reptile Got Ripped",
+   "bit": 30,
+   "cost": 75,
+   "description": "Konar, Duradel, Nieve and Chaeldar will be able to assign you Lizardmen.",
+   "refundable": true,
+   "icon": 3260,
+   "position": [
+    0,
+    10
+   ],
+   "rowName": "slayer_rewards_unlock_lizardmen"
+  },
+  {
+   "row": 6424,
+   "name": "King Black Bonnet",
+   "bit": 31,
+   "cost": 1000,
+   "description": "Learn how to combine a KBD head with your Slayer helmet to colour it black.",
+   "refundable": false,
+   "icon": 19639,
+   "position": [
+    0,
+    13
+   ],
+   "rowName": "slayer_rewards_unlock_helm_black"
+  },
+  {
+   "row": 6425,
+   "name": "Kalphite Khat",
+   "bit": 32,
+   "cost": 1000,
+   "description": "Learn how to combine a Kalphite Queen head with your Slayer helmet to colour it green.",
+   "refundable": false,
+   "icon": 19643,
+   "position": [
+    0,
+    14
+   ],
+   "rowName": "slayer_rewards_unlock_helm_green"
+  },
+  {
+   "row": 6426,
+   "name": "Unholy Helmet",
+   "bit": 33,
+   "cost": 1000,
+   "description": "Learn how to combine an Abyssal Demon head with your Slayer helmet to colour it red.",
+   "refundable": false,
+   "icon": 19647,
+   "position": [
+    0,
+    15
+   ],
+   "rowName": "slayer_rewards_unlock_helm_red"
+  },
+  {
+   "row": 6408,
+   "name": "Seeing Red",
+   "bit": 34,
+   "cost": 50,
+   "description": "Konar, Duradel and Nieve will be able to assign Red Dragons as your task.",
+   "refundable": true,
+   "icon": 4761,
+   "position": [
+    0,
+    7
+   ],
+   "rowName": "slayer_rewards_unlock_reddragons"
+  },
+  {
+   "row": 6428,
+   "name": "Bigger and Badder",
+   "bit": 35,
+   "cost": 50,
+   "description": "Increase the risk against certain Slayer monsters with the chance of a superior version spawning whilst on a Slayer task.",
+   "refundable": false,
+   "icon": 26248,
+   "position": [
+    0,
+    12
+   ],
+   "rowName": "slayer_rewards_unlock_superiormobs"
+  },
+  {
+   "row": 6429,
+   "name": "Get Scabaright on It",
+   "bit": 36,
+   "cost": 50,
+   "description": "Whenever you get a Scabarite task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 1461,
+   "position": [
+    1,
+    18
+   ],
+   "rowName": "slayer_rewards_longer_scabarites"
+  },
+  {
+   "row": 6430,
+   "name": "Duly Noted",
+   "bit": 37,
+   "cost": 200,
+   "description": "Mithril Dragons drop mithril bars in banknote form while killed on assignment.",
+   "refundable": true,
+   "icon": 2360,
+   "position": [
+    0,
+    20
+   ],
+   "rowName": "slayer_rewards_unlock_notedmithrilbars"
+  },
+  {
+   "row": 6427,
+   "name": "Dark Mantle",
+   "bit": 38,
+   "cost": 1000,
+   "description": "Learn how to combine a Dark Claw with your Slayer helmet to colour it purple.",
+   "refundable": false,
+   "icon": 21264,
+   "position": [
+    0,
+    16
+   ],
+   "rowName": "slayer_rewards_unlock_helm_purple"
+  },
+  {
+   "row": 6431,
+   "name": "Wyver-nother Two",
+   "bit": 39,
+   "cost": 100,
+   "description": "Whenever you get a Fossil Island Wyvern task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 21507,
+   "position": [
+    1,
+    19
+   ],
+   "rowName": "slayer_rewards_longer_fossilwyverns"
+  },
+  {
+   "row": 6432,
+   "name": "Ada'mind Some More",
+   "bit": 40,
+   "cost": 100,
+   "description": "Whenever you get an Adamant Dragon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 7621,
+   "position": [
+    -1,
+    -1
+   ],
+   "rowName": "slayer_rewards_longer_adamantdragons"
+  },
+  {
+   "row": 6433,
+   "name": "RUUUUUNE",
+   "bit": 41,
+   "cost": 100,
+   "description": "Whenever you get a Rune Dragon task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 8797,
+   "position": [
+    -1,
+    -1
+   ],
+   "rowName": "slayer_rewards_longer_runedragons"
+  },
+  {
+   "row": 6434,
+   "name": "Undead Head",
+   "bit": 42,
+   "cost": 1000,
+   "description": "Learn how to combine Vorkath's head with your Slayer helmet to colour it turquoise.",
+   "refundable": false,
+   "icon": 21888,
+   "position": [
+    0,
+    17
+   ],
+   "rowName": "slayer_rewards_unlock_helm_turquoise"
+  },
+  {
+   "row": 6435,
+   "name": "Stop the Wyvern",
+   "bit": 43,
+   "cost": 500,
+   "description": "Stops you getting Fossil Island Wyvern tasks, without counting towards your blocked task limit.",
+   "refundable": false,
+   "icon": 6812,
+   "position": [
+    0,
+    21
+   ],
+   "rowName": "slayer_rewards_unlock_fossilwyvernblock"
+  },
+  {
+   "row": 6436,
+   "name": "Double Trouble",
+   "bit": 44,
+   "cost": 500,
+   "description": "Slaying Dusk and Dawn now counts for two kills towards your task rather than one.",
+   "refundable": true,
+   "icon": 21750,
+   "position": [
+    0,
+    22
+   ],
+   "rowName": "slayer_rewards_unlock_grotesquekills"
+  },
+  {
+   "row": 6437,
+   "name": "Use More Head",
+   "bit": 45,
+   "cost": 1000,
+   "description": "Learn how to combine a Hydra head with your Slayer helmet to theme it like the Alchemical Hydra.",
+   "refundable": false,
+   "icon": 23073,
+   "position": [
+    0,
+    18
+   ],
+   "rowName": "slayer_rewards_unlock_helm_hydra"
+  },
+  {
+   "row": 6439,
+   "name": "Basilonger",
+   "bit": 46,
+   "cost": 100,
+   "description": "Whenever you get a Basilisk task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 4139,
+   "position": [
+    1,
+    20
+   ],
+   "rowName": "slayer_rewards_longer_basilisk"
+  },
+  {
+   "row": 6440,
+   "name": "Basilocked",
+   "bit": 47,
+   "cost": 80,
+   "description": "Konar, Duradel and Nieve will be able to assign Basilisks as your task.",
+   "refundable": true,
+   "icon": 4139,
+   "position": [
+    0,
+    20
+   ],
+   "rowName": "slayer_rewards_unlock_basilisk"
+  },
+  {
+   "row": 6441,
+   "name": "Twisted Vision",
+   "bit": 48,
+   "cost": 1000,
+   "description": "Learn how to combine Twisted Horns with your Slayer helmet to theme it like the Great Olm.",
+   "refundable": false,
+   "icon": 24370,
+   "position": [
+    0,
+    24
+   ],
+   "rowName": "slayer_rewards_unlock_helm_twisted"
+  },
+  {
+   "row": 6442,
+   "name": "More at Stake",
+   "bit": 49,
+   "cost": 100,
+   "description": "Whenever you get a Vampyre task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 24708,
+   "position": [
+    1,
+    21
+   ],
+   "rowName": "slayer_rewards_longer_vampyres"
+  },
+  {
+   "row": 6443,
+   "name": "Actual Vampyre Slayer",
+   "bit": 50,
+   "cost": 80,
+   "description": "Konar, Duradel, Nieve and Chaeldar will be able to assign Vampyres as your task.",
+   "refundable": true,
+   "icon": 24708,
+   "position": [
+    0,
+    25
+   ],
+   "rowName": "slayer_rewards_unlock_vampyres"
+  },
+  {
+   "row": 6444,
+   "name": "Task Storage",
+   "bit": 51,
+   "cost": 500,
+   "description": "Gain the ability to store your task, allowing you to take it at a later point in time.",
+   "refundable": false,
+   "icon": 1841,
+   "position": [
+    0,
+    26
+   ],
+   "rowName": "slayer_rewards_unlock_storage"
+  },
+  {
+   "row": 6445,
+   "name": "I Wildy More Slayer",
+   "bit": 52,
+   "cost": 0,
+   "description": "Krystilia will be able to assign Jellies, Dust Devils, Nechryaels and Abyssal Demons as your task.",
+   "refundable": true,
+   "icon": 23493,
+   "position": [
+    0,
+    27
+   ],
+   "rowName": "slayer_rewards_unlock_wilderness_newtasks"
+  },
+  {
+   "row": 6446,
+   "name": "Revenenenenenants",
+   "bit": 53,
+   "cost": 100,
+   "description": "Whenever you get a Revenants task, it will be a bigger task.",
+   "refundable": false,
+   "icon": 11634,
+   "position": [
+    1,
+    22
+   ],
+   "rowName": "slayer_rewards_longer_revenants"
+  },
+  {
+   "row": 6447,
+   "name": "Warped Reality",
+   "bit": 54,
+   "cost": 60,
+   "description": "Konar, Duradel, Nieve and Chaeldar will be able to assign Warped Creatures as your task.",
+   "refundable": true,
+   "icon": 28582,
+   "position": [
+    0,
+    28
+   ],
+   "rowName": "slayer_rewards_unlock_warped_creatures"
+  },
+  {
+   "row": 6448,
+   "name": "More eyes than sense",
+   "bit": 55,
+   "cost": 150,
+   "description": "Whenever you get an Araxyte task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 29780,
+   "position": [
+    1,
+    23
+   ],
+   "rowName": "slayer_rewards_longer_araxytes"
+  },
+  {
+   "row": 6438,
+   "name": "Eye see you",
+   "bit": 56,
+   "cost": 1000,
+   "description": "Learn how to combine an Araxyte head with your Slayer helmet to theme it like the Araxxor.",
+   "refundable": false,
+   "icon": 29816,
+   "position": [
+    0,
+    19
+   ],
+   "rowName": "slayer_rewards_unlock_helm_araxyte"
+  },
+  {
+   "row": 6449,
+   "name": "Un-restraining Order",
+   "bit": 57,
+   "cost": 100,
+   "description": "Whenever you get a Custodian Stalker task, it will be a bigger task.",
+   "refundable": true,
+   "icon": 30994,
+   "position": [
+    1,
+    24
+   ],
+   "rowName": "slayer_rewards_longer_custodians"
+  }
+ ],
+ "itemRewards": [
+  {
+   "obj": 11866,
+   "quantity": 1,
+   "cost": 75
+  },
+  {
+   "obj": 11875,
+   "quantity": 250,
+   "cost": 35
+  },
+  {
+   "obj": 4160,
+   "quantity": 250,
+   "cost": 35
+  },
+  {
+   "obj": 13226,
+   "quantity": 1,
+   "cost": 750
+  },
+  {
+   "obj": 12791,
+   "quantity": 1,
+   "cost": 750
+  },
+  {
+   "obj": 11941,
+   "quantity": 1,
+   "cost": 10
+  }
+ ],
+ "extendEnum": {
+  "0": 4,
+  "1": 8,
+  "2": 9,
+  "3": 10,
+  "4": 11,
+  "5": 12,
+  "6": 22,
+  "7": 15,
+  "8": 14,
+  "9": 20,
+  "10": 21,
+  "11": 24,
+  "12": 25,
+  "13": 26,
+  "14": 27,
+  "15": 28,
+  "16": 13,
+  "17": 29,
+  "18": 36,
+  "19": 39,
+  "20": 46,
+  "21": 49,
+  "22": 53,
+  "23": 55,
+  "24": 57
+ }
+}

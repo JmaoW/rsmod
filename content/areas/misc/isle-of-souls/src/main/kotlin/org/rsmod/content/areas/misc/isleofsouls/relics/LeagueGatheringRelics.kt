@@ -41,8 +41,8 @@ import org.rsmod.plugin.scripts.ScriptContext
  * - Friendly Forager: gathering also finds a grimy herb (see [LeagueForager]).
  *
  * Each tool's "Toggle" option switches these effects (see [LeagueRelicToggleScript]), and auto-bank
- * can be turned off for each one. The Animal Wrangler hunter effects are not implemented yet; that
- * content does not exist.
+ * can be turned off for each one. The Hunter effects of Animal Wrangler and Friendly Forager are in
+ * [LeagueHunterRelics].
  */
 class LeagueGatheringRelics
 @Inject

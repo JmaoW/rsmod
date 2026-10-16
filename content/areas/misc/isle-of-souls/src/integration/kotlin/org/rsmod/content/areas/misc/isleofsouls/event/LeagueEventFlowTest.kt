@@ -17,15 +17,20 @@ import org.rsmod.annotations.InternalApi
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.death.PlayerDeathEvents
+import org.rsmod.api.drops.DropResult
+import org.rsmod.api.drops.NpcDropEvents
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.capture.CaptureClient
+import org.rsmod.api.testing.factory.npcTypeFactory
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeamCommands
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.game.cheat.CheatCommandMap
 import org.rsmod.game.entity.Player
+import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.type.mod.ModLevelTypeList
+import org.rsmod.map.CoordGrid
 
 /** The league event end to end: announcements, lead changes, freezing and the scoreboard files. */
 class LeagueEventFlowTest {
@@ -327,6 +332,50 @@ class LeagueEventFlowTest {
                 listOf("$league $alpha has received a rare drop: ${b("Logs")}."),
                 carol.broadcasts(),
             )
+        }
+
+    @Test
+    fun GameTestState.`boosted drops are announced and so are pets`() =
+        runEventTest { deps, alice, _, carol, _ ->
+            deps.announcer.load(dir)
+
+            deps.announcer.drop(alice, objs.logs, 1, boosted = true)
+            deps.announcer.drop(alice, objs.willow_logs, 1, boosted = false)
+
+            assertEquals(
+                listOf("$league $alpha has received a rare drop: ${b("Logs")}."),
+                carol.broadcasts(),
+            )
+
+            dir.resolve("announcements.json")
+                .writeText("""{ "drops": { "boosted": false, "pets": false } }""")
+            assertEquals(null, deps.announcer.reload())
+            deps.announcer.drop(alice, objs.logs, 1, boosted = true)
+            assertEquals(1, carol.broadcasts().size)
+        }
+
+    @Test
+    fun GameTestState.`the drops a monster rolls are announced to everyone`() =
+        runEventTest { deps, alice, _, carol, _ ->
+            dir.resolve("announcements.json").writeText("""{ "drops": { "objs": ["logs"] } }""")
+            deps.announcer.load(dir)
+            val type =
+                npcTypeFactory.create {
+                    name = "Test monster"
+                    hitpoints = 10
+                    defaultMode = NpcMode.None
+                }
+            val npc = spawnNpc(CoordGrid(0, 50, 50, 0, 0), type)
+
+            eventBus.publish(
+                NpcDropEvents.Rolled(
+                    npc,
+                    alice,
+                    listOf(DropResult(objs.logs, 2), DropResult(objs.willow_logs, 1)),
+                )
+            )
+
+            assertEquals(listOf(AnnouncementMessages.drop(alpha, "Logs", 2)), carol.broadcasts())
         }
 
     @Test

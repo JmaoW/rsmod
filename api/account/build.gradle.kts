@@ -20,4 +20,6 @@ dependencies {
     implementation(projects.engine.map)
     implementation(projects.engine.module)
     implementation(projects.server.services)
+    testImplementation(libs.sqlite.jdbc)
+    testImplementation(projects.api.testing.testFactory)
 }

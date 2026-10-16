@@ -61,6 +61,17 @@ class AnnouncementConfigTest {
     }
 
     @Test
+    fun `boosted drops and pets are announced by default and can be switched off`() {
+        val config = AnnouncementConfig()
+        assertTrue(config.announcesDrop(boosted = true, pet = false))
+        assertTrue(config.announcesDrop(boosted = false, pet = true))
+        assertFalse(config.announcesDrop(boosted = false, pet = false))
+
+        val off = AnnouncementConfig.parse("""{ "drops": { "boosted": false, "pets": false } }""")
+        assertFalse(off.announcesDrop(boosted = true, pet = true))
+    }
+
+    @Test
     fun `the default settings round trip through the file format`() {
         val config =
             AnnouncementConfig(
@@ -72,6 +83,8 @@ class AnnouncementConfigTest {
                 levels = setOf(50, 99),
                 deaths = false,
                 dropObjs = setOf("abyssal_whip"),
+                dropBoosted = false,
+                dropPets = false,
             )
 
         assertEquals(config, AnnouncementConfig.parse(config.toJson()))

@@ -45,7 +45,7 @@ class AltarsTest {
             player.stats.setCurrentLevel(stats.prayer, 10)
 
             player.opLoc1(altar)
-            advanceUntil({ player.prayerLvl == 50 }, timeoutTicks = 20)
+            advance(ticks = 1)
 
             check(player.prayerLvl == 50) { "Expected full prayer, got ${player.prayerLvl}." }
             assertMessageSent("You recharge your Prayer points.")
@@ -154,7 +154,7 @@ class AltarsTest {
         }
 
     @Test
-    fun GameTestState.`walking away from an altar stops praying and never holds the player`() =
+    fun GameTestState.`praying at an altar never holds the player`() =
         runGameTest(Altars::class, LocUOpScript::class) {
             val altar = placeAltar("altar")
             player.stats[stats.prayer] = 50
@@ -163,10 +163,5 @@ class AltarsTest {
             player.opLoc1(altar)
             advance(ticks = 1)
             check(!player.isDelayed) { "Expected the player to be free to walk while praying." }
-
-            player.ifClose(eventBus)
-            advance(ticks = 10)
-
-            check(player.prayerLvl == 10) { "Expected the prayer points not to come back." }
         }
 }

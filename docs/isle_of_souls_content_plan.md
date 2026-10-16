@@ -30,6 +30,10 @@ points, fastest wins ties). First written 2026-10-06 from the project notes,
 How to use this doc: each item has a priority and a checkbox. **(decided)** means you chose it;
 **(proposed)** is my suggestion and needs your yes or no.
 
+**Reference sources:** two outside GitHub repos, `RSPSApp/tsps` and `RSPSApp/osrsreboxed-db`, are
+useful for many items below. Section 11 lists what each is good for and the cautions; items that
+can use them carry a **Reference:** line.
+
 Priority key: **P0** the event is broken without it, **P1** the event is much better with it,
 **P2** only if time is left.
 
@@ -86,19 +90,19 @@ event. Effort: S = a day or less, M = a few days, L = a week or more of normal w
 | Woodcutting | Done | Logs for firemaking, fletching | done |
 | Firemaking | Done | Tasks, pyre/fire mechanics, cooking spots | done |
 | Fishing | Done | Raw food for cooking, tasks | done |
-| Cooking | Done | Food to survive combat and bosses | done |
+| Cooking | Done; 2026-10-12 added 54 more cooked foods (all Hunter meats, manta ray, sea turtle, dark crab, eels, stew, curry, cake, members' pies, baked potato), item-on-item preparation (dough, pies, pizza, cake, stew, potato toppings) and wine, plus eating every one of them (`isle_of_souls_food_plan.md`) | Food to survive combat and bosses | done |
 | Attack, Strength, Defence, Hitpoints | Engine only | Trained by killing NPCs; they decide who can beat Fight Caves/Inferno | M (needs NPCs, 4.1) |
 | Ranged | Engine only | Ammo from fletching, hunter chinchompas, dragonhide from crafting | M |
 | Magic | Elemental spells only | Combat spells, alchemy for shop money, teleports, runes from runecraft | M |
 | Prayer | Done: bury, altars (normal and chaos), Redemption, all prayers unlocked, 14 tasks (`isle_of_souls_prayer_plan.md`) | Bones from kills, altar; protection prayers are needed for Jad and Zuk | done |
 | Fletching | Done: every wiki recipe except Crafting's amethyst tips and the ogre bow (shafts, bows, stocks, shields, crossbows incl. blurite/dragon, arrows, javelins, darts, bolts, tips, broad/amethyst/dragon ammo, any feather); 18 tasks; Echo axe auto-fletch counts | Arrows, bolts, bows for ranged; Lumberjack toggle | done |
 | Crafting | Done (scope C, `isle_of_souls_crafting_plan.md`): every wiki recipe except crystal singing and golem crafting - gems (with crush), leather, d'hide + shields, snakeskin, yak, snelms, crab, Xerician, splitbark, mixed hide, Hueycoatl, battlestaves, amethyst tips, spinning, loom, pottery, glass, gold + silver jewellery on the real interfaces, birdhouses, tanner NPC; 20 tasks; `::craftkit` | Dragonhide armour, jewellery, gems for ranged, magic and boss gear. **No source for any material yet** | done |
-| Herblore | Done: cleaning, unfinished and finished potions (33 potions incl. super combat, divine, brews, stamina, extended antifire, goading, prayer regeneration), pestle and mortar, drinking with real effects, Forager perks, 30 tasks (`isle_of_souls_herblore_plan.md`) | Combat, prayer and ranging potions for bosses; Forager herbs become useful. **No source for secondaries yet** | done |
-| Runecraft | None | Runes for magic, so magic actually works | M |
-| Thieving | None | Stalls and pickpocketing as the coin source; Dodgy Deals | M |
-| Agility | None | One course on the isle, run energy, shortcuts; Corner Cutter | M |
-| Hunter | None | Chinchompas (ranged ammo), implings, fur; Animal Wrangler hunter half | M-L |
-| Slayer | None | Task assigner with bonus XP and points, Slayer relics; reuses combat NPCs | M-L |
+| Herblore | Done: cleaning, unfinished and finished potions (33 potions incl. super combat, divine, brews, stamina, extended antifire, goading, prayer regeneration), pestle and mortar, drinking with real effects, Forager perks, 30 tasks (`isle_of_souls_herblore_plan.md`); 2026-10-12 added the potions other content hands out: overload, Chambers of Xeric, blighted, Barbarian Assault copies, mixes, brews (`isle_of_souls_food_plan.md`) | Combat, prayer and ranging potions for bosses; Forager herbs become useful. **No source for secondaries yet** | done |
+| Runecraft | Done 2026-10-07 (`isle_of_souls_runecraft_plan.md`): essence mine, 14 altars (soul phase 2), combination runes, tiaras, pouches, the Abyss via the Mage of Zamorak (who sells runes), 25 tasks, `::runekit` | Runes for magic, so magic actually works | done |
+| Thieving | Done 2026-10-09 (`isle_of_souls_thieving_plan.md`): 23 pickpocket targets from tsps, 19 stalls from the Wiki, coin pouches, gloves of silence, rogue set and dodgy necklace effects, Dodgy Deals, 33 tasks, `::thievekit` | Stalls and pickpocketing as the coin source; Dodgy Deals | done |
+| Agility | Done 2026-10-09 (`isle_of_souls_agility_plan.md`): the real Brimhaven Agility Arena, Grace's graceful shop, marks of grace, Corner Cutter, 11 tasks (the 6 courses and 5 shortcuts built first were removed 2026-10-10 with their 11 tasks) | One course on the isle, run energy, shortcuts; Corner Cutter | done |
+| Hunter | Done 2026-10-09 (`isle_of_souls_hunter_plan.md`): 27 trap creatures (bird snare, box trap, magic box, deadfall, net traps, pitfalls), butterflies, moths, implings, falconry, birdhouses on a ten minute growth, 35 tasks, `::huntkit` | Chinchompas (ranged ammo), implings, fur; Animal Wrangler hunter half and Forager hook | done |
+| Slayer | Done 2026-10-11 (`isle_of_souls_slayer_plan.md`): 3 masters (Turael, Vannaka, Duradel), the cache task tables, gear rules, finishing items, the rewards store as a dialogue, superiors, Passives and Slayer Master relics, 16 tasks | Task assigner, Slayer points and XP; reuses combat NPCs | done |
 | Farming | None | Herb and food patches on the isle. Needs a shortened growth time (see below) | L |
 | Construction | None | Biggest unknown: see below | L |
 
@@ -123,6 +127,10 @@ revise them once the other skills exist.
   back.
 
 ### 1.2 Build order for new skills
+**Reference (section 11):** thieving has a ready target table (`pickpocketing.json`, `thieving.md`
+in tsps); hunter, agility, farming, construction and slayer each have a tsps doc or data file;
+`slayer-tasks.json` in osrsreboxed-db has all 16 masters' task tables.
+
 Cheapest first, and weighted by what they unlock:
 1. **Combat training** (four melee stats, ranged, magic, hitpoints, prayer): the foundation. Needs
    section 4.1 first.
@@ -159,18 +167,18 @@ a repick; tier 3 teleports become island teleports.
 | Tier | Relic | State | What it needs |
 |------|-------|-------|---------------|
 | 1 | Power Miner, Lumberjack | Done | Check toggles in client |
-| 1 | Animal Wrangler | Fishing/cooking done | Hunter half (needs hunter) |
-| 2 | Corner Cutter | Greaves only | Agility |
-| 2 | Friendly Forager | Herbs found, Herblore perks | Hunter hook |
-| 2 | Dodgy Deals | Nothing | Thieving |
+| 1 | Animal Wrangler | Done 2026-10-09 (hunter half: traps never fail, box traps faster with doubled chinchompa catches and XP, jars never break) | Check in client |
+| 2 | Corner Cutter | Done 2026-10-09: greaves running XP, always succeed, double laps and 25% bonus, marks with 10,000 coins | Check in client |
+| 2 | Friendly Forager | Done: herbs from mining, woodcutting, fishing and (2026-10-09) hunting | Check in client |
+| 2 | Dodgy Deals | Done 2026-10-09: area pickpocket, 100% success, auto-repeat, noted loot, 3x pouches, stalls never empty | Check in client |
 | 3 | Clue Compass, Bank Heist, Fairy's Flight | Nothing | Island teleports (destinations in section 5). There are no treasure trails, so the Compass cannot teleport to clue steps: **(proposed)** it teleports to boss entrances and other named places on the isle |
-| 3 | Passives | Nothing | 2x combat XP; slayer passives need slayer |
-| 4 | Golden God | Nothing | Alchemy (magic), altar offering (prayer) |
+| 3 | Passives | Done: 2x combat XP; 2026-10-11 5x Slayer points, free Bigger and Badder, superiors 1 in 50 | Check in client |
+| 4 | Golden God | Done 2026-10-08: free, +15%, 65% kept, repeating alchemy; 20,000 coins on an altar for dragon bone XP; noted shop purchases through the shop's Noted items button | Check in client |
 | 4 | Reloaded | Nothing | Repick flow |
 | 4 | Equilibrium | Nothing | XP hook only, cheap |
 | 5 | Production Master | Nothing | Needs the production skills; cheap once they exist |
 | 5 | Treasure Arbiter | Nothing | **(decided)** clues drop more often and caskets always roll the maximum number of times (section 3.5). Needs the clue and casket system |
-| 5 | Slayer Master | Nothing | Slayer |
+| 5 | Slayer Master | Done 2026-10-11: always on task, free perks and store, 100th-kill bonus XP | Check in client |
 | 6 | Total Recall, Banker's Note | Nothing | Both cheap; Total Recall is handy for boss runs |
 | 7 | Pocket Kingdom | Nothing | **(decided)** replaced by "Pocket Workshop": portable furnace, anvil, range and loom (no Miscellania) |
 | 7 | Grimoire | Nothing | Spellbook swap, needs the spellbooks |
@@ -194,18 +202,20 @@ Status of the build, in order:
 - [x] **Drop tables (done 2026-10-06)**: real OSRS format, layered `osrs.toml` + `boosted.toml` +
   `isle.toml`, a roller, and the death hook. See `isle_of_souls_drops.md`.
 - [x] **Relic drop rates (done)**: the relics boost only the wiki's list of boosted item and monster
-  pairs (2x with a tier 1 relic, 5x with tier 4), not every drop. The boosted list is imported from
+  pairs (5x with a tier 1 relic, 20x with tier 4; the wiki's 2x and 5x, raised for the short event), not every drop. The boosted list is imported from
   the wiki (242 pairs).
 - [x] **Wiki import tool (done)**: `tools/drops/wiki_import.py` fills `osrs.toml` and `boosted.toml`
   for the monsters in `tools/drops/monsters.txt`, with npc ids from the wiki's infoboxes. First
   batch of 16 pages imported (basic monsters plus the normal bosses that echo bosses pair with).
 - [x] **Multi-combat everywhere (done)**: `combat_multiway_everywhere` in `Constants.kt`, used by
   every single-combat check.
-- [ ] **Monster list**: yours to supply; each page goes into `monsters.txt`.
-- [ ] **Monster spawns on the isle**: a spawn file for the isle (the Lumbridge module shows the
-  pattern) once the monster list exists.
-- [ ] **Kill hooks**: `NpcDeathEvents.Killed` for kill-count tasks and `NpcDropEvents.Rolled` for
-  rare-drop announcements (both already published).
+- [x] **Monster list (done 2026-10-09)**: every attackable monster in the world spawn list. The wiki pages
+  come from the spawns (`tools/drops/spawned_monsters.py`), so no list had to be supplied; `monsters.txt`
+  is for hand-written additions. 1,645 of 1,690 spawned npc types have a real drop table.
+- [x] **Monster spawns (done 2026-10-09, needs packCache)**: 22,700 world spawns from the rs-map-viewer list,
+  checked against the cache, in `content/areas/misc/osrs-npc-spawns`. See `isle_of_souls_npc_spawns.md`.
+- [x] **Kill hooks (done 2026-10-09)**: rare drops announce through `LeagueAnnouncer.drop` (the item list
+  is in `announcements.json`), and `LeagueKillTasks` completes 65 kill tasks.
 - [x] **Npc melee, ranged and magic attacks (done 2026-10-06)**: `NpcAttacks` performs an
   `NpcAttack` with the standard accuracy and max hit formulas, protection prayers, a projectile
   and a hit that lands with it. See `isle_of_souls_npc_combat.md`.
@@ -215,7 +225,7 @@ Status of the build, in order:
   players in the same instance. 7 integration tests.
 - [ ] **Shops**: general store and skill supply shops (the shop API exists in `api/shops`).
 - [ ] Death inside an instance (last unchecked line of the foundation checklist).
-- [ ] Kill-count task triggers via `tracker.addProgress`.
+- [x] Kill-count task triggers via `tracker.addProgress` (`LeagueKillTasks`; boss ladders wait for the bosses).
 
 ### 3.2 Fight Caves **(built 2026-10-06, needs a real-client check)**
 Team instance, both players inside, Jad at the end. Built with the real 63 waves **and** the
@@ -227,9 +237,16 @@ differs from the plan and the client checklist are in `isle_of_souls_fight_caves
 - [x] Tasks: complete the cave 5 and 10 times. **Not yet:** equip a fire cape, survive a Jad hit
   without prayer.
 - [ ] **You:** run `./gradlew packCache`, then check it in the client (list in the plan file).
-- [ ] The Inferno gatekeeper option ("Exchange fire cape") is a stub until the Inferno exists.
+- [x] The Inferno gatekeeper option ("Exchange fire cape") now takes the one-off cape (2026-10-08). *Removed again 2026-10-10 pending a rework.*
 
-### 3.3 Inferno (shortened) **(decided)**
+### 3.3 Inferno **(built 2026-10-08, needs a real-client check)**
+Built in full, not just shortened: the real 69 waves **and** a shortened list (9 waves, with both Jad
+waves and TzKal-Zuk), switched by `infernoMode` in `.data/league/event-settings.json`. Pillars,
+the moving glyph, the minion sets, Zuk's Jad and the enrage are all in. What was built, what to check
+in the client and every guessed number are in `isle_of_souls_inferno_plan.md`. The original plan
+below is kept for reference.
+
+#### Original plan (3.3)
 Built on the same wave system as the caves, so do it after.
 - [ ] **P1** Shortened wave list **(proposed)**: about 6-8 waves (bat, blob, melee, ranger, mager,
   Jad-class), then TzKal-Zuk with a simplified shield mechanic.
@@ -239,6 +256,11 @@ Built on the same wave system as the caves, so do it after.
 ### 3.4 More bosses, including the echo bosses **(decided)**
 You plan to add many more bosses than the two instances, and as many of the Raging Echoes echo
 bosses as possible. **(decided)** No Wintertodt or Tempoross.
+
+**Zulrah (built 2026-10-08, needs a real-client check):** the first of these bosses that is not an echo
+pair. All four rotations, venom, clouds, snakelings, the wiki drop table and the existing Raging Echoes
+Zulrah tasks. What was built, the numbers to tune and the client checklist are in
+`docs/isle_of_souls_zulrah_plan.md`.
 
 The nine echo bosses from the
 [wiki](https://oldschool.runescape.wiki/w/Raging_Echoes_League/Echo_bosses_and_echo_equipment). Each
@@ -308,6 +330,12 @@ the model, replacement colour), and the server controls them:
 Suggested order, easiest first: Thermonuclear smoke devil, King Black Dragon, Cerberus, Kalphite
 Queen, Dagannoth Kings, Grotesque Guardians, then Hespori, Corrupted Gauntlet, Colosseum. The last
 three are each a whole minigame.
+
+**Reference (section 11):** tsps has plugins for King Black Dragon, Kalphite Queen, the Gauntlet
+(with Hunllef) and the Colosseum (with Sol Heredit), each with a wiki-sourced doc that marks which
+values are guesses. It has nothing for Cerberus, Dagannoth Kings, Grotesque Guardians or the
+Thermonuclear smoke devil, so those four come from the wiki alone. Read `gauntlet.md` and
+`fortis-colosseum.md` before committing to those two, to see what a whole minigame costs.
 
 - [ ] **P1** A shared **boss framework** built once: arena (overworld or instance), phases and
   attack patterns, two-player targeting, drop-table hookup, kill-count tasks, death handling.
@@ -466,6 +494,10 @@ masteries on**, since all of them will be unlocked in the real event.
 ## 4. NPCs and shops
 
 ### 4.1 Required before anything else
+**Reference (section 11):** pick the monster ladder from osrsreboxed-db `monsters-complete.json`
+(hitpoints, max hit, defences, attack speed, Slayer level), and the shop stock from its
+`shops-by-npc.json` and `shops-items-by-shop.json`.
+
 - [ ] **P0 Combat NPCs on the isle**: a ladder of low, mid and high level monsters so every
   combat skill can be trained, with drops and kill tasks. They also supply slayer, bones and
   hides.
@@ -601,3 +633,84 @@ Still open (answered on 2026-10-06 unless noted):
 7. **Mastery points:** **(decided)** per player.
 8. **Mastery cost:** **(decided)** 1 point per mastery.
 9. **Echo-boss mastery tasks (7-9):** *open.* Revisited when we look into echo bosses.
+
+---
+
+## 11. Outside reference sources
+
+Checked 2026-10-08, while building Zulrah. Both are GitHub repos under the `RSPSApp` account.
+Nothing was cloned into this project; their files were read through the public API. Neither is a
+dependency. They are material to read, check against, and take facts from.
+
+### 11.1 `RSPSApp/tsps` (BSD-2-Clause)
+
+A TypeScript OSRS server and client, about 2,860 files, 2,185 commits, active. Its code is
+JavaScript for a different engine, so it is reference only and cannot be ported. The value is in
+the `docs/` pages and the `server/data/definitions/` files, which say where each number came from
+(wiki, live capture, or "Near-Reality") and what is still unverified. Zulrah already uses it:
+`docs/zulrah.md` and `server/plugins/bosses/zulrah/` supplied the cloud and orb tiles, the four
+Zulrah spawn tiles and the cloud numbers (see `isle_of_souls_zulrah_plan.md`).
+
+**What it is useful for, by item in this plan:**
+
+| Plan item | tsps material | What to take |
+|-----------|---------------|--------------|
+| Thieving (1.2) | `docs/thieving.md`, `data/definitions/pickpocketing.json` | Every pickpocket target: level, XP, success out of 256, stun damage, coin pouch size, loot. Fastest way to build the shop-money source. |
+| Hunter (1.2) | `server/plugins/skills/hunter/README.md`, 27 files | Trap families, falconry, butterflies, impling loot tables, birdhouses, herbiboar, chinchompa catch curves. The README lists where it approximates. |
+| Agility (1.2) | `docs/agility-courses.md`, `docs/agility-shortcuts.md`, `agility-shortcuts.json` | Course and shortcut levels and XP. |
+| Farming (1.2) | `server/plugins/skills/Farming.md`, `farming-data.json` | 82 crops and patch tables. Our plan keeps herb and food patches only, so most of it is surplus. The doc mentions a Hespori encounter service, which is unread. |
+| Construction (1.2) | `docs/construction-features.md` | Restore-pool tiers and what each restores, for the build-site idea. It assumes a full player-owned house. |
+| Slayer (1.2) | `server/plugins/skills/Slayer.plugin.js`, `data/definitions/slayer-tasks.json`, `docs/slayer-tower.md` | Task assignment and masters. Overlaps the osrsreboxed-db file below. |
+| King Black Dragon and Kalphite Queen echoes (3.4) | `server/plugins/bosses/KingBlackDragon.plugin.js`, `KalphiteQueen.plugin.js` | Attack ids, timings and the two-phase structure of the normal fights. |
+| Corrupted Hunllef echo (3.4) | `docs/gauntlet.md`, 14 files in `server/plugins/minigames/gauntlet/` | Hunllef mechanics, max hits by crystal tier, weapons, resources, rewards. |
+| Sol Heredit echo (3.4) | `docs/fortis-colosseum.md`, 14 files in `server/plugins/minigames/colosseum/` | Wave 12 phases at 90/75/50/25/10% HP, attacks, modifiers, Glory, loot. |
+| More bosses (3.4) | `Scurrius`, `GiantMole`, `CorporealBeast` plugins, `docs/corporeal-beast.md` | Pattern references. |
+| Fight Caves and Inferno (3.2, 3.3) | `server/plugins/minigames/TzhaarFightCaves.plugin.js`, `minigames/inferno/` | A second implementation to cross-check ours against. |
+| Combat checks (3.1) | `npc-animations.json`, `npc-combat-defs.json`, `item-combat-styles.json`, `docs/weapon-data.md` | Per-NPC animation ids (BSD, from RuneLite), weapon styles and speeds. |
+| Shops (4.1) | `shops.json`, `custom-shops.json` | Stock lists. |
+| Drop tables (3.5, 4.1) | `npc-drop-overrides.json`, `docs/npc-drops.md` | Corrections to the raw wiki data, for example Zulrah's two rolls per kill. |
+| Serpentine helm, blowpipe (Zulrah gaps) | Not covered | Write from the wiki. |
+
+**Not in tsps:** Cerberus, Dagannoth Kings, Grotesque Guardians and the Thermonuclear smoke devil.
+Wintertodt and Tombs of Amascut exist there but are out of scope for this event. Construction
+and farming are far bigger than our plan needs.
+
+### 11.2 `RSPSApp/osrsreboxed-db` (code GPL-3.0, wiki data CC BY-NC-SA 3.0)
+
+A fork of DayV-git's fork of osrsbox-db, JSON data only, current as of September 2026. The
+`docs/` folder is about 150 MB. These are lookups and cross-checks, not gameplay logic.
+
+| File | Holds | Use in this plan |
+|------|-------|------------------|
+| `monsters-complete.json` | 3,883 monsters, about 44 fields: hitpoints, max hit, attack type and speed, five defence values, ranged defence split by ammo weight, elemental weakness, venom flags, Slayer data | Choose the combat ladder and set stats (4.1, section 3.1); cross-check `docs/isle_of_souls_npc_combat.md`. |
+| `drops-json/npc-drops.json` | 3,092 NPCs, 1,112 tables: weights, quantity ranges, sections, `separate_roll`, quest-gated notes; shared tables in `subtables.json` | A cleaner second source beside `tools/drops/wiki_import.py` (`isle_of_souls_drops.md`); cross-check or fill NPCs the importer has not run on. |
+| `slayer-tasks.json` | 16 masters: quantity, weights, Slayer and combat levels, the monsters each task covers | Build Slayer (1.2). |
+| `shops-by-npc.json`, `shops-items-by-shop.json` | 619 shop NPCs and their stock | Starting stock for the isle's shops (4.1). |
+| `items-complete.json` and per-item JSON | 16,755 items with equipment bonuses and requirements | Check gear tiers against the cache. |
+| `prayers-complete.json` | 29 prayers: drain and bonuses | Check only; prayer is built. |
+| `npcs-interactions.json`, `npc-dialogues*.json` | Click options and a very large dialogue dump | Not needed. |
+
+### 11.3 Cautions
+
+- **Treat unverified values as guesses.** Many tsps tile, timing and ratio values come from
+  Near-Reality, a leaked server dump with no license that tsps itself labels "behavior oracle
+  only". Facts such as tiles and animation ids are fine to read; do not copy its code or tables.
+  Prefer values marked wiki or captured. Everything taken from tsps stays "unverified against the
+  real game" until the real-client checks in section 9.
+- **Cache revision.** tsps mixes revisions and says live OSRS may be newer than its cache. Ours is
+  revision 233. Check every id against our cache, as was done for Zulrah.
+- **Data quirks.** In osrsreboxed-db, more than half of the monster entries leave some stat fields
+  null or zero, Zulrah's entries are marked `incomplete`, and the red form lists max hit 30 where
+  the other forms say 41. Use the wiki to settle conflicts.
+- **Licenses.** Keep attribution for the wiki-derived data where we use it, as
+  `isle_of_souls_drops.md` already does.
+
+### 11.4 Other repos checked and not used
+
+- `RSPSApp/elvarg-rsps` (317 server): deprecated, no license, no modern bosses, no Zulrah.
+- `AlterRSPS/Alter` (BSD-2): a framework fork of the older Tomm0017 RSMod, revision 228; only
+  King Black Dragon, Barrows and thieving as content, and a different plugin system.
+- `rsps-releases/osrs/kronos-osrs-184` and `os-scape` (GitLab, no license, apparently released
+  commercial servers): Kronos has Vorkath, Hydra, Cerberus, Kraken and Chambers of Xeric scripts,
+  but its Zulrah is marked "a mess" and its combat data is tuned for a custom server. Not
+  copied. If a boss from there is built, read it only for facts and check them against the wiki.

@@ -38,9 +38,14 @@ constructor(private val locRepo: LocRepository, private val objRepo: ObjReposito
             return
         }
 
-        locRepo.change(loc, lumbridge_locs.farmerfred_logs, 50)
+        locRepo.change(loc, lumbridge_locs.farmerfred_logs, AXE_RESPAWN_TICKS)
         invAddOrDrop(objRepo, objs.bronze_axe)
         soundSynth(synths.take_axe)
         objbox(objs.bronze_axe, 400, "You take a bronze axe from the logs.")
+    }
+
+    private companion object {
+        /** How long the logs stay without their axe. */
+        const val AXE_RESPAWN_TICKS = 10
     }
 }

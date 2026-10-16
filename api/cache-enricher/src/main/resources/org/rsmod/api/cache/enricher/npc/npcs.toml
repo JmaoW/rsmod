@@ -26869,10 +26869,28 @@ examine = 'A devout follower of Ranul.'
 [[config]]
 npc = 'rat_boss_normal'
 examine = "You're never more than six feet away from one."
+bonus_xp = 20.0
+slayer_xp = 600.0
+defence_light = 20
+defence_standard = 20
+defence_heavy = 20
+cannon_immunity = true
+venom_immunity = 'PoisonsInstead'
+attack_anim = 10692
+death_anim = 10705
 
 [[config]]
 npc = 'rat_boss_instance'
 examine = "You're never more than six feet away from one."
+bonus_xp = 20.0
+slayer_xp = 600.0
+defence_light = 20
+defence_standard = 20
+defence_heavy = 20
+cannon_immunity = true
+venom_immunity = 'PoisonsInstead'
+attack_anim = 10692
+death_anim = 10705
 
 [[config]]
 npc = 'rat_boss_giant_rat'

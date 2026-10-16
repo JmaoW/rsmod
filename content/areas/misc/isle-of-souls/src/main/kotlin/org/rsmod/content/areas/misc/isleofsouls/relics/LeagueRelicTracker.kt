@@ -86,6 +86,7 @@ class LeagueRelicTracker @Inject constructor() {
         }
 
         VarPlayerIntMapSetter.set(player, RelicVarBits.selection[choice.tier], choice.option)
+        player.requestAutosave()
         return RelicResult.Selected
     }
 
@@ -108,8 +109,8 @@ class LeagueRelicTracker @Inject constructor() {
     }
 
     /**
-     * How many times as likely monster drops are for [player]: 2x once a tier 1 relic is chosen,
-     * and 5x once a tier 4 relic is chosen (replacing the 2x, not stacking with it).
+     * How many times as likely monster drops are for [player]: 5x once a tier 1 relic is chosen,
+     * and 20x once a tier 4 relic is chosen (replacing the 5x, not stacking with it).
      */
     fun dropMultiplier(player: Player): Double {
         var multiplier = 1.0
@@ -148,6 +149,6 @@ class LeagueRelicTracker @Inject constructor() {
         val XP_MULTIPLIER_TIERS = listOf(1 to 8.0, 4 to 12.0, 6 to 16.0)
 
         /** Tier index to the drop multiplier it raises the league to; later entries win. */
-        val DROP_MULTIPLIER_TIERS = listOf(0 to 2.0, 3 to 5.0)
+        val DROP_MULTIPLIER_TIERS = listOf(0 to 5.0, 3 to 20.0)
     }
 }

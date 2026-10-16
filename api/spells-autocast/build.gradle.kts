@@ -16,6 +16,7 @@ dependencies {
     implementation(projects.api.type.typeEditors)
     implementation(projects.api.type.typeReferences)
     implementation(projects.api.type.typeScriptDsl)
+    implementation(projects.api.utils.utilsVars)
     implementation(projects.engine.game)
     implementation(projects.engine.plugin)
 }

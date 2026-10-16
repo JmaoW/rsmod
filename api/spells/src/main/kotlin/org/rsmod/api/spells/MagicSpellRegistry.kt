@@ -20,12 +20,33 @@ constructor(private val objTypes: ObjTypeList, private val enumResolver: EnumTyp
     private lateinit var objSpells: Map<Int, MagicSpell>
     private lateinit var autocastSpells: Map<Int, MagicSpell>
 
+    private val additionalSpells: List<ObjType> =
+        listOf(
+            objs.spell_enchant_lvl_1,
+            objs.spell_enchant_lvl_2,
+            objs.spell_enchant_lvl_3,
+            objs.spell_enchant_lvl_4,
+            objs.spell_enchant_lvl_5,
+            objs.spell_enchant_lvl_6,
+            objs.spell_enchant_lvl_7,
+        )
+
     public fun getObjSpell(obj: ObjType): MagicSpell? = objSpells[obj.id]
 
     public fun getAutocastSpell(autocastId: Int): MagicSpell? = autocastSpells[autocastId]
 
+    /**
+     * The spells that attack a target. The Lunar spellbook has none: its spells that the cache
+     * calls combat spells (Heal Other, Vengeance, Monster Examine and so on) work on a target
+     * without fighting it, and have their own scripts.
+     */
     public fun combatSpells(): List<MagicSpell> =
-        objSpells.values.filter { it.type == MagicSpellType.Combat }
+        objSpells.values.filter {
+            it.type == MagicSpellType.Combat && it.spellbook != Spellbook.Lunars
+        }
+
+    public fun teleportSpells(): List<MagicSpell> =
+        objSpells.values.filter { it.type == MagicSpellType.Teleport }
 
     internal fun init() {
         check(!::objSpells.isInitialized) { "`init` already called for this repository." }
@@ -46,6 +67,12 @@ constructor(private val objTypes: ObjTypeList, private val enumResolver: EnumTyp
             for (spellObj in spellList.values) {
                 spells[spellObj.id] = spellObj.toMagicSpell()
             }
+        }
+
+        // The jewellery enchantment spells are not in a spellbook enum: the spellbook only lists
+        // the "view" button that reveals them. They are still real spells with full parameters.
+        for (spellObj in additionalSpells) {
+            spells[spellObj.id] = spellObj.toMagicSpell()
         }
 
         return spells

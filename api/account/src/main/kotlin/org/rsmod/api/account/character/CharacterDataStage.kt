@@ -38,15 +38,28 @@ public class CharacterDataStage {
         public fun append(connection: DatabaseConnection, metadata: CharacterMetadataList)
 
         /**
-         * Called when a character is being saved to the database.
+         * Called on the game thread when a character is about to be saved.
          *
-         * Implementations should persist the current state of the [player] to the database, using
-         * the associated [characterId] as the reference for storage.
+         * Implementations must copy everything they need out of the [player] right here, and return
+         * a [Snapshot] that only reads those copies. The returned snapshot is written later on the
+         * saving thread, while the player carries on playing, so it must never touch the [player]
+         * again. Use [characterId] as the reference for storage.
          *
-         * This is typically used during logout or periodic save events to write back any modified
-         * data (such as inventories, stats, etc.).
+         * This is used on logout and for periodic and event-driven saves, so the data may be
+         * written many times for a single login.
          */
-        public fun save(connection: DatabaseConnection, player: Player, characterId: Int)
+        public fun snapshot(player: Player, characterId: Int): Snapshot
+    }
+
+    /**
+     * A detached copy of one part of a character's state, ready to be written to the database.
+     *
+     * Created on the game thread by [Pipeline.snapshot] and written on the saving thread, so
+     * implementations must be immutable copies and never read the live player.
+     */
+    public fun interface Snapshot {
+        /** Writes this copy using [connection], inside the transaction of the whole save. */
+        public fun save(connection: DatabaseConnection)
     }
 
     /**

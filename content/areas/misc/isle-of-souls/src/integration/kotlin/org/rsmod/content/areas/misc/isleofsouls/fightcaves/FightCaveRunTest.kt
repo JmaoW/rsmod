@@ -6,7 +6,6 @@ import jakarta.inject.Inject
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.rsmod.api.combat.NpcAttack
@@ -23,18 +22,28 @@ import org.rsmod.api.npc.hit.modifier.NpcHitModifier
 import org.rsmod.api.npc.hit.queueHit
 import org.rsmod.api.npc.queueDeath
 import org.rsmod.api.player.stat.hitpoints
+import org.rsmod.api.repo.loc.LocRepository
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.instances.EnterResult
 import org.rsmod.content.areas.misc.isleofsouls.instances.InstanceTargetScope
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
+import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueProgressVarps
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
+import org.rsmod.content.areas.misc.isleofsouls.waves.WaveRun
+import org.rsmod.content.areas.misc.isleofsouls.waves.WaveState
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.loc.BoundLocInfo
+import org.rsmod.game.loc.LocAngle
+import org.rsmod.game.loc.LocShape
+import org.rsmod.map.CoordGrid
+
+/** Where the tests put an entrance loc, on open ground of the lobby plaza. */
+private val ENTRANCE = CoordGrid(2207, 2861, 0)
 
 class FightCaveRunTest {
     private object CaveModule : AbstractModule() {
@@ -59,6 +68,7 @@ class FightCaveRunTest {
         val routes: org.rsmod.api.route.RouteFactory,
         val script: FightCaveScript,
         val completions: FightCaveCompletions,
+        val locRepo: LocRepository,
     )
 
     private class Cast(val alice: Player, val bob: Player, val carol: Player)
@@ -86,6 +96,7 @@ class FightCaveRunTest {
                 each.stats[stats.hitpoints] = 99
             }
             deps.caves.settings = FightCaveSettings(FightCaveMode.Shortened)
+            deps.caves.waveLoader = { FightCaveWaves.parse(TEST_SHORTENED_WAVES, "test waves") }
             body(deps, Cast(alice, bob, carol))
         }
 
@@ -321,14 +332,16 @@ class FightCaveRunTest {
 
             killAll(run)
 
-            assertEquals(FightCaveState.Won, run.state)
+            assertEquals(WaveState.Won, run.state)
             for (each in listOf(cast.alice, cast.bob)) {
                 assertTrue(cave_objs.fire_cape in each.inv, "${each.username} has no fire cape")
                 assertEquals(8032, each.inv.count(cave_objs.tokkul))
+                // The team's counter counts the run once, not once for each member.
+                assertEquals(1, each.vars[LeagueProgressVarps.fight_caves_5])
             }
 
             // Everyone is sent out a moment later and the run ends.
-            advance(ticks = FightCaveRun.LEAVE_DELAY + 3)
+            advance(ticks = WaveRun.LEAVE_DELAY + 3)
             assertTrue(deps.instances.instanceOf(cast.alice) == null)
             assertTrue(deps.caves.liveRuns().isEmpty())
         }
@@ -576,23 +589,17 @@ class FightCaveRunTest {
         }
 
     @Test
-    fun GameTestState.`the entrance and gatekeeper are placed on the plaza`() =
-        runCaveTest { deps, _ ->
-            deps.script.placeEntrance()
-
-            assertNotNull(findLoc(FightCaveScript.ENTRANCE, cave_locs.entrance))
-            val npcsThere = npcRepo.findAll(FightCaveScript.GATEKEEPER).toList()
-            assertTrue(
-                npcsThere.any { it.type.id == cave_npcs.gatekeeper.id },
-                "the gatekeeper is not at ${FightCaveScript.GATEKEEPER}",
-            )
-        }
-
-    @Test
     fun GameTestState.`using the entrance puts the player in a cave`() = runCaveTest { deps, cast ->
-        deps.script.placeEntrance()
-        val entrance = checkNotNull(findLoc(FightCaveScript.ENTRANCE, cave_locs.entrance))
-        cast.alice.placeAt(FightCaveScript.ENTRANCE.translate(1, -1))
+        // The entrance is a loc of the Mor Ul Rek map; the test stands one where the lobby had it.
+        deps.locRepo.add(
+            ENTRANCE,
+            locTypes[cave_locs.entrance],
+            duration = Int.MAX_VALUE,
+            angle = LocAngle.East,
+            shape = LocShape.CentrepieceStraight,
+        )
+        val entrance = checkNotNull(findLoc(ENTRANCE, cave_locs.entrance))
+        cast.alice.placeAt(ENTRANCE.translate(1, -1))
 
         cast.alice.opLoc1(BoundLocInfo(entrance, locTypes[cave_locs.entrance]))
         advance(ticks = 3)
@@ -615,3 +622,48 @@ class FightCaveRunTest {
             assertTrue(deps.caves.liveRuns().isEmpty())
         }
 }
+
+/**
+ * The shortened cave these tests play through (8 waves, then Jad). The tests use their own copy so
+ * they keep passing whatever the event's `fight_caves_waves_shortened.toml` holds.
+ */
+private val TEST_SHORTENED_WAVES =
+    """
+    [[wave]]
+    number = 1
+    monsters = ["tz_kih", "tz_kih"]
+
+    [[wave]]
+    number = 2
+    monsters = ["tz_kek", "tz_kih"]
+
+    [[wave]]
+    number = 3
+    monsters = ["tz_kek", "tz_kek"]
+
+    [[wave]]
+    number = 4
+    monsters = ["tok_xil", "tz_kek"]
+
+    [[wave]]
+    number = 5
+    monsters = ["tok_xil", "tok_xil"]
+
+    [[wave]]
+    number = 6
+    monsters = ["yt_mejkot", "tok_xil"]
+
+    [[wave]]
+    number = 7
+    monsters = ["ket_zek", "tz_kek"]
+
+    [[wave]]
+    number = 8
+    monsters = ["ket_zek", "yt_mejkot"]
+
+    [[wave]]
+    number = 9
+    monsters = ["tztok_jad"]
+    boss = true
+    """
+        .trimIndent()

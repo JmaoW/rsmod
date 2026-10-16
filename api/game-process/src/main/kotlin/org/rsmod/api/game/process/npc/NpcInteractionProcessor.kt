@@ -274,6 +274,11 @@ constructor(
     }
 
     private fun Npc.isUnderTarget(interaction: InteractionNpc): Boolean {
+        // The target may have changed level (ropes, stairs) since the interaction was set; the
+        // bound validator requires matching levels, and the interaction is cancelled later anyway.
+        if (level != interaction.target.level) {
+            return false
+        }
         return boundValidator.collides(avatar, interaction.target.avatar)
     }
 
@@ -347,6 +352,9 @@ constructor(
     }
 
     private fun Npc.isUnderTarget(interaction: InteractionPlayer): Boolean {
+        if (level != interaction.target.level) {
+            return false
+        }
         return boundValidator.collides(avatar, interaction.target.avatar)
     }
 

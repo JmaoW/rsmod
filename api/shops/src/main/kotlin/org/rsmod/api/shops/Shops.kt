@@ -133,6 +133,15 @@ constructor(private val invTypes: InvTypeList, private val eventBus: EventBus) {
             IfEvent.Op5,
             IfEvent.Op10,
         )
+
+        // The "Noted items" button is drawn by the client, and only for the league relic that
+        // wants it. Its clickable part is the child the button script creates after the nine that
+        // make up the stone button.
+        player.ifSetEvents(
+            ShopComponents.note_button,
+            NOTE_BUTTON_CHILD..NOTE_BUTTON_CHILD,
+            IfEvent.Op1,
+        )
     }
 
     private fun InvType.toInventory(observer: Player): Inventory {
@@ -163,6 +172,9 @@ constructor(private val invTypes: InvTypeList, private val eventBus: EventBus) {
     }
 
     public companion object {
+        /** The child of the shop's note button that can be clicked. */
+        public const val NOTE_BUTTON_CHILD: Int = 9
+
         public const val DEFAULT_SUBTEXT: String =
             "Right click on shop to buy item - Right-click on inventory to sell item"
     }

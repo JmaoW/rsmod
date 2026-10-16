@@ -5,7 +5,6 @@ import org.rsmod.api.account.character.CharacterDataStage
 import org.rsmod.api.account.character.CharacterMetadataList
 import org.rsmod.api.db.DatabaseConnection
 import org.rsmod.game.entity.Player
-import org.rsmod.game.inv.Inventory
 import org.rsmod.game.type.inv.InvScope
 
 private typealias CharacterInventory = CharacterInventoryData.Inventory
@@ -86,8 +85,31 @@ constructor(private val applier: CharacterInventoryApplier) : CharacterDataStage
         return inventories
     }
 
-    override fun save(connection: DatabaseConnection, player: Player, characterId: Int) {
-        val persistentInvs = player.invMap.values.filter { it.type.scope == InvScope.Perm }
+    override fun snapshot(player: Player, characterId: Int): CharacterDataStage.Snapshot {
+        val persistentInvs =
+            player.invMap.values
+                .filter { it.type.scope == InvScope.Perm }
+                .map { inventory ->
+                    val objs = arrayOfNulls<CharacterObj>(inventory.size)
+                    for (i in inventory.indices) {
+                        val obj = inventory[i] ?: continue
+                        objs[i] = CharacterObj(obj.id, obj.count, obj.vars)
+                    }
+                    InventorySnapshot(inventory.type.id, objs)
+                }
+        return CharacterDataStage.Snapshot { connection ->
+            save(connection, persistentInvs, characterId)
+        }
+    }
+
+    /** A copy of a persistent inventory: its type id, and the object (if any) in each slot. */
+    private class InventorySnapshot(val type: Int, val objs: Array<CharacterObj?>)
+
+    private fun save(
+        connection: DatabaseConnection,
+        persistentInvs: List<InventorySnapshot>,
+        characterId: Int,
+    ) {
         deleteStaleInventories(connection, characterId, persistentInvs)
 
         val delete =
@@ -120,27 +142,28 @@ constructor(private val applier: CharacterInventoryApplier) : CharacterDataStage
                 for (inventory in persistentInvs) {
                     val type = inventory.type
 
-                    val inventoryRowId = getOrInsertInventoryRowId(connection, characterId, type.id)
+                    val inventoryRowId = getOrInsertInventoryRowId(connection, characterId, type)
                     if (inventoryRowId == null) {
                         val message =
-                            "Fatal error fetching inventory row for: $type (player=$player)"
+                            "Fatal error fetching inventory row for: type=$type " +
+                                "(characterId=$characterId)"
                         throw IllegalStateException(message)
                     }
 
-                    for (i in inventory.indices) {
-                        if (inventory[i] == null) {
+                    for (i in inventory.objs.indices) {
+                        if (inventory.objs[i] == null) {
                             delete.setInt(1, inventoryRowId)
                             delete.setInt(2, i)
                             delete.addBatch()
                         }
                     }
 
-                    for (i in inventory.indices) {
-                        val obj = inventory[i]
+                    for (i in inventory.objs.indices) {
+                        val obj = inventory.objs[i]
                         if (obj != null) {
                             upsert.setInt(1, inventoryRowId)
                             upsert.setInt(2, i)
-                            upsert.setInt(3, obj.id)
+                            upsert.setInt(3, obj.type)
                             upsert.setInt(4, obj.count)
                             upsert.setInt(5, obj.vars)
                             upsert.addBatch()
@@ -156,7 +179,7 @@ constructor(private val applier: CharacterInventoryApplier) : CharacterDataStage
     private fun deleteStaleInventories(
         connection: DatabaseConnection,
         characterId: Int,
-        inventories: Collection<Inventory>,
+        inventories: Collection<InventorySnapshot>,
     ) {
         // Important: This function assumes `inventory_objs` references `inventories` with
         // `ON DELETE CASCADE`, so deleting a parent inventory also deletes its associated
@@ -174,7 +197,7 @@ constructor(private val applier: CharacterInventoryApplier) : CharacterDataStage
 
             deleteStaleInventories.use {
                 it.setInt(1, characterId)
-                inventories.forEachIndexed { index, inv -> it.setInt(2 + index, inv.type.id) }
+                inventories.forEachIndexed { index, inv -> it.setInt(2 + index, inv.type) }
                 it.executeUpdate()
             }
         } else {

@@ -1,0 +1,213 @@
+Source spawns: 24143
+Written:       22700  (surface 11748, underground 10952)
+Dropped:       1443
+
+== Dropped, by reason ==
+
+   760  nameless npc type in the cache (unclickable placeholder)
+          id  8014 x289  spawn name 'Moss warrior'                     cache name []
+          id  7856 x144  spawn name 'Dark warrior'                     cache name []
+          id  7857 x87   spawn name 'Skeleton'                         cache name []
+          id  8396 x48   spawn name 'Warrior of Murahs'                cache name []
+          id  8395 x40   spawn name 'Warrior of Murahs'                cache name []
+          id  8397 x40   spawn name 'Warrior of Murahs'                cache name []
+          id  1172 x15   spawn name ''                                 cache name []
+          id  3828 x12   spawn name 'Rubbish'                          cache name []
+          id  8488 x10   spawn name 'Ice giant'                        cache name []
+          id  8399 x8    spawn name 'Mummy'                            cache name []
+          id  8489 x8    spawn name 'Ice giant'                        cache name []
+          id  7944 x7    spawn name 'Ankou'                            cache name []
+          id  8490 x5    spawn name 'Ice giant'                        cache name []
+          id  8392 x4    spawn name 'Fire giant'                       cache name []
+          id  8398 x4    spawn name 'Mummy'                            cache name []
+          id  6178 x4    spawn name ''                                 cache name []
+          id  8017 x4    spawn name 'Moss giant'                       cache name []
+          id  8015 x4    spawn name 'Moss giant'                       cache name []
+          id  8393 x3    spawn name 'Fire giant'                       cache name []
+          id  8265 x3    spawn name '<col=00ffff>Steam</col>'          cache name []
+          id  8016 x3    spawn name 'Moss giant'                       cache name []
+          id  8394 x2    spawn name 'Fire giant'                       cache name []
+          id  8018 x2    spawn name 'Moss giant'                       cache name []
+          id  1836 x2    spawn name ''                                 cache name []
+          id  5898 x1    spawn name ''                                 cache name []
+          id  5861 x1    spawn name ''                                 cache name []
+          id  8266 x1    spawn name '<col=00ffff>Steam</col>'          cache name []
+          id  5860 x1    spawn name ''                                 cache name []
+          id 11108 x1    spawn name ''                                 cache name []
+          id  9800 x1    spawn name ''                                 cache name []
+          id  1837 x1    spawn name ''                                 cache name []
+          id  6800 x1    spawn name ''                                 cache name []
+          id 10527 x1    spawn name ''                                 cache name []
+          id  9012 x1    spawn name '<col=00ffff>Rocks</col>'          cache name []
+          id 10627 x1    spawn name ''                                 cache name []
+          id  7749 x1    spawn name ''                                 cache name []
+
+   581  map square already covered by the hand-made Lumbridge file
+          id  8702 x45   spawn name 'Frog'                             cache name ['Frog']
+          id  8701 x29   spawn name 'Big frog'                         cache name ['Big frog']
+          id  3029 x25   spawn name 'Goblin'                           cache name ['Goblin']
+          id  1173 x25   spawn name 'Chicken'                          cache name ['Chicken']
+          id  3033 x25   spawn name 'Goblin'                           cache name ['Goblin']
+          id  2790 x23   spawn name 'Cow'                              cache name ['Cow']
+          id  1174 x22   spawn name 'Chicken'                          cache name ['Chicken']
+          id  3031 x22   spawn name 'Goblin'                           cache name ['Goblin']
+          id  1838 x19   spawn name 'Duck'                             cache name ['Duck']
+          id  2793 x18   spawn name 'Cow'                              cache name ['Cow']
+          id  3017 x16   spawn name 'Giant spider'                     cache name ['Giant spider']
+          id  2854 x16   spawn name 'Rat'                              cache name ['Rat']
+          id  2791 x15   spawn name 'Cow'                              cache name ['Cow']
+          id  3034 x15   spawn name 'Goblin'                           cache name ['Goblin']
+          id  3032 x12   spawn name 'Goblin'                           cache name ['Goblin']
+          id  2794 x11   spawn name 'Cow calf'                         cache name ['Cow calf']
+          id  1839 x11   spawn name 'Duck'                             cache name ['Duck']
+          id  3030 x11   spawn name 'Goblin'                           cache name ['Goblin']
+          id  2856 x10   spawn name 'Giant rat'                        cache name ['Giant rat']
+          id  3035 x9    spawn name 'Goblin'                           cache name ['Goblin']
+          id  6709 x9    spawn name 'Guard'                            cache name ['Guard']
+          id  8700 x8    spawn name 'Giant frog'                       cache name ['Giant frog']
+          id  3036 x8    spawn name 'Goblin'                           cache name ['Goblin']
+          id  3019 x7    spawn name 'Spider'                           cache name ['Spider']
+          id  2864 x7    spawn name 'Giant rat'                        cache name ['Giant rat']
+          id  2792 x6    spawn name 'Cow calf'                         cache name ['Cow calf']
+          id  2863 x6    spawn name 'Giant rat'                        cache name ['Giant rat']
+          id   234 x5    spawn name 'Butterfly'                        cache name ['Butterfly']
+          id  2693 x5    spawn name 'Sheep'                            cache name ['Sheep']
+          id  1530 x5    spawn name 'Fishing spot'                     cache name ['Fishing spot']
+          id  3106 x5    spawn name 'Man'                              cache name ['Man']
+          id  3114 x4    spawn name 'Farmer'                           cache name ['Farmer']
+          id   238 x4    spawn name 'Butterfly'                        cache name ['Butterfly']
+          id  2699 x4    spawn name 'Sheep'                            cache name ['Sheep']
+          id  3108 x4    spawn name 'Man'                              cache name ['Man']
+          id  2786 x3    spawn name 'Sheep'                            cache name ['Sheep']
+          id  5007 x3    spawn name 'Imp'                              cache name ['Imp']
+          id  2003 x3    spawn name 'Duck'                             cache name ['Duck']
+          id  2004 x3    spawn name 'Drake'                            cache name ['Drake']
+          id  3111 x3    spawn name 'Woman'                            cache name ['Woman']
+          ... and 90 more npc ids
+
+    64  map square is not in the cache
+          id   531 x23   spawn name 'Dark warrior'                     cache name ['Dark warrior']
+          id  4695 x11   spawn name 'Hopeless creature'                cache name ['Hopeless creature']
+          id  4694 x11   spawn name 'Confusion beast'                  cache name ['Confusion beast']
+          id  4693 x9    spawn name 'Fear reaper'                      cache name ['Fear reaper']
+          id  4692 x2    spawn name 'Angry bear'                       cache name ['Angry bear']
+          id  4691 x2    spawn name 'Angry goblin'                     cache name ['Angry goblin']
+          id  4688 x2    spawn name 'Angry unicorn'                    cache name ['Angry unicorn']
+          id  2849 x2    spawn name 'Black unicorn'                    cache name ['Black unicorn']
+          id  4689 x1    spawn name 'Angry giant rat'                  cache name ['Angry giant rat']
+          id  4690 x1    spawn name 'Angry giant rat'                  cache name ['Angry giant rat']
+
+    31  id now belongs to a different npc (name changed)
+          id  3959 x19   spawn name 'Jungle savage'                    cache name ['Tormented Warrior']
+          id  1223 x1    spawn name 'Local'                            cache name ['Spectator']
+          id 10382 x1    spawn name 'Refugee'                          cache name ['Skully']
+          id  1053 x1    spawn name 'Patchy'                           cache name ['Mac']
+          id  6481 x1    spawn name 'Mac'                              cache name ['Jack Frost']
+          id  5870 x1    spawn name 'Key Master'                       cache name ['Patchy']
+          id  3639 x1    spawn name 'Archaeological expert'            cache name ['Terry Balando']
+          id  3205 x1    spawn name 'Zambo'                            cache name ['Surok Magis']
+          id 11046 x1    spawn name 'Solider'                          cache name ['Soldier']
+          id  7041 x1    spawn name 'Enoch'                            cache name ['Okina']
+          id  9504 x1    spawn name 'Account security tutor'           cache name ['Agitated bees']
+          id  9195 x1    spawn name 'Ian'                              cache name ['Floki']
+          id  6957 x1    spawn name 'Chief Farmer'                     cache name ['Dale']
+
+     6  duplicate entry in the source
+          id  7074 x4    spawn name '<col=ff9040>Blasted ore</col>'    cache name ['<col=ff9040>Blasted ore</col>']
+          id  1029 x1    spawn name 'Sleepwalker'                      cache name ['Sleepwalker']
+          id  9233 x1    spawn name 'Mourner'                          cache name ['Mourner']
+
+     1  exclusions.txt: near 7718 3031 9746 4
+          id  7718 x1    spawn name 'Yarsul'                           cache name ['Yarsul']
+
+== Written spawns inside areas you may care about ==
+
+Fight Caves (we use instances): 10 spawns  rect=(2370,5050)-(2445,5135)
+   TzHaar-Ket x5, TzHaar-Mej x2, TzHaar-Xil x2, TzTok-Jad x1
+
+Inferno (we use instances): 3 spawns  rect=(2230,5300)-(2310,5390)
+   JalTok-Jad x3
+
+Zulrah shrine (we use an instance): 1 spawns  rect=(2250,3060)-(2290,3095)
+   Lady Carys Hefin x1
+
+Tzhaar city: 133 spawns  rect=(2420,5090)-(2500,5200)
+   TzHaar-Ket x65, TzHaar-Xil x24, TzHaar-Hur x20, TzHaar-Mej x16, Rod Fishing spot x1, TzHaar-Mej-Bal x1, TzHaar-Ket-Keh x1, TzHaar-Mej-Jal x1
+
+Wintertodt: 28 spawns  rect=(1600,3920)-(1660,4040)
+   Snow x14, Pyromancer x4, Winter Soldier x3, Undor x1, Esther x1, Wintertoad x1, Captain Kalt x1, Ish the Navigator x1
+
+Tempoross: 14 spawns  rect=(3000,2960)-(3060,3040)
+   Gull x6, Crab x6, Trader Crewmember x2
+
+Isle of Souls (our isle): 158 spawns  rect=(2080,2770)-(2300,2980)
+   Butterfly x23, Squirrel x20, Sandy rocks x15, Bird x13, Pyrefiend x10, Crab x9, Rat x8, Chicken x7
+
+== Written spawns on blocked terrain: 1636 (mostly water dwellers) ==
+     85  Iceberg (id 5817)
+     82  Will o' the wisp (id 3483)
+     80  Duck (id 1839)
+     77  Ghast (id 945)
+     65  Duck (id 1838)
+     63  Gull (id 281)
+     44  Iceberg (id 5818)
+     32  Egg (id 5932)
+     24  Whirlpool (id 493)
+     20  Fishing spot (id 8523)
+     19  Will o' the wisp (id 3440)
+     19  Monkey Archer (id 5274)
+     18  Will o' the wisp (id 3441)
+     17  Giant bat (id 5791)
+     16  Butterfly (id 234)
+     16  Respiratory system (id 5914)
+     15  Rod Fishing spot (id 3418)
+     13  Suspicious water (id 5962)
+     12  Fishing spot (id 4476)
+     11  Ducklings (id 2002)
+     11  Fishing spot (id 1510)
+     10  Gull (id 285)
+     10  Spinolyp (id 5961)
+     10  Gourmet impling (id 1647)
+      9  Light creature (id 5783)
+
+== Written spawns per npc (top 40) ==
+    575  Rat (id 2854, rat)
+    366  Maniacal monkey (id 7118, mm2_maniacal_monkey_maze)
+    198  Butterfly (id 234, butterfly)
+    189  Maniacal Monkey Archer (id 7119, mm2_monkey_archer_maze)
+    186  Ghast (id 945, ghast_invis)
+    154  Spider (id 3019, spider)
+    118  Giant bat (id 2834, bat)
+    116  Butterfly (id 238, butterfly_viceroy)
+    112  Butterfly (id 235, butterfly2)
+    105  Bat (id 2827, small_bat)
+    103  Poison spider (id 3023, poisonspider)
+     99  Shadow (id 4004, mourning_shadow_beast)
+     98  Spider (id 4561, upass_little_spider)
+     90  Sandy rocks (id 7207, zeah_sandcrab_small_inactive)
+     87  Dark warrior (id 531, dark_warrior)
+     86  Spider (id 5238, mm_warehouse_spider)
+     85  Iceberg (id 5817, fris_ice_chunk_one)
+     83  Will o' the wisp (id 3483, willothewisp)
+     81  Duck (id 1839, duck_female)
+     80  Imp (id 5007, imp)
+     79  Sandy rocks (id 5936, zeah_sandcrab_inactive)
+     78  Jungle spider (id 3020, jungle_spider)
+     75  Gull (id 281, seabird1)
+     75  Rabbit (id 3420, regicide_rabbit)
+     70  Deadly red spider (id 3021, deadly_red_spider)
+     68  Scorpion (id 3024, scorpion)
+     67  Monkey (id 2848, monkey)
+     66  Duck (id 1838, duck)
+     65  Hobgoblin (id 3049, hobgoblin_unarmed)
+     61  TzHaar-Ket (id 7679, tzhaar_ket_strong)
+     60  Rocks (id 103, horror_rockcrab_small_inactive)
+     60  Rat (id 2513, sos_fam_rat)
+     58  Soulless (id 3104, souless)
+     57  Snake (id 2845, snake)
+     56  Rat (id 2492, sos_war_rat)
+     55  Jackal (id 4185, ics_little_jackal)
+     55  Crab (id 1040, harmless_island_crab)
+     54  Squirrel (id 1418, fai_squirrel_03)
+     54  Ogre (id 2095, ogre)
+     54  Dagannoth (id 3185, dungeon_dagganoth_mainroom)

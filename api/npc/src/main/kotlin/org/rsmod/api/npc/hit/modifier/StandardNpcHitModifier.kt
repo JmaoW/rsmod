@@ -7,13 +7,23 @@ import org.rsmod.api.config.refs.varns
 import org.rsmod.api.npc.events.NpcHitEvents
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.entity.PlayerList
+import org.rsmod.game.entity.player.PlayerUid
 import org.rsmod.game.hit.HitBuilder
 
-public class StandardNpcHitModifier @Inject constructor(private val eventBus: EventBus) :
-    NpcHitModifier {
+public class StandardNpcHitModifier
+@Inject
+constructor(private val eventBus: EventBus, private val players: PlayerList) : NpcHitModifier {
     override fun HitBuilder.modify(target: Npc) {
         target.publishEvent(this)
+        publishAny(target)
         target.applyFlatArmour(this)
+    }
+
+    private fun HitBuilder.publishAny(target: Npc) {
+        val uid = sourceUid
+        val source = if (isFromPlayer && uid != null) PlayerUid(uid).resolve(players) else null
+        eventBus.publish(NpcHitEvents.ModifyAny(target, this, source))
     }
 
     private fun Npc.publishEvent(hit: HitBuilder) {

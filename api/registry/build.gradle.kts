@@ -7,6 +7,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.bundles.logging)
     implementation(libs.guice)
     implementation(libs.fastutil)
     implementation(libs.rsprot.api)

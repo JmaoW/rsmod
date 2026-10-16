@@ -43,7 +43,7 @@ constructor(private val objRepo: ObjRepository, private val locRepo: LocReposito
         anim(seqs.human_pickupfloor)
         playerWalkWithMinDelay(loc.coords)
 
-        locRepo.del(loc, type.respawnTime)
+        locRepo.del(loc, locRepo.respawnSpeed.scale(type.respawnTime))
 
         mes(takeMessage)
         soundSynth(synths.pick)

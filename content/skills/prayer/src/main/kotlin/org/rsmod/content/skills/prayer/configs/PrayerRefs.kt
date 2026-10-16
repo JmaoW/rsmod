@@ -21,9 +21,6 @@ internal object PrayerSpotanims : SpotanimReferences() {
 }
 
 internal object PrayerQueues : QueueReferences() {
-    /** Fires once the player has finished kneeling at an altar and the points come back. */
-    val recharge = find("prayer_altar_recharge")
-
     /** Fires a tick after a bone is dug in, with the second chat message. */
     val bury_message = find("prayer_bury_message")
 }

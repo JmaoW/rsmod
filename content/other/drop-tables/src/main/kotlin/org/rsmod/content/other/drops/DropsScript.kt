@@ -22,6 +22,8 @@ constructor(private val loader: DropTableLoader, private val dropTables: DropTab
         val sources = DATA_FILES.map { DropSource(it, InputStreams.readAllBytes<DropsScript>(it)) }
         val result = loader.load(sources)
         dropTables.replaceAll(result.tables)
+        DropDataReport.warnings = result.warnings
+        DropDataReport.unmatchedBoosts = result.unmatchedBoosts
 
         logger.info {
             "Loaded drop tables for ${result.tables.size} npc types " +

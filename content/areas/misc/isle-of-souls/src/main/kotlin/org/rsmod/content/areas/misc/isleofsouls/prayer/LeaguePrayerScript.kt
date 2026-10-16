@@ -68,16 +68,9 @@ constructor(
     }
 
     companion object {
-        /**
-         * Both altars are 2 wide and 1 deep and stand in the open plaza just south of the bank
-         * chest (2212, 2860), with a free tile in front of each. A flood fill over the isle's
-         * collision from the plaza showed this ground is connected to the rest of the plaza; the
-         * strip north of the bank is cut off from it by the bank's crates and barrels.
-         */
         val ALTAR = CoordGrid(2208, 2857, 0)
-        val CHAOS_ALTAR = CoordGrid(2212, 2857, 0)
+        val CHAOS_ALTAR = CoordGrid(1929, 9447, 0)
 
-        /** Both face south, towards the bank. Turn them round here if they face the wrong way. */
         val ALTAR_ANGLE = LocAngle.South
     }
 }

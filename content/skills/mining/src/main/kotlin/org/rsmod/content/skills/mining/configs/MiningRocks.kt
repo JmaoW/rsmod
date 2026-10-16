@@ -9,21 +9,99 @@ import org.rsmod.game.type.loc.LocType
 
 internal object MiningRocks : LocEditor() {
     init {
-        orePair(RockLocs.copper_rock_1, RockLocs.copper_rock_2, objs.copper_ore, levelReq = 1, xp = 17.5, depleteChance = 235)
-        orePair(RockLocs.tin_rock_1, RockLocs.tin_rock_2, objs.tin_ore, levelReq = 1, xp = 17.5, depleteChance = 235)
-        orePair(RockLocs.clay_rock_1, RockLocs.clay_rock_2, objs.clay, levelReq = 1, xp = 5.0, depleteChance = 235)
-        orePair(RockLocs.iron_rock_1, RockLocs.iron_rock_2, objs.iron_ore, levelReq = 15, xp = 35.0, depleteChance = 230)
-        orePair(RockLocs.silver_rock_1, RockLocs.silver_rock_2, objs.silver_ore, levelReq = 20, xp = 40.0, depleteChance = 225)
-        orePair(RockLocs.coal_rock_1, RockLocs.coal_rock_2, objs.coal, levelReq = 30, xp = 50.0, depleteChance = 220)
-        orePair(RockLocs.gold_rock_1, RockLocs.gold_rock_2, objs.gold_ore, levelReq = 40, xp = 65.0, depleteChance = 200)
-        orePair(RockLocs.mithril_rock_1, RockLocs.mithril_rock_2, objs.mithril_ore, levelReq = 55, xp = 80.0, depleteChance = 180)
-        orePair(RockLocs.adamantite_rock_1, RockLocs.adamantite_rock_2, objs.adamantite_ore, levelReq = 70, xp = 95.0, depleteChance = 150)
-        orePair(RockLocs.runite_rock_1, RockLocs.runite_rock_2, objs.runite_ore, levelReq = 85, xp = 125.0, depleteChance = 100)
+        orePair(
+            RockLocs.copper_rock_1,
+            RockLocs.copper_rock_2,
+            objs.copper_ore,
+            levelReq = 1,
+            xp = 17.5,
+            depleteChance = 235,
+        )
+        orePair(
+            RockLocs.tin_rock_1,
+            RockLocs.tin_rock_2,
+            objs.tin_ore,
+            levelReq = 1,
+            xp = 17.5,
+            depleteChance = 235,
+        )
+        orePair(
+            RockLocs.clay_rock_1,
+            RockLocs.clay_rock_2,
+            objs.clay,
+            levelReq = 1,
+            xp = 5.0,
+            depleteChance = 235,
+        )
+        orePair(
+            RockLocs.iron_rock_1,
+            RockLocs.iron_rock_2,
+            objs.iron_ore,
+            levelReq = 15,
+            xp = 35.0,
+            depleteChance = 230,
+        )
+        orePair(
+            RockLocs.silver_rock_1,
+            RockLocs.silver_rock_2,
+            objs.silver_ore,
+            levelReq = 20,
+            xp = 40.0,
+            depleteChance = 225,
+        )
+        orePair(
+            RockLocs.coal_rock_1,
+            RockLocs.coal_rock_2,
+            objs.coal,
+            levelReq = 30,
+            xp = 50.0,
+            depleteChance = 220,
+        )
+        orePair(
+            RockLocs.gold_rock_1,
+            RockLocs.gold_rock_2,
+            objs.gold_ore,
+            levelReq = 40,
+            xp = 65.0,
+            depleteChance = 200,
+        )
+        orePair(
+            RockLocs.mithril_rock_1,
+            RockLocs.mithril_rock_2,
+            objs.mithril_ore,
+            levelReq = 55,
+            xp = 80.0,
+            depleteChance = 180,
+        )
+        orePair(
+            RockLocs.adamantite_rock_1,
+            RockLocs.adamantite_rock_2,
+            objs.adamantite_ore,
+            levelReq = 70,
+            xp = 95.0,
+            depleteChance = 150,
+        )
+        orePair(
+            RockLocs.runite_rock_1,
+            RockLocs.runite_rock_2,
+            objs.runite_ore,
+            levelReq = 85,
+            xp = 125.0,
+            depleteChance = 100,
+        )
 
         // Amethyst crystals deplete after a set number of ores (see [AMETHYST_ORES_PER_ROCK]), not
         // by a per-ore chance, so `depleteChance` is unused. They respawn after 75 seconds.
         for (crystal in listOf(RockLocs.amethyst_rock_1, RockLocs.amethyst_rock_2)) {
-            rock(crystal, RockLocs.amethyst_rock_empty, MiningOreObjs.amethyst, levelReq = 92, xp = 240.0, depleteChance = 0, respawn = 125)
+            rock(
+                crystal,
+                RockLocs.amethyst_rock_empty,
+                MiningOreObjs.amethyst,
+                levelReq = 92,
+                xp = 240.0,
+                depleteChance = 0,
+                respawn = 125,
+            )
         }
     }
 

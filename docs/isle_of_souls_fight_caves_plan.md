@@ -1,5 +1,12 @@
 # Isle of Souls: Fight Caves (implementation plan)
 
+*Update 2026-10-10: the lobby's cave entrance and TzHaar-Mej-Jal (talk-to and "Exchange fire cape") were removed; the exchange is to be reworked closer to the real game. The entrance and exit handlers stay on the loc types.*
+
+*Update 2026-10-08: the Inferno is built (see `isle_of_souls_inferno_plan.md`). The wave loop in
+`FightCaves.kt` now sits on a shared `waves` package (`WaveDirector`), and the gatekeeper's
+"Exchange fire cape" is the Inferno's one-off sacrifice, not a stub. The cave now counts a win once
+per team towards its "complete N times" tasks.*
+
 Written 2026-10-06 for a fresh implementation session. **Status: built the same day, not yet seen
 in a real client.** The code, tests and what you must check are in "As built" below; the rest of
 this file is the original plan, which the build followed except where "As built" says otherwise.
@@ -20,7 +27,7 @@ timer and counters it uses were added to `.data/symbols` (`timer.sym`, `varp.sym
 | `FightCaveMonsters.kt` | Each monster's attacks (max hits, anims, projectiles), size, speed, range |
 | `FightCaves.kt` | The director: enter/leave, wave spawning, hunting, Tz-Kek split, healers, win, clean-up |
 | `FightCaveCombatScript.kt` | How each monster attacks and dies; Jad uses `TargetingStyle.All` |
-| `FightCaveScript.kt` | Entrance loc, gatekeeper, the run timer, startup placement |
+| `FightCaveScript.kt` | Entrance and exit handlers, the run timer (the lobby gatekeeper was removed 2026-10-10) |
 | `FightCaveRewards.kt`, `FightCaveCompletions.kt` | Fire cape + 8,032 Tokkul + 1/200 pet for everyone inside, announcement, tasks |
 | `FightCaveConfigs.kt` | Cache names, and `FightCaveNpcEdits` (needs packCache) |
 
@@ -36,9 +43,9 @@ the next entry is a fresh cave. A player who died can walk back in and rejoin a 
 1. **Gatekeeper is TzHaar-Mej-Jal** (`tzhaar_fightcave_master`, 2180), not `inferno_master`: the
    cache gives him the "Talk-to" and "Exchange fire cape" options already. He stands at
    (2206, 2859). "Exchange fire cape" says the Inferno is not open yet.
-2. **Entrance** is at **(2207, 2861)**, set into the rock row, facing `LocAngle.East` (the real
-   cave's angle). The loc is 3 wide and 2 deep, so players use it from the plaza tile in front.
-   If it opens towards the rock in the client, change `ENTRANCE_ANGLE` to `West`.
+2. **Entrance:** the lobby no longer has one (removed 2026-10-10; it stood at (2207, 2861)). The
+   "Enter" handler is on the loc type, so the cave's own entrance in Mor Ul Rek (reached through the
+   Karamja Dungeon entrance) starts a run. The gatekeeper on the plaza was removed 2026-10-10.
 3. **Monsters have no pathfinding.** The engine moves npcs by stepping straight at the target and
    stopping at walls, as in the real game, so the spawn tiles are not where the wiki's picture puts
    them: a probe showed that the whole north-west room and the pocket behind the south-east rock
@@ -65,8 +72,7 @@ the next entry is a fresh cave. A player who died can walk back in and rejoin a 
 
 ### What to check in the real client (two accounts)
 
-- [ ] After `packCache`: the cave entrance and TzHaar-Mej-Jal stand on the plaza north of the
-  graveyards; the entrance faces the plaza and "Enter" shows.
+- [ ] After `packCache`: "Enter" on the cave entrance in Mor Ul Rek starts a run.
 - [ ] Both teammates enter and end up in the **same** cave; a third player gets their own.
 - [ ] Wave 1 spawns about 6 seconds in; the monsters walk to you and none starts stuck.
 - [ ] Each monster's attack animation and projectile look right (Tok-Xil spines, Ket-Zek fireball,

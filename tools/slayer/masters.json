@@ -1,0 +1,1428 @@
+{
+ "Turael": {
+  "combat": 0,
+  "slayer": 0,
+  "slayerPageHint": null,
+  "blockCost": 40,
+  "points": {},
+  "tasks": [
+   {
+    "name": "Banshees",
+    "link": "Banshees",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 15,
+    "combat": 20,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"1520\"|{{SCP|Slayer|15}}, {{SCP|Combat|20}}, completion of [[Priest in Peril]]",
+    "alternatives": [
+     "Twisted Banshee"
+    ]
+   },
+   {
+    "name": "Bats",
+    "link": "Bats",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 5,
+    "other": [],
+    "rawReq": "data-sort-value=\"5\"|{{SCP|Combat|5}}",
+    "alternatives": [
+     "Giant bat",
+     "Albino bat",
+     "Death wing"
+    ]
+   },
+   {
+    "name": "Bears",
+    "link": "Bears",
+    "amount": [
+     10,
+     20
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 13,
+    "other": [],
+    "rawReq": "data-sort-value=\"13\"|{{SCP|Combat|13}}",
+    "alternatives": [
+     "Grizzly bear cub",
+     "Bear cub",
+     "Grizzly bear",
+     "Reanimated bear"
+    ]
+   },
+   {
+    "name": "Birds",
+    "link": "Birds",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 6,
+    "slayer": 0,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"0\"|None",
+    "alternatives": [
+     "Chicken",
+     "Chompy bird",
+     "Duck",
+     "Duckling",
+     "Mounted terrorbird",
+     "Penguin",
+     "Rooster",
+     "Seagull",
+     "Terrorbird",
+     "Undead chicken"
+    ]
+   },
+   {
+    "name": "Cave bug",
+    "link": "Cave bug",
+    "amount": [
+     10,
+     30
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 7,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"700\"|{{SCP|Slayer|7}}",
+    "alternatives": []
+   },
+   {
+    "name": "Cave crawlers",
+    "link": "Cave crawlers",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 10,
+    "combat": 10,
+    "other": [],
+    "rawReq": "data-sort-value=\"1010\"|{{SCP|Slayer|10}}, {{SCP|Combat|10}}",
+    "alternatives": []
+   },
+   {
+    "name": "Cave slime",
+    "link": "Cave slime",
+    "amount": [
+     10,
+     20
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 17,
+    "combat": 15,
+    "other": [],
+    "rawReq": "data-sort-value=\"1715\"|{{SCP|Slayer|17}}, {{SCP|Combat|15}}",
+    "alternatives": []
+   },
+   {
+    "name": "Cows",
+    "link": "Cows",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 0,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"0\"|None",
+    "alternatives": [
+     "Buffalo",
+     "Cow calf",
+     "Undead cow"
+    ]
+   },
+   {
+    "name": "Crawling Hands",
+    "link": "Crawling Hands",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 5,
+    "combat": 0,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"500\"|{{SCP|Slayer|5}}, completion of [[Priest in Peril]]",
+    "alternatives": []
+   },
+   {
+    "name": "Dogs",
+    "link": "Dogs",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 15,
+    "other": [],
+    "rawReq": "data-sort-value=\"15\"|{{SCP|Combat|15}}",
+    "alternatives": [
+     "Jackal",
+     "Guard dog",
+     "Wild dog",
+     "Reanimated dog"
+    ]
+   },
+   {
+    "name": "Dwarves",
+    "link": "Dwarves",
+    "amount": [
+     10,
+     25
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 6,
+    "other": [],
+    "rawReq": "data-sort-value=\"6\"|{{SCP|Combat|6}}",
+    "alternatives": [
+     "Black Guard",
+     "Chaos Dwarf",
+     "Dwarf gang member"
+    ]
+   },
+   {
+    "name": "Ghosts",
+    "link": "Ghosts",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 13,
+    "other": [],
+    "rawReq": "data-sort-value=\"13\"|{{SCP|Combat|13}}",
+    "alternatives": [
+     "Tortured soul",
+     "Forgotten Soul",
+     "Death wing"
+    ]
+   },
+   {
+    "name": "Goblins",
+    "link": "Goblins",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"0\"|None",
+    "alternatives": [
+     "Cave goblin guard",
+     "Sergeant Strongstack",
+     "Sergeant Steelwill",
+     "Sergeant Grimspike"
+    ]
+   },
+   {
+    "name": "Icefiend",
+    "link": "Icefiend",
+    "amount": [
+     15,
+     20
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 0,
+    "combat": 20,
+    "other": [],
+    "rawReq": "data-sort-value=\"20\"|{{SCP|Combat|20}}",
+    "alternatives": []
+   },
+   {
+    "name": "Kalphite",
+    "link": "Kalphite",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 6,
+    "slayer": 0,
+    "combat": 15,
+    "other": [],
+    "rawReq": "data-sort-value=\"15\"|{{SCP|Combat|15}}",
+    "alternatives": [
+     "Kalphite worker",
+     "Kalphite soldier",
+     "Kalphite guardian"
+    ]
+   },
+   {
+    "name": "Lizards",
+    "link": "Lizards",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 22,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"2200\"|{{SCP|Slayer|22}}",
+    "alternatives": [
+     "Small Lizard",
+     "Desert Lizard",
+     "Sulphur Lizard",
+     "Grimy Lizard"
+    ]
+   },
+   {
+    "name": "Minotaur",
+    "link": "Minotaur",
+    "amount": [
+     10,
+     20
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 7,
+    "other": [],
+    "rawReq": "data-sort-value=\"7\"|{{SCP|Combat|7}}",
+    "alternatives": []
+   },
+   {
+    "name": "Monkeys",
+    "link": "Monkeys",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 6,
+    "slayer": 0,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"0\"|None",
+    "alternatives": [
+     "Karamjan Monkey",
+     "Monkey Guard",
+     "Monkey Archer",
+     "Monkey Zombie",
+     "Tortured Gorilla",
+     "Maniacal Monkey"
+    ]
+   },
+   {
+    "name": "Rats",
+    "link": "Rats",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"0\"|None",
+    "alternatives": [
+     "Giant rat",
+     "Dungeon rat",
+     "Crypt rat",
+     "Brine rat",
+     "Giant crypt rat"
+    ]
+   },
+   {
+    "name": "Scorpions",
+    "link": "Scorpions",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 7,
+    "other": [],
+    "rawReq": "data-sort-value=\"7\"|{{SCP|Combat|7}}",
+    "alternatives": [
+     "King Scorpion",
+     "Poison Scorpion",
+     "Pit Scorpion",
+     "Lobstrosity",
+     "Reanimated scorpion",
+     "Scorpia's offspring",
+     "Scorpia's guardian",
+     "Grave scorpion"
+    ]
+   },
+   {
+    "name": "Skeletons",
+    "link": "Skeletons",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 15,
+    "other": [],
+    "rawReq": "data-sort-value=\"15\"|{{SCP|Combat|15}}",
+    "alternatives": [
+     "Skeleton mage",
+     "Stronghold of Security",
+     "Ancient Cavern",
+     "Skogre",
+     "Shayzien Crypts Skeletons",
+     "Skeleton fremennik"
+    ]
+   },
+   {
+    "name": "Spiders",
+    "link": "Spiders",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 6,
+    "slayer": 0,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"0\"|None",
+    "alternatives": [
+     "Giant spider",
+     "Shadow spider",
+     "Giant crypt spider",
+     "Temple Spider"
+    ]
+   },
+   {
+    "name": "Wolves",
+    "link": "Wolves",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 20,
+    "other": [],
+    "rawReq": "data-sort-value=\"20\"|{{SCP|Combat|20}}",
+    "alternatives": [
+     "Big Wolf",
+     "Desert Wolf",
+     "Dire Wolf",
+     "Ice wolf",
+     "Jungle wolf",
+     "White wolf"
+    ]
+   },
+   {
+    "name": "Zombies",
+    "link": "Zombies",
+    "amount": [
+     15,
+     30
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 10,
+    "other": [],
+    "rawReq": "data-sort-value=\"10\"|{{SCP|Combat|10}}",
+    "alternatives": [
+     "Monkey Zombie",
+     "Undead chicken",
+     "Undead cow",
+     "Undead Druid",
+     "Undead one",
+     "Zombie rat",
+     "Zogre",
+     "Armoured zombie",
+     "Zombie pirate"
+    ]
+   }
+  ]
+ },
+ "Vannaka": {
+  "combat": 40,
+  "slayer": 0,
+  "slayerPageHint": null,
+  "blockCost": 60,
+  "points": {
+   "1": 8,
+   "10": 40,
+   "50": 120,
+   "100": 200,
+   "250": 280,
+   "1000": 400
+  },
+  "tasks": []
+ },
+ "Duradel": {
+  "combat": 100,
+  "slayer": 50,
+  "slayerPageHint": null,
+  "blockCost": 100,
+  "points": {
+   "1": 15,
+   "10": 75,
+   "50": 225,
+   "100": 375,
+   "250": 525,
+   "1000": 750
+  },
+  "tasks": [
+   {
+    "name": "Aberrant Spectres",
+    "link": "Aberrant Spectres",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 7,
+    "slayer": 60,
+    "combat": 65,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"6065\"|{{SCP|Slayer|60}}, {{SCP|Combat|65}}, completion of [[Priest in Peril]]",
+    "alternatives": [
+     "Deviant spectre"
+    ]
+   },
+   {
+    "name": "Abyssal Demons",
+    "link": "Abyssal Demons",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 12,
+    "slayer": 85,
+    "combat": 85,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"8585\"|{{SCP|Slayer|85}}, {{SCP|Combat|85}}, completion of [[Priest in Peril]] or [[Fairytale II - Cure a Queen]]",
+    "alternatives": [
+     "Abyssal Sire",
+     "Reanimated abyssal"
+    ]
+   },
+   {
+    "name": "Ankou",
+    "link": "Ankou",
+    "amount": [
+     50,
+     80
+    ],
+    "extended": [
+     91,
+     150
+    ],
+    "weight": 5,
+    "slayer": 0,
+    "combat": 40,
+    "other": [],
+    "rawReq": "data-sort-value=\"40\"|{{SCP|Combat|40}}",
+    "alternatives": [
+     "Dark Ankou"
+    ]
+   },
+   {
+    "name": "Aquanites",
+    "link": "Aquanites",
+    "amount": [
+     30,
+     50
+    ],
+    "extended": [
+     150,
+     200
+    ],
+    "weight": 5,
+    "slayer": 78,
+    "combat": 0,
+    "other": [
+     "sailing 73",
+     "unlock: Lured In"
+    ],
+    "rawReq": "data-sort-value=\"7873\"|{{SCP|Slayer|78}}, {{SCP|Sailing|73}}, Unlocked the ''Lured In'' ability via spending 80 [[Slayer reward points]]",
+    "alternatives": []
+   },
+   {
+    "name": "Araxytes",
+    "link": "Araxytes",
+    "amount": [
+     60,
+     80
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 10,
+    "slayer": 92,
+    "combat": 0,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"9200\"|{{SCP|Slayer|92}}, Completion of [[Priest in Peril]]",
+    "alternatives": [
+     "Araxxor"
+    ]
+   },
+   {
+    "name": "Aviansie",
+    "link": "Aviansie",
+    "amount": [
+     120,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 8,
+    "slayer": 0,
+    "combat": 0,
+    "other": [
+     "unlock: Watch the birdie"
+    ],
+    "rawReq": "data-sort-value=\"0\"|Unlocked the ''Watch the birdie'' ability via spending 80 [[Slayer reward points]]",
+    "alternatives": [
+     "Kree'arra",
+     "Flight Kilisa",
+     "Flockleader Geerin",
+     "Wingman Skree",
+     "Reanimated aviansie"
+    ]
+   },
+   {
+    "name": "Basilisks",
+    "link": "Basilisks",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 7,
+    "slayer": 40,
+    "combat": 0,
+    "other": [
+     "unlock: Basilocked"
+    ],
+    "rawReq": "data-sort-value=\"4000\"|{{SCP|Slayer|40}}, unlocked the ''Basilocked'' ability via spending 80 [[Slayer reward points]]",
+    "alternatives": [
+     "Basilisk Knight"
+    ]
+   },
+   {
+    "name": "Black Demons",
+    "link": "Black Demons",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 8,
+    "slayer": 0,
+    "combat": 80,
+    "other": [],
+    "rawReq": "data-sort-value=\"80\"|{{SCP|Combat|80}}",
+    "alternatives": [
+     "Demonic gorilla",
+     "Balfrug Kreeyath",
+     "Porazdir",
+     "Skotizo"
+    ]
+   },
+   {
+    "name": "Black Dragons",
+    "link": "Black Dragons",
+    "amount": [
+     10,
+     20
+    ],
+    "extended": [
+     40,
+     60
+    ],
+    "weight": 9,
+    "slayer": 0,
+    "combat": 80,
+    "other": [
+     "quest: Dragon Slayer I"
+    ],
+    "rawReq": "data-sort-value=\"80\"|{{SCP|Combat|80}}, partial completion of [[Dragon Slayer I]]",
+    "alternatives": [
+     "Baby black dragon",
+     "King Black Dragon",
+     "brutal black dragon"
+    ]
+   },
+   {
+    "name": "Bloodveld",
+    "link": "Bloodveld",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 8,
+    "slayer": 50,
+    "combat": 50,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"5050\"|{{SCP|Slayer|50}}, {{SCP|Combat|50}}, completion of [[Priest in Peril]]",
+    "alternatives": [
+     "Mutated Bloodveld",
+     "Reanimated Bloodveld"
+    ]
+   },
+   {
+    "name": "Blue Dragons",
+    "link": "Blue Dragons",
+    "amount": [
+     110,
+     170
+    ],
+    "extended": null,
+    "weight": 4,
+    "slayer": 0,
+    "combat": 65,
+    "other": [
+     "quest: Dragon Slayer I"
+    ],
+    "rawReq": "data-sort-value=\"65\"|{{SCP|Combat|65}}, partial completion of [[Dragon Slayer I]]",
+    "alternatives": [
+     "Baby blue dragon",
+     "brutal blue dragon",
+     "Vorkath"
+    ]
+   },
+   {
+    "name": "Boss",
+    "link": "Boss",
+    "amount": [
+     3,
+     35
+    ],
+    "extended": null,
+    "weight": 12,
+    "slayer": 0,
+    "combat": 0,
+    "other": [
+     "unlock: Like a boss"
+    ],
+    "rawReq": "data-sort-value=\"0\"|Unlocked the ''Like a boss'' ability via spending 200 [[Slayer reward points]], as well as various requirements for specific bosses",
+    "alternatives": []
+   },
+   {
+    "name": "Cave Horrors",
+    "link": "Cave Horrors",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 4,
+    "slayer": 58,
+    "combat": 85,
+    "other": [
+     "quest: Cabin Fever"
+    ],
+    "rawReq": "data-sort-value=\"5885\"|{{SCP|Slayer|58}}, {{SCP|Combat|85}}, completion of [[Cabin Fever]]",
+    "alternatives": []
+   },
+   {
+    "name": "Cave Kraken",
+    "link": "Cave Kraken",
+    "amount": [
+     100,
+     120
+    ],
+    "extended": [
+     150,
+     200
+    ],
+    "weight": 9,
+    "slayer": 87,
+    "combat": 80,
+    "other": [
+     "magic 50"
+    ],
+    "rawReq": "data-sort-value=\"8780\"|{{SCP|Slayer|87}}, {{SCP|Combat|80}}, {{SCP|Magic|50}}",
+    "alternatives": [
+     "Kraken"
+    ]
+   },
+   {
+    "name": "Dagannoth",
+    "link": "Dagannoth",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 9,
+    "slayer": 0,
+    "combat": 75,
+    "other": [
+     "quest: Horror from the Deep"
+    ],
+    "rawReq": "data-sort-value=\"75\"|{{SCP|Combat|75}}, completion of [[Horror from the Deep]]",
+    "alternatives": [
+     "Dagannoth spawn",
+     "Dagannoth fledgeling",
+     "Dagannoth Kings",
+     "Reanimated dagannoth"
+    ]
+   },
+   {
+    "name": "Dark Beasts",
+    "link": "Dark Beasts",
+    "amount": [
+     10,
+     20
+    ],
+    "extended": [
+     110,
+     135
+    ],
+    "weight": 11,
+    "slayer": 90,
+    "combat": 90,
+    "other": [],
+    "rawReq": "data-sort-value=\"9090\"|{{SCP|Slayer|90}}, {{SCP|Combat|90}}, started [[Mourning's End Part II]]",
+    "alternatives": []
+   },
+   {
+    "name": "Drakes",
+    "link": "Drakes",
+    "amount": [
+     50,
+     110
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 84,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"8400\"|{{SCP|Slayer|84}}",
+    "alternatives": []
+   },
+   {
+    "name": "Dust Devils",
+    "link": "Dust Devils",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 5,
+    "slayer": 65,
+    "combat": 70,
+    "other": [
+     "quest: Desert Treasure I"
+    ],
+    "rawReq": "data-sort-value=\"6570\"|{{SCP|Slayer|65}}, {{SCP|Combat|70}}, partial completion of [[Desert Treasure I]]",
+    "alternatives": []
+   },
+   {
+    "name": "Elves",
+    "link": "Elves",
+    "amount": [
+     110,
+     170
+    ],
+    "extended": null,
+    "weight": 4,
+    "slayer": 0,
+    "combat": 70,
+    "other": [
+     "quest: Regicide"
+    ],
+    "rawReq": "data-sort-value=\"70\"|{{SCP|Combat|70}}, completion of [[Regicide]]",
+    "alternatives": [
+     "Elf warrior",
+     "mourner",
+     "Mourner Headquarters",
+     "Guard (Prifddinas)",
+     "Reanimated elf",
+     "Iorwerth Warrior"
+    ]
+   },
+   {
+    "name": "Fire Giants",
+    "link": "Fire Giants",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 7,
+    "slayer": 0,
+    "combat": 65,
+    "other": [],
+    "rawReq": "data-sort-value=\"65\"|{{SCP|Combat|65}}",
+    "alternatives": [
+     "Branda the Fire Queen (Royal Titans)"
+    ]
+   },
+   {
+    "name": "Fossil Island Wyverns",
+    "link": "Fossil Island Wyverns",
+    "amount": [
+     20,
+     50
+    ],
+    "extended": [
+     55,
+     75
+    ],
+    "weight": 7,
+    "slayer": 66,
+    "combat": 60,
+    "other": [
+     "quest: Bone Voyage",
+     "quest: Elemental Workshop I"
+    ],
+    "rawReq": "data-sort-value=\"6660\"|{{SCP|Slayer|66}}, {{SCP|Combat|60}}, completion of [[Bone Voyage]], completion of [[Elemental Workshop I]]",
+    "alternatives": [
+     "Spitting",
+     "taloned",
+     "long-tailed wyvern",
+     "Ancient Wyvern"
+    ]
+   },
+   {
+    "name": "Frost Dragons",
+    "link": "Frost Dragons",
+    "amount": [
+     70,
+     120
+    ],
+    "extended": [
+     180,
+     240
+    ],
+    "weight": 5,
+    "slayer": 0,
+    "combat": 85,
+    "other": [
+     "sailing 87"
+    ],
+    "rawReq": "data-sort-value=\"87\"|{{SCP|Sailing|87}}, {{SCP|Combat|85}} <!--DS1 is NOT required-->",
+    "alternatives": []
+   },
+   {
+    "name": "Gargoyles",
+    "link": "Gargoyles",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 8,
+    "slayer": 75,
+    "combat": 80,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"7580\"|{{SCP|Slayer|75}}, {{SCP|Combat|80}}, completion of [[Priest in Peril]]",
+    "alternatives": [
+     "Grotesque Guardians"
+    ]
+   },
+   {
+    "name": "Greater Demons",
+    "link": "Greater Demons",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 9,
+    "slayer": 0,
+    "combat": 75,
+    "other": [],
+    "rawReq": "data-sort-value=\"75\"|{{SCP|Combat|75}}",
+    "alternatives": [
+     "K'ril Tsutsaroth",
+     "Tstanon Karlak",
+     "Skotizo",
+     "Tormented Demon"
+    ]
+   },
+   {
+    "name": "Gryphons",
+    "link": "Gryphons",
+    "amount": [
+     100,
+     210
+    ],
+    "extended": [
+     180,
+     290
+    ],
+    "weight": 7,
+    "slayer": 51,
+    "combat": 0,
+    "other": [
+     "sailing 45",
+     "quest: Troubled Tortugans",
+     "unlock: Wings Spread"
+    ],
+    "rawReq": "data-sort-value=\"5145\"|{{SCP|Slayer|51}}, {{SCP|Sailing|45}}, completion of [[Troubled Tortugans]], Unlocked the ''Wings Spread'' ability via spending 80 [[Slayer reward points]]",
+    "alternatives": [
+     "Shellbane gryphon"
+    ]
+   },
+   {
+    "name": "Hellhounds",
+    "link": "Hellhounds",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 10,
+    "slayer": 0,
+    "combat": 75,
+    "other": [],
+    "rawReq": "data-sort-value=\"75\"|{{SCP|Combat|75}}",
+    "alternatives": [
+     "Cerberus",
+     "Skeleton Hellhound",
+     "Greater Skeleton Hellhound",
+     "Reanimated hellhound"
+    ]
+   },
+   {
+    "name": "Kalphite",
+    "link": "Kalphite",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 9,
+    "slayer": 0,
+    "combat": 15,
+    "other": [],
+    "rawReq": "data-sort-value=\"15\"|{{SCP|Combat|15}}",
+    "alternatives": [
+     "Kalphite worker",
+     "Kalphite soldier",
+     "Kalphite guardian",
+     "Kalphite Queen",
+     "Reanimated kalphite"
+    ]
+   },
+   {
+    "name": "Kurask",
+    "link": "Kurask",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 4,
+    "slayer": 70,
+    "combat": 65,
+    "other": [],
+    "rawReq": "data-sort-value=\"7065\"|{{SCP|Slayer|70}}, {{SCP|Combat|65}}",
+    "alternatives": []
+   },
+   {
+    "name": "Lizardmen",
+    "link": "Lizardmen",
+    "amount": [
+     130,
+     210
+    ],
+    "extended": null,
+    "weight": 10,
+    "slayer": 0,
+    "combat": 0,
+    "other": [
+     "unlock: Reptile got ripped"
+    ],
+    "rawReq": "data-sort-value=\"0\"|Unlocked the ''Reptile got ripped'' ability via spending 75 [[Slayer reward points]]",
+    "alternatives": [
+     "Lizardman brute",
+     "Lizardman shaman"
+    ]
+   },
+   {
+    "name": "Metal Dragons",
+    "link": "Metal Dragons",
+    "amount": [
+     35,
+     45
+    ],
+    "extended": [
+     150,
+     200
+    ],
+    "weight": 14,
+    "slayer": 0,
+    "combat": 85,
+    "other": [
+     "quest: Dragon Slayer I"
+    ],
+    "rawReq": "data-sort-value=\"85\"|{{SCP|Combat|85}}, partial completion of [[Dragon Slayer I]]",
+    "alternatives": [
+     "Bronze dragon",
+     "Iron dragon",
+     "Steel dragon",
+     "Mithril dragon",
+     "Barbarian Training",
+     "miniquest",
+     "Adamant dragon",
+     "Dragon Slayer II",
+     "Rune dragon"
+    ]
+   },
+   {
+    "name": "Mutated Zygomites",
+    "link": "Mutated Zygomites",
+    "amount": [
+     20,
+     30
+    ],
+    "extended": null,
+    "weight": 2,
+    "slayer": 57,
+    "combat": 60,
+    "other": [
+     "quest: Lost City"
+    ],
+    "rawReq": "data-sort-value=\"5760\"|{{SCP|Slayer|57}}, {{SCP|Combat|60}}, completion of [[Lost City]]",
+    "alternatives": [
+     "Ancient Zygomite"
+    ]
+   },
+   {
+    "name": "Nechryael",
+    "link": "Nechryael",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 9,
+    "slayer": 80,
+    "combat": 85,
+    "other": [
+     "quest: Priest in Peril"
+    ],
+    "rawReq": "data-sort-value=\"8085\"|{{SCP|Slayer|80}}, {{SCP|Combat|85}}, completion of [[Priest in Peril]]",
+    "alternatives": [
+     "Greater Nechryael"
+    ]
+   },
+   {
+    "name": "Red Dragons",
+    "link": "Red Dragons",
+    "amount": [
+     30,
+     65
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 0,
+    "combat": 68,
+    "other": [
+     "quest: Dragon Slayer I",
+     "unlock: Seeing red"
+    ],
+    "rawReq": "data-sort-value=\"68\"|{{SCP|Combat|68}}, partial completion of [[Dragon Slayer I]], unlocked the ''Seeing red'' ability via spending 50 [[Slayer reward points]]",
+    "alternatives": [
+     "Baby red dragon",
+     "brutal red dragon"
+    ]
+   },
+   {
+    "name": "Skeletal Wyvern",
+    "link": "Skeletal Wyvern",
+    "amount": [
+     20,
+     40
+    ],
+    "extended": [
+     50,
+     70
+    ],
+    "weight": 7,
+    "slayer": 72,
+    "combat": 70,
+    "other": [
+     "quest: Elemental Workshop I"
+    ],
+    "rawReq": "data-sort-value=\"7270\"|{{SCP|Slayer|72}}, {{SCP|Combat|70}}, completion of [[Elemental Workshop I]]",
+    "alternatives": []
+   },
+   {
+    "name": "Smoke Devils",
+    "link": "Smoke Devils",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 9,
+    "slayer": 93,
+    "combat": 85,
+    "other": [],
+    "rawReq": "data-sort-value=\"9385\"|{{SCP|Slayer|93}}, {{SCP|Combat|85}}",
+    "alternatives": [
+     "Thermonuclear smoke devil"
+    ]
+   },
+   {
+    "name": "Spiritual Creatures",
+    "link": "Spiritual Creatures",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": [
+     181,
+     250
+    ],
+    "weight": 7,
+    "slayer": 63,
+    "combat": 60,
+    "other": [
+     "quest: Death Plateau"
+    ],
+    "rawReq": "data-sort-value=\"6360\"|{{SCP|Slayer|63}}, {{SCP|Combat|60}}, completion of [[Death Plateau]], level 60 in {{SCP|Strength}} or {{SCP|Agility}}",
+    "alternatives": [
+     "Spiritual ranger",
+     "warrior",
+     "mage"
+    ]
+   },
+   {
+    "name": "Suqahs",
+    "link": "Suqahs",
+    "amount": [
+     60,
+     90
+    ],
+    "extended": [
+     186,
+     250
+    ],
+    "weight": 8,
+    "slayer": 0,
+    "combat": 85,
+    "other": [
+     "quest: Lunar Diplomacy"
+    ],
+    "rawReq": "data-sort-value=\"85\"|{{SCP|Combat|85}}, partial completion of [[Lunar Diplomacy]]",
+    "alternatives": []
+   },
+   {
+    "name": "Trolls",
+    "link": "Trolls",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 6,
+    "slayer": 0,
+    "combat": 60,
+    "other": [],
+    "rawReq": "data-sort-value=\"60\"|{{SCP|Combat|60}}",
+    "alternatives": [
+     "Mountain troll",
+     "ice troll",
+     "Troll general",
+     "Reanimated troll",
+     "Dad",
+     "Ice Troll King",
+     "Arrg"
+    ]
+   },
+   {
+    "name": "TzHaar",
+    "link": "TzHaar",
+    "amount": [
+     130,
+     199
+    ],
+    "extended": null,
+    "weight": 10,
+    "slayer": 0,
+    "combat": 0,
+    "other": [
+     "unlock: Hot stuff"
+    ],
+    "rawReq": "data-sort-value=\"0\"|Unlocked the ''Hot stuff'' ability via spending 100 [[Slayer reward points]]",
+    "alternatives": [
+     "TzTok-Jad",
+     "TzTok-Jad",
+     "Slayer",
+     "experience",
+     "TzKal-Zuk",
+     "TzKal-Zuk",
+     "Slayer",
+     "experience",
+     "Inferno"
+    ]
+   },
+   {
+    "name": "Vampyres",
+    "link": "Vampyres",
+    "amount": [
+     100,
+     210
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 8,
+    "slayer": 0,
+    "combat": 0,
+    "other": [
+     "unlock: Actual Vampyre Slayer"
+    ],
+    "rawReq": "data-sort-value=\"0\"|Unlocked the ''Actual Vampyre Slayer'' ability via spending 80 [[Slayer reward points]]",
+    "alternatives": [
+     "Feral Vampyre",
+     "Vampyre Juvinate",
+     "Vyrewatch",
+     "Vyrewatch Sentinel",
+     "Venator"
+    ]
+   },
+   {
+    "name": "Warped creatures",
+    "link": "Warped creatures",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 8,
+    "slayer": 0,
+    "combat": 0,
+    "other": [
+     "unlock: Warped Reality"
+    ],
+    "rawReq": "data-sort-value=\"0\"|Unlocked the ''Warped Reality'' ability via spending 60 [[Slayer reward points]]",
+    "alternatives": [
+     "Warped Terrorbird",
+     "Warped Tortoise"
+    ]
+   },
+   {
+    "name": "Waterfiends",
+    "link": "Waterfiends",
+    "amount": [
+     130,
+     200
+    ],
+    "extended": null,
+    "weight": 2,
+    "slayer": 0,
+    "combat": 75,
+    "other": [],
+    "rawReq": "data-sort-value=\"75\"|{{SCP|Combat|75}}, progressed the Firemaking tasks of the [[Barbarian Training]] [[miniquest]] up to crafting [[Barbarian Training#Pyre ships|Pyre ships]].",
+    "alternatives": []
+   },
+   {
+    "name": "Wyrms",
+    "link": "Wyrms",
+    "amount": [
+     100,
+     160
+    ],
+    "extended": [
+     200,
+     250
+    ],
+    "weight": 8,
+    "slayer": 62,
+    "combat": 0,
+    "other": [],
+    "rawReq": "data-sort-value=\"6200\"|{{SCP|Slayer|62}}",
+    "alternatives": [
+     "Lava Strykewyrm",
+     "Wyrmling"
+    ]
+   }
+  ]
+ }
+}

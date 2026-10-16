@@ -38,12 +38,20 @@ internal class DropLoadResult(
 internal class DropTableLoader
 @Inject
 constructor(@Toml private val mapper: ObjectMapper, objTypes: ObjTypeList, npcTypes: NpcTypeList) {
+    /**
+     * Many names are shared by several objs (`fake_coins` is also called "Coins", and so is the
+     * decorative `viking_beerkeg` "Keg of beer"). The one the wiki means is the one whose internal
+     * name is the display name (`coins`), then [preferredObjs], then the lowest id.
+     */
     private val objsByName: Map<String, UnpackedObjType> =
         objTypes.values
             .filter { !it.isCert && it.placeholdertemplate == 0 }
             .filter { it.name.isNotBlank() && !it.name.equals("null", ignoreCase = true) }
             .groupBy { it.name.lowercase() }
-            .mapValues { (_, candidates) -> candidates.minBy { it.id } }
+            .mapValues { (name, candidates) ->
+                val wanted = preferredObjs[name] ?: internalNameOf(name)
+                candidates.firstOrNull { it.internalName == wanted } ?: candidates.minBy { it.id }
+            }
 
     private val objsByInternal: Map<String, UnpackedObjType> =
         objTypes.values.filter { it.internalName != null }.associateBy { it.internalNameValue }
@@ -270,6 +278,23 @@ constructor(@Toml private val mapper: ObjectMapper, objTypes: ObjTypeList, npcTy
         }
         return noted
     }
+
+    private companion object {
+        /**
+         * Names whose internal name is not the display name, so the rule above would not find the
+         * item the wiki means. Keyed by lowercase display name.
+         */
+        val preferredObjs =
+            mapOf(
+                // The unlit helmet is what cave goblins drop; the lit one is only ever made.
+                "mining helmet" to "cave_goblin_mining_helmet_unlit",
+                // The Slayer guide's display copy (4150) comes first; 4160 is the real ammunition.
+                "broad arrows" to "slayer_broad_arrows",
+            )
+    }
+
+    private fun internalNameOf(displayName: String): String =
+        displayName.replace(Regex("[^a-z0-9]+"), "_").trim('_')
 
     private fun MonsterDef.label(): String = source ?: name ?: npcs.joinToString().ifEmpty { "ids" }
 

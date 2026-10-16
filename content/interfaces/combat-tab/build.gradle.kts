@@ -11,4 +11,13 @@ dependencies {
     implementation(projects.api.specials)
     implementation(projects.api.spells)
     implementation(projects.api.spellsAutocast)
+
+    integrationImplementation(libs.guice)
+    integrationImplementation(projects.engine.annotations)
+    integrationImplementation(projects.api.combat.combatCommons)
+    integrationImplementation(projects.api.combat.combatManager)
+    integrationImplementation(projects.api.player)
+    integrationImplementation(projects.api.spells)
+    integrationImplementation(projects.api.spellsAutocast)
+    integrationImplementation(projects.api.spellsRunes)
 }

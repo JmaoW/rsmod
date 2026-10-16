@@ -214,6 +214,35 @@ public class Player(
 
     public var lastLogin: LocalDateTime = LocalDateTime.now()
 
+    /**
+     * The map clock cycle the account was last saved on, or [Int.MIN_VALUE] before the autosave
+     * process has seen this player. Only the autosave process should write to this.
+     */
+    public var lastSaveCycle: Int = Int.MIN_VALUE
+
+    /**
+     * Whether something worth saving has happened since the last save. See [requestAutosave].
+     *
+     * Only the autosave process should clear this.
+     */
+    public var autosaveRequested: Boolean = false
+
+    /** Whether the [autosaveRequested] save should skip its usual wait. */
+    public var autosaveUrgent: Boolean = false
+
+    /**
+     * Asks for the account to be saved soon, because something worth keeping just happened (a
+     * level, a finished task, a chosen relic...). The save is not done here: the autosave process
+     * does it, waiting a short while after the previous save so a burst of requests only saves
+     * once. With [urgent] it saves on the next cycle instead.
+     */
+    public fun requestAutosave(urgent: Boolean = false) {
+        autosaveRequested = true
+        if (urgent) {
+            autosaveUrgent = true
+        }
+    }
+
     /*
      * There are various ways a player can be removed from the game:
      * - Client disconnection: when the player x-logs out of their client. This results in the
@@ -233,9 +262,9 @@ public class Player(
     public var pendingLogout: Boolean = false
 
     /**
-     * Number of consecutive cycles [pendingLogout] has been set without the logout completing.
-     * Once this reaches the configured hard cap, the logout bypasses busy/delay/queue conditions so
-     * a player can never remain stuck pending logout.
+     * Number of consecutive cycles [pendingLogout] has been set without the logout completing. Once
+     * this reaches the configured hard cap, the logout bypasses busy/delay/queue conditions so a
+     * player can never remain stuck pending logout.
      */
     public var pendingLogoutCycles: Int = 0
     public var loggingOut: Boolean = false
@@ -319,7 +348,7 @@ public class Player(
         get() = queueList.isNotEmpty || weakQueueList.isNotEmpty || engineQueueList.isNotEmpty
 
     public val canProcessMovement: Boolean
-        get() = !isHaltMovementRequired()
+        get() = !isFrozen && !isHaltMovementRequired()
 
     private fun isHaltMovementRequired(): Boolean {
         // It seems that only "old" interactions (active for > 1 cycle) will bypass this movement

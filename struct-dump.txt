@@ -4,4 +4,4 @@
 2280 name=null primitive={873=772, 874=Equip a Full Prospector Outfit, 875=Equip a full set of Prospector gear, 1850=3, 1851=3, 1852=3, 2044=3, 1018=13, 1017=3, 1016=1}
 5153 name=null primitive={873=771, 874=Obtain 20 Golden Nuggets, 875=Obtain 20 Golden Nuggets from the Motherlode Mine beneath Falador, 1850=2, 1851=2, 1852=2, 2044=2, 1018=13, 1017=3, 1016=1}
 3880 name=null primitive={873=1139, 874=Equip a Piece of the Golden Prospector set, 875=Equip either a Golden prospector helmet, a Golden prospector jacket, some Golden prospector legs or Golden prospector boots, 1851=2, 1852=3, 2044=3, 1018=0, 1017=3, 1016=1}
-count=5874 maxId=6245
+count=5900 maxId=6271

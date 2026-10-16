@@ -2,7 +2,9 @@ package org.rsmod.api.script
 
 import org.rsmod.api.player.events.interact.ObjContentEvents
 import org.rsmod.api.player.events.interact.ObjEvents
+import org.rsmod.api.player.events.interact.ObjTEvents
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.game.type.comp.ComponentType
 import org.rsmod.game.type.content.ContentGroupType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.plugin.scripts.ScriptContext
@@ -56,3 +58,9 @@ public fun ScriptContext.onOpObj5(
     content: ContentGroupType,
     action: suspend ProtectedAccess.(ObjContentEvents.Op5) -> Unit,
 ): Unit = onProtectedEvent(content.id, action)
+
+/** Registers a script that triggers when [component] (such as a spell) is used on a ground obj. */
+public fun ScriptContext.onOpObjT(
+    component: ComponentType,
+    action: suspend ProtectedAccess.(ObjTEvents.Cast) -> Unit,
+): Unit = onProtectedEvent(component.packed, action)

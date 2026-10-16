@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the Isle of Souls drop data files from the OSRS Wiki.
 
-    python tools/drops/wiki_import.py              # uses tools/drops/monsters.txt
+    python tools/drops/wiki_import.py              # uses monsters.txt + monsters_spawned.txt
     python tools/drops/wiki_import.py --refresh    # ignore the page cache and download again
 
 Reads the monster page names in monsters.txt (one per line, `#` for comments), downloads each page's
@@ -56,12 +56,15 @@ IGNORED_TEMPLATES = {
 class Report:
     def __init__(self):
         self.lines = []
+        self.not_applicable = {}
 
     def warn(self, text):
         self.lines.append(text)
 
     def write(self):
-        text = "\n".join(self.lines) if self.lines else "No warnings."
+        notes = [f"Skipped on purpose (not part of this event): {n} x{c}"
+                 for n, c in sorted(self.not_applicable.items())]
+        text = "\n".join(notes + self.lines) if (notes or self.lines) else "No warnings."
         (TOOL_DIR / "last_report.txt").write_text(text + "\n", encoding="utf-8")
         return text
 
@@ -173,6 +176,52 @@ def clean(text):
 
 # --- Drop line parsing ---------------------------------------------------------------------------
 
+# Wiki item names that differ from the name in this server's cache (the wiki adds a bracket to tell
+# apart items that share a name, or has renamed the item since the cache was made).
+ITEM_ALIASES = {
+    "steel cannonball": "Cannonball",
+    "swamp toad (item)": "Swamp toad",
+    "crawling hand (item)": "Crawling hand",
+    "bones (tutorial island)": "Bones",
+    "raw chicken (undead)": "Raw chicken",
+    "raw beef (undead)": "Raw beef",
+    "immaculate mole skin": "Mole skin",
+    "goat horn": "Desert goat horn",
+    # The cache calls the javelin tips "heads".
+    "bronze javelin tips": "Bronze javelin heads",
+    "iron javelin tips": "Iron javelin heads",
+    "steel javelin tips": "Steel javelin heads",
+    "mithril javelin tips": "Mithril javelin heads",
+    "adamant javelin tips": "Adamant javelin heads",
+    "rune javelin tips": "Rune javelin heads",
+    "dragon javelin tips": "Dragon javelin heads",
+}
+
+# Wiki items that share their name with another item in the cache (the wiki adds a bracket), picked
+# by the item's internal name instead so the right one drops: the moon key's tooth half is not the
+# crystal key's.
+OBJ_ALIASES = {
+    "tooth half of key (moon key)": "varlamore_key_half_1",
+    "bandana eyepatch (red)": "pirate_bandana_eyepatch_red",
+    "bandana eyepatch (blue)": "pirate_bandana_eyepatch_blue",
+    "blamish blue shell (round)": "shellround_blue",
+    "blamish blue shell (pointed)": "shellpoint_blue",
+    "blamish ochre shell (round)": "shellround_yellow",
+    "blamish ochre shell (pointed)": "shellpoint_yellow",
+    "blamish myre shell (round)": "shellround_swamp",
+    "blamish myre shell (pointed)": "shellpoint_swamp",
+    "crest part (johnathon)": "johnathon_crest",
+    "prison key (troll stronghold)": "troll_key_prison",
+    "fang (tombs of amascut)": "toa_zebak_fang",
+    "key (green)": "greenkey",
+    "key (blue)": "bluekey",
+    "key (magenta)": "magentakey",
+}
+
+# Lines the wiki only gives a word for. They are guessed from the wiki's own colour bands and rolled
+# independently of the main table, so a guess cannot disturb the numbers that are exact.
+WORD_RARITIES = {"common": "1/10", "uncommon": "1/40", "rare": "1/250", "very rare": "1/1000"}
+
 NUMBER = re.compile(r"\d{1,3}(?:,\d{3})+|\d+")
 
 
@@ -200,6 +249,40 @@ def parse_quantity(text):
     return (str(low) if low == high else f"{low}-{high}"), noted
 
 
+# Page variables set by `{{#vardefine:name|value}}` (herb tables written out by hand use them).
+VARS = {}
+
+
+def expr_value(match):
+    body = match.group(1).strip()
+    digits = None
+    rounding = re.search(r"\s+round\s+(\d+)\s*$", body)
+    if rounding:
+        digits = int(rounding.group(1))
+        body = body[:rounding.start()]
+    if not re.fullmatch(r"[\d\s.+\-*/()]+", body):
+        return match.group(0)
+    try:
+        value = eval(body, {"__builtins__": {}}, {})  # only digits and + - * / ( ) got here
+    except (SyntaxError, ZeroDivisionError, TypeError):
+        return match.group(0)
+    if digits is not None:
+        value = round(value, digits)
+    return str(int(value)) if value == int(value) else repr(value)
+
+
+def expand_inline(text):
+    """Expands `{{#var:x}}` and `{{#expr:...}}` (arithmetic and `round n` only) in a field."""
+    for _ in range(10):
+        before = text
+        text = re.sub(r"\{\{#var:(\w+)\}\}",
+                      lambda m: VARS[m.group(1)] if m.group(1) in VARS else m.group(0), text)
+        text = re.sub(r"\{\{#expr:([^{}]*)\}\}", expr_value, text)
+        if text == before:
+            break
+    return text
+
+
 def drops_line(named, ctx):
     """Turns the arguments of a DropsLine into an entry dict, or None (warns when it skips)."""
     name = clean(named.get("name", ""))
@@ -209,13 +292,34 @@ def drops_line(named, ctx):
         return None  # free-to-play only line: this server is members
     if name.lower() == "brimstone key":
         return None  # only on a slayer task from Konar; its rarity is a template
+    notes = (named.get("raritynotes", "") + " " + named.get("namenotes", "")).lower()
+    if re.search(r"only dropped in (\[\[)?free-to-play|in place of the regular", notes):
+        return None  # free-to-play only line
+    named = dict(named, rarity=expand_inline(named.get("rarity", "")),
+                 quantity=expand_inline(named.get("quantity", "1")))
     rarity = parse_rarity(named.get("rarity", ""))
+    approximate = False
     if rarity is None:
-        report.warn(f"{ctx}: `{name}` skipped, rarity is not a fixed chance: "
-                    f"`{clean(named.get('rarity', ''))}`")
-        return None
+        word = clean(named.get("rarity", "")).lower()
+        if word in WORD_RARITIES:
+            rarity = WORD_RARITIES[word]
+            approximate = True
+            report.warn(f"{ctx}: `{name}` has the rarity `{word}`; approximated as {rarity} "
+                        f"and rolled on its own")
+        else:
+            report.warn(f"{ctx}: `{name}` skipped, rarity is not a fixed chance: "
+                        f"`{clean(named.get('rarity', ''))}`")
+            return None
+    if rarity != "always":
+        numerator, _, denominator = rarity.partition("/")
+        if float(denominator) <= 0 or not 0 < float(numerator) / float(denominator) <= 1:
+            report.warn(f"{ctx}: `{name}` skipped, rarity `{rarity}` is not a chance between 0 "
+                        f"and 100%")
+            return None
     qty, noted = parse_quantity(named.get("quantity", "1"))
     entry = {"rarity": rarity, "qty": qty, "noted": noted}
+    if approximate:
+        entry["independent"] = True
     rolls = re.search(r"\d+", named.get("rolls", ""))
     if rolls and int(rolls.group(0)) > 1:
         entry["rolls"] = int(rolls.group(0))
@@ -225,7 +329,9 @@ def drops_line(named, ctx):
     if name.lower() in SHARED_NAMES:
         entry["table"] = SHARED_NAMES[name.lower()]
     else:
-        entry["item"] = name
+        entry["item"] = ITEM_ALIASES.get(name.lower(), name)
+        if name.lower() in OBJ_ALIASES:
+            entry["obj"] = OBJ_ALIASES[name.lower()]
     return entry
 
 
@@ -255,6 +361,128 @@ def herb_entries(arg, quantity, herbs, ctx):
             continue
         qty, noted = parse_quantity(quantity or "1")
         entries.append({"item": name, "rarity": f"1/{denominator}", "qty": qty, "noted": noted})
+    return entries
+
+
+# --- Seed and talisman templates ----------------------------------------------------------------
+# These templates compute each line's rarity from the monster's table chance, so they are expanded
+# here the same way: every line is `1/round(1/(weight * chance / divisor))`.
+
+WEIGHTED_TEMPLATES = {
+    "uncommonseeddroplines": "Template:UncommonSeedDropLines",
+    "rareseeddroplines": "Template:RareSeedDropLines",
+    "talismandroplines": "Template:TalismanDropLines",
+    "usefulherbdroplines": "Template:UsefulHerbDropLines",
+    "combatherbdroplines": "Template:CombatHerbDropLines",
+    "treeherbseeddroplines": "Template:TreeHerbSeedDropLines",
+    "allotmentseeddroplines": "Template:AllotmentSeedDropLines",
+}
+
+# Templates that only apply to content this event does not have (a Slayer task from Krystilia, the
+# Catacombs of Kourend variants, Fossil Island, the Wilderness God Wars Dungeon, pickpocket loot
+# written with the skill version of a drops line). They are skipped on purpose and counted in the
+# report.
+NOT_APPLICABLE_TEMPLATES = {
+    "wildernessslayerdroptable", "wildernessslayercavedroptable", "catacombsdroptable",
+    "fossildroplines", "dropslineecumenical", "dropslineskill",
+}
+
+# Informational boxes that sit next to the seed and talisman lines.
+IGNORED_TEMPLATES |= {
+    "uncommonseeddroptableinfo", "rareseeddroptableinfo", "talismandroptableinfo",
+    "generalseeddroptableinfo", "seeddroptableinfo", "citetwitter",
+}
+
+
+def weighted_template_rows(wikitext):
+    """Reads (name, weight, quantity multiplier) rows and the divisor from a seed or talisman
+    template such as Template:UncommonSeedDropLines. Returns (rows, divisor)."""
+    divisor = re.search(r"\{\{\{1\}\}\}\s*/\s*(\d+)", wikitext)
+    rows = []
+    for part in re.split(r"(?=\{\{DropsLine)", wikitext):
+        name = re.search(r"\|name=([^|{}]+)\|", part)
+        weight = re.search(r"\(\s*(\d+)\s*\*\s*\{\{#var:", part)
+        if not name or not weight:
+            continue
+        multiplier = re.search(r"#expr:(\d+)\*\{\{\{(?:2|multiplier)\|1\}\}\}", part)
+        fixed = re.search(r"\|quantity=(\d+(?:-\d+)?)\|", part)
+        decimals = re.search(r"round\s+(\d)", part)
+        rows.append((name.group(1).strip(), int(weight.group(1)),
+                     int(multiplier.group(1)) if multiplier else 1,
+                     fixed.group(1) if fixed else None,
+                     int(decimals.group(1)) if decimals else 0))
+    return rows, int(divisor.group(1)) if divisor else None
+
+
+def roll_count(named):
+    found = re.search(r"\d+", named.get("rolls", "") or "")
+    return int(found.group(0)) if found and int(found.group(0)) > 1 else None
+
+
+def weighted_entries(rows, divisor, chance_text, quantity_text, ctx, rolls=None):
+    chance = parse_rarity(chance_text or "")
+    if not rows or not divisor or chance in (None, "always"):
+        report.warn(f"{ctx}: seed or talisman table `{chance_text}` could not be expanded")
+        return []
+    base = to_fraction(chance) / divisor
+    entries = []
+    for name, weight, multiplier, fixed, decimals in rows:
+        probability = min(1.0, weight * base)
+        qty, noted = parse_quantity(fixed or quantity_text or "1")
+        if multiplier > 1:
+            low, _, high = qty.partition("-")
+            qty = str(int(low) * multiplier) if not high else \
+                f"{int(low) * multiplier}-{int(high) * multiplier}"
+        denominator = round(1.0 / probability, decimals) if decimals else round(1.0 / probability)
+        entry = {"item": name, "rarity": f"1/{max(1, denominator)}", "qty": qty, "noted": noted}
+        if rolls:
+            entry["rolls"] = rolls
+        entries.append(entry)
+    return entries
+
+
+def general_seed_data(lua):
+    """Parses the seed groups out of Module:GeneralSeedDropLines: {key: [(item, qty, rate)]}."""
+    data = {}
+    for key, body in re.findall(r"\[(\d+)\] = \{(.*?)\n\t\}", lua, re.S):
+        data[int(key)] = [
+            (item, int(qty), float(n) / float(d))
+            for item, qty, n, d in re.findall(
+                r"item = '([^']+)', quantity = (\d+), rate = '([\d.]+)/([\d.]+)'", body)
+        ]
+    return data
+
+
+def general_seed_entries(data, chance_text, combat_text, ctx, rolls=None):
+    """The same grouping as the module's `groupSeeds`: higher seed groups open up with combat."""
+    chance = parse_rarity(chance_text or "")
+    try:
+        combat = float(clean(combat_text or "")) * 10
+    except ValueError:
+        combat = None
+    if not data or chance in (None, "always") or combat is None:
+        report.warn(f"{ctx}: general seed table `{chance_text}`/`{combat_text}` could not be "
+                    f"expanded")
+        return []
+    drop_rate = to_fraction(chance)
+    entries, previous = [], 0
+    for key in sorted(data):
+        if key <= combat:
+            table_rate = (key - previous) / combat
+        else:
+            table_rate = (combat - previous) / combat
+            if table_rate == 0:
+                break
+        for item, quantity, rate in data[key]:
+            denominator = max(1, int(1.0 / (drop_rate * table_rate * rate)))
+            entry = {"item": item, "rarity": f"1/{denominator}", "qty": str(quantity),
+                     "noted": False}
+            if rolls:
+                entry["rolls"] = rolls
+            entries.append(entry)
+        if key > combat:
+            break
+        previous = key
     return entries
 
 
@@ -311,13 +539,14 @@ def classify(heading):
     h = heading.lower()
     if "100%" in h:
         return "always"
-    if "tertiary" in h or "pre-roll" in h or "preroll" in h:
+    if "tertiary" in h or "pre-roll" in h or "preroll" in h or "secondary" in h:
         return "tertiary"
     return "main"
 
 
-def parse_monster_page(title, text, herbs, extra_ids=()):
+def parse_monster_page(title, text, herbs, extra_ids=(), seeds=None):
     """Returns a list of monster blocks: dicts with source, dropversion, ids, always/main/tertiary."""
+    VARS.clear()
     infobox = infobox_versions(text)
     if extra_ids:
         infobox = infobox + [([], list(extra_ids))]
@@ -353,9 +582,13 @@ def parse_monster_page(title, text, herbs, extra_ids=()):
                 kind = "always"
             elif kind == "always":
                 kind = "main"
+            if entry.pop("independent", False):
+                kind = "tertiary"
             add(entry.pop("version", None) or block["dropversion"], kind, entry)
         elif key == "dropslineclue" and block is not None:
             rarity = parse_rarity(named.get("rarity", ""))
+            if rarity is None:
+                rarity = WORD_RARITIES.get(clean(named.get("rarity", "")).lower())
             clue = clean(named.get("type", ""))
             if rarity is None or rarity == "always" or not clue:
                 report.warn(f"{ctx}: clue line skipped: {named}")
@@ -366,6 +599,24 @@ def parse_monster_page(title, text, herbs, extra_ids=()):
             quantity = positional[1] if len(positional) > 1 else None
             for entry in herb_entries(positional[0] if positional else "", quantity, herbs, ctx):
                 add(block["dropversion"], "main", entry)
+        elif key.startswith("#vardefine:"):
+            VARS[name.split(":", 1)[1].strip()] = expand_inline(positional[0] if positional else "")
+        elif key.endswith("droptableinfo"):
+            continue  # a note about the table above or below, not drops
+        elif key in WEIGHTED_TEMPLATES and block is not None:
+            rows, divisor = (seeds or {}).get(key, ([], None))
+            for entry in weighted_entries(rows, divisor, positional[0] if positional else "",
+                                          positional[1] if len(positional) > 1 else "1", ctx,
+                                          roll_count(named)):
+                add(block["dropversion"], "main", entry)
+        elif key == "generalseeddroplines" and block is not None:
+            for entry in general_seed_entries((seeds or {}).get("general"),
+                                              positional[0] if positional else "",
+                                              positional[1] if len(positional) > 1 else "",
+                                              ctx, roll_count(named)):
+                add(block["dropversion"], "main", entry)
+        elif key in NOT_APPLICABLE_TEMPLATES:
+            report.not_applicable[name] = report.not_applicable.get(name, 0) + 1
         elif key == "raredroptable":
             version = clean(named.get("dropversion", ""))
             for index, shared in enumerate(("Rare drop table", "Gem drop table")):
@@ -400,16 +651,32 @@ def parse_monster_page(title, text, herbs, extra_ids=()):
     for version in [d for ds, _ in infobox for d in ds] + [v for v, _, _, _ in lines if v]:
         if version.lower() not in [x.lower() for x in versions]:
             versions.append(version)
+    # Npcs whose infobox names no drop version are the page's default (Hill Giant: the regular
+    # giants beside the Catacombs and Giants' Plateau ones). They need a block of their own, unless
+    # the lines name a version the infobox does not (`Regular`): that one is the default.
+    default_ids = list(dict.fromkeys(i for drops, ids in infobox if not drops for i in ids))
+    declared = {d.lower() for ds, _ in infobox for d in ds}
+    undeclared = [v for v in versions if v.lower() not in declared]
     if not versions:
         versions = [""]
+    elif default_ids and not undeclared:
+        versions.insert(0, "")
 
     blocks = []
     for version in versions:
-        mine = [(k, h, e) for v, k, h, e in lines if v is None or v.lower() == version.lower()]
+        mine = [(k, h, e) for v, k, h, e in lines
+                if v is None or v.lower() == version.lower()]
         ids = []
-        for drops, version_ids in infobox:
-            if not version or version.lower() in {d.lower() for d in drops}:
-                ids += [i for i in version_ids if i not in ids]
+        if len(versions) == 1 and not version:
+            ids = list(dict.fromkeys(i for _, version_ids in infobox for i in version_ids))
+        elif not version:
+            ids = list(default_ids)
+        elif version.lower() in declared:
+            for drops, version_ids in infobox:
+                if version.lower() in {d.lower() for d in drops}:
+                    ids += [i for i in version_ids if i not in ids]
+        else:
+            ids = list(default_ids)
         if not ids:
             ids = list(dict.fromkeys(i for _, version_ids in infobox for i in version_ids))
             if version and ids:
@@ -494,7 +761,10 @@ def line(entry, with_chance=True):
     if "table" in entry:
         parts.append(f"table = {toml_str(entry['table'])}")
     else:
-        parts.append(f"item = {toml_str(entry['item'])}")
+        if "obj" in entry:
+            parts.append(f"obj = {toml_str(entry['obj'])}")
+        else:
+            parts.append(f"item = {toml_str(entry['item'])}")
         if entry["qty"] != "1":
             parts.append(f"qty = {toml_str(entry['qty'])}")
         if entry["noted"]:
@@ -589,6 +859,42 @@ def parse_boosted(refresh):
     return boosts, uniques
 
 
+# The wiki's boosted drops list names some sources in the plural or as a group, and some items as a
+# group. The loader matches exact monster and item names, so these are spelled out.
+BOOST_SOURCE_ALIASES = {
+    "steel dragons": ["Steel dragon"],
+    "iron dragons": ["Iron dragon"],
+    "spiritual mages": ["Spiritual mage"],
+    "dagannoth kings": ["Dagannoth Rex", "Dagannoth Prime", "Dagannoth Supreme"],
+    "nuclear smoke devil": ["Thermonuclear smoke devil"],
+    "hydra": ["Alchemical Hydra"],
+    "corporeal beast": ["Corporeal Beast"],
+}
+BOOST_ITEM_GROUPS = {
+    "bandos armour": ["Bandos chestplate", "Bandos tassets", "Bandos boots"],
+    "armadyl armour": ["Armadyl helmet", "Armadyl chestplate", "Armadyl chainskirt"],
+    "any godsword shard": ["Godsword shard 1", "Godsword shard 2", "Godsword shard 3"],
+    "dagannoth king rings": ["Berserker ring", "Seers ring", "Archers ring", "Warrior ring"],
+    "hydra's fang, heart, and eye": ["Hydra's fang", "Hydra's heart", "Hydra's eye"],
+}
+
+
+def expand_boosts(boosts):
+    """Spells out plural sources and grouped items: [(source, item)] -> [(source, item)]."""
+    out = []
+    for source, item in boosts:
+        sources = BOOST_SOURCE_ALIASES.get(source.lower()) or [source]
+        items = BOOST_ITEM_GROUPS.get(item.lower())
+        if items is None:
+            parts = [x.strip() for x in re.split(r",\s*(?:and\s+)?|\s+and\s+", item) if x.strip()]
+            items = parts if len(parts) > 1 and all(x[:1].isupper() for x in parts) else []
+        for src in sources:
+            for it in items or [item]:
+                if (src, it) not in out:
+                    out.append((src, it))
+    return out
+
+
 # --- Echo bosses ---------------------------------------------------------------------------------
 
 # Each echo boss also rolls its normal boss's drops. (The Dagannoth Kings, Hunllef and Sol Heredit
@@ -639,22 +945,42 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("--monsters", default=str(TOOL_DIR / "monsters.txt"))
     parser.add_argument("--refresh", action="store_true", help="download pages again")
+    parser.add_argument("--no-spawned", action="store_true",
+                        help="ignore monsters_spawned.txt (only the hand-written monsters.txt)")
     args = parser.parse_args()
 
     pages = []
-    for raw in Path(args.monsters).read_text(encoding="utf-8").splitlines():
-        text = raw.split("#")[0].strip()
-        if not text:
-            continue
-        # `Page`, or `Page | ids_from=Other page; Another page | ids=1,2,3`
-        parts = [x.strip() for x in text.split("|")]
-        options = dict(x.split("=", 1) for x in parts[1:] if "=" in x)
-        pages.append((parts[0], options))
+    seen_pages = set()
+    # monsters.txt is hand-written and comes first, so its options win; monsters_spawned.txt is
+    # generated by spawned_monsters.py (every attackable npc the world spawns).
+    files = [Path(args.monsters)]
+    spawned = TOOL_DIR / "monsters_spawned.txt"
+    if spawned.exists() and not args.no_spawned:
+        files.append(spawned)
+    for file in files:
+        for raw in file.read_text(encoding="utf-8").splitlines():
+            text = raw.split("#")[0].strip()
+            if not text:
+                continue
+            # `Page`, or `Page | ids_from=Other page; Another page | ids=1,2,3`
+            parts = [x.strip() for x in text.split("|")]
+            options = dict(x.split("=", 1) for x in parts[1:] if "=" in x)
+            if parts[0].lower() in seen_pages:
+                continue
+            seen_pages.add(parts[0].lower())
+            pages.append((parts[0], options))
 
     _, herb_text = fetch_wikitext("Template:HerbDropLines", args.refresh)
     herbs = herb_table_factors(herb_text)
     _, shared_text = fetch_wikitext(SHARED_PAGE, args.refresh)
     shared = parse_shared_tables(shared_text)
+
+    seeds = {}
+    for key, page in WEIGHTED_TEMPLATES.items():
+        _, template_text = fetch_wikitext(page, args.refresh)
+        seeds[key] = weighted_template_rows(template_text)
+    _, lua = fetch_wikitext("Module:GeneralSeedDropLines", args.refresh)
+    seeds["general"] = general_seed_data(lua)
 
     blocks = []
     assigned = set()
@@ -670,7 +996,7 @@ def main():
         except Exception as error:  # noqa: BLE001 - report and keep going
             report.warn(f"{page}: could not be downloaded: {error}")
             continue
-        found = parse_monster_page(title, text, herbs, extra)
+        found = parse_monster_page(title, text, herbs, extra, seeds)
         for block in found:
             # An npc can only have one table in a file (the files themselves are layered), so
             # when a version of the same page or another page repeats an id, the first one wins.
@@ -701,6 +1027,7 @@ def main():
     (RESOURCES / "osrs.toml").write_text(osrs, encoding="utf-8", newline="\n")
 
     boosts, uniques = parse_boosted(args.refresh)
+    boosts = expand_boosts(boosts)
     echo = echo_blocks(uniques)
     (RESOURCES / "osrs.toml").write_text(osrs + "".join(render_monster(b) for b in echo),
                                          encoding="utf-8", newline="\n")

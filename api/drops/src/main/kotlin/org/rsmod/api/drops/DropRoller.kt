@@ -25,19 +25,20 @@ public class DropRoller @Inject constructor(private val random: GameRandom) {
         multiplier: Double,
         results: MutableList<DropResult>,
         depth: Int,
+        boosted: Boolean = false,
     ) {
         check(depth <= MAX_DEPTH) { "Drop table `${table.name}` is nested too deeply." }
 
         for (stack in table.always) {
-            results += stack.roll()
+            results += stack.roll(boosted)
         }
 
-        repeat(table.mainRolls) { rollMain(table.main, multiplier, results, depth) }
+        repeat(table.mainRolls) { rollMain(table.main, multiplier, results, depth, boosted) }
 
         for (entry in table.tertiary) {
             val chance = minOf(1.0, entry.effectiveChance(multiplier))
             if (random.randomDouble() < chance) {
-                results.add(entry.outcome, depth)
+                results.add(entry, depth, boosted)
             }
         }
     }
@@ -47,6 +48,7 @@ public class DropRoller @Inject constructor(private val random: GameRandom) {
         multiplier: Double,
         results: MutableList<DropResult>,
         depth: Int,
+        boosted: Boolean,
     ) {
         if (entries.isEmpty()) {
             return
@@ -58,24 +60,26 @@ public class DropRoller @Inject constructor(private val random: GameRandom) {
         for (entry in entries) {
             cumulative += entry.effectiveChance(multiplier) / divisor
             if (roll < cumulative) {
-                results.add(entry.outcome, depth)
+                results.add(entry, depth, boosted)
                 return
             }
         }
     }
 
-    private fun MutableList<DropResult>.add(outcome: DropOutcome, depth: Int) {
-        when (outcome) {
-            is DropOutcome.Item -> this += outcome.stack.roll()
+    private fun MutableList<DropResult>.add(entry: DropEntry, depth: Int, inherited: Boolean) {
+        val boosted = inherited || entry.boosted
+        when (val outcome = entry.outcome) {
+            is DropOutcome.Item -> this += outcome.stack.roll(boosted)
             // The parent entry's chance was already multiplied: the nested table is rolled as is.
-            is DropOutcome.Nested -> collect(outcome.table, 1.0, this, depth + 1)
+            is DropOutcome.Nested -> collect(outcome.table, 1.0, this, depth + 1, boosted)
         }
     }
 
     private fun DropEntry.effectiveChance(multiplier: Double): Double =
         if (boosted) chance * multiplier else chance
 
-    private fun DropStack.roll(): DropResult = DropResult(obj, random.of(min, max))
+    private fun DropStack.roll(boosted: Boolean): DropResult =
+        DropResult(obj, random.of(min, max), boosted)
 
     private companion object {
         const val MAX_DEPTH = 8

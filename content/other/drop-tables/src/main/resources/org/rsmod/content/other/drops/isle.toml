@@ -9,4 +9,30 @@
 #   tertiary = [{ item = "Coins", qty = "1000-2000", chance = "1/50" }]
 #
 # Format: see DropData.kt.
-monster = []
+
+# Scurrius's drops for the players who did not do the most damage (the wiki's "Non-MVP" table). The
+# rats' lair rolls it for the rest of the team (see ScurriusRewards). It is stored on the unused
+# patrol-control npc of the lair so the loader has an npc to attach it to.
+[[monster]]
+source = "Scurrius (non-MVP)"
+npcs = ["rat_boss_giant_rat_patrol_control"]
+always = [
+  { item = "Big bones" },
+]
+main = [
+  { item = "Adamant arrow", qty = "20-35", chance = "3/33" },
+  { item = "Rune arrow", qty = "20-35", chance = "3/33" },
+  { item = "Chaos rune", qty = "40-70", chance = "3/33" },
+  { item = "Death rune", qty = "30-50", chance = "3/33" },
+  { item = "Law rune", qty = "5-15", chance = "3/33" },
+  { item = "Trout", qty = "1-3", chance = "3/33" },
+  { item = "Tuna", qty = "1-3", chance = "3/33" },
+  { item = "Lobster", qty = "1-3", chance = "3/33" },
+  { item = "Ranging potion(1)", chance = "3/33" },
+  { item = "Super strength(1)", chance = "3/33" },
+  { item = "Shark", chance = "1/33" },
+  { item = "Cheese", chance = "1/33" },
+]
+tertiary = [
+  { item = "Scurrius' spine", chance = "1/33", boosted = true },
+]

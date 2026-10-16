@@ -15,7 +15,6 @@ import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.content.skills.prayer.configs.AltarKind
 import org.rsmod.content.skills.prayer.configs.PrayerBone
 import org.rsmod.content.skills.prayer.configs.PrayerBones
-import org.rsmod.content.skills.prayer.configs.PrayerQueues
 import org.rsmod.content.skills.prayer.configs.PrayerSeqs
 import org.rsmod.content.skills.prayer.configs.PrayerSpotanims
 import org.rsmod.events.UnboundEvent
@@ -43,8 +42,8 @@ constructor(
     private val xpMods: XpModifiers,
     private val world: WorldRepository,
 ) : PluginScript() {
-    /** The bone each player is currently offering, so the loop knows what to keep offering. */
-    private val offering = WeakHashMap<Player, PrayerBone>()
+    /** What each player is currently offering, so the loop knows what to keep offering. */
+    private val offering = WeakHashMap<Player, Offering>()
 
     override fun ScriptContext.startup() {
         for (type in locTypes.values) {
@@ -53,12 +52,11 @@ constructor(
             onOpLocU(type) { startOffering(it.loc, it.objType) }
             onOpLoc4(type) { offerNext(it.loc, kind) }
         }
-        onPlayerQueue(PrayerQueues.recharge) { recharge() }
     }
 
     /**
-     * The player kneels for [PRAY_TICKS] and the points come back from a weak queue, not a delay,
-     * so walking away stops the prayer instead of the player being held in place.
+     * The points come back as soon as the prayer animation starts, so the player is never held
+     * in place waiting for it to finish.
      */
     private fun ProtectedAccess.pray() {
         if (player.prayerLvl >= player.basePrayerLvl) {
@@ -66,12 +64,8 @@ constructor(
             return
         }
 
-        anim(PrayerSeqs.pray)
-        weakQueue(PrayerQueues.recharge, PRAY_TICKS)
-    }
-
-    private fun ProtectedAccess.recharge() {
         val restored = player.basePrayerLvl - player.prayerLvl
+        anim(PrayerSeqs.pray)
         statRestore(stats.prayer)
         mes("You recharge your Prayer points.")
         if (restored > 0) {
@@ -81,21 +75,34 @@ constructor(
 
     private fun ProtectedAccess.startOffering(loc: BoundLocInfo, obj: ObjType) {
         val bone = PrayerBones.forObj(obj)
-        if (bone == null) {
+        val current =
+            if (bone != null) Offering(bone.obj, 1, bone.xp, bone) else customOffering(obj)
+        if (current == null) {
             mes("Nothing interesting happens.")
             return
         }
 
-        offering[player] = bone
+        offering[player] = current
         actionDelay = mapClock + OFFER_DELAY
         skillAnimDelay = mapClock + ANIM_INTERVAL
         anim(PrayerSeqs.offer)
         opLoc4(loc)
     }
 
+    /**
+     * What [obj], which is not a bone, can be offered as, if anything says so by changing the
+     * [OfferRule] (the Golden God relic does this for coins).
+     */
+    private fun ProtectedAccess.customOffering(obj: ObjType): Offering? {
+        val rule = OfferRule(player, obj)
+        publish(rule)
+        val like = rule.experienceLike ?: return null
+        return Offering(obj, rule.count, like.xp, bone = null)
+    }
+
     private fun ProtectedAccess.offerNext(loc: BoundLocInfo, kind: AltarKind) {
-        val bone = offering[player] ?: return
-        if (bone.obj !in inv) {
+        val current = offering[player] ?: return
+        if (invTotal(inv, current.obj) < current.count) {
             stop()
             return
         }
@@ -108,8 +115,8 @@ constructor(
         if (actionDelay < mapClock) {
             actionDelay = mapClock + OFFER_DELAY
         } else if (actionDelay == mapClock) {
-            offerOne(bone, kind, loc)
-            if (bone.obj !in inv) {
+            offerOne(current, kind, loc)
+            if (invTotal(inv, current.obj) < current.count) {
                 stop()
                 return
             }
@@ -118,13 +125,13 @@ constructor(
         opLoc4(loc)
     }
 
-    private fun ProtectedAccess.offerOne(bone: PrayerBone, kind: AltarKind, loc: BoundLocInfo) {
+    private fun ProtectedAccess.offerOne(current: Offering, kind: AltarKind, loc: BoundLocInfo) {
         val saved = kind == AltarKind.Chaos && random.randomBoolean()
-        if (!saved && invDel(inv, bone.obj, 1).failure) {
+        if (!saved && invDel(inv, current.obj, current.count).failure) {
             return
         }
 
-        val xp = bone.xp * OFFER_MULTIPLIER * xpMods.get(player, stats.prayer)
+        val xp = current.xp * OFFER_MULTIPLIER * xpMods.get(player, stats.prayer)
         statAdvance(stats.prayer, xp)
         spotanimMap(world, PrayerSpotanims.offer, loc.coords)
         if (saved) {
@@ -132,12 +139,31 @@ constructor(
         } else {
             spam(OFFERED_MESSAGE)
         }
-        publish(BoneOffered(player, bone.obj, kind, saved))
+        if (current.bone != null) {
+            publish(BoneOffered(player, current.bone.obj, kind, saved))
+        }
     }
 
     private fun ProtectedAccess.stop() {
         offering.remove(player)
         resetAnim()
+    }
+
+    /**
+     * What is being offered: [count] of [obj] for each offering, worth the experience of a bone
+     * with [xp] experience when buried. [bone] is the bone itself, or `null` for something that
+     * only counts as one.
+     */
+    private class Offering(val obj: ObjType, val count: Int, val xp: Double, val bone: PrayerBone?)
+
+    /**
+     * Published when something that is not a bone is used on an altar, so that a relic can allow it
+     * to be offered. Nothing is by default. To allow it, set [experienceLike] to the bone whose
+     * experience each offering gives, and [count] to how many are used up by each offering.
+     */
+    class OfferRule(val player: Player, val obj: ObjType) : UnboundEvent {
+        var count: Int = 1
+        var experienceLike: PrayerBone? = null
     }
 
     /** Published once a bone has been offered on an altar, whether or not the bone was saved. */
@@ -158,9 +184,6 @@ constructor(
         private const val OFFERED_MESSAGE = "The gods are pleased with your offering."
         private const val SPARED_MESSAGE =
             "The Dark Lord spares your sacrifice but still rewards you for your efforts."
-
-        /** Ticks the player kneels before the points come back. */
-        private const val PRAY_TICKS = 2
 
         /**
          * Ticks to wait before each bone is offered, minus one. The loop spends one extra tick

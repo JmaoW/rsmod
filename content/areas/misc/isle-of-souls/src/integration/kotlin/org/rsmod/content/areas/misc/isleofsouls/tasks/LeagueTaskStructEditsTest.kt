@@ -25,4 +25,15 @@ class LeagueTaskStructEditsTest {
                 assertEquals(0, params[1017], "area of task $taskId")
             }
         }
+
+    @Test
+    fun GameTestState.`edited agility task structs have no area`() =
+        runInjectedGameTest(Deps::class) { deps ->
+            val structIds = mapOf(769 to 2277, 638 to 2143, 641 to 4888, 1576 to 2322)
+            for ((taskId, structId) in structIds) {
+                val params = checkNotNull(deps.types.structs[structId]?.paramMap).primitiveMap
+                assertEquals(taskId, params[873], "task id of struct $structId")
+                assertEquals(0, params[1017], "area of task $taskId")
+            }
+        }
 }

@@ -53,6 +53,10 @@ object PrayerBones {
 
     private val byObj: Map<Int, PrayerBone> by lazy { all.associateBy { it.obj.id } }
 
+    /** Dragon bones, which some offerings give the experience of. */
+    val dragon: PrayerBone
+        get() = all.first { it.obj.id == PrayerBoneObjs.dragon_bones.id }
+
     /** The bone [obj] is, or `null` if it is not a bone. */
     fun forObj(obj: ObjType): PrayerBone? = byObj[obj.id]
 

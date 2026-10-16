@@ -80,6 +80,7 @@ class LeagueMasteryTracker @Inject constructor() : CombatMasteryProvider {
 
         VarPlayerIntMapSetter.set(player, MasteryVarBits.progress(choice.style), choice.tier)
         syncPoints(player)
+        player.requestAutosave()
         return MasteryResult.Unlocked
     }
 

@@ -53,8 +53,11 @@ constructor(
         for (player in playerList) {
             player.tryOrDisconnect {
                 processMapChanges()
-                processClientCycle()
+                // Zone updates must be sent before player/npc info. RuneLite's loot tracker only
+                // matches a kill's drops if the `obj_add` arrives before the dead npc is removed
+                // by `npc_info` in the same tick.
                 processZoneUpdates()
+                processClientCycle()
                 processInvUpdates()
                 processStatUpdates()
                 processRunUpdates()

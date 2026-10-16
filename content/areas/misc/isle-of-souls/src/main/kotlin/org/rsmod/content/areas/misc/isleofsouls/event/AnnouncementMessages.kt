@@ -31,6 +31,9 @@ object AnnouncementMessages {
         return "$prefix $who has received a rare drop: $received."
     }
 
+    fun pet(who: String, pet: String): String =
+        "$prefix $who has a funny feeling like they are being followed: ${blue(pet)}."
+
     fun leadTaken(team: String, points: Int): String =
         "$prefix ${blue(team)} has taken the lead with ${points(points)}."
 

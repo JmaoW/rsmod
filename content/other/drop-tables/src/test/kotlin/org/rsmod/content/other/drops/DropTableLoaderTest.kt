@@ -120,6 +120,53 @@ class DropTableLoaderTest {
     }
 
     @Test
+    fun `an obj named like the display name wins over a lower id with the same name`() {
+        val fakeCoins =
+            objFactory.create(617) {
+                name = "Coins"
+                internal = "fake_coins"
+            }
+        val realCoins =
+            objFactory.create(995) {
+                name = "Coins"
+                internal = "coins"
+                stackable = true
+            }
+        val helmetLit =
+            objFactory.create(5013) {
+                name = "Mining helmet"
+                internal = "cave_goblin_mining_helmet_lit"
+            }
+        val helmetUnlit =
+            objFactory.create(5014) {
+                name = "Mining helmet"
+                internal = "cave_goblin_mining_helmet_unlit"
+            }
+        val ambiguous =
+            DropTableLoader(
+                mapper,
+                ObjTypeList(
+                    listOf(fakeCoins, realCoins, helmetLit, helmetUnlit)
+                        .associateBy { it.id }
+                        .toMutableMap()
+                ),
+                NpcTypeList(listOf(cow).associateBy { it.id }),
+            )
+        val result =
+            ambiguous.load(
+                listOf(
+                    source(
+                        "a.toml",
+                        "[[monster]]\nname = \"Cow\"\n" +
+                            "always = [{ item = \"Coins\" }, { item = \"Mining helmet\" }]",
+                    )
+                )
+            )
+        val always = result.tables.getValue(cow.id).always
+        assertEquals(listOf(DropStack(realCoins, 1, 1), DropStack(helmetUnlit, 1, 1)), always)
+    }
+
+    @Test
     fun `without levels every npc with the name gets the table`() {
         val result =
             loader.load(

@@ -1,0 +1,70 @@
+65 kill tasks (tier, id, original name, new name, monster, count)
+dropped as a duplicate: 532 'Defeat a Moss Giant in Tirannwn'
+dropped as a duplicate: 990 'Defeat a Fire Giant in the Wilderness'
+dropped as a duplicate: 533 'Defeat a Bloodveld in Tirannwn'
+dropped as a duplicate: 589 'Defeat a Kurask in the Fremennik Province'
+1     61  'Defeat a Moss Giant'                                         'Defeat a Moss Giant'                    'moss giant'             x1
+1     63  'Defeat a Goblin'                                             'Defeat a Goblin'                        'goblin'                 x1
+1     64  'Defeat a Guard'                                              'Defeat a Guard'                         'guard'                  x1
+1    466  "Defeat the Lesser Demon in the Wizards' Tower"               'Defeat the Lesser Demon'                'lesser demon'           x1
+1    528  'Defeat a Waterfiend in Tirannwn'                             'Defeat a Waterfiend'                    'waterfiend'             x1
+1    583  'Defeat a Rock Crab in the Fremennik Province'                'Defeat a Rock Crab'                     'rock crab'              x1
+1    588  'Defeat a Cockatrice in the Fremennik Province'               'Defeat a Cockatrice'                    'cockatrice'             x1
+1    592  'Defeat a Pyrefiend in the Fremennik Province'                'Defeat a Pyrefiend'                     'pyrefiend'              x1
+1    721  'Defeat a Bloodveld in Kandarin'                              'Defeat a Bloodveld'                     'bloodveld'              x1
+1    724  'Defeat a Fire Giant in Kandarin'                             'Defeat a Fire Giant'                    'fire giant'             x1
+1    920  'Defeat a Werewolf in Morytania'                              'Defeat a Werewolf'                      'werewolf'               x1
+1    994  'Defeat a Chaos Dwarf in the Wilderness'                      'Defeat a Chaos Dwarf'                   'chaos dwarf'            x1
+1   1271  'Kill Salarin the Twisted'                                    'Kill Salarin the Twisted'               'salarin the twisted'    x1
+1   1276  'Kill a Necromancer'                                          'Kill a Necromancer'                     'necromancer'            x1
+1   1290  'Kill a Yak'                                                  'Kill a Yak'                             'yak'                    x1
+1   1554  'Kill a Rat'                                                  'Kill a Rat'                             'rat'                    x1
+1   1555  'Kill a Mugger'                                               'Kill a Mugger'                          'mugger'                 x1
+1   1558  'Kill a Ram'                                                  'Kill a Ram'                             'ram'                    x1
+1   1569  'Kill a Billy Goat'                                           'Kill a Billy Goat'                      'billy goat'             x1
+1   1594  'Kill a Barbarian in Kourend'                                 'Kill a Barbarian'                       'barbarian'              x1
+1   1715  'Kill a Guard in Varlamore underground'                       'Kill a Guard'                           'guard'                  x1
+1   1718  'Kill an Icefiend in Varlamore'                               'Kill an Icefiend'                       'icefiend'               x1
+1   1798  'Kill a Snake in Karamja'                                     'Kill a Snake'                           'snake'                  x1
+1   1837  'Kill a Rooster'                                              'Kill a Rooster'                         'rooster'                x1
+2     62  'Defeat a Lesser Demon'                                       'Defeat a Lesser Demon'                  'lesser demon'           x1
+2    476  'Defeat Bryophyta'                                            'Defeat Bryophyta'                       'bryophyta'              x1
+2    537  'Defeat a Kurask in Tirannwn'                                 'Defeat a Kurask'                        'kurask'                 x1
+2    598  'Defeat a Dagannoth in the Fremennik Province'                'Defeat a Dagannoth'                     'dagannoth'              x1
+2    606  'Defeat a Turoth in the Fremennik Province'                   'Defeat a Turoth'                        'turoth'                 x1
+2    611  'Defeat a Jelly in the Fremennik Province'                    'Defeat a Jelly'                         'jelly'                  x1
+2    658  'Defeat a Greater Demon on Karamja'                           'Defeat a Greater Demon'                 'greater demon'          x1
+2    670  'Defeat a Steel Dragon on Karamja'                            'Defeat a Steel Dragon'                  'steel dragon'           x1
+2    719  'Defeat the Thermonuclear Smoke Devil'                        'Defeat the Thermonuclear Smoke Devil'   'thermonuclear smoke devil' x1
+2    782  'Defeat the Giant Mole'                                       'Defeat the Giant Mole'                  'giant mole'             x1
+2    787  'Defeat a Skeletal Wyvern'                                    'Defeat a Skeletal Wyvern'               'skeletal wyvern'        x1
+2    803  'Defeat a Blue Dragon in Asgarnia'                            'Defeat a Blue Dragon'                   'blue dragon'            x1
+2    805  'Defeat a Black Demon in Asgarnia'                            'Defeat a Black Demon'                   'black demon'            x1
+2    865  'Defeat a Kalphite Guardian'                                  'Defeat a Kalphite Guardian'             'kalphite guardian'      x1
+2    918  'Defeat a Gargoyle in Morytania'                              'Defeat a Gargoyle'                      'gargoyle'               x1
+2    925  'Defeat a Vyrewatch Sentinel'                                 'Defeat a Vyrewatch Sentinel'            'vyrewatch sentinel'     x1
+2    926  'Defeat an Abyssal Demon in Morytania'                        'Defeat an Abyssal Demon'                'abyssal demon'          x1
+2    986  'Defeat a Lava Dragon in the Wilderness'                      'Defeat a Lava Dragon'                   'lava dragon'            x1
+2    987  'Defeat the Crazy Archaeologist'                              'Defeat the Crazy Archaeologist'         'crazy archaeologist'    x1
+2    995  'Defeat the Chaos Fanatic'                                    'Defeat the Chaos Fanatic'               'chaos fanatic'          x1
+2    998  'Defeat a Green Dragon in the Wilderness'                     'Defeat a Green Dragon'                  'green dragon'           x1
+2   1044  'Defeat a Crocodile'                                          'Defeat a Crocodile'                     'crocodile'              x1
+2   1058  'Defeat a Drake'                                              'Defeat a Drake'                         'drake'                  x1
+2   1331  'Defeat the Evil chicken'                                     'Defeat the Evil chicken'                'evil chicken'           x1
+2   1387  'Kill a Black Dragon in Tirannwn'                             'Kill a Black Dragon'                    'black dragon'           x1
+2   1574  'Kill 30 Bandits'                                             'Kill 30 Bandits'                        'bandit'                 x30
+2   1580  'Kill 5 Bunnies'                                              'Kill 5 Bunnies'                         'bunny'                  x5
+2   1750  'Kill a Dire Wolf'                                            'Kill a Dire Wolf'                       'dire wolf'              x1
+2   1807  'Kill a Brine Rat'                                            'Kill a Brine Rat'                       'brine rat'              x1
+2   1841  'Kill a Wallasalki'                                           'Kill a Wallasalki'                      'wallasalki'             x1
+2   1843  'Kill a Suqah'                                                'Kill a Suqah'                           'suqah'                  x1
+3    468  'Defeat a Rune Dragon'                                        'Defeat a Rune Dragon'                   'rune dragon'            x1
+3    542  'Defeat a Dark Beast in Tirannwn'                             'Defeat a Dark Beast'                    'dark beast'             x1
+3    555  'Defeat a Nechryael in Tirannwn'                              'Defeat a Nechryael'                     'nechryael'              x1
+3    584  'Defeat a Basilisk Knight'                                    'Defeat a Basilisk Knight'               'basilisk knight'        x1
+3    705  'Defeat a Mithril Dragon'                                     'Defeat a Mithril Dragon'                'mithril dragon'         x1
+3    706  'Defeat a Demonic Gorilla'                                    'Defeat a Demonic Gorilla'               'demonic gorilla'        x1
+3    707  'Defeat a Smoke Devil'                                        'Defeat a Smoke Devil'                   'smoke devil'            x1
+3    731  'Defeat 150 Demonic Gorillas'                                 'Defeat 150 Demonic Gorillas'            'demonic gorilla'        x150
+4    732  'Defeat 300 Demonic Gorillas'                                 'Defeat 300 Demonic Gorillas'            'demonic gorilla'        x300
+4    733  'Defeat 500 Demonic Gorillas'                                 'Defeat 500 Demonic Gorillas'            'demonic gorilla'        x500

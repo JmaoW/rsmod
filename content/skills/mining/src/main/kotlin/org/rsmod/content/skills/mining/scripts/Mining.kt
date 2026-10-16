@@ -37,8 +37,8 @@ import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.obj.UnpackedObjType
 import org.rsmod.game.type.obj.isType
 import org.rsmod.game.type.seq.SeqType
-import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.map.CoordGrid
+import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
 // TODO:
@@ -75,11 +75,13 @@ constructor(
             return
         }
 
-        val pickaxe = findPickaxe(player, objTypes) ?: run {
-            mes("You need a pickaxe to mine this rock.")
-            mes("You do not have a pickaxe which you have the Mining level to use.")
-            return
-        }
+        val pickaxe =
+            findPickaxe(player, objTypes)
+                ?: run {
+                    mes("You need a pickaxe to mine this rock.")
+                    mes("You do not have a pickaxe which you have the Mining level to use.")
+                    return
+                }
 
         if (actionDelay < mapClock) {
             actionDelay = mapClock + objTypes[pickaxe].miningRollDelay
@@ -93,11 +95,13 @@ constructor(
     }
 
     private fun ProtectedAccess.mine(rock: BoundLocInfo, type: UnpackedLocType) {
-        val pickaxe = findPickaxe(player, objTypes) ?: run {
-            mes("You need a pickaxe to mine this rock.")
-            mes("You do not have a pickaxe which you have the Mining level to use.")
-            return
-        }
+        val pickaxe =
+            findPickaxe(player, objTypes)
+                ?: run {
+                    mes("You need a pickaxe to mine this rock.")
+                    mes("You do not have a pickaxe which you have the Mining level to use.")
+                    return
+                }
 
         if (player.miningLvl < type.miningLevelReq) {
             mes("You need a Mining level of ${type.miningLevelReq} to mine this rock.")
@@ -119,7 +123,12 @@ constructor(
         if (actionDelay < mapClock) {
             actionDelay = mapClock + objTypes[pickaxe].miningRollDelay
         } else if (actionDelay == mapClock) {
-            val roll = MineRoll(player, rock, mineSuccess(player.miningLvl, type.miningLevelReq, objTypes[pickaxe], random))
+            val roll =
+                MineRoll(
+                    player,
+                    rock,
+                    mineSuccess(player.miningLvl, type.miningLevelReq, objTypes[pickaxe], random),
+                )
             roll.ore = objTypes[type.miningProduct]
             roll.gem = MiningGems.roll(random).takeUnless { MiningGems.isGem(roll.ore!!) }
             publish(roll)
@@ -147,7 +156,7 @@ constructor(
                 }
 
                 if (type.hasDepletedStage && !ore.keepRock && rockDepletes(rock, type)) {
-                    val respawnTime = type.resolveRespawnTime(random)
+                    val respawnTime = locRepo.respawnSpeed.scale(type.resolveRespawnTime(random))
                     locRepo.change(rock, type.miningDepletedStage, respawnTime)
                 }
             }
@@ -182,8 +191,8 @@ constructor(
 
     /**
      * Published on every roll to mine a rock, after the normal roll. Listeners can turn a failed
-     * roll into a [success], ask for the ore to be sent to the [bank] instead of the inventory,
-     * and give a different [product] in place of the [ore] (the ore still counts as mined).
+     * roll into a [success], ask for the ore to be sent to the [bank] instead of the inventory, and
+     * give a different [product] in place of the [ore] (the ore still counts as mined).
      */
     class MineRoll(val player: Player, val rock: BoundLocInfo, var success: Boolean) :
         org.rsmod.events.UnboundEvent {
@@ -203,8 +212,8 @@ constructor(
     }
 
     /**
-     * Published before mining checks the inventory is full. Listeners set [bank] when the ore
-     * will go straight to the bank, so a full inventory does not stop the player mining.
+     * Published before mining checks the inventory is full. Listeners set [bank] when the ore will
+     * go straight to the bank, so a full inventory does not stop the player mining.
      */
     class BankOreCheck(val player: Player) : org.rsmod.events.UnboundEvent {
         var bank: Boolean = false
@@ -239,63 +248,68 @@ constructor(
         val UnpackedObjType.miningAnim: SeqType by objParam(params.skill_anim)
 
         val UnpackedObjType.miningRollDelay: Int
-            get() = when (this) {
-                objs.bronze_pickaxe -> 8
-                objs.iron_pickaxe -> 7
-                objs.steel_pickaxe -> 6
-                objs.black_pickaxe -> 5
-                objs.mithril_pickaxe -> 5
-                objs.adamant_pickaxe -> 4
-                objs.rune_pickaxe, objs.gilded_pickaxe -> 3
-                objs.dragon_pickaxe -> 2
-                objs.dragon_pickaxe_upgraded -> 2
-                objs.dragon_pickaxe_or_trailblazer -> 2
-                objs.dragon_pickaxe_or_zalcano -> 2
-                objs.infernal_pickaxe -> 2
-                objs.infernal_pickaxe_uncharged -> 2
-                objs.infernal_pickaxe_or -> 2
-                objs.infernal_pickaxe_or_uncharged -> 2
-                objs.third_age_pickaxe -> 1
-                objs.crystal_pickaxe -> 1
-                objs.crystal_pickaxe_inactive -> 1
-                objs.trailblazer_reloaded_pickaxe -> 2
-                objs.trailblazer_reloaded_pickaxe_empty -> 2
-                objs.trailblazer_reloaded_pickaxe_no_infernal -> 2
-                objs.league_trailblazer_pickaxe -> 1
-                objs.zalcano_pickaxe -> 2
-                objs.gauntlet_pickaxe -> 3
-                objs.gauntlet_pickaxe_hm -> 3
-                else -> 8
-            }
+            get() =
+                when (this) {
+                    objs.bronze_pickaxe -> 8
+                    objs.iron_pickaxe -> 7
+                    objs.steel_pickaxe -> 6
+                    objs.black_pickaxe -> 5
+                    objs.mithril_pickaxe -> 5
+                    objs.adamant_pickaxe -> 4
+                    objs.rune_pickaxe,
+                    objs.gilded_pickaxe -> 3
+                    objs.dragon_pickaxe -> 2
+                    objs.dragon_pickaxe_upgraded -> 2
+                    objs.dragon_pickaxe_or_trailblazer -> 2
+                    objs.dragon_pickaxe_or_zalcano -> 2
+                    objs.infernal_pickaxe -> 2
+                    objs.infernal_pickaxe_uncharged -> 2
+                    objs.infernal_pickaxe_or -> 2
+                    objs.infernal_pickaxe_or_uncharged -> 2
+                    objs.third_age_pickaxe -> 1
+                    objs.crystal_pickaxe -> 1
+                    objs.crystal_pickaxe_inactive -> 1
+                    objs.trailblazer_reloaded_pickaxe -> 2
+                    objs.trailblazer_reloaded_pickaxe_empty -> 2
+                    objs.trailblazer_reloaded_pickaxe_no_infernal -> 2
+                    objs.league_trailblazer_pickaxe -> 1
+                    objs.zalcano_pickaxe -> 2
+                    objs.gauntlet_pickaxe -> 3
+                    objs.gauntlet_pickaxe_hm -> 3
+                    else -> 8
+                }
 
         val UnpackedObjType.miningPower: Int
-            get() = when (this) {
-                objs.bronze_pickaxe -> 1
-                objs.iron_pickaxe -> 2
-                objs.steel_pickaxe -> 3
-                objs.black_pickaxe -> 4
-                objs.mithril_pickaxe -> 5
-                objs.adamant_pickaxe -> 6
-                objs.rune_pickaxe, objs.gilded_pickaxe -> 7
-                objs.dragon_pickaxe -> 10
-                objs.dragon_pickaxe_upgraded -> 10
-                objs.dragon_pickaxe_or_trailblazer -> 10
-                objs.dragon_pickaxe_or_zalcano -> 10
-                objs.infernal_pickaxe -> 15
-                objs.infernal_pickaxe_uncharged -> 15
-                objs.infernal_pickaxe_or -> 15
-                objs.infernal_pickaxe_or_uncharged -> 15
-                objs.third_age_pickaxe -> 20
-                objs.trailblazer_reloaded_pickaxe -> 15
-                objs.trailblazer_reloaded_pickaxe_empty -> 15
-                objs.trailblazer_reloaded_pickaxe_no_infernal -> 15
-                objs.league_trailblazer_pickaxe -> 15
-                objs.zalcano_pickaxe -> 10
-                objs.gauntlet_pickaxe -> 15
-                objs.gauntlet_pickaxe_hm -> 15
-                objs.crystal_pickaxe, objs.crystal_pickaxe_inactive -> 15
-                else -> 1
-            }
+            get() =
+                when (this) {
+                    objs.bronze_pickaxe -> 1
+                    objs.iron_pickaxe -> 2
+                    objs.steel_pickaxe -> 3
+                    objs.black_pickaxe -> 4
+                    objs.mithril_pickaxe -> 5
+                    objs.adamant_pickaxe -> 6
+                    objs.rune_pickaxe,
+                    objs.gilded_pickaxe -> 7
+                    objs.dragon_pickaxe -> 10
+                    objs.dragon_pickaxe_upgraded -> 10
+                    objs.dragon_pickaxe_or_trailblazer -> 10
+                    objs.dragon_pickaxe_or_zalcano -> 10
+                    objs.infernal_pickaxe -> 15
+                    objs.infernal_pickaxe_uncharged -> 15
+                    objs.infernal_pickaxe_or -> 15
+                    objs.infernal_pickaxe_or_uncharged -> 15
+                    objs.third_age_pickaxe -> 20
+                    objs.trailblazer_reloaded_pickaxe -> 15
+                    objs.trailblazer_reloaded_pickaxe_empty -> 15
+                    objs.trailblazer_reloaded_pickaxe_no_infernal -> 15
+                    objs.league_trailblazer_pickaxe -> 15
+                    objs.zalcano_pickaxe -> 10
+                    objs.gauntlet_pickaxe -> 15
+                    objs.gauntlet_pickaxe_hm -> 15
+                    objs.crystal_pickaxe,
+                    objs.crystal_pickaxe_inactive -> 15
+                    else -> 1
+                }
 
         fun findPickaxe(player: Player, objTypes: ObjTypeList): InvObj? {
             val worn = player.wornPickaxe(objTypes)
@@ -328,13 +342,22 @@ constructor(
             if (fixed > 0) {
                 return fixed
             }
-            return random.of(max(1, miningRespawnTimeLow), max(miningRespawnTimeLow, miningRespawnTimeHigh))
+            return random.of(
+                max(1, miningRespawnTimeLow),
+                max(miningRespawnTimeLow, miningRespawnTimeHigh),
+            )
         }
 
-        private fun mineSuccess(miningLevel: Int, req: Int, pickaxe: UnpackedObjType, random: GameRandom): Boolean {
+        private fun mineSuccess(
+            miningLevel: Int,
+            req: Int,
+            pickaxe: UnpackedObjType,
+            random: GameRandom,
+        ): Boolean {
             val progressDenominator = max(1, 99 - req)
             val progress = (miningLevel - req).coerceAtLeast(0).toDouble() / progressDenominator
-            val chance = (0.2 + (progress * 0.65) + (pickaxe.miningPower * 0.01)).coerceIn(0.05, 0.95)
+            val chance =
+                (0.2 + (progress * 0.65) + (pickaxe.miningPower * 0.01)).coerceIn(0.05, 0.95)
             return random.randomDouble() < chance
         }
     }

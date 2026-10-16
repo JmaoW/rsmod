@@ -43,6 +43,12 @@ constructor(
     }
 
     private fun Npc.processMovement() {
+        if (isFrozen) {
+            // A frozen npc holds its ground: drop the route so it does not resume mid-way when
+            // the freeze ends.
+            routeDestination.clear()
+            return
+        }
         val collision = collisionStrategy
         if (collision != null) {
             processMoveSpeed(collision)
@@ -132,7 +138,7 @@ constructor(
                         targetWidth = destination.size,
                         targetLength = destination.size,
                     )
-                    .toCoordGrid()
+                    .toCoordGrid(source.coords.level)
             is RouteRequestLoc -> destination
         }
 
@@ -144,6 +150,9 @@ constructor(
     }
 
     private companion object {
-        private fun RouteCoordinates.toCoordGrid() = CoordGrid(x, z, level)
+        // The naive destination has no level (it is always 0), so the caller passes the level of
+        // the route. Otherwise an npc chasing on any other level never reaches a waypoint with a
+        // matching level and fails with an invalid step.
+        private fun RouteCoordinates.toCoordGrid(level: Int) = CoordGrid(x, z, level)
     }
 }

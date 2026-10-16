@@ -38,6 +38,14 @@ class RspClient(
         session.flush()
     }
 
+    override fun setNpcViewDistance(distance: Int) {
+        npcInfo.setViewDistance(distance)
+    }
+
+    override fun resetNpcViewDistance() {
+        npcInfo.resetViewDistance()
+    }
+
     override fun unregister(service: Service, player: Player) {
         service.playerInfoProtocol.dealloc(playerInfo)
         service.npcInfoProtocol.dealloc(npcInfo)

@@ -1,0 +1,48 @@
+# The shortened Inferno, for now just TzKal-Zuk alone so the fight can be tested quickly. The real
+# shortened list (six waves that show every monster once, a lone JalTok-Jad, the three Jads of wave
+# 68, then Zuk) is kept below, commented out: put it back when testing is done. Any list of waves
+# works, but the last wave must be TzKal-Zuk alone.
+
+[[wave]]
+number = 1
+monsters = ["zuk"]
+boss = true
+
+# ---- The full shortened list (N = nibbler, B = bat, X = blob, M = melee, R = ranger, G = mager)
+# [[wave]]
+# number = 1
+# monsters = ["nibbler", "nibbler", "nibbler", "bat"]
+#
+# [[wave]]
+# number = 2
+# monsters = ["nibbler", "nibbler", "nibbler", "blob", "bat"]
+#
+# [[wave]]
+# number = 3
+# monsters = ["nibbler", "nibbler", "nibbler", "melee", "blob"]
+#
+# [[wave]]
+# number = 4
+# monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee"]
+#
+# [[wave]]
+# number = 5
+# monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger"]
+#
+# [[wave]]
+# number = 6
+# monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "blob"]
+#
+# [[wave]]
+# number = 7
+# monsters = ["jad"]
+#
+# [[wave]]
+# number = 8
+# monsters = ["jad", "jad", "jad"]
+#
+# [[wave]]
+# number = 9
+# monsters = ["zuk"]
+# boss = true
+#

@@ -21,7 +21,7 @@ class TeamInstanceLoginPipeline @Inject constructor(private val applier: TeamIns
     }
 
     // Nothing to save: the position is already saved, and the fix is applied when it is loaded.
-    override fun save(connection: DatabaseConnection, player: Player, characterId: Int) {}
+    override fun snapshot(player: Player, characterId: Int) = CharacterDataStage.Snapshot {}
 }
 
 /** Carries no data; it only schedules [TeamInstanceLoginApplier] for the login. */

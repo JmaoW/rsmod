@@ -85,6 +85,11 @@ constructor(
             return
         }
 
+        // Save as soon as the client is gone, rather than waiting out the reconnect grace period.
+        if (clientDisconnectedCycles == 0) {
+            requestAutosave(urgent = true)
+        }
+
         val disconnectLogoutQueued = clientDisconnectedCycles > RECONNECT_GRACE_PERIOD
         if (disconnectLogoutQueued) {
             return

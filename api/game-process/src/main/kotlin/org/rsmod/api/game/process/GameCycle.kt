@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.game.process.controller.ControllerMainProcess
 import org.rsmod.api.game.process.npc.NpcMainProcess
 import org.rsmod.api.game.process.npc.NpcPreTickProcess
+import org.rsmod.api.game.process.player.PlayerAutosaveProcess
 import org.rsmod.api.game.process.player.PlayerIdShuffleProcess
 import org.rsmod.api.game.process.player.PlayerInputProcess
 import org.rsmod.api.game.process.player.PlayerLoginProcess
@@ -30,6 +31,7 @@ constructor(
     private val controllerMain: ControllerMainProcess,
     private val playerMain: PlayerMainProcess,
     private val playerLogout: PlayerLogoutProcess,
+    private val playerAutosave: PlayerAutosaveProcess,
     private val playerLogin: PlayerLoginProcess,
     private val worldPostTick: WorldPostTickProcess,
     private val playerPostTick: PlayerPostTickProcess,
@@ -53,6 +55,7 @@ constructor(
         controllerMain.process()
         playerMain.process()
         playerLogout.process()
+        playerAutosave.process()
         playerLogin.process()
     }
 

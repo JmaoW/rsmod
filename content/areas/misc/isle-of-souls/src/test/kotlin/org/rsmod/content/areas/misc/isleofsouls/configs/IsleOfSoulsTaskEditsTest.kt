@@ -39,7 +39,9 @@ class IsleOfSoulsTaskEditsTest {
             )
         for (edit in IsleOfSoulsTaskTexts.edits) {
             for (text in listOfNotNull(edit.name, edit.description)) {
-                assertTrue(areas.none { it in text }, "task ${edit.taskId}: $text")
+                // The spell is called that; it is not the area.
+                val checked = text.replace("Kourend Castle Teleport", "Castle Teleport")
+                assertTrue(areas.none { it in checked }, "task ${edit.taskId}: $text")
             }
         }
     }

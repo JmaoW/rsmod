@@ -2,6 +2,8 @@ package org.rsmod.api.spells.autocast
 
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
+import org.rsmod.api.combat.commons.magic.Spellbook
+import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
@@ -57,6 +59,30 @@ public class AutocastWeapons @Inject constructor(private val spells: AutocastSpe
         return setOfNotNull(additional1, additional2, additional3)
     }
 
+    /**
+     * The value for the `autocast_layout` varp that makes the client's spell picker (cs2
+     * `autocast_spellpos`) position the spells that [weapon] can autocast in [book]. The client
+     * only knows a few layouts, each selected by an obj id: `-1` is the standard book, `4675` the
+     * Ancient Magicks, `9013` Arceuus, and the others add the spells of special staves.
+     */
+    public fun pickerLayout(weapon: UnpackedObjType, book: Spellbook): Int =
+        when (book) {
+            Spellbook.Ancients -> LAYOUT_ANCIENTS
+            Spellbook.Arceuus -> LAYOUT_ARCEUUS
+            Spellbook.Standard -> {
+                val extra = weapon.additionalAutocastSpells()
+                when {
+                    extra.isEmpty() -> LAYOUT_STANDARD
+                    extra.any { it.isType(objs.spell_iban_blast) } -> LAYOUT_IBAN
+                    extra.all { it.isType(objs.spell_flames_of_zamorak) } -> LAYOUT_FLAMES
+                    // The layout of the staff of the dead has every special spell in it.
+                    else -> LAYOUT_ALL_SPECIAL
+                }
+            }
+
+            else -> LAYOUT_STANDARD
+        }
+
     public fun set(player: Player, varbits: StaffVarBits, autocastId: Int, defensiveCast: Boolean) {
         val (autocastVarBit, defensiveCastVarBit) = varbits
         VarPlayerIntMapSetter.set(player, autocastVarBit, autocastId)
@@ -91,6 +117,15 @@ public class AutocastWeapons @Inject constructor(private val spells: AutocastSpe
 
             else -> null
         }
+
+    private companion object {
+        const val LAYOUT_STANDARD = -1
+        const val LAYOUT_ANCIENTS = 4675
+        const val LAYOUT_ARCEUUS = 9013
+        const val LAYOUT_IBAN = 1409
+        const val LAYOUT_FLAMES = 27785
+        const val LAYOUT_ALL_SPECIAL = 11791
+    }
 
     public data class StaffVarBits(
         public val autocastId: VarBitType,

@@ -1,0 +1,59 @@
+bit	name	cost	refundable	kind	works	tab	index	description
+0	Gargoyle Smasher	120	0	perk	1	0	0	Automatically smash Gargoyles when they're on critical health, if you have the right tool.
+1	Slug Salter	10	0	perk	1	0	1	Automatically salt Rockslugs when they're on critical health, if you have salt.
+2	Reptile Freezer	10	0	perk	1	0	2	Automatically freeze Desert Lizards when they're on critical health, if you have ice water.
+3	'Shroom Sprayer	110	0	perk	0	0	3	Automatically spray Mutated Zygomites when they're on critical health, if you have fungicide.
+4	Need More Darkness	100	1	extend	1	1	0	Whenever you get a Dark Beast task, it will be a bigger task.
+5	Malevolent Masquerade	400	0	perk	1	0	5	Learn to combine the protective Slayer headgear and Slayer gem into one universal helmet, with level 55 Crafting.
+6	Ring Bling	150	0	perk	0	0	6	Learn to craft your own Slayer Rings, with level 75 Crafting.
+7	Broader Fletching	300	0	perk	0	0	4	Learn to fletch broad arrows (with level 52 Fletching), broad bolts (with level 55 Fletching) and amethyst broad bolts (with level 76 Fletching).
+8	Ankou Very Much	100	1	extend	1	1	1	Whenever you get a Ankou task, it will be a bigger task.
+9	Suq-a-nother One	100	1	extend	1	1	2	Whenever you get a Suqah task, it will be a bigger task.
+10	Fire & Darkness	50	1	extend	1	1	3	Whenever you get a Black Dragon task, it will be a bigger task.
+11	Pedal to the Metals	200	1	extend	1	1	4	Whenever you get a Metal Dragon task, it will be a bigger task.
+12	Spiritual Fervour	100	1	extend	1	1	5	Whenever you get a Spiritual Creature task, it will be a bigger task.
+13	Augment My Abbies	100	1	extend	1	1	16	Whenever you get an Abyssal Demon task, it will be a bigger task.
+14	It's Dark in Here	100	1	extend	1	1	8	Whenever you get a Black Demon task, it will be a bigger task.
+15	Greater Challenge	100	1	extend	1	1	7	Whenever you get a Greater Demon task, it will be a bigger task.
+16	I Hope You Mith Me	80	1	perk	0	-1	-1	Konar, Duradel and Nieve will be able to assign Mithril Dragons as your task.
+17	Watch the Birdie	80	1	task	1	0	8	Konar, Duradel, Nieve, Chaeldar and Krystilia will be able to assign Aviansies as your task.
+18	Hot Stuff	100	1	task	1	0	9	Duradel, Nieve and Chaeldar will be able to assign TzHaar as your task. You may also be offered a chance to slay TzTok-Jad or TzKal-Zuk.
+19	Like a Boss	200	1	perk	0	0	11	Konar, Duradel, Nieve and Krystilia will be able to assign boss monsters as your task. They will choose which boss you must kill.
+20	Bleed Me Dry	75	1	extend	1	1	9	Whenever you get a Bloodveld task, it will be a bigger task.
+21	Smell Ya Later	100	1	extend	1	1	10	Whenever you get a Aberrant Spectre task, it will be a bigger task.
+22	Birds of a Feather	100	1	extend	1	1	6	Whenever you get an Aviansie task, it will be a bigger task.
+23	I Really Mith You	120	1	perk	0	-1	-1	Whenever you get a Mithril Dragon task, it will be a bigger task.
+24	Horrorific	100	1	extend	1	1	11	Whenever you get a Cave Horror task, it will be a bigger task.
+25	To Dust You Shall Return	100	1	extend	1	1	12	Whenever you get a Dust Devil task, it will be a bigger task.
+26	Wyver-nother one	100	1	extend	1	1	13	Whenever you get a Skeletal Wyvern task, it will be a bigger task.
+27	Get Smashed	100	1	extend	1	1	14	Whenever you get a Gargoyle task, it will be a bigger task.
+28	Nechs Please	100	1	extend	1	1	15	Whenever you get a Nechryael task, it will be a bigger task.
+29	Krack On	100	1	extend	1	1	17	Whenever you get a Cave Kraken task, it will be a bigger task.
+30	Reptile Got Ripped	75	1	task	1	0	10	Konar, Duradel, Nieve and Chaeldar will be able to assign you Lizardmen.
+31	King Black Bonnet	1000	0	perk	0	0	13	Learn how to combine a KBD head with your Slayer helmet to colour it black.
+32	Kalphite Khat	1000	0	perk	0	0	14	Learn how to combine a Kalphite Queen head with your Slayer helmet to colour it green.
+33	Unholy Helmet	1000	0	perk	0	0	15	Learn how to combine an Abyssal Demon head with your Slayer helmet to colour it red.
+34	Seeing Red	50	1	task	1	0	7	Konar, Duradel and Nieve will be able to assign Red Dragons as your task.
+35	Bigger and Badder	50	0	perk	1	0	12	Increase the risk against certain Slayer monsters with the chance of a superior version spawning whilst on a Slayer task.
+36	Get Scabaright on It	50	1	perk	0	1	18	Whenever you get a Scabarite task, it will be a bigger task.
+37	Duly Noted	200	1	perk	0	0	20	Mithril Dragons drop mithril bars in banknote form while killed on assignment.
+38	Dark Mantle	1000	0	perk	0	0	16	Learn how to combine a Dark Claw with your Slayer helmet to colour it purple.
+39	Wyver-nother Two	100	1	extend	1	1	19	Whenever you get a Fossil Island Wyvern task, it will be a bigger task.
+40	Ada'mind Some More	100	1	perk	0	-1	-1	Whenever you get an Adamant Dragon task, it will be a bigger task.
+41	RUUUUUNE	100	1	perk	0	-1	-1	Whenever you get a Rune Dragon task, it will be a bigger task.
+42	Undead Head	1000	0	perk	0	0	17	Learn how to combine Vorkath's head with your Slayer helmet to colour it turquoise.
+43	Stop the Wyvern	500	0	perk	0	0	21	Stops you getting Fossil Island Wyvern tasks, without counting towards your blocked task limit.
+44	Double Trouble	500	1	perk	0	0	22	Slaying Dusk and Dawn now counts for two kills towards your task rather than one.
+45	Use More Head	1000	0	perk	0	0	18	Learn how to combine a Hydra head with your Slayer helmet to theme it like the Alchemical Hydra.
+46	Basilonger	100	1	extend	1	1	20	Whenever you get a Basilisk task, it will be a bigger task.
+47	Basilocked	80	1	task	1	0	20	Konar, Duradel and Nieve will be able to assign Basilisks as your task.
+48	Twisted Vision	1000	0	perk	0	0	24	Learn how to combine Twisted Horns with your Slayer helmet to theme it like the Great Olm.
+49	More at Stake	100	1	extend	1	1	21	Whenever you get a Vampyre task, it will be a bigger task.
+50	Actual Vampyre Slayer	80	1	task	1	0	25	Konar, Duradel, Nieve and Chaeldar will be able to assign Vampyres as your task.
+51	Task Storage	500	0	perk	0	0	26	Gain the ability to store your task, allowing you to take it at a later point in time.
+52	I Wildy More Slayer	0	1	perk	0	0	27	Krystilia will be able to assign Jellies, Dust Devils, Nechryaels and Abyssal Demons as your task.
+53	Revenenenenenants	100	0	perk	0	1	22	Whenever you get a Revenants task, it will be a bigger task.
+54	Warped Reality	60	1	perk	0	0	28	Konar, Duradel, Nieve and Chaeldar will be able to assign Warped Creatures as your task.
+55	More eyes than sense	150	1	perk	0	1	23	Whenever you get an Araxyte task, it will be a bigger task.
+56	Eye see you	1000	0	perk	0	0	19	Learn how to combine an Araxyte head with your Slayer helmet to theme it like the Araxxor.
+57	Un-restraining Order	100	1	perk	0	1	24	Whenever you get a Custodian Stalker task, it will be a bigger task.

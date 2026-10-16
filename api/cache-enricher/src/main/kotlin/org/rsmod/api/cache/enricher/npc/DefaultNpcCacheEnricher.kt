@@ -31,7 +31,51 @@ constructor(
 
     override fun generate(): List<UnpackedNpcType> {
         val external = loadExternalConfigs()
-        return external.map { it.toCacheType() }
+        val derived = loadDerivedAnims().toMutableMap()
+        val configured =
+            external.map { config ->
+                // Anims set in `npcs.toml` always win over derived ones.
+                val fallback = config.npc?.let(derived::remove)
+                config
+                    .copy(
+                        attackAnim = config.attackAnim ?: fallback?.attack,
+                        defendAnim = config.defendAnim ?: fallback?.defend,
+                        deathAnim = config.deathAnim ?: fallback?.death,
+                    )
+                    .toCacheType()
+            }
+        val unconfigured = derived.map { (name, anims) -> animsOnlyType(name, anims) }
+        return configured + unconfigured
+    }
+
+    /**
+     * Attack, defend and death anims found by `tools/npc-anims/derive_anims.py`. Without one an npc
+     * falls back to the param defaults, which are the human punch, block and death anims.
+     */
+    private fun loadDerivedAnims(): Map<String, DerivedAnims> {
+        val input = InputStreams.readAllBytes<DefaultNpcCacheEnricher>("npc_anims.toml")
+        val type = object : TypeReference<Map<String, Map<String, Int>>>() {}
+        val map = mapper.readValue(input, type)
+        val attack =
+            map[DERIVED_ATTACK_KEY]
+                ?: error("Could not extract `${DERIVED_ATTACK_KEY}` value from input.")
+        val defend =
+            map[DERIVED_DEFEND_KEY]
+                ?: error("Could not extract `${DERIVED_DEFEND_KEY}` value from input.")
+        val death =
+            map[DERIVED_DEATH_KEY]
+                ?: error("Could not extract `${DERIVED_DEATH_KEY}` value from input.")
+        val names = attack.keys + defend.keys + death.keys
+        return names.associateWith { DerivedAnims(attack[it], defend[it], death[it]) }
+    }
+
+    private fun animsOnlyType(name: String, anims: DerivedAnims): UnpackedNpcType {
+        val id = names[name] ?: error("Mapping with name not found: $name")
+        val builder = NpcPluginBuilder(name)
+        builder.putSeq(anims.attack, params.attack_anim)
+        builder.putSeq(anims.defend, params.defend_anim)
+        builder.putSeq(anims.death, params.death_anim)
+        return builder.build(id)
     }
 
     private fun loadExternalConfigs(): List<ExternalNpcConfig> {
@@ -159,8 +203,13 @@ constructor(
 
     private companion object {
         const val CONFIG_MAP_KEY: String = "config"
+        const val DERIVED_ATTACK_KEY: String = "attack_anim"
+        const val DERIVED_DEFEND_KEY: String = "defend_anim"
+        const val DERIVED_DEATH_KEY: String = "death_anim"
     }
 }
+
+private data class DerivedAnims(val attack: Int?, val defend: Int?, val death: Int?)
 
 private data class ExternalNpcConfig(
     val npc: String?,

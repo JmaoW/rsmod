@@ -26,6 +26,8 @@ data class AnnouncementConfig(
     val levels: Set<Int> = setOf(99),
     val deaths: Boolean = true,
     val dropObjs: Set<String> = emptySet(),
+    val dropBoosted: Boolean = true,
+    val dropPets: Boolean = true,
 ) {
     /**
      * How to announce a completed task, or `null` for no announcement. A first completion wins over
@@ -44,6 +46,10 @@ data class AnnouncementConfig(
     fun announcesDrop(objInternalName: String?): Boolean =
         objInternalName != null && objInternalName.lowercase() in dropObjs
 
+    /** Whether a drop is announced for being [boosted] by the relics' drop rate, or a pet. */
+    fun announcesDrop(boosted: Boolean, pet: Boolean): Boolean =
+        (dropBoosted && boosted) || (dropPets && pet)
+
     fun toJson(): String {
         val root = teamJson.createObjectNode()
         root.put("leadChanges", leadChanges)
@@ -60,9 +66,10 @@ data class AnnouncementConfig(
             levels.sorted().forEach(array::add)
         }
         root.put("deaths", deaths)
-        root.putObject("drops").putArray("objs").also { array ->
-            dropObjs.sorted().forEach(array::add)
-        }
+        val drops = root.putObject("drops")
+        drops.put("boosted", dropBoosted)
+        drops.put("pets", dropPets)
+        drops.putArray("objs").also { array -> dropObjs.sorted().forEach(array::add) }
         return teamJson.writerWithDefaultPrettyPrinter().writeValueAsString(root)
     }
 
@@ -117,7 +124,13 @@ data class AnnouncementConfig(
             }
             root.get("drops")?.let { drops ->
                 require(drops.isObject) { "\"drops\" must be an object." }
-                rejectUnknown(drops, setOf("objs"), "\"drops\"")
+                rejectUnknown(drops, setOf("boosted", "pets", "objs"), "\"drops\"")
+                drops.get("boosted")?.let {
+                    config = config.copy(dropBoosted = boolean(it, "drops.boosted"))
+                }
+                drops.get("pets")?.let {
+                    config = config.copy(dropPets = boolean(it, "drops.pets"))
+                }
                 drops.get("objs")?.let {
                     config =
                         config.copy(

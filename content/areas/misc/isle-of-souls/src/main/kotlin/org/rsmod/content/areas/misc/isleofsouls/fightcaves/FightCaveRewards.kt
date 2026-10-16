@@ -23,15 +23,19 @@ constructor(
     private val completions: FightCaveCompletions,
 ) {
     fun win(players: List<Player>, run: FightCaveRun) {
+        // The "complete the Fight Caves" counters belong to the team: count the run once for each.
+        val counted = HashSet<Any>()
         for (player in players) {
+            val countRun = counted.add(teams.teamOf(player) ?: player.username)
             give(player, cave_objs.fire_cape, 1)
             give(player, cave_objs.tokkul, TOKKUL_REWARD)
             if (random.of(PET_ODDS) == 0) {
                 give(player, cave_objs.jad_pet, 1)
+                announcer.pet(player, cave_objs.jad_pet)
                 player.mes("You have a funny feeling like you're being followed.")
             }
             player.mes("Congratulations! You have defeated TzTok-Jad and completed the Fight Cave.")
-            completions.completed(player)
+            completions.completed(player, countRun)
             player.strongQueue(cave_queues.win, 1)
         }
 

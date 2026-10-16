@@ -15,16 +15,15 @@ import org.rsmod.api.script.onGameStartup
 import org.rsmod.api.script.onOpLoc1
 import org.rsmod.api.type.editors.loc.LocEditor
 import org.rsmod.api.type.refs.loc.LocReferences
+import org.rsmod.content.generic.locs.ladders.DungeonLadderClimb
 import org.rsmod.content.skills.mining.scripts.Mining
 import org.rsmod.events.EventBus
 import org.rsmod.events.UnboundEvent
 import org.rsmod.game.entity.Player
-import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.loc.LocAngle
 import org.rsmod.game.loc.LocShape
 import org.rsmod.game.type.inv.InvTypeList
 import org.rsmod.game.type.loc.LocTypeList
-import org.rsmod.game.type.loc.UnpackedLocType
 import org.rsmod.map.CoordGrid
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
@@ -85,9 +84,8 @@ internal object MiningGuildDoorEdits : LocEditor() {
  * one, and the guild's four up-ladders all lead back to the isle's.
  *
  * The guild's up-ladder is the same loc as Lumbridge's cellar ladder, which the generic
- * dungeon-ladder script sends exactly 6400 tiles north, so a handler for that loc type (which the
- * engine runs before the generic content group one) takes it over and does what the generic one
- * does for any ladder outside the guild.
+ * dungeon-ladder script sends exactly 6400 tiles north. That script publishes [DungeonLadderClimb]
+ * first, and this one rewrites the destination for the guild's ladders.
  */
 class MiningGuildScript
 @Inject
@@ -101,7 +99,12 @@ constructor(
         onGameStartup { placeLadder() }
 
         onOpLoc1(MiningGuildLocs.ladder_down) { climbDown() }
-        onOpLoc1(MiningGuildLocs.ladder_up) { climbUp(it.loc, it.type) }
+        // The generic dungeon-ladder script climbs 6400 tiles; the guild's ladders are redirected.
+        onEvent<DungeonLadderClimb> {
+            if (up && loc.coords.isGuildLadder()) {
+                dest = LADDER_ARRIVAL
+            }
+        }
 
         onEvent<Mining.MineOre> {
             if (rock.coords.isInGuild()) {
@@ -131,18 +134,6 @@ constructor(
         delay(1)
         telejump(GUILD_ARRIVAL)
         eventBus.publish(MiningGuildEntered(player))
-    }
-
-    private suspend fun ProtectedAccess.climbUp(loc: BoundLocInfo, type: UnpackedLocType) {
-        arriveDelay()
-        anim(type.param(params.climb_anim))
-        delay(1)
-        if (loc.coords.isGuildLadder()) {
-            telejump(LADDER_ARRIVAL)
-        } else {
-            // Not the guild's ladder: what the generic dungeon-ladder script does.
-            telejump(player.coords.translateZ(-GENERIC_LADDER_DROP))
-        }
     }
 
     /**
@@ -195,7 +186,5 @@ constructor(
 
         /** Falador asks for this level at the ladder. */
         const val GUILD_MINING_LEVEL = 60
-
-        private const val GENERIC_LADDER_DROP = 6400
     }
 }

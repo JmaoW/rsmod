@@ -48,6 +48,7 @@ constructor(private val eventBus: EventBus, private val teams: LeagueTeams) {
         }
         for (member in teams.onlineMembers(team)) {
             syncPlayer(member)
+            member.requestAutosave()
             sendCompletionMessages(member, task, completedBy = player, shared = true)
             showCompletionPopup(member, task, completedBy = player.takeUnless { it === member })
         }
@@ -57,7 +58,9 @@ constructor(private val eventBus: EventBus, private val teams: LeagueTeams) {
     /**
      * Adds one to the [counter] progress varp, up to [goal], and completes [taskId] when the goal
      * is reached. For a team the counter is a shared total, so each member's mining counts. Only
-     * [player], who did the action, gets the "Task Progress" chat line, not their teammates.
+     * [player], who did the action, gets the "Task Progress" chat line, not their teammates. For a
+     * task in a [LeagueTaskSeries] the line is only sent while it is the series' lowest unfinished
+     * task.
      */
     fun addProgress(player: Player, taskId: Int, counter: VarpType, goal: Int) {
         if (isComplete(player, taskId)) {
@@ -76,8 +79,9 @@ constructor(private val eventBus: EventBus, private val teams: LeagueTeams) {
         for (member in members) {
             VarPlayerIntMapSetter.set(member, counter, progress)
         }
-        val taskName = LeagueTaskList.byId[taskId]?.name
-        if (taskName != null) {
+        val shown = LeagueTaskSeries.shownTask(taskId) { isComplete(player, it) }
+        val taskName = LeagueTaskList.byId[shown]?.name
+        if (shown == taskId && taskName != null) {
             player.mes(LeagueChat.taskProgress(taskName, progress, goal))
         }
         if (progress >= goal) {
@@ -184,6 +188,7 @@ constructor(private val eventBus: EventBus, private val teams: LeagueTeams) {
 
         addPoints(player, LeagueTaskVars.points_completed, task.tier.points)
         addPoints(player, LeagueTaskVars.points_claimed, task.tier.points)
+        player.requestAutosave()
 
         sendCompletionMessages(player, task, completedBy = player, shared = false)
         refreshLeaguePanel(player)

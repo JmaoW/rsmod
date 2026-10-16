@@ -10,6 +10,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.player.headbar.InternalPlayerHeadbars
+import org.rsmod.api.player.hit.events.PlayerHitEvents
 import org.rsmod.api.player.lefthand
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.protect.ProtectedAccess
@@ -42,6 +43,8 @@ public object StandardPlayerHitProcessor : QueuedPlayerHitProcessor {
         val damage = min(player.hitpoints, hit.damage)
         if (damage > 0) {
             statSub(stats.hitpoints, constant = damage, percent = 0)
+            val npcSource = if (hit.isFromNpc) findHitNpcSource(hit) else null
+            publish(PlayerHitEvents.Impact(player, hit, damage, npcSource))
         }
 
         playDefendSound(hit, random)

@@ -168,7 +168,7 @@ constructor(
         }
 
         if (despawn) {
-            val respawnTime = type.resolveRespawnTime(random)
+            val respawnTime = locRepo.respawnSpeed.scale(type.resolveRespawnTime(random))
             locRepo.change(tree, type.treeStump, respawnTime)
             resetAnim()
             soundSynth(synths.tree_fall_sound)

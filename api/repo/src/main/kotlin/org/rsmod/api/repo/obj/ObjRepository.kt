@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.registry.obj.ObjRegistry
 import org.rsmod.api.registry.obj.ObjRegistryResult
 import org.rsmod.api.registry.obj.isSuccess
+import org.rsmod.api.repo.RespawnSpeed
 import org.rsmod.game.MapClock
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.InvObj
@@ -20,6 +21,7 @@ constructor(
     private val mapClock: MapClock,
     private val registry: ObjRegistry,
     private val objTypes: ObjTypeList,
+    public val respawnSpeed: RespawnSpeed,
 ) {
     private val addDurations = ArrayDeque<ObjAddDuration>()
     private val delDurations = ArrayDeque<ObjDelDuration>()
@@ -95,7 +97,7 @@ constructor(
         return true
     }
 
-    private fun Obj.respawnRate(): Int = objTypes[this].respawnRate
+    private fun Obj.respawnRate(): Int = respawnSpeed.scale(objTypes[this].respawnRate)
 
     private fun Obj.canRespawn(): Boolean = scope == ObjScope.Perm
 

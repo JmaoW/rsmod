@@ -58,6 +58,7 @@ public object PlayerSkillXP {
 
             engineQueueChangeStat(stat)
             engineQueueAdvanceStat(stat)
+            requestAutosave()
         }
 
         val combatLevel = calculateCombatLevel(this)

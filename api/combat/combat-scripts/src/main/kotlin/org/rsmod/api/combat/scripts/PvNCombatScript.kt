@@ -2,6 +2,8 @@ package org.rsmod.api.combat.scripts
 
 import jakarta.inject.Inject
 import org.rsmod.api.combat.ACTIVE_COMBAT_DELAY
+import org.rsmod.api.combat.NpcAttackChecks
+import org.rsmod.api.combat.NpcMeleeBlocks
 import org.rsmod.api.combat.PvNCombat
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.commons.styles.AttackStyle
@@ -14,6 +16,7 @@ import org.rsmod.api.combat.player.resolveAutocastSpell
 import org.rsmod.api.combat.player.resolveCombatAttack
 import org.rsmod.api.combat.weapon.styles.AttackStyles
 import org.rsmod.api.combat.weapon.types.AttackTypes
+import org.rsmod.api.config.constants
 import org.rsmod.api.config.refs.categories
 import org.rsmod.api.config.refs.queues
 import org.rsmod.api.player.protect.ProtectedAccess
@@ -38,6 +41,8 @@ constructor(
     private val spells: MagicSpellRegistry,
     private val runes: MagicRuneManager,
     private val autocast: AutocastWeapons,
+    private val meleeBlocks: NpcMeleeBlocks,
+    private val attackChecks: NpcAttackChecks,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onDefaultApNpc2 { attemptCombatAp(it.npc) }
@@ -47,7 +52,28 @@ constructor(
         }
     }
 
+    /** Melee on a npc that only takes ranged and magic: it says so before walking up to it. */
+    private fun ProtectedAccess.meleeBlocked(target: Npc): Boolean {
+        if (!meleeBlocks.isBlocked(target)) {
+            return false
+        }
+        val type = types.get(player)
+        val isMelee = type == null || type.isMelee
+        if (!isMelee || resolveAutocastSpell(objTypes, spells, runes, autocast) != null) {
+            return false
+        }
+        if (meleeBlocks.allows(target, objTypes.getOrNull(player.righthand)?.internalName)) {
+            return false
+        }
+        mes(meleeBlocks.messageFor(target) ?: constants.dm_reach)
+        clearPendingAction()
+        return true
+    }
+
     private suspend fun ProtectedAccess.attemptCombatAp(target: Npc) {
+        if (meleeBlocked(target)) {
+            return
+        }
         val type = types.get(player)
         val style = styles.get(player)
         val attackRange = attackRange(style)
@@ -76,6 +102,9 @@ constructor(
     }
 
     private suspend fun ProtectedAccess.attemptCombatOp(target: Npc) {
+        if (meleeBlocked(target)) {
+            return
+        }
         if (!canAttack(target)) {
             return
         }
@@ -109,6 +138,13 @@ constructor(
         //  their specific conditions. Some npcs like the mage arena (wilderness) npcs
         //  don't give any sort of message, but simply won't allow players to melee them.
         //  (Will stop at ap range, doesn't drag you into melee range)
+
+        // Conditions content adds (a Slayer level to harm the npc, for one). The hook tells the
+        // player why it stopped the attack.
+        if (!attackChecks.allows(this, npc)) {
+            clearPendingAction()
+            return false
+        }
 
         // Note: Dinh's bulwark conditions occur _before_ multi-combat area checks and _after_
         // "can attack" hooks.

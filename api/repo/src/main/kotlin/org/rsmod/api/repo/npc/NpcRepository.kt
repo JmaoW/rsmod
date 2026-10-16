@@ -5,6 +5,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.registry.npc.NpcRegistry
 import org.rsmod.api.registry.npc.isSuccess
 import org.rsmod.api.registry.region.RegionRegistry
+import org.rsmod.api.repo.RespawnSpeed
 import org.rsmod.game.MapClock
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.NpcList
@@ -18,6 +19,7 @@ constructor(
     private val mapClock: MapClock,
     private val registry: NpcRegistry,
     private val npcList: NpcList,
+    public val respawnSpeed: RespawnSpeed,
 ) {
     private val addNpcs = ObjectArrayList<Npc>()
     private val delNpcs = ObjectArrayList<Npc>()

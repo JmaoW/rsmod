@@ -1,0 +1,8 @@
+# Spawns to leave out. One rule per line; `#` starts a comment. Re-run convert.py after editing.
+#   npc <id|name>                  every spawn of that npc
+#   rect x0 z0 x1 z1 [level]       every spawn inside the tile rectangle (inclusive)
+#   near <id> x z radius           spawns of that npc id within the radius of a tile
+
+# We place Yarsul ourselves in the Mining Guild (MiningGuildShopScript, 3031, 9746); the source has
+# him one tile away, which would give two.
+near 7718 3031 9746 4

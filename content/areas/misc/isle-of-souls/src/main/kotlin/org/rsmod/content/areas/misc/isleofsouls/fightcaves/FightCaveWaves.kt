@@ -1,7 +1,8 @@
 package org.rsmod.content.areas.misc.isleofsouls.fightcaves
 
-import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.dataformat.toml.TomlMapper
+import org.rsmod.content.areas.misc.isleofsouls.waves.Wave
+import org.rsmod.content.areas.misc.isleofsouls.waves.WaveFile
+import org.rsmod.content.areas.misc.isleofsouls.waves.WaveList
 
 /**
  * The monsters of the Fight Cave. [key] is the name used in the wave files, [points] the value the
@@ -23,12 +24,8 @@ enum class FightCaveMonster(val key: String, val points: Int, val level: Int) {
     }
 }
 
-/** One wave of a run. A [boss] wave is the last one: beating it wins the run. */
-data class FightCaveWave(
-    val number: Int,
-    val monsters: List<FightCaveMonster>,
-    val boss: Boolean = false,
-)
+/** One wave of a run. A boss wave is the last one: beating it wins the run. */
+typealias FightCaveWave = Wave<FightCaveMonster>
 
 /** Which wave file a run uses. Chosen when the server starts, never by players. */
 enum class FightCaveMode(val resource: String, val key: String) {
@@ -44,65 +41,18 @@ enum class FightCaveMode(val resource: String, val key: String) {
 class FightCaveWaveException(message: String) : IllegalArgumentException(message)
 
 /** The ordered waves of one mode. Build one with [FightCaveWaves.parse]. */
-class FightCaveWaves(val waves: List<FightCaveWave>) {
-    val count: Int
-        get() = waves.size
-
-    /** The wave with the one-based [number]. */
-    operator fun get(number: Int): FightCaveWave = waves[number - 1]
-
+class FightCaveWaves(waves: List<FightCaveWave>) : WaveList<FightCaveMonster>(waves) {
     companion object {
-        private val mapper = TomlMapper()
-
         /**
          * Reads a wave file. Rejects an unknown monster key, an empty wave, wave numbers that do
-         * not rise by one, and a file whose last wave is not the only boss wave.
+         * not rise by one, and a file whose last wave is not the only boss wave, which must be
+         * TzTok-Jad alone.
          */
         fun parse(text: String, source: String = "wave file"): FightCaveWaves {
-            val root: JsonNode =
-                try {
-                    mapper.readTree(text)
-                } catch (e: Exception) {
-                    throw FightCaveWaveException("$source is not valid TOML: ${e.message}")
+            val waves =
+                WaveFile.parse(text, source, FightCaveMonster::fromKey) {
+                    FightCaveWaveException(it)
                 }
-            val entries = root.get("wave")
-            if (entries == null || !entries.isArray || entries.isEmpty) {
-                throw FightCaveWaveException("$source has no [[wave]] entries.")
-            }
-
-            val waves = ArrayList<FightCaveWave>()
-            for (entry in entries) {
-                val number = entry.get("number")?.takeIf { it.isInt }?.asInt()
-                if (number == null) {
-                    throw FightCaveWaveException("$source: a wave has no whole-number `number`.")
-                }
-                val expected = waves.size + 1
-                if (number != expected) {
-                    throw FightCaveWaveException(
-                        "$source: wave $number comes where wave $expected is expected."
-                    )
-                }
-                val names = entry.get("monsters")
-                if (names == null || !names.isArray || names.isEmpty) {
-                    throw FightCaveWaveException("$source: wave $number has no monsters.")
-                }
-                val monsters =
-                    names.map { name ->
-                        FightCaveMonster.fromKey(name.asText())
-                            ?: throw FightCaveWaveException(
-                                "$source: wave $number has an unknown monster `${name.asText()}`."
-                            )
-                    }
-                val boss = entry.get("boss")?.asBoolean() ?: false
-                waves += FightCaveWave(number, monsters, boss)
-            }
-
-            if (!waves.last().boss) {
-                throw FightCaveWaveException("$source: the last wave must be the boss wave.")
-            }
-            if (waves.dropLast(1).any { it.boss }) {
-                throw FightCaveWaveException("$source: only the last wave can be the boss wave.")
-            }
             if (waves.last().monsters != listOf(FightCaveMonster.Jad)) {
                 throw FightCaveWaveException("$source: the boss wave must be TzTok-Jad alone.")
             }

@@ -1,0 +1,132 @@
+Compared 581 monsters with a table in both the import and the db.
+63 differ. Items only the db has: 122. Items only the import has: 79.
+
+differences, source / npc name / spawns: missing from the import | only in the import
+
+Vampyre Juvinate / Vampyre Juvinate / 2:
+    import only: adamant axe, adamant mace, adamant med helm, adamant scimitar, adamant sword, amulet of magic, black 2h sword, black battleaxe, black chainbody, black full helm, black kiteshield, black platelegs ...
+The Mimic / The Mimic / 1:
+    import only: 3rd age amulet, 3rd age axe, 3rd age bow, 3rd age cloak, 3rd age druidic cloak, 3rd age druidic robe bottoms, 3rd age druidic robe top, 3rd age druidic staff, 3rd age full helmet, 3rd age kiteshield, 3rd age longsword, 3rd age mage hat ...
+Cyclops / Cyclops / 5:
+    db only:     adamant defender, adamant mace, black 2h sword, black defender, black longsword, black sword, bronze defender, iron 2h sword, iron chainbody, iron defender, mithril dagger, mithril defender ...
+Kalphite Queen / Kalphite Queen / 1:
+    db only:     dark crab, monkfish, prayer potion(4), ranging potion(3), saradomin brew(4), shark, super combat potion(2), super restore(4), superantipoison(2)
+Ent / Ent / 23:
+    db only:     logs, magic logs, maple logs, oak logs, willow logs, yew logs
+Farmer / Farmer / 4:
+    db only:     energy potion(3), gardening boots, rake, secateurs, seed dibber, watering can(8)
+Black demon / Black demon / 4:
+    db only:     contract of bloodied blows, contract of divine severance, contract of forfeit breath, contract of glyphic attenuation, contract of sensory clouding
+Greater demon / Greater demon / 8:
+    db only:     contract of bloodied blows, contract of divine severance, contract of forfeit breath, contract of glyphic attenuation, contract of sensory clouding
+Jelly / Jelly / 1:
+    db only:     adamant 2h sword, adamant axe, adamant battleaxe, black 2h sword, rune kiteshield
+Lesser demon / Lesser demon / 11:
+    db only:     contract of bloodied blows, contract of divine severance, contract of forfeit breath, contract of glyphic attenuation, contract of sensory clouding
+Phantom Muspah / Phantom Muspah / 1:
+    db only:     ancient essence, ancient icon, charged ice, frozen cache, venator shard
+Giant rat / Giant rat / 4:
+    db only:     giant rat bone, rat bone, rat's tail
+    import only: raw rat meat
+Magic axe / Magic axe / 16:
+    import only: adamant battleaxe, mithril battleaxe, rune battleaxe, steel battleaxe
+Sorebones / Sorebones / 8:
+    db only:     bell jar, brain tongs, cranial clamp, skull staple
+Chaos Elemental / Chaos Elemental / 1:
+    db only:     blighted super restore(4), dragon bones, super combat potion(1)
+Ankou / Ankou / 9:
+    db only:     fishing bait, rune essence
+Duke Sucellus / Duke Sucellus / 1:
+    db only:     ancient blood ornament kit, odd key
+Goblin (Goblin Village) / Goblin / 2:
+    db only:     goblin skull, green goblin mail
+Hill Giant / Hill Giant / 10:
+    db only:     iron med helm, steel scimitar
+Icefiend / Icefiend / 7:
+    db only:     frozen tear, varlamore_key_half_1
+Killerwatt / Killerwatt / 26:
+    import only: air diamond, energy potion(4)
+Albino bat / Albino bat / 25:
+    db only:     giant bat wing
+Anja / Anja / 1:
+    db only:     energy potion(3)
+Bear Cub / Bear Cub / 9:
+    db only:     bear ribs
+Berry / Berry / 1:
+    import only: cell key 2
+Big frog / Big frog / 30:
+    db only:     big frog leg
+Black bear / Black bear / 12:
+    db only:     bear ribs
+Black dragon / Black dragon / 3:
+    db only:     dragon token
+Black unicorn / Black unicorn / 14:
+    db only:     unicorn bone
+Blessed giant rat / Blessed giant rat / 3:
+    db only:     giant rat bone
+Bryophyta / Bryophyta / 1:
+    db only:     big bones
+Cave goblin (monster) / Cave goblin / 1:
+    import only: lit torch
+Cuffs / Cuffs / 1:
+    db only:     energy potion(3)
+Drunken man / Drunken man / 1:
+    db only:     energy potion(3)
+Giant bat / Giant bat / 118:
+    db only:     giant bat wing
+Giant crypt rat / Giant crypt rat / 2:
+    db only:     giant rat bone
+Goblin / Goblin / 29:
+    db only:     goblin skull
+Goblin (God Wars Dungeon) / Goblin / 3:
+    db only:     goblin skull
+Goblin (Vault of War) / Goblin / 4:
+    db only:     goblin skull
+Gorad / Gorad / 1:
+    db only:     ogre tooth
+Grizzly bear / Grizzly bear / 37:
+    db only:     bear ribs
+Grizzly bear cub / Grizzly bear cub / 8:
+    db only:     bear ribs
+Hengel / Hengel / 1:
+    db only:     energy potion(3)
+Infernal Mage / Infernal Mage / 3:
+    import only: fire ruby
+Jeff / Jeff / 1:
+    db only:     energy potion(3)
+Khazard commander / Khazard commander / 2:
+    db only:     orb of protection
+Monk of Zamorak (Paterdomus) / Monk of Zamorak / 4:
+    db only:     golden key
+Monkey (monster) / Monkey / 18:
+    db only:     monkey paw
+Monkey Zombie / Monkey Zombie / 35:
+    db only:     monkey paw
+Narf / Narf / 1:
+    db only:     energy potion(3)
+Ram / Ram / 8:
+    db only:     ram skull
+Rat / Rat / 56:
+    db only:     rat's tail
+Rusty / Rusty / 1:
+    db only:     energy potion(3)
+Sea Snake Hatchling / Sea Snake Hatchling / 7:
+    import only: water sapphire
+Sea Snake Young / Sea Snake Young / 10:
+    import only: water sapphire
+The Leviathan / The Leviathan / 1:
+    db only:     ancient blood ornament kit
+The Whisperer / The Whisperer / 1:
+    db only:     ancient blood ornament kit
+Turoth / Turoth / 1:
+    import only: necklace of fangs
+Twig / Twig / 1:
+    import only: cell key 1
+Unicorn / Unicorn / 27:
+    db only:     unicorn bone
+Vampyre Juvenile / Vampyre Juvenile / 3:
+    import only: vampyre dust
+Vardorvis / Vardorvis / 1:
+    db only:     ancient blood ornament kit
+Zombie rat / Zombie rat / 1:
+    db only:     giant rat bone

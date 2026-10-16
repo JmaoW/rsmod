@@ -1,0 +1,2233 @@
+{
+ "41": {
+  "name": "Aberrant Spectres",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ],
+   "duradel": [
+    7,
+    130,
+    200
+   ]
+  },
+  "combat": 65,
+  "stats": [
+   [
+    60,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 110,
+  "world": 39,
+  "reachable": 21,
+  "unverified": 4,
+  "unverifiedWhere": {
+   "catacombs": 4
+  },
+  "areas": {
+   "unreachable": 14,
+   "stronghold": 13,
+   "catacombs": 8,
+   "unverified": 4
+  }
+ },
+ "42": {
+  "name": "Abyssal Demons",
+  "masters": {
+   "vannaka": [
+    5,
+    40,
+    90
+   ],
+   "duradel": [
+    12,
+    130,
+    200
+   ]
+  },
+  "combat": 85,
+  "stats": [
+   [
+    85,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 58,
+  "reachable": 14,
+  "unverified": 13,
+  "unverifiedWhere": {
+   "catacombs": 13
+  },
+  "areas": {
+   "slayer": 14,
+   "unverified": 13,
+   "unreachable": 31
+  }
+ },
+ "79": {
+  "name": "Ankou",
+  "masters": {
+   "vannaka": [
+    8,
+    25,
+    35
+   ],
+   "duradel": [
+    5,
+    50,
+    80
+   ]
+  },
+  "combat": 40,
+  "stats": [],
+  "unlock": false,
+  "lmin": 60,
+  "lmax": null,
+  "world": 81,
+  "reachable": 18,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 63,
+   "stronghold": 8,
+   "catacombs": 10
+  }
+ },
+ "94": {
+  "name": "Aviansies",
+  "masters": {
+   "duradel": [
+    8,
+    120,
+    200
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": true,
+  "lmin": null,
+  "lmax": null,
+  "world": 48,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 48
+  }
+ },
+ "38": {
+  "name": "Banshees",
+  "masters": {
+   "turael": [
+    8,
+    15,
+    30
+   ]
+  },
+  "combat": 20,
+  "stats": [
+   [
+    15,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 14,
+  "reachable": 6,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "catacombs": 6,
+   "unreachable": 8
+  }
+ },
+ "43": {
+  "name": "Basilisks",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ],
+   "duradel": [
+    7,
+    130,
+    200
+   ]
+  },
+  "combat": 25,
+  "stats": [
+   [
+    40,
+    18
+   ],
+   [
+    20,
+    1
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 40,
+  "reachable": 8,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 32,
+   "fremennik": 8
+  }
+ },
+ "8": {
+  "name": "Bats",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 5,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 277,
+  "reachable": 37,
+  "unverified": 5,
+  "unverifiedWhere": {
+   "taverley": 5
+  },
+  "areas": {
+   "unreachable": 235,
+   "karamja": 3,
+   "taverley": 9,
+   "unverified": 5,
+   "mos": 25
+  }
+ },
+ "13": {
+  "name": "Bears",
+  "masters": {
+   "turael": [
+    7,
+    10,
+    20
+   ]
+  },
+  "combat": 13,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 85,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 85
+  }
+ },
+ "5": {
+  "name": "Birds",
+  "masters": {
+   "turael": [
+    6,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 25,
+  "world": 485,
+  "reachable": 26,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 459,
+   "isle": 26
+  }
+ },
+ "30": {
+  "name": "Black Demons",
+  "masters": {
+   "duradel": [
+    8,
+    130,
+    200
+   ]
+  },
+  "combat": 80,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 57,
+  "reachable": 31,
+  "unverified": 4,
+  "unverifiedWhere": {
+   "catacombs": 4
+  },
+  "areas": {
+   "brimhaven": 4,
+   "taverley": 24,
+   "edgeville": 3,
+   "unreachable": 22,
+   "unverified": 4
+  }
+ },
+ "27": {
+  "name": "Black Dragons",
+  "masters": {
+   "duradel": [
+    9,
+    10,
+    20
+   ]
+  },
+  "combat": 80,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 39,
+  "reachable": 6,
+  "unverified": 5,
+  "unverifiedWhere": {
+   "taverley": 5
+  },
+  "areas": {
+   "unreachable": 28,
+   "catacombs": 4,
+   "unverified": 5,
+   "taverley": 2
+  }
+ },
+ "48": {
+  "name": "Bloodveld",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ],
+   "duradel": [
+    8,
+    130,
+    200
+   ]
+  },
+  "combat": 50,
+  "stats": [
+   [
+    50,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 99,
+  "reachable": 36,
+  "unverified": 6,
+  "unverifiedWhere": {
+   "catacombs": 6
+  },
+  "areas": {
+   "unreachable": 57,
+   "stronghold": 12,
+   "slayer": 12,
+   "unverified": 6,
+   "catacombs": 12
+  }
+ },
+ "25": {
+  "name": "Blue Dragons",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ],
+   "duradel": [
+    4,
+    110,
+    170
+   ]
+  },
+  "combat": 65,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 57,
+  "reachable": 30,
+  "unverified": 13,
+  "unverifiedWhere": {
+   "taverley": 13
+  },
+  "areas": {
+   "unreachable": 14,
+   "souls": 7,
+   "taverley": 21,
+   "unverified": 13,
+   "catacombs": 2
+  }
+ },
+ "63": {
+  "name": "Cave Bugs",
+  "masters": {
+   "turael": [
+    8,
+    10,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [
+   [
+    7,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 36,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 36
+  }
+ },
+ "37": {
+  "name": "Cave Crawlers",
+  "masters": {
+   "turael": [
+    8,
+    15,
+    30
+   ]
+  },
+  "combat": 10,
+  "stats": [
+   [
+    10,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 16,
+  "reachable": 8,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 8,
+   "fremennik": 8
+  }
+ },
+ "80": {
+  "name": "Cave Horrors",
+  "masters": {
+   "duradel": [
+    4,
+    130,
+    200
+   ]
+  },
+  "combat": 85,
+  "stats": [
+   [
+    58,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 70,
+  "reachable": 70,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "mos": 70
+  }
+ },
+ "92": {
+  "name": "Cave Kraken",
+  "masters": {
+   "duradel": [
+    9,
+    100,
+    120
+   ]
+  },
+  "combat": 80,
+  "stats": [
+   [
+    87,
+    18
+   ],
+   [
+    50,
+    6
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 26,
+  "reachable": 19,
+  "unverified": 7,
+  "unverifiedWhere": {
+   "kraken": 7
+  },
+  "areas": {
+   "unverified": 7,
+   "kraken": 19
+  }
+ },
+ "62": {
+  "name": "Cave Slimes",
+  "masters": {
+   "turael": [
+    8,
+    10,
+    20
+   ]
+  },
+  "combat": 15,
+  "stats": [
+   [
+    17,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 65,
+  "world": 26,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 26
+  }
+ },
+ "44": {
+  "name": "Cockatrice",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 25,
+  "stats": [
+   [
+    25,
+    18
+   ],
+   [
+    20,
+    1
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 80,
+  "world": 7,
+  "reachable": 7,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "fremennik": 7
+  }
+ },
+ "6": {
+  "name": "Cows",
+  "masters": {
+   "turael": [
+    8,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 107,
+  "reachable": 4,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 103,
+   "isle": 4
+  }
+ },
+ "125": {
+  "name": "Crabs",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 17,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 17
+  }
+ },
+ "39": {
+  "name": "Crawling Hands",
+  "masters": {
+   "turael": [
+    8,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [
+   [
+    5,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 34,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 34
+  }
+ },
+ "65": {
+  "name": "Crocodiles",
+  "masters": {
+   "vannaka": [
+    6,
+    40,
+    90
+   ]
+  },
+  "combat": 50,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 85,
+  "world": 35,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 35
+  }
+ },
+ "35": {
+  "name": "Dagannoth",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ],
+   "duradel": [
+    9,
+    130,
+    200
+   ]
+  },
+  "combat": 75,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 248,
+  "reachable": 14,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 234,
+   "catacombs": 14
+  }
+ },
+ "66": {
+  "name": "Dark Beasts",
+  "masters": {
+   "duradel": [
+    11,
+    10,
+    20
+   ]
+  },
+  "combat": 90,
+  "stats": [
+   [
+    90,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 29,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 29
+  }
+ },
+ "22": {
+  "name": "Dogs",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 15,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 70,
+  "world": 101,
+  "reachable": 12,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "brimhaven": 12,
+   "unreachable": 89
+  }
+ },
+ "112": {
+  "name": "Drakes",
+  "masters": {
+   "duradel": [
+    8,
+    50,
+    110
+   ]
+  },
+  "combat": 0,
+  "stats": [
+   [
+    84,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": 75,
+  "lmax": null,
+  "world": 13,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 13
+  }
+ },
+ "49": {
+  "name": "Dust Devils",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ],
+   "duradel": [
+    5,
+    130,
+    200
+   ]
+  },
+  "combat": 70,
+  "stats": [
+   [
+    65,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 44,
+  "reachable": 13,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "catacombs": 13,
+   "unreachable": 31
+  }
+ },
+ "57": {
+  "name": "Dwarves",
+  "masters": {
+   "turael": [
+    7,
+    10,
+    25
+   ]
+  },
+  "combat": 6,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 45,
+  "world": 145,
+  "reachable": 4,
+  "unverified": 26,
+  "unverifiedWhere": {
+   "taverley": 26
+  },
+  "areas": {
+   "unreachable": 115,
+   "taverley": 4,
+   "unverified": 26
+  }
+ },
+ "56": {
+  "name": "Elves",
+  "masters": {
+   "vannaka": [
+    7,
+    30,
+    70
+   ],
+   "duradel": [
+    4,
+    110,
+    170
+   ]
+  },
+  "combat": 70,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 68,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 68
+  }
+ },
+ "16": {
+  "name": "Fire Giants",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ],
+   "duradel": [
+    7,
+    130,
+    200
+   ]
+  },
+  "combat": 65,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 88,
+  "reachable": 34,
+  "unverified": 11,
+  "unverifiedWhere": {
+   "catacombs": 11
+  },
+  "areas": {
+   "unreachable": 43,
+   "unverified": 11,
+   "catacombs": 1,
+   "souls": 8,
+   "brimhaven": 13,
+   "stronghold": 12
+  }
+ },
+ "106": {
+  "name": "Fossil Island Wyverns",
+  "masters": {
+   "duradel": [
+    7,
+    20,
+    50
+   ]
+  },
+  "combat": 60,
+  "stats": [
+   [
+    66,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 29,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 29
+  }
+ },
+ "46": {
+  "name": "Gargoyles",
+  "masters": {
+   "vannaka": [
+    5,
+    40,
+    90
+   ],
+   "duradel": [
+    8,
+    130,
+    200
+   ]
+  },
+  "combat": 80,
+  "stats": [
+   [
+    75,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 21,
+  "reachable": 12,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "slayer": 12,
+   "unreachable": 9
+  }
+ },
+ "12": {
+  "name": "Ghosts",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 13,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 172,
+  "reachable": 34,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 138,
+   "catacombs": 17,
+   "taverley": 14,
+   "edgeville": 3
+  }
+ },
+ "23": {
+  "name": "Ghouls",
+  "masters": {
+   "vannaka": [
+    7,
+    10,
+    40
+   ]
+  },
+  "combat": 25,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 70,
+  "world": 22,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 22
+  }
+ },
+ "2": {
+  "name": "Goblin",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 255,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 255
+  }
+ },
+ "29": {
+  "name": "Greater Demons",
+  "masters": {
+   "duradel": [
+    9,
+    130,
+    200
+   ]
+  },
+  "combat": 70,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 80,
+  "reachable": 14,
+  "unverified": 10,
+  "unverifiedWhere": {
+   "catacombs": 10
+  },
+  "areas": {
+   "unreachable": 56,
+   "unverified": 10,
+   "souls": 7,
+   "brimhaven": 7
+  }
+ },
+ "70": {
+  "name": "Harpie Bug Swarms",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 45,
+  "stats": [
+   [
+    33,
+    18
+   ],
+   [
+    33,
+    11
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 85,
+  "world": 14,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 14
+  }
+ },
+ "31": {
+  "name": "Hellhounds",
+  "masters": {
+   "vannaka": [
+    7,
+    30,
+    60
+   ],
+   "duradel": [
+    10,
+    130,
+    200
+   ]
+  },
+  "combat": 75,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 126,
+  "world": 72,
+  "reachable": 35,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 37,
+   "taverley": 13,
+   "stronghold": 13,
+   "catacombs": 9
+  }
+ },
+ "14": {
+  "name": "Hill Giants",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ]
+  },
+  "combat": 25,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 141,
+  "reachable": 28,
+  "unverified": 31,
+  "unverifiedWhere": {
+   "taverley": 23,
+   "catacombs": 8
+  },
+  "areas": {
+   "unreachable": 82,
+   "unverified": 31,
+   "catacombs": 11,
+   "taverley": 5,
+   "edgeville": 12
+  }
+ },
+ "21": {
+  "name": "Hobgoblins",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ]
+  },
+  "combat": 20,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 70,
+  "world": 132,
+  "reachable": 5,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 127,
+   "edgeville": 5
+  }
+ },
+ "15": {
+  "name": "Ice Giants",
+  "masters": {
+   "vannaka": [
+    7,
+    30,
+    80
+   ]
+  },
+  "combat": 50,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 34,
+  "reachable": 0,
+  "unverified": 7,
+  "unverifiedWhere": {
+   "taverley": 7
+  },
+  "areas": {
+   "unreachable": 27,
+   "unverified": 7
+  }
+ },
+ "19": {
+  "name": "Ice Warriors",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ]
+  },
+  "combat": 45,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 90,
+  "world": 57,
+  "reachable": 0,
+  "unverified": 14,
+  "unverifiedWhere": {
+   "taverley": 14
+  },
+  "areas": {
+   "unverified": 14,
+   "unreachable": 43
+  }
+ },
+ "75": {
+  "name": "Icefiends",
+  "masters": {
+   "turael": [
+    8,
+    15,
+    20
+   ]
+  },
+  "combat": 20,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 60,
+  "world": 17,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 17
+  }
+ },
+ "40": {
+  "name": "Infernal Mages",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 40,
+  "stats": [
+   [
+    45,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 80,
+  "world": 15,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 15
+  }
+ },
+ "50": {
+  "name": "Jellies",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 57,
+  "stats": [
+   [
+    52,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 28,
+  "reachable": 28,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "fremennik": 10,
+   "catacombs": 18
+  }
+ },
+ "81": {
+  "name": "Jungle Horrors",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 65,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 95,
+  "world": 50,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 50
+  }
+ },
+ "53": {
+  "name": "Kalphite",
+  "masters": {
+   "turael": [
+    6,
+    15,
+    30
+   ],
+   "vannaka": [
+    7,
+    40,
+    90
+   ],
+   "duradel": [
+    9,
+    130,
+    200
+   ]
+  },
+  "combat": 15,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 68,
+  "reachable": 22,
+  "unverified": 3,
+  "unverifiedWhere": {
+   "kalphite": 3
+  },
+  "areas": {
+   "unreachable": 43,
+   "unverified": 3,
+   "kalphite": 22
+  }
+ },
+ "45": {
+  "name": "Kurask",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ],
+   "duradel": [
+    4,
+    130,
+    200
+   ]
+  },
+  "combat": 65,
+  "stats": [
+   [
+    70,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 28,
+  "reachable": 5,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 23,
+   "fremennik": 5
+  }
+ },
+ "28": {
+  "name": "Lesser Demons",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ]
+  },
+  "combat": 60,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 110,
+  "world": 74,
+  "reachable": 20,
+  "unverified": 8,
+  "unverifiedWhere": {
+   "catacombs": 8
+  },
+  "areas": {
+   "unreachable": 46,
+   "souls": 4,
+   "karamja": 11,
+   "taverley": 5,
+   "unverified": 8
+  }
+ },
+ "90": {
+  "name": "Lizardmen",
+  "masters": {
+   "duradel": [
+    10,
+    130,
+    210
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": true,
+  "lmin": 55,
+  "lmax": null,
+  "world": 190,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 190
+  }
+ },
+ "68": {
+  "name": "Lizards",
+  "masters": {
+   "turael": [
+    8,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [
+   [
+    22,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 70,
+  "world": 56,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 56
+  }
+ },
+ "127": {
+  "name": "Metal Dragons",
+  "masters": {
+   "duradel": [
+    14,
+    35,
+    45
+   ]
+  },
+  "combat": 85,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 76,
+  "reachable": 25,
+  "unverified": 27,
+  "unverifiedWhere": {
+   "brimhaven": 22,
+   "catacombs": 5
+  },
+  "areas": {
+   "unreachable": 24,
+   "brimhaven": 20,
+   "unverified": 27,
+   "souls": 3,
+   "catacombs": 2
+  }
+ },
+ "76": {
+  "name": "Minotaurs",
+  "masters": {
+   "turael": [
+    7,
+    10,
+    20
+   ]
+  },
+  "combat": 7,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 39,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 39
+  }
+ },
+ "1": {
+  "name": "Monkeys",
+  "masters": {
+   "turael": [
+    6,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 794,
+  "reachable": 23,
+  "unverified": 13,
+  "unverifiedWhere": {
+   "crash": 13
+  },
+  "areas": {
+   "unreachable": 758,
+   "crash": 23,
+   "unverified": 13
+  }
+ },
+ "17": {
+  "name": "Moss Giants",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ]
+  },
+  "combat": 40,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 105,
+  "reachable": 45,
+  "unverified": 5,
+  "unverifiedWhere": {
+   "varrock": 1,
+   "catacombs": 4
+  },
+  "areas": {
+   "unreachable": 55,
+   "unverified": 5,
+   "isle": 6,
+   "brimhaven": 20,
+   "edgeville": 10,
+   "catacombs": 9
+  }
+ },
+ "52": {
+  "name": "Nechryael",
+  "masters": {
+   "vannaka": [
+    5,
+    40,
+    90
+   ],
+   "duradel": [
+    9,
+    130,
+    200
+   ]
+  },
+  "combat": 85,
+  "stats": [
+   [
+    80,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 53,
+  "reachable": 26,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 27,
+   "slayer": 12,
+   "catacombs": 14
+  }
+ },
+ "20": {
+  "name": "Ogres",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ]
+  },
+  "combat": 40,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 90,
+  "world": 129,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 129
+  }
+ },
+ "55": {
+  "name": "Otherworldly Beings",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 40,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 80,
+  "world": 6,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 6
+  }
+ },
+ "47": {
+  "name": "Pyrefiends",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 25,
+  "stats": [
+   [
+    30,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 70,
+  "world": 95,
+  "reachable": 26,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "isle": 13,
+   "unreachable": 69,
+   "fremennik": 13
+  }
+ },
+ "3": {
+  "name": "Rats",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 852,
+  "reachable": 52,
+  "unverified": 5,
+  "unverifiedWhere": {
+   "varrock": 5
+  },
+  "areas": {
+   "unreachable": 795,
+   "isle": 8,
+   "karamja": 2,
+   "taverley": 4,
+   "edgeville": 8,
+   "varrock": 30,
+   "unverified": 5
+  }
+ },
+ "26": {
+  "name": "Red Dragons",
+  "masters": {
+   "duradel": [
+    8,
+    30,
+    65
+   ]
+  },
+  "combat": 68,
+  "stats": [],
+  "unlock": true,
+  "lmin": null,
+  "lmax": null,
+  "world": 47,
+  "reachable": 42,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "catacombs": 3,
+   "forthos": 11,
+   "unreachable": 5,
+   "brimhaven": 28
+  }
+ },
+ "7": {
+  "name": "Scorpions",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 7,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 214,
+  "reachable": 7,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 207,
+   "taverley": 5,
+   "varrock": 2
+  }
+ },
+ "71": {
+  "name": "Sea Snakes",
+  "masters": {
+   "vannaka": [
+    6,
+    40,
+    90
+   ]
+  },
+  "combat": 50,
+  "stats": [
+   [
+    40,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 90,
+  "world": 17,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 17
+  }
+ },
+ "64": {
+  "name": "Shades",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ]
+  },
+  "combat": 30,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 70,
+  "world": 116,
+  "reachable": 11,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 105,
+   "catacombs": 11
+  }
+ },
+ "32": {
+  "name": "Shadow warriors",
+  "masters": {
+   "vannaka": [
+    8,
+    30,
+    80
+   ]
+  },
+  "combat": 60,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 19,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 19
+  }
+ },
+ "72": {
+  "name": "Skeletal Wyverns",
+  "masters": {
+   "duradel": [
+    7,
+    20,
+    40
+   ]
+  },
+  "combat": 70,
+  "stats": [
+   [
+    72,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 22,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 22
+  }
+ },
+ "11": {
+  "name": "Skeletons",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 15,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 474,
+  "reachable": 71,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 403,
+   "karamja": 19,
+   "taverley": 7,
+   "edgeville": 35,
+   "souls": 4,
+   "catacombs": 6
+  }
+ },
+ "95": {
+  "name": "Smoke Devils",
+  "masters": {
+   "duradel": [
+    9,
+    130,
+    200
+   ]
+  },
+  "combat": 85,
+  "stats": [
+   [
+    93,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 37,
+  "reachable": 30,
+  "unverified": 7,
+  "unverifiedWhere": {
+   "smoke": 7
+  },
+  "areas": {
+   "unverified": 7,
+   "smoke": 30
+  }
+ },
+ "4": {
+  "name": "Spiders",
+  "masters": {
+   "turael": [
+    6,
+    15,
+    30
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 936,
+  "reachable": 75,
+  "unverified": 9,
+  "unverifiedWhere": {
+   "taverley": 9
+  },
+  "areas": {
+   "unreachable": 852,
+   "forthos": 22,
+   "edgeville": 34,
+   "taverley": 11,
+   "varrock": 3,
+   "karamja": 5,
+   "unverified": 9
+  }
+ },
+ "89": {
+  "name": "Spiritual Creatures",
+  "masters": {
+   "vannaka": [
+    8,
+    40,
+    90
+   ],
+   "duradel": [
+    7,
+    130,
+    200
+   ]
+  },
+  "combat": 60,
+  "stats": [
+   [
+    63,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 151,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 151
+  }
+ },
+ "83": {
+  "name": "Suqahs",
+  "masters": {
+   "duradel": [
+    8,
+    60,
+    90
+   ]
+  },
+  "combat": 85,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 27,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 27
+  }
+ },
+ "86": {
+  "name": "Terror Dogs",
+  "masters": {
+   "vannaka": [
+    6,
+    20,
+    45
+   ]
+  },
+  "combat": 60,
+  "stats": [
+   [
+    40,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 85,
+  "world": 9,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 9
+  }
+ },
+ "18": {
+  "name": "Trolls",
+  "masters": {
+   "vannaka": [
+    7,
+    40,
+    90
+   ],
+   "duradel": [
+    6,
+    130,
+    200
+   ]
+  },
+  "combat": 60,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": null,
+  "world": 208,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 208
+  }
+ },
+ "36": {
+  "name": "Turoth",
+  "masters": {
+   "vannaka": [
+    8,
+    30,
+    90
+   ]
+  },
+  "combat": 60,
+  "stats": [
+   [
+    55,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 22,
+  "reachable": 22,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "fremennik": 22
+  }
+ },
+ "96": {
+  "name": "Tzhaar",
+  "masters": {
+   "duradel": [
+    10,
+    130,
+    199
+   ]
+  },
+  "combat": 0,
+  "stats": [],
+  "unlock": true,
+  "lmin": 60,
+  "lmax": null,
+  "world": 253,
+  "reachable": 249,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "karamja": 249,
+   "unreachable": 4
+  }
+ },
+ "34": {
+  "name": "Vampyres",
+  "masters": {
+   "vannaka": [
+    7,
+    10,
+    20
+   ],
+   "duradel": [
+    8,
+    100,
+    210
+   ]
+  },
+  "combat": 35,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 194,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 194
+  }
+ },
+ "88": {
+  "name": "Waterfiends",
+  "masters": {
+   "duradel": [
+    2,
+    130,
+    200
+   ]
+  },
+  "combat": 75,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 110,
+  "world": 67,
+  "reachable": 15,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 52,
+   "kraken": 15
+  }
+ },
+ "33": {
+  "name": "Werewolves",
+  "masters": {
+   "vannaka": [
+    7,
+    30,
+    60
+   ]
+  },
+  "combat": 60,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 100,
+  "world": 35,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 35
+  }
+ },
+ "9": {
+  "name": "Wolves",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 20,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 239,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 239
+  }
+ },
+ "111": {
+  "name": "Wyrms",
+  "masters": {
+   "duradel": [
+    8,
+    100,
+    160
+   ]
+  },
+  "combat": 0,
+  "stats": [
+   [
+    62,
+    18
+   ]
+  ],
+  "unlock": false,
+  "lmin": 60,
+  "lmax": null,
+  "world": 16,
+  "reachable": 0,
+  "unverified": 0,
+  "unverifiedWhere": {},
+  "areas": {
+   "unreachable": 16
+  }
+ },
+ "10": {
+  "name": "Zombies",
+  "masters": {
+   "turael": [
+    7,
+    15,
+    30
+   ]
+  },
+  "combat": 10,
+  "stats": [],
+  "unlock": false,
+  "lmin": null,
+  "lmax": 50,
+  "world": 423,
+  "reachable": 38,
+  "unverified": 4,
+  "unverifiedWhere": {
+   "taverley": 4
+  },
+  "areas": {
+   "unreachable": 381,
+   "varrock": 2,
+   "edgeville": 18,
+   "unverified": 4,
+   "forthos": 18
+  }
+ }
+}

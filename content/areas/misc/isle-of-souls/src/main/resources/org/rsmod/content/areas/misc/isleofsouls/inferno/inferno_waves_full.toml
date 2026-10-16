@@ -1,0 +1,280 @@
+# The Inferno as in the real game: 69 waves from the OSRS wiki's wave list. Three Jal-Nib in
+# every wave (six in waves 3, 8, 17 and 34), a new monster type the wave after each six-nibbler wave,
+# one JalTok-Jad in wave 67, three in wave 68 and TzKal-Zuk in wave 69.
+
+[[wave]]
+number = 1
+monsters = ["nibbler", "nibbler", "nibbler", "bat"]
+
+[[wave]]
+number = 2
+monsters = ["nibbler", "nibbler", "nibbler", "bat", "bat"]
+
+[[wave]]
+number = 3
+monsters = ["nibbler", "nibbler", "nibbler", "nibbler", "nibbler", "nibbler"]
+
+[[wave]]
+number = 4
+monsters = ["nibbler", "nibbler", "nibbler", "blob"]
+
+[[wave]]
+number = 5
+monsters = ["nibbler", "nibbler", "nibbler", "blob", "bat"]
+
+[[wave]]
+number = 6
+monsters = ["nibbler", "nibbler", "nibbler", "blob", "bat", "bat"]
+
+[[wave]]
+number = 7
+monsters = ["nibbler", "nibbler", "nibbler", "blob", "blob"]
+
+[[wave]]
+number = 8
+monsters = ["nibbler", "nibbler", "nibbler", "nibbler", "nibbler", "nibbler"]
+
+[[wave]]
+number = 9
+monsters = ["nibbler", "nibbler", "nibbler", "melee"]
+
+[[wave]]
+number = 10
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "bat"]
+
+[[wave]]
+number = 11
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "bat", "bat"]
+
+[[wave]]
+number = 12
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "blob"]
+
+[[wave]]
+number = 13
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "blob", "bat"]
+
+[[wave]]
+number = 14
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "blob", "bat", "bat"]
+
+[[wave]]
+number = 15
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "blob", "blob"]
+
+[[wave]]
+number = 16
+monsters = ["nibbler", "nibbler", "nibbler", "melee", "melee"]
+
+[[wave]]
+number = 17
+monsters = ["nibbler", "nibbler", "nibbler", "nibbler", "nibbler", "nibbler"]
+
+[[wave]]
+number = 18
+monsters = ["nibbler", "nibbler", "nibbler", "ranger"]
+
+[[wave]]
+number = 19
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "bat"]
+
+[[wave]]
+number = 20
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "bat", "bat"]
+
+[[wave]]
+number = 21
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "blob"]
+
+[[wave]]
+number = 22
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "blob", "bat"]
+
+[[wave]]
+number = 23
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "blob", "bat", "bat"]
+
+[[wave]]
+number = 24
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "blob", "blob"]
+
+[[wave]]
+number = 25
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee"]
+
+[[wave]]
+number = 26
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "bat"]
+
+[[wave]]
+number = 27
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "bat", "bat"]
+
+[[wave]]
+number = 28
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "blob"]
+
+[[wave]]
+number = 29
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "blob", "bat"]
+
+[[wave]]
+number = 30
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "blob", "bat", "bat"]
+
+[[wave]]
+number = 31
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "blob", "blob"]
+
+[[wave]]
+number = 32
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "melee", "melee"]
+
+[[wave]]
+number = 33
+monsters = ["nibbler", "nibbler", "nibbler", "ranger", "ranger"]
+
+[[wave]]
+number = 34
+monsters = ["nibbler", "nibbler", "nibbler", "nibbler", "nibbler", "nibbler"]
+
+[[wave]]
+number = 35
+monsters = ["nibbler", "nibbler", "nibbler", "mager"]
+
+[[wave]]
+number = 36
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "bat"]
+
+[[wave]]
+number = 37
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "bat", "bat"]
+
+[[wave]]
+number = 38
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "blob"]
+
+[[wave]]
+number = 39
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "blob", "bat"]
+
+[[wave]]
+number = 40
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "blob", "bat", "bat"]
+
+[[wave]]
+number = 41
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "blob", "blob"]
+
+[[wave]]
+number = 42
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee"]
+
+[[wave]]
+number = 43
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "bat"]
+
+[[wave]]
+number = 44
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "bat", "bat"]
+
+[[wave]]
+number = 45
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "blob"]
+
+[[wave]]
+number = 46
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "blob", "bat"]
+
+[[wave]]
+number = 47
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "blob", "bat", "bat"]
+
+[[wave]]
+number = 48
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "blob", "blob"]
+
+[[wave]]
+number = 49
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "melee", "melee"]
+
+[[wave]]
+number = 50
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger"]
+
+[[wave]]
+number = 51
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "bat"]
+
+[[wave]]
+number = 52
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "bat", "bat"]
+
+[[wave]]
+number = 53
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "blob"]
+
+[[wave]]
+number = 54
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "blob", "bat"]
+
+[[wave]]
+number = 55
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "blob", "bat", "bat"]
+
+[[wave]]
+number = 56
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "blob", "blob"]
+
+[[wave]]
+number = 57
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee"]
+
+[[wave]]
+number = 58
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "bat"]
+
+[[wave]]
+number = 59
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "bat", "bat"]
+
+[[wave]]
+number = 60
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "blob"]
+
+[[wave]]
+number = 61
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "blob", "bat"]
+
+[[wave]]
+number = 62
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "blob", "bat", "bat"]
+
+[[wave]]
+number = 63
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "blob", "blob"]
+
+[[wave]]
+number = 64
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "melee", "melee"]
+
+[[wave]]
+number = 65
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "ranger", "ranger"]
+
+[[wave]]
+number = 66
+monsters = ["nibbler", "nibbler", "nibbler", "mager", "mager"]
+
+[[wave]]
+number = 67
+monsters = ["jad"]
+
+[[wave]]
+number = 68
+monsters = ["jad", "jad", "jad"]
+
+[[wave]]
+number = 69
+monsters = ["zuk"]
+boss = true

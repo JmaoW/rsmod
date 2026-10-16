@@ -43,7 +43,18 @@ constructor(private val applier: CharacterStatApplier, private val statTypes: St
         metadata.add(applier, CharacterStatData(stats))
     }
 
-    override fun save(connection: DatabaseConnection, player: Player, characterId: Int) {
+    override fun snapshot(player: Player, characterId: Int): CharacterDataStage.Snapshot {
+        val stats =
+            statTypes.values.map { stat ->
+                val visLevel = player.statMap.getCurrentLevel(stat).toInt()
+                val baseLevel = player.statMap.getBaseLevel(stat).toInt()
+                val fineXp = player.statMap.getFineXP(stat)
+                Stat(stat.id, visLevel, baseLevel, fineXp)
+            }
+        return CharacterDataStage.Snapshot { connection -> save(connection, stats, characterId) }
+    }
+
+    private fun save(connection: DatabaseConnection, stats: List<Stat>, characterId: Int) {
         val upsert =
             connection.prepareStatement(
                 """
@@ -62,15 +73,12 @@ constructor(private val applier: CharacterStatApplier, private val statTypes: St
             )
 
         upsert.use {
-            for (stat in statTypes.values) {
-                val visLevel = player.statMap.getCurrentLevel(stat).toInt()
-                val baseLevel = player.statMap.getBaseLevel(stat).toInt()
-                val fineXp = player.statMap.getFineXP(stat)
+            for (stat in stats) {
                 it.setInt(1, characterId)
-                it.setInt(2, stat.id)
-                it.setInt(3, visLevel)
-                it.setInt(4, baseLevel)
-                it.setInt(5, fineXp)
+                it.setInt(2, stat.type)
+                it.setInt(3, stat.vis)
+                it.setInt(4, stat.base)
+                it.setInt(5, stat.fineXp)
                 upsert.addBatch()
             }
             upsert.executeBatch()

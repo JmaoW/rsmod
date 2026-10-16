@@ -1,0 +1,156 @@
+== turael: cache 24 tasks (24 kept, 0 dropped for no spawns); wiki 24
+   0 differences wiki vs cache (cache wins):
+== vannaka: cache 45 tasks (41 kept, 4 dropped); no wiki table
+   dropped (no spawned npc): Mogres (task id 67)
+   dropped (no spawned npc): Molanisks (task id 87)
+   dropped (no spawned npc): Fever Spiders (task id 69)
+   dropped (no spawned npc): Brine Rats (task id 84)
+== duradel: cache 40 tasks (36 kept, 4 dropped for no spawns); wiki 43
+   wiki only (cache rev 233 lacks them): aquanite, frost dragon, gryphon
+   4 differences wiki vs cache (cache wins):
+   basilisk: combat wiki 0 cache 25
+   bos: amount wiki [3, 35] cache [-1, -1]
+   greater demon: combat wiki 75 cache 70
+   vampyre: combat wiki 0 cache 35
+   dropped (no spawned npc): Araxytes (task id 124, 0 npc types)
+   dropped (no spawned npc): Warped Creatures (task id 122, 14 npc types)
+   dropped (no spawned npc): Mutated Zygomites (task id 74, 4 npc types)
+   dropped (no spawned npc): Boss (task id 98, 0 npc types)
+
+## turael (cache master id 1), combat 0 slayer 0, block 40, points {}
+   Cows                       w 8  15-30    9 npc types,  107 spawns
+   Lizards                    w 8  15-30    7 npc types,   56 spawns
+   Cave Bugs                  w 8  10-30    2 npc types,   36 spawns
+   Cave Crawlers              w 8  15-30    4 npc types,   16 spawns
+   Icefiends                  w 8  15-20    2 npc types,   17 spawns
+   Cave Slimes                w 8  10-20    1 npc types,   26 spawns
+   Crawling Hands             w 8  15-30    7 npc types,   34 spawns
+   Banshees                   w 8  15-30    2 npc types,   14 spawns
+   Rats                       w 7  15-30   31 npc types,  852 spawns
+   Dwarves                    w 7  10-25   34 npc types,  145 spawns
+   Scorpions                  w 7  15-30   12 npc types,  214 spawns
+   Zombies                    w 7  15-30  144 npc types,  423 spawns
+   Bats                       w 7  15-30    7 npc types,  277 spawns
+   Bears                      w 7  10-20    8 npc types,   85 spawns
+   Ghosts                     w 7  15-30   37 npc types,  172 spawns
+   Minotaurs                  w 7  10-20    2 npc types,   39 spawns
+   Dogs                       w 7  15-30    5 npc types,  101 spawns
+   Goblin                     w 7  15-30   76 npc types,  255 spawns
+   Wolves                     w 7  15-30   23 npc types,  239 spawns
+   Skeletons                  w 7  15-30   70 npc types,  474 spawns
+   Monkeys                    w 6  15-30   21 npc types,  794 spawns
+   Birds                      w 6  15-30   35 npc types,  485 spawns
+   Spiders                    w 6  15-30   23 npc types,  936 spawns
+   Kalphite                   w 6  15-30    8 npc types,   68 spawns
+
+## vannaka (cache master id 3), combat 40 slayer 0, block 60, points {'1': 8, '10': 40, '50': 120, '100': 200, '250': 280, '1000': 400}
+   Crabs                      w 8  40-90    5 npc types,   17 spawns
+   Spiritual Creatures        w 8  40-90   12 npc types,  151 spawns
+   Otherworldly Beings        w 8  40-90    1 npc types,    6 spawns
+   Cockatrice                 w 8  40-90    1 npc types,    7 spawns
+   Shades                     w 8  40-90    8 npc types,  116 spawns
+   Pyrefiends                 w 8  40-90    7 npc types,   95 spawns
+   Basilisks                  w 8  40-90    2 npc types,   40 spawns
+   Infernal Mages             w 8  40-90    5 npc types,   15 spawns
+   Jellies                    w 8  40-90    7 npc types,   28 spawns
+   Ankou                      w 8  25-35    9 npc types,   81 spawns
+   Turoth                     w 8  30-90    4 npc types,   22 spawns
+   Jungle Horrors             w 8  40-90    5 npc types,   50 spawns
+   Aberrant Spectres          w 8  40-90    7 npc types,   39 spawns
+   Dust Devils                w 8  40-90    2 npc types,   44 spawns
+   Bloodveld                  w 8  40-90    6 npc types,   99 spawns
+   Shadow warriors            w 8  30-80    1 npc types,   19 spawns
+   Harpie Bug Swarms          w 8  40-90    1 npc types,   14 spawns
+   Hobgoblins                 w 7  40-90    8 npc types,  132 spawns
+   Hill Giants                w 7  40-90   27 npc types,  141 spawns
+   Ghouls                     w 7  10-40    1 npc types,   22 spawns
+   Ice Warriors               w 7  40-90    7 npc types,   57 spawns
+   Vampyres                   w 7  10-20   56 npc types,  194 spawns
+   Ice Giants                 w 7  30-80    8 npc types,   34 spawns
+   Lesser Demons              w 7  40-90   15 npc types,   74 spawns
+   Blue Dragons               w 7  40-90   14 npc types,   57 spawns
+   Hellhounds                 w 7  30-60    6 npc types,   72 spawns
+   Trolls                     w 7  40-90   56 npc types,  208 spawns
+   Moss Giants                w 7  40-90    8 npc types,  105 spawns
+   Ogres                      w 7  40-90   11 npc types,  129 spawns
+   Fire Giants                w 7  40-90   11 npc types,   88 spawns
+   Kalphite                   w 7  40-90    8 npc types,   68 spawns
+   Kurask                     w 7  40-90    2 npc types,   28 spawns
+   Werewolves                 w 7  30-60    2 npc types,   35 spawns
+   Elves                      w 7  30-70   16 npc types,   68 spawns
+   Dagannoth                  w 7  40-90   16 npc types,  248 spawns
+   Terror Dogs                w 6  20-45    2 npc types,    9 spawns
+   Sea Snakes                 w 6  40-90    2 npc types,   17 spawns
+   Crocodiles                 w 6  40-90    1 npc types,   35 spawns
+   Abyssal Demons             w 5  40-90    4 npc types,   58 spawns
+   Nechryael                  w 5  40-90    3 npc types,   53 spawns
+   Gargoyles                  w 5  40-90    3 npc types,   21 spawns
+
+## duradel (cache master id 5), combat 100 slayer 50, block 100, points {'1': 15, '10': 75, '50': 225, '100': 375, '250': 525, '1000': 750}
+   Metal Dragons              w14  35-45   12 npc types,   76 spawns
+   Abyssal Demons             w12 130-200   4 npc types,   58 spawns
+   Dark Beasts                w11  10-20    1 npc types,   29 spawns
+   Lizardmen                  w10 130-210  13 npc types,  190 spawns
+   Hellhounds                 w10 130-200   6 npc types,   72 spawns
+   Tzhaar                     w10 130-199  35 npc types,  253 spawns
+   Dagannoth                  w 9 130-200  16 npc types,  248 spawns
+   Greater Demons             w 9 130-200  16 npc types,   80 spawns
+   Black Dragons              w 9  10-20   14 npc types,   39 spawns
+   Cave Kraken                w 9 100-120   4 npc types,   24 spawns
+   Smoke Devils               w 9 130-200   2 npc types,   37 spawns
+   Nechryael                  w 9 130-200   3 npc types,   53 spawns
+   Kalphite                   w 9 130-200   8 npc types,   68 spawns
+   Vampyres                   w 8 100-210  56 npc types,  194 spawns
+   Drakes                     w 8  50-110   1 npc types,   13 spawns
+   Wyrms                      w 8 100-160   1 npc types,   16 spawns
+   Red Dragons                w 8  30-65    9 npc types,   47 spawns
+   Suqahs                     w 8  60-90    7 npc types,   27 spawns
+   Aviansies                  w 8 120-200  19 npc types,   48 spawns
+   Bloodveld                  w 8 130-200   6 npc types,   99 spawns
+   Black Demons               w 8 130-200  14 npc types,   57 spawns
+   Gargoyles                  w 8 130-200   3 npc types,   21 spawns
+   Basilisks                  w 7 130-200   2 npc types,   40 spawns
+   Fire Giants                w 7 130-200  11 npc types,   88 spawns
+   Skeletal Wyverns           w 7  20-40    4 npc types,   22 spawns
+   Fossil Island Wyverns      w 7  20-50    4 npc types,   29 spawns
+   Spiritual Creatures        w 7 130-200  12 npc types,  151 spawns
+   Aberrant Spectres          w 7 130-200   7 npc types,   39 spawns
+   Trolls                     w 6 130-200  56 npc types,  208 spawns
+   Dust Devils                w 5 130-200   2 npc types,   44 spawns
+   Ankou                      w 5  50-80    9 npc types,   81 spawns
+   Elves                      w 4 110-170  16 npc types,   68 spawns
+   Blue Dragons               w 4 110-170  14 npc types,   57 spawns
+   Cave Horrors               w 4 130-200   5 npc types,   70 spawns
+   Kurask                     w 4 130-200   2 npc types,   28 spawns
+   Waterfiends                w 2 130-200   2 npc types,   67 spawns
+
+29 superior-named npc types in the cache with a task id:
+   npc  7402 Abhorrent spectre (level 253) -> Aberrant spectres
+   npc  7403 Repugnant spectre (level 335) -> Aberrant spectres
+   npc  7410 Greater abyssal demon (level 342) -> Abyssal demons
+   npc 12451 Greater abyssal demon (level 319) -> Abyssal demons
+   npc  7390 Screaming banshee (level 70) -> Banshees
+   npc  7391 Screaming twisted banshee (level 144) -> Banshees
+   npc  7395 Monstrous basilisk (level 135) -> Basilisks
+   npc  9258 Basilisk Sentinel (level 358) -> Basilisks
+   npc  9287 Monstrous Basilisk (level 135) -> Basilisks
+   npc  9288 Monstrous Basilisk (level 135) -> Basilisks
+   npc  7397 Insatiable Bloodveld (level 202) -> Bloodveld
+   npc  7398 Insatiable mutated Bloodveld (level 278) -> Bloodveld
+   npc  7389 Chasm Crawler (level 68) -> Cave crawlers
+   npc 14031 Chasm Crawler (level 68) -> Cave crawlers
+   npc  7401 Cave abomination (level 206) -> Cave horrors
+   npc  7393 Cockathrice (level 89) -> Cockatrice
+   npc  7388 Crushing hand (level 45) -> Crawling hands
+   npc  7409 Night beast (level 374) -> Dark beasts
+   npc 12459 Night beast (level 332) -> Dark beasts
+   npc  7404 Choke devil (level 264) -> Dust devils
+   npc  7407 Marble gargoyle (level 349) -> Gargoyles
+   npc  7408 Marble gargoyle (level 349) -> Gargoyles
+   npc  7396 Malevolent Mage (level 162) -> Infernal mages
+   npc  7399 Vitreous Jelly (level 206) -> Jellies
+   npc  7400 Vitreous warped Jelly (level 241) -> Jellies
+   npc  7405 King kurask (level 295) -> Kurask
+   npc  7394 Flaming pyrelord (level 97) -> Pyrefiends
+   npc  7392 Giant rockslug (level 86) -> Rockslugs
+   npc  7406 Nuclear smoke devil (level 280) -> Smoke devils

@@ -1,0 +1,82 @@
+Aviansies              id 94  [dur] world 48   verified 0    unverified 0   |  | unverified in: 
+Bears                  id 13  [tur] world 85   verified 0    unverified 0   |  | unverified in: 
+Cave Bugs              id 63  [tur] world 36   verified 0    unverified 0   |  | unverified in: 
+Cave Slimes            id 62  [tur] world 26   verified 0    unverified 0   |  | unverified in: 
+Crabs                  id 125 [van] world 17   verified 0    unverified 0   |  | unverified in: 
+Crawling Hands         id 39  [tur] world 34   verified 0    unverified 0   |  | unverified in: 
+Crocodiles             id 65  [van] world 35   verified 0    unverified 0   |  | unverified in: 
+Dark Beasts            id 66  [dur] world 29   verified 0    unverified 0   |  | unverified in: 
+Drakes                 id 112 [dur] world 13   verified 0    unverified 0   |  | unverified in: 
+Elves                  id 56  [van,dur] world 68   verified 0    unverified 0   |  | unverified in: 
+Fossil Island Wyverns  id 106 [dur] world 29   verified 0    unverified 0   |  | unverified in: 
+Ghouls                 id 23  [van] world 22   verified 0    unverified 0   |  | unverified in: 
+Goblin                 id 2   [tur] world 255  verified 0    unverified 0   |  | unverified in: 
+Harpie Bug Swarms      id 70  [van] world 14   verified 0    unverified 0   |  | unverified in: 
+Icefiends              id 75  [tur] world 17   verified 0    unverified 0   |  | unverified in: 
+Infernal Mages         id 40  [van] world 15   verified 0    unverified 0   |  | unverified in: 
+Jungle Horrors         id 81  [van] world 50   verified 0    unverified 0   |  | unverified in: 
+Lizardmen              id 90  [dur] world 190  verified 0    unverified 0   |  | unverified in: 
+Lizards                id 68  [tur] world 56   verified 0    unverified 0   |  | unverified in: 
+Minotaurs              id 76  [tur] world 39   verified 0    unverified 0   |  | unverified in: 
+Ogres                  id 20  [van] world 129  verified 0    unverified 0   |  | unverified in: 
+Otherworldly Beings    id 55  [van] world 6    verified 0    unverified 0   |  | unverified in: 
+Sea Snakes             id 71  [van] world 17   verified 0    unverified 0   |  | unverified in: 
+Shadow warriors        id 32  [van] world 19   verified 0    unverified 0   |  | unverified in: 
+Skeletal Wyverns       id 72  [dur] world 22   verified 0    unverified 0   |  | unverified in: 
+Spiritual Creatures    id 89  [van,dur] world 151  verified 0    unverified 0   |  | unverified in: 
+Suqahs                 id 83  [dur] world 27   verified 0    unverified 0   |  | unverified in: 
+Terror Dogs            id 86  [van] world 9    verified 0    unverified 0   |  | unverified in: 
+Trolls                 id 18  [van,dur] world 208  verified 0    unverified 0   |  | unverified in: 
+Vampyres               id 34  [van,dur] world 194  verified 0    unverified 0   |  | unverified in: 
+Werewolves             id 33  [van] world 35   verified 0    unverified 0   |  | unverified in: 
+Wolves                 id 9   [tur] world 239  verified 0    unverified 0   |  | unverified in: 
+Wyrms                  id 111 [dur] world 16   verified 0    unverified 0   |  | unverified in: 
+Cows                   id 6   [tur] world 107  verified 4    unverified 0   | isle 4 | unverified in: 
+Hobgoblins             id 21  [van] world 132  verified 5    unverified 0   | edgeville 5 | unverified in: 
+Kurask                 id 45  [van,dur] world 28   verified 5    unverified 0   | fremennik 5 | unverified in: 
+Banshees               id 38  [tur] world 14   verified 6    unverified 0   | catacombs 6 | unverified in: 
+Ice Giants             id 15  [van] world 34   verified 0    unverified 7   |  | unverified in: taverley 7
+Cockatrice             id 44  [van] world 7    verified 7    unverified 0   | fremennik 7 | unverified in: 
+Scorpions              id 7   [tur] world 214  verified 7    unverified 0   | taverley 5, varrock 2 | unverified in: 
+Basilisks              id 43  [van,dur] world 40   verified 8    unverified 0   | fremennik 8 | unverified in: 
+Cave Crawlers          id 37  [tur] world 16   verified 8    unverified 0   | fremennik 8 | unverified in: 
+Black Dragons          id 27  [dur] world 39   verified 6    unverified 5   | catacombs 4, taverley 2 | unverified in: taverley 5
+Shades                 id 64  [van] world 116  verified 11   unverified 0   | catacombs 11 | unverified in: 
+Dogs                   id 22  [tur] world 101  verified 12   unverified 0   | brimhaven 12 | unverified in: 
+Gargoyles              id 46  [van,dur] world 21   verified 12   unverified 0   | slayer 12 | unverified in: 
+Dust Devils            id 49  [van,dur] world 44   verified 13   unverified 0   | catacombs 13 | unverified in: 
+Ice Warriors           id 19  [van] world 57   verified 0    unverified 14  |  | unverified in: taverley 14
+Dagannoth              id 35  [van,dur] world 248  verified 14   unverified 0   | catacombs 14 | unverified in: 
+Waterfiends            id 88  [dur] world 67   verified 15   unverified 0   | kraken 15 | unverified in: 
+Ankou                  id 79  [van,dur] world 81   verified 18   unverified 0   | catacombs 10, stronghold 8 | unverified in: 
+Turoth                 id 36  [van] world 22   verified 22   unverified 0   | fremennik 22 | unverified in: 
+Greater Demons         id 29  [dur] world 80   verified 14   unverified 10  | souls 7, brimhaven 7 | unverified in: catacombs 10
+Aberrant Spectres      id 41  [van,dur] world 39   verified 21   unverified 4   | stronghold 13, catacombs 8 | unverified in: catacombs 4
+Kalphite               id 53  [tur,van,dur] world 68   verified 22   unverified 3   | kalphite 22 | unverified in: kalphite 3
+Cave Kraken            id 92  [dur] world 26   verified 19   unverified 7   | kraken 19 | unverified in: kraken 7
+Birds                  id 5   [tur] world 485  verified 26   unverified 0   | isle 26 | unverified in: 
+Nechryael              id 52  [van,dur] world 53   verified 26   unverified 0   | catacombs 14, slayer 12 | unverified in: 
+Pyrefiends             id 47  [van] world 95   verified 26   unverified 0   | isle 13, fremennik 13 | unverified in: 
+Abyssal Demons         id 42  [van,dur] world 58   verified 14   unverified 13  | slayer 14 | unverified in: catacombs 13
+Lesser Demons          id 28  [van] world 74   verified 20   unverified 8   | karamja 11, taverley 5, souls 4 | unverified in: catacombs 8
+Jellies                id 50  [van] world 28   verified 28   unverified 0   | catacombs 18, fremennik 10 | unverified in: 
+Dwarves                id 57  [tur] world 145  verified 4    unverified 26  | taverley 4 | unverified in: taverley 26
+Ghosts                 id 12  [tur] world 172  verified 34   unverified 0   | catacombs 17, taverley 14, edgeville 3 | unverified in: 
+Black Demons           id 30  [dur] world 57   verified 31   unverified 4   | taverley 24, brimhaven 4, edgeville 3 | unverified in: catacombs 4
+Hellhounds             id 31  [van,dur] world 72   verified 35   unverified 0   | taverley 13, stronghold 13, catacombs 9 | unverified in: 
+Monkeys                id 1   [tur] world 794  verified 23   unverified 13  | crash 23 | unverified in: crash 13
+Smoke Devils           id 95  [dur] world 37   verified 30   unverified 7   | smoke 30 | unverified in: smoke 7
+Bloodveld              id 48  [van,dur] world 99   verified 36   unverified 6   | stronghold 12, slayer 12, catacombs 12 | unverified in: catacombs 6
+Bats                   id 8   [tur] world 277  verified 37   unverified 5   | mos 25, taverley 9, karamja 3 | unverified in: taverley 5
+Zombies                id 10  [tur] world 423  verified 38   unverified 4   | edgeville 18, forthos 18, varrock 2 | unverified in: taverley 4
+Red Dragons            id 26  [dur] world 47   verified 42   unverified 0   | brimhaven 28, forthos 11, catacombs 3 | unverified in: 
+Blue Dragons           id 25  [van,dur] world 57   verified 30   unverified 13  | taverley 21, souls 7, catacombs 2 | unverified in: taverley 13
+Fire Giants            id 16  [van,dur] world 88   verified 34   unverified 11  | brimhaven 13, stronghold 12, souls 8, catacombs 1 | unverified in: catacombs 11
+Moss Giants            id 17  [van] world 105  verified 45   unverified 5   | brimhaven 20, edgeville 10, catacombs 9, isle 6 | unverified in: varrock 1, catacombs 4
+Metal Dragons          id 127 [dur] world 76   verified 25   unverified 27  | brimhaven 20, souls 3, catacombs 2 | unverified in: brimhaven 22, catacombs 5
+Rats                   id 3   [tur] world 852  verified 52   unverified 5   | varrock 30, isle 8, edgeville 8, taverley 4, karamja 2 | unverified in: varrock 5
+Hill Giants            id 14  [van] world 141  verified 28   unverified 31  | edgeville 12, catacombs 11, taverley 5 | unverified in: taverley 23, catacombs 8
+Cave Horrors           id 80  [dur] world 70   verified 70   unverified 0   | mos 70 | unverified in: 
+Skeletons              id 11  [tur] world 474  verified 71   unverified 0   | edgeville 35, karamja 19, taverley 7, catacombs 6, souls 4 | unverified in: 
+Spiders                id 4   [tur] world 936  verified 75   unverified 9   | edgeville 34, forthos 22, taverley 11, karamja 5, varrock 3 | unverified in: taverley 9
+Tzhaar                 id 96  [dur] world 253  verified 249  unverified 0   | karamja 249 | unverified in: 

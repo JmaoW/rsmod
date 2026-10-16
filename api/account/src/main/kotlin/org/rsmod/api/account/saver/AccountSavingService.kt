@@ -2,6 +2,7 @@ package org.rsmod.api.account.saver
 
 import com.github.michaelbull.logging.InlineLogger
 import jakarta.inject.Inject
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -11,8 +12,6 @@ import kotlin.math.min
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withTimeoutOrNull
-import org.rsmod.api.account.character.CharacterDataStage
-import org.rsmod.api.account.character.main.CharacterAccountRepository
 import org.rsmod.api.account.saver.request.AccountSaveRequest
 import org.rsmod.api.account.saver.request.AccountSaveResponse
 import org.rsmod.api.db.sqlite.SqliteDatabase
@@ -20,19 +19,21 @@ import org.rsmod.server.services.concurrent.ScheduledService
 
 // This service is tailored for sqlite, where concurrent writes provide little to no benefit.
 // Therefore, save operations are not parallelized and instead run on a single thread.
-public class AccountSavingService
-@Inject
-constructor(
-    private val database: SqliteDatabase,
-    private val repository: CharacterAccountRepository,
-    private val pipelines: Set<CharacterDataStage.Pipeline>,
-) : ScheduledService {
+public class AccountSavingService @Inject constructor(private val database: SqliteDatabase) :
+    ScheduledService {
     private val logger = InlineLogger()
 
     private val pendingRequests = ConcurrentLinkedQueue<AccountSaveRequest>()
 
     private val pendingBatch = ArrayList<AccountSaveRequest>(REQUESTS_PER_BATCH)
     private var consecutiveFailureCount = AtomicInteger(0)
+
+    /** The [AccountSaveRequest.sequence] of the newest request written, by character id. */
+    private val lastWrittenSequence = ConcurrentHashMap<Int, Long>()
+
+    /** The number of save requests waiting to be written. */
+    public val pendingCount: Int
+        get() = pendingRequests.size
 
     public fun queue(request: AccountSaveRequest) {
         pendingRequests.add(request)
@@ -80,7 +81,14 @@ constructor(
 
     private suspend fun handleRequest(request: AccountSaveRequest) {
         try {
+            // A save that failed earlier is queued again behind newer ones, so it may now be out
+            // of date. The newer data is already stored, so there is nothing left to write.
+            if (isSuperseded(request)) {
+                invokeSaveCallback(request)
+                return
+            }
             saveSegments(request)
+            lastWrittenSequence.merge(request.characterId, request.sequence, ::maxOf)
             invokeSaveCallback(request)
             resetConsecutiveFailures()
         } catch (e: Exception) {
@@ -90,11 +98,15 @@ constructor(
         }
     }
 
+    private fun isSuperseded(request: AccountSaveRequest): Boolean {
+        val written = lastWrittenSequence[request.characterId] ?: return false
+        return request.sequence < written
+    }
+
     private suspend fun saveSegments(request: AccountSaveRequest) {
         database.withTransaction { connection ->
-            repository.save(connection, request.player, request.accountId, request.characterId)
-            for (pipeline in pipelines) {
-                pipeline.save(connection, request.player, request.characterId)
+            for (snapshot in request.snapshot) {
+                snapshot.save(connection)
             }
         }
     }

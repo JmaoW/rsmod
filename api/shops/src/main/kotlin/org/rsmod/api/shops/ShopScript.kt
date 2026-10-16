@@ -17,6 +17,8 @@ import org.rsmod.game.inv.InvObj
 import org.rsmod.game.shop.Shop
 import org.rsmod.game.type.interf.IfButtonOp
 import org.rsmod.game.type.obj.ObjType
+import org.rsmod.game.type.obj.ObjTypeList
+import org.rsmod.game.type.obj.UnpackedObjType
 import org.rsmod.game.type.obj.isAssociatedWith
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
@@ -26,6 +28,8 @@ public class ShopScript
 constructor(
     private val operationMap: ShopOperationMap,
     private val standardGpOperations: StandardGpShopOperations,
+    private val noting: ShopNoting,
+    private val objTypes: ObjTypeList,
 ) : PluginScript() {
     private val logger = InlineLogger()
 
@@ -50,7 +54,25 @@ constructor(
             return
         }
         val operations = shop.operations() ?: return
+        val type = objTypes[shopObj]
+        val before = player.inv.count(type)
         operations.shopInvOp(player, player.inv, shop, objSlot, op)
+        if (noting.shouldNote(player, shop)) {
+            noteBought(type, before)
+        }
+    }
+
+    /** Swaps what a purchase just added to the inventory for the same amount as notes. */
+    private fun ProtectedAccess.noteBought(type: UnpackedObjType, before: Int) {
+        if (type.isCert || type.isStackable || !type.canCert) {
+            return
+        }
+        val bought = player.inv.count(type) - before
+        if (bought <= 0) {
+            return
+        }
+        invDel(inv, type, bought)
+        invAdd(inv, objTypes.cert(type), bought)
     }
 
     private fun ProtectedAccess.shopSideInvButton(sub: Int, op: IfButtonOp, clientObj: ObjType?) {

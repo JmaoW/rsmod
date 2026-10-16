@@ -20,10 +20,10 @@ Legend for status: ✅ implemented, 🟡 partly implemented, ❌ not implemented
 
 | Tier | Points | Relics | Passive summary |
 |------|--------|--------|-----------------|
-| 1 | 0 | Power Miner, Lumberjack, Animal Wrangler | 5x XP, 2x drops, fast farming ticks, 4x minigame points, no run drain, stackable clue boxes |
+| 1 | 0 | Power Miner, Lumberjack, Animal Wrangler | 5x XP, 5x drops (wiki 2x), fast farming ticks, 4x minigame points, no run drain, stackable clue boxes |
 | 2 | 750 | Corner Cutter, Friendly Forager, Dodgy Deals | XP 5x → 8x |
 | 3 | 1,500 | Clue Compass, Bank Heist, Fairy's Flight | 2x combat XP, free Bigger and Badder, 5x slayer points, superiors at 1/50 |
-| 4 | 2,500 | Golden God, Reloaded, Equilibrium | 5x drops, 8x minigame points |
+| 4 | 2,500 | Golden God, Reloaded, Equilibrium | 20x drops (wiki 5x), 8x minigame points |
 | 5 | 5,000 | Treasure Arbiter, Production Master, Slayer Master | XP 8x → 12x |
 | 6 | 8,000 | Total Recall, Banker's Note | None |
 | 7 | 16,000 | Pocket Kingdom, Grimoire, Overgrown | XP 12x → 16x |
@@ -78,7 +78,7 @@ drain and clue boxes ❌.
 **Status:** 🟡 Echo harpoon (acts as a net, big net, lobster pot, rod or karambwan vessel, no bait needed, one tick
 faster), 50% retry, auto-bank (not stackable karambwanji), auto-cook with Cooking XP and no level
 requirement, and no burning ✅. Every fish is auto-cooked (the wiki says 50%, the relic text says
-100%); auto-cooked fish count for cooking tasks. Hunter effects ❌ (no hunter content).
+100%); auto-cooked fish count for cooking tasks. Hunter effects ✅ (2026-10-09, `LeagueHunterRelics`: traps never fail, box traps faster with doubled chinchompa catches and XP, impling jars never break).
 **Mini-league change:** _TBD_
 
 ---
@@ -111,7 +111,7 @@ requirement, and no burning ✅. Every fish is auto-cooked (the wiki says 50%, t
   doses instead of 3.
 
 **Status:** 🟡 Pouch and herb finding on mining/woodcutting ✅. Herbs are auto-banked because no
-herb sack exists. Fishing hook ✅. Herblore perks (90% of secondaries kept, four-dose potions) ✅, see `isle_of_souls_herblore_plan.md`. Hunting hook ❌.
+herb sack exists. Fishing hook ✅. Herblore perks (90% of secondaries kept, four-dose potions) ✅, see `isle_of_souls_herblore_plan.md`. Hunting hook ✅ (2026-10-09: each trap or pit collected, butterfly or impling caught, kebbit hunted and birdhouse emptied finds a herb).
 **Mini-league change:** _TBD_
 
 ### Dodgy Deals
@@ -122,7 +122,8 @@ herb sack exists. Fishing hook ✅. Herblore perks (90% of secondaries kept, fou
 - Coin pouch maximum increased 3x.
 - Stalls never deplete.
 
-**Status:** ❌ No thieving content.
+**Status:** ✅ Built 2026-10-09 (`LeagueDodgyDeals`, see `isle_of_souls_thieving_plan.md`): all six effects. The area
+robbery counts every npc of the same target within five tiles of the one clicked.
 **Mini-league change:** _TBD_
 
 ---
@@ -135,7 +136,7 @@ herb sack exists. Fishing hook ✅. Herblore perks (90% of secondaries kept, fou
 - Slayer reward points are 5x from tasks; no need to complete 5 tasks first.
 - Superior slayer monsters appear at a 1/50 rate.
 
-**Passive status:** ❌ (none confirmed in rsmod yet)
+**Passive status:** ✅ Built 2026-10-11 (`LeagueSlayerRelics`, `LeagueRelicTracker` for the combat XP): all four passives. Check in client.
 
 ### Clue Compass
 - Receive a clue compass item: teleport to any STASH unit and Falo the Bard.
@@ -184,8 +185,22 @@ herb sack exists. Fishing hook ✅. Herblore perks (90% of secondaries kept, fou
   altar modifiers).
 - Select shop items can be noted (toggle).
 
-**Status:** ❌
-**Mini-league change:** _TBD_
+**Status:** ✅ (2026-10-08). Alchemy: `LeagueGoldenGod` implements the magic module's
+`AlchemyModifiers` (free cast, 115% of the coins, 65% keep chance, repeat); the repeat is a soft
+timer every 5 ticks (`magic_alch_recast`), not a loop, so the player is free to walk and fight, and
+it ends when the stack is gone, the item is moved, or something else is cast. Prayer: using coins on
+an altar is an offering of 20,000 coins for the XP of one dragon bone offering (72 x the altar's
+multiplier x XP modifiers); with more coins it repeats, one offering per 20,000, and fewer than
+20,000 does nothing. The chaos altar still spares half of the offerings. This goes through the new
+`Altars.OfferRule` event in the prayer module. Shops: `ShopNoting` (new hook in `api/shops`, applied
+in `ShopScript`) notes what is bought, when the item can be noted, from the rune shop, Yarsul's
+pickaxe shop and Percy's nugget shop (`LeagueGoldenGod.NOTED_SHOPS`; add new shops there). The
+switch is the shop screen's own "Noted items" button (`shopmain:note_button`): the client draws it
+by itself while the relic is chosen and reads `league_shop_noted_items_disabled` for its state; the
+server enables the click on its child 9 when a shop opens (`Shops.NOTE_BUTTON_CHILD`) and flips the
+varbit (`LeagueGoldenGodScript`). No new variables, so no `packCache` for this. 16 tests in
+`GoldenGodTest`.
+**Mini-league change:** none.
 
 ### Reloaded
 - Choose another relic from any previous tier.
@@ -243,7 +258,8 @@ herb sack exists. Fishing hook ✅. Herblore perks (90% of secondaries kept, fou
 - 1,000 to 15,000 bonus Slayer XP (before multipliers) the first time you kill the 100th of each
   unique slayer monster, scaled by the monster's Slayer level requirement.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-10-11 (`LeagueSlayerRelics`, see `isle_of_souls_slayer_plan.md`): all five
+effects. "Unique slayer monster" is each Slayer task kind. Check in client.
 **Mini-league change:** _TBD_
 
 ---

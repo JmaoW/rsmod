@@ -16,7 +16,9 @@ import org.rsmod.game.movement.MoveSpeed
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.obj.Wearpos
 
-public class PlayerRunUpdateProcessor @Inject constructor(private val objTypes: ObjTypeList) {
+public class PlayerRunUpdateProcessor
+@Inject
+constructor(private val objTypes: ObjTypeList, private val drainMods: Set<RunDrainMod>) {
     public fun process(player: Player) {
         player.updateRunWeight()
         player.updateRunEnergy()
@@ -43,6 +45,10 @@ public class PlayerRunUpdateProcessor @Inject constructor(private val objTypes: 
     }
 
     private fun Player.decreaseRunEnergy() {
+        if (drainMods.any { with(it) { preventsRunDrain() } }) {
+            return
+        }
+
         val weightKg = (runWeight / 1000).coerceIn(0, 64)
         val baseLoss = 60 + (67 * weightKg) / 64
 

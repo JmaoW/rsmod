@@ -15,9 +15,16 @@ import org.rsmod.game.hit.HitType
 class FightCaveCompletions
 @Inject
 constructor(private val tracker: LeagueTaskTracker, private val masteryTasks: LeagueMasteryTasks) {
-    /** [player] was inside the cave when Jad died. */
-    fun completed(player: Player) {
+    /**
+     * [player] was inside the cave when Jad died. The run counts towards the "complete the Fight
+     * Caves N times" tasks only when [countRun] is set: those counters are shared by a team, so the
+     * rewards set it for one member of each team, not for all of them.
+     */
+    fun completed(player: Player, countRun: Boolean = true) {
         masteryTasks.complete(player, MasteryKills.SLOT_JAD)
+        if (!countRun) {
+            return
+        }
         tracker.addProgress(player, TASK_COMPLETE_FIVE, league_progress.fight_caves_5, 5)
         tracker.addProgress(player, TASK_COMPLETE_TEN, league_progress.fight_caves_10, 10)
     }

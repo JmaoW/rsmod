@@ -40,7 +40,7 @@ class CookingFoodsTest {
                 CookingObjs.uncooked_apple_pie to listOf(30, 130),
                 CookingObjs.uncooked_pizza to listOf(35, 143),
             )
-        assertEquals(expected.size, CookingFoods.all.size)
+        assertTrue(CookingFoods.all.size >= expected.size)
         for ((raw, values) in expected) {
             val food = food(raw)
             assertEquals(values, listOf(food.level, food.xp.toInt()))
@@ -135,11 +135,55 @@ class CookingFoodsTest {
 
     @Test
     fun `range is never worse than a fire`() {
-        for (food in CookingFoods.all) {
+        // The wiki's numbers for a few of the extra foods (ugthanki meat) say otherwise.
+        for (food in CookingFoods.all.filter { it !in CookingExtras.all }) {
             val fire = food.fire ?: continue
             for (level in food.level..99) {
                 assertTrue(food.range.chance(level) >= fire.chance(level))
             }
+        }
+    }
+
+    @Test
+    fun `no raw food is listed twice`() {
+        val duplicates =
+            CookingFoods.all.groupBy { it.raw.toString() }.filter { it.value.size > 1 }.keys
+        assertTrue(duplicates.isEmpty(), "Listed twice: $duplicates")
+    }
+
+    @Test
+    fun `foods without a success chart cannot burn once they stop burning`() {
+        for (food in CookingFoods.all) {
+            val stop = food.stopBurnLevel(HeatSource.Range)
+            if (stop != null) {
+                assertTrue(stop >= food.level, "${food.raw} stops burning before it can be cooked")
+            }
+        }
+    }
+
+    @Test
+    fun `the extra foods keep the wiki's level and experience`() {
+        val rows = CookingExtras.all.map { it.level to it.xp.toInt() }
+        assertTrue(rows.contains(91 to 216), "Manta ray")
+        assertTrue(rows.contains(51 to 143), "Kyatt")
+        assertTrue(rows.contains(7 to 15), "Baked potato")
+        assertTrue(rows.contains(40 to 180), "Cake")
+        assertTrue(rows.contains(25 to 117), "Stew")
+        assertTrue(rows.contains(60 to 280), "Curry")
+    }
+
+    @Test
+    fun `a cake leaves its tin behind`() {
+        val cakes = CookingExtras.all.filter { it.leaves != null }
+        assertTrue(cakes.any { it.level == 40 })
+    }
+
+    @Test
+    fun `preparation recipes are made of named items`() {
+        for (recipe in PrepRecipes.all) {
+            assertTrue(recipe.inputs.isNotEmpty())
+            assertTrue(recipe.outputs.isNotEmpty())
+            assertTrue(recipe.level in 1..99)
         }
     }
 }

@@ -41,6 +41,7 @@ constructor(
     private val manager: PlayerAttackManager,
     private val ammunition: RangedAmmoManager,
     private val spellsReg: SpellAttackRegistry,
+    private val delays: NpcAttackDelays,
 ) {
     suspend fun attack(access: ProtectedAccess, target: Npc, attack: CombatAttack.PlayerAttack) {
         when (attack) {
@@ -64,7 +65,7 @@ constructor(
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
         val attackRate = speeds.playerAttackDelay(player, MasteryStyle.Melee)
-        manager.setNextAttackDelay(player, attackRate)
+        manager.setNextAttackDelay(player, delays.adjust(player, npc, attackRate))
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a
         // helper function that does so) to re-engage in combat after performing the special attack.
@@ -115,7 +116,7 @@ constructor(
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
         val attackRate = speeds.playerAttackDelay(player, MasteryStyle.Ranged)
-        manager.setNextAttackDelay(player, attackRate)
+        manager.setNextAttackDelay(player, delays.adjust(player, npc, attackRate))
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a
         // helper function that does so) to re-engage in combat after performing the special attack.
@@ -237,7 +238,7 @@ constructor(
         }
 
         val attackRate = speeds.playerSpellDelay(player)
-        manager.setNextAttackDelay(player, attackRate)
+        manager.setNextAttackDelay(player, delays.adjust(player, npc, attackRate))
 
         val spell = spellsReg[attack.spell.obj]
         if (spell != null) {
@@ -263,7 +264,7 @@ constructor(
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
         val attackRate = speeds.playerStaffDelay(player)
-        manager.setNextAttackDelay(player, attackRate)
+        manager.setNextAttackDelay(player, delays.adjust(player, npc, attackRate))
 
         // Important: Special attack handlers are responsible for explicitly calling `opnpc2` (or a
         // helper function that does so) to re-engage in combat after performing the special attack.

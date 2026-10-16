@@ -1,0 +1,10142 @@
+{
+"2": {
+"name": "Aberrant spectre",
+"level": 96,
+"spawns": 3,
+"page": "Aberrant spectre"
+},
+"3": {
+"name": "Aberrant spectre",
+"level": 96,
+"spawns": 2,
+"page": "Aberrant spectre"
+},
+"4": {
+"name": "Aberrant spectre",
+"level": 96,
+"spawns": 4,
+"page": "Aberrant spectre"
+},
+"5": {
+"name": "Aberrant spectre",
+"level": 96,
+"spawns": 5,
+"page": "Aberrant spectre"
+},
+"6": {
+"name": "Aberrant spectre",
+"level": 96,
+"spawns": 7,
+"page": "Aberrant spectre"
+},
+"7": {
+"name": "Aberrant spectre",
+"level": 96,
+"spawns": 6,
+"page": "Aberrant spectre"
+},
+"8": {
+"name": "Nechryael",
+"level": 115,
+"spawns": 11,
+"page": "Nechryael"
+},
+"11": {
+"name": "Nechryael",
+"level": 115,
+"spawns": 12,
+"page": "Nechryael"
+},
+"26": {
+"name": "Zombie",
+"level": 13,
+"spawns": 4,
+"page": "Zombie"
+},
+"27": {
+"name": "Zombie",
+"level": 13,
+"spawns": 2,
+"page": "Zombie"
+},
+"28": {
+"name": "Zombie",
+"level": 13,
+"spawns": 4,
+"page": "Zombie"
+},
+"29": {
+"name": "Zombie",
+"level": 13,
+"spawns": 2,
+"page": "Zombie"
+},
+"30": {
+"name": "Zombie",
+"level": 13,
+"spawns": 2,
+"page": "Zombie"
+},
+"31": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"32": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"34": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"37": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"38": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"39": {
+"name": "Zombie",
+"level": 13,
+"spawns": 2,
+"page": "Zombie"
+},
+"40": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"41": {
+"name": "Zombie",
+"level": 13,
+"spawns": 1,
+"page": "Zombie"
+},
+"42": {
+"name": "Zombie",
+"level": 18,
+"spawns": 4,
+"page": "Zombie"
+},
+"43": {
+"name": "Zombie",
+"level": 18,
+"spawns": 3,
+"page": "Zombie"
+},
+"44": {
+"name": "Zombie",
+"level": 18,
+"spawns": 3,
+"page": "Zombie"
+},
+"45": {
+"name": "Zombie",
+"level": 18,
+"spawns": 4,
+"page": "Zombie (Wilderness)"
+},
+"46": {
+"name": "Zombie",
+"level": 18,
+"spawns": 5,
+"page": "Zombie (Wilderness)"
+},
+"47": {
+"name": "Zombie",
+"level": 18,
+"spawns": 3,
+"page": "Zombie (Wilderness)"
+},
+"48": {
+"name": "Zombie",
+"level": 18,
+"spawns": 3,
+"page": "Zombie (Wilderness)"
+},
+"49": {
+"name": "Zombie",
+"level": 24,
+"spawns": 10,
+"page": "Zombie"
+},
+"50": {
+"name": "Zombie",
+"level": 24,
+"spawns": 8,
+"page": "Zombie"
+},
+"51": {
+"name": "Zombie",
+"level": 24,
+"spawns": 7,
+"page": "Zombie"
+},
+"52": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie"
+},
+"54": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie"
+},
+"55": {
+"name": "Zombie",
+"level": 24,
+"spawns": 3,
+"page": "Zombie"
+},
+"56": {
+"name": "Zombie",
+"level": 24,
+"spawns": 3,
+"page": "Zombie"
+},
+"57": {
+"name": "Zombie",
+"level": 24,
+"spawns": 3,
+"page": "Zombie"
+},
+"58": {
+"name": "Zombie",
+"level": 24,
+"spawns": 3,
+"page": "Zombie"
+},
+"59": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie (Wilderness)"
+},
+"60": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie (Wilderness)"
+},
+"61": {
+"name": "Zombie",
+"level": 24,
+"spawns": 2,
+"page": "Zombie (Wilderness)"
+},
+"62": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie (Wilderness)"
+},
+"63": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie (Wilderness)"
+},
+"64": {
+"name": "Zombie",
+"level": 25,
+"spawns": 1,
+"page": "Zombie (Entrana Dungeon)"
+},
+"65": {
+"name": "Zombie",
+"level": 25,
+"spawns": 1,
+"page": "Zombie (Entrana Dungeon)"
+},
+"66": {
+"name": "Zombie",
+"level": 25,
+"spawns": 1,
+"page": "Zombie (Entrana Dungeon)"
+},
+"67": {
+"name": "Zombie",
+"level": 25,
+"spawns": 1,
+"page": "Zombie (Entrana Dungeon)"
+},
+"68": {
+"name": "Zombie",
+"level": 25,
+"spawns": 1,
+"page": "Zombie (Entrana Dungeon)"
+},
+"70": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 22,
+"page": "Skeleton"
+},
+"71": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 18,
+"page": "Skeleton"
+},
+"72": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 13,
+"page": "Skeleton"
+},
+"73": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 15,
+"page": "Skeleton"
+},
+"74": {
+"name": "Skeleton",
+"level": 21,
+"spawns": 7,
+"page": "Skeleton"
+},
+"75": {
+"name": "Skeleton",
+"level": 21,
+"spawns": 6,
+"page": "Skeleton"
+},
+"76": {
+"name": "Skeleton",
+"level": 21,
+"spawns": 5,
+"page": "Skeleton"
+},
+"77": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 28,
+"page": "Skeleton"
+},
+"78": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 18,
+"page": "Skeleton"
+},
+"79": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 16,
+"page": "Skeleton"
+},
+"80": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 14,
+"page": "Skeleton"
+},
+"81": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 10,
+"page": "Skeleton"
+},
+"82": {
+"name": "Skeleton",
+"level": 45,
+"spawns": 35,
+"page": "Skeleton"
+},
+"83": {
+"name": "Skeleton",
+"level": 45,
+"spawns": 4,
+"page": "Skeleton"
+},
+"84": {
+"name": "Skeleton Mage",
+"level": 16,
+"spawns": 4,
+"page": "Skeleton Mage"
+},
+"85": {
+"name": "Ghost",
+"level": 19,
+"spawns": 17,
+"page": "Ghost"
+},
+"86": {
+"name": "Ghost",
+"level": 19,
+"spawns": 8,
+"page": "Ghost"
+},
+"87": {
+"name": "Ghost",
+"level": 19,
+"spawns": 8,
+"page": "Ghost"
+},
+"88": {
+"name": "Ghost",
+"level": 19,
+"spawns": 5,
+"page": "Ghost"
+},
+"89": {
+"name": "Ghost",
+"level": 19,
+"spawns": 8,
+"page": "Ghost"
+},
+"90": {
+"name": "Ghost",
+"level": 19,
+"spawns": 6,
+"page": "Ghost"
+},
+"91": {
+"name": "Ghost",
+"level": 19,
+"spawns": 5,
+"page": "Ghost"
+},
+"92": {
+"name": "Ghost",
+"level": 19,
+"spawns": 6,
+"page": "Ghost"
+},
+"93": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"95": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"97": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"99": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"100": {
+"name": "Rock Crab",
+"level": 13,
+"spawns": 2,
+"page": "Rock Crab"
+},
+"102": {
+"name": "Rock Crab",
+"level": 13,
+"spawns": 2,
+"page": "Rock Crab"
+},
+"104": {
+"name": "Hellhound",
+"level": 122,
+"spawns": 39,
+"page": "Hellhound"
+},
+"105": {
+"name": "Hellhound",
+"level": 122,
+"spawns": 13,
+"page": "Hellhound"
+},
+"106": {
+"name": "Wolf",
+"level": 64,
+"spawns": 47,
+"page": "Wolf"
+},
+"107": {
+"name": "White wolf",
+"level": 25,
+"spawns": 8,
+"page": "White wolf"
+},
+"108": {
+"name": "White wolf",
+"level": 38,
+"spawns": 14,
+"page": "White wolf"
+},
+"109": {
+"name": "Big Wolf",
+"level": 73,
+"spawns": 1,
+"page": "Big Wolf"
+},
+"110": {
+"name": "Wolf",
+"level": 25,
+"spawns": 6,
+"page": "Wolf"
+},
+"112": {
+"name": "Wild dog",
+"level": 63,
+"spawns": 12,
+"page": "Wild dog"
+},
+"114": {
+"name": "Guard dog",
+"level": 44,
+"spawns": 17,
+"page": "Guard dog"
+},
+"115": {
+"name": "Big Wolf",
+"level": 73,
+"spawns": 1,
+"page": "Big Wolf"
+},
+"232": {
+"name": "Jungle Wolf",
+"level": 64,
+"spawns": 16,
+"page": "Jungle Wolf"
+},
+"239": {
+"name": "King Black Dragon",
+"level": 276,
+"spawns": 1,
+"page": "King Black Dragon"
+},
+"240": {
+"name": "Black demon",
+"level": 172,
+"spawns": 4,
+"page": "Black demon"
+},
+"241": {
+"name": "Baby blue dragon",
+"level": 48,
+"spawns": 6,
+"page": "Baby blue dragon"
+},
+"242": {
+"name": "Baby blue dragon",
+"level": 48,
+"spawns": 8,
+"page": "Baby blue dragon"
+},
+"243": {
+"name": "Baby blue dragon",
+"level": 48,
+"spawns": 4,
+"page": "Baby blue dragon"
+},
+"244": {
+"name": "Baby red dragon",
+"level": 48,
+"spawns": 11,
+"page": "Baby red dragon"
+},
+"245": {
+"name": "Baby red dragon",
+"level": 48,
+"spawns": 3,
+"page": "Baby red dragon"
+},
+"246": {
+"name": "Baby red dragon",
+"level": 48,
+"spawns": 5,
+"page": "Baby red dragon"
+},
+"247": {
+"name": "Red dragon",
+"level": 152,
+"spawns": 5,
+"page": "Red dragon"
+},
+"248": {
+"name": "Red dragon",
+"level": 152,
+"spawns": 7,
+"page": "Red dragon"
+},
+"249": {
+"name": "Red dragon",
+"level": 152,
+"spawns": 5,
+"page": "Red dragon"
+},
+"250": {
+"name": "Red dragon",
+"level": 152,
+"spawns": 4,
+"page": "Red dragon"
+},
+"251": {
+"name": "Red dragon",
+"level": 152,
+"spawns": 4,
+"page": "Red dragon"
+},
+"252": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 3,
+"page": "Black dragon"
+},
+"253": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 3,
+"page": "Black dragon"
+},
+"254": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 1,
+"page": "Black dragon"
+},
+"255": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 2,
+"page": "Black dragon"
+},
+"256": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 3,
+"page": "Black dragon"
+},
+"257": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 4,
+"page": "Black dragon"
+},
+"258": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 4,
+"page": "Black dragon"
+},
+"259": {
+"name": "Black dragon",
+"level": 227,
+"spawns": 4,
+"page": "Black dragon"
+},
+"260": {
+"name": "Green dragon",
+"level": 79,
+"spawns": 6,
+"page": "Green dragon"
+},
+"261": {
+"name": "Green dragon",
+"level": 79,
+"spawns": 5,
+"page": "Green dragon"
+},
+"262": {
+"name": "Green dragon",
+"level": 79,
+"spawns": 5,
+"page": "Green dragon"
+},
+"263": {
+"name": "Green dragon",
+"level": 79,
+"spawns": 5,
+"page": "Green dragon"
+},
+"264": {
+"name": "Green dragon",
+"level": 79,
+"spawns": 5,
+"page": "Green dragon"
+},
+"265": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 6,
+"page": "Blue dragon"
+},
+"266": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 5,
+"page": "Blue dragon"
+},
+"267": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 5,
+"page": "Blue dragon"
+},
+"268": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 6,
+"page": "Blue dragon"
+},
+"269": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 3,
+"page": "Blue dragon"
+},
+"270": {
+"name": "Bronze dragon",
+"level": 131,
+"spawns": 3,
+"page": "Bronze dragon"
+},
+"271": {
+"name": "Bronze dragon",
+"level": 131,
+"spawns": 5,
+"page": "Bronze dragon"
+},
+"272": {
+"name": "Iron dragon",
+"level": 189,
+"spawns": 16,
+"page": "Iron dragon"
+},
+"273": {
+"name": "Iron dragon",
+"level": 189,
+"spawns": 8,
+"page": "Iron dragon"
+},
+"274": {
+"name": "Steel dragon",
+"level": 246,
+"spawns": 4,
+"page": "Steel dragon"
+},
+"275": {
+"name": "Steel dragon",
+"level": 246,
+"spawns": 9,
+"page": "Steel dragon"
+},
+"289": {
+"name": "Ghoul",
+"level": 42,
+"spawns": 22,
+"page": "Ghoul"
+},
+"290": {
+"name": "Dwarf",
+"level": 10,
+"spawns": 48,
+"page": "Dwarf"
+},
+"291": {
+"name": "Chaos dwarf",
+"level": 48,
+"spawns": 17,
+"page": "Chaos dwarf"
+},
+"292": {
+"name": "Dwarf",
+"level": 20,
+"spawns": 15,
+"page": "Dwarf"
+},
+"294": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 1,
+"page": "Dwarf"
+},
+"295": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 2,
+"page": "Dwarf"
+},
+"296": {
+"name": "Dwarf",
+"level": 10,
+"spawns": 2,
+"page": "Dwarf"
+},
+"299": {
+"name": "Gunthor the brave",
+"level": 29,
+"spawns": 1,
+"page": "Gunthor the brave"
+},
+"300": {
+"name": "Jailer",
+"level": 47,
+"spawns": 1,
+"page": "Jailer"
+},
+"301": {
+"name": "Black Heather",
+"level": 34,
+"spawns": 1,
+"page": "Black Heather"
+},
+"302": {
+"name": "Donny the lad",
+"level": 34,
+"spawns": 1,
+"page": "Donny the lad"
+},
+"303": {
+"name": "Speedy Keith",
+"level": 34,
+"spawns": 1,
+"page": "Speedy Keith"
+},
+"304": {
+"name": "Salarin the twisted",
+"level": 70,
+"spawns": 1,
+"page": "Salarin the twisted"
+},
+"319": {
+"name": "Corporeal Beast",
+"level": 785,
+"spawns": 2,
+"page": "Corporeal Beast"
+},
+"397": {
+"name": "Guard",
+"level": 22,
+"spawns": 2,
+"page": "Guard (Hosidius)"
+},
+"398": {
+"name": "Guard",
+"level": 22,
+"spawns": 3,
+"page": "Guard (Hosidius)"
+},
+"399": {
+"name": "Guard",
+"level": 19,
+"spawns": 3,
+"page": "Guard (Hosidius)"
+},
+"400": {
+"name": "Guard",
+"level": 19,
+"spawns": 2,
+"page": "Guard (Hosidius)"
+},
+"406": {
+"name": "Cave crawler",
+"level": 23,
+"spawns": 4,
+"page": "Cave crawler"
+},
+"407": {
+"name": "Cave crawler",
+"level": 23,
+"spawns": 3,
+"page": "Cave crawler"
+},
+"408": {
+"name": "Cave crawler",
+"level": 23,
+"spawns": 5,
+"page": "Cave crawler"
+},
+"409": {
+"name": "Cave crawler",
+"level": 23,
+"spawns": 4,
+"page": "Cave crawler"
+},
+"410": {
+"name": "Kurask",
+"level": 106,
+"spawns": 27,
+"page": "Kurask"
+},
+"411": {
+"name": "Kurask",
+"level": 106,
+"spawns": 1,
+"page": "Kurask"
+},
+"412": {
+"name": "Gargoyle",
+"level": 111,
+"spawns": 8,
+"page": "Gargoyle"
+},
+"414": {
+"name": "Banshee",
+"level": 23,
+"spawns": 8,
+"page": "Banshee"
+},
+"415": {
+"name": "Abyssal demon",
+"level": 124,
+"spawns": 27,
+"page": "Abyssal demon"
+},
+"416": {
+"name": "Abyssal demon",
+"level": 124,
+"spawns": 14,
+"page": "Abyssal demon"
+},
+"417": {
+"name": "Basilisk",
+"level": 61,
+"spawns": 20,
+"page": "Basilisk"
+},
+"419": {
+"name": "Cockatrice",
+"level": 37,
+"spawns": 7,
+"page": "Cockatrice"
+},
+"421": {
+"name": "Rockslug",
+"level": 29,
+"spawns": 13,
+"page": "Rockslug"
+},
+"422": {
+"name": "Rockslug",
+"level": 29,
+"spawns": 3,
+"page": "Rockslug"
+},
+"423": {
+"name": "Dust devil",
+"level": 93,
+"spawns": 31,
+"page": "Dust devil"
+},
+"427": {
+"name": "Turoth",
+"level": 89,
+"spawns": 1,
+"page": "Turoth"
+},
+"428": {
+"name": "Turoth",
+"level": 87,
+"spawns": 3,
+"page": "Turoth"
+},
+"429": {
+"name": "Turoth",
+"level": 85,
+"spawns": 9,
+"page": "Turoth"
+},
+"430": {
+"name": "Turoth",
+"level": 83,
+"spawns": 9,
+"page": "Turoth"
+},
+"433": {
+"name": "Pyrefiend",
+"level": 43,
+"spawns": 31,
+"page": "Pyrefiend"
+},
+"434": {
+"name": "Pyrefiend",
+"level": 43,
+"spawns": 14,
+"page": "Pyrefiend"
+},
+"435": {
+"name": "Pyrefiend",
+"level": 43,
+"spawns": 19,
+"page": "Pyrefiend"
+},
+"436": {
+"name": "Pyrefiend",
+"level": 43,
+"spawns": 13,
+"page": "Pyrefiend"
+},
+"437": {
+"name": "Jelly",
+"level": 78,
+"spawns": 1,
+"page": "Jelly"
+},
+"438": {
+"name": "Jelly",
+"level": 78,
+"spawns": 2,
+"page": "Jelly"
+},
+"439": {
+"name": "Jelly",
+"level": 78,
+"spawns": 1,
+"page": "Jelly"
+},
+"440": {
+"name": "Jelly",
+"level": 78,
+"spawns": 2,
+"page": "Jelly"
+},
+"441": {
+"name": "Jelly",
+"level": 78,
+"spawns": 2,
+"page": "Jelly"
+},
+"442": {
+"name": "Jelly",
+"level": 78,
+"spawns": 2,
+"page": "Jelly"
+},
+"443": {
+"name": "Infernal Mage",
+"level": 66,
+"spawns": 3,
+"page": "Infernal Mage"
+},
+"444": {
+"name": "Infernal Mage",
+"level": 66,
+"spawns": 4,
+"page": "Infernal Mage"
+},
+"445": {
+"name": "Infernal Mage",
+"level": 66,
+"spawns": 3,
+"page": "Infernal Mage"
+},
+"446": {
+"name": "Infernal Mage",
+"level": 66,
+"spawns": 3,
+"page": "Infernal Mage"
+},
+"447": {
+"name": "Infernal Mage",
+"level": 66,
+"spawns": 2,
+"page": "Infernal Mage"
+},
+"448": {
+"name": "Crawling Hand",
+"level": 8,
+"spawns": 16,
+"page": "Crawling Hand"
+},
+"449": {
+"name": "Crawling Hand",
+"level": 8,
+"spawns": 2,
+"page": "Crawling Hand"
+},
+"450": {
+"name": "Crawling Hand",
+"level": 7,
+"spawns": 2,
+"page": "Crawling Hand"
+},
+"451": {
+"name": "Crawling Hand",
+"level": 8,
+"spawns": 2,
+"page": "Crawling Hand"
+},
+"452": {
+"name": "Crawling Hand",
+"level": 8,
+"spawns": 1,
+"page": "Crawling Hand"
+},
+"453": {
+"name": "Crawling Hand",
+"level": 12,
+"spawns": 8,
+"page": "Crawling Hand"
+},
+"454": {
+"name": "Crawling Hand",
+"level": 12,
+"spawns": 3,
+"page": "Crawling Hand"
+},
+"458": {
+"name": "Lizard",
+"level": 42,
+"spawns": 5,
+"page": "Lizard"
+},
+"459": {
+"name": "Desert Lizard",
+"level": 24,
+"spawns": 2,
+"page": "Desert Lizard"
+},
+"460": {
+"name": "Desert Lizard",
+"level": 24,
+"spawns": 4,
+"page": "Desert Lizard"
+},
+"461": {
+"name": "Desert Lizard",
+"level": 24,
+"spawns": 1,
+"page": "Desert Lizard"
+},
+"462": {
+"name": "Small Lizard",
+"level": 12,
+"spawns": 5,
+"page": "Small Lizard"
+},
+"463": {
+"name": "Small Lizard",
+"level": 12,
+"spawns": 26,
+"page": "Small Lizard"
+},
+"464": {
+"name": "Harpie Bug Swarm",
+"level": 46,
+"spawns": 14,
+"page": "Harpie Bug Swarm"
+},
+"465": {
+"name": "Skeletal Wyvern",
+"level": 140,
+"spawns": 5,
+"page": "Skeletal Wyvern"
+},
+"466": {
+"name": "Skeletal Wyvern",
+"level": 140,
+"spawns": 6,
+"page": "Skeletal Wyvern"
+},
+"467": {
+"name": "Skeletal Wyvern",
+"level": 140,
+"spawns": 6,
+"page": "Skeletal Wyvern"
+},
+"468": {
+"name": "Skeletal Wyvern",
+"level": 140,
+"spawns": 5,
+"page": "Skeletal Wyvern"
+},
+"470": {
+"name": "Killerwatt",
+"level": 55,
+"spawns": 26,
+"page": "Killerwatt"
+},
+"472": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"473": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"474": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"477": {
+"name": "Giant frog",
+"level": 99,
+"spawns": 6,
+"page": "Giant frog"
+},
+"478": {
+"name": "Big frog",
+"level": 24,
+"spawns": 30,
+"page": "Big frog"
+},
+"480": {
+"name": "Cave slime",
+"level": 23,
+"spawns": 26,
+"page": "Cave slime"
+},
+"481": {
+"name": "Cave bug",
+"level": 6,
+"spawns": 30,
+"page": "Cave bug"
+},
+"483": {
+"name": "Cave bug",
+"level": 96,
+"spawns": 6,
+"page": "Cave bug"
+},
+"484": {
+"name": "Bloodveld",
+"level": 76,
+"spawns": 11,
+"page": "Bloodveld"
+},
+"485": {
+"name": "Bloodveld",
+"level": 76,
+"spawns": 8,
+"page": "Bloodveld"
+},
+"486": {
+"name": "Bloodveld",
+"level": 76,
+"spawns": 13,
+"page": "Bloodveld"
+},
+"487": {
+"name": "Bloodveld",
+"level": 76,
+"spawns": 11,
+"page": "Bloodveld"
+},
+"498": {
+"name": "Smoke devil",
+"level": 160,
+"spawns": 36,
+"page": "Smoke devil"
+},
+"499": {
+"name": "Thermonuclear smoke devil",
+"level": 301,
+"spawns": 1,
+"page": "Thermonuclear smoke devil"
+},
+"505": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"506": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"507": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost"
+},
+"509": {
+"name": "Death wing",
+"level": 83,
+"spawns": 8,
+"page": "Death wing"
+},
+"510": {
+"name": "Dark wizard",
+"level": 20,
+"spawns": 3,
+"page": "Dark wizard"
+},
+"511": {
+"name": "Invrigar the Necromancer",
+"level": 20,
+"spawns": 1,
+"page": "Invrigar the Necromancer"
+},
+"512": {
+"name": "Dark wizard",
+"level": 7,
+"spawns": 7,
+"page": "Dark wizard"
+},
+"513": {
+"name": "Mugger",
+"level": 6,
+"spawns": 6,
+"page": "Mugger"
+},
+"516": {
+"name": "Black Knight",
+"level": 33,
+"spawns": 29,
+"page": "Black Knight"
+},
+"517": {
+"name": "Black Knight",
+"level": 33,
+"spawns": 49,
+"page": "Black Knight"
+},
+"518": {
+"name": "Highwayman",
+"level": 5,
+"spawns": 5,
+"page": "Highwayman"
+},
+"519": {
+"name": "Highwayman",
+"level": 5,
+"spawns": 1,
+"page": "Highwayman"
+},
+"520": {
+"name": "Chaos druid",
+"level": 13,
+"spawns": 37,
+"page": "Chaos druid"
+},
+"521": {
+"name": "Pirate",
+"level": 23,
+"spawns": 2,
+"page": "Pirate"
+},
+"522": {
+"name": "Pirate",
+"level": 23,
+"spawns": 18,
+"page": "Pirate"
+},
+"523": {
+"name": "Pirate",
+"level": 26,
+"spawns": 21,
+"page": "Pirate"
+},
+"525": {
+"name": "Thug",
+"level": 10,
+"spawns": 18,
+"page": "Thug"
+},
+"526": {
+"name": "Rogue",
+"level": 15,
+"spawns": 22,
+"page": "Rogue"
+},
+"528": {
+"name": "Monk of Zamorak",
+"level": 17,
+"spawns": 10,
+"page": "Monk of Zamorak"
+},
+"529": {
+"name": "Monk of Zamorak",
+"level": 45,
+"spawns": 6,
+"page": "Monk of Zamorak"
+},
+"530": {
+"name": "Tribesman",
+"level": 32,
+"spawns": 21,
+"page": "Tribesman"
+},
+"531": {
+"name": "Dark warrior",
+"level": 8,
+"spawns": 87,
+"page": "Dark warrior"
+},
+"532": {
+"name": "Chaos druid warrior",
+"level": 37,
+"spawns": 11,
+"page": "Chaos druid warrior"
+},
+"561": {
+"name": "Sorebones",
+"level": 57,
+"spawns": 8,
+"page": "Sorebones"
+},
+"562": {
+"name": "Sorebones",
+"level": 57,
+"spawns": 6,
+"page": "Sorebones"
+},
+"563": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"564": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"565": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"566": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"567": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"568": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"569": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"570": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"571": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"572": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"573": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"574": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"575": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"576": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"578": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"580": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"581": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"583": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"584": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"585": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"587": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"589": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"590": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"591": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"592": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"593": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"594": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"595": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"596": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"598": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"599": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 1,
+"page": "Zombie pirate (Harmony Island)"
+},
+"613": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 2,
+"page": "Zombie pirate (Braindeath Island)"
+},
+"614": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 2,
+"page": "Zombie pirate (Braindeath Island)"
+},
+"615": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 2,
+"page": "Zombie pirate (Braindeath Island)"
+},
+"616": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 2,
+"page": "Zombie pirate (Braindeath Island)"
+},
+"617": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 2,
+"page": "Zombie pirate (Braindeath Island)"
+},
+"618": {
+"name": "Zombie pirate",
+"level": 57,
+"spawns": 2,
+"page": "Zombie pirate (Braindeath Island)"
+},
+"619": {
+"name": "Zombie swab",
+"level": 55,
+"spawns": 1,
+"page": "Zombie swab"
+},
+"620": {
+"name": "Zombie swab",
+"level": 55,
+"spawns": 1,
+"page": "Zombie swab"
+},
+"621": {
+"name": "Zombie swab",
+"level": 55,
+"spawns": 1,
+"page": "Zombie swab"
+},
+"622": {
+"name": "Zombie swab",
+"level": 55,
+"spawns": 1,
+"page": "Zombie swab"
+},
+"623": {
+"name": "Zombie swab",
+"level": 55,
+"spawns": 1,
+"page": "Zombie swab"
+},
+"624": {
+"name": "Zombie swab",
+"level": 55,
+"spawns": 1,
+"page": "Zombie swab"
+},
+"626": {
+"name": "Fever spider",
+"level": 49,
+"spawns": 11,
+"page": "Fever spider"
+},
+"639": {
+"name": "Tyras guard",
+"level": 110,
+"spawns": 3,
+"page": "Tyras guard"
+},
+"645": {
+"name": "Ice wolf",
+"level": 96,
+"spawns": 3,
+"page": "Ice wolf"
+},
+"646": {
+"name": "Ice wolf",
+"level": 96,
+"spawns": 4,
+"page": "Ice wolf"
+},
+"648": {
+"name": "Ice Troll",
+"level": 124,
+"spawns": 3,
+"page": "Ice troll"
+},
+"649": {
+"name": "Ice Troll",
+"level": 123,
+"spawns": 3,
+"page": "Ice troll"
+},
+"650": {
+"name": "Ice Troll",
+"level": 120,
+"spawns": 3,
+"page": "Ice troll"
+},
+"651": {
+"name": "Ice Troll",
+"level": 121,
+"spawns": 4,
+"page": "Ice troll"
+},
+"652": {
+"name": "Ice Troll",
+"level": 120,
+"spawns": 3,
+"page": "Ice troll"
+},
+"653": {
+"name": "Ice Troll",
+"level": 120,
+"spawns": 2,
+"page": "Ice troll"
+},
+"654": {
+"name": "Ice Troll",
+"level": 121,
+"spawns": 3,
+"page": "Ice troll"
+},
+"655": {
+"name": "Goblin",
+"level": 5,
+"spawns": 2,
+"page": "Goblin (Goblin Village)"
+},
+"656": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin (Goblin Village)"
+},
+"657": {
+"name": "Goblin",
+"level": 5,
+"spawns": 3,
+"page": "Goblin (Goblin Village)"
+},
+"658": {
+"name": "Goblin",
+"level": 5,
+"spawns": 2,
+"page": "Goblin (Goblin Village)"
+},
+"659": {
+"name": "Goblin",
+"level": 5,
+"spawns": 4,
+"page": "Goblin (Goblin Village)"
+},
+"660": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin (Goblin Village)"
+},
+"661": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin (Goblin Village)"
+},
+"662": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin (Goblin Village)"
+},
+"663": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin (Goblin Village)"
+},
+"664": {
+"name": "Goblin",
+"level": 5,
+"spawns": 2,
+"page": "Goblin (Goblin Village)"
+},
+"665": {
+"name": "Goblin",
+"level": 5,
+"spawns": 2,
+"page": "Goblin (Goblin Village)"
+},
+"667": {
+"name": "Goblin",
+"level": 5,
+"spawns": 2,
+"page": "Goblin (Goblin Village)"
+},
+"668": {
+"name": "Goblin",
+"level": 5,
+"spawns": 3,
+"page": "Goblin (Goblin Village)"
+},
+"680": {
+"name": "Giant skeleton",
+"level": 80,
+"spawns": 22,
+"page": "Giant skeleton (Shadow Dungeon)"
+},
+"681": {
+"name": "Giant skeleton",
+"level": 80,
+"spawns": 21,
+"page": "Giant skeleton (Shadow Dungeon)"
+},
+"690": {
+"name": "Bandit",
+"level": 74,
+"spawns": 10,
+"page": "Bandit (Bandit Camp)"
+},
+"695": {
+"name": "Bandit",
+"level": 57,
+"spawns": 16,
+"page": "Bandit (Bandit Camp)"
+},
+"699": {
+"name": "Ice troll",
+"level": 124,
+"spawns": 3,
+"page": "Ice troll"
+},
+"700": {
+"name": "Ice troll",
+"level": 123,
+"spawns": 3,
+"page": "Ice troll"
+},
+"701": {
+"name": "Ice troll",
+"level": 120,
+"spawns": 3,
+"page": "Ice troll"
+},
+"702": {
+"name": "Ice troll",
+"level": 121,
+"spawns": 3,
+"page": "Ice troll"
+},
+"703": {
+"name": "Ice troll",
+"level": 120,
+"spawns": 3,
+"page": "Ice troll"
+},
+"704": {
+"name": "Ice troll",
+"level": 120,
+"spawns": 3,
+"page": "Ice troll"
+},
+"705": {
+"name": "Ice troll",
+"level": 121,
+"spawns": 3,
+"page": "Ice troll"
+},
+"710": {
+"name": "Ice wolf",
+"level": 132,
+"spawns": 6,
+"page": "Ice wolf"
+},
+"711": {
+"name": "Ice wolf",
+"level": 132,
+"spawns": 6,
+"page": "Ice wolf"
+},
+"712": {
+"name": "Ice wolf",
+"level": 132,
+"spawns": 4,
+"page": "Ice wolf"
+},
+"713": {
+"name": "Ice wolf",
+"level": 132,
+"spawns": 11,
+"page": "Ice wolf"
+},
+"714": {
+"name": "Ice wolf",
+"level": 132,
+"spawns": 6,
+"page": "Ice wolf"
+},
+"715": {
+"name": "Ice wolf",
+"level": 132,
+"spawns": 5,
+"page": "Ice wolf"
+},
+"720": {
+"name": "Mummy",
+"level": 103,
+"spawns": 19,
+"page": "Mummy (Ancient Pyramid)"
+},
+"721": {
+"name": "Mummy",
+"level": 103,
+"spawns": 16,
+"page": "Mummy (Ancient Pyramid)"
+},
+"722": {
+"name": "Mummy",
+"level": 103,
+"spawns": 17,
+"page": "Mummy (Ancient Pyramid)"
+},
+"723": {
+"name": "Mummy",
+"level": 103,
+"spawns": 26,
+"page": "Mummy (Ancient Pyramid)"
+},
+"773": {
+"name": "Skraeling",
+"level": 2,
+"spawns": 1,
+"page": "Skraeling (Etceteria)"
+},
+"774": {
+"name": "Skraeling",
+"level": 2,
+"spawns": 1,
+"page": "Skraeling (Etceteria)"
+},
+"785": {
+"name": "Me",
+"level": 79,
+"spawns": 1,
+"page": "Me"
+},
+"787": {
+"name": "Suqah",
+"level": 111,
+"spawns": 9,
+"page": "Suqah"
+},
+"788": {
+"name": "Suqah",
+"level": 111,
+"spawns": 4,
+"page": "Suqah"
+},
+"789": {
+"name": "Suqah",
+"level": 111,
+"spawns": 3,
+"page": "Suqah"
+},
+"790": {
+"name": "Suqah",
+"level": 111,
+"spawns": 4,
+"page": "Suqah"
+},
+"791": {
+"name": "Suqah",
+"level": 111,
+"spawns": 3,
+"page": "Suqah"
+},
+"792": {
+"name": "Suqah",
+"level": 111,
+"spawns": 3,
+"page": "Suqah"
+},
+"793": {
+"name": "Suqah",
+"level": 111,
+"spawns": 1,
+"page": "Suqah"
+},
+"794": {
+"name": "Scarab Mage",
+"level": 93,
+"spawns": 28,
+"page": "Scarab Mage"
+},
+"795": {
+"name": "Locust rider",
+"level": 106,
+"spawns": 11,
+"page": "Locust rider"
+},
+"796": {
+"name": "Locust rider",
+"level": 98,
+"spawns": 18,
+"page": "Locust rider"
+},
+"820": {
+"name": "Wormbrain",
+"level": 2,
+"spawns": 1,
+"page": "Wormbrain"
+},
+"823": {
+"name": "Melzar the Mad",
+"level": 43,
+"spawns": 1,
+"page": "Melzar the Mad"
+},
+"852": {
+"name": "Icelord",
+"level": 51,
+"spawns": 1,
+"page": "Icelord"
+},
+"853": {
+"name": "Icelord",
+"level": 51,
+"spawns": 1,
+"page": "Icelord"
+},
+"854": {
+"name": "Icelord",
+"level": 51,
+"spawns": 1,
+"page": "Icelord"
+},
+"855": {
+"name": "Icelord",
+"level": 51,
+"spawns": 1,
+"page": "Icelord"
+},
+"866": {
+"name": "Zogre",
+"level": 44,
+"spawns": 5,
+"page": "Zogre"
+},
+"867": {
+"name": "Zogre",
+"level": 44,
+"spawns": 5,
+"page": "Zogre"
+},
+"868": {
+"name": "Zogre",
+"level": 44,
+"spawns": 8,
+"page": "Zogre"
+},
+"869": {
+"name": "Zogre",
+"level": 44,
+"spawns": 5,
+"page": "Zogre"
+},
+"870": {
+"name": "Zogre",
+"level": 44,
+"spawns": 5,
+"page": "Zogre"
+},
+"871": {
+"name": "Zogre",
+"level": 44,
+"spawns": 1,
+"page": "Zogre"
+},
+"872": {
+"name": "Skogre",
+"level": 44,
+"spawns": 2,
+"page": "Skogre"
+},
+"873": {
+"name": "Zogre",
+"level": 44,
+"spawns": 1,
+"page": "Zogre"
+},
+"874": {
+"name": "Zogre",
+"level": 44,
+"spawns": 1,
+"page": "Zogre"
+},
+"875": {
+"name": "Zogre",
+"level": 44,
+"spawns": 1,
+"page": "Zogre"
+},
+"876": {
+"name": "Zogre",
+"level": 44,
+"spawns": 1,
+"page": "Zogre"
+},
+"877": {
+"name": "Zogre",
+"level": 44,
+"spawns": 1,
+"page": "Zogre"
+},
+"878": {
+"name": "Skogre",
+"level": 44,
+"spawns": 1,
+"page": "Skogre"
+},
+"879": {
+"name": "Skogre",
+"level": 44,
+"spawns": 10,
+"page": "Skogre"
+},
+"891": {
+"name": "Moss Guardian",
+"level": 84,
+"spawns": 3,
+"page": "Moss Guardian"
+},
+"925": {
+"name": "Rock",
+"level": 111,
+"spawns": 1,
+"page": "Rock (Troll)"
+},
+"926": {
+"name": "Stick",
+"level": 104,
+"spawns": 1,
+"page": "Stick"
+},
+"927": {
+"name": "Pee Hat",
+"level": 91,
+"spawns": 1,
+"page": "Pee Hat"
+},
+"928": {
+"name": "Kraka",
+"level": 91,
+"spawns": 1,
+"page": "Kraka"
+},
+"931": {
+"name": "Thrower Troll",
+"level": 67,
+"spawns": 1,
+"page": "Thrower Troll"
+},
+"932": {
+"name": "Thrower Troll",
+"level": 67,
+"spawns": 1,
+"page": "Thrower Troll"
+},
+"933": {
+"name": "Thrower Troll",
+"level": 67,
+"spawns": 1,
+"page": "Thrower Troll"
+},
+"934": {
+"name": "Thrower Troll",
+"level": 67,
+"spawns": 1,
+"page": "Thrower Troll"
+},
+"935": {
+"name": "Thrower Troll",
+"level": 67,
+"spawns": 2,
+"page": "Thrower Troll"
+},
+"936": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 13,
+"page": "Mountain troll"
+},
+"937": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 12,
+"page": "Mountain troll"
+},
+"938": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 6,
+"page": "Mountain troll"
+},
+"939": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 11,
+"page": "Mountain troll"
+},
+"940": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 7,
+"page": "Mountain troll"
+},
+"941": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 9,
+"page": "Mountain troll"
+},
+"942": {
+"name": "Mountain troll",
+"level": 69,
+"spawns": 6,
+"page": "Mountain troll"
+},
+"949": {
+"name": "Mummy",
+"level": 84,
+"spawns": 1,
+"page": "Mummy (Klenter's Pyramid)"
+},
+"950": {
+"name": "Mummy",
+"level": 84,
+"spawns": 1,
+"page": "Mummy (Klenter's Pyramid)"
+},
+"951": {
+"name": "Mummy",
+"level": 84,
+"spawns": 1,
+"page": "Mummy (Klenter's Pyramid)"
+},
+"952": {
+"name": "Mummy",
+"level": 84,
+"spawns": 2,
+"page": "Mummy (Klenter's Pyramid)"
+},
+"953": {
+"name": "Mummy",
+"level": 84,
+"spawns": 1,
+"page": "Mummy (Klenter's Pyramid)"
+},
+"955": {
+"name": "Kalphite Worker",
+"level": 28,
+"spawns": 13,
+"page": "Kalphite Worker"
+},
+"956": {
+"name": "Kalphite Worker",
+"level": 28,
+"spawns": 18,
+"page": "Kalphite Worker"
+},
+"957": {
+"name": "Kalphite Soldier",
+"level": 85,
+"spawns": 7,
+"page": "Kalphite Soldier"
+},
+"958": {
+"name": "Kalphite Soldier",
+"level": 85,
+"spawns": 20,
+"page": "Kalphite Soldier"
+},
+"959": {
+"name": "Kalphite Guardian",
+"level": 141,
+"spawns": 2,
+"page": "Kalphite Guardian"
+},
+"960": {
+"name": "Kalphite Guardian",
+"level": 141,
+"spawns": 5,
+"page": "Kalphite Guardian"
+},
+"962": {
+"name": "Kalphite Guardian",
+"level": 141,
+"spawns": 2,
+"page": "Kalphite Guardian"
+},
+"963": {
+"name": "Kalphite Queen",
+"level": 333,
+"spawns": 1,
+"page": "Kalphite Queen"
+},
+"970": {
+"name": "Dagannoth",
+"level": 74,
+"spawns": 5,
+"page": "Dagannoth"
+},
+"971": {
+"name": "Dagannoth",
+"level": 74,
+"spawns": 7,
+"page": "Dagannoth"
+},
+"972": {
+"name": "Dagannoth",
+"level": 74,
+"spawns": 3,
+"page": "Dagannoth"
+},
+"973": {
+"name": "Dagannoth",
+"level": 92,
+"spawns": 2,
+"page": "Dagannoth"
+},
+"974": {
+"name": "Dagannoth",
+"level": 92,
+"spawns": 3,
+"page": "Dagannoth"
+},
+"975": {
+"name": "Dagannoth",
+"level": 92,
+"spawns": 2,
+"page": "Dagannoth"
+},
+"1025": {
+"name": "Necromancer",
+"level": 26,
+"spawns": 1,
+"page": "Necromancer"
+},
+"1026": {
+"name": "Bandit",
+"level": 22,
+"spawns": 6,
+"page": "Bandit"
+},
+"1027": {
+"name": "Guard Bandit",
+"level": 22,
+"spawns": 4,
+"page": "Guard Bandit"
+},
+"1037": {
+"name": "Snake",
+"level": 35,
+"spawns": 21,
+"page": "Snake (Mos Le'Harmless)"
+},
+"1038": {
+"name": "Monkey",
+"level": 3,
+"spawns": 18,
+"page": "Monkey (monster)"
+},
+"1039": {
+"name": "Albino bat",
+"level": 52,
+"spawns": 25,
+"page": "Albino bat"
+},
+"1041": {
+"name": "Giant mosquito",
+"level": 13,
+"spawns": 39,
+"page": "Giant mosquito"
+},
+"1042": {
+"name": "Jungle horror",
+"level": 70,
+"spawns": 11,
+"page": "Jungle horror"
+},
+"1043": {
+"name": "Jungle horror",
+"level": 70,
+"spawns": 11,
+"page": "Jungle horror"
+},
+"1044": {
+"name": "Jungle horror",
+"level": 70,
+"spawns": 17,
+"page": "Jungle horror"
+},
+"1045": {
+"name": "Jungle horror",
+"level": 70,
+"spawns": 3,
+"page": "Jungle horror"
+},
+"1046": {
+"name": "Jungle horror",
+"level": 70,
+"spawns": 8,
+"page": "Jungle horror"
+},
+"1047": {
+"name": "Cave horror",
+"level": 80,
+"spawns": 14,
+"page": "Cave horror"
+},
+"1048": {
+"name": "Cave horror",
+"level": 80,
+"spawns": 16,
+"page": "Cave horror"
+},
+"1049": {
+"name": "Cave horror",
+"level": 80,
+"spawns": 13,
+"page": "Cave horror"
+},
+"1050": {
+"name": "Cave horror",
+"level": 80,
+"spawns": 24,
+"page": "Cave horror"
+},
+"1051": {
+"name": "Cave horror",
+"level": 80,
+"spawns": 3,
+"page": "Cave horror"
+},
+"1097": {
+"name": "Sea Snake Young",
+"level": 90,
+"spawns": 10,
+"page": "Sea Snake Young"
+},
+"1098": {
+"name": "Sea Snake Hatchling",
+"level": 62,
+"spawns": 7,
+"page": "Sea Snake Hatchling"
+},
+"1118": {
+"name": "Man",
+"level": 4,
+"spawns": 3,
+"page": "Man (level 4)"
+},
+"1119": {
+"name": "Woman",
+"level": 3,
+"spawns": 4,
+"page": "Woman (West Ardougne)"
+},
+"1130": {
+"name": "Woman",
+"level": 4,
+"spawns": 4,
+"page": "Woman (West Ardougne)"
+},
+"1131": {
+"name": "Woman",
+"level": 3,
+"spawns": 7,
+"page": "Woman (West Ardougne)"
+},
+"1139": {
+"name": "Woman",
+"level": 4,
+"spawns": 3,
+"page": "Woman (West Ardougne)"
+},
+"1140": {
+"name": "Woman",
+"level": 12,
+"spawns": 4,
+"page": "Woman (West Ardougne)"
+},
+"1141": {
+"name": "Woman",
+"level": 3,
+"spawns": 3,
+"page": "Woman (West Ardougne)"
+},
+"1142": {
+"name": "Woman",
+"level": 14,
+"spawns": 4,
+"page": "Woman (West Ardougne)"
+},
+"1153": {
+"name": "Ogre",
+"level": 63,
+"spawns": 8,
+"page": "Ogre"
+},
+"1173": {
+"name": "Chicken",
+"level": 1,
+"spawns": 43,
+"page": "Chicken"
+},
+"1174": {
+"name": "Chicken",
+"level": 1,
+"spawns": 31,
+"page": "Chicken"
+},
+"1175": {
+"name": "Rooster",
+"level": 3,
+"spawns": 2,
+"page": "Rooster"
+},
+"1208": {
+"name": "Khazard Guard",
+"level": 23,
+"spawns": 8,
+"page": "Khazard Guard"
+},
+"1211": {
+"name": "Khazard Guard",
+"level": 23,
+"spawns": 22,
+"page": "Khazard Guard"
+},
+"1224": {
+"name": "Bouncer",
+"level": 137,
+"spawns": 1,
+"page": "Bouncer"
+},
+"1225": {
+"name": "Khazard Ogre",
+"level": 63,
+"spawns": 1,
+"page": "Khazard Ogre"
+},
+"1226": {
+"name": "Khazard Scorpion",
+"level": 44,
+"spawns": 1,
+"page": "Khazard Scorpion"
+},
+"1262": {
+"name": "Ram",
+"level": 2,
+"spawns": 8,
+"page": "Ram"
+},
+"1263": {
+"name": "Ram",
+"level": 2,
+"spawns": 2,
+"page": "Ram"
+},
+"1264": {
+"name": "Ram",
+"level": 2,
+"spawns": 2,
+"page": "Ram"
+},
+"1265": {
+"name": "Ram",
+"level": 2,
+"spawns": 1,
+"page": "Ram"
+},
+"1267": {
+"name": "Vulture",
+"level": 31,
+"spawns": 9,
+"page": "Vulture"
+},
+"1273": {
+"name": "Experiment",
+"level": 51,
+"spawns": 6,
+"page": "Experiment"
+},
+"1274": {
+"name": "Experiment",
+"level": 25,
+"spawns": 5,
+"page": "Experiment"
+},
+"1275": {
+"name": "Experiment",
+"level": 25,
+"spawns": 7,
+"page": "Experiment"
+},
+"1276": {
+"name": "Loar Shadow",
+"level": 40,
+"spawns": 25,
+"page": "Loar Shade"
+},
+"1279": {
+"name": "Phrin Shadow",
+"level": 60,
+"spawns": 12,
+"page": "Phrin Shade"
+},
+"1281": {
+"name": "Riyl Shadow",
+"level": 80,
+"spawns": 28,
+"page": "Riyl Shade"
+},
+"1283": {
+"name": "Asyn Shadow",
+"level": 100,
+"spawns": 15,
+"page": "Asyn Shade"
+},
+"1285": {
+"name": "Fiyr Shadow",
+"level": 120,
+"spawns": 10,
+"page": "Fiyr Shade"
+},
+"1293": {
+"name": "Afflicted",
+"level": 37,
+"spawns": 7,
+"page": "Afflicted"
+},
+"1294": {
+"name": "Afflicted",
+"level": 34,
+"spawns": 9,
+"page": "Afflicted"
+},
+"1297": {
+"name": "Afflicted",
+"level": 32,
+"spawns": 5,
+"page": "Afflicted"
+},
+"1298": {
+"name": "Afflicted",
+"level": 30,
+"spawns": 8,
+"page": "Afflicted"
+},
+"1338": {
+"name": "Seagull",
+"level": 2,
+"spawns": 20,
+"page": "Seagull"
+},
+"1339": {
+"name": "Seagull",
+"level": 3,
+"spawns": 11,
+"page": "Seagull"
+},
+"1354": {
+"name": "Dwarf gang member",
+"level": 44,
+"spawns": 1,
+"page": "Dwarf gang member"
+},
+"1355": {
+"name": "Dwarf gang member",
+"level": 48,
+"spawns": 1,
+"page": "Dwarf gang member"
+},
+"1356": {
+"name": "Dwarf gang member",
+"level": 49,
+"spawns": 1,
+"page": "Dwarf gang member"
+},
+"1365": {
+"name": "Fire elemental",
+"level": 35,
+"spawns": 34,
+"page": "Fire elemental"
+},
+"1366": {
+"name": "Earth elemental",
+"level": 35,
+"spawns": 10,
+"page": "Earth elemental"
+},
+"1369": {
+"name": "Air elemental",
+"level": 34,
+"spawns": 7,
+"page": "Air elemental"
+},
+"1370": {
+"name": "Water elemental",
+"level": 34,
+"spawns": 7,
+"page": "Water elemental"
+},
+"1379": {
+"name": "Camp dweller",
+"level": 31,
+"spawns": 1,
+"page": "Camp dweller"
+},
+"1380": {
+"name": "Camp dweller",
+"level": 31,
+"spawns": 1,
+"page": "Camp dweller"
+},
+"1381": {
+"name": "Camp dweller",
+"level": 31,
+"spawns": 1,
+"page": "Camp dweller"
+},
+"1382": {
+"name": "Camp dweller",
+"level": 31,
+"spawns": 1,
+"page": "Camp dweller"
+},
+"1383": {
+"name": "Camp dweller",
+"level": 25,
+"spawns": 1,
+"page": "Camp dweller"
+},
+"1401": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 3,
+"page": "Dwarf"
+},
+"1402": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 2,
+"page": "Dwarf"
+},
+"1403": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 6,
+"page": "Dwarf"
+},
+"1404": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 3,
+"page": "Dwarf"
+},
+"1405": {
+"name": "Dwarf",
+"level": 10,
+"spawns": 6,
+"page": "Dwarf"
+},
+"1406": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 5,
+"page": "Dwarf"
+},
+"1407": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 7,
+"page": "Dwarf"
+},
+"1408": {
+"name": "Dwarf",
+"level": 7,
+"spawns": 4,
+"page": "Dwarf"
+},
+"1409": {
+"name": "Black Guard",
+"level": 25,
+"spawns": 1,
+"page": "Black Guard"
+},
+"1410": {
+"name": "Black Guard",
+"level": 25,
+"spawns": 1,
+"page": "Black Guard"
+},
+"1411": {
+"name": "Black Guard",
+"level": 25,
+"spawns": 1,
+"page": "Black Guard"
+},
+"1412": {
+"name": "Black Guard",
+"level": 25,
+"spawns": 1,
+"page": "Black Guard"
+},
+"1429": {
+"name": "Foreman",
+"level": 23,
+"spawns": 1,
+"page": "Foreman"
+},
+"1447": {
+"name": "Pirate",
+"level": 23,
+"spawns": 1,
+"page": "Pirate"
+},
+"1448": {
+"name": "Thief",
+"level": 16,
+"spawns": 1,
+"page": "Thief"
+},
+"1461": {
+"name": "Mugger",
+"level": 6,
+"spawns": 1,
+"page": "Mugger"
+},
+"1538": {
+"name": "Skeleton brute",
+"level": 132,
+"spawns": 2,
+"page": "Skeleton brute"
+},
+"1539": {
+"name": "Skeleton warlord",
+"level": 132,
+"spawns": 4,
+"page": "Skeleton warlord"
+},
+"1541": {
+"name": "Skeleton thug",
+"level": 130,
+"spawns": 2,
+"page": "Skeleton thug"
+},
+"1543": {
+"name": "Gargoyle",
+"level": 111,
+"spawns": 12,
+"page": "Gargoyle"
+},
+"1545": {
+"name": "Black knight",
+"level": 33,
+"spawns": 1,
+"page": "Black knight (Port Sarim jail)"
+},
+"1546": {
+"name": "Guard",
+"level": 21,
+"spawns": 1,
+"page": "Guard (Port Sarim jail)"
+},
+"1547": {
+"name": "Guard",
+"level": 21,
+"spawns": 1,
+"page": "Guard (Port Sarim jail)"
+},
+"1548": {
+"name": "Guard",
+"level": 21,
+"spawns": 1,
+"page": "Guard (Port Sarim jail)"
+},
+"1549": {
+"name": "Guard",
+"level": 21,
+"spawns": 1,
+"page": "Guard (Port Sarim jail)"
+},
+"1550": {
+"name": "Guard",
+"level": 21,
+"spawns": 1,
+"page": "Guard (Port Sarim jail)"
+},
+"1556": {
+"name": "Fire wizard",
+"level": 13,
+"spawns": 1,
+"page": "Fire wizard"
+},
+"1557": {
+"name": "Water wizard",
+"level": 13,
+"spawns": 1,
+"page": "Water wizard"
+},
+"1558": {
+"name": "Earth wizard",
+"level": 13,
+"spawns": 1,
+"page": "Earth wizard"
+},
+"1559": {
+"name": "Air wizard",
+"level": 13,
+"spawns": 1,
+"page": "Air wizard"
+},
+"1610": {
+"name": "Battle mage",
+"level": 54,
+"spawns": 3,
+"page": "Battle mage"
+},
+"1611": {
+"name": "Battle mage",
+"level": 54,
+"spawns": 3,
+"page": "Battle mage"
+},
+"1612": {
+"name": "Battle mage",
+"level": 54,
+"spawns": 3,
+"page": "Battle mage"
+},
+"1678": {
+"name": "Bloodworm",
+"level": 52,
+"spawns": 7,
+"page": "Bloodworm"
+},
+"1679": {
+"name": "Crypt rat",
+"level": 43,
+"spawns": 6,
+"page": "Crypt rat"
+},
+"1680": {
+"name": "Giant crypt rat",
+"level": 76,
+"spawns": 2,
+"page": "Giant crypt rat"
+},
+"1681": {
+"name": "Giant crypt rat",
+"level": 76,
+"spawns": 1,
+"page": "Giant crypt rat"
+},
+"1682": {
+"name": "Giant crypt rat",
+"level": 76,
+"spawns": 1,
+"page": "Giant crypt rat"
+},
+"1683": {
+"name": "Crypt spider",
+"level": 56,
+"spawns": 5,
+"page": "Crypt spider"
+},
+"1684": {
+"name": "Giant crypt spider",
+"level": 79,
+"spawns": 6,
+"page": "Giant crypt spider"
+},
+"1685": {
+"name": "Skeleton",
+"level": 77,
+"spawns": 2,
+"page": "Skeleton (Barrows)"
+},
+"1686": {
+"name": "Skeleton",
+"level": 77,
+"spawns": 1,
+"page": "Skeleton (Barrows)"
+},
+"1687": {
+"name": "Skeleton",
+"level": 77,
+"spawns": 2,
+"page": "Skeleton (Barrows)"
+},
+"1688": {
+"name": "Skeleton",
+"level": 77,
+"spawns": 1,
+"page": "Skeleton (Barrows)"
+},
+"1792": {
+"name": "Goat",
+"level": 23,
+"spawns": 6,
+"page": "Goat"
+},
+"1793": {
+"name": "Goat",
+"level": 23,
+"spawns": 6,
+"page": "Goat"
+},
+"1794": {
+"name": "Billy Goat",
+"level": 33,
+"spawns": 5,
+"page": "Billy Goat"
+},
+"1795": {
+"name": "Goat",
+"level": 23,
+"spawns": 8,
+"page": "Goat"
+},
+"1796": {
+"name": "Goat",
+"level": 23,
+"spawns": 9,
+"page": "Goat"
+},
+"1797": {
+"name": "Billy Goat",
+"level": 33,
+"spawns": 6,
+"page": "Billy Goat"
+},
+"1798": {
+"name": "White Knight",
+"level": 36,
+"spawns": 16,
+"page": "White Knight"
+},
+"1799": {
+"name": "White Knight",
+"level": 38,
+"spawns": 9,
+"page": "White Knight"
+},
+"1800": {
+"name": "White Knight",
+"level": 39,
+"spawns": 6,
+"page": "White Knight"
+},
+"1829": {
+"name": "White Knight",
+"level": 42,
+"spawns": 3,
+"page": "White Knight"
+},
+"1834": {
+"name": "Gorak",
+"level": 145,
+"spawns": 11,
+"page": "Gorak"
+},
+"1838": {
+"name": "Duck",
+"level": 1,
+"spawns": 66,
+"page": "Duck"
+},
+"1839": {
+"name": "Duck",
+"level": 1,
+"spawns": 81,
+"page": "Duck"
+},
+"1845": {
+"name": "Stag",
+"level": 15,
+"spawns": 4,
+"page": "Stag"
+},
+"1852": {
+"name": "Rabbit",
+"level": 1,
+"spawns": 2,
+"page": "Rabbit"
+},
+"1853": {
+"name": "Rabbit",
+"level": 1,
+"spawns": 2,
+"page": "Rabbit"
+},
+"1871": {
+"name": "Baby black dragon",
+"level": 83,
+"spawns": 1,
+"page": "Baby black dragon"
+},
+"1872": {
+"name": "Baby black dragon",
+"level": 83,
+"spawns": 5,
+"page": "Baby black dragon"
+},
+"1874": {
+"name": "Ice troll runt",
+"level": 74,
+"spawns": 6,
+"page": "Ice troll runt"
+},
+"1875": {
+"name": "Ice troll male",
+"level": 82,
+"spawns": 2,
+"page": "Ice troll male"
+},
+"1876": {
+"name": "Ice troll female",
+"level": 82,
+"spawns": 1,
+"page": "Ice troll female"
+},
+"2001": {
+"name": "Duckling",
+"level": 1,
+"spawns": 1,
+"page": "Duckling"
+},
+"2005": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 11,
+"page": "Lesser demon"
+},
+"2006": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 8,
+"page": "Lesser demon"
+},
+"2007": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 11,
+"page": "Lesser demon"
+},
+"2008": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 8,
+"page": "Lesser demon"
+},
+"2018": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 10,
+"page": "Lesser demon"
+},
+"2025": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 8,
+"page": "Greater demon"
+},
+"2026": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 8,
+"page": "Greater demon"
+},
+"2027": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 10,
+"page": "Greater demon"
+},
+"2028": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 9,
+"page": "Greater demon"
+},
+"2029": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 6,
+"page": "Greater demon"
+},
+"2030": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 4,
+"page": "Greater demon"
+},
+"2031": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 6,
+"page": "Greater demon"
+},
+"2032": {
+"name": "Greater demon",
+"level": 92,
+"spawns": 7,
+"page": "Greater demon"
+},
+"2048": {
+"name": "Black demon",
+"level": 172,
+"spawns": 8,
+"page": "Black demon"
+},
+"2049": {
+"name": "Black demon",
+"level": 172,
+"spawns": 7,
+"page": "Black demon"
+},
+"2050": {
+"name": "Black demon",
+"level": 172,
+"spawns": 8,
+"page": "Black demon"
+},
+"2051": {
+"name": "Black demon",
+"level": 172,
+"spawns": 5,
+"page": "Black demon"
+},
+"2052": {
+"name": "Black demon",
+"level": 172,
+"spawns": 3,
+"page": "Black demon"
+},
+"2054": {
+"name": "Chaos Elemental",
+"level": 305,
+"spawns": 1,
+"page": "Chaos Elemental"
+},
+"2056": {
+"name": "Dark wizard",
+"level": 23,
+"spawns": 5,
+"page": "Dark wizard"
+},
+"2057": {
+"name": "Dark wizard",
+"level": 22,
+"spawns": 5,
+"page": "Dark wizard"
+},
+"2058": {
+"name": "Dark wizard",
+"level": 11,
+"spawns": 4,
+"page": "Dark wizard"
+},
+"2059": {
+"name": "Dark wizard",
+"level": 11,
+"spawns": 3,
+"page": "Dark wizard"
+},
+"2062": {
+"name": "Oomlie bird",
+"level": 46,
+"spawns": 32,
+"page": "Oomlie bird"
+},
+"2063": {
+"name": "Penguin",
+"level": 2,
+"spawns": 37,
+"page": "Penguin (monster)"
+},
+"2064": {
+"name": "Terrorbird",
+"level": 28,
+"spawns": 7,
+"page": "Terrorbird"
+},
+"2065": {
+"name": "Terrorbird",
+"level": 28,
+"spawns": 3,
+"page": "Terrorbird"
+},
+"2066": {
+"name": "Terrorbird",
+"level": 28,
+"spawns": 2,
+"page": "Terrorbird"
+},
+"2067": {
+"name": "Mounted terrorbird gnome",
+"level": 31,
+"spawns": 15,
+"page": "Mounted terrorbird gnome"
+},
+"2075": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 3,
+"page": "Fire giant"
+},
+"2076": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 2,
+"page": "Fire giant"
+},
+"2077": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 2,
+"page": "Fire giant"
+},
+"2078": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 19,
+"page": "Fire giant"
+},
+"2079": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 16,
+"page": "Fire giant"
+},
+"2080": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 14,
+"page": "Fire giant"
+},
+"2081": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 4,
+"page": "Fire giant"
+},
+"2082": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 4,
+"page": "Fire giant"
+},
+"2083": {
+"name": "Fire giant",
+"level": 86,
+"spawns": 4,
+"page": "Fire giant"
+},
+"2085": {
+"name": "Ice giant",
+"level": 53,
+"spawns": 13,
+"page": "Ice giant"
+},
+"2086": {
+"name": "Ice giant",
+"level": 53,
+"spawns": 5,
+"page": "Ice giant"
+},
+"2087": {
+"name": "Ice giant",
+"level": 53,
+"spawns": 7,
+"page": "Ice giant"
+},
+"2088": {
+"name": "Ice giant",
+"level": 53,
+"spawns": 1,
+"page": "Ice giant"
+},
+"2089": {
+"name": "Ice giant",
+"level": 53,
+"spawns": 2,
+"page": "Ice giant"
+},
+"2090": {
+"name": "Moss giant",
+"level": 42,
+"spawns": 17,
+"page": "Moss giant"
+},
+"2091": {
+"name": "Moss giant",
+"level": 42,
+"spawns": 18,
+"page": "Moss giant"
+},
+"2092": {
+"name": "Moss giant",
+"level": 42,
+"spawns": 15,
+"page": "Moss giant"
+},
+"2093": {
+"name": "Moss giant",
+"level": 42,
+"spawns": 15,
+"page": "Moss giant"
+},
+"2094": {
+"name": "Jogre",
+"level": 53,
+"spawns": 39,
+"page": "Jogre"
+},
+"2095": {
+"name": "Ogre",
+"level": 53,
+"spawns": 54,
+"page": "Ogre"
+},
+"2096": {
+"name": "Ogre",
+"level": 53,
+"spawns": 15,
+"page": "Ogre"
+},
+"2097": {
+"name": "Cyclops",
+"level": 56,
+"spawns": 1,
+"page": "Cyclops (Ardougne Zoo)"
+},
+"2098": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 10,
+"page": "Hill Giant"
+},
+"2099": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 9,
+"page": "Hill Giant"
+},
+"2100": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 11,
+"page": "Hill Giant"
+},
+"2101": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 10,
+"page": "Hill Giant"
+},
+"2102": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 9,
+"page": "Hill Giant"
+},
+"2103": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 8,
+"page": "Hill Giant"
+},
+"2137": {
+"name": "Cyclops",
+"level": 106,
+"spawns": 5,
+"page": "Cyclops"
+},
+"2138": {
+"name": "Cyclops",
+"level": 106,
+"spawns": 3,
+"page": "Cyclops"
+},
+"2139": {
+"name": "Cyclops",
+"level": 106,
+"spawns": 4,
+"page": "Cyclops"
+},
+"2140": {
+"name": "Cyclops",
+"level": 106,
+"spawns": 4,
+"page": "Cyclops"
+},
+"2141": {
+"name": "Cyclops",
+"level": 106,
+"spawns": 4,
+"page": "Cyclops"
+},
+"2142": {
+"name": "Cyclops",
+"level": 106,
+"spawns": 3,
+"page": "Cyclops"
+},
+"2145": {
+"name": "Undead Druid",
+"level": 105,
+"spawns": 18,
+"page": "Undead Druid"
+},
+"2154": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 2,
+"page": "TzHaar-Mej"
+},
+"2155": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 3,
+"page": "TzHaar-Mej"
+},
+"2156": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 7,
+"page": "TzHaar-Mej"
+},
+"2157": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 7,
+"page": "TzHaar-Mej"
+},
+"2158": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 3,
+"page": "TzHaar-Mej"
+},
+"2159": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 4,
+"page": "TzHaar-Mej"
+},
+"2160": {
+"name": "TzHaar-Mej",
+"level": 103,
+"spawns": 5,
+"page": "TzHaar-Mej"
+},
+"2161": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 1,
+"page": "TzHaar-Hur"
+},
+"2162": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 1,
+"page": "TzHaar-Hur"
+},
+"2163": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 3,
+"page": "TzHaar-Hur"
+},
+"2164": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 3,
+"page": "TzHaar-Hur"
+},
+"2165": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 2,
+"page": "TzHaar-Hur"
+},
+"2166": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 6,
+"page": "TzHaar-Hur"
+},
+"2167": {
+"name": "TzHaar-Xil",
+"level": 133,
+"spawns": 4,
+"page": "TzHaar-Xil"
+},
+"2168": {
+"name": "TzHaar-Xil",
+"level": 133,
+"spawns": 13,
+"page": "TzHaar-Xil"
+},
+"2169": {
+"name": "TzHaar-Xil",
+"level": 133,
+"spawns": 8,
+"page": "TzHaar-Xil"
+},
+"2170": {
+"name": "TzHaar-Xil",
+"level": 133,
+"spawns": 8,
+"page": "TzHaar-Xil"
+},
+"2171": {
+"name": "TzHaar-Xil",
+"level": 133,
+"spawns": 14,
+"page": "TzHaar-Xil"
+},
+"2172": {
+"name": "TzHaar-Xil",
+"level": 133,
+"spawns": 9,
+"page": "TzHaar-Xil"
+},
+"2173": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 2,
+"page": "TzHaar-Ket"
+},
+"2174": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 4,
+"page": "TzHaar-Ket"
+},
+"2175": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 6,
+"page": "TzHaar-Ket"
+},
+"2176": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 5,
+"page": "TzHaar-Ket"
+},
+"2177": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 8,
+"page": "TzHaar-Ket"
+},
+"2178": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 12,
+"page": "TzHaar-Ket"
+},
+"2179": {
+"name": "TzHaar-Ket",
+"level": 149,
+"spawns": 18,
+"page": "TzHaar-Ket"
+},
+"2205": {
+"name": "Commander Zilyana",
+"level": 596,
+"spawns": 1,
+"page": "Commander Zilyana"
+},
+"2206": {
+"name": "Starlight",
+"level": 149,
+"spawns": 1,
+"page": "Starlight"
+},
+"2207": {
+"name": "Growler",
+"level": 139,
+"spawns": 1,
+"page": "Growler"
+},
+"2208": {
+"name": "Bree",
+"level": 146,
+"spawns": 1,
+"page": "Bree"
+},
+"2209": {
+"name": "Saradomin priest",
+"level": 113,
+"spawns": 12,
+"page": "Saradomin priest"
+},
+"2210": {
+"name": "Spiritual warrior",
+"level": 125,
+"spawns": 23,
+"page": "Spiritual warrior"
+},
+"2211": {
+"name": "Spiritual ranger",
+"level": 122,
+"spawns": 15,
+"page": "Spiritual ranger"
+},
+"2212": {
+"name": "Spiritual mage",
+"level": 120,
+"spawns": 14,
+"page": "Spiritual mage"
+},
+"2213": {
+"name": "Knight of Saradomin",
+"level": 103,
+"spawns": 8,
+"page": "Knight of Saradomin"
+},
+"2214": {
+"name": "Knight of Saradomin",
+"level": 101,
+"spawns": 9,
+"page": "Knight of Saradomin"
+},
+"2215": {
+"name": "General Graardor",
+"level": 624,
+"spawns": 1,
+"page": "General Graardor"
+},
+"2216": {
+"name": "Sergeant Strongstack",
+"level": 141,
+"spawns": 1,
+"page": "Sergeant Strongstack"
+},
+"2217": {
+"name": "Sergeant Steelwill",
+"level": 142,
+"spawns": 1,
+"page": "Sergeant Steelwill"
+},
+"2218": {
+"name": "Sergeant Grimspike",
+"level": 142,
+"spawns": 1,
+"page": "Sergeant Grimspike"
+},
+"2233": {
+"name": "Ogre",
+"level": 58,
+"spawns": 4,
+"page": "Ogre"
+},
+"2234": {
+"name": "Jogre",
+"level": 58,
+"spawns": 12,
+"page": "Jogre"
+},
+"2235": {
+"name": "Cyclops",
+"level": 81,
+"spawns": 7,
+"page": "Cyclops (God Wars Dungeon)"
+},
+"2236": {
+"name": "Cyclops",
+"level": 81,
+"spawns": 6,
+"page": "Cyclops (God Wars Dungeon)"
+},
+"2237": {
+"name": "Ork",
+"level": 107,
+"spawns": 9,
+"page": "Ork"
+},
+"2238": {
+"name": "Ork",
+"level": 107,
+"spawns": 6,
+"page": "Ork"
+},
+"2239": {
+"name": "Ork",
+"level": 107,
+"spawns": 6,
+"page": "Ork"
+},
+"2240": {
+"name": "Ork",
+"level": 107,
+"spawns": 8,
+"page": "Ork"
+},
+"2241": {
+"name": "Hobgoblin",
+"level": 47,
+"spawns": 11,
+"page": "Hobgoblin"
+},
+"2242": {
+"name": "Spiritual ranger",
+"level": 115,
+"spawns": 15,
+"page": "Spiritual ranger"
+},
+"2243": {
+"name": "Spiritual warrior",
+"level": 134,
+"spawns": 12,
+"page": "Spiritual warrior"
+},
+"2244": {
+"name": "Spiritual mage",
+"level": 121,
+"spawns": 15,
+"page": "Spiritual mage"
+},
+"2245": {
+"name": "Goblin",
+"level": 17,
+"spawns": 3,
+"page": "Goblin (God Wars Dungeon)"
+},
+"2246": {
+"name": "Goblin",
+"level": 12,
+"spawns": 3,
+"page": "Goblin (God Wars Dungeon)"
+},
+"2247": {
+"name": "Goblin",
+"level": 12,
+"spawns": 3,
+"page": "Goblin (God Wars Dungeon)"
+},
+"2248": {
+"name": "Goblin",
+"level": 15,
+"spawns": 5,
+"page": "Goblin (God Wars Dungeon)"
+},
+"2249": {
+"name": "Goblin",
+"level": 13,
+"spawns": 4,
+"page": "Goblin (God Wars Dungeon)"
+},
+"2259": {
+"name": "Dagannoth",
+"level": 88,
+"spawns": 39,
+"page": "Dagannoth (Waterbirth Island)"
+},
+"2264": {
+"name": "Dagannoth fledgeling",
+"level": 70,
+"spawns": 5,
+"page": "Dagannoth fledgeling"
+},
+"2265": {
+"name": "Dagannoth Supreme",
+"level": 303,
+"spawns": 2,
+"page": "Dagannoth Supreme"
+},
+"2266": {
+"name": "Dagannoth Prime",
+"level": 303,
+"spawns": 2,
+"page": "Dagannoth Prime"
+},
+"2267": {
+"name": "Dagannoth Rex",
+"level": 303,
+"spawns": 2,
+"page": "Dagannoth Rex"
+},
+"2316": {
+"name": "Guard",
+"level": 26,
+"spawns": 2,
+"page": "Guard (Cave goblin)"
+},
+"2317": {
+"name": "Guard",
+"level": 24,
+"spawns": 2,
+"page": "Guard (Cave goblin)"
+},
+"2463": {
+"name": "Cyclops",
+"level": 56,
+"spawns": 2,
+"page": "Cyclops"
+},
+"2464": {
+"name": "Cyclops",
+"level": 76,
+"spawns": 2,
+"page": "Cyclops"
+},
+"2465": {
+"name": "Cyclops",
+"level": 56,
+"spawns": 2,
+"page": "Cyclops"
+},
+"2466": {
+"name": "Cyclops",
+"level": 76,
+"spawns": 2,
+"page": "Cyclops"
+},
+"2467": {
+"name": "Cyclops",
+"level": 56,
+"spawns": 2,
+"page": "Cyclops"
+},
+"2468": {
+"name": "Cyclops",
+"level": 76,
+"spawns": 2,
+"page": "Cyclops"
+},
+"2474": {
+"name": "Catablepon",
+"level": 49,
+"spawns": 8,
+"page": "Catablepon"
+},
+"2475": {
+"name": "Catablepon",
+"level": 64,
+"spawns": 4,
+"page": "Catablepon"
+},
+"2476": {
+"name": "Catablepon",
+"level": 68,
+"spawns": 14,
+"page": "Catablepon"
+},
+"2477": {
+"name": "Giant spider",
+"level": 50,
+"spawns": 45,
+"page": "Giant spider"
+},
+"2478": {
+"name": "Spider",
+"level": 24,
+"spawns": 35,
+"page": "Spider"
+},
+"2479": {
+"name": "Scorpion",
+"level": 59,
+"spawns": 4,
+"page": "Scorpion"
+},
+"2480": {
+"name": "Scorpion",
+"level": 37,
+"spawns": 4,
+"page": "Scorpion"
+},
+"2481": {
+"name": "Minotaur",
+"level": 12,
+"spawns": 16,
+"page": "Minotaur"
+},
+"2483": {
+"name": "Minotaur",
+"level": 27,
+"spawns": 23,
+"page": "Minotaur"
+},
+"2484": {
+"name": "Goblin",
+"level": 5,
+"spawns": 4,
+"page": "Goblin (Vault of War)"
+},
+"2485": {
+"name": "Goblin",
+"level": 13,
+"spawns": 6,
+"page": "Goblin (Vault of War)"
+},
+"2486": {
+"name": "Goblin",
+"level": 11,
+"spawns": 4,
+"page": "Goblin (Vault of War)"
+},
+"2487": {
+"name": "Goblin",
+"level": 16,
+"spawns": 6,
+"page": "Goblin (Vault of War)"
+},
+"2488": {
+"name": "Goblin",
+"level": 25,
+"spawns": 9,
+"page": "Goblin (Vault of War)"
+},
+"2489": {
+"name": "Goblin",
+"level": 16,
+"spawns": 5,
+"page": "Goblin (Vault of War)"
+},
+"2490": {
+"name": "Wolf",
+"level": 14,
+"spawns": 5,
+"page": "Wolf"
+},
+"2491": {
+"name": "Wolf",
+"level": 11,
+"spawns": 11,
+"page": "Wolf"
+},
+"2492": {
+"name": "Rat",
+"level": 1,
+"spawns": 56,
+"page": "Rat"
+},
+"2498": {
+"name": "Flesh Crawler",
+"level": 28,
+"spawns": 5,
+"page": "Flesh Crawler"
+},
+"2499": {
+"name": "Flesh Crawler",
+"level": 35,
+"spawns": 8,
+"page": "Flesh Crawler"
+},
+"2500": {
+"name": "Flesh Crawler",
+"level": 41,
+"spawns": 13,
+"page": "Flesh Crawler"
+},
+"2501": {
+"name": "Zombie",
+"level": 30,
+"spawns": 4,
+"page": "Zombie (Stronghold of Security)"
+},
+"2502": {
+"name": "Zombie",
+"level": 30,
+"spawns": 3,
+"page": "Zombie (Stronghold of Security)"
+},
+"2503": {
+"name": "Zombie",
+"level": 30,
+"spawns": 2,
+"page": "Zombie (Stronghold of Security)"
+},
+"2504": {
+"name": "Zombie",
+"level": 44,
+"spawns": 15,
+"page": "Zombie (Stronghold of Security)"
+},
+"2505": {
+"name": "Zombie",
+"level": 44,
+"spawns": 6,
+"page": "Zombie (Stronghold of Security)"
+},
+"2506": {
+"name": "Zombie",
+"level": 44,
+"spawns": 4,
+"page": "Zombie (Stronghold of Security)"
+},
+"2507": {
+"name": "Zombie",
+"level": 53,
+"spawns": 7,
+"page": "Zombie (Stronghold of Security)"
+},
+"2508": {
+"name": "Zombie",
+"level": 53,
+"spawns": 7,
+"page": "Zombie (Stronghold of Security)"
+},
+"2509": {
+"name": "Zombie",
+"level": 53,
+"spawns": 4,
+"page": "Zombie (Stronghold of Security)"
+},
+"2510": {
+"name": "Giant rat",
+"level": 26,
+"spawns": 4,
+"page": "Giant rat"
+},
+"2511": {
+"name": "Giant rat",
+"level": 26,
+"spawns": 4,
+"page": "Giant rat"
+},
+"2512": {
+"name": "Giant rat",
+"level": 26,
+"spawns": 2,
+"page": "Giant rat"
+},
+"2513": {
+"name": "Rat",
+"level": 1,
+"spawns": 60,
+"page": "Rat"
+},
+"2514": {
+"name": "Ankou",
+"level": 75,
+"spawns": 9,
+"page": "Ankou"
+},
+"2515": {
+"name": "Ankou",
+"level": 82,
+"spawns": 11,
+"page": "Ankou"
+},
+"2516": {
+"name": "Ankou",
+"level": 86,
+"spawns": 12,
+"page": "Ankou"
+},
+"2517": {
+"name": "Ankou",
+"level": 75,
+"spawns": 3,
+"page": "Ankou"
+},
+"2518": {
+"name": "Ankou",
+"level": 82,
+"spawns": 3,
+"page": "Ankou"
+},
+"2519": {
+"name": "Ankou",
+"level": 86,
+"spawns": 2,
+"page": "Ankou"
+},
+"2520": {
+"name": "Skeleton",
+"level": 68,
+"spawns": 7,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2521": {
+"name": "Skeleton",
+"level": 60,
+"spawns": 5,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2522": {
+"name": "Skeleton",
+"level": 60,
+"spawns": 3,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2523": {
+"name": "Skeleton",
+"level": 60,
+"spawns": 5,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2524": {
+"name": "Skeleton",
+"level": 85,
+"spawns": 2,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2525": {
+"name": "Skeleton",
+"level": 85,
+"spawns": 2,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2526": {
+"name": "Skeleton",
+"level": 85,
+"spawns": 2,
+"page": "Skeleton (Stronghold of Security)"
+},
+"2527": {
+"name": "Ghost",
+"level": 77,
+"spawns": 4,
+"page": "Ghost"
+},
+"2528": {
+"name": "Ghost",
+"level": 77,
+"spawns": 5,
+"page": "Ghost"
+},
+"2529": {
+"name": "Ghost",
+"level": 77,
+"spawns": 5,
+"page": "Ghost"
+},
+"2530": {
+"name": "Ghost",
+"level": 77,
+"spawns": 5,
+"page": "Ghost"
+},
+"2531": {
+"name": "Ghost",
+"level": 76,
+"spawns": 12,
+"page": "Ghost"
+},
+"2536": {
+"name": "H.A.M. Guard",
+"level": 12,
+"spawns": 7,
+"page": "H.A.M. Guard"
+},
+"2537": {
+"name": "H.A.M. Guard",
+"level": 18,
+"spawns": 9,
+"page": "H.A.M. Guard"
+},
+"2538": {
+"name": "H.A.M. Guard",
+"level": 22,
+"spawns": 6,
+"page": "H.A.M. Guard"
+},
+"2579": {
+"name": "Monk",
+"level": 5,
+"spawns": 6,
+"page": "Monk"
+},
+"2584": {
+"name": "Abyssal leech",
+"level": 41,
+"spawns": 44,
+"page": "Abyssal leech"
+},
+"2585": {
+"name": "Abyssal guardian",
+"level": 59,
+"spawns": 24,
+"page": "Abyssal guardian"
+},
+"2586": {
+"name": "Abyssal walker",
+"level": 81,
+"spawns": 41,
+"page": "Abyssal walker"
+},
+"2613": {
+"name": "Boris",
+"level": 24,
+"spawns": 1,
+"page": "Boris"
+},
+"2614": {
+"name": "Imre",
+"level": 24,
+"spawns": 1,
+"page": "Imre"
+},
+"2615": {
+"name": "Yuri",
+"level": 24,
+"spawns": 1,
+"page": "Yuri"
+},
+"2616": {
+"name": "Joseph",
+"level": 24,
+"spawns": 1,
+"page": "Joseph"
+},
+"2617": {
+"name": "Nikolai",
+"level": 24,
+"spawns": 1,
+"page": "Nikolai"
+},
+"2618": {
+"name": "Eduard",
+"level": 24,
+"spawns": 1,
+"page": "Eduard"
+},
+"2619": {
+"name": "Lev",
+"level": 24,
+"spawns": 1,
+"page": "Lev"
+},
+"2620": {
+"name": "Georgy",
+"level": 24,
+"spawns": 1,
+"page": "Georgy"
+},
+"2621": {
+"name": "Svetlana",
+"level": 24,
+"spawns": 1,
+"page": "Svetlana"
+},
+"2622": {
+"name": "Irina",
+"level": 24,
+"spawns": 1,
+"page": "Irina"
+},
+"2623": {
+"name": "Alexis",
+"level": 24,
+"spawns": 1,
+"page": "Alexis"
+},
+"2624": {
+"name": "Milla",
+"level": 24,
+"spawns": 1,
+"page": "Milla"
+},
+"2625": {
+"name": "Galina",
+"level": 24,
+"spawns": 1,
+"page": "Galina"
+},
+"2626": {
+"name": "Sofiya",
+"level": 24,
+"spawns": 1,
+"page": "Sofiya"
+},
+"2627": {
+"name": "Ksenia",
+"level": 24,
+"spawns": 1,
+"page": "Ksenia"
+},
+"2628": {
+"name": "Yadviga",
+"level": 24,
+"spawns": 1,
+"page": "Yadviga"
+},
+"2629": {
+"name": "Nikita",
+"level": 24,
+"spawns": 1,
+"page": "Nikita"
+},
+"2630": {
+"name": "Vera",
+"level": 24,
+"spawns": 1,
+"page": "Vera"
+},
+"2631": {
+"name": "Zoja",
+"level": 24,
+"spawns": 1,
+"page": "Zoja"
+},
+"2632": {
+"name": "Liliya",
+"level": 24,
+"spawns": 1,
+"page": "Liliya"
+},
+"2634": {
+"name": "Myre Blamish Snail",
+"level": 9,
+"spawns": 53,
+"page": "Myre Blamish Snail"
+},
+"2646": {
+"name": "Ochre Blamish Snail",
+"level": 10,
+"spawns": 27,
+"page": "Ochre Blamish Snail"
+},
+"2647": {
+"name": "Bruise Blamish Snail",
+"level": 20,
+"spawns": 6,
+"page": "Bruise Blamish Snail"
+},
+"2648": {
+"name": "Bark Blamish Snail",
+"level": 15,
+"spawns": 11,
+"page": "Bark Blamish Snail"
+},
+"2649": {
+"name": "Myre Blamish Snail",
+"level": 10,
+"spawns": 25,
+"page": "Myre Blamish Snail"
+},
+"2651": {
+"name": "Ochre Blamish Snail",
+"level": 15,
+"spawns": 15,
+"page": "Ochre Blamish Snail"
+},
+"2652": {
+"name": "Bruise Blamish Snail",
+"level": 20,
+"spawns": 4,
+"page": "Bruise Blamish Snail"
+},
+"2790": {
+"name": "Cow",
+"level": 2,
+"spawns": 36,
+"page": "Cow"
+},
+"2791": {
+"name": "Cow",
+"level": 2,
+"spawns": 22,
+"page": "Cow"
+},
+"2792": {
+"name": "Cow calf",
+"level": 2,
+"spawns": 9,
+"page": "Cow calf"
+},
+"2793": {
+"name": "Cow",
+"level": 2,
+"spawns": 17,
+"page": "Cow"
+},
+"2794": {
+"name": "Cow calf",
+"level": 2,
+"spawns": 5,
+"page": "Cow calf"
+},
+"2795": {
+"name": "Cow",
+"level": 2,
+"spawns": 6,
+"page": "Cow"
+},
+"2801": {
+"name": "Cow calf",
+"level": 2,
+"spawns": 5,
+"page": "Cow calf"
+},
+"2804": {
+"name": "Chicken",
+"level": 1,
+"spawns": 5,
+"page": "Chicken"
+},
+"2805": {
+"name": "Chicken",
+"level": 1,
+"spawns": 5,
+"page": "Chicken"
+},
+"2806": {
+"name": "Chicken",
+"level": 1,
+"spawns": 2,
+"page": "Chicken"
+},
+"2827": {
+"name": "Bat",
+"level": 6,
+"spawns": 105,
+"page": "Bat"
+},
+"2834": {
+"name": "Giant bat",
+"level": 27,
+"spawns": 118,
+"page": "Giant bat"
+},
+"2837": {
+"name": "Unicorn",
+"level": 15,
+"spawns": 27,
+"page": "Unicorn"
+},
+"2838": {
+"name": "Grizzly bear",
+"level": 21,
+"spawns": 37,
+"page": "Grizzly bear"
+},
+"2839": {
+"name": "Black bear",
+"level": 19,
+"spawns": 12,
+"page": "Black bear"
+},
+"2840": {
+"name": "Earth warrior",
+"level": 51,
+"spawns": 11,
+"page": "Earth warrior"
+},
+"2841": {
+"name": "Ice warrior",
+"level": 57,
+"spawns": 45,
+"page": "Ice warrior"
+},
+"2842": {
+"name": "Ice warrior",
+"level": 57,
+"spawns": 2,
+"page": "Ice warrior"
+},
+"2843": {
+"name": "Otherworldly being",
+"level": 64,
+"spawns": 6,
+"page": "Otherworldly being"
+},
+"2844": {
+"name": "Magic axe",
+"level": 42,
+"spawns": 16,
+"page": "Magic axe"
+},
+"2845": {
+"name": "Snake",
+"level": 5,
+"spawns": 57,
+"page": "Snake"
+},
+"2848": {
+"name": "Monkey",
+"level": 3,
+"spawns": 67,
+"page": "Monkey (monster)"
+},
+"2849": {
+"name": "Black unicorn",
+"level": 27,
+"spawns": 14,
+"page": "Black unicorn"
+},
+"2851": {
+"name": "Ice warrior",
+"level": 57,
+"spawns": 6,
+"page": "Ice warrior"
+},
+"2853": {
+"name": "Shadow warrior",
+"level": 48,
+"spawns": 19,
+"page": "Shadow warrior"
+},
+"2854": {
+"name": "Rat",
+"level": 1,
+"spawns": 575,
+"page": "Rat"
+},
+"2855": {
+"name": "Rat",
+"level": 1,
+"spawns": 24,
+"page": "Rat"
+},
+"2856": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 33,
+"page": "Giant rat"
+},
+"2857": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 5,
+"page": "Giant rat"
+},
+"2858": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 4,
+"page": "Giant rat"
+},
+"2859": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 1,
+"page": "Giant rat"
+},
+"2860": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 1,
+"page": "Giant rat"
+},
+"2862": {
+"name": "Giant rat",
+"level": 6,
+"spawns": 11,
+"page": "Giant rat"
+},
+"2863": {
+"name": "Giant rat",
+"level": 6,
+"spawns": 13,
+"page": "Giant rat"
+},
+"2864": {
+"name": "Giant rat",
+"level": 6,
+"spawns": 13,
+"page": "Giant rat"
+},
+"2865": {
+"name": "Dungeon rat",
+"level": 12,
+"spawns": 2,
+"page": "Dungeon rat"
+},
+"2866": {
+"name": "Dungeon rat",
+"level": 12,
+"spawns": 3,
+"page": "Dungeon rat"
+},
+"2867": {
+"name": "Dungeon rat",
+"level": 12,
+"spawns": 2,
+"page": "Dungeon rat"
+},
+"2910": {
+"name": "Chinchompa",
+"level": 1,
+"spawns": 36,
+"page": "Chinchompa"
+},
+"2911": {
+"name": "Carnivorous chinchompa",
+"level": 2,
+"spawns": 47,
+"page": "Carnivorous chinchompa"
+},
+"2912": {
+"name": "Black chinchompa",
+"level": 2,
+"spawns": 12,
+"page": "Black chinchompa"
+},
+"2916": {
+"name": "Waterfiend",
+"level": 115,
+"spawns": 52,
+"page": "Waterfiend"
+},
+"2917": {
+"name": "Waterfiend",
+"level": 115,
+"spawns": 15,
+"page": "Waterfiend"
+},
+"2918": {
+"name": "Brutal green dragon",
+"level": 227,
+"spawns": 14,
+"page": "Brutal green dragon"
+},
+"2919": {
+"name": "Mithril dragon",
+"level": 304,
+"spawns": 14,
+"page": "Mithril dragon"
+},
+"2920": {
+"name": "Confused barbarian",
+"level": 132,
+"spawns": 2,
+"page": "Confused barbarian"
+},
+"2921": {
+"name": "Lost barbarian",
+"level": 132,
+"spawns": 2,
+"page": "Lost barbarian"
+},
+"2978": {
+"name": "Big Snake",
+"level": 84,
+"spawns": 3,
+"page": "Big Snake"
+},
+"2992": {
+"name": "Undead cow",
+"level": 2,
+"spawns": 4,
+"page": "Undead cow"
+},
+"2993": {
+"name": "Undead chicken",
+"level": 1,
+"spawns": 6,
+"page": "Undead chicken"
+},
+"2999": {
+"name": "Tortured soul",
+"level": 59,
+"spawns": 8,
+"page": "Tortured soul"
+},
+"3010": {
+"name": "Guard",
+"level": 21,
+"spawns": 45,
+"page": "Guard"
+},
+"3011": {
+"name": "Guard",
+"level": 21,
+"spawns": 5,
+"page": "Guard"
+},
+"3014": {
+"name": "Man",
+"level": 2,
+"spawns": 2,
+"page": "Man"
+},
+"3015": {
+"name": "Woman",
+"level": 2,
+"spawns": 2,
+"page": "Woman"
+},
+"3016": {
+"name": "Shadow spider",
+"level": 52,
+"spawns": 17,
+"page": "Shadow spider"
+},
+"3017": {
+"name": "Giant spider",
+"level": 2,
+"spawns": 46,
+"page": "Giant spider"
+},
+"3018": {
+"name": "Giant spider",
+"level": 27,
+"spawns": 20,
+"page": "Giant spider"
+},
+"3019": {
+"name": "Spider",
+"level": 1,
+"spawns": 154,
+"page": "Spider"
+},
+"3020": {
+"name": "Jungle spider",
+"level": 44,
+"spawns": 78,
+"page": "Jungle spider"
+},
+"3021": {
+"name": "Deadly red spider",
+"level": 34,
+"spawns": 70,
+"page": "Deadly red spider"
+},
+"3022": {
+"name": "Ice spider",
+"level": 61,
+"spawns": 32,
+"page": "Ice spider"
+},
+"3023": {
+"name": "Poison spider",
+"level": 64,
+"spawns": 103,
+"page": "Poison spider"
+},
+"3024": {
+"name": "Scorpion",
+"level": 14,
+"spawns": 68,
+"page": "Scorpion"
+},
+"3025": {
+"name": "Poison Scorpion",
+"level": 20,
+"spawns": 12,
+"page": "Poison Scorpion"
+},
+"3026": {
+"name": "Pit Scorpion",
+"level": 28,
+"spawns": 24,
+"page": "Pit Scorpion"
+},
+"3027": {
+"name": "King Scorpion",
+"level": 32,
+"spawns": 17,
+"page": "King Scorpion"
+},
+"3028": {
+"name": "Goblin",
+"level": 2,
+"spawns": 29,
+"page": "Goblin"
+},
+"3029": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"3030": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"3031": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"3032": {
+"name": "Goblin",
+"level": 2,
+"spawns": 3,
+"page": "Goblin"
+},
+"3033": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"3034": {
+"name": "Goblin",
+"level": 2,
+"spawns": 3,
+"page": "Goblin"
+},
+"3035": {
+"name": "Goblin",
+"level": 2,
+"spawns": 5,
+"page": "Goblin"
+},
+"3036": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"3045": {
+"name": "Goblin",
+"level": 5,
+"spawns": 38,
+"page": "Goblin"
+},
+"3046": {
+"name": "Goblin",
+"level": 13,
+"spawns": 4,
+"page": "Goblin"
+},
+"3049": {
+"name": "Hobgoblin",
+"level": 28,
+"spawns": 65,
+"page": "Hobgoblin"
+},
+"3050": {
+"name": "Hobgoblin",
+"level": 42,
+"spawns": 16,
+"page": "Hobgoblin"
+},
+"3051": {
+"name": "Goblin",
+"level": 2,
+"spawns": 1,
+"page": "Goblin"
+},
+"3052": {
+"name": "Goblin",
+"level": 2,
+"spawns": 1,
+"page": "Goblin"
+},
+"3053": {
+"name": "Goblin",
+"level": 2,
+"spawns": 1,
+"page": "Goblin"
+},
+"3054": {
+"name": "Goblin",
+"level": 2,
+"spawns": 1,
+"page": "Goblin"
+},
+"3055": {
+"name": "Barbarian",
+"level": 17,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3056": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3057": {
+"name": "Barbarian",
+"level": 17,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3058": {
+"name": "Barbarian",
+"level": 17,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3059": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3060": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3061": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3062": {
+"name": "Barbarian",
+"level": 17,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3064": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3065": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3066": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3067": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3068": {
+"name": "Barbarian",
+"level": 15,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3069": {
+"name": "Barbarian",
+"level": 17,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3070": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3071": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 2,
+"page": "Barbarian"
+},
+"3072": {
+"name": "Barbarian",
+"level": 9,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3073": {
+"name": "Goblin",
+"level": 5,
+"spawns": 4,
+"page": "Goblin"
+},
+"3074": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin"
+},
+"3075": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin"
+},
+"3076": {
+"name": "Goblin",
+"level": 5,
+"spawns": 1,
+"page": "Goblin"
+},
+"3106": {
+"name": "Man",
+"level": 2,
+"spawns": 17,
+"page": "Man"
+},
+"3107": {
+"name": "Man",
+"level": 2,
+"spawns": 5,
+"page": "Man"
+},
+"3108": {
+"name": "Man",
+"level": 2,
+"spawns": 12,
+"page": "Man"
+},
+"3109": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"3110": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"3111": {
+"name": "Woman",
+"level": 2,
+"spawns": 5,
+"page": "Woman"
+},
+"3112": {
+"name": "Woman",
+"level": 2,
+"spawns": 4,
+"page": "Woman"
+},
+"3114": {
+"name": "Farmer",
+"level": 7,
+"spawns": 4,
+"page": "Farmer"
+},
+"3127": {
+"name": "TzTok-Jad",
+"level": 702,
+"spawns": 1,
+"page": "TzTok-Jad"
+},
+"3129": {
+"name": "K'ril Tsutsaroth",
+"level": 650,
+"spawns": 1,
+"page": "K'ril Tsutsaroth"
+},
+"3130": {
+"name": "Tstanon Karlak",
+"level": 145,
+"spawns": 1,
+"page": "Tstanon Karlak"
+},
+"3131": {
+"name": "Zakl'n Gritch",
+"level": 142,
+"spawns": 1,
+"page": "Zakl'n Gritch"
+},
+"3132": {
+"name": "Balfrug Kreeyath",
+"level": 151,
+"spawns": 1,
+"page": "Balfrug Kreeyath"
+},
+"3133": {
+"name": "Hellhound",
+"level": 127,
+"spawns": 5,
+"page": "Hellhound"
+},
+"3134": {
+"name": "Imp",
+"level": 7,
+"spawns": 10,
+"page": "Imp"
+},
+"3135": {
+"name": "Werewolf",
+"level": 93,
+"spawns": 10,
+"page": "Werewolf"
+},
+"3136": {
+"name": "Werewolf",
+"level": 93,
+"spawns": 25,
+"page": "Werewolf"
+},
+"3137": {
+"name": "Feral Vampyre",
+"level": 77,
+"spawns": 15,
+"page": "Feral Vampyre"
+},
+"3138": {
+"name": "Bloodveld",
+"level": 81,
+"spawns": 19,
+"page": "Bloodveld"
+},
+"3139": {
+"name": "Pyrefiend",
+"level": 48,
+"spawns": 6,
+"page": "Pyrefiend"
+},
+"3140": {
+"name": "Icefiend",
+"level": 18,
+"spawns": 7,
+"page": "Icefiend"
+},
+"3141": {
+"name": "Gorak",
+"level": 149,
+"spawns": 14,
+"page": "Gorak"
+},
+"3159": {
+"name": "Spiritual warrior",
+"level": 115,
+"spawns": 16,
+"page": "Spiritual warrior"
+},
+"3160": {
+"name": "Spiritual ranger",
+"level": 118,
+"spawns": 9,
+"page": "Spiritual ranger"
+},
+"3161": {
+"name": "Spiritual mage",
+"level": 121,
+"spawns": 17,
+"page": "Spiritual mage"
+},
+"3162": {
+"name": "Kree'arra",
+"level": 580,
+"spawns": 1,
+"page": "Kree'arra"
+},
+"3163": {
+"name": "Wingman Skree",
+"level": 143,
+"spawns": 1,
+"page": "Wingman Skree"
+},
+"3164": {
+"name": "Flockleader Geerin",
+"level": 149,
+"spawns": 1,
+"page": "Flockleader Geerin"
+},
+"3165": {
+"name": "Flight Kilisa",
+"level": 159,
+"spawns": 1,
+"page": "Flight Kilisa"
+},
+"3166": {
+"name": "Spiritual warrior",
+"level": 123,
+"spawns": 5,
+"page": "Spiritual warrior"
+},
+"3167": {
+"name": "Spiritual ranger",
+"level": 127,
+"spawns": 4,
+"page": "Spiritual ranger"
+},
+"3168": {
+"name": "Spiritual mage",
+"level": 122,
+"spawns": 6,
+"page": "Spiritual mage"
+},
+"3169": {
+"name": "Aviansie",
+"level": 69,
+"spawns": 3,
+"page": "Aviansie"
+},
+"3170": {
+"name": "Aviansie",
+"level": 79,
+"spawns": 2,
+"page": "Aviansie"
+},
+"3171": {
+"name": "Aviansie",
+"level": 84,
+"spawns": 3,
+"page": "Aviansie"
+},
+"3172": {
+"name": "Aviansie",
+"level": 83,
+"spawns": 4,
+"page": "Aviansie"
+},
+"3173": {
+"name": "Aviansie",
+"level": 92,
+"spawns": 2,
+"page": "Aviansie"
+},
+"3174": {
+"name": "Aviansie",
+"level": 97,
+"spawns": 2,
+"page": "Aviansie"
+},
+"3175": {
+"name": "Aviansie",
+"level": 137,
+"spawns": 3,
+"page": "Aviansie"
+},
+"3176": {
+"name": "Aviansie",
+"level": 148,
+"spawns": 3,
+"page": "Aviansie"
+},
+"3177": {
+"name": "Aviansie",
+"level": 71,
+"spawns": 4,
+"page": "Aviansie"
+},
+"3178": {
+"name": "Aviansie",
+"level": 73,
+"spawns": 2,
+"page": "Aviansie"
+},
+"3179": {
+"name": "Aviansie",
+"level": 79,
+"spawns": 2,
+"page": "Aviansie"
+},
+"3180": {
+"name": "Aviansie",
+"level": 89,
+"spawns": 4,
+"page": "Aviansie"
+},
+"3181": {
+"name": "Aviansie",
+"level": 94,
+"spawns": 3,
+"page": "Aviansie"
+},
+"3182": {
+"name": "Aviansie",
+"level": 97,
+"spawns": 3,
+"page": "Aviansie"
+},
+"3183": {
+"name": "Aviansie",
+"level": 131,
+"spawns": 4,
+"page": "Aviansie"
+},
+"3185": {
+"name": "Dagannoth",
+"level": 90,
+"spawns": 54,
+"page": "Dagannoth (Waterbirth Island)"
+},
+"3233": {
+"name": "Leech",
+"level": 52,
+"spawns": 31,
+"page": "Leech"
+},
+"3237": {
+"name": "Feral Vampyre",
+"level": 61,
+"spawns": 25,
+"page": "Feral Vampyre"
+},
+"3243": {
+"name": "Farmer",
+"level": 7,
+"spawns": 1,
+"page": "Farmer"
+},
+"3252": {
+"name": "Thief",
+"level": 16,
+"spawns": 6,
+"page": "Thief"
+},
+"3253": {
+"name": "Thief",
+"level": 16,
+"spawns": 1,
+"page": "Thief"
+},
+"3254": {
+"name": "Guard",
+"level": 21,
+"spawns": 9,
+"page": "Guard"
+},
+"3257": {
+"name": "Wizard",
+"level": 9,
+"spawns": 17,
+"page": "Wizard"
+},
+"3258": {
+"name": "Druid",
+"level": 33,
+"spawns": 24,
+"page": "Druid"
+},
+"3260": {
+"name": "Warrior",
+"level": 24,
+"spawns": 12,
+"page": "Warrior (Thieving)"
+},
+"3261": {
+"name": "Man",
+"level": 2,
+"spawns": 2,
+"page": "Man"
+},
+"3262": {
+"name": "Barbarian",
+"level": 8,
+"spawns": 1,
+"page": "Barbarian"
+},
+"3263": {
+"name": "Drunken man",
+"level": 3,
+"spawns": 1,
+"page": "Drunken man"
+},
+"3264": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"3265": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"3269": {
+"name": "Guard",
+"level": 21,
+"spawns": 7,
+"page": "Guard"
+},
+"3270": {
+"name": "Guard",
+"level": 22,
+"spawns": 2,
+"page": "Guard"
+},
+"3271": {
+"name": "Guard",
+"level": 19,
+"spawns": 4,
+"page": "Guard"
+},
+"3272": {
+"name": "Guard",
+"level": 22,
+"spawns": 2,
+"page": "Guard"
+},
+"3273": {
+"name": "Guard",
+"level": 22,
+"spawns": 4,
+"page": "Guard"
+},
+"3274": {
+"name": "Guard",
+"level": 22,
+"spawns": 5,
+"page": "Guard"
+},
+"3275": {
+"name": "Gardener",
+"level": 4,
+"spawns": 2,
+"page": "Gardener"
+},
+"3276": {
+"name": "Gardener",
+"level": 3,
+"spawns": 1,
+"page": "Gardener"
+},
+"3279": {
+"name": "Cuffs",
+"level": 3,
+"spawns": 1,
+"page": "Cuffs"
+},
+"3280": {
+"name": "Narf",
+"level": 2,
+"spawns": 1,
+"page": "Narf"
+},
+"3281": {
+"name": "Rusty",
+"level": 2,
+"spawns": 1,
+"page": "Rusty"
+},
+"3282": {
+"name": "Jeff",
+"level": 2,
+"spawns": 1,
+"page": "Jeff"
+},
+"3283": {
+"name": "Guard",
+"level": 19,
+"spawns": 1,
+"page": "Guard (Doric's hut)"
+},
+"3284": {
+"name": "Hengel",
+"level": 2,
+"spawns": 1,
+"page": "Hengel"
+},
+"3285": {
+"name": "Anja",
+"level": 2,
+"spawns": 1,
+"page": "Anja"
+},
+"3286": {
+"name": "Hobgoblin",
+"level": 28,
+"spawns": 14,
+"page": "Hobgoblin"
+},
+"3287": {
+"name": "Hobgoblin",
+"level": 28,
+"spawns": 4,
+"page": "Hobgoblin"
+},
+"3288": {
+"name": "Hobgoblin",
+"level": 28,
+"spawns": 3,
+"page": "Hobgoblin"
+},
+"3289": {
+"name": "Hobgoblin",
+"level": 28,
+"spawns": 15,
+"page": "Hobgoblin"
+},
+"3292": {
+"name": "Al Kharid warrior",
+"level": 9,
+"spawns": 9,
+"page": "Al Kharid warrior"
+},
+"3293": {
+"name": "Paladin",
+"level": 62,
+"spawns": 20,
+"page": "Paladin"
+},
+"3294": {
+"name": "Paladin",
+"level": 62,
+"spawns": 2,
+"page": "Paladin"
+},
+"3295": {
+"name": "Hero",
+"level": 69,
+"spawns": 3,
+"page": "Hero"
+},
+"3297": {
+"name": "Knight of Ardougne",
+"level": 46,
+"spawns": 5,
+"page": "Knight of Ardougne"
+},
+"3298": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man (East Ardougne)"
+},
+"3299": {
+"name": "Woman",
+"level": 2,
+"spawns": 2,
+"page": "Woman (East Ardougne)"
+},
+"3301": {
+"name": "Archer",
+"level": 37,
+"spawns": 6,
+"page": "Archer (Ardougne)"
+},
+"3313": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 13,
+"page": "Giant rat (Tutorial Island)"
+},
+"3316": {
+"name": "Chicken",
+"level": 3,
+"spawns": 5,
+"page": "Chicken (Tutorial Island)"
+},
+"3420": {
+"name": "Rabbit",
+"level": 2,
+"spawns": 75,
+"page": "Rabbit"
+},
+"3421": {
+"name": "Rabbit",
+"level": 2,
+"spawns": 32,
+"page": "Rabbit"
+},
+"3422": {
+"name": "Rabbit",
+"level": 2,
+"spawns": 36,
+"page": "Rabbit"
+},
+"3423": {
+"name": "Grizzly bear",
+"level": 42,
+"spawns": 6,
+"page": "Grizzly bear"
+},
+"3424": {
+"name": "Grizzly bear cub",
+"level": 33,
+"spawns": 8,
+"page": "Grizzly bear cub"
+},
+"3425": {
+"name": "Grizzly bear cub",
+"level": 36,
+"spawns": 4,
+"page": "Grizzly bear cub"
+},
+"3426": {
+"name": "Dire Wolf",
+"level": 88,
+"spawns": 22,
+"page": "Dire Wolf"
+},
+"3428": {
+"name": "Iorwerth Archer",
+"level": 90,
+"spawns": 12,
+"page": "Iorwerth Archer"
+},
+"3429": {
+"name": "Iorwerth Warrior",
+"level": 108,
+"spawns": 12,
+"page": "Iorwerth Warrior"
+},
+"3433": {
+"name": "Tyras guard",
+"level": 110,
+"spawns": 1,
+"page": "Tyras guard"
+},
+"3434": {
+"name": "Tyras guard",
+"level": 110,
+"spawns": 4,
+"page": "Tyras guard"
+},
+"3445": {
+"name": "Guardian of Armadyl",
+"level": 45,
+"spawns": 3,
+"page": "Guardian of Armadyl"
+},
+"3446": {
+"name": "Guardian of Armadyl",
+"level": 43,
+"spawns": 2,
+"page": "Guardian of Armadyl"
+},
+"3449": {
+"name": "Shadow Hound",
+"level": 63,
+"spawns": 10,
+"page": "Shadow Hound"
+},
+"3473": {
+"name": "The Inadequacy",
+"level": 343,
+"spawns": 1,
+"page": "The Inadequacy"
+},
+"3484": {
+"name": "Monk of Zamorak",
+"level": 22,
+"spawns": 4,
+"page": "Monk of Zamorak (Paterdomus)"
+},
+"3485": {
+"name": "Monk of Zamorak",
+"level": 17,
+"spawns": 3,
+"page": "Monk of Zamorak (Paterdomus)"
+},
+"3486": {
+"name": "Monk of Zamorak",
+"level": 30,
+"spawns": 3,
+"page": "Monk of Zamorak (Paterdomus)"
+},
+"3517": {
+"name": "Renegade Knight",
+"level": 37,
+"spawns": 8,
+"page": "Renegade knight"
+},
+"3527": {
+"name": "Sir Mordred",
+"level": 39,
+"spawns": 2,
+"page": "Sir Mordred"
+},
+"3544": {
+"name": "Snake",
+"level": 5,
+"spawns": 33,
+"page": "Snake (desert)"
+},
+"3565": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 1,
+"page": "Skeleton"
+},
+"3607": {
+"name": "Dungeon rat",
+"level": 12,
+"spawns": 5,
+"page": "Dungeon rat"
+},
+"3608": {
+"name": "Dungeon rat",
+"level": 12,
+"spawns": 3,
+"page": "Dungeon rat"
+},
+"3609": {
+"name": "Dungeon rat",
+"level": 12,
+"spawns": 3,
+"page": "Dungeon rat"
+},
+"3652": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"3661": {
+"name": "Chicken",
+"level": 1,
+"spawns": 10,
+"page": "Chicken"
+},
+"3662": {
+"name": "Chicken",
+"level": 1,
+"spawns": 5,
+"page": "Chicken"
+},
+"3663": {
+"name": "Rooster",
+"level": 2,
+"spawns": 2,
+"page": "Rooster"
+},
+"3664": {
+"name": "Rabbit",
+"level": 2,
+"spawns": 25,
+"page": "Rabbit"
+},
+"3665": {
+"name": "Rabbit",
+"level": 2,
+"spawns": 12,
+"page": "Rabbit"
+},
+"3674": {
+"name": "Ragnar",
+"level": 1,
+"spawns": 1,
+"page": "Ragnar"
+},
+"3675": {
+"name": "Einar",
+"level": 1,
+"spawns": 1,
+"page": "Einar"
+},
+"3676": {
+"name": "Alrik",
+"level": 1,
+"spawns": 1,
+"page": "Alrik"
+},
+"3677": {
+"name": "Thorhild",
+"level": 1,
+"spawns": 1,
+"page": "Thorhild"
+},
+"3678": {
+"name": "Halla",
+"level": 1,
+"spawns": 1,
+"page": "Halla (Miscellania)"
+},
+"3681": {
+"name": "Rannveig",
+"level": 2,
+"spawns": 1,
+"page": "Rannveig"
+},
+"3682": {
+"name": "Thora",
+"level": 2,
+"spawns": 1,
+"page": "Thora (Miscellania)"
+},
+"3683": {
+"name": "Valgerd",
+"level": 2,
+"spawns": 1,
+"page": "Valgerd"
+},
+"3684": {
+"name": "Skraeling",
+"level": 2,
+"spawns": 1,
+"page": "Skraeling (Miscellania)"
+},
+"3685": {
+"name": "Broddi",
+"level": 2,
+"spawns": 1,
+"page": "Broddi"
+},
+"3686": {
+"name": "Skraeling",
+"level": 2,
+"spawns": 1,
+"page": "Skraeling (Miscellania)"
+},
+"3687": {
+"name": "Ragnvald",
+"level": 2,
+"spawns": 1,
+"page": "Ragnvald"
+},
+"3692": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 3,
+"page": "Vampyre Juvenile"
+},
+"3693": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 3,
+"page": "Vampyre Juvenile"
+},
+"3694": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 2,
+"page": "Vampyre Juvinate"
+},
+"3695": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 1,
+"page": "Vampyre Juvinate"
+},
+"3717": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 3,
+"page": "Vyrewatch"
+},
+"3718": {
+"name": "Vyrewatch",
+"level": 110,
+"spawns": 3,
+"page": "Vyrewatch"
+},
+"3719": {
+"name": "Vyrewatch",
+"level": 120,
+"spawns": 5,
+"page": "Vyrewatch"
+},
+"3729": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 3,
+"page": "Vyrewatch"
+},
+"3730": {
+"name": "Vyrewatch",
+"level": 110,
+"spawns": 4,
+"page": "Vyrewatch"
+},
+"3731": {
+"name": "Vyrewatch",
+"level": 120,
+"spawns": 3,
+"page": "Vyrewatch"
+},
+"3732": {
+"name": "Vyrewatch",
+"level": 125,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"3748": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 2,
+"page": "Vyrewatch"
+},
+"3749": {
+"name": "Vyrewatch",
+"level": 110,
+"spawns": 7,
+"page": "Vyrewatch"
+},
+"3750": {
+"name": "Vyrewatch",
+"level": 120,
+"spawns": 8,
+"page": "Vyrewatch"
+},
+"3751": {
+"name": "Vyrewatch",
+"level": 125,
+"spawns": 3,
+"page": "Vyrewatch"
+},
+"3752": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"3753": {
+"name": "Vyrewatch",
+"level": 110,
+"spawns": 10,
+"page": "Vyrewatch"
+},
+"3754": {
+"name": "Vyrewatch",
+"level": 120,
+"spawns": 4,
+"page": "Vyrewatch"
+},
+"3755": {
+"name": "Vyrewatch",
+"level": 125,
+"spawns": 3,
+"page": "Vyrewatch"
+},
+"3851": {
+"name": "Moss giant",
+"level": 48,
+"spawns": 10,
+"page": "Moss giant"
+},
+"3863": {
+"name": "Jake",
+"level": 37,
+"spawns": 1,
+"page": "Jake"
+},
+"3865": {
+"name": "Wilson",
+"level": 37,
+"spawns": 1,
+"page": "Wilson"
+},
+"3869": {
+"name": "Palmer",
+"level": 37,
+"spawns": 1,
+"page": "Palmer"
+},
+"3901": {
+"name": "Fox",
+"level": 19,
+"spawns": 5,
+"page": "Fox"
+},
+"3902": {
+"name": "Bunny",
+"level": 2,
+"spawns": 3,
+"page": "Bunny"
+},
+"3903": {
+"name": "Bunny",
+"level": 2,
+"spawns": 5,
+"page": "Bunny"
+},
+"3908": {
+"name": "Bear Cub",
+"level": 15,
+"spawns": 9,
+"page": "Bear Cub"
+},
+"3909": {
+"name": "Bear Cub",
+"level": 15,
+"spawns": 8,
+"page": "Bear Cub"
+},
+"3910": {
+"name": "Unicorn Foal",
+"level": 12,
+"spawns": 7,
+"page": "Unicorn Foal"
+},
+"3911": {
+"name": "Black unicorn Foal",
+"level": 22,
+"spawns": 4,
+"page": "Black unicorn Foal"
+},
+"3912": {
+"name": "Wolf",
+"level": 64,
+"spawns": 6,
+"page": "Wolf"
+},
+"3938": {
+"name": "Freidir",
+"level": 48,
+"spawns": 1,
+"page": "Freidir"
+},
+"3939": {
+"name": "Borrokar",
+"level": 48,
+"spawns": 1,
+"page": "Borrokar"
+},
+"3940": {
+"name": "Lanzig",
+"level": 48,
+"spawns": 1,
+"page": "Lanzig"
+},
+"3943": {
+"name": "Lensa",
+"level": 48,
+"spawns": 1,
+"page": "Lensa"
+},
+"3944": {
+"name": "Jennella",
+"level": 48,
+"spawns": 1,
+"page": "Jennella"
+},
+"3949": {
+"name": "Market Guard",
+"level": 48,
+"spawns": 5,
+"page": "Market Guard"
+},
+"3950": {
+"name": "Warrior",
+"level": 48,
+"spawns": 14,
+"page": "Warrior (Rellekka)"
+},
+"3957": {
+"name": "Ungadulu",
+"level": 70,
+"spawns": 1,
+"page": "Ungadulu"
+},
+"3964": {
+"name": "San Tojalon",
+"level": 106,
+"spawns": 4,
+"page": "San Tojalon"
+},
+"3965": {
+"name": "Irvig Senay",
+"level": 100,
+"spawns": 4,
+"page": "Irvig Senay"
+},
+"3966": {
+"name": "Ranalph Devere",
+"level": 92,
+"spawns": 4,
+"page": "Ranalph Devere"
+},
+"3969": {
+"name": "Zombie rat",
+"level": 3,
+"spawns": 1,
+"page": "Zombie rat"
+},
+"3970": {
+"name": "Zombie rat",
+"level": 3,
+"spawns": 2,
+"page": "Zombie rat"
+},
+"3971": {
+"name": "Zombie rat",
+"level": 3,
+"spawns": 4,
+"page": "Zombie rat"
+},
+"3972": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 1,
+"page": "Skeleton (Melzar's Maze)"
+},
+"3973": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 3,
+"page": "Skeleton (Melzar's Maze)"
+},
+"3974": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 2,
+"page": "Skeleton (Melzar's Maze)"
+},
+"3975": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost (Melzar's Maze)"
+},
+"3976": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost (Melzar's Maze)"
+},
+"3977": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost (Melzar's Maze)"
+},
+"3978": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost (Melzar's Maze)"
+},
+"3979": {
+"name": "Ghost",
+"level": 19,
+"spawns": 1,
+"page": "Ghost (Melzar's Maze)"
+},
+"3980": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie (Melzar's Maze)"
+},
+"3981": {
+"name": "Zombie",
+"level": 24,
+"spawns": 1,
+"page": "Zombie (Melzar's Maze)"
+},
+"3982": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 1,
+"page": "Lesser demon (Melzar's Maze)"
+},
+"4004": {
+"name": "Shadow",
+"level": 73,
+"spawns": 99,
+"page": "Shadow"
+},
+"4005": {
+"name": "Dark beast",
+"level": 182,
+"spawns": 29,
+"page": "Dark beast"
+},
+"4044": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4045": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4046": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4047": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4048": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4049": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4050": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4051": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4052": {
+"name": "Pirate",
+"level": 57,
+"spawns": 1,
+"page": "Pirate"
+},
+"4067": {
+"name": "Black Knight Titan",
+"level": 120,
+"spawns": 1,
+"page": "Black Knight Titan"
+},
+"4068": {
+"name": "Monk",
+"level": 5,
+"spawns": 5,
+"page": "Monk"
+},
+"4088": {
+"name": "Soldier",
+"level": 48,
+"spawns": 5,
+"page": "Soldier"
+},
+"4095": {
+"name": "Eadburg",
+"level": 4,
+"spawns": 1,
+"page": "Eadburg"
+},
+"4096": {
+"name": "Archer",
+"level": 42,
+"spawns": 4,
+"page": "Archer (Burthorpe)"
+},
+"4097": {
+"name": "Archer",
+"level": 42,
+"spawns": 4,
+"page": "Archer (Burthorpe)"
+},
+"4098": {
+"name": "Archer",
+"level": 42,
+"spawns": 1,
+"page": "Archer (Burthorpe)"
+},
+"4099": {
+"name": "Guard",
+"level": 37,
+"spawns": 2,
+"page": "Guard (Burthorpe)"
+},
+"4100": {
+"name": "Guard",
+"level": 37,
+"spawns": 1,
+"page": "Guard (Burthorpe)"
+},
+"4104": {
+"name": "Servant",
+"level": 5,
+"spawns": 1,
+"page": "Servant (Burthorpe)"
+},
+"4107": {
+"name": "Breoca",
+"level": 5,
+"spawns": 1,
+"page": "Breoca"
+},
+"4108": {
+"name": "Ocga",
+"level": 5,
+"spawns": 1,
+"page": "Ocga"
+},
+"4109": {
+"name": "Penda",
+"level": 5,
+"spawns": 1,
+"page": "Penda"
+},
+"4110": {
+"name": "Hygd",
+"level": 4,
+"spawns": 1,
+"page": "Hygd"
+},
+"4111": {
+"name": "Ceolburg",
+"level": 4,
+"spawns": 1,
+"page": "Ceolburg"
+},
+"4114": {
+"name": "White Knight",
+"level": 36,
+"spawns": 1,
+"page": "White Knight (Burthorpe)"
+},
+"4120": {
+"name": "Troll general",
+"level": 113,
+"spawns": 1,
+"page": "Troll general"
+},
+"4121": {
+"name": "Troll general",
+"level": 113,
+"spawns": 1,
+"page": "Troll general"
+},
+"4122": {
+"name": "Troll general",
+"level": 113,
+"spawns": 1,
+"page": "Troll general"
+},
+"4123": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4124": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4125": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4126": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4127": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4128": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4129": {
+"name": "Troll spectator",
+"level": 71,
+"spawns": 1,
+"page": "Troll spectator"
+},
+"4130": {
+"name": "Dad",
+"level": 101,
+"spawns": 1,
+"page": "Dad"
+},
+"4133": {
+"name": "Twig",
+"level": 71,
+"spawns": 1,
+"page": "Twig"
+},
+"4134": {
+"name": "Berry",
+"level": 71,
+"spawns": 1,
+"page": "Berry"
+},
+"4135": {
+"name": "Thrower troll",
+"level": 68,
+"spawns": 1,
+"page": "Thrower troll (Trollheim)"
+},
+"4136": {
+"name": "Thrower troll",
+"level": 68,
+"spawns": 1,
+"page": "Thrower troll (Trollheim)"
+},
+"4137": {
+"name": "Thrower troll",
+"level": 68,
+"spawns": 1,
+"page": "Thrower troll (Trollheim)"
+},
+"4138": {
+"name": "Thrower troll",
+"level": 68,
+"spawns": 1,
+"page": "Thrower troll (Trollheim)"
+},
+"4139": {
+"name": "Thrower troll",
+"level": 68,
+"spawns": 1,
+"page": "Thrower troll (Trollheim)"
+},
+"4143": {
+"name": "Mountain troll",
+"level": 71,
+"spawns": 4,
+"page": "Mountain troll"
+},
+"4167": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4168": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4169": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4170": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4171": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4172": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4173": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4174": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4175": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4176": {
+"name": "Outlaw",
+"level": 32,
+"spawns": 1,
+"page": "Outlaw"
+},
+"4184": {
+"name": "Crocodile",
+"level": 63,
+"spawns": 35,
+"page": "Crocodile"
+},
+"4185": {
+"name": "Jackal",
+"level": 21,
+"spawns": 55,
+"page": "Jackal"
+},
+"4246": {
+"name": "Monk",
+"level": 3,
+"spawns": 4,
+"page": "Monk"
+},
+"4247": {
+"name": "Thief",
+"level": 14,
+"spawns": 2,
+"page": "Thief"
+},
+"4248": {
+"name": "Head Thief",
+"level": 26,
+"spawns": 1,
+"page": "Head Thief"
+},
+"4276": {
+"name": "Jail guard",
+"level": 26,
+"spawns": 1,
+"page": "Jail guard"
+},
+"4277": {
+"name": "Jail guard",
+"level": 26,
+"spawns": 1,
+"page": "Jail guard"
+},
+"4278": {
+"name": "Jail guard",
+"level": 26,
+"spawns": 1,
+"page": "Jail guard"
+},
+"4279": {
+"name": "Jail guard",
+"level": 26,
+"spawns": 1,
+"page": "Jail guard"
+},
+"4319": {
+"name": "Skeleton Mage",
+"level": 83,
+"spawns": 11,
+"page": "Skeleton Mage"
+},
+"4331": {
+"name": "Black Knight",
+"level": 33,
+"spawns": 1,
+"page": "Black Knight"
+},
+"4362": {
+"name": "Ogre chieftain",
+"level": 81,
+"spawns": 11,
+"page": "Ogre chieftain"
+},
+"4367": {
+"name": "Gorad",
+"level": 68,
+"spawns": 1,
+"page": "Gorad"
+},
+"4373": {
+"name": "City guard",
+"level": 83,
+"spawns": 2,
+"page": "City guard"
+},
+"4381": {
+"name": "Enclave guard",
+"level": 83,
+"spawns": 2,
+"page": "Enclave guard"
+},
+"4405": {
+"name": "Tower guard",
+"level": 28,
+"spawns": 5,
+"page": "Tower guard"
+},
+"4406": {
+"name": "Colonel Radick",
+"level": 38,
+"spawns": 1,
+"page": "Colonel Radick"
+},
+"4427": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 4,
+"page": "Vampyre Juvinate"
+},
+"4428": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 4,
+"page": "Vampyre Juvinate"
+},
+"4429": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 3,
+"page": "Vampyre Juvinate"
+},
+"4430": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 4,
+"page": "Vampyre Juvinate"
+},
+"4436": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 8,
+"page": "Vampyre Juvenile"
+},
+"4437": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 4,
+"page": "Vampyre Juvenile"
+},
+"4438": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 5,
+"page": "Vampyre Juvenile"
+},
+"4491": {
+"name": "Skeleton fremennik",
+"level": 40,
+"spawns": 3,
+"page": "Skeleton fremennik"
+},
+"4492": {
+"name": "Skeleton fremennik",
+"level": 40,
+"spawns": 2,
+"page": "Skeleton fremennik"
+},
+"4493": {
+"name": "Skeleton fremennik",
+"level": 40,
+"spawns": 3,
+"page": "Skeleton fremennik"
+},
+"4494": {
+"name": "Skeleton fremennik",
+"level": 50,
+"spawns": 2,
+"page": "Skeleton fremennik"
+},
+"4495": {
+"name": "Skeleton fremennik",
+"level": 50,
+"spawns": 2,
+"page": "Skeleton fremennik"
+},
+"4496": {
+"name": "Skeleton fremennik",
+"level": 50,
+"spawns": 2,
+"page": "Skeleton fremennik"
+},
+"4497": {
+"name": "Skeleton fremennik",
+"level": 60,
+"spawns": 3,
+"page": "Skeleton fremennik"
+},
+"4498": {
+"name": "Skeleton fremennik",
+"level": 60,
+"spawns": 3,
+"page": "Skeleton fremennik"
+},
+"4501": {
+"name": "Brine rat",
+"level": 70,
+"spawns": 7,
+"page": "Brine rat"
+},
+"4504": {
+"name": "Giant bat",
+"level": 27,
+"spawns": 5,
+"page": "Giant bat (Brine Rat Cavern)"
+},
+"4522": {
+"name": "Guard",
+"level": 22,
+"spawns": 1,
+"page": "Guard"
+},
+"4523": {
+"name": "Guard",
+"level": 22,
+"spawns": 1,
+"page": "Guard"
+},
+"4524": {
+"name": "Guard",
+"level": 22,
+"spawns": 1,
+"page": "Guard"
+},
+"4525": {
+"name": "Guard",
+"level": 22,
+"spawns": 1,
+"page": "Guard"
+},
+"4526": {
+"name": "Guard",
+"level": 22,
+"spawns": 1,
+"page": "Guard"
+},
+"4533": {
+"name": "Blessed spider",
+"level": 39,
+"spawns": 30,
+"page": "Blessed spider"
+},
+"4534": {
+"name": "Blessed giant rat",
+"level": 9,
+"spawns": 3,
+"page": "Blessed giant rat"
+},
+"4535": {
+"name": "Blessed giant rat",
+"level": 9,
+"spawns": 1,
+"page": "Blessed giant rat"
+},
+"4561": {
+"name": "Spider",
+"level": 1,
+"spawns": 98,
+"page": "Spider"
+},
+"4634": {
+"name": "Rowdy slave",
+"level": 10,
+"spawns": 2,
+"page": "Rowdy slave"
+},
+"4635": {
+"name": "Mercenary Captain",
+"level": 47,
+"spawns": 1,
+"page": "Mercenary Captain"
+},
+"4643": {
+"name": "Shantay Guard",
+"level": 22,
+"spawns": 3,
+"page": "Shantay Guard"
+},
+"4649": {
+"name": "Desert Wolf",
+"level": 27,
+"spawns": 21,
+"page": "Desert Wolf"
+},
+"4650": {
+"name": "Desert Wolf",
+"level": 27,
+"spawns": 16,
+"page": "Desert Wolf"
+},
+"4651": {
+"name": "Desert Wolf",
+"level": 27,
+"spawns": 18,
+"page": "Desert Wolf"
+},
+"4652": {
+"name": "Ugthanki",
+"level": 42,
+"spawns": 27,
+"page": "Ugthanki"
+},
+"4655": {
+"name": "Bedabin Nomad Fighter",
+"level": 56,
+"spawns": 6,
+"page": "Bedabin Nomad Fighter"
+},
+"4656": {
+"name": "Mercenary",
+"level": 45,
+"spawns": 1,
+"page": "Mercenary"
+},
+"4657": {
+"name": "Mercenary",
+"level": 45,
+"spawns": 1,
+"page": "Mercenary"
+},
+"4658": {
+"name": "Mercenary",
+"level": 45,
+"spawns": 1,
+"page": "Mercenary"
+},
+"4659": {
+"name": "Mercenary",
+"level": 45,
+"spawns": 1,
+"page": "Mercenary"
+},
+"4660": {
+"name": "Guard",
+"level": 45,
+"spawns": 7,
+"page": "Guard (Desert Mining Camp)"
+},
+"4661": {
+"name": "Guard",
+"level": 45,
+"spawns": 3,
+"page": "Guard (Desert Mining Camp)"
+},
+"4662": {
+"name": "Guard",
+"level": 45,
+"spawns": 1,
+"page": "Guard (Desert Mining Camp)"
+},
+"4663": {
+"name": "Guard",
+"level": 45,
+"spawns": 2,
+"page": "Guard (Desert Mining Camp)"
+},
+"4664": {
+"name": "Guard",
+"level": 45,
+"spawns": 1,
+"page": "Guard (Desert Mining Camp)"
+},
+"4665": {
+"name": "Guard",
+"level": 45,
+"spawns": 3,
+"page": "Guard (Desert Mining Camp)"
+},
+"4666": {
+"name": "Guard",
+"level": 45,
+"spawns": 3,
+"page": "Guard (Desert Mining Camp)"
+},
+"4667": {
+"name": "Guard",
+"level": 45,
+"spawns": 2,
+"page": "Guard (Desert Mining Camp)"
+},
+"4668": {
+"name": "Guard",
+"level": 45,
+"spawns": 1,
+"page": "Guard (Desert Mining Camp)"
+},
+"4669": {
+"name": "Guard",
+"level": 45,
+"spawns": 1,
+"page": "Guard (Desert Mining Camp)"
+},
+"4708": {
+"name": "The Shaikahan",
+"level": 83,
+"spawns": 1,
+"page": "The Shaikahan"
+},
+"4757": {
+"name": "Tarik",
+"level": 21,
+"spawns": 1,
+"page": "Tarik (Nardah)"
+},
+"4758": {
+"name": "Poltenip",
+"level": 21,
+"spawns": 1,
+"page": "Poltenip"
+},
+"4759": {
+"name": "Radat",
+"level": 21,
+"spawns": 1,
+"page": "Radat"
+},
+"4773": {
+"name": "Fortress Guard",
+"level": 20,
+"spawns": 1,
+"page": "Fortress Guard"
+},
+"4774": {
+"name": "Fortress Guard",
+"level": 20,
+"spawns": 2,
+"page": "Fortress Guard"
+},
+"4775": {
+"name": "Fortress Guard",
+"level": 20,
+"spawns": 2,
+"page": "Fortress Guard"
+},
+"4776": {
+"name": "Fortress Guard",
+"level": 20,
+"spawns": 1,
+"page": "Fortress Guard"
+},
+"4800": {
+"name": "Giant Lobster",
+"level": 45,
+"spawns": 7,
+"page": "Giant lobster"
+},
+"4805": {
+"name": "Hobgoblin",
+"level": 28,
+"spawns": 4,
+"page": "Hobgoblin"
+},
+"4813": {
+"name": "Icefiend",
+"level": 13,
+"spawns": 10,
+"page": "Icefiend"
+},
+"4819": {
+"name": "Crab",
+"level": 23,
+"spawns": 2,
+"page": "Crab"
+},
+"4820": {
+"name": "Mudskipper",
+"level": 30,
+"spawns": 6,
+"page": "Mudskipper"
+},
+"4821": {
+"name": "Mudskipper",
+"level": 31,
+"spawns": 2,
+"page": "Mudskipper"
+},
+"4822": {
+"name": "Crab",
+"level": 21,
+"spawns": 8,
+"page": "Crab"
+},
+"4919": {
+"name": "Grip",
+"level": 22,
+"spawns": 1,
+"page": "Grip"
+},
+"4922": {
+"name": "Ice Queen",
+"level": 111,
+"spawns": 1,
+"page": "Ice Queen"
+},
+"4926": {
+"name": "Pirate Guard",
+"level": 19,
+"spawns": 7,
+"page": "Pirate Guard"
+},
+"4927": {
+"name": "Entrana firebird",
+"level": 2,
+"spawns": 1,
+"page": "Entrana firebird"
+},
+"4969": {
+"name": "Khazard trooper",
+"level": 19,
+"spawns": 2,
+"page": "Khazard trooper"
+},
+"4972": {
+"name": "Khazard commander",
+"level": 48,
+"spawns": 2,
+"page": "Khazard commander"
+},
+"4973": {
+"name": "Gnome troop",
+"level": 1,
+"spawns": 6,
+"page": "Gnome troop"
+},
+"4974": {
+"name": "Gnome troop",
+"level": 1,
+"spawns": 6,
+"page": "Gnome troop"
+},
+"4987": {
+"name": "Chronozon",
+"level": 170,
+"spawns": 1,
+"page": "Chronozon"
+},
+"5007": {
+"name": "Imp",
+"level": 2,
+"spawns": 80,
+"page": "Imp"
+},
+"5086": {
+"name": "Dark wizard",
+"level": 7,
+"spawns": 3,
+"page": "Dark wizard"
+},
+"5087": {
+"name": "Dark wizard",
+"level": 7,
+"spawns": 3,
+"page": "Dark wizard"
+},
+"5088": {
+"name": "Dark wizard",
+"level": 20,
+"spawns": 3,
+"page": "Dark wizard"
+},
+"5089": {
+"name": "Dark wizard",
+"level": 20,
+"spawns": 2,
+"page": "Dark wizard"
+},
+"5126": {
+"name": "Experiment No.2",
+"level": 109,
+"spawns": 6,
+"page": "Experiment No.2"
+},
+"5127": {
+"name": "Mouse",
+"level": 95,
+"spawns": 7,
+"page": "Mouse"
+},
+"5128": {
+"name": "Mouse",
+"level": 95,
+"spawns": 6,
+"page": "Mouse"
+},
+"5185": {
+"name": "Guard",
+"level": 10,
+"spawns": 3,
+"page": "Guard (dwarf)"
+},
+"5186": {
+"name": "Guard",
+"level": 10,
+"spawns": 1,
+"page": "Guard (dwarf)"
+},
+"5187": {
+"name": "Guard",
+"level": 10,
+"spawns": 1,
+"page": "Guard (dwarf)"
+},
+"5188": {
+"name": "Guard",
+"level": 10,
+"spawns": 1,
+"page": "Guard (dwarf)"
+},
+"5189": {
+"name": "Guard",
+"level": 10,
+"spawns": 1,
+"page": "Guard (dwarf)"
+},
+"5192": {
+"name": "Goblin",
+"level": 2,
+"spawns": 1,
+"page": "Goblin"
+},
+"5193": {
+"name": "Goblin",
+"level": 2,
+"spawns": 1,
+"page": "Goblin"
+},
+"5194": {
+"name": "Baby green dragon",
+"level": 48,
+"spawns": 8,
+"page": "Baby green dragon"
+},
+"5195": {
+"name": "Goblin",
+"level": 2,
+"spawns": 4,
+"page": "Goblin"
+},
+"5196": {
+"name": "Goblin",
+"level": 2,
+"spawns": 3,
+"page": "Goblin"
+},
+"5197": {
+"name": "Goblin",
+"level": 2,
+"spawns": 3,
+"page": "Goblin"
+},
+"5198": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"5199": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"5200": {
+"name": "Goblin",
+"level": 2,
+"spawns": 2,
+"page": "Goblin"
+},
+"5201": {
+"name": "Goblin",
+"level": 2,
+"spawns": 3,
+"page": "Goblin"
+},
+"5202": {
+"name": "Goblin",
+"level": 2,
+"spawns": 4,
+"page": "Goblin"
+},
+"5203": {
+"name": "Goblin",
+"level": 2,
+"spawns": 4,
+"page": "Goblin"
+},
+"5204": {
+"name": "Goblin",
+"level": 2,
+"spawns": 5,
+"page": "Goblin"
+},
+"5205": {
+"name": "Goblin",
+"level": 2,
+"spawns": 5,
+"page": "Goblin"
+},
+"5206": {
+"name": "Goblin",
+"level": 2,
+"spawns": 4,
+"page": "Goblin"
+},
+"5207": {
+"name": "Goblin",
+"level": 2,
+"spawns": 5,
+"page": "Goblin"
+},
+"5208": {
+"name": "Goblin",
+"level": 2,
+"spawns": 3,
+"page": "Goblin"
+},
+"5217": {
+"name": "Thief",
+"level": 16,
+"spawns": 4,
+"page": "Thief"
+},
+"5218": {
+"name": "Thief",
+"level": 16,
+"spawns": 1,
+"page": "Thief"
+},
+"5219": {
+"name": "Thief",
+"level": 16,
+"spawns": 2,
+"page": "Thief"
+},
+"5220": {
+"name": "Thief",
+"level": 16,
+"spawns": 3,
+"page": "Thief"
+},
+"5237": {
+"name": "Skeleton",
+"level": 142,
+"spawns": 17,
+"page": "Skeleton (Ape Atoll)"
+},
+"5238": {
+"name": "Spider",
+"level": 1,
+"spawns": 86,
+"page": "Spider (Ape Atoll)"
+},
+"5240": {
+"name": "Bird",
+"level": 11,
+"spawns": 8,
+"page": "Bird"
+},
+"5241": {
+"name": "Bird",
+"level": 5,
+"spawns": 29,
+"page": "Bird"
+},
+"5242": {
+"name": "Scorpion",
+"level": 38,
+"spawns": 36,
+"page": "Scorpion"
+},
+"5243": {
+"name": "Jungle spider",
+"level": 37,
+"spawns": 18,
+"page": "Jungle spider (Ape Atoll)"
+},
+"5244": {
+"name": "Snake",
+"level": 24,
+"spawns": 22,
+"page": "Snake (Ape Atoll)"
+},
+"5263": {
+"name": "Padulah",
+"level": 149,
+"spawns": 1,
+"page": "Padulah"
+},
+"5272": {
+"name": "Monkey Archer",
+"level": 86,
+"spawns": 6,
+"page": "Monkey Archer"
+},
+"5273": {
+"name": "Monkey Archer",
+"level": 86,
+"spawns": 9,
+"page": "Monkey Archer"
+},
+"5274": {
+"name": "Monkey Archer",
+"level": 86,
+"spawns": 19,
+"page": "Monkey Archer"
+},
+"5275": {
+"name": "Monkey Guard",
+"level": 167,
+"spawns": 9,
+"page": "Monkey Guard"
+},
+"5276": {
+"name": "Monkey Guard",
+"level": 167,
+"spawns": 3,
+"page": "Monkey Guard"
+},
+"5281": {
+"name": "Monkey Zombie",
+"level": 98,
+"spawns": 35,
+"page": "Monkey Zombie"
+},
+"5282": {
+"name": "Monkey Zombie",
+"level": 129,
+"spawns": 7,
+"page": "Monkey Zombie"
+},
+"5283": {
+"name": "Monkey Zombie",
+"level": 82,
+"spawns": 29,
+"page": "Monkey Zombie"
+},
+"5293": {
+"name": "Elf Warrior",
+"level": 108,
+"spawns": 2,
+"page": "Elf Warrior"
+},
+"5294": {
+"name": "Elf Warrior",
+"level": 108,
+"spawns": 2,
+"page": "Elf Warrior"
+},
+"5295": {
+"name": "Elf Archer",
+"level": 90,
+"spawns": 2,
+"page": "Elf Archer"
+},
+"5296": {
+"name": "Elf Archer",
+"level": 90,
+"spawns": 2,
+"page": "Elf Archer"
+},
+"5330": {
+"name": "Cave goblin miner",
+"level": 11,
+"spawns": 2,
+"page": "Cave goblin miner"
+},
+"5331": {
+"name": "Cave goblin miner",
+"level": 11,
+"spawns": 2,
+"page": "Cave goblin miner"
+},
+"5332": {
+"name": "Cave goblin miner",
+"level": 11,
+"spawns": 2,
+"page": "Cave goblin miner"
+},
+"5333": {
+"name": "Cave goblin miner",
+"level": 11,
+"spawns": 1,
+"page": "Cave goblin miner"
+},
+"5334": {
+"name": "Cave goblin guard",
+"level": 26,
+"spawns": 2,
+"page": "Cave goblin guard"
+},
+"5335": {
+"name": "Cave goblin guard",
+"level": 24,
+"spawns": 2,
+"page": "Cave goblin guard"
+},
+"5339": {
+"name": "Cave goblin miner",
+"level": 11,
+"spawns": 1,
+"page": "Cave goblin miner"
+},
+"5342": {
+"name": "Undead one",
+"level": 68,
+"spawns": 5,
+"page": "Undead one"
+},
+"5343": {
+"name": "Undead one",
+"level": 68,
+"spawns": 7,
+"page": "Undead one"
+},
+"5344": {
+"name": "Undead one",
+"level": 61,
+"spawns": 5,
+"page": "Undead one"
+},
+"5345": {
+"name": "Undead one",
+"level": 61,
+"spawns": 4,
+"page": "Undead one"
+},
+"5346": {
+"name": "Undead one",
+"level": 68,
+"spawns": 7,
+"page": "Undead one"
+},
+"5347": {
+"name": "Undead one",
+"level": 68,
+"spawns": 6,
+"page": "Undead one"
+},
+"5348": {
+"name": "Undead one",
+"level": 68,
+"spawns": 5,
+"page": "Undead one"
+},
+"5349": {
+"name": "Undead one",
+"level": 73,
+"spawns": 11,
+"page": "Undead one"
+},
+"5350": {
+"name": "Undead one",
+"level": 73,
+"spawns": 8,
+"page": "Undead one"
+},
+"5351": {
+"name": "Undead one",
+"level": 73,
+"spawns": 8,
+"page": "Undead one"
+},
+"5370": {
+"name": "Ghost",
+"level": 24,
+"spawns": 6,
+"page": "Ghost"
+},
+"5372": {
+"name": "Grave scorpion",
+"level": 12,
+"spawns": 5,
+"page": "Grave scorpion"
+},
+"5418": {
+"name": "Guard",
+"level": 20,
+"spawns": 10,
+"page": "Guard"
+},
+"5420": {
+"name": "Watchman",
+"level": 33,
+"spawns": 4,
+"page": "Watchman"
+},
+"5421": {
+"name": "Soldier",
+"level": 28,
+"spawns": 27,
+"page": "Soldier (Yanille)"
+},
+"5457": {
+"name": "Shipyard worker",
+"level": 11,
+"spawns": 5,
+"page": "Shipyard worker"
+},
+"5563": {
+"name": "Angry barbarian spirit",
+"level": 166,
+"spawns": 2,
+"page": "Angry barbarian spirit"
+},
+"5564": {
+"name": "Enraged barbarian spirit",
+"level": 166,
+"spawns": 4,
+"page": "Enraged barbarian spirit"
+},
+"5565": {
+"name": "Berserk barbarian spirit",
+"level": 166,
+"spawns": 2,
+"page": "Berserk barbarian spirit"
+},
+"5647": {
+"name": "Zombie",
+"level": 23,
+"spawns": 1,
+"page": "Zombie (Temple Trekking)"
+},
+"5729": {
+"name": "Shipyard worker",
+"level": 11,
+"spawns": 9,
+"page": "Shipyard worker"
+},
+"5732": {
+"name": "Market Guard",
+"level": 20,
+"spawns": 2,
+"page": "Market Guard (Draynor)"
+},
+"5779": {
+"name": "Giant Mole",
+"level": 230,
+"spawns": 1,
+"page": "Giant Mole"
+},
+"5816": {
+"name": "Yak",
+"level": 22,
+"spawns": 6,
+"page": "Yak"
+},
+"5823": {
+"name": "Frenzied ice troll runt",
+"level": 74,
+"spawns": 3,
+"page": "Frenzied ice troll runt"
+},
+"5824": {
+"name": "Frenzied ice troll male",
+"level": 82,
+"spawns": 5,
+"page": "Frenzied ice troll male"
+},
+"5825": {
+"name": "Frenzied ice troll female",
+"level": 82,
+"spawns": 7,
+"page": "Frenzied ice troll female"
+},
+"5826": {
+"name": "Frenzied ice troll grunt",
+"level": 102,
+"spawns": 3,
+"page": "Frenzied ice troll grunt"
+},
+"5828": {
+"name": "Ice troll runt",
+"level": 74,
+"spawns": 20,
+"page": "Ice troll runt"
+},
+"5829": {
+"name": "Ice troll male",
+"level": 82,
+"spawns": 15,
+"page": "Ice troll male"
+},
+"5830": {
+"name": "Ice troll female",
+"level": 82,
+"spawns": 19,
+"page": "Ice troll female"
+},
+"5831": {
+"name": "Ice troll grunt",
+"level": 100,
+"spawns": 7,
+"page": "Ice troll grunt"
+},
+"5842": {
+"name": "Cow",
+"level": 2,
+"spawns": 3,
+"page": "Cow"
+},
+"5853": {
+"name": "Baby tanglefoot",
+"level": 45,
+"spawns": 5,
+"page": "Baby tanglefoot"
+},
+"5854": {
+"name": "Baby tanglefoot",
+"level": 45,
+"spawns": 3,
+"page": "Baby tanglefoot"
+},
+"5872": {
+"name": "Baby green dragon",
+"level": 48,
+"spawns": 1,
+"page": "Baby green dragon"
+},
+"5873": {
+"name": "Baby green dragon",
+"level": 48,
+"spawns": 3,
+"page": "Baby green dragon"
+},
+"5874": {
+"name": "Black demon",
+"level": 172,
+"spawns": 4,
+"page": "Black demon"
+},
+"5875": {
+"name": "Black demon",
+"level": 172,
+"spawns": 2,
+"page": "Black demon"
+},
+"5876": {
+"name": "Black demon",
+"level": 172,
+"spawns": 4,
+"page": "Black demon"
+},
+"5877": {
+"name": "Black demon",
+"level": 172,
+"spawns": 3,
+"page": "Black demon"
+},
+"5878": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 3,
+"page": "Blue dragon"
+},
+"5879": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 3,
+"page": "Blue dragon"
+},
+"5880": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 2,
+"page": "Blue dragon"
+},
+"5881": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 2,
+"page": "Blue dragon"
+},
+"5882": {
+"name": "Blue dragon",
+"level": 111,
+"spawns": 2,
+"page": "Blue dragon"
+},
+"5886": {
+"name": "Abyssal Sire",
+"level": 350,
+"spawns": 4,
+"page": "Abyssal Sire"
+},
+"5938": {
+"name": "Wallasalki",
+"level": 98,
+"spawns": 29,
+"page": "Wallasalki"
+},
+"5939": {
+"name": "Wallasalki",
+"level": 98,
+"spawns": 18,
+"page": "Wallasalki"
+},
+"5940": {
+"name": "Giant Rock Crab",
+"level": 137,
+"spawns": 3,
+"page": "Giant Rock Crab"
+},
+"5942": {
+"name": "Dagannoth",
+"level": 88,
+"spawns": 19,
+"page": "Dagannoth (Waterbirth Island)"
+},
+"5943": {
+"name": "Dagannoth",
+"level": 90,
+"spawns": 27,
+"page": "Dagannoth (Waterbirth Island)"
+},
+"5947": {
+"name": "Spinolyp",
+"level": 76,
+"spawns": 7,
+"page": "Spinolyp"
+},
+"5961": {
+"name": "Spinolyp",
+"level": 76,
+"spawns": 10,
+"page": "Spinolyp"
+},
+"5963": {
+"name": "Spinolyp",
+"level": 76,
+"spawns": 5,
+"page": "Spinolyp"
+},
+"5964": {
+"name": "Khazard trooper",
+"level": 19,
+"spawns": 23,
+"page": "Khazard trooper"
+},
+"5965": {
+"name": "Khazard trooper",
+"level": 19,
+"spawns": 16,
+"page": "Khazard trooper"
+},
+"5966": {
+"name": "Gnome troop",
+"level": 3,
+"spawns": 9,
+"page": "Gnome troop"
+},
+"5967": {
+"name": "Gnome troop",
+"level": 3,
+"spawns": 10,
+"page": "Gnome troop"
+},
+"5968": {
+"name": "Gnome",
+"level": 3,
+"spawns": 29,
+"page": "Gnome"
+},
+"5969": {
+"name": "Gnome",
+"level": 1,
+"spawns": 14,
+"page": "Gnome"
+},
+"5970": {
+"name": "Gnome",
+"level": 3,
+"spawns": 17,
+"page": "Gnome"
+},
+"5971": {
+"name": "Mounted terrorbird gnome",
+"level": 49,
+"spawns": 2,
+"page": "Mounted terrorbird gnome"
+},
+"5972": {
+"name": "Mounted terrorbird gnome",
+"level": 49,
+"spawns": 2,
+"page": "Mounted terrorbird gnome"
+},
+"5973": {
+"name": "Mounted terrorbird gnome",
+"level": 49,
+"spawns": 2,
+"page": "Mounted terrorbird gnome"
+},
+"6046": {
+"name": "Black Guard",
+"level": 48,
+"spawns": 1,
+"page": "Black Guard"
+},
+"6047": {
+"name": "Black Guard",
+"level": 48,
+"spawns": 2,
+"page": "Black Guard"
+},
+"6048": {
+"name": "Black Guard",
+"level": 48,
+"spawns": 2,
+"page": "Black Guard"
+},
+"6049": {
+"name": "Black Guard",
+"level": 48,
+"spawns": 1,
+"page": "Black Guard"
+},
+"6050": {
+"name": "Black Guard Berserker",
+"level": 66,
+"spawns": 1,
+"page": "Black Guard Berserker"
+},
+"6051": {
+"name": "Black Guard Berserker",
+"level": 66,
+"spawns": 1,
+"page": "Black Guard Berserker"
+},
+"6052": {
+"name": "Black Guard Berserker",
+"level": 66,
+"spawns": 1,
+"page": "Black Guard Berserker"
+},
+"6056": {
+"name": "Guard",
+"level": 37,
+"spawns": 11,
+"page": "Guard (Ranging Guild)"
+},
+"6075": {
+"name": "Tortoise",
+"level": 79,
+"spawns": 2,
+"page": "Tortoise"
+},
+"6076": {
+"name": "Tortoise",
+"level": 92,
+"spawns": 3,
+"page": "Tortoise"
+},
+"6077": {
+"name": "Gnome child",
+"level": 1,
+"spawns": 10,
+"page": "Gnome child"
+},
+"6078": {
+"name": "Gnome child",
+"level": 1,
+"spawns": 2,
+"page": "Gnome child"
+},
+"6079": {
+"name": "Gnome child",
+"level": 1,
+"spawns": 2,
+"page": "Gnome child"
+},
+"6081": {
+"name": "Gnome guard",
+"level": 23,
+"spawns": 45,
+"page": "Gnome guard"
+},
+"6082": {
+"name": "Gnome guard",
+"level": 23,
+"spawns": 28,
+"page": "Gnome guard"
+},
+"6086": {
+"name": "Gnome woman",
+"level": 1,
+"spawns": 35,
+"page": "Gnome woman"
+},
+"6087": {
+"name": "Gnome woman",
+"level": 1,
+"spawns": 31,
+"page": "Gnome woman"
+},
+"6094": {
+"name": "Gnome",
+"level": 1,
+"spawns": 27,
+"page": "Gnome"
+},
+"6095": {
+"name": "Gnome",
+"level": 1,
+"spawns": 35,
+"page": "Gnome"
+},
+"6096": {
+"name": "Gnome",
+"level": 1,
+"spawns": 20,
+"page": "Gnome"
+},
+"6143": {
+"name": "Urium Shadow",
+"level": 140,
+"spawns": 11,
+"page": "Urium Shade"
+},
+"6434": {
+"name": "Cave goblin",
+"level": 3,
+"spawns": 1,
+"page": "Cave goblin (monster)"
+},
+"6435": {
+"name": "Cave goblin",
+"level": 3,
+"spawns": 1,
+"page": "Cave goblin (monster)"
+},
+"6436": {
+"name": "Cave goblin",
+"level": 3,
+"spawns": 1,
+"page": "Cave goblin (monster)"
+},
+"6437": {
+"name": "Cave goblin",
+"level": 3,
+"spawns": 1,
+"page": "Cave goblin (monster)"
+},
+"6440": {
+"name": "Giant skeleton",
+"level": 100,
+"spawns": 2,
+"page": "Giant skeleton (Tarn's Lair)"
+},
+"6441": {
+"name": "Skeleton",
+"level": 94,
+"spawns": 2,
+"page": "Skeleton (mage)"
+},
+"6442": {
+"name": "Skeleton",
+"level": 77,
+"spawns": 6,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6443": {
+"name": "Skeleton",
+"level": 81,
+"spawns": 4,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6444": {
+"name": "Skeleton",
+"level": 42,
+"spawns": 1,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6445": {
+"name": "Skeleton",
+"level": 59,
+"spawns": 2,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6446": {
+"name": "Skeleton",
+"level": 42,
+"spawns": 2,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6447": {
+"name": "Skeleton",
+"level": 63,
+"spawns": 7,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6448": {
+"name": "Skeleton",
+"level": 40,
+"spawns": 2,
+"page": "Skeleton (Tarn's Lair)"
+},
+"6449": {
+"name": "Zombie",
+"level": 40,
+"spawns": 3,
+"page": "Zombie (Tarn's Lair)"
+},
+"6450": {
+"name": "Zombie",
+"level": 42,
+"spawns": 2,
+"page": "Zombie (Tarn's Lair)"
+},
+"6451": {
+"name": "Zombie",
+"level": 47,
+"spawns": 3,
+"page": "Zombie (Tarn's Lair)"
+},
+"6452": {
+"name": "Zombie",
+"level": 50,
+"spawns": 1,
+"page": "Zombie (Tarn's Lair)"
+},
+"6453": {
+"name": "Zombie",
+"level": 56,
+"spawns": 2,
+"page": "Zombie (Tarn's Lair)"
+},
+"6454": {
+"name": "Zombie",
+"level": 61,
+"spawns": 2,
+"page": "Zombie (Tarn's Lair)"
+},
+"6455": {
+"name": "Zombie",
+"level": 67,
+"spawns": 2,
+"page": "Zombie (Tarn's Lair)"
+},
+"6456": {
+"name": "Zombie",
+"level": 70,
+"spawns": 3,
+"page": "Zombie (Tarn's Lair)"
+},
+"6457": {
+"name": "Zombie",
+"level": 72,
+"spawns": 1,
+"page": "Zombie (Tarn's Lair)"
+},
+"6458": {
+"name": "Zombie",
+"level": 76,
+"spawns": 3,
+"page": "Zombie (Tarn's Lair)"
+},
+"6459": {
+"name": "Zombie",
+"level": 80,
+"spawns": 2,
+"page": "Zombie (Tarn's Lair)"
+},
+"6460": {
+"name": "Zombie",
+"level": 85,
+"spawns": 4,
+"page": "Zombie"
+},
+"6461": {
+"name": "Zombie",
+"level": 86,
+"spawns": 3,
+"page": "Zombie"
+},
+"6462": {
+"name": "Zombie",
+"level": 90,
+"spawns": 1,
+"page": "Zombie"
+},
+"6463": {
+"name": "Zombie",
+"level": 95,
+"spawns": 1,
+"page": "Zombie"
+},
+"6464": {
+"name": "Zombie",
+"level": 98,
+"spawns": 1,
+"page": "Zombie"
+},
+"6465": {
+"name": "Zombie",
+"level": 100,
+"spawns": 2,
+"page": "Zombie"
+},
+"6466": {
+"name": "Zombie",
+"level": 81,
+"spawns": 1,
+"page": "Zombie"
+},
+"6469": {
+"name": "Possessed pickaxe",
+"level": 50,
+"spawns": 3,
+"page": "Possessed pickaxe"
+},
+"6470": {
+"name": "Animated spade",
+"level": 50,
+"spawns": 2,
+"page": "Animated spade"
+},
+"6473": {
+"name": "Terror dog",
+"level": 110,
+"spawns": 4,
+"page": "Terror dog"
+},
+"6474": {
+"name": "Terror dog",
+"level": 100,
+"spawns": 5,
+"page": "Terror dog"
+},
+"6593": {
+"name": "Lava dragon",
+"level": 252,
+"spawns": 8,
+"page": "Lava dragon"
+},
+"6594": {
+"name": "Ent",
+"level": 101,
+"spawns": 10,
+"page": "Ent"
+},
+"6596": {
+"name": "Zombie",
+"level": 18,
+"spawns": 5,
+"page": "Zombie (Wilderness)"
+},
+"6597": {
+"name": "Zombie",
+"level": 18,
+"spawns": 5,
+"page": "Zombie (Wilderness)"
+},
+"6598": {
+"name": "Zombie",
+"level": 18,
+"spawns": 5,
+"page": "Zombie (Wilderness)"
+},
+"6600": {
+"name": "Runite Golem",
+"level": 165,
+"spawns": 2,
+"page": "Runite Golem"
+},
+"6603": {
+"name": "Rogue",
+"level": 135,
+"spawns": 8,
+"page": "Rogue"
+},
+"6604": {
+"name": "Mammoth",
+"level": 80,
+"spawns": 8,
+"page": "Mammoth"
+},
+"6605": {
+"name": "Bandit",
+"level": 130,
+"spawns": 11,
+"page": "Bandit"
+},
+"6606": {
+"name": "Dark warrior",
+"level": 145,
+"spawns": 17,
+"page": "Dark warrior"
+},
+"6607": {
+"name": "Elder Chaos druid",
+"level": 129,
+"spawns": 13,
+"page": "Elder Chaos druid"
+},
+"6608": {
+"name": "Ankou",
+"level": 86,
+"spawns": 21,
+"page": "Ankou"
+},
+"6609": {
+"name": "Callisto",
+"level": 470,
+"spawns": 1,
+"page": "Callisto"
+},
+"6610": {
+"name": "Venenatis",
+"level": 464,
+"spawns": 1,
+"page": "Venenatis"
+},
+"6611": {
+"name": "Vet'ion",
+"level": 454,
+"spawns": 1,
+"page": "Vet'ion"
+},
+"6615": {
+"name": "Scorpia",
+"level": 225,
+"spawns": 1,
+"page": "Scorpia"
+},
+"6616": {
+"name": "Scorpia's offspring",
+"level": 15,
+"spawns": 27,
+"page": "Scorpia's offspring (monster)"
+},
+"6618": {
+"name": "Crazy archaeologist",
+"level": 204,
+"spawns": 1,
+"page": "Crazy archaeologist"
+},
+"6619": {
+"name": "Chaos Fanatic",
+"level": 202,
+"spawns": 1,
+"page": "Chaos Fanatic"
+},
+"6739": {
+"name": "Evil Chicken",
+"level": 159,
+"spawns": 1,
+"page": "Evil Chicken"
+},
+"6740": {
+"name": "Shade",
+"level": 159,
+"spawns": 4,
+"page": "Shade"
+},
+"6741": {
+"name": "Zombie",
+"level": 159,
+"spawns": 1,
+"page": "Zombie (Sepulchre of Death)"
+},
+"6762": {
+"name": "Pyrelord",
+"level": 60,
+"spawns": 5,
+"page": "Pyrelord"
+},
+"6766": {
+"name": "Lizardman shaman",
+"level": 150,
+"spawns": 2,
+"page": "Lizardman shaman"
+},
+"6767": {
+"name": "Lizardman shaman",
+"level": 150,
+"spawns": 1,
+"page": "Lizardman shaman"
+},
+"6795": {
+"name": "Pyrelord",
+"level": 60,
+"spawns": 7,
+"page": "Pyrelord"
+},
+"6824": {
+"name": "Giant bat",
+"level": 27,
+"spawns": 13,
+"page": "Giant bat"
+},
+"6914": {
+"name": "Lizardman",
+"level": 53,
+"spawns": 13,
+"page": "Lizardman"
+},
+"6915": {
+"name": "Lizardman",
+"level": 53,
+"spawns": 30,
+"page": "Lizardman"
+},
+"6916": {
+"name": "Lizardman",
+"level": 62,
+"spawns": 11,
+"page": "Lizardman"
+},
+"6917": {
+"name": "Lizardman",
+"level": 62,
+"spawns": 21,
+"page": "Lizardman"
+},
+"6918": {
+"name": "Lizardman brute",
+"level": 75,
+"spawns": 8,
+"page": "Lizardman brute"
+},
+"6919": {
+"name": "Lizardman brute",
+"level": 75,
+"spawns": 39,
+"page": "Lizardman brute"
+},
+"6956": {
+"name": "Monk",
+"level": 5,
+"spawns": 7,
+"page": "Monk"
+},
+"6987": {
+"name": "Man",
+"level": 2,
+"spawns": 11,
+"page": "Man"
+},
+"6988": {
+"name": "Man",
+"level": 2,
+"spawns": 13,
+"page": "Man"
+},
+"6989": {
+"name": "Man",
+"level": 2,
+"spawns": 11,
+"page": "Man"
+},
+"6990": {
+"name": "Woman",
+"level": 2,
+"spawns": 7,
+"page": "Woman"
+},
+"6991": {
+"name": "Woman",
+"level": 2,
+"spawns": 8,
+"page": "Woman"
+},
+"6992": {
+"name": "Woman",
+"level": 2,
+"spawns": 13,
+"page": "Woman"
+},
+"6993": {
+"name": "Pirate",
+"level": 23,
+"spawns": 3,
+"page": "Pirate"
+},
+"6994": {
+"name": "Pirate",
+"level": 23,
+"spawns": 7,
+"page": "Pirate"
+},
+"6995": {
+"name": "Pirate",
+"level": 23,
+"spawns": 4,
+"page": "Pirate"
+},
+"6996": {
+"name": "Mugger",
+"level": 6,
+"spawns": 4,
+"page": "Mugger"
+},
+"7118": {
+"name": "Maniacal monkey",
+"level": 140,
+"spawns": 366,
+"page": "Maniacal monkey"
+},
+"7119": {
+"name": "Maniacal Monkey Archer",
+"level": 132,
+"spawns": 189,
+"page": "Maniacal Monkey Archer"
+},
+"7144": {
+"name": "Demonic gorilla",
+"level": 275,
+"spawns": 6,
+"page": "Demonic gorilla"
+},
+"7145": {
+"name": "Demonic gorilla",
+"level": 275,
+"spawns": 8,
+"page": "Demonic gorilla"
+},
+"7146": {
+"name": "Demonic gorilla",
+"level": 275,
+"spawns": 1,
+"page": "Demonic gorilla"
+},
+"7147": {
+"name": "Demonic gorilla",
+"level": 275,
+"spawns": 1,
+"page": "Demonic gorilla"
+},
+"7148": {
+"name": "Demonic gorilla",
+"level": 275,
+"spawns": 6,
+"page": "Demonic gorilla"
+},
+"7149": {
+"name": "Demonic gorilla",
+"level": 275,
+"spawns": 6,
+"page": "Demonic gorilla"
+},
+"7150": {
+"name": "Tortured gorilla",
+"level": 141,
+"spawns": 4,
+"page": "Tortured gorilla"
+},
+"7151": {
+"name": "Tortured gorilla",
+"level": 141,
+"spawns": 4,
+"page": "Tortured gorilla"
+},
+"7209": {
+"name": "Guard dog",
+"level": 44,
+"spawns": 7,
+"page": "Guard dog"
+},
+"7234": {
+"name": "Ent",
+"level": 86,
+"spawns": 23,
+"page": "Ent"
+},
+"7238": {
+"name": "Forester",
+"level": 15,
+"spawns": 4,
+"page": "Forester (Woodcutting Guild)"
+},
+"7241": {
+"name": "Abyssal demon",
+"level": 124,
+"spawns": 13,
+"page": "Abyssal demon"
+},
+"7242": {
+"name": "Black demon",
+"level": 184,
+"spawns": 2,
+"page": "Black demon"
+},
+"7243": {
+"name": "Black demon",
+"level": 178,
+"spawns": 2,
+"page": "Black demon"
+},
+"7244": {
+"name": "Greater demon",
+"level": 101,
+"spawns": 4,
+"page": "Greater demon"
+},
+"7245": {
+"name": "Greater demon",
+"level": 100,
+"spawns": 4,
+"page": "Greater demon"
+},
+"7246": {
+"name": "Greater demon",
+"level": 113,
+"spawns": 2,
+"page": "Greater demon"
+},
+"7247": {
+"name": "Lesser demon",
+"level": 87,
+"spawns": 5,
+"page": "Lesser demon"
+},
+"7248": {
+"name": "Lesser demon",
+"level": 94,
+"spawns": 3,
+"page": "Lesser demon"
+},
+"7249": {
+"name": "Dust devil",
+"level": 110,
+"spawns": 13,
+"page": "Dust devil"
+},
+"7251": {
+"name": "Fire giant",
+"level": 109,
+"spawns": 11,
+"page": "Fire giant"
+},
+"7252": {
+"name": "Fire giant",
+"level": 104,
+"spawns": 9,
+"page": "Fire giant"
+},
+"7253": {
+"name": "Bronze dragon",
+"level": 143,
+"spawns": 3,
+"page": "Bronze dragon"
+},
+"7254": {
+"name": "Iron dragon",
+"level": 215,
+"spawns": 2,
+"page": "Iron dragon"
+},
+"7255": {
+"name": "Steel dragon",
+"level": 274,
+"spawns": 2,
+"page": "Steel dragon"
+},
+"7256": {
+"name": "Hellhound",
+"level": 122,
+"spawns": 9,
+"page": "Hellhound"
+},
+"7257": {
+"name": "Ankou",
+"level": 95,
+"spawns": 10,
+"page": "Ankou"
+},
+"7258": {
+"name": "Shade",
+"level": 140,
+"spawns": 11,
+"page": "Shade"
+},
+"7259": {
+"name": "Dagannoth",
+"level": 74,
+"spawns": 36,
+"page": "Dagannoth"
+},
+"7260": {
+"name": "Dagannoth",
+"level": 92,
+"spawns": 40,
+"page": "Dagannoth"
+},
+"7261": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 21,
+"page": "Hill Giant"
+},
+"7262": {
+"name": "Moss giant",
+"level": 42,
+"spawns": 23,
+"page": "Moss giant"
+},
+"7263": {
+"name": "Ghost",
+"level": 19,
+"spawns": 15,
+"page": "Ghost"
+},
+"7264": {
+"name": "Ghost",
+"level": 19,
+"spawns": 2,
+"page": "Ghost"
+},
+"7265": {
+"name": "Skeleton",
+"level": 22,
+"spawns": 6,
+"page": "Skeleton (Catacombs of Kourend)"
+},
+"7268": {
+"name": "Possessed pickaxe",
+"level": 50,
+"spawns": 6,
+"page": "Possessed pickaxe"
+},
+"7269": {
+"name": "Magic axe",
+"level": 42,
+"spawns": 4,
+"page": "Magic axe"
+},
+"7270": {
+"name": "Cyclops",
+"level": 76,
+"spawns": 2,
+"page": "Cyclops (Catacombs of Kourend)"
+},
+"7271": {
+"name": "Cyclops",
+"level": 56,
+"spawns": 4,
+"page": "Cyclops (Catacombs of Kourend)"
+},
+"7272": {
+"name": "Twisted Banshee",
+"level": 89,
+"spawns": 6,
+"page": "Twisted Banshee"
+},
+"7273": {
+"name": "Brutal blue dragon",
+"level": 271,
+"spawns": 2,
+"page": "Brutal blue dragon"
+},
+"7274": {
+"name": "Brutal red dragon",
+"level": 289,
+"spawns": 3,
+"page": "Brutal red dragon"
+},
+"7275": {
+"name": "Brutal black dragon",
+"level": 318,
+"spawns": 4,
+"page": "Brutal black dragon"
+},
+"7276": {
+"name": "Mutated Bloodveld",
+"level": 123,
+"spawns": 37,
+"page": "Mutated Bloodveld"
+},
+"7277": {
+"name": "Warped Jelly",
+"level": 112,
+"spawns": 18,
+"page": "Warped Jelly"
+},
+"7278": {
+"name": "Greater Nechryael",
+"level": 200,
+"spawns": 30,
+"page": "Greater Nechryael"
+},
+"7279": {
+"name": "Deviant spectre",
+"level": 169,
+"spawns": 12,
+"page": "Deviant spectre"
+},
+"7418": {
+"name": "Zamorak warrior",
+"level": 84,
+"spawns": 2,
+"page": "Zamorak warrior"
+},
+"7419": {
+"name": "Zamorak warrior",
+"level": 85,
+"spawns": 1,
+"page": "Zamorak warrior"
+},
+"7420": {
+"name": "Zamorak ranger",
+"level": 81,
+"spawns": 2,
+"page": "Zamorak ranger"
+},
+"7421": {
+"name": "Zamorak ranger",
+"level": 82,
+"spawns": 1,
+"page": "Zamorak ranger"
+},
+"7422": {
+"name": "Zamorak mage",
+"level": 84,
+"spawns": 2,
+"page": "Zamorak mage"
+},
+"7423": {
+"name": "Zamorak mage",
+"level": 82,
+"spawns": 1,
+"page": "Zamorak mage"
+},
+"7424": {
+"name": "Cave lizard",
+"level": 37,
+"spawns": 9,
+"page": "Cave lizard"
+},
+"7426": {
+"name": "Zamorak crafter",
+"level": 19,
+"spawns": 1,
+"page": "Zamorak crafter"
+},
+"7427": {
+"name": "Zamorak crafter",
+"level": 19,
+"spawns": 1,
+"page": "Zamorak crafter"
+},
+"7485": {
+"name": "Zombie",
+"level": 70,
+"spawns": 3,
+"page": "Zombie (Kourend)"
+},
+"7486": {
+"name": "Zombie",
+"level": 56,
+"spawns": 2,
+"page": "Zombie (Kourend)"
+},
+"7487": {
+"name": "Zombie",
+"level": 76,
+"spawns": 2,
+"page": "Zombie (Kourend)"
+},
+"7488": {
+"name": "Zombie",
+"level": 72,
+"spawns": 1,
+"page": "Zombie (Kourend)"
+},
+"7656": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 3,
+"page": "Lesser demon"
+},
+"7657": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 3,
+"page": "Lesser demon"
+},
+"7664": {
+"name": "Lesser demon",
+"level": 82,
+"spawns": 3,
+"page": "Lesser demon"
+},
+"7679": {
+"name": "TzHaar-Ket",
+"level": 221,
+"spawns": 61,
+"page": "TzHaar-Ket"
+},
+"7682": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 3,
+"page": "TzHaar-Hur"
+},
+"7683": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 3,
+"page": "TzHaar-Hur"
+},
+"7684": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 10,
+"page": "TzHaar-Hur"
+},
+"7685": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 4,
+"page": "TzHaar-Hur"
+},
+"7686": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 7,
+"page": "TzHaar-Hur"
+},
+"7687": {
+"name": "TzHaar-Hur",
+"level": 74,
+"spawns": 3,
+"page": "TzHaar-Hur"
+},
+"7704": {
+"name": "JalTok-Jad",
+"level": 900,
+"spawns": 3,
+"page": "JalTok-Jad"
+},
+"7744": {
+"name": "Lizardman shaman",
+"level": 150,
+"spawns": 4,
+"page": "Lizardman shaman"
+},
+"7745": {
+"name": "Lizardman shaman",
+"level": 150,
+"spawns": 4,
+"page": "Lizardman shaman"
+},
+"7792": {
+"name": "Long-tailed Wyvern",
+"level": 152,
+"spawns": 8,
+"page": "Long-tailed Wyvern"
+},
+"7793": {
+"name": "Taloned Wyvern",
+"level": 147,
+"spawns": 8,
+"page": "Taloned Wyvern"
+},
+"7794": {
+"name": "Spitting Wyvern",
+"level": 139,
+"spawns": 8,
+"page": "Spitting Wyvern"
+},
+"7795": {
+"name": "Ancient Wyvern",
+"level": 210,
+"spawns": 5,
+"page": "Ancient Wyvern"
+},
+"7796": {
+"name": "Lobstrosity",
+"level": 68,
+"spawns": 9,
+"page": "Lobstrosity"
+},
+"7802": {
+"name": "Hoop Snake",
+"level": 19,
+"spawns": 12,
+"page": "Hoop Snake"
+},
+"7806": {
+"name": "Deranged archaeologist",
+"level": 276,
+"spawns": 1,
+"page": "Deranged archaeologist"
+},
+"7861": {
+"name": "Black dragon",
+"level": 247,
+"spawns": 3,
+"page": "Black dragon"
+},
+"7864": {
+"name": "Ankou",
+"level": 98,
+"spawns": 10,
+"page": "Ankou"
+},
+"7865": {
+"name": "Lesser demon",
+"level": 94,
+"spawns": 3,
+"page": "Lesser demon"
+},
+"7866": {
+"name": "Lesser demon",
+"level": 94,
+"spawns": 2,
+"page": "Lesser demon"
+},
+"7867": {
+"name": "Lesser demon",
+"level": 94,
+"spawns": 2,
+"page": "Lesser demon"
+},
+"7868": {
+"name": "Green dragon",
+"level": 88,
+"spawns": 2,
+"page": "Green dragon"
+},
+"7869": {
+"name": "Green dragon",
+"level": 88,
+"spawns": 2,
+"page": "Green dragon"
+},
+"7870": {
+"name": "Green dragon",
+"level": 88,
+"spawns": 2,
+"page": "Green dragon"
+},
+"7871": {
+"name": "Greater demon",
+"level": 104,
+"spawns": 5,
+"page": "Greater demon"
+},
+"7872": {
+"name": "Greater demon",
+"level": 104,
+"spawns": 3,
+"page": "Greater demon"
+},
+"7873": {
+"name": "Greater demon",
+"level": 104,
+"spawns": 2,
+"page": "Greater demon"
+},
+"7876": {
+"name": "Black demon",
+"level": 188,
+"spawns": 4,
+"page": "Black demon"
+},
+"7877": {
+"name": "Hellhound",
+"level": 136,
+"spawns": 5,
+"page": "Hellhound"
+},
+"7878": {
+"name": "Ice giant",
+"level": 67,
+"spawns": 2,
+"page": "Ice giant"
+},
+"7879": {
+"name": "Ice giant",
+"level": 67,
+"spawns": 2,
+"page": "Ice giant"
+},
+"7880": {
+"name": "Ice giant",
+"level": 67,
+"spawns": 2,
+"page": "Ice giant"
+},
+"7881": {
+"name": "Revenant imp",
+"level": 7,
+"spawns": 2,
+"page": "Revenant imp"
+},
+"7882": {
+"name": "Dusk",
+"level": 248,
+"spawns": 1,
+"page": "Dusk"
+},
+"7916": {
+"name": "Thief",
+"level": 21,
+"spawns": 1,
+"page": "Thief"
+},
+"7931": {
+"name": "Revenant goblin",
+"level": 15,
+"spawns": 1,
+"page": "Revenant goblin"
+},
+"7932": {
+"name": "Revenant pyrefiend",
+"level": 52,
+"spawns": 2,
+"page": "Revenant pyrefiend"
+},
+"7933": {
+"name": "Revenant hobgoblin",
+"level": 60,
+"spawns": 1,
+"page": "Revenant hobgoblin"
+},
+"7934": {
+"name": "Revenant cyclops",
+"level": 82,
+"spawns": 1,
+"page": "Revenant cyclops"
+},
+"7935": {
+"name": "Revenant hellhound",
+"level": 90,
+"spawns": 1,
+"page": "Revenant hellhound"
+},
+"7936": {
+"name": "Revenant demon",
+"level": 98,
+"spawns": 2,
+"page": "Revenant demon"
+},
+"7937": {
+"name": "Revenant ork",
+"level": 105,
+"spawns": 2,
+"page": "Revenant ork"
+},
+"7938": {
+"name": "Revenant dark beast",
+"level": 120,
+"spawns": 1,
+"page": "Revenant dark beast"
+},
+"7939": {
+"name": "Revenant knight",
+"level": 126,
+"spawns": 1,
+"page": "Revenant knight"
+},
+"7940": {
+"name": "Revenant dragon",
+"level": 135,
+"spawns": 1,
+"page": "Revenant dragon"
+},
+"7955": {
+"name": "Baby black dragon",
+"level": 83,
+"spawns": 1,
+"page": "Baby black dragon"
+},
+"7989": {
+"name": "Ogress Warrior",
+"level": 82,
+"spawns": 8,
+"page": "Ogress Warrior"
+},
+"7990": {
+"name": "Ogress Warrior",
+"level": 82,
+"spawns": 8,
+"page": "Ogress Warrior"
+},
+"7991": {
+"name": "Ogress Shaman",
+"level": 82,
+"spawns": 16,
+"page": "Ogress Shaman"
+},
+"8030": {
+"name": "Adamant dragon",
+"level": 338,
+"spawns": 5,
+"page": "Adamant dragon"
+},
+"8031": {
+"name": "Rune dragon",
+"level": 380,
+"spawns": 5,
+"page": "Rune dragon"
+},
+"8064": {
+"name": "Stone Guardian",
+"level": 124,
+"spawns": 10,
+"page": "Stone Guardian"
+},
+"8065": {
+"name": "Stone Guardian",
+"level": 124,
+"spawns": 10,
+"page": "Stone Guardian"
+},
+"8066": {
+"name": "Stone Guardian",
+"level": 124,
+"spawns": 10,
+"page": "Stone Guardian"
+},
+"8067": {
+"name": "Zombie",
+"level": 132,
+"spawns": 18,
+"page": "Zombie (Shayzien Crypts)"
+},
+"8068": {
+"name": "Zombie",
+"level": 132,
+"spawns": 16,
+"page": "Zombie (Shayzien Crypts)"
+},
+"8069": {
+"name": "Zombie",
+"level": 132,
+"spawns": 14,
+"page": "Zombie (Shayzien Crypts)"
+},
+"8070": {
+"name": "Skeleton",
+"level": 132,
+"spawns": 16,
+"page": "Skeleton (Shayzien Crypts)"
+},
+"8071": {
+"name": "Skeleton",
+"level": 132,
+"spawns": 16,
+"page": "Skeleton (Shayzien Crypts)"
+},
+"8072": {
+"name": "Skeleton",
+"level": 132,
+"spawns": 14,
+"page": "Skeleton (Shayzien Crypts)"
+},
+"8137": {
+"name": "Spider",
+"level": 35,
+"spawns": 7,
+"page": "Spider (Ungael)"
+},
+"8195": {
+"name": "Bryophyta",
+"level": 128,
+"spawns": 1,
+"page": "Bryophyta"
+},
+"8300": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 2,
+"page": "Vyrewatch"
+},
+"8301": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"8302": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"8303": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"8304": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"8305": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"8306": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"8307": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 2,
+"page": "Vyrewatch"
+},
+"8355": {
+"name": "Nylocas Vasilias",
+"level": 800,
+"spawns": 1,
+"page": "Nylocas Vasilias"
+},
+"8359": {
+"name": "Pestilent Bloat",
+"level": 870,
+"spawns": 1,
+"page": "Pestilent Bloat"
+},
+"8360": {
+"name": "The Maiden of Sugadinti",
+"level": 940,
+"spawns": 1,
+"page": "The Maiden of Sugadinti"
+},
+"8388": {
+"name": "Sotetseg",
+"level": 995,
+"spawns": 1,
+"page": "Sotetseg"
+},
+"8400": {
+"name": "Monk of Zamorak",
+"level": 22,
+"spawns": 3,
+"page": "Monk of Zamorak"
+},
+"8401": {
+"name": "Monk of Zamorak",
+"level": 17,
+"spawns": 4,
+"page": "Monk of Zamorak"
+},
+"8496": {
+"name": "Dwarf",
+"level": 11,
+"spawns": 1,
+"page": "Dwarf"
+},
+"8563": {
+"name": "Lizardman",
+"level": 62,
+"spawns": 30,
+"page": "Lizardman"
+},
+"8564": {
+"name": "Lizardman brute",
+"level": 75,
+"spawns": 21,
+"page": "Lizardman brute"
+},
+"8565": {
+"name": "Lizardman shaman",
+"level": 150,
+"spawns": 6,
+"page": "Lizardman shaman"
+},
+"8578": {
+"name": "Swamp frog",
+"level": 24,
+"spawns": 16,
+"page": "Swamp frog"
+},
+"8609": {
+"name": "Hydra",
+"level": 194,
+"spawns": 17,
+"page": "Hydra"
+},
+"8610": {
+"name": "Wyrm",
+"level": 97,
+"spawns": 16,
+"page": "Wyrm"
+},
+"8612": {
+"name": "Drake",
+"level": 192,
+"spawns": 13,
+"page": "Drake"
+},
+"8614": {
+"name": "Sulphur Lizard",
+"level": 50,
+"spawns": 13,
+"page": "Sulphur Lizard"
+},
+"8615": {
+"name": "Alchemical Hydra",
+"level": 426,
+"spawns": 1,
+"page": "Alchemical Hydra"
+},
+"8633": {
+"name": "The Mimic",
+"level": 186,
+"spawns": 1,
+"page": "The Mimic"
+},
+"8698": {
+"name": "Monk of Zamorak",
+"level": 23,
+"spawns": 2,
+"page": "Monk of Zamorak"
+},
+"8703": {
+"name": "Temple Spider",
+"level": 75,
+"spawns": 21,
+"page": "Temple Spider"
+},
+"8713": {
+"name": "Sarachnis",
+"level": 318,
+"spawns": 1,
+"page": "Sarachnis"
+},
+"8736": {
+"name": "Moss Giant",
+"level": 84,
+"spawns": 6,
+"page": "Moss Giant (Iorwerth Dungeon)"
+},
+"8978": {
+"name": "Blessed spider",
+"level": 39,
+"spawns": 48,
+"page": "Blessed spider"
+},
+"9049": {
+"name": "Zalcano",
+"level": 336,
+"spawns": 1,
+"page": "Zalcano"
+},
+"9118": {
+"name": "Rabbit",
+"level": 2,
+"spawns": 1,
+"page": "Rabbit (Prifddinas)"
+},
+"9181": {
+"name": "Dire Wolf",
+"level": 72,
+"spawns": 2,
+"page": "Dire Wolf"
+},
+"9182": {
+"name": "Guard",
+"level": 108,
+"spawns": 2,
+"page": "Guard (Prifddinas)"
+},
+"9183": {
+"name": "Guard",
+"level": 108,
+"spawns": 3,
+"page": "Guard (Prifddinas)"
+},
+"9184": {
+"name": "Guard",
+"level": 108,
+"spawns": 4,
+"page": "Guard (Prifddinas)"
+},
+"9185": {
+"name": "Guard",
+"level": 108,
+"spawns": 5,
+"page": "Guard (Prifddinas)"
+},
+"9186": {
+"name": "Guard",
+"level": 108,
+"spawns": 2,
+"page": "Guard (Prifddinas)"
+},
+"9187": {
+"name": "Guard",
+"level": 108,
+"spawns": 1,
+"page": "Guard (Prifddinas)"
+},
+"9188": {
+"name": "Guard",
+"level": 108,
+"spawns": 4,
+"page": "Guard (Prifddinas)"
+},
+"9189": {
+"name": "Guard",
+"level": 108,
+"spawns": 2,
+"page": "Guard (Prifddinas)"
+},
+"9293": {
+"name": "Basilisk Knight",
+"level": 204,
+"spawns": 20,
+"page": "Basilisk Knight"
+},
+"9483": {
+"name": "Giant rat",
+"level": 3,
+"spawns": 13,
+"page": "Giant rat (Tutorial Island)"
+},
+"9488": {
+"name": "Chicken",
+"level": 3,
+"spawns": 5,
+"page": "Chicken"
+},
+"9502": {
+"name": "Iorwerth Warrior",
+"level": 108,
+"spawns": 7,
+"page": "Iorwerth Warrior"
+},
+"9503": {
+"name": "Iorwerth Warrior",
+"level": 108,
+"spawns": 6,
+"page": "Iorwerth Warrior"
+},
+"9609": {
+"name": "Seagull",
+"level": 3,
+"spawns": 1,
+"page": "Seagull (Icyene Graveyard)"
+},
+"9727": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 2,
+"page": "Vampyre Juvinate"
+},
+"9728": {
+"name": "Vampyre Juvinate",
+"level": 54,
+"spawns": 4,
+"page": "Vampyre Juvinate"
+},
+"9731": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 4,
+"page": "Vampyre Juvenile"
+},
+"9732": {
+"name": "Vampyre Juvenile",
+"level": 45,
+"spawns": 6,
+"page": "Vampyre Juvenile"
+},
+"9735": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9736": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9737": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9738": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9739": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9740": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9741": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9742": {
+"name": "Vyrewatch",
+"level": 105,
+"spawns": 1,
+"page": "Vyrewatch"
+},
+"9756": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 3,
+"page": "Vyrewatch Sentinel"
+},
+"9757": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 3,
+"page": "Vyrewatch Sentinel"
+},
+"9758": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 2,
+"page": "Vyrewatch Sentinel"
+},
+"9759": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 3,
+"page": "Vyrewatch Sentinel"
+},
+"9760": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 1,
+"page": "Vyrewatch Sentinel"
+},
+"9761": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 3,
+"page": "Vyrewatch Sentinel"
+},
+"9762": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 2,
+"page": "Vyrewatch Sentinel"
+},
+"9763": {
+"name": "Vyrewatch Sentinel",
+"level": 151,
+"spawns": 2,
+"page": "Vyrewatch Sentinel"
+},
+"10374": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 4,
+"page": "Hill Giant"
+},
+"10375": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 1,
+"page": "Hill Giant"
+},
+"10376": {
+"name": "Hill Giant",
+"level": 28,
+"spawns": 3,
+"page": "Hill Giant"
+},
+"10435": {
+"name": "Sourhog",
+"level": 37,
+"spawns": 8,
+"page": "Sourhog"
+},
+"10494": {
+"name": "Chicken",
+"level": 1,
+"spawns": 1,
+"page": "Chicken"
+},
+"10495": {
+"name": "Chicken",
+"level": 1,
+"spawns": 2,
+"page": "Chicken"
+},
+"10496": {
+"name": "Chicken",
+"level": 1,
+"spawns": 2,
+"page": "Chicken"
+},
+"10497": {
+"name": "Chicken",
+"level": 1,
+"spawns": 1,
+"page": "Chicken"
+},
+"10541": {
+"name": "Bird",
+"level": 5,
+"spawns": 38,
+"page": "Bird"
+},
+"10544": {
+"name": "Forgotten Soul",
+"level": 20,
+"spawns": 10,
+"page": "Forgotten Soul"
+},
+"10545": {
+"name": "Forgotten Soul",
+"level": 20,
+"spawns": 10,
+"page": "Forgotten Soul"
+},
+"10717": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 1,
+"page": "Skeleton (Forthos Ruin)"
+},
+"10718": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 2,
+"page": "Skeleton (Forthos Ruin)"
+},
+"10719": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 2,
+"page": "Skeleton (Forthos Ruin)"
+},
+"10720": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 1,
+"page": "Skeleton (Forthos Ruin)"
+},
+"10721": {
+"name": "Skeleton",
+"level": 25,
+"spawns": 1,
+"page": "Skeleton (Forthos Ruin)"
+},
+"10722": {
+"name": "Ice spider",
+"level": 61,
+"spawns": 4,
+"page": "Ice spider"
+},
+"10728": {
+"name": "Woman",
+"level": 2,
+"spawns": 1,
+"page": "Woman"
+},
+"10768": {
+"name": "Xarpus",
+"level": 331,
+"spawns": 1,
+"page": "Xarpus"
+},
+"10845": {
+"name": "Nylocas Matomenos",
+"level": 68,
+"spawns": 10,
+"page": "Nylocas Matomenos"
+},
+"10888": {
+"name": "Bat",
+"level": 6,
+"spawns": 3,
+"page": "Bat"
+},
+"10984": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian (Barbarian Camp)"
+},
+"10985": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian (Barbarian Camp)"
+},
+"10986": {
+"name": "Barbarian",
+"level": 15,
+"spawns": 1,
+"page": "Barbarian (Barbarian Camp)"
+},
+"10987": {
+"name": "Barbarian",
+"level": 10,
+"spawns": 1,
+"page": "Barbarian (Barbarian Camp)"
+},
+"10988": {
+"name": "Barbarian",
+"level": 9,
+"spawns": 1,
+"page": "Barbarian (Barbarian Camp)"
+},
+"11053": {
+"name": "Woman",
+"level": 2,
+"spawns": 1,
+"page": "Woman"
+},
+"11054": {
+"name": "Woman",
+"level": 2,
+"spawns": 1,
+"page": "Woman"
+},
+"11057": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"11058": {
+"name": "Man",
+"level": 2,
+"spawns": 1,
+"page": "Man"
+},
+"11063": {
+"name": "Bandit",
+"level": 22,
+"spawns": 2,
+"page": "Bandit (Shayzien)"
+},
+"11064": {
+"name": "Bandit",
+"level": 22,
+"spawns": 2,
+"page": "Bandit (Shayzien)"
+},
+"11065": {
+"name": "Bandit",
+"level": 22,
+"spawns": 2,
+"page": "Bandit (Shayzien)"
+},
+"11066": {
+"name": "Boar",
+"level": 5,
+"spawns": 20,
+"page": "Boar"
+},
+"11067": {
+"name": "Boar",
+"level": 7,
+"spawns": 6,
+"page": "Boar"
+},
+"11068": {
+"name": "Lynx",
+"level": 21,
+"spawns": 4,
+"page": "Lynx"
+},
+"11069": {
+"name": "Lynx",
+"level": 24,
+"spawns": 6,
+"page": "Lynx"
+},
+"11071": {
+"name": "Lynx Tamer",
+"level": 21,
+"spawns": 3,
+"page": "Lynx Tamer"
+},
+"11072": {
+"name": "Soldier",
+"level": 21,
+"spawns": 14,
+"page": "Soldier (Shayzien)"
+},
+"11073": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 6,
+"page": "Sergeant (Shayzien)"
+},
+"11074": {
+"name": "Soldier",
+"level": 21,
+"spawns": 13,
+"page": "Soldier (Shayzien)"
+},
+"11075": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 3,
+"page": "Sergeant (Shayzien)"
+},
+"11076": {
+"name": "Soldier",
+"level": 21,
+"spawns": 12,
+"page": "Soldier (Shayzien)"
+},
+"11077": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 3,
+"page": "Sergeant (Shayzien)"
+},
+"11078": {
+"name": "Soldier",
+"level": 21,
+"spawns": 8,
+"page": "Soldier (Shayzien)"
+},
+"11079": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 2,
+"page": "Sergeant (Shayzien)"
+},
+"11080": {
+"name": "Soldier",
+"level": 21,
+"spawns": 7,
+"page": "Soldier (Shayzien)"
+},
+"11081": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 3,
+"page": "Sergeant (Shayzien)"
+},
+"11082": {
+"name": "Soldier",
+"level": 21,
+"spawns": 10,
+"page": "Soldier (Shayzien)"
+},
+"11083": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 1,
+"page": "Sergeant (Shayzien)"
+},
+"11084": {
+"name": "Soldier",
+"level": 21,
+"spawns": 9,
+"page": "Soldier (Shayzien)"
+},
+"11085": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 3,
+"page": "Sergeant (Shayzien)"
+},
+"11086": {
+"name": "Soldier",
+"level": 21,
+"spawns": 13,
+"page": "Soldier (Shayzien)"
+},
+"11087": {
+"name": "Sergeant",
+"level": 84,
+"spawns": 1,
+"page": "Sergeant (Shayzien)"
+},
+"11088": {
+"name": "Necromancer",
+"level": 68,
+"spawns": 3,
+"page": "Necromancer (Great Kourend)"
+},
+"11092": {
+"name": "Guard",
+"level": 21,
+"spawns": 40,
+"page": "Guard (Shayzien)"
+},
+"11093": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 5,
+"page": "Head Guard"
+},
+"11094": {
+"name": "Guard",
+"level": 21,
+"spawns": 16,
+"page": "Guard (Shayzien)"
+},
+"11095": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 3,
+"page": "Head Guard"
+},
+"11096": {
+"name": "Guard",
+"level": 21,
+"spawns": 8,
+"page": "Guard (Shayzien)"
+},
+"11097": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 3,
+"page": "Head Guard"
+},
+"11098": {
+"name": "Guard",
+"level": 21,
+"spawns": 14,
+"page": "Guard (Shayzien)"
+},
+"11100": {
+"name": "Guard",
+"level": 21,
+"spawns": 8,
+"page": "Guard (Shayzien)"
+},
+"11101": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 1,
+"page": "Head Guard"
+},
+"11102": {
+"name": "Guard",
+"level": 21,
+"spawns": 13,
+"page": "Guard (Shayzien)"
+},
+"11103": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 4,
+"page": "Head Guard"
+},
+"11104": {
+"name": "Guard",
+"level": 21,
+"spawns": 16,
+"page": "Guard (Shayzien)"
+},
+"11105": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 1,
+"page": "Head Guard"
+},
+"11106": {
+"name": "Guard",
+"level": 21,
+"spawns": 10,
+"page": "Guard (Shayzien)"
+},
+"11107": {
+"name": "Head Guard",
+"level": 84,
+"spawns": 2,
+"page": "Head Guard"
+},
+"11109": {
+"name": "Dark warrior",
+"level": 62,
+"spawns": 4,
+"page": "Dark warrior"
+},
+"11110": {
+"name": "Dark warrior",
+"level": 51,
+"spawns": 2,
+"page": "Dark warrior"
+},
+"11111": {
+"name": "Dark warrior",
+"level": 37,
+"spawns": 4,
+"page": "Dark warrior"
+},
+"11719": {
+"name": "Kephri",
+"level": 341,
+"spawns": 1,
+"page": "Kephri"
+},
+"11732": {
+"name": "Zebak",
+"level": 371,
+"spawns": 1,
+"page": "Zebak"
+},
+"11753": {
+"name": "Elidinis' Warden",
+"level": 489,
+"spawns": 1,
+"page": "Elidinis' Warden"
+},
+"11756": {
+"name": "Tumeken's Warden",
+"level": 489,
+"spawns": 1,
+"page": "Tumeken's Warden"
+},
+"11778": {
+"name": "Ba-Ba",
+"level": 359,
+"spawns": 1,
+"page": "Ba-Ba"
+},
+"11789": {
+"name": "Akkha",
+"level": 337,
+"spawns": 1,
+"page": "Akkha"
+},
+"12079": {
+"name": "Phantom Muspah",
+"level": 741,
+"spawns": 1,
+"page": "Phantom Muspah"
+},
+"12191": {
+"name": "Duke Sucellus",
+"level": 758,
+"spawns": 1,
+"page": "Duke Sucellus"
+},
+"12204": {
+"name": "The Whisperer",
+"level": 791,
+"spawns": 1,
+"page": "The Whisperer"
+},
+"12206": {
+"name": "The Whisperer",
+"level": 587,
+"spawns": 1,
+"page": "The Whisperer"
+},
+"12214": {
+"name": "The Leviathan",
+"level": 798,
+"spawns": 1,
+"page": "The Leviathan"
+},
+"12223": {
+"name": "Vardorvis",
+"level": 784,
+"spawns": 1,
+"page": "Vardorvis"
+}
+}

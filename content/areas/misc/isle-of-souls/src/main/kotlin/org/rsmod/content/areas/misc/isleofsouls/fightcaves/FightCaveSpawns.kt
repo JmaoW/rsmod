@@ -37,8 +37,12 @@ object FightCaveArena {
     /** The exit loc inside the cave, next to where players start. */
     val exitLoc = CoordGrid(2412, 5118, 0)
 
-    /** Where players are sent when they leave: in front of the entrance, on the lobby plaza. */
-    val exit = CoordGrid(2208, 2858, 0)
+    /**
+     * Where players are sent when they leave: in front of the cave's real entrance in Mor Ul Rek
+     * (the Karamja Dungeon dungeon entrance on the isle leads there), on the tile north of the
+     * entrance's middle.
+     */
+    val exit = CoordGrid(2438, 5168, 0)
 
     val points: Map<SpawnPoint, CoordGrid> =
         mapOf(

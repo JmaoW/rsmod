@@ -28,6 +28,9 @@ internal object IsleOfSoulsTaskStructs : StructBuilder() {
     const val ENTER_MINING_GUILD_TASK = 1845
 
     private const val DIFFICULTY_MEDIUM = 2
+    private const val SKILL_MAGIC = 4
+    private const val CATEGORY_COMBAT = 2
+    private const val AREA_GLOBAL = 0
     private const val AREA_ASGARNIA = 3
     private const val SKILL_MINING = 13
     private const val CATEGORY_GENERAL = 1
@@ -44,6 +47,21 @@ internal object IsleOfSoulsTaskStructs : StructBuilder() {
                     skill = SKILL_MINING,
                 )
         }
+
+        for (task in IsleOfSoulsMagicTasks.all) {
+            build(IsleOfSoulsMagicTasks.structName(task)) {
+                paramMap =
+                    task(
+                        id = IsleOfSoulsMagicTasks.taskId(task.key),
+                        name = task.name,
+                        description = task.description,
+                        difficulty = task.tier.difficulty,
+                        area = AREA_GLOBAL,
+                        skill = SKILL_MAGIC,
+                        category = if (task.combat) CATEGORY_COMBAT else CATEGORY_GENERAL,
+                    )
+            }
+        }
     }
 
     private fun task(
@@ -53,6 +71,7 @@ internal object IsleOfSoulsTaskStructs : StructBuilder() {
         difficulty: Int,
         area: Int,
         skill: Int,
+        category: Int = CATEGORY_GENERAL,
     ): ParamMap {
         val params =
             mapOf<Int, Any>(
@@ -63,7 +82,7 @@ internal object IsleOfSoulsTaskStructs : StructBuilder() {
                 1851 to difficulty,
                 1852 to difficulty,
                 2044 to difficulty,
-                1016 to CATEGORY_GENERAL,
+                1016 to category,
                 1017 to area,
                 1018 to skill,
             )

@@ -57,6 +57,7 @@ object MasteryKills {
     const val SLOT_SLAYER = 4
     const val SLOT_JAD = 5
     const val SLOT_COMBAT_LEVEL = 6
+    const val SLOT_ZUK = 10
 
     /** "Defeat 10 monsters with a combat level of 100 or more." */
     const val HIGH_LEVEL = 100

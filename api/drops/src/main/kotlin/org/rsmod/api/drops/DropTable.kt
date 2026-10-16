@@ -67,5 +67,8 @@ public class DropTable(
     }
 }
 
-/** An item that was rolled from a [DropTable]. */
-public data class DropResult(val obj: ObjType, val count: Int)
+/**
+ * An item that was rolled from a [DropTable]. [boosted] is set when it came from a
+ * [DropEntry.boosted] entry, whether or not a multiplier was applied to the roll.
+ */
+public data class DropResult(val obj: ObjType, val count: Int, val boosted: Boolean = false)

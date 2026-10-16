@@ -1,6 +1,5 @@
 package org.rsmod.content.areas.misc.isleofsouls.fightcaves
 
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.rsmod.api.testing.GameTestState
@@ -39,25 +38,6 @@ class FightCaveArenaTest {
         assertTrue(zoneX in 296..303, "start zone x $zoneX")
         assertTrue(zoneZ in 632..639, "start zone z $zoneZ")
     }
-
-    @Test
-    fun GameTestState.`the lobby plaza has room for the entrance and the gatekeeper`() =
-        runGameTest {
-            val entrance = locTypes[cave_locs.entrance]
-            println("entrance loc ${entrance.name} ${entrance.width}x${entrance.length}")
-            assertTrue(
-                footprintFree(FightCaveScript.GATEKEEPER, 1),
-                "gatekeeper tile ${FightCaveScript.GATEKEEPER} is blocked",
-            )
-            assertEquals(3, entrance.width)
-            assertEquals(2, entrance.length)
-            val front = FightCaveScript.ENTRANCE.translate(1, -1)
-            assertTrue(
-                footprintFree(front, 1),
-                "the tile in front of the entrance $front is blocked",
-            )
-            assertEquals(1, npcTypes[cave_npcs.gatekeeper].size)
-        }
 
     /**
      * Cave monsters step straight at their target and stop at walls. Every spawn point must let a

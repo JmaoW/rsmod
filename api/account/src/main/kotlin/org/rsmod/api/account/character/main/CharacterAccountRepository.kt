@@ -3,7 +3,9 @@ package org.rsmod.api.account.character.main
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.inject.Inject
 import java.sql.Statement
+import java.time.LocalDateTime
 import kotlin.math.roundToInt
+import org.rsmod.api.account.character.CharacterDataStage
 import org.rsmod.api.account.character.CharacterMetadataList
 import org.rsmod.api.db.DatabaseConnection
 import org.rsmod.api.db.util.getIntOrNull
@@ -210,9 +212,38 @@ constructor(
         return null
     }
 
-    public fun save(
-        connection: DatabaseConnection,
+    /**
+     * Copies the state this repository saves out of [player]. Must be called on the game thread;
+     * the returned snapshot is written later and never reads [player] again.
+     */
+    public fun snapshot(
         player: Player,
+        accountId: Int,
+        characterId: Int,
+    ): CharacterDataStage.Snapshot {
+        val saved = CharacterAccountSnapshot(player, varpTypes)
+        return CharacterDataStage.Snapshot { connection ->
+            save(connection, saved, accountId, characterId)
+        }
+    }
+
+    private class CharacterAccountSnapshot(player: Player, varpTypes: VarpTypeList) {
+        val x = player.x
+        val z = player.z
+        val level = player.level
+        val persistentVarps: Map<Int, Int> =
+            player.vars.backing.filterKeys { id -> varpTypes[id]?.scope == VarpLifetime.Perm }
+        val lastLogin: LocalDateTime = player.lastLogin
+        val runEnergy = player.runEnergy
+        val xpRate = player.xpRate
+        val displayName: String? = player.displayName.takeIf(String::isNotBlank)
+        val lastKnownDevice: Int? = player.lastKnownDevice
+        val modLevel: String? = player.modLevel.internalName
+    }
+
+    private fun save(
+        connection: DatabaseConnection,
+        saved: CharacterAccountSnapshot,
         accountId: Int,
         characterId: Int,
     ) {
@@ -228,16 +259,14 @@ constructor(
             )
 
         updateCharacter.use {
-            val persistentVarps =
-                player.vars.backing.filterKeys { id -> varpTypes[id]?.scope == VarpLifetime.Perm }
-            val varpsJson = objectMapper.writeValueAsString(persistentVarps)
-            it.setInt(1, player.x)
-            it.setInt(2, player.z)
-            it.setInt(3, player.level)
+            val varpsJson = objectMapper.writeValueAsString(saved.persistentVarps)
+            it.setInt(1, saved.x)
+            it.setInt(2, saved.z)
+            it.setInt(3, saved.level)
             it.setString(4, varpsJson)
-            it.setSqliteTimestamp(5, player.lastLogin)
-            it.setInt(6, player.runEnergy)
-            it.setInt(7, (player.xpRate * 100).roundToInt())
+            it.setSqliteTimestamp(5, saved.lastLogin)
+            it.setInt(6, saved.runEnergy)
+            it.setInt(7, (saved.xpRate * 100).roundToInt())
             it.setInt(8, characterId)
             it.executeUpdate()
         }
@@ -253,9 +282,9 @@ constructor(
             )
 
         updateAccount.use {
-            it.setNullableString(1, player.displayName.takeIf(String::isNotBlank))
-            it.setNullableInt(2, player.lastKnownDevice)
-            it.setNullableString(3, player.modLevel.internalName)
+            it.setNullableString(1, saved.displayName)
+            it.setNullableInt(2, saved.lastKnownDevice)
+            it.setNullableString(3, saved.modLevel)
             it.setInt(4, accountId)
             it.executeUpdate()
         }

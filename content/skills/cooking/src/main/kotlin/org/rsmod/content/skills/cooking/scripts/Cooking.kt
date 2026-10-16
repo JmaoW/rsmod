@@ -127,6 +127,8 @@ constructor(
             return
         }
 
+        food.leaves?.let { invAdd(inv, it, 1) }
+
         val name = objTypes[result].name.lowercase()
         if (success) {
             val xp = food.xp * xpMods.get(player, stats.cooking)
@@ -191,7 +193,8 @@ constructor(
         private const val COOK_DELAY = 3
         private const val ANIM_INTERVAL = 4
 
-        private val UNCOUNTABLE = setOf("bread", "cooked meat", "cooked chicken", "cooked rabbit")
+        private val UNCOUNTABLE =
+            setOf("bread", "cooked meat", "cooked chicken", "cooked rabbit", "stew", "curry")
 
         /** The recipe for cooking [raw], or `null` if it cannot be cooked. */
         fun recipe(raw: ObjType): Recipe? =

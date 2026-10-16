@@ -9,12 +9,16 @@ import org.rsmod.api.player.stat.statBase
 import org.rsmod.api.script.advanced.onWearposChange
 import org.rsmod.api.script.onEvent
 import org.rsmod.api.script.onPlayerLogin
+import org.rsmod.api.spells.events.SpellCast
+import org.rsmod.content.areas.misc.isleofsouls.configs.IsleOfSoulsMagicTasks
 import org.rsmod.content.areas.misc.isleofsouls.configs.IsleOfSoulsTaskStructs
 import org.rsmod.content.areas.misc.isleofsouls.configs.isle_objs
 import org.rsmod.content.areas.misc.isleofsouls.miningguild.GoldenNuggetFound
 import org.rsmod.content.areas.misc.isleofsouls.miningguild.MiningGuildEntered
 import org.rsmod.content.interfaces.prayer.tab.Prayer
 import org.rsmod.content.interfaces.prayer.tab.PrayerEvents
+import org.rsmod.content.skills.agility.scripts.Agility
+import org.rsmod.content.skills.agility.scripts.Arena
 import org.rsmod.content.skills.cooking.scripts.Cooking
 import org.rsmod.content.skills.crafting.configs.CraftingObjs
 import org.rsmod.content.skills.crafting.scripts.Crafting
@@ -27,28 +31,47 @@ import org.rsmod.content.skills.herblore.configs.Potion
 import org.rsmod.content.skills.herblore.configs.Potions
 import org.rsmod.content.skills.herblore.scripts.Drinking
 import org.rsmod.content.skills.herblore.scripts.Herblore
+import org.rsmod.content.skills.hunter.scripts.Birdhouses
+import org.rsmod.content.skills.hunter.scripts.Falconer
+import org.rsmod.content.skills.hunter.scripts.HunterCatching
+import org.rsmod.content.skills.hunter.scripts.HunterTraps
 import org.rsmod.content.skills.mining.configs.ProspectorObjs
 import org.rsmod.content.skills.mining.scripts.Mining
 import org.rsmod.content.skills.prayer.configs.AltarKind
 import org.rsmod.content.skills.prayer.scripts.Altars
 import org.rsmod.content.skills.prayer.scripts.Burying
+import org.rsmod.content.skills.runecraft.configs.Pouch
+import org.rsmod.content.skills.runecraft.configs.Pouches
+import org.rsmod.content.skills.runecraft.configs.RuneAltar
+import org.rsmod.content.skills.runecraft.scripts.Abyss
+import org.rsmod.content.skills.runecraft.scripts.EssenceMine
+import org.rsmod.content.skills.runecraft.scripts.EssencePouches
+import org.rsmod.content.skills.runecraft.scripts.Runecrafting
+import org.rsmod.content.skills.slayer.scripts.SlayerEvents
 import org.rsmod.content.skills.smithing.scripts.Smelting
 import org.rsmod.content.skills.smithing.scripts.Smithing
+import org.rsmod.content.skills.thieving.configs.PickpocketTarget
+import org.rsmod.content.skills.thieving.configs.Stall
+import org.rsmod.content.skills.thieving.configs.ThievingObjs
+import org.rsmod.content.skills.thieving.scripts.CoinPouches
+import org.rsmod.content.skills.thieving.scripts.Pickpocketing
+import org.rsmod.content.skills.thieving.scripts.StallThieving
 import org.rsmod.content.skills.woodcutting.scripts.Woodcutting
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.isType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.stat.StatType
+import org.rsmod.game.type.varp.VarpType
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
 /**
  * Completes league tasks from mining, woodcutting, fishing, cooking, firemaking, smithing,
- * fletching, prayer, herblore and crafting. Tasks that depend on a guild, or on content that does
- * not exist yet (dark crabs, anglerfish fishing, pizzas, Wintertodt, pyre logs, torches and
- * lanterns, soft clay, granite, oak planks), are left locked. Tasks that used to name a place (see
- * `IsleOfSoulsTaskEdits`) complete anywhere.
+ * fletching, prayer, herblore, crafting and runecraft. Tasks that depend on a guild, or on content
+ * that does not exist yet (dark crabs, anglerfish fishing, pizzas, Wintertodt, pyre logs, torches
+ * and lanterns, soft clay, granite, oak planks), are left locked. Tasks that used to name a place
+ * (see `IsleOfSoulsTaskEdits`) complete anywhere.
  */
 class LeagueSkillTasks
 @Inject
@@ -56,8 +79,12 @@ constructor(
     private val tracker: LeagueTaskTracker,
     private val objTypes: ObjTypeList,
     private val levelTasks: LeagueLevelTasks,
+    private val hunterTasks: LeagueHunterTasks,
+    private val agilityTasks: LeagueAgilityTasks,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
+        onEvent<SpellCast> { checkMilestones(player, stats.magic) }
+        onEvent<SlayerEvents.Kill> { checkMilestones(player, stats.slayer) }
         onEvent<Mining.MineOre> { onMine(player, product) }
         onEvent<Mining.GemFound> { tracker.complete(player, TASK_MINE_GEM) }
         onEvent<MiningGuildEntered> { tracker.complete(player, TASK_ENTER_MINING_GUILD) }
@@ -77,13 +104,49 @@ constructor(
         onEvent<Herblore.PotionMade> { onMake(player, potion, bonusDose) }
         onEvent<Drinking.PotionDrunk> { onDrink(player, potion) }
         onEvent<Crafting.ItemCrafted> { onCraft(player, product, quantity) }
+        onEvent<Pickpocketing.Pickpocketed> { onPickpocket(player, target, loot, victims) }
+        onEvent<StallThieving.Stolen> { onSteal(player, stall, obj) }
+        onEvent<CoinPouches.PouchesOpened> { onPouchesOpened(player, count, coins) }
+        onEvent<Agility.LapDone> { checkMilestones(player, stats.agility) }
+        onEvent<Agility.ObstacleDone> { checkMilestones(player, stats.agility) }
+        onEvent<Agility.MarkTaken> { agilityTasks.onMarkTaken(player) }
+        onEvent<Arena.Tagged> { agilityTasks.onTagged(player, streak) }
+        onEvent<Agility.ShortcutUsed> { checkMilestones(player, stats.agility) }
+        onEvent<HunterTraps.Trapped> {
+            hunterTasks.onTrapped(player, creature, catches)
+            checkMilestones(player, stats.hunter)
+        }
+        onEvent<HunterCatching.Caught> {
+            hunterTasks.onCaught(player, name, jarred)
+            checkMilestones(player, stats.hunter)
+        }
+        onEvent<HunterCatching.Looted> { hunterTasks.onLooted(player, name, obj) }
+        onEvent<Falconer.Hunted> { checkMilestones(player, stats.hunter) }
+        onEvent<Birdhouses.Built> { hunterTasks.onBirdhouseBuilt(player, house) }
+        onEvent<Birdhouses.Collected> {
+            hunterTasks.onBirdhouseCollected(player)
+            checkMilestones(player, stats.hunter)
+        }
+        onEvent<EssenceMine.MineVisited> { tracker.complete(player, TASK_VISIT_ESSENCE_MINE) }
+        onEvent<EssenceMine.EssenceMined> { onEssenceMined(player, pure) }
+        onEvent<Runecrafting.RunesCrafted> { onRunesCrafted(player, altar, essence, runes) }
+        onEvent<Runecrafting.ComboRunesCrafted> { onComboCrafted(player, altar, combo.rune) }
+        onEvent<Runecrafting.TalismanLocated> { tracker.complete(player, TASK_LOCATE_ALTAR) }
+        onEvent<Abyss.AltarEntered> { tracker.complete(player, TASK_USE_ABYSS) }
+        onEvent<EssencePouches.PouchFilled> { onPouchFilled(player, pouch) }
         onEvent<Altars.BoneOffered> { onOffer(player, bone, altar) }
         onEvent<Altars.PrayerRestored> { onRestore(player, points) }
         onEvent<PrayerEvents.Enabled> { onPray(player, prayer) }
-        onWearposChange { checkProspectorOutfit(player) }
+        onWearposChange {
+            checkProspectorOutfit(player)
+            hunterTasks.checkGear(player)
+            agilityTasks.checkGear(player)
+        }
         onPlayerLogin {
             checkMilestones(player)
             checkProspectorOutfit(player)
+            hunterTasks.checkGear(player)
+            agilityTasks.checkGear(player)
             levelTasks.check(player)
         }
     }
@@ -293,6 +356,149 @@ constructor(
         checkMilestones(player, stats.crafting)
     }
 
+    private fun onPickpocket(
+        player: Player,
+        target: PickpocketTarget,
+        loot: List<Pickpocketing.Loot>,
+        victims: Int,
+    ) {
+        when (target.key) {
+            "man" -> tracker.complete(player, TASK_PICKPOCKET_CITIZEN)
+            "master_farmer" -> tracker.complete(player, TASK_PICKPOCKET_MASTER_FARMER)
+            "ham" -> tracker.complete(player, TASK_PICKPOCKET_HAM)
+            "guard" -> tracker.complete(player, TASK_PICKPOCKET_GUARD)
+            "desert_bandit" -> tracker.complete(player, TASK_PICKPOCKET_BANDIT)
+            "hero" -> tracker.complete(player, TASK_PICKPOCKET_HERO)
+            "knight" ->
+                countVictims(player, TASK_KNIGHT_50, league_progress.pickpocket_knight_50, victims)
+            "elf_lletya",
+            "elf_prifddinas" ->
+                countVictims(player, TASK_ELF_50, league_progress.pickpocket_elf_50, victims)
+            "vyre" ->
+                countVictims(player, TASK_VYRE_50, league_progress.pickpocket_vyre_50, victims)
+            "menaphite_thug" ->
+                countVictims(player, TASK_THUG_50, league_progress.pickpocket_thug_50, victims)
+        }
+        for (item in loot) {
+            when (item.obj.id) {
+                ThievingObjs.bullseye_lantern_unlit.id ->
+                    tracker.complete(player, TASK_BULLSEYE_LANTERN)
+                ThievingObjs.king_worm.id -> tracker.complete(player, TASK_KING_WORM)
+                ThievingObjs.varlamore_thieving_house_key.id -> {
+                    tracker.complete(player, TASK_HOUSE_KEY)
+                    repeat(item.count) {
+                        tracker.addProgress(
+                            player,
+                            TASK_HOUSE_KEYS_15,
+                            league_progress.house_keys_15,
+                            15,
+                        )
+                    }
+                }
+            }
+        }
+        checkMilestones(player, stats.thieving)
+    }
+
+    /** One count for each npc robbed, so the Dodgy Deals relic's neighbours count too. */
+    private fun countVictims(player: Player, taskId: Int, counter: VarpType, victims: Int) {
+        repeat(victims) { tracker.addProgress(player, taskId, counter, 50) }
+    }
+
+    private fun onSteal(player: Player, stall: Stall, obj: ObjType) {
+        val o = ThievingObjs
+        when (stall.key) {
+            "bakery" ->
+                if (obj.id == o.chocolate_slice.id) {
+                    tracker.complete(player, TASK_STEAL_CHOCOLATE_SLICE)
+                }
+            "tea" -> tracker.complete(player, TASK_STEAL_TEA)
+            "silk" -> tracker.complete(player, TASK_STEAL_SILK)
+            "fruit" ->
+                if (obj.id == o.golovanova_top.id) {
+                    tracker.complete(player, TASK_STEAL_GOLOVANOVA)
+                }
+            "fur" -> tracker.complete(player, TASK_STEAL_FUR)
+            "silver" -> {
+                tracker.complete(player, TASK_STEAL_SILVER)
+                if (obj.id == o.tiara.id) {
+                    tracker.complete(player, TASK_STEAL_TIARA)
+                }
+            }
+            "spice" -> tracker.complete(player, TASK_STEAL_SPICE)
+            "fish" -> tracker.complete(player, TASK_STEAL_FISH)
+            "crossbow" ->
+                if (obj.id == o.xbows_crossbow_stock_wood.id) {
+                    tracker.complete(player, TASK_STEAL_WOODEN_STOCK)
+                }
+            "crafting" ->
+                if (obj.id == o.chisel.id) {
+                    tracker.complete(player, TASK_STEAL_CHISEL)
+                }
+            "gem",
+            "mor_ul_rek_gem" -> {
+                tracker.complete(player, TASK_STEAL_GEM)
+                if (obj.id == o.uncut_diamond.id || obj.id == o.diamond.id) {
+                    tracker.complete(player, TASK_STEAL_DIAMOND)
+                }
+            }
+        }
+        checkMilestones(player, stats.thieving)
+    }
+
+    private fun onPouchesOpened(player: Player, count: Int, coins: Int) {
+        if (count >= 28) {
+            tracker.complete(player, TASK_OPEN_28_POUCHES)
+        }
+        if (coins >= 800) {
+            tracker.complete(player, TASK_800_COINS_FROM_POUCHES)
+        }
+    }
+
+    private fun onEssenceMined(player: Player, pure: Boolean) {
+        tracker.complete(player, TASK_MINE_ESSENCE)
+        if (pure) {
+            tracker.addProgress(player, TASK_MINE_PURE_ESSENCE, league_progress.pure_essence_25, 25)
+        }
+    }
+
+    /** The altar's runes and essence count for the tasks that name one; air, fire and body once. */
+    private fun onRunesCrafted(player: Player, altar: RuneAltar, essence: Int, runes: Int) {
+        when (altar.name) {
+            "air" -> tracker.complete(player, TASK_CRAFT_AIR_RUNE)
+            "fire" -> tracker.complete(player, TASK_CRAFT_FIRE_RUNE)
+            "body" -> tracker.complete(player, TASK_CRAFT_BODY_RUNE)
+        }
+        if (essence == 1 && runes >= 4) {
+            tracker.complete(player, TASK_FOUR_RUNES_ONE_ESSENCE)
+        }
+        repeat(essence) {
+            tracker.addProgress(player, TASK_ESSENCE_200, league_progress.runes_essence_200, 200)
+            tracker.addProgress(player, TASK_ESSENCE_2500, league_progress.runes_essence_2500, 2500)
+        }
+        for (rule in runeCounts) {
+            if (rule.altar == altar.name) {
+                repeat(runes) { tracker.addProgress(player, rule.taskId, rule.counter, rule.goal) }
+            }
+        }
+        checkMilestones(player, stats.runecrafting)
+    }
+
+    private fun onComboCrafted(player: Player, altar: RuneAltar, rune: ObjType) {
+        tracker.complete(player, TASK_COMBINATION_RUNE)
+        if (altar.name == "fire" && rune.internalNameValue == "lavarune") {
+            tracker.complete(player, TASK_LAVA_RUNE_AT_FIRE_ALTAR)
+        }
+        checkMilestones(player, stats.runecrafting)
+    }
+
+    private fun onPouchFilled(player: Player, pouch: Pouch) {
+        when {
+            pouch === Pouches.large -> tracker.complete(player, TASK_FILL_LARGE_POUCH)
+            pouch === Pouches.giant -> tracker.complete(player, TASK_FILL_GIANT_POUCH)
+        }
+    }
+
     private fun onBury(player: Player, bone: ObjType) {
         tracker.complete(player, TASK_BURY_BONES)
         if (isDragonOrWyvern(bone)) {
@@ -379,6 +585,14 @@ constructor(
     private class CountRule(
         val taskId: Int,
         val product: ObjType,
+        val goal: Int,
+        val counter: org.rsmod.game.type.varp.VarpType,
+    )
+
+    /** Craft [goal] runes at the altar called [altar]; [counter] persists the running total. */
+    private class RuneCount(
+        val taskId: Int,
+        val altar: String,
         val goal: Int,
         val counter: org.rsmod.game.type.varp.VarpType,
     )
@@ -655,6 +869,17 @@ constructor(
             CountRule(1353, CraftingObjs.empty_light_orb, 100, league_progress.blow_light_orbs),
         )
 
+    private val runeCounts =
+        listOf(
+            RuneCount(462, "water", 50, league_progress.water_runes_50),
+            RuneCount(463, "cosmic", 50, league_progress.cosmic_runes_50),
+            RuneCount(573, "astral", 50, league_progress.astral_runes_50),
+            RuneCount(648, "nature", 50, league_progress.nature_runes_50),
+            RuneCount(525, "death", 50, league_progress.death_runes_50),
+            RuneCount(776, "law", 50, league_progress.law_runes_50),
+            RuneCount(1603, "blood", 100, league_progress.blood_runes_100),
+        )
+
     private val milestones =
         listOf(
             Milestone.Level(258, stats.mining, 99),
@@ -697,6 +922,30 @@ constructor(
             Milestone.Xp(251, stats.crafting, 25_000_000),
             Milestone.Xp(1472, stats.crafting, 35_000_000),
             Milestone.Xp(1495, stats.crafting, 50_000_000),
+            Milestone.Level(256, stats.hunter, 99),
+            Milestone.Xp(257, stats.hunter, 25_000_000),
+            Milestone.Xp(1475, stats.hunter, 35_000_000),
+            Milestone.Xp(1498, stats.hunter, 50_000_000),
+            Milestone.Level(248, stats.thieving, 99),
+            Milestone.Xp(249, stats.thieving, 25_000_000),
+            Milestone.Xp(1471, stats.thieving, 35_000_000),
+            Milestone.Xp(1494, stats.thieving, 50_000_000),
+            Milestone.Level(244, stats.agility, 99),
+            Milestone.Xp(245, stats.agility, 25_000_000),
+            Milestone.Xp(1469, stats.agility, 35_000_000),
+            Milestone.Xp(1492, stats.agility, 50_000_000),
+            Milestone.Level(238, stats.runecrafting, 99),
+            Milestone.Xp(239, stats.runecrafting, 25_000_000),
+            Milestone.Xp(1466, stats.runecrafting, 35_000_000),
+            Milestone.Xp(1489, stats.runecrafting, 50_000_000),
+            Milestone.Level(254, stats.slayer, 99),
+            Milestone.Xp(255, stats.slayer, 25_000_000),
+            Milestone.Xp(1474, stats.slayer, 35_000_000),
+            Milestone.Xp(1497, stats.slayer, 50_000_000),
+            Milestone.Level(236, stats.magic, 99),
+            Milestone.Xp(IsleOfSoulsMagicTasks.taskId("xp_25m"), stats.magic, 25_000_000),
+            Milestone.Xp(IsleOfSoulsMagicTasks.taskId("xp_35m"), stats.magic, 35_000_000),
+            Milestone.Xp(1488, stats.magic, 50_000_000),
         )
 
     private companion object {
@@ -727,5 +976,49 @@ constructor(
         const val TASK_PIETY = 727
         const val TASK_DRINK_STRENGTH = 393
         const val TASK_FOUR_DOSE_POTION = 396
+        const val TASK_VISIT_ESSENCE_MINE = 364
+        const val TASK_LOCATE_ALTAR = 366
+        const val TASK_CRAFT_AIR_RUNE = 774
+        const val TASK_CRAFT_FIRE_RUNE = 854
+        const val TASK_CRAFT_BODY_RUNE = 775
+        const val TASK_MINE_ESSENCE = 1801
+        const val TASK_MINE_PURE_ESSENCE = 1613
+        const val TASK_ESSENCE_200 = 367
+        const val TASK_ESSENCE_2500 = 370
+        const val TASK_FOUR_RUNES_ONE_ESSENCE = 368
+        const val TASK_COMBINATION_RUNE = 369
+        const val TASK_LAVA_RUNE_AT_FIRE_ALTAR = 855
+        const val TASK_USE_ABYSS = 982
+        const val TASK_FILL_LARGE_POUCH = 983
+        const val TASK_FILL_GIANT_POUCH = 984
+        const val TASK_PICKPOCKET_CITIZEN = 273
+        const val TASK_STEAL_CHOCOLATE_SLICE = 275
+        const val TASK_STEAL_TEA = 457
+        const val TASK_STEAL_SILK = 1071
+        const val TASK_STEAL_GOLOVANOVA = 76
+        const val TASK_PICKPOCKET_MASTER_FARMER = 86
+        const val TASK_OPEN_28_POUCHES = 274
+        const val TASK_800_COINS_FROM_POUCHES = 277
+        const val TASK_PICKPOCKET_HAM = 454
+        const val TASK_PICKPOCKET_GUARD = 455
+        const val TASK_BULLSEYE_LANTERN = 458
+        const val TASK_KNIGHT_50 = 684
+        const val TASK_PICKPOCKET_BANDIT = 850
+        const val TASK_HOUSE_KEY = 1699
+        const val TASK_HOUSE_KEYS_15 = 1700
+        const val TASK_STEAL_DIAMOND = 1768
+        const val TASK_STEAL_TIARA = 1769
+        const val TASK_STEAL_FUR = 1817
+        const val TASK_STEAL_SILVER = 1818
+        const val TASK_STEAL_SPICE = 1819
+        const val TASK_STEAL_FISH = 1834
+        const val TASK_STEAL_WOODEN_STOCK = 1835
+        const val TASK_STEAL_CHISEL = 1844
+        const val TASK_STEAL_GEM = 279
+        const val TASK_ELF_50 = 526
+        const val TASK_PICKPOCKET_HERO = 685
+        const val TASK_THUG_50 = 851
+        const val TASK_VYRE_50 = 911
+        const val TASK_KING_WORM = 1541
     }
 }

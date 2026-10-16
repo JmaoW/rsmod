@@ -22,12 +22,14 @@ import net.rsprot.protocol.util.CombinedId
 import org.junit.jupiter.api.Assertions
 import org.rsmod.annotations.InternalApi
 import org.rsmod.api.account.character.CharacterDataStage
+import org.rsmod.api.account.saver.AccountSavingService
 import org.rsmod.api.combat.mastery.CombatMasteryProvider
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.db.Database
 import org.rsmod.api.db.DatabaseConnection
 import org.rsmod.api.game.process.GameCycle
+import org.rsmod.api.game.process.player.RunDrainMod
 import org.rsmod.api.inv.map.InvMapInit
 import org.rsmod.api.market.DefaultMarketPrices
 import org.rsmod.api.market.MarketPrices
@@ -79,6 +81,7 @@ import org.rsmod.api.registry.zone.ZonePlayerActivityBitSet
 import org.rsmod.api.registry.zone.ZoneUpdateMap
 import org.rsmod.api.repo.controller.ControllerRepository
 import org.rsmod.api.repo.loc.LocRepository
+import org.rsmod.api.repo.RespawnSpeed
 import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.api.repo.player.PlayerRepository
@@ -161,6 +164,7 @@ import org.rsmod.game.type.loc.LocType
 import org.rsmod.game.type.loc.LocTypeList
 import org.rsmod.game.type.loc.UnpackedLocType
 import org.rsmod.game.type.mod.ModLevelTypeList
+import org.rsmod.game.type.mod.UnpackedModLevelType
 import org.rsmod.game.type.npc.NpcTypeList
 import org.rsmod.game.type.npc.UnpackedNpcType
 import org.rsmod.game.type.obj.ObjType
@@ -200,6 +204,7 @@ constructor(
     public val conRepo: ControllerRepository,
     public val npcRepo: NpcRepository,
     public val objRepo: ObjRepository,
+    public val respawnSpeed: RespawnSpeed,
     private val gameCycle: GameCycle,
     private val collision: CollisionFlagMap,
     private val locZoneStorage: LocZoneStorage,
@@ -281,6 +286,7 @@ constructor(
         player.accountHash = resolvedUuid
         player.userId = resolvedUuid
         player.runEnergy = Int.MAX_VALUE
+        player.initModLevel()
         player.assignUid()
         players[slot] = player
         eventBus.publish(SessionStateEvent.Initialize(player))
@@ -290,6 +296,16 @@ constructor(
         eventBus.publish(SessionStateEvent.Login(player))
         eventBus.publish(SessionStateEvent.EngineLogin(player))
         return player
+    }
+
+    // A real player always has a mod level by the time they are in the world, and saving their
+    // account reads it. Tests that set their own keep it.
+    private fun Player.initModLevel() {
+        try {
+            modLevel
+        } catch (_: UninitializedPropertyAccessException) {
+            modLevel = UnpackedModLevelType(0, 0, 0, "player")
+        }
     }
 
     @OptIn(InternalApi::class)
@@ -937,6 +953,9 @@ constructor(
             bind(StepFactory::class.java).`in`(Scopes.SINGLETON)
 
             bind(AccountRegistry::class.java).`in`(Scopes.SINGLETON)
+            // Nothing runs the saving service in tests, so saves just pile up in its queue where
+            // tests can count them.
+            bind(AccountSavingService::class.java).`in`(Scopes.SINGLETON)
             bind(ControllerList::class.java).`in`(Scopes.SINGLETON)
             bind(ControllerRegistry::class.java).`in`(Scopes.SINGLETON)
             bind(ControllerRepository::class.java).`in`(Scopes.SINGLETON)
@@ -957,6 +976,7 @@ constructor(
             bind(RegionRepository::class.java).`in`(Scopes.SINGLETON)
             bind(ObjRegistry::class.java).`in`(Scopes.SINGLETON)
             bind(ObjRepository::class.java).`in`(Scopes.SINGLETON)
+            bind(RespawnSpeed::class.java).`in`(Scopes.SINGLETON)
             bind(ZoneUpdateMap::class.java).`in`(Scopes.SINGLETON)
             bind(WorldRepository::class.java).`in`(Scopes.SINGLETON)
 
@@ -1011,6 +1031,7 @@ constructor(
                 .addBinding()
                 .toInstance(TestCombatMasteries)
 
+            Multibinder.newSetBinder(binder(), RunDrainMod::class.java)
             Multibinder.newSetBinder(binder(), XpMod::class.java)
             bind(XpModifiers::class.java).`in`(Scopes.SINGLETON)
 

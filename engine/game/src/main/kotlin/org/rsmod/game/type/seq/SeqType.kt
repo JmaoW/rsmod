@@ -155,7 +155,8 @@ public data class UnpackedSeqType(
 }
 
 private fun ShortArray.tickDuration(): Int {
-    val validDelays = dropLastWhile { it > 30 }
+    // The cache stores delays as unsigned shorts: a sentinel above `32767` reads as negative.
+    val validDelays = dropLastWhile { it > 30 || it < 0 }
     val buffer = if (validDelays.size != size) 5 else 0
     val duration = (validDelays.sum() + buffer) * 20
     return ceil(duration / 600.0).toInt()

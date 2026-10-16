@@ -90,6 +90,8 @@ object HerbloreObjs : ObjReferences() {
     val chocolate_bar = find("chocolate_bar")
     val blue_dragon_scale = find("blue_dragon_scale")
     val lava_scale = find("lava_scale")
+    val superior_dragon_bones = find("dragon_bones_superior")
+    val crushed_superior_dragon_bones = find("crushed_dragon_bones")
     val bird_nest_egg_red = find("bird_nest_egg_red")
     val bird_nest_egg_green = find("bird_nest_egg_green")
     val bird_nest_egg_blue = find("bird_nest_egg_blue")
@@ -143,6 +145,10 @@ object HerbloreObjs : ObjReferences() {
         doses("4dose1antidragon", "3dose1antidragon", "2dose1antidragon", "1dose1antidragon")
     val extended_antifire =
         doses("4dose2antidragon", "3dose2antidragon", "2dose2antidragon", "1dose2antidragon")
+    val super_antifire =
+        doses("4dose3antidragon", "3dose3antidragon", "2dose3antidragon", "1dose3antidragon")
+    val extended_super_antifire =
+        doses("4dose4antidragon", "3dose4antidragon", "2dose4antidragon", "1dose4antidragon")
     val saradomin_brew =
         doses(
             "4dosepotionofsaradomin",

@@ -132,6 +132,28 @@ class HerbloreRecipesTest {
     }
 
     @Test
+    fun `super antifire is an antifire potion and crushed superior dragon bones`() {
+        val made = recipe(Potions.super_antifire.dose(4))
+        assertEquals(92, made.level)
+        assertEquals(130.0, made.xp)
+        assertEquals(
+            listOf(Potions.antifire.dose(4).name(), o.crushed_superior_dragon_bones.name()),
+            made.inputs.map { it.obj.name() },
+        )
+    }
+
+    @Test
+    fun `extended super antifire needs a lava shard a dose`() {
+        for (doses in 1..4) {
+            val made = recipe(Potions.extended_super_antifire.dose(doses))
+            assertEquals(98, made.level)
+            assertEquals(40.0 * doses, made.xp)
+            assertEquals(doses, made.inputs.first { it.obj.name() == o.lava_shard.name() }.count)
+            assertEquals(Potions.super_antifire.dose(doses).name(), made.inputs.first().obj.name())
+        }
+    }
+
+    @Test
     fun `every pair of objs offers its recipes in either order`() {
         val pairs = HerbloreRecipes.triggers()
         val keys = pairs.map { listOf(it.first.name(), it.second.name()).sorted() }

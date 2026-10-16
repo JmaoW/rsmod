@@ -13,6 +13,7 @@ import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueSkillTasks
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.content.generic.locs.doors.DoorScript
+import org.rsmod.content.generic.locs.ladders.DungeonLadderScript
 import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.loc.LocAngle
 import org.rsmod.game.loc.LocInfo
@@ -24,8 +25,13 @@ class MiningGuildTest {
     class Deps @Inject constructor(val script: MiningGuildScript)
 
     private fun GameTestState.runGuildTest(body: GameTestScope.(Deps) -> Unit) =
-        runInjectedGameTest(Deps::class, null, MiningGuildScript::class, DoorScript::class) { deps
-            ->
+        runInjectedGameTest(
+            Deps::class,
+            null,
+            MiningGuildScript::class,
+            DoorScript::class,
+            DungeonLadderScript::class,
+        ) { deps ->
             body(deps)
         }
 

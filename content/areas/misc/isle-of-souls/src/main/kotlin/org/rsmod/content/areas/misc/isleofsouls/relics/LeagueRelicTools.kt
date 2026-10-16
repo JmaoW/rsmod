@@ -46,7 +46,8 @@ constructor(private val relics: LeagueRelicTracker, private val objTypes: ObjTyp
         }
     }
 
-    private fun isChosen(player: Player, relic: RelicItem): Boolean =
+    /** Whether [relic] is the chosen relic of its tier, whether or not its item is carried. */
+    fun isChosen(player: Player, relic: RelicItem): Boolean =
         relics.selected(player, relic.tier) == relic.option
 
     private fun holds(player: Player, item: ObjType): Boolean =

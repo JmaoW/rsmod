@@ -19,3 +19,32 @@ Dagannoth Prime
 Dagannoth Supreme
 Grotesque Guardians | ids_from=Dusk; Dawn
 Hespori
+Zulrah
+
+Cave kraken | ids=492
+
+# Superior Slayer monsters: they are not spawned, they come up from a task kill.
+Crushing hand
+Chasm crawler
+Screaming banshee
+Screaming twisted banshee
+Giant rockslug
+Cockathrice
+Flaming pyrelord
+Monstrous basilisk
+Basilisk Sentinel
+Malevolent Mage
+Insatiable Bloodveld
+Insatiable mutated Bloodveld
+Vitreous jelly
+Vitreous warped Jelly
+Cave abomination
+Abhorrent spectre
+Repugnant spectre
+Choke devil
+King kurask
+Nuclear smoke devil
+Marble gargoyle
+Night beast
+Greater abyssal demon
+Scurrius

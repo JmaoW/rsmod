@@ -114,6 +114,8 @@ internal class CookableFood(
     val range: CookRate,
     /** Verb shown in chat when the food is cooked. */
     val verb: String = "cook",
+    /** Something the cook gets back whether the food is cooked or burnt, like a cake tin. */
+    val leaves: ObjType? = null,
 ) {
     fun rate(source: HeatSource): CookRate? =
         when (source) {
@@ -347,7 +349,7 @@ internal object CookingFoods {
                 48,
                 352,
             ),
-        )
+        ) + CookingExtras.all
 
     private val byRawId: Map<Int, CookableFood> by lazy { all.associateBy { it.raw.id } }
 
