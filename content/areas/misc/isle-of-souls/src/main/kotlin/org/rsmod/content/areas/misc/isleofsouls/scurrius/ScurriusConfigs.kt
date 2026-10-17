@@ -110,14 +110,17 @@ object ScurriusTimers : TimerReferences() {
 
 /**
  * What Scurrius and his rats need to fight. He is moved and aimed by [Scurrius] (never hunts or
- * chases on his own, never turns on a player who hits him) and has no flinch animation, so the
- * cache's idle is used for it. The rats chase across the whole lair. Needs `packCache`.
+ * chases on his own, never turns on a player who hits him), walks through players and rats, and has
+ * no flinch animation, so the cache's idle is used for it. The rats chase across the whole lair.
+ * Needs `packCache`.
  */
 internal object ScurriusNpcEdits : NpcEditor() {
     init {
         for (type in listOf(scurrius_npcs.boss, scurrius_npcs.boss_public)) {
             edit(type) {
                 defaultMode = NpcMode.None
+                // Players and rats never block his walk: he steps through them.
+                moveRestrict = passthru
                 param[params.defend_anim] = scurrius_seqs.idle
             }
         }

@@ -16,6 +16,7 @@ import org.rsmod.api.script.onEvent
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.skills.slayer.configs.SlayerParams
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.content.skills.slayer.configs.SlayerVarBits
 import org.rsmod.content.skills.slayer.configs.SlayerVarps
 import org.rsmod.content.skills.slayer.scripts.SlayerEngine
@@ -77,7 +78,7 @@ class SlayerSuperiorsTest {
             vars[SlayerVarBits.points] = 0
         }
         if (unlocked) {
-            engine.setUnlocked(player, SlayerSuperiors.UNLOCK, true)
+            engine.setUnlocked(player, SlayerUnlocks.BIGGER_AND_BADDER, true)
         }
         player.teleport(spot)
         advance(12)

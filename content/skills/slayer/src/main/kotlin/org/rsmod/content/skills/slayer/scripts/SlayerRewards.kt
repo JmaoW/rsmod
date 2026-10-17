@@ -9,6 +9,7 @@ import org.rsmod.content.skills.slayer.configs.SlayerInterfaces
 import org.rsmod.content.skills.slayer.configs.SlayerMaster
 import org.rsmod.content.skills.slayer.configs.SlayerScreenVarps
 import org.rsmod.content.skills.slayer.configs.SlayerUnlock
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.content.skills.slayer.configs.SlayerVarBits
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjTypeList
@@ -283,13 +284,29 @@ constructor(private val engine: SlayerEngine, private val objTypes: ObjTypeList)
          * The unlocks the cache's price for "Extend everything" leaves out in Leagues (they come
          * from an area instead), so the server leaves them out of what it buys as well.
          */
-        val EXTEND_ALL_EXCLUDED = setOf(9, 16, 17, 18, 19, 21, 22, 30, 34, 40, 41, 43, 47, 50)
+        val EXTEND_ALL_EXCLUDED =
+            setOf(
+                SlayerUnlocks.SUQ_A_NOTHER_ONE,
+                SlayerUnlocks.I_HOPE_YOU_MITH_ME,
+                SlayerUnlocks.WATCH_THE_BIRDIE,
+                SlayerUnlocks.HOT_STUFF,
+                SlayerUnlocks.LIKE_A_BOSS,
+                SlayerUnlocks.SMELL_YA_LATER,
+                SlayerUnlocks.BIRDS_OF_A_FEATHER,
+                SlayerUnlocks.REPTILE_GOT_RIPPED,
+                SlayerUnlocks.SEEING_RED,
+                SlayerUnlocks.ADAMIND_SOME_MORE,
+                SlayerUnlocks.RUUUUUNE,
+                SlayerUnlocks.STOP_THE_WYVERN,
+                SlayerUnlocks.BASILOCKED,
+                SlayerUnlocks.ACTUAL_VAMPYRE_SLAYER,
+            )
 
         /**
          * Unlocks that are listed on the screen but cannot be bought: Task Storage changes the
          * Tasks tab to show store buttons, which would do nothing here.
          */
-        val UNAVAILABLE = setOf(51)
+        val UNAVAILABLE = setOf(SlayerUnlocks.TASK_STORAGE)
 
         /** The store items the Slayer Master relic gives away. */
         val FREE_ITEMS = setOf("slayer_herb_sack", "bh_rune_pouch", "looting_bag")
@@ -297,9 +314,9 @@ constructor(private val engine: SlayerEngine, private val objTypes: ObjTypeList)
         /** The unlocks that can be switched off and on again without buying them again. */
         private val TOGGLES =
             mapOf(
-                35 to SlayerVarBits.toggle_off_superiors,
-                43 to SlayerVarBits.toggle_off_fossil_wyvern_block,
-                53 to SlayerVarBits.toggle_off_longer_revenants,
+                SlayerUnlocks.BIGGER_AND_BADDER to SlayerVarBits.toggle_off_superiors,
+                SlayerUnlocks.STOP_THE_WYVERN to SlayerVarBits.toggle_off_fossil_wyvern_block,
+                SlayerUnlocks.REVENENENENENANTS to SlayerVarBits.toggle_off_longer_revenants,
             )
     }
 }

@@ -40,6 +40,7 @@ constructor(
     private suspend fun ProtectedAccess.castHomeTeleport() {
         anim(lobby_seqs.cast_teleport)
         spotanim(lobby_spotanims.teleport_casting, height = SPOTANIM_HEIGHT)
+        beginTeleport(CAST_TICKS)
         delay(CAST_TICKS)
         // `telejump`, not `teleport`: it makes the client snap its camera to the new tile, where
         // `teleport` has it glide there as if the player had walked, which is noticeable up close.

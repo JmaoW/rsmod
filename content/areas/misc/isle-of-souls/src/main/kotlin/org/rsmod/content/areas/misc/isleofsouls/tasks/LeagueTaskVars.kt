@@ -115,6 +115,8 @@ object LeagueProgressVarps : VarpReferences() {
     val kill_gorilla_500 = find("isle_count_kill_gorilla_500")
     val kill_scurrius_10 = find("isle_count_kill_scurrius_10")
     val kill_scurrius_25 = find("isle_count_kill_scurrius_25")
+    val kill_kalphite_queen_50 = find("isle_count_kill_kalphite_queen_50")
+    val kill_kalphite_queen_150 = find("isle_count_kill_kalphite_queen_150")
 
     val clean_guam = find("isle_count_clean_guam")
     val clean_tarromin = find("isle_count_clean_tarromin")
@@ -280,6 +282,8 @@ object LeagueProgressVarps : VarpReferences() {
             kill_gorilla_500,
             kill_scurrius_10,
             kill_scurrius_25,
+            kill_kalphite_queen_50,
+            kill_kalphite_queen_150,
         )
 }
 
@@ -399,5 +403,7 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_kill_gorilla_500") {}
         build("isle_count_kill_scurrius_10") {}
         build("isle_count_kill_scurrius_25") {}
+        build("isle_count_kill_kalphite_queen_50") {}
+        build("isle_count_kill_kalphite_queen_150") {}
     }
 }

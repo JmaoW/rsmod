@@ -57,6 +57,8 @@ class LeagueKillTasks @Inject constructor(private val tracker: LeagueTaskTracker
                 733 to league_progress.kill_gorilla_500,
                 1649 to league_progress.kill_scurrius_10,
                 1650 to league_progress.kill_scurrius_25,
+                874 to league_progress.kill_kalphite_queen_50,
+                875 to league_progress.kill_kalphite_queen_150,
             )
 
         val tasks: List<KillTask> =
@@ -114,6 +116,9 @@ class LeagueKillTasks @Inject constructor(private val tracker: LeagueTaskTracker
                 KillTask(1648, "scurrius"),
                 KillTask(1649, "scurrius", 10),
                 KillTask(1650, "scurrius", 25),
+                KillTask(864, "kalphite queen"),
+                KillTask(874, "kalphite queen", 50),
+                KillTask(875, "kalphite queen", 150),
                 KillTask(1580, "bunny", 5),
                 KillTask(1750, "dire wolf"),
                 KillTask(1807, "brine rat"),

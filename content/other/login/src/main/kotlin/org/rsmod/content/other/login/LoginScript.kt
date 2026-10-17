@@ -91,6 +91,8 @@ constructor(
         // The client-built settings screen never reports toggles to the server, so a saved value
         // would just be stale. Default shift-click drop on until that can be persisted.
         shiftClickDrop = true
+        // Vanilla fills the tab keys in when an account is created.
+        TabKeybinds.applyDefaults(this)
         for (varp in transmitVars) {
             if (varp in vars) {
                 resyncVar(varp)

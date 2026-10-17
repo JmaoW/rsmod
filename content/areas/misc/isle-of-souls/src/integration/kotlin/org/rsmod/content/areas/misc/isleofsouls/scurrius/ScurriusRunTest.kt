@@ -272,6 +272,26 @@ class ScurriusRunTest {
         }
 
     @Test
+    fun GameTestState.`on the way to the middle he walks and is never put somewhere by a jump`() =
+        runScurriusTest { deps, alice, bob ->
+            val run = fightOf(deps, alice, bob)
+            val fight = checkNotNull(run.fight)
+            fight.boss.hitpoints = 149
+            until("he goes to the middle", alice, bob) { fight.step == ScurriusStep.ToCentre }
+            var last = fight.boss.coords
+            var biggestStep = 0
+            until("he is in the middle", alice, bob, timeout = 80) {
+                val now = fight.boss.coords
+                biggestStep =
+                    maxOf(biggestStep, maxOf(Math.abs(now.x - last.x), Math.abs(now.z - last.z)))
+                last = now
+                fight.step == ScurriusStep.Fighting
+            }
+            assertEquals(run.real(ScurriusArena.middle), fight.boss.coords)
+            assertTrue(biggestStep <= 2, "he jumped $biggestStep tiles in a tick")
+        }
+
+    @Test
     fun GameTestState.`rockfall hurts only players on a shadow, for fifteen to twenty-two`() =
         runScurriusTest { deps, alice, bob ->
             val run = fightOf(deps, alice, bob)

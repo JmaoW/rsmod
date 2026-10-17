@@ -1911,6 +1911,11 @@ public class ProtectedAccess(
         player.preventLogoutUntil = mapClock + cycles
     }
 
+    /** Marks the player as mid-teleport for [cycles]: hits landing meanwhile do no damage. */
+    public fun beginTeleport(cycles: Int) {
+        player.teleportingUntil = mapClock + cycles
+    }
+
     public suspend fun startDialogue(conversation: suspend Dialogue.() -> Unit) {
         val dialogue = Dialogue(this, npc = null, faceFar = false)
         conversation(dialogue)

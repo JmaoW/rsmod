@@ -1,5 +1,6 @@
 plugins {
     id("base-conventions")
+    id("integration-test-suite")
 }
 
 dependencies {
@@ -7,4 +8,5 @@ dependencies {
     implementation(projects.api.invWeight)
     implementation(projects.api.pluginCommons)
     implementation(projects.api.realm)
+    integrationImplementation(projects.api.player)
 }

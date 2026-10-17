@@ -57,6 +57,7 @@ object BaseSpotanims : SpotanimReferences() {
     val league_twisted_relic_unlock_spot = find("league_twisted_relic_unlock_spot", 145480649)
     val league_trailblazer_relic_unlock_spot =
         find("league_trailblazer_relic_unlock_spot", 153030644)
+    val league_5_relic_unlock_spot = find("league_5_relic_unlock_spot")
     val fx_emote_party01_active = find("fx_emote_party01_active", 177276600)
     val hw23_emote_bat_spotanim = find("hw23_emote_bat_spotanim", 185997487)
 

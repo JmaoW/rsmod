@@ -13,6 +13,7 @@ import org.rsmod.content.skills.fletching.configs.FletchingMethod
 import org.rsmod.content.skills.fletching.configs.FletchingQueues
 import org.rsmod.content.skills.fletching.configs.FletchingRecipe
 import org.rsmod.content.skills.fletching.configs.FletchingRecipes
+import org.rsmod.content.skills.slayer.scripts.SlayerEngine
 import org.rsmod.events.UnboundEvent
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjType
@@ -22,8 +23,7 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 // TODO:
 // - the Fletching skillcape emote and the Fletcher's outfit
-// - amethyst tips (Crafting), the ogre bow and ogre arrows (quest items), the Slayer unlock for
-//   broad ammo (every perk is unlocked on the isle)
+// - amethyst tips (Crafting), the ogre bow and ogre arrows (quest items)
 //
 // A recipe is offered by using two inventory objs on each other, such as a knife on logs or a bow
 // string on an unstrung bow. Every recipe a pair offers is listed in the chatbox menu that Smelting
@@ -32,7 +32,11 @@ import org.rsmod.plugin.scripts.ScriptContext
 // or clicking something else clears the queue and ends the job.
 class Fletching
 @Inject
-constructor(private val objTypes: ObjTypeList, private val xpMods: XpModifiers) : PluginScript() {
+constructor(
+    private val objTypes: ObjTypeList,
+    private val xpMods: XpModifiers,
+    private val slayer: SlayerEngine,
+) : PluginScript() {
     override fun ScriptContext.startup() {
         for ((first, second) in FletchingRecipes.triggers()) {
             onOpHeldU(first, second) { choose(first, second) }
@@ -41,7 +45,11 @@ constructor(private val objTypes: ObjTypeList, private val xpMods: XpModifiers) 
     }
 
     private suspend fun ProtectedAccess.choose(first: ObjType, second: ObjType) {
-        val offered = FletchingRecipes.offered(first, second)
+        val offered = FletchingRecipes.offered(first, second).filter { isUnlocked(it) }
+        if (offered.isEmpty()) {
+            mes("You need to buy the Broader Fletching Slayer unlock to make this.")
+            return
+        }
         val choice =
             skillMulti(
                 title = "What would you like to make?",
@@ -50,6 +58,10 @@ constructor(private val objTypes: ObjTypeList, private val xpMods: XpModifiers) 
             )
         start(offered[choice.index], choice.quantity)
     }
+
+    /** Whether the player has the Slayer unlock a recipe needs, if it needs one. */
+    private fun ProtectedAccess.isUnlocked(recipe: FletchingRecipe): Boolean =
+        recipe.slayerUnlock == null || slayer.isUnlocked(player, recipe.slayerUnlock)
 
     private fun ProtectedAccess.start(recipe: FletchingRecipe, actions: Int) {
         if (!canMake(recipe, notify = true)) {

@@ -3692,6 +3692,15 @@ examine = "I don't think insect repellent will work..."
 [[config]]
 npc = 'kalphite_queen'
 examine = "I don't think insect repellent will work..."
+bonus_xp = 5.0
+slayer_xp = 535.4
+defence_light = 100
+defence_standard = 100
+defence_heavy = 100
+elemental_weakness_type = 'Fire'
+elemental_weakness_percent = 40
+venom_immunity = 'PoisonsInstead'
+attack_anim = 6241
 
 [[config]]
 npc = 'poh_hellpet'
@@ -3700,6 +3709,15 @@ examine = 'A fiery little pup!'
 [[config]]
 npc = 'kalphite_flyingqueen'
 examine = "I don't think insect repellent will work..."
+bonus_xp = 5.0
+slayer_xp = 535.4
+defence_light = 10
+defence_standard = 10
+defence_heavy = 10
+elemental_weakness_type = 'Fire'
+elemental_weakness_percent = 40
+venom_immunity = 'PoisonsInstead'
+attack_anim = 6234
 
 [[config]]
 npc = 'kalphite_larva'

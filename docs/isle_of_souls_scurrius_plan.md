@@ -99,7 +99,7 @@ anims, defences, +20% XP, 600 Slayer XP, cannon immune, venom turns to poison); 
   summons, at 4 ticks, and takes 10% less damage. Then he swipes again. He eats once per fight.
 - **Below 30%:** he roars, walks to the middle and stays; only magic, ranged, rockfall (often 2-3 in a row) and
   rats, every 3 ticks.
-- **Rockfall:** the animation, then a shadow on the player's tile and 14-19 floor tiles; 3 ticks later anyone
+- **Rockfall:** the animation, then a shadow on the player's tile and 14-19 floor tiles; 5 ticks later (2026-10-16: was 3, hit landed early) anyone
   standing on one takes 15-22 typeless (no prayer).
 - **Rats:** six per summon, up to twelve summons; 1 hitpoint, no drops, very accurate, up to 4, up to 1 through
   Protect from Melee. Bone mace, bow and staff have a one tick delay against them.
@@ -125,7 +125,7 @@ anims, defences, +20% XP, 600 Slayer XP, cannon immune, venom turns to poison); 
 ### Client checklist
 
 1. Climb through the bars: you appear at the west side of the room, Scurrius is on the east.
-2. He walks up and swipes; rockfall shadows appear on the floor and 3 ticks later hurt.
+2. He walks up and swipes; rockfall shadows appear on the floor and 5 ticks later hurt.
 3. At 400 hp he walks to a pile (face it, bite animation), at 150 hp he walks to the middle and roars.
 4. Rats show a bite animation and die in one hit; the bone weapons attack every tick on them.
 5. Task list shows "Defeat Scurrius" (+10 / 25 times) as area-free tasks.

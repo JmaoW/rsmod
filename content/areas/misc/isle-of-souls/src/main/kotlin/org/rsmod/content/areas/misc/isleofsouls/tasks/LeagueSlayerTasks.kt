@@ -1,23 +1,29 @@
 package org.rsmod.content.areas.misc.isleofsouls.tasks
 
 import jakarta.inject.Inject
+import org.rsmod.api.script.advanced.onWearposChange
 import org.rsmod.api.script.onEvent
+import org.rsmod.api.script.onPlayerLogin
 import org.rsmod.api.type.builders.varp.VarpBuilder
 import org.rsmod.api.type.refs.varp.VarpReferences
 import org.rsmod.content.skills.slayer.scripts.SlayerEvents
 import org.rsmod.game.entity.Player
+import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
 /**
  * Completes the league's Slayer tasks from the events the Slayer skill publishes: finishing a task,
- * kills on task, superiors, checking the task with a gem and making the helmet. The level and
- * experience tasks are with the other skills' in [LeagueSkillTasks].
+ * kills on task, superiors, checking the task with a gem, making the helmet and wearing an eternal
+ * ring (made with Ring Bling). The level and experience tasks are with the other skills' in
+ * [LeagueSkillTasks].
  *
  * Left out: the quests (Demon Slayer, Vampyre Slayer), the Karuulm drake, the Grotesque Guardians,
- * the Slayer's staff (e) and the eternal ring, which have nothing on the isle that makes them.
+ * and the Slayer's staff (e), which have nothing on the isle that makes them.
  */
-class LeagueSlayerTasks @Inject constructor(private val tracker: LeagueTaskTracker) :
+class LeagueSlayerTasks
+@Inject
+constructor(private val tracker: LeagueTaskTracker, private val objTypes: ObjTypeList) :
     PluginScript() {
     override fun ScriptContext.startup() {
         onEvent<SlayerEvents.Checked> { tracker.complete(player, TASK_CHECK_TASK) }
@@ -32,6 +38,15 @@ class LeagueSlayerTasks @Inject constructor(private val tracker: LeagueTaskTrack
             }
         }
         onEvent<SlayerEvents.SuperiorKilled> { superior(player, onTask) }
+        onWearposChange { checkEternalRing(player) }
+        onPlayerLogin { checkEternalRing(player) }
+    }
+
+    private fun checkEternalRing(player: Player) {
+        val worn = player.worn.objs.any { it != null && objTypes[it].internalName == ETERNAL_RING }
+        if (worn) {
+            tracker.complete(player, TASK_ETERNAL_RING)
+        }
     }
 
     private fun superior(player: Player, onTask: Boolean) {
@@ -59,9 +74,13 @@ class LeagueSlayerTasks @Inject constructor(private val tracker: LeagueTaskTrack
         const val TASK_ENCOUNTER_100 = 99
         const val TASK_HELM = 917
         const val TASK_ABYSSAL_DEMON = 328
+        const val TASK_ETERNAL_RING = 126
 
         /** The Slayer task id of abyssal demons. */
         const val ABYSSAL_DEMONS = 42
+
+        /** The internal name of the eternal Slayer ring, made from an eternal gem. */
+        const val ETERNAL_RING = "slayer_ring_eternal"
     }
 }
 

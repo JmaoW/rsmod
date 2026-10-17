@@ -11,6 +11,7 @@ import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.skills.slayer.configs.SlayerParams
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.content.skills.slayer.configs.SlayerVarBits
 import org.rsmod.content.skills.slayer.configs.SlayerVarps
 import org.rsmod.content.skills.slayer.scripts.SlayerEngine
@@ -95,7 +96,7 @@ class LeagueSlayerRelicsTest {
             prepare()
             finishVannakaTask()
             assertEquals(8, engine.points(player))
-            assertFalse(engine.isUnlocked(player, SlayerSuperiors.UNLOCK))
+            assertFalse(engine.isUnlocked(player, SlayerUnlocks.BIGGER_AND_BADDER))
             assertFalse(engine.isFree(player))
             assertEquals(200, SlayerRelicHolder.heldSuperiors.odds(player))
         }
@@ -107,7 +108,7 @@ class LeagueSlayerRelicsTest {
             choose(LeagueSlayerRelics.PASSIVES_TIER, 2)
             finishVannakaTask()
             assertEquals(40, engine.points(player))
-            assertTrue(engine.isUnlocked(player, SlayerSuperiors.UNLOCK))
+            assertTrue(engine.isUnlocked(player, SlayerUnlocks.BIGGER_AND_BADDER))
             assertFalse(engine.isUnlocked(player, 0), "Only Bigger and Badder is free")
             assertEquals(50, SlayerRelicHolder.heldSuperiors.odds(player))
             assertFalse(engine.isFree(player))

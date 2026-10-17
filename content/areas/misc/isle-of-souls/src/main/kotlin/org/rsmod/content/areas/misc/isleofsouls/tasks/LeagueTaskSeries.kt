@@ -16,6 +16,8 @@ internal object LeagueTaskSeries {
             listOf(553, 554, 1397),
             // Defeat Scurrius 10 / 25 times.
             listOf(1649, 1650),
+            // Defeat the Kalphite Queen 50 / 150 times.
+            listOf(874, 875),
             // Defeat any God Wars Dungeon boss 100 / 250 / 500 times.
             listOf(809, 810, 811),
             // Kill 150 / 300 / 500 Demonic Gorillas.

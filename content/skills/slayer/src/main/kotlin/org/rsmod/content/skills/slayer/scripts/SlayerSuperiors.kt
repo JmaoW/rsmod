@@ -11,6 +11,7 @@ import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.api.script.onEvent
 import org.rsmod.content.skills.slayer.configs.SlayerObjs
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.content.skills.slayer.configs.SlayerVarBits
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
@@ -26,8 +27,9 @@ import org.rsmod.plugin.scripts.ScriptContext
  * its superior on the same tile, which attacks the player. It is a kill for the task like any
  * other, gives its own Slayer XP and drops, and goes away after a while if it is left alone.
  *
- * Superiors only appear once the player has the "Bigger and Badder" unlock (bit [UNLOCK]); the
- * chance is 1 in [BASE_ODDS], less when a hook (the Passives relic) asks for it.
+ * Superiors only appear once the player has the "Bigger and Badder" unlock (bit
+ * [SlayerUnlocks.BIGGER_AND_BADDER]); the chance is 1 in [BASE_ODDS], less when a hook (the
+ * Passives relic) asks for it.
  */
 class SlayerSuperiors
 @Inject
@@ -93,7 +95,8 @@ constructor(
      * off.
      */
     fun enabled(player: Player): Boolean =
-        engine.isUnlocked(player, UNLOCK) && player.vars[SlayerVarBits.toggle_off_superiors] == 0
+        engine.isUnlocked(player, SlayerUnlocks.BIGGER_AND_BADDER) &&
+            player.vars[SlayerVarBits.toggle_off_superiors] == 0
 
     /** The superior that comes from [base], if it has one. */
     fun superiorFor(base: Npc): UnpackedNpcType? = superiorByBase[base.visType.name.lowercase()]
@@ -127,9 +130,6 @@ constructor(
     }
 
     companion object {
-        /** The "Bigger and Badder" unlock. */
-        const val UNLOCK = 35
-
         const val BASE_ODDS = 200
 
         /** Ticks a superior stays if nobody kills it. */

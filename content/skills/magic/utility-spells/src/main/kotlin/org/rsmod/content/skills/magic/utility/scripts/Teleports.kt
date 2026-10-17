@@ -84,6 +84,7 @@ constructor(
         for (companion in group) {
             companion.spotanim(style.spotanim, height = SPOTANIM_HEIGHT)
         }
+        beginTeleport(CAST_TICKS)
         delay(CAST_TICKS)
         // `telejump` makes the client snap its camera to the new tile instead of gliding there.
         telejump(destination)

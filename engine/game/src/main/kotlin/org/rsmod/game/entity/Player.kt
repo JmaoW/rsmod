@@ -277,6 +277,12 @@ public class Player(
     public var preventLogoutUntil: Int = Int.MIN_VALUE
 
     /**
+     * The map clock until which this player is mid-teleport (from the cast until they arrive). Hits
+     * that land while `mapClock <= teleportingUntil` do no damage.
+     */
+    public var teleportingUntil: Int = Int.MIN_VALUE
+
+    /**
      * Counts the number of consecutive attempts to log out while logout prevention is active. If
      * this exceeds the configured hard cap, the player will be forcefully disconnected.
      *

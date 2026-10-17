@@ -1,8 +1,12 @@
 package org.rsmod.content.areas.misc.isleofsouls.relics
 
 import jakarta.inject.Inject
+import org.rsmod.api.config.refs.seqs
+import org.rsmod.api.config.refs.spotanims
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.runClientScript
+import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.protect.ProtectedAccessLauncher
 import org.rsmod.api.player.ui.ifSetEvents
 import org.rsmod.api.script.onIfModalButton
 import org.rsmod.api.script.onIfOpen
@@ -17,7 +21,8 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 /**
  * Wires up the league Relics screen: clicking a relic card records which relic is being viewed, and
- * the confirm button applies it and closes the screen.
+ * the confirm button applies it and closes the screen. A relic that is unlocked plays the relic
+ * unlock animation on the player.
  */
 class LeagueRelicScript
 @Inject
@@ -26,6 +31,7 @@ constructor(
     private val tasks: LeagueTaskTracker,
     private val tools: LeagueRelicTools,
     private val teams: LeagueTeams,
+    private val protectedAccess: ProtectedAccessLauncher,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onIfOpen(isle_interfaces.league_relics) {
@@ -50,8 +56,19 @@ constructor(
                 with(tools) { grantMissing() }
                 tasks.refreshLeaguePanel(player)
                 ifClose()
+                protectedAccess.launch(player) { playUnlockAnim() }
             }
         }
+    }
+
+    /**
+     * The same animation the Relic unlock emote plays, with the league 5 relic spotanim. The emote
+     * picks the female variant for body type B, and so does this.
+     */
+    private fun ProtectedAccess.playUnlockAnim() {
+        val seq = if (isBodyTypeB()) seqs.human_relic_unlock_female else seqs.human_relic_unlock
+        anim(seq)
+        spotanim(spotanims.league_5_relic_unlock_spot, height = SPOTANIM_HEIGHT)
     }
 
     /**
@@ -96,5 +113,8 @@ constructor(
 
         /** Highest child index that gets events; the card layer has 23 children. */
         const val CHILD_EVENT_LIMIT = 127
+
+        /** Raises the unlock spotanim to the player's waist, as the Relic unlock emote does. */
+        const val SPOTANIM_HEIGHT = 92
     }
 }

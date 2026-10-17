@@ -9,7 +9,7 @@ class LeagueSlayerTaskListTest {
     private val easy = listOf(319)
     private val medium = listOf(1524, 320, 322, 96, 98, 917)
     private val hard = listOf(99, 326, 327)
-    private val elite = listOf(330, 328, 254, 255, 1474, 1497)
+    private val elite = listOf(330, 328, 254, 255, 1474, 1497, 126)
 
     @Test
     fun `every slayer task is in the list in its own tier`() {
@@ -29,11 +29,11 @@ class LeagueSlayerTaskListTest {
     }
 
     @Test
-    fun `the slayer tasks are worth 2020 points`() {
+    fun `the slayer tasks are worth their tier points`() {
         val ids = easy + medium + hard + elite
         assertEquals(ids.size, ids.toSet().size)
         assertEquals(
-            1 * 10 + 6 * 30 + 3 * 80 + 6 * 200,
+            1 * 10 + 6 * 30 + 3 * 80 + 7 * 200,
             ids.sumOf { LeagueTaskList.byId.getValue(it).tier.points },
         )
     }

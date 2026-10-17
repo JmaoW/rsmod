@@ -1,5 +1,6 @@
 package org.rsmod.content.skills.fletching.configs
 
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.seq.SeqType
 
@@ -46,6 +47,7 @@ class FletchingInput(
  *   have alternatives (see [FletchingInput.alternatives]) offer it with any of them too, see
  *   [triggers].
  * @property tools objs the player must carry that are not used up.
+ * @property slayerUnlock the Slayer unlock bit the player must have bought to make it, if any.
  */
 class FletchingRecipe(
     val method: FletchingMethod,
@@ -58,6 +60,7 @@ class FletchingRecipe(
     val level: Int,
     val xp: Double,
     internal val anim: SeqType?,
+    val slayerUnlock: Int? = null,
 ) {
     /** Every pair of objs that offers this recipe: [trigger] with each alternative swapped in. */
     val triggers: List<Pair<ObjType, ObjType>> by lazy {
@@ -73,9 +76,11 @@ class FletchingRecipe(
 /**
  * Levels and experience are from the wiki. Left out on purpose:
  * - amethyst bolt tips, arrowtips, javelin tips and dart tips: those are made with Crafting
- * - the Slayer unlock ("Broader fletching") for broad ammo: the isle unlocks every Slayer perk
  * - the ogre bow and ogre arrows (quest items that cannot be fletched), and arctic pine and achey
  *   logs (the wiki lists no Fletching use for them)
+ *
+ * Broad ammo is here too, behind the "Broader Fletching" Slayer unlock (see
+ * [FletchingRecipe.slayerUnlock]).
  *
  * Many materials here (feathers, strings, dragon and amethyst tips, silver bolts, pearls) have no
  * source on the isle yet.
@@ -357,6 +362,7 @@ object FletchingRecipes {
         maxUnits: Int,
         level: Int,
         xp: Double,
+        slayerUnlock: Int? = null,
     ) {
         val attachmentInput =
             if (same(attachment, o.feather)) {
@@ -376,6 +382,7 @@ object FletchingRecipes {
                 level = level,
                 xp = xp,
                 anim = null,
+                slayerUnlock = slayerUnlock,
             )
         )
     }
@@ -388,7 +395,15 @@ object FletchingRecipes {
         attach(o.headless_arrow, o.mithril_arrowheads, o.mithril_arrow, 15, 45, 7.5)
         attach(o.headless_arrow, o.adamant_arrowheads, o.adamant_arrow, 15, 60, 10.0)
         attach(o.headless_arrow, o.rune_arrowheads, o.rune_arrow, 15, 75, 12.5)
-        attach(o.headless_arrow, o.broad_arrowheads, o.broad_arrow, 15, 52, 10.0)
+        attach(
+            o.headless_arrow,
+            o.broad_arrowheads,
+            o.broad_arrow,
+            15,
+            52,
+            10.0,
+            SlayerUnlocks.BROADER_FLETCHING,
+        )
         attach(o.headless_arrow, o.amethyst_arrowheads, o.amethyst_arrow, 15, 82, 13.5)
         attach(o.headless_arrow, o.dragon_arrowheads, o.dragon_arrow, 15, 90, 15.0)
 
@@ -418,7 +433,15 @@ object FletchingRecipes {
         attach(o.mithril_bolts_unf, o.feather, o.mithril_bolts, 10, 54, 5.0)
         attach(o.adamant_bolts_unf, o.feather, o.adamant_bolts, 10, 61, 7.0)
         attach(o.rune_bolts_unf, o.feather, o.rune_bolts, 10, 69, 10.0)
-        attach(o.broad_bolts_unf, o.feather, o.broad_bolts, 10, 55, 3.0)
+        attach(
+            o.broad_bolts_unf,
+            o.feather,
+            o.broad_bolts,
+            10,
+            55,
+            3.0,
+            SlayerUnlocks.BROADER_FLETCHING,
+        )
         attach(o.dragon_bolts_unf, o.feather, o.dragon_bolts, 10, 84, 12.0)
     }
 
@@ -471,7 +494,15 @@ object FletchingRecipes {
         attach(o.diamond_bolt_tips, o.adamant_bolts, o.diamond_bolts, 10, 65, 7.0)
         attach(o.dragonstone_bolt_tips, o.rune_bolts, o.dragonstone_bolts, 10, 71, 8.2)
         attach(o.onyx_bolt_tips, o.rune_bolts, o.onyx_bolts, 10, 73, 9.4)
-        attach(o.amethyst_bolt_tips, o.broad_bolts, o.amethyst_broad_bolts, 10, 76, 10.6)
+        attach(
+            o.amethyst_bolt_tips,
+            o.broad_bolts,
+            o.amethyst_broad_bolts,
+            10,
+            76,
+            10.6,
+            SlayerUnlocks.BROADER_FLETCHING,
+        )
 
         // Dragon bolts take any tip, all at the dragon bolts' own level.
         attach(o.opal_bolt_tips, o.dragon_bolts, o.opal_dragon_bolts, 10, 84, 1.6)

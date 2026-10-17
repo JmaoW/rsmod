@@ -179,6 +179,10 @@ object IsleOfSoulsTaskTexts {
             Edit(1648, null, null),
             Edit(1649, null, null),
             Edit(1650, null, null),
+            // The Kalphite Queen's tasks named the Kalphite Lair and the Kharidian Desert.
+            Edit(864, null, "Defeat the Kalphite Queen"),
+            Edit(874, null, "Defeat the Kalphite Queen 50 times"),
+            Edit(875, null, "Defeat the Kalphite Queen 150 times"),
         )
 }
 

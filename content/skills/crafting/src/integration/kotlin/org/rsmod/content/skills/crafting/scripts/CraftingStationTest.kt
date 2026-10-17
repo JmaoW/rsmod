@@ -6,11 +6,14 @@ import org.rsmod.api.config.refs.interfaces
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.inv.HeldUOpScript
 import org.rsmod.api.inv.LocUOpScript
+import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.skills.crafting.configs.GoldComponents
 import org.rsmod.content.skills.crafting.configs.SilverComponents
 import org.rsmod.content.skills.crafting.configs.TannerComponents
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
+import org.rsmod.content.skills.slayer.configs.SlayerVarps
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.loc.BoundLocInfo
 import org.rsmod.game.type.obj.UnpackedObjType
@@ -229,7 +232,7 @@ class CraftingStationTest {
         }
 
     @Test
-    fun GameTestState.`a slayer ring is made from an enchanted gem`() =
+    fun GameTestState.`a slayer ring needs the Ring Bling unlock`() =
         runGameTest(Crafting::class, Stations::class, Jewellery::class, LocUOpScript::class) {
             val furnace = placeFurnace()
             prepare(75, "gold_bar" to 1, "ring_mould" to 1, "slayer_gem" to 1)
@@ -237,7 +240,41 @@ class CraftingStationTest {
             useOnLoc(furnace, "gold_bar")
             advance(ticks = 8)
             player.ifButton(GoldComponents.slayer_ring)
+            advanceUntilMessage(
+                "You need to buy the Ring Bling unlock from the Slayer rewards to make this."
+            )
+
+            check(player.count(obj("slayer_ring_8")) == 0) {
+                "Expected no ring without the unlock."
+            }
+        }
+
+    @Test
+    fun GameTestState.`a slayer ring is made from an enchanted gem`() =
+        runGameTest(Crafting::class, Stations::class, Jewellery::class, LocUOpScript::class) {
+            val furnace = placeFurnace()
+            VarPlayerIntMapSetter.set(player, SlayerVarps.unlocks, 1 shl SlayerUnlocks.RING_BLING)
+            prepare(75, "gold_bar" to 1, "ring_mould" to 1, "slayer_gem" to 1)
+
+            useOnLoc(furnace, "gold_bar")
+            advance(ticks = 8)
+            player.ifButton(GoldComponents.slayer_ring)
             advanceUntil({ player.count(obj("slayer_ring_8")) == 1 }, timeoutTicks = 20)
+
+            check(fineXp() == 15.0) { "Expected 15 experience, was ${fineXp()}." }
+        }
+
+    @Test
+    fun GameTestState.`an eternal slayer ring is made from an eternal gem`() =
+        runGameTest(Crafting::class, Stations::class, Jewellery::class, LocUOpScript::class) {
+            val furnace = placeFurnace()
+            VarPlayerIntMapSetter.set(player, SlayerVarps.unlocks, 1 shl SlayerUnlocks.RING_BLING)
+            prepare(75, "gold_bar" to 1, "ring_mould" to 1, "slayer_eternal_gem" to 1)
+
+            useOnLoc(furnace, "gold_bar")
+            advance(ticks = 8)
+            player.ifButton(GoldComponents.slayer_ring)
+            advanceUntil({ player.count(obj("slayer_ring_eternal")) == 1 }, timeoutTicks = 20)
 
             check(fineXp() == 15.0) { "Expected 15 experience, was ${fineXp()}." }
         }

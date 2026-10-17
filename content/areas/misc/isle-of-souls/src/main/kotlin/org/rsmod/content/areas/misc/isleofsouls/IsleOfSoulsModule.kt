@@ -13,6 +13,7 @@ import org.rsmod.content.areas.misc.isleofsouls.fightcaves.FightCaves
 import org.rsmod.content.areas.misc.isleofsouls.inferno.Inferno
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstanceLoginPipeline
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
+import org.rsmod.content.areas.misc.isleofsouls.kalphite.KalphiteQueen
 import org.rsmod.content.areas.misc.isleofsouls.magic.IsleTeleportProvider
 import org.rsmod.content.areas.misc.isleofsouls.magic.LeagueSpellTeams
 import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTracker
@@ -45,6 +46,7 @@ class IsleOfSoulsModule : PluginModule() {
         bindInstance<Inferno>()
         bindInstance<Zulrah>()
         bindInstance<Scurrius>()
+        bindInstance<KalphiteQueen>()
 
         // The teleport spells go to places on the isle, not to the cache's real-world towns.
         bindProvider<TeleportDestinations>(IsleTeleportProvider::class.java)

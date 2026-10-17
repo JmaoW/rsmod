@@ -205,8 +205,8 @@ interface can be wired later without changing the data. The disassembly notes: `
   revenants, zygomite spraying, and so on). Longer tasks use the cache's extended amounts.
 - **Items**: slayer ring (75), 250 broad bolts (35), 250 broad arrows (35), herb sack (750), rune
   pouch (750), looting bag (10).
-- Not built: refunds of refundable unlocks, Task Storage, "Ring Bling" and "Broader Fletching" are
-  sold but the Crafting and Fletching modules do not check them (they work without).
+- Not built: refunds of refundable unlocks, Task Storage. "Ring Bling" and "Broader Fletching" are
+  checked by Crafting and Fletching (`SlayerUnlocks`, 2026-10-16).
 
 ### Step 4b (2026-10-12): the real rewards screen
 
@@ -248,8 +248,7 @@ the "Are you sure?" panels itself. The server only has to
   shows "Free" by itself. On opening, anything a relic grants is written into the unlock bits so it
   shows as bought. The relic frees only the pouch, sack and bag in the Buy tab (its own text), not the
   ring or ammo as the dialogue did.
-- Purchases of unlocks that do nothing on the isle (Like a Boss, helm colours, Ring Bling, Broader
-  Fletching and so on) are allowed, as the original plan said; the points are spent for no effect.
+- Purchases of unlocks that do nothing on the isle (Like a Boss, helm colours and so on) are allowed, as the original plan said; the points are spent for no effect.
 
 **Not wired:** *Task Storage* (bit 51) is refused with a message, because buying it makes the Tasks tab
 show Store/Swap buttons that would do nothing (the relic does not grant it either). *View List* (the
@@ -280,8 +279,8 @@ appeared...". All 23 base-to-superior pairs are mapped by name (checked against 
   a gem, complete a task, 250 kills on task, a superior, 10/20/50 superiors, 25/75/100 superior
   encounters on task, assemble a helm, an abyssal demon on its task, and Slayer level 99 and
   25/35/50 million XP (in `LeagueSkillTasks`). Dropped: Demon Slayer, Vampyre Slayer, drakes, the
-  Grotesque Guardians (three), the enchanted staff and the eternal ring (nothing on the isle makes
-  them). Seven counters and 21 relic varps were added by hand to `varp.sym`; the helm task's area
+  Grotesque Guardians (three), the enchanted staff (nothing on the isle makes them). The eternal ring task was added back
+  2026-10-16 (`LeagueSlayerTasks`, task 126, worn ring via `onWearposChange`). Seven counters and 21 relic varps were added by hand to `varp.sym`; the helm task's area
   was made global in `struct.sym`.
 
 ### Decisions I made while you were out

@@ -10,9 +10,9 @@ import org.rsmod.api.script.onEvent
 import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.api.type.builders.varp.VarpBuilder
 import org.rsmod.api.type.refs.varp.VarpReferences
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.content.skills.slayer.scripts.SlayerEngine
 import org.rsmod.content.skills.slayer.scripts.SlayerEvents
-import org.rsmod.content.skills.slayer.scripts.SlayerSuperiors
 import org.rsmod.game.entity.Player
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
@@ -48,7 +48,8 @@ constructor(
         val hooks = engine.hooks
         hooks.pointMultipliers += { if (hasPassives(it)) PASSIVES_POINTS else 1 }
         hooks.unlocked += { player, bit ->
-            isSlayerMaster(player) || (hasPassives(player) && bit == SlayerSuperiors.UNLOCK)
+            isSlayerMaster(player) ||
+                (hasPassives(player) && bit == SlayerUnlocks.BIGGER_AND_BADDER)
         }
         hooks.free += { isSlayerMaster(it) }
         hooks.alwaysOnTask += { isSlayerMaster(it) }

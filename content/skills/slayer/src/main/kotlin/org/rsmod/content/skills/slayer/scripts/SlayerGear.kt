@@ -9,6 +9,7 @@ import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.statBase
 import org.rsmod.api.script.onOpHeldU
 import org.rsmod.content.skills.slayer.configs.SlayerObjs
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
@@ -27,7 +28,7 @@ class SlayerGear @Inject constructor(private val engine: SlayerEngine) : PluginS
     }
 
     fun ProtectedAccess.assembleHelm() {
-        if (!engine.isUnlocked(player, HELM_UNLOCK)) {
+        if (!engine.isUnlocked(player, SlayerUnlocks.MALEVOLENT_MASQUERADE)) {
             mes("You have not learned how to make a Slayer helmet.")
             return
         }
@@ -61,8 +62,6 @@ class SlayerGear @Inject constructor(private val engine: SlayerEngine) : PluginS
     }
 
     companion object {
-        /** The "Malevolent Masquerade" unlock. */
-        const val HELM_UNLOCK = 5
         const val HELM_CRAFTING = 55
         const val LANTERN_FIREMAKING = 33
 

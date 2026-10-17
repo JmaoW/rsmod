@@ -153,6 +153,12 @@ class ScurriusFight(val boss: Npc) {
     var walkDest: CoordGrid? = null
     var walkDeadline = 0
 
+    /** How many ticks in a row he has stood still on a walk that is not finished. */
+    var walkStalled = 0
+
+    /** Where he stood when [walkStalled] was last counted. */
+    var walkLast: CoordGrid? = null
+
     var pile: FoodPile? = null
     var bites = 0
     var nextBiteAt = 0
@@ -375,16 +381,23 @@ constructor(
     private fun walkTo(run: ScurriusRun, fight: ScurriusFight, dest: CoordGrid, now: Int) {
         fight.walkDest = dest
         fight.walkDeadline = now + WALK_PATIENCE
+        fight.walkStalled = 0
+        fight.walkLast = fight.boss.coords
         fight.boss.resetFaceEntity()
         fight.boss.walk(dest)
     }
 
-    /** Waits for a walk to finish; one that takes too long ends with him put on the spot. */
+    /**
+     * Waits for a walk to finish; one that takes too long, or that is held up (rats standing in his
+     * way, when he is not yet set to walk through them), ends with him put on the spot.
+     */
     private fun walking(fight: ScurriusFight, now: Int, arrived: () -> Unit) {
         val dest = fight.walkDest ?: return
         val boss = fight.boss
         if (boss.coords != dest) {
-            if (now < fight.walkDeadline) {
+            fight.walkStalled = if (boss.coords != fight.walkLast) 0 else fight.walkStalled + 1
+            fight.walkLast = boss.coords
+            if (now < fight.walkDeadline && fight.walkStalled < WALK_STALL_TICKS) {
                 return
             }
             boss.telejump(collision, dest)
@@ -627,6 +640,9 @@ constructor(
         /** A walk that has not finished in this many ticks ends with him put on the spot. */
         const val WALK_PATIENCE = 30
 
+        /** A walk where he has not moved for this many ticks in a row is cut short the same way. */
+        const val WALK_STALL_TICKS = 3
+
         /**
          * Ten bites of the pile, one every 4 ticks, and five of them heal (wiki). Each heals him by
          * 5 for every player in the room (tsps: 5, wiki: "5 or 10 to each player"). A guess.
@@ -647,10 +663,15 @@ constructor(
         const val ENRAGED_SHOT_WEIGHT = 5
         const val MAX_BRICKS_IN_A_ROW = 3
 
-        /** The wiki (solo): rockfalls do 15 to 22. The shadows are down for 3 ticks (tsps). */
+        /**
+         * The wiki (solo): rockfalls do 15 to 22. The shadows are down for 3 ticks (tsps), but the
+         * debris graphic plays out longer than that and the hit came 2 to 3 ticks before the rubble
+         * reached the ground in the client, so the landing check is at 5 (the hit itself then lands
+         * a tick later).
+         */
         const val BRICKS_MIN_HIT = 15
         const val BRICKS_MAX_HIT = 22
-        const val BRICKS_DELAY = 3
+        const val BRICKS_DELAY = 5
         const val BRICK_TILES_MIN = 14
         const val BRICK_TILES_MAX = 19
 

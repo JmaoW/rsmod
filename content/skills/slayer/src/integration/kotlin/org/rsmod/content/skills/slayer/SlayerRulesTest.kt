@@ -24,6 +24,7 @@ import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.skills.slayer.configs.SlayerObjs
 import org.rsmod.content.skills.slayer.configs.SlayerParams
 import org.rsmod.content.skills.slayer.configs.SlayerTables
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.content.skills.slayer.scripts.SlayerEngine
 import org.rsmod.content.skills.slayer.scripts.SlayerFinishing
 import org.rsmod.content.skills.slayer.scripts.SlayerGear
@@ -362,7 +363,7 @@ class SlayerRulesTest {
             player.withProtectedAccess { with(SlayerRulesHolder.heldGear) { assembleHelm() } }
             assertFalse(SlayerObjs.helm in player.inv, "The perk is not bought")
 
-            engine.setUnlocked(player, SlayerGear.HELM_UNLOCK, true)
+            engine.setUnlocked(player, SlayerUnlocks.MALEVOLENT_MASQUERADE, true)
             player.stats[stats.crafting] = 54
             player.withProtectedAccess { with(SlayerRulesHolder.heldGear) { assembleHelm() } }
             assertFalse(SlayerObjs.helm in player.inv, "55 Crafting is needed")

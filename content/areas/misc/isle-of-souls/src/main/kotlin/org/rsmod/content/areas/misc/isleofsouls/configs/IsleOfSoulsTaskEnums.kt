@@ -511,6 +511,9 @@ internal object IsleOfSoulsTaskEnums : EnumBuilder() {
             this[486] = 3806
             this[487] = 3807
             this[488] = 3808
+            this[489] = 2372
+            this[490] = 2071
+            this[491] = 2077
         }
     }
 }

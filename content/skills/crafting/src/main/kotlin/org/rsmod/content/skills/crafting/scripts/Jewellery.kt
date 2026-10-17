@@ -13,6 +13,7 @@ import org.rsmod.content.skills.crafting.configs.GoldComponents
 import org.rsmod.content.skills.crafting.configs.JewelleryItem
 import org.rsmod.content.skills.crafting.configs.JewelleryRecipes
 import org.rsmod.content.skills.crafting.configs.SilverComponents
+import org.rsmod.content.skills.slayer.scripts.SlayerEngine
 import org.rsmod.game.type.comp.ComponentType
 import org.rsmod.game.type.interf.InterfaceType
 import org.rsmod.game.type.loc.LocTypeList
@@ -31,7 +32,11 @@ import org.rsmod.plugin.scripts.ScriptContext
 // the client reads back to highlight the chosen button. Nothing is made until a product is clicked.
 class Jewellery
 @Inject
-constructor(private val locTypes: LocTypeList, private val maker: CraftingMaker) : PluginScript() {
+constructor(
+    private val locTypes: LocTypeList,
+    private val maker: CraftingMaker,
+    private val slayer: SlayerEngine,
+) : PluginScript() {
     override fun ScriptContext.startup() {
         for (type in locTypes.values) {
             if (isFurnace(type)) {
@@ -84,11 +89,19 @@ constructor(private val locTypes: LocTypeList, private val maker: CraftingMaker)
     /**
      * Makes the product of the button clicked. A button can stand for more than one recipe (the
      * Slayer ring needs either kind of gem), in which case the first the player can make is used.
+     * Recipes that need a Slayer unlock the player has not bought are left out.
      */
     private fun ProtectedAccess.make(group: List<JewelleryItem>) {
-        val recipe =
-            group.map { it.recipe }.firstOrNull { hasMaterials(it) } ?: group.first().recipe
         ifClose()
+        val available =
+            group.filter { it.slayerUnlock == null || slayer.isUnlocked(player, it.slayerUnlock) }
+        if (available.isEmpty()) {
+            // Only the Slayer rings need an unlock, and that is Ring Bling.
+            mes("You need to buy the Ring Bling unlock from the Slayer rewards to make this.")
+            return
+        }
+        val recipe =
+            available.map { it.recipe }.firstOrNull { hasMaterials(it) } ?: available.first().recipe
         val quantity = vars[CraftingVarps.make_x].let { if (it <= 0) MAX_QUANTITY else it }
         if (!hasMaterials(recipe)) {
             mes("You do not have the materials to make this.")

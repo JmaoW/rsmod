@@ -7,8 +7,11 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.inv.HeldUOpScript
 import org.rsmod.api.player.ui.IfOverlayButtonT
 import org.rsmod.api.player.ui.ifClose
+import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
+import org.rsmod.content.skills.slayer.configs.SlayerVarps
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.type.obj.UnpackedObjType
 import org.rsmod.game.ui.Component
@@ -267,8 +270,26 @@ class FletchingScriptTest {
         }
 
     @Test
-    fun GameTestState.`broad arrows are made without any unlock`() =
+    fun GameTestState.`broad arrows need the Broader Fletching unlock`() =
         runGameTest(Fletching::class, HeldUOpScript::class) {
+            prepare(52, "headless_arrow" to 15, "slayer_broad_arrowhead" to 15)
+
+            useOn("headless_arrow", "slayer_broad_arrowhead")
+            advance(ticks = 5)
+            check(player.count(obj("slayer_broad_arrows")) == 0) { "Expected no broad arrows." }
+            check(player.count(obj("headless_arrow")) == 15) {
+                "Expected the materials to be kept."
+            }
+        }
+
+    @Test
+    fun GameTestState.`broad arrows are made with the Broader Fletching unlock`() =
+        runGameTest(Fletching::class, HeldUOpScript::class) {
+            VarPlayerIntMapSetter.set(
+                player,
+                SlayerVarps.unlocks,
+                1 shl SlayerUnlocks.BROADER_FLETCHING,
+            )
             prepare(52, "headless_arrow" to 15, "slayer_broad_arrowhead" to 15)
 
             useOn("headless_arrow", "slayer_broad_arrowhead")

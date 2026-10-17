@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.player.events.interact.HeldEquipEvents
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
@@ -11,6 +12,8 @@ import org.rsmod.content.skills.slayer.configs.SlayerParams
 import org.rsmod.content.skills.slayer.configs.SlayerTables
 import org.rsmod.content.skills.slayer.scripts.SlayerEvents
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.inv.InvObj
+import org.rsmod.game.type.obj.Wearpos
 import org.rsmod.map.CoordGrid
 
 class LeagueSlayerTasksTest {
@@ -27,6 +30,12 @@ class LeagueSlayerTasksTest {
     private fun GameTestScope.kill(taskId: Int, onTask: Boolean = true) {
         val task = SlayerTables.default.tasks.getValue(taskId)
         eventBus.publish(SlayerEvents.Kill(player, monster(taskId), task, 5, 10.0, onTask))
+    }
+
+    private fun GameTestScope.wear(internal: String) {
+        val ring = objTypes.values.first { it.internalName == internal }
+        player.worn[Wearpos.Ring.slot] = InvObj(ring)
+        eventBus.publish(HeldEquipEvents.WearposChange(player, Wearpos.Ring, objTypes[ring]))
     }
 
     private fun GameTestScope.superior(onTask: Boolean) =
@@ -68,6 +77,15 @@ class LeagueSlayerTasksTest {
             assertFalse(done(320))
             kill(41)
             assertTrue(done(320))
+        }
+
+    @Test
+    fun GameTestState.`only an eternal Slayer ring completes the eternal ring task`() =
+        runGameTest(LeagueSlayerTasks::class) {
+            wear("slayer_ring_8")
+            assertFalse(done(126), "A Slayer ring is not an eternal one")
+            wear("slayer_ring_eternal")
+            assertTrue(done(126))
         }
 
     @Test

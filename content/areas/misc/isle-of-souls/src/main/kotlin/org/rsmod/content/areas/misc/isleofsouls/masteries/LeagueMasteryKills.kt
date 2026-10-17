@@ -1,10 +1,10 @@
 package org.rsmod.content.areas.misc.isleofsouls.masteries
 
 import jakarta.inject.Inject
-import org.rsmod.api.config.refs.params
 import org.rsmod.api.death.NpcDeathEvents
 import org.rsmod.api.script.onEvent
 import org.rsmod.content.areas.misc.isleofsouls.tasks.league_progress
+import org.rsmod.content.skills.slayer.scripts.SlayerRequirements
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.plugin.scripts.PluginScript
@@ -43,7 +43,7 @@ class LeagueMasteryKills @Inject constructor(private val tasks: LeagueMasteryTas
         if (MasteryKills.isScurrius(type.name)) {
             tasks.complete(player, MasteryKills.SLOT_SCURRIUS)
         }
-        if (type.param(params.slayer_levelrequire) >= MasteryKills.HIGH_SLAYER) {
+        if (SlayerRequirements.requiredLevel(npc) >= MasteryKills.HIGH_SLAYER) {
             tasks.complete(player, MasteryKills.SLOT_SLAYER)
         }
     }

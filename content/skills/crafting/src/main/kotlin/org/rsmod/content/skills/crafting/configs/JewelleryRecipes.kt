@@ -1,10 +1,16 @@
 package org.rsmod.content.skills.crafting.configs
 
+import org.rsmod.content.skills.slayer.configs.SlayerUnlocks
 import org.rsmod.game.type.comp.ComponentType
 import org.rsmod.game.type.obj.ObjType
 
 /** A product button of a jewellery interface, and the recipe it makes. */
-class JewelleryItem(val component: ComponentType, val recipe: CraftingRecipe)
+/** [slayerUnlock] is the Slayer unlock bit the player must have bought to make it, if any. */
+class JewelleryItem(
+    val component: ComponentType,
+    val recipe: CraftingRecipe,
+    val slayerUnlock: Int? = null,
+)
 
 /**
  * What the gold and silver jewellery interfaces make, from the wiki's Crafting page. A gold or
@@ -134,6 +140,7 @@ object JewelleryRecipes {
                 o.slayer_gem,
                 o.gold_bar,
                 Triple(o.slayer_ring, 75, 15.0),
+                slayerUnlock = SlayerUnlocks.RING_BLING,
             )
         )
         add(
@@ -143,6 +150,7 @@ object JewelleryRecipes {
                 o.eternal_gem,
                 o.gold_bar,
                 Triple(o.eternal_slayer_ring, 75, 15.0),
+                slayerUnlock = SlayerUnlocks.RING_BLING,
             )
         )
     }
@@ -239,6 +247,7 @@ object JewelleryRecipes {
         bar: ObjType,
         product: Triple<ObjType, Int, Double>,
         output: Int = 1,
+        slayerUnlock: Int? = null,
     ): JewelleryItem {
         val inputs = listOfNotNull(gem?.let { CraftingInput(it) }, CraftingInput(bar))
         val recipe =
@@ -258,6 +267,6 @@ object JewelleryRecipes {
                 crack = false,
                 anim = CraftingSeqs.furnace,
             )
-        return JewelleryItem(button, recipe)
+        return JewelleryItem(button, recipe, slayerUnlock)
     }
 }
