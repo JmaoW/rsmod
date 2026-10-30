@@ -179,10 +179,90 @@ object IsleOfSoulsTaskTexts {
             Edit(1648, null, null),
             Edit(1649, null, null),
             Edit(1650, null, null),
+            // The crystal tasks were set in Tirannwn; they complete anywhere.
+            Edit(530, null, null),
+            Edit(531, null, null),
+            Edit(546, null, null),
+            Edit(549, null, null),
+            Edit(1512, null, null),
+            Edit(1396, null, null),
+            // The Gauntlet's tasks named Prifddinas.
+            Edit(534, null, "Complete the Gauntlet"),
+            Edit(535, null, "Complete the Corrupted Gauntlet"),
+            Edit(547, null, "Complete the Corrupted Gauntlet 50 times"),
+            Edit(548, null, "Complete the Corrupted Gauntlet 150 times"),
             // The Kalphite Queen's tasks named the Kalphite Lair and the Kharidian Desert.
             Edit(864, null, "Defeat the Kalphite Queen"),
             Edit(874, null, "Defeat the Kalphite Queen 50 times"),
             Edit(875, null, "Defeat the Kalphite Queen 150 times"),
+            // The Wilderness bosses' tasks named the Wilderness.
+            Edit(988, null, "Defeat Venenatis"),
+            Edit(992, null, "Defeat Callisto"),
+            // The King Black Dragon's task named the Wilderness.
+            Edit(1000, null, "Defeat the King Black Dragon"),
+            // The Tombs of Amascut tasks named the Kharidian Desert.
+            Edit(1186, null, null),
+            Edit(1187, null, null),
+            Edit(1188, null, null),
+            Edit(1189, null, null),
+            Edit(1228, null, null),
+            Edit(1230, null, null),
+            Edit(1231, null, null),
+            Edit(1232, null, null),
+            Edit(1233, null, null),
+            Edit(1236, null, null),
+            Edit(996, null, "Defeat Vet'ion"),
+            Edit(1003, "Equip a Dragon 2-Handed Sword", "Equip a Dragon 2-Handed Sword"),
+            Edit(989, null, null),
+            Edit(993, null, null),
+            Edit(997, null, null),
+            Edit(1256, null, null),
+            // The revenant weapons' tasks named the Wilderness.
+            Edit(1014, null, null),
+            Edit(697, null, null),
+            Edit(910, null, null),
+            Edit(1018, null, null),
+            Edit(1257, null, null),
+            Edit(1258, null, null),
+            Edit(1259, null, null),
+            Edit(1019, null, null),
+            Edit(1398, null, null),
+            Edit(1399, null, null),
+            Edit(1400, null, null),
+            Edit(1401, null, null),
+            Edit(1402, null, null),
+            Edit(1403, null, null),
+            Edit(1404, null, null),
+            Edit(1405, null, null),
+            Edit(1406, null, null),
+            // Obor and Bryophyta named the Edgeville Dungeon and the Varrock Sewers.
+            Edit(472, "Defeat Obor", "Defeat Obor"),
+            Edit(476, "Defeat Bryophyta", "Defeat Bryophyta"),
+            Edit(477, null, null),
+            // The Dagannoth Kings' tasks named the Waterbirth Island Dungeon and the Fremennik
+            // Province; their rings' tasks were tied to the province.
+            Edit(596, null, "Defeat all three of the Dagannoth Kings without leaving their lair"),
+            Edit(613, null, "Defeat all three of the Dagannoth Kings 50 times"),
+            Edit(614, null, "Defeat all three of the Dagannoth Kings 150 times"),
+            Edit(615, null, "Defeat all three of the Dagannoth Kings 300 times"),
+            Edit(597, null, null),
+            Edit(599, null, null),
+            Edit(601, null, null),
+            Edit(604, null, null),
+            Edit(607, null, null),
+            // Vorkath's tasks named Ungael and the Fremennik Province.
+            Edit(585, null, "Defeat Vorkath"),
+            Edit(608, null, "Defeat Vorkath 50 times"),
+            Edit(609, null, "Defeat Vorkath 150 times"),
+            Edit(610, null, "Defeat Vorkath 300 times"),
+            Edit(
+                602,
+                null,
+                "Defeat Vorkath 5 times in a row without taking any damage from his special " +
+                    "attacks and without leaving his crater. Failing this task requires you to " +
+                    "leave the crater to try again",
+            ),
+            Edit(605, null, "Defeat Vorkath 15 times without leaving his crater"),
         )
 }
 

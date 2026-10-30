@@ -50,6 +50,7 @@ object StarterObjs : ObjReferences() {
     val bait_pack = find("pack_fishing_bait")
     val feather = find("feather")
     val feather_pack = find("pack_feather")
+    val sandworms = find("piscarilius_sandworms")
     val raw_shrimps = find("raw_shrimp")
     val raw_sardine = find("raw_sardine")
     val raw_herring = find("raw_herring")
@@ -63,8 +64,9 @@ object StarterObjs : ObjReferences() {
 }
 
 /**
- * Gerrant's stock, as on the Wiki's Gerrant's Fishy Business page. The raw fish are in the shop at
- * 0 so that Gerrant buys them from players and then sells them back. Needs `packCache`.
+ * Gerrant's stock, as on the Wiki's Gerrant's Fishy Business page, plus sandworms for the
+ * Piscarilius anglerfish spot. The raw fish are in the shop at 0 so that Gerrant buys them from
+ * players and then sells them back. Needs `packCache`.
  */
 internal object StarterInvEdits : InvEditor() {
     init {
@@ -82,6 +84,7 @@ internal object StarterInvEdits : InvEditor() {
             stock += stock(StarterObjs.bait_pack, count = 80, restockCycles = 5)
             stock += stock(StarterObjs.feather, count = 1000, restockCycles = 1)
             stock += stock(StarterObjs.feather_pack, count = 100, restockCycles = 2)
+            stock += stock(StarterObjs.sandworms, count = 1000, restockCycles = 1)
             stock += stock(StarterObjs.raw_shrimps, count = 0, restockCycles = 300)
             stock += stock(StarterObjs.raw_sardine, count = 200, restockCycles = 1)
             stock += stock(StarterObjs.raw_herring, count = 0, restockCycles = 900)

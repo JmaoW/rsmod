@@ -20,6 +20,12 @@ OUT = (HERE.parents[1] / "content/other/food/src/main/kotlin/org/rsmod/content/o
 RENAMES = {"Cooked giant crab meat": "Cooked crab meat"}
 # Hunter meats heal again this many ticks later in the wiki; the file already says 7.
 CHUNK = 40
+# What the wiki's Poison and Venom pages say these foods do to sickness; the tsps table lacks it.
+# (poison cure, venom cure, ticks of venom immunity)
+SICKNESS = {
+    "Strange fruit": ("Cure", "Cure", 30),
+    "Cooked moonlight antelope": (None, "Convert", 0),
+}
 
 
 def ascii_name(name):
@@ -80,6 +86,15 @@ def kt_food(food):
     elif "heal" in food:
         args.append(f"heal = {kt_heal(food['heal'])}")
     effects = kt_effects(food)
+    cure = SICKNESS.get(food["name"])
+    if cure:
+        extra = []
+        if cure[0]:
+            extra.append(f"poison = PoisonCure.{cure[0]}")
+        extra.append(f"venom = VenomCure.{cure[1]}")
+        if cure[2]:
+            extra.append(f"venomImmunity = {cure[2]}")
+        effects = (effects[:-1] + ", " if effects else "FoodEffects(") + ", ".join(extra) + ")"
     if effects:
         args.append(f"effects = {effects}")
     then = food.get("then")
@@ -125,6 +140,8 @@ def main():
         "package org.rsmod.content.other.food",
         "",
         "import org.rsmod.api.config.refs.stats",
+        "import org.rsmod.content.skills.herblore.configs.PoisonCure",
+        "import org.rsmod.content.skills.herblore.configs.VenomCure",
         "",
         "/** The foods of the wiki's Food page, by cache name. Names the cache lacks are skipped. */",
         "internal object FoodData {",

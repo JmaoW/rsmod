@@ -9,6 +9,7 @@ import org.rsmod.api.player.ui.IfOpenSub
 import org.rsmod.api.player.ui.IfOverlayButton
 import org.rsmod.api.player.ui.IfOverlayButtonT
 import org.rsmod.api.player.ui.IfOverlayDrag
+import org.rsmod.api.player.ui.IfPauseButton
 import org.rsmod.events.EventBus
 import org.rsmod.game.type.comp.ComponentType
 import org.rsmod.game.type.interf.InterfaceType
@@ -23,6 +24,15 @@ public fun ScriptContext.onIfClose(type: InterfaceType, action: IfCloseSub.() ->
 public fun ScriptContext.onIfOverlayButton(
     button: ComponentType,
     action: IfOverlayButton.() -> Unit,
+): Unit = onEvent(button.packed, action)
+
+/**
+ * Registers a script for clicks on a pause button of [button]. While any script handles the click,
+ * the interface stays open and no suspended coroutine is resumed.
+ */
+public fun ScriptContext.onIfPauseButton(
+    button: ComponentType,
+    action: IfPauseButton.() -> Unit,
 ): Unit = onEvent(button.packed, action)
 
 public fun ScriptContext.onIfModalButton(

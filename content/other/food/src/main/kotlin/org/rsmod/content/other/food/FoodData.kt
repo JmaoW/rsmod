@@ -3,6 +3,8 @@
 package org.rsmod.content.other.food
 
 import org.rsmod.api.config.refs.stats
+import org.rsmod.content.skills.herblore.configs.PoisonCure
+import org.rsmod.content.skills.herblore.configs.VenomCure
 
 /** The foods of the wiki's Food page, by cache name. Names the cache lacks are skipped. */
 internal object FoodData {
@@ -167,6 +169,7 @@ internal object FoodData {
             FoodDef(
                 name = "Cooked moonlight antelope",
                 heal = Heal.Fixed(14),
+                effects = FoodEffects(venom = VenomCure.Convert),
                 then = DelayedHeal(7, 12, FoodEffects.None),
             ),
             FoodDef(name = "Cooked mystery meat", heal = Heal.Fixed(5)),
@@ -531,7 +534,13 @@ internal object FoodData {
             FoodDef(
                 name = "Strange fruit",
                 heal = Heal.Fixed(0),
-                effects = FoodEffects(runEnergy = 30),
+                effects =
+                    FoodEffects(
+                        runEnergy = 30,
+                        poison = PoisonCure.Cure,
+                        venom = VenomCure.Cure,
+                        venomImmunity = 30,
+                    ),
                 message = "You eat the fruit. It tastes great, some of your energy is restored!",
             ),
         )

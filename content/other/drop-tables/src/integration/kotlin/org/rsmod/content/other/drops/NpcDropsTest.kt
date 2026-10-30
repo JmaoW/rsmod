@@ -12,6 +12,7 @@ import org.rsmod.api.drops.DropOutcome
 import org.rsmod.api.drops.DropStack
 import org.rsmod.api.drops.DropTable
 import org.rsmod.api.drops.DropTables
+import org.rsmod.api.drops.DropVariant
 import org.rsmod.api.drops.NpcDropEvents
 import org.rsmod.api.hit.plugin.NpcHitScript
 import org.rsmod.api.script.onEvent
@@ -114,6 +115,29 @@ class NpcDropsTest {
 
             assertEquals(1, groundCount(coords, objs.logs))
             assertEquals(0, groundCount(coords, objs.coins))
+        }
+
+    /** Picks the on-task variant for every kill. */
+    class OnTaskDrops : PluginScript() {
+        override fun ScriptContext.startup() {
+            onEvent<NpcDropEvents.Modify> { variant = DropVariant.ON_TASK }
+        }
+    }
+
+    @Test
+    fun GameTestState.`a kill rolls the variant table the subscribers pick`() =
+        runDropTest(OnTaskDrops::class) { deps ->
+            val usual = DropTable(name = "usual", always = listOf(DropStack(objs.bones, 1, 1)))
+            val onTask = DropTable(name = "on task", always = listOf(DropStack(objs.logs, 5, 5)))
+            deps.dropTables.replaceAll(
+                mapOf(goblin.id to usual),
+                mapOf(goblin.id to mapOf(DropVariant.ON_TASK to onTask)),
+            )
+
+            val coords = killGoblin()
+
+            assertEquals(0, groundCount(coords, objs.bones))
+            assertEquals(5, groundCount(coords, objs.logs))
         }
 
     private companion object {

@@ -261,6 +261,87 @@ def skeleton_attack(name):
     return "skeleton_update_attack_weapon"
 
 
+def parse_seq_frames(d):
+    """The first frame of a seq: ("frame", group, file) or ("keyframe", set id), or None."""
+    p = 0
+    while p < len(d):
+        op = d[p]
+        p += 1
+        if op == 0:
+            return None
+        if op == 1:
+            n = int.from_bytes(d[p:p + 2], "big"); p += 2
+            if n == 0:
+                continue  # Keyframe seqs carry an empty frame list before their set (op 13).
+            # Delays, then the low halves (file ids), then the high halves (group ids).
+            file = int.from_bytes(d[p + 2 * n:p + 2 * n + 2], "big")
+            group = int.from_bytes(d[p + 4 * n:p + 4 * n + 2], "big")
+            return ("frame", group, file)
+        if op in (2, 6, 7):
+            p += 2
+        elif op == 3:
+            p += 1 + d[p]
+        elif op == 4:
+            pass
+        elif op in (5, 8, 9, 10, 11):
+            p += 1
+        elif op == 12:
+            p += 1 + 4 * d[p]
+        elif op == 13:
+            return ("keyframe", int.from_bytes(d[p:p + 4], "big"))
+        else:
+            return None  # Frames always come before anything not handled here.
+    return None
+
+
+class Skeletons:
+    """
+    The skeleton (frame base) a seq animates. A seq only moves a model built for its skeleton:
+    played on any other it twists the model. Human seqs use frame base 0.
+    """
+
+    def __init__(self):
+        self.seqs = js5.split_files(js5.read_group(2, 12), js5.ref_table(2)[12])
+        self.frames = js5.ref_table(0)
+        self.keyframes = js5.ref_table(22)
+        self.cache = {}
+
+    def of(self, seq):
+        if seq in self.cache:
+            return self.cache[seq]
+        found = None
+        first = parse_seq_frames(self.seqs[seq]) if seq in self.seqs else None
+        if first and first[0] == "frame" and first[1] in self.frames:
+            files = js5.split_files(js5.read_group(0, first[1]), self.frames[first[1]])
+            data = files.get(first[2]) or next(iter(files.values()))
+            found = ("frame", int.from_bytes(data[0:2], "big"))
+        elif first and first[0] == "keyframe" and first[1] >> 16 in self.keyframes:
+            group, file = first[1] >> 16, first[1] & 0xFFFF
+            files = js5.split_files(js5.read_group(22, group), self.keyframes[group])
+            data = files.get(file) or next(iter(files.values()))
+            found = ("keyframe", int.from_bytes(data[1:3], "big"))  # After a version byte.
+        self.cache[seq] = found
+        return found
+
+
+HUMAN_SKELETON = ("frame", 0)
+
+
+def still_when_hit(seq_names, skeletons, ready):
+    """
+    For an npc with no block seq of its own: its ready seq when it idles on a rig that is not human,
+    which tells the server not to flinch at all (see `Npc.combatPlayDefendAnim`). That is how the
+    game shows such npcs; the default human block would twist their models. Humanoids keep it.
+    """
+    name = seq_names.get(ready)
+    if name is None or name.startswith("human"):
+        return None
+    skeleton = skeletons.of(ready)
+    if skeleton is None or skeleton == HUMAN_SKELETON:
+        return None
+    return name
+
+
 def existing_anims(key):
     """Npcs npcs.toml already gives [key] (`defend_anim`, ...): those are kept as they are."""
     with open(NPCS_TOML, encoding="utf8") as f:
@@ -279,6 +360,8 @@ def main():
     files = js5.ref_table(2)[9]
     group = js5.split_files(js5.read_group(2, 9), files)
     keep = {key: existing_anims(key) for key in KINDS}
+    skeletons = Skeletons()
+    stills = 0
 
     rows = {key: [] for key in KINDS}
     skipped_existing = {key: 0 for key in KINDS}
@@ -313,6 +396,12 @@ def main():
             if not picks and key == "attack_anim":
                 picks = (derive_sole_attack(seq_names.get(n["ready"]), seq_ids)[:1]
                          + derive_sole_attack(seq_names.get(n["walk"]), seq_ids)[:1])
+            if not picks and key == "defend_anim":
+                still = still_when_hit(seq_names, skeletons, n["ready"])
+                if still:
+                    rows[key].append((name, still))
+                    stills += 1
+                continue
             if not picks:
                 continue
             # When the two disagree, one is a more specific variant (`dragon_block_kbd`): take the
@@ -330,6 +419,7 @@ def main():
                 f.write(f'"{name}" = {seq_ids[pick]} # {pick}\n')  # Quoted: some names hold `+`.
     for key in KINDS:
         print(f"{key}: wrote {len(rows[key])} npcs (kept {skipped_existing[key]} from npcs.toml)")
+    print(f"defend_anim: {stills} of them hold their idle (no block seq, not a human rig)")
     print(f"wrote {OUT}; {no_name} combat npcs have no symbol name")
 
 

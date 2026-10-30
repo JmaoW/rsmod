@@ -3,6 +3,7 @@ package org.rsmod.content.skills.magic.spell.attacks.ancients
 import jakarta.inject.Inject
 import org.rsmod.api.combat.commons.CombatAttack
 import org.rsmod.api.combat.manager.MagicRuneManager.Companion.isFailure
+import org.rsmod.api.combat.manager.PlayerPoisonEvents
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.projanims
@@ -30,7 +31,7 @@ import org.rsmod.map.CoordGrid
 // TODO:
 // - the Ancient sceptres (more freeze, more accuracy) and the Smoke staff's bonus beyond what the
 //   damage formulas already give
-// - freezing and poisoning other players: the isle has no player fighting
+// - freezing other players: the isle has no player fighting
 //
 // The Ancient Magicks' sixteen combat spells. Each element has a Rush, Burst, Blitz and Barrage,
 // and an effect that happens when the spell hits (not when it splashes):
@@ -335,8 +336,13 @@ constructor(
         private fun ProtectedAccess.applyEffect(target: PathingEntity, damage: Int) {
             when (def.effect) {
                 Effect.Poison -> {
-                    if (target is Npc && random.randomBoolean(POISON_CHANCE)) {
-                        poison.poison(target, player, def.strength)
+                    if (!random.randomBoolean(POISON_CHANCE)) {
+                        return
+                    }
+                    when (target) {
+                        is Npc -> poison.poison(target, player, def.strength)
+                        // A player's poison is their own, whoever poisons them.
+                        is Player -> publish(PlayerPoisonEvents.Apply(player, target, def.strength))
                     }
                 }
                 Effect.Drain -> drain(target)

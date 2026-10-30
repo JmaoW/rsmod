@@ -35893,10 +35893,6 @@ npc = 'lava_dragon'
 coords = '0_50_59_13_43'
 
 [[spawn]]
-npc = 'vetion'
-coords = '0_50_59_19_12'
-
-[[spawn]]
 npc = 'lava_dragon'
 coords = '0_50_59_23_54'
 
@@ -37773,10 +37769,6 @@ npc = 'greater_demon5'
 coords = '0_51_60_23_54'
 
 [[spawn]]
-npc = 'callisto'
-coords = '0_51_60_26_7'
-
-[[spawn]]
 npc = 'greater_demon3'
 coords = '0_51_60_32_32'
 
@@ -38679,10 +38671,6 @@ coords = '0_52_57_19_46'
 [[spawn]]
 npc = 'green_dragon3'
 coords = '0_52_57_20_37'
-
-[[spawn]]
-npc = 'venenatis'
-coords = '0_52_58_4_22'
 
 [[spawn]]
 npc = '52_59_crabs'

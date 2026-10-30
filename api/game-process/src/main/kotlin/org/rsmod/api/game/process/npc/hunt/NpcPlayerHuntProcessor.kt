@@ -2,6 +2,7 @@ package org.rsmod.api.game.process.npc.hunt
 
 import jakarta.inject.Inject
 import org.rsmod.api.config.constants
+import org.rsmod.api.config.refs.areas
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.hunt.Hunt
 import org.rsmod.api.npc.isValidTarget
@@ -29,6 +30,7 @@ constructor(
     private val varpTypes: VarpTypeList,
     private val varnTypes: VarnTypeList,
     private val objTypes: ObjTypeList,
+    private val tolerances: Set<HuntTolerance>,
 ) {
     public fun process(npc: Npc) {
         if (!npc.isValidTarget() || npc.isDelayed) {
@@ -72,6 +74,10 @@ constructor(
             }
 
             if (mode.checkAfk && player.isAfk()) {
+                continue
+            }
+
+            if (tolerances.any { it.tolerates(this, player) }) {
                 continue
             }
 
@@ -177,9 +183,9 @@ constructor(
         return false
     }
 
-    // TODO(combat): Wilderness indicator.
+    /** Whether the player stands in the `wilderness` area (a map area, packed by `packCache`). */
     private fun Player.isInWilderness(): Boolean {
-        return false
+        return areas.wilderness.id.toShort() in activeAreas
     }
 
     // Hunt can be quite expensive if not careful. We are assuming that using a possibly delayed

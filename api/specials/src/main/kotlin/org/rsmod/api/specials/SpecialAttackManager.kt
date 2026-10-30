@@ -8,6 +8,7 @@ import org.rsmod.api.combat.commons.styles.RangedAttackStyle
 import org.rsmod.api.combat.commons.types.MeleeAttackType
 import org.rsmod.api.combat.commons.types.RangedAttackType
 import org.rsmod.api.combat.manager.PlayerAttackManager
+import org.rsmod.api.config.refs.hitmark_groups
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.specials.energy.SpecialAttackEnergy
 import org.rsmod.api.specials.weapon.SpecialAttackWeapons
@@ -16,6 +17,7 @@ import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.Hit
 import org.rsmod.game.proj.ProjAnim
+import org.rsmod.game.type.hitmark.HitmarkTypeGroup
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.proj.ProjAnimType
 import org.rsmod.game.type.spot.SpotanimType
@@ -34,6 +36,14 @@ constructor(
 
     public fun takeSpecialEnergy(source: ProtectedAccess, energyInHundreds: Int) {
         energy.takeSpecialEnergy(source.player, energyInHundreds)
+    }
+
+    /** The player's special attack energy, in the same hundreds the requirements use. */
+    public fun specialEnergy(source: ProtectedAccess): Int = energy.specialEnergy(source.player)
+
+    /** Gives [energyInHundreds] special attack energy back, up to the maximum. */
+    public fun giveSpecialEnergy(source: ProtectedAccess, energyInHundreds: Int) {
+        energy.giveSpecialEnergy(source.player, energyInHundreds)
     }
 
     public fun getSpecialEnergyRequirement(obj: ObjType): Int? = weapons.getSpecialEnergy(obj)
@@ -73,6 +83,15 @@ constructor(
 
     /** @see [PlayerAttackManager.stopCombat] */
     public fun stopCombat(access: ProtectedAccess): Unit = manager.stopCombat(access.player)
+
+    /** @see [PlayerAttackManager.playWeaponFx] */
+    public fun playWeaponFx(source: ProtectedAccess, attack: CombatAttack.Melee) {
+        manager.playWeaponFx(source.player, attack)
+    }
+
+    /** @see [PlayerAttackManager.playWeaponFx] */
+    public fun playWeaponFx(source: ProtectedAccess, attack: CombatAttack.Ranged): Boolean =
+        manager.playWeaponFx(source.player, attack)
 
     /** @see [PlayerAttackManager.giveCombatXp] */
     public fun giveCombatXp(
@@ -116,6 +135,7 @@ constructor(
         attackType: MeleeAttackType? = attack.type,
         attackStyle: MeleeAttackStyle? = attack.style,
         blockType: MeleeAttackType? = attack.type,
+        defenceFactor: Double = 1.0,
     ): Int =
         manager.rollMeleeDamage(
             source = source.player,
@@ -126,6 +146,7 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
+            defenceFactor = defenceFactor,
         )
 
     /** @see [PlayerAttackManager.rollMeleeAccuracy] */
@@ -136,6 +157,7 @@ constructor(
         attackStyle: MeleeAttackStyle?,
         blockType: MeleeAttackType?,
         multiplier: Double,
+        defenceFactor: Double = 1.0,
     ): Boolean =
         manager.rollMeleeAccuracy(
             source = source.player,
@@ -144,6 +166,7 @@ constructor(
             attackStyle = attackStyle,
             blockType = blockType,
             multiplier = multiplier,
+            defenceFactor = defenceFactor,
         )
 
     /** @see [PlayerAttackManager.rollMeleeMaxHit] */
@@ -171,7 +194,25 @@ constructor(
         target: PathingEntity,
         damage: Int,
         delay: Int = 1,
-    ): Hit = manager.queueMeleeHit(source.player, target, damage, delay)
+        ignoreProtection: Boolean = false,
+    ): Hit = manager.queueMeleeHit(source.player, target, damage, delay, ignoreProtection)
+
+    /** @see [PlayerAttackManager.queueMeleeDamage] */
+    public fun queueMeleeDamage(
+        source: ProtectedAccess,
+        target: PathingEntity,
+        damage: Int,
+        delay: Int,
+    ): Hit = manager.queueMeleeDamage(source.player, target, damage, delay)
+
+    /** @see [PlayerAttackManager.queueTypelessHit] */
+    public fun queueTypelessHit(
+        source: ProtectedAccess,
+        target: PathingEntity,
+        damage: Int,
+        delay: Int,
+        hitmark: HitmarkTypeGroup = hitmark_groups.regular_damage,
+    ): Hit = manager.queueTypelessHit(source.player, target, damage, delay, hitmark)
 
     /** @see [PlayerAttackManager.rollRangedDamage] */
     public fun rollRangedDamage(

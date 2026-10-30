@@ -29,7 +29,9 @@ import org.rsmod.api.spells.runes.unlimited.UnlimitedRuneRepository
 import org.rsmod.api.spells.runes.unlimited.UnlimitedRuneScript
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.content.skills.magic.utility.configs.BoltEnchantments
 import org.rsmod.content.skills.magic.utility.scripts.Alchemy
+import org.rsmod.content.skills.magic.utility.scripts.BoltEnchanting
 import org.rsmod.content.skills.magic.utility.scripts.BonesToFruit
 import org.rsmod.content.skills.magic.utility.scripts.ChargeSpell
 import org.rsmod.content.skills.magic.utility.scripts.DisabledSpells
@@ -50,7 +52,11 @@ import org.rsmod.map.CoordGrid
 class UtilitySpellsTest {
     class Deps
     @Inject
-    constructor(val spells: MagicSpellRegistry, val destinations: TeleportDestinations)
+    constructor(
+        val spells: MagicSpellRegistry,
+        val destinations: TeleportDestinations,
+        val bolts: BoltEnchanting,
+    )
 
     /** Tests do not install plugin modules, and the registry must be initialised by its module. */
     object SpellModule : AbstractModule() {
@@ -139,6 +145,13 @@ class UtilitySpellsTest {
     private fun GameTestScope.cast(deps: Deps, spell: ObjType, message: String? = null) {
         val button = deps.spells.getObjSpell(spell)!!.component
         eventBus.publish(IfOverlayButton(player, button, -1, null, IfButtonOp.Op1))
+        settle(message)
+    }
+
+    /** Casts the bolt spell [spell], which the game asks for with a menu. */
+    private fun GameTestScope.castBolt(deps: Deps, spell: ObjType, message: String? = null) {
+        val enchantment = BoltEnchantments.all.first { it.spell.id == spell.id }
+        player.withProtectedAccess { with(deps.bolts) { enchant(enchantment) } }
         settle(message)
     }
 
@@ -430,5 +443,102 @@ class UtilitySpellsTest {
             check(bob.coords == destination) { "Expected $destination, was ${bob.coords}." }
             check(player.coords != destination) { "The caster should stay where they were." }
             check(player.count(obj("lawrune")) == 0) { "Expected the law rune to be used." }
+        }
+
+    /** Plenty of every rune that a bolt spell can ask for. */
+    private val BOLT_RUNES =
+        arrayOf(
+            "airrune" to 100,
+            "waterrune" to 100,
+            "earthrune" to 100,
+            "firerune" to 100,
+            "mindrune" to 100,
+            "naturerune" to 100,
+            "cosmicrune" to 100,
+            "lawrune" to 100,
+            "deathrune" to 100,
+            "bloodrune" to 100,
+            "soulrune" to 100,
+        )
+
+    @Test
+    fun GameTestState.`the ten bolt spells ask for the levels of the wiki`() =
+        runInjectedGameTest(Deps::class, SpellModule, BoltEnchanting::class, *RUNE_SCRIPTS) { deps
+            ->
+            val levels =
+                mapOf(
+                    objs.spell_enchant_bolt_opal to 4,
+                    objs.spell_enchant_bolt_sapphire to 7,
+                    objs.spell_enchant_bolt_jade to 14,
+                    objs.spell_enchant_bolt_pearl to 24,
+                    objs.spell_enchant_bolt_emerald to 27,
+                    objs.spell_enchant_bolt_topaz to 29,
+                    objs.spell_enchant_bolt_ruby to 49,
+                    objs.spell_enchant_bolt_diamond to 57,
+                    objs.spell_enchant_bolt_dragonstone to 68,
+                    objs.spell_enchant_bolt_onyx to 87,
+                )
+            for ((spell, level) in levels) {
+                val registered = deps.spells.getObjSpell(spell)
+                check(registered != null) { "Expected $spell to be a registered spell." }
+                check(registered.levelReq == level) {
+                    "Expected level $level for $spell, was ${registered.levelReq}."
+                }
+            }
+        }
+
+    @Test
+    fun GameTestState.`a bolt spell enchants ten bolts a cast`() =
+        runInjectedGameTest(Deps::class, SpellModule, BoltEnchanting::class, *RUNE_SCRIPTS) { deps
+            ->
+            prepare(87, *BOLT_RUNES, "opal_bolt" to 25)
+
+            castBolt(deps, objs.spell_enchant_bolt_opal)
+
+            val enchanted = "xbows_crossbow_bolts_bronze_tipped_opal_enchanted"
+            check(player.count(obj(enchanted)) == 10) { "Expected ten enchanted bolts." }
+            check(player.count(obj("opal_bolt")) == 15) { "Expected fifteen opal bolts left." }
+            val spell = deps.spells.getObjSpell(objs.spell_enchant_bolt_opal)!!
+            check(magicXp() == spell.castXp) { "Expected ${spell.castXp} experience." }
+        }
+
+    @Test
+    fun GameTestState.`a bolt spell goes on to dragon bolts when the regular ones run out`() =
+        runInjectedGameTest(Deps::class, SpellModule, BoltEnchanting::class, *RUNE_SCRIPTS) { deps
+            ->
+            prepare(87, *BOLT_RUNES, "opal_bolt" to 4, "dragon_bolts_unenchanted_opal" to 20)
+
+            castBolt(deps, objs.spell_enchant_bolt_opal)
+
+            check(player.count(obj("xbows_crossbow_bolts_bronze_tipped_opal_enchanted")) == 4)
+            check(player.count(obj("dragon_bolts_enchanted_opal")) == 6)
+            check(player.count(obj("opal_bolt")) == 0)
+            check(player.count(obj("dragon_bolts_unenchanted_opal")) == 14)
+        }
+
+    @Test
+    fun GameTestState.`a bolt spell without bolts of its gem says so and costs nothing`() =
+        runInjectedGameTest(Deps::class, SpellModule, BoltEnchanting::class, *RUNE_SCRIPTS) { deps
+            ->
+            prepare(87, *BOLT_RUNES, "pearl_bolt" to 25)
+
+            castBolt(deps, objs.spell_enchant_bolt_opal, "You need opal bolts to cast this spell.")
+
+            check(player.count(obj("cosmicrune")) == 100) { "The runes should be kept." }
+            check(player.count(obj("pearl_bolt")) == 25)
+            check(magicXp() == 0.0)
+        }
+
+    @Test
+    fun GameTestState.`a bolt spell needs its Magic level`() =
+        runInjectedGameTest(Deps::class, SpellModule, BoltEnchanting::class, *RUNE_SCRIPTS) { deps
+            ->
+            prepare(48, *BOLT_RUNES, "xbows_crossbow_bolts_adamantite_tipped_ruby" to 25)
+
+            castBolt(deps, objs.spell_enchant_bolt_ruby)
+
+            check(player.count(obj("xbows_crossbow_bolts_adamantite_tipped_ruby")) == 25) {
+                "Nothing should be enchanted below level 49."
+            }
         }
 }

@@ -1,6 +1,6 @@
 Source spawns: 24143
-Written:       22700  (surface 11748, underground 10952)
-Dropped:       1443
+Written:       22681  (surface 11745, underground 10936)
+Dropped:       1462
 
 == Dropped, by reason ==
 
@@ -117,8 +117,53 @@ Dropped:       1443
           id  1029 x1    spawn name 'Sleepwalker'                      cache name ['Sleepwalker']
           id  9233 x1    spawn name 'Mourner'                          cache name ['Mourner']
 
+     2  exclusions.txt: npc 7936
+          id  7936 x2    spawn name 'Revenant demon'                   cache name ['Revenant demon']
+
+     2  exclusions.txt: npc 7932
+          id  7932 x2    spawn name 'Revenant pyrefiend'               cache name ['Revenant pyrefiend']
+
+     2  exclusions.txt: npc 7881
+          id  7881 x2    spawn name 'Revenant imp'                     cache name ['Revenant imp']
+
+     2  exclusions.txt: npc 7937
+          id  7937 x2    spawn name 'Revenant ork'                     cache name ['Revenant ork']
+
+     1  exclusions.txt: npc 7939
+          id  7939 x1    spawn name 'Revenant knight'                  cache name ['Revenant knight']
+
+     1  exclusions.txt: npc 7940
+          id  7940 x1    spawn name 'Revenant dragon'                  cache name ['Revenant dragon']
+
+     1  exclusions.txt: npc 6611
+          id  6611 x1    spawn name "Vet'ion"                          cache name ["Vet'ion"]
+
+     1  exclusions.txt: npc 8195
+          id  8195 x1    spawn name 'Bryophyta'                        cache name ['Bryophyta']
+
      1  exclusions.txt: near 7718 3031 9746 4
           id  7718 x1    spawn name 'Yarsul'                           cache name ['Yarsul']
+
+     1  exclusions.txt: npc 6609
+          id  6609 x1    spawn name 'Callisto'                         cache name ['Callisto']
+
+     1  exclusions.txt: npc 7938
+          id  7938 x1    spawn name 'Revenant dark beast'              cache name ['Revenant dark beast']
+
+     1  exclusions.txt: npc 7935
+          id  7935 x1    spawn name 'Revenant hellhound'               cache name ['Revenant hellhound']
+
+     1  exclusions.txt: npc 6610
+          id  6610 x1    spawn name 'Venenatis'                        cache name ['Venenatis']
+
+     1  exclusions.txt: npc 7934
+          id  7934 x1    spawn name 'Revenant cyclops'                 cache name ['Revenant cyclops']
+
+     1  exclusions.txt: npc 7931
+          id  7931 x1    spawn name 'Revenant goblin'                  cache name ['Revenant goblin']
+
+     1  exclusions.txt: npc 7933
+          id  7933 x1    spawn name 'Revenant hobgoblin'               cache name ['Revenant hobgoblin']
 
 == Written spawns inside areas you may care about ==
 

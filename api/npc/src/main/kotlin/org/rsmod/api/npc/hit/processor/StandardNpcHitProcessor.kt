@@ -19,12 +19,18 @@ public class StandardNpcHitProcessor
 @Inject
 constructor(private val playerList: PlayerList, private val eventBus: EventBus) : NpcHitProcessor {
     override fun StandardNpcAccess.process(hit: Hit) {
+        processLanded(landing(hit), hit.damage)
+    }
+
+    private fun StandardNpcAccess.processLanded(hit: Hit, queuedDamage: Int) {
         // TODO(combat): Show ironman_blocked hitmark if source is an ironman and target has been
         // damaged by other sources.
 
         var changedDamage: Int? = null
         if (hit.damage > npc.hitpoints) {
             changedDamage = npc.hitpoints
+        } else if (hit.damage == 0 && queuedDamage > 0) {
+            changedDamage = 0
         }
 
         if (changedDamage == 0) {
@@ -49,6 +55,17 @@ constructor(private val playerList: PlayerList, private val eventBus: EventBus) 
         }
 
         takeHit(hit)
+    }
+
+    /** [hit] as content lets it land (see [NpcHitEvents.Landing]): never more than it was. */
+    private fun StandardNpcAccess.landing(hit: Hit): Hit {
+        val event = NpcHitEvents.Landing(npc, hit, hit.damage)
+        eventBus.publish(event)
+        val damage = event.damage.coerceIn(0, hit.damage)
+        if (damage == hit.damage) {
+            return hit
+        }
+        return hit.copy(hitmark = hit.hitmark.copy(damage = damage))
     }
 
     private fun StandardNpcAccess.takeHit(hit: Hit) {

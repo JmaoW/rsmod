@@ -214,9 +214,12 @@ enum class Dungeon(
         key = "catacombs",
         title = "Catacombs of Kourend",
         entranceType = DungeonLocs.catacombs_entrance,
-        entrance = CoordGrid(2202, 2817, 0),
-        angle = LocAngle.East,
-        front = CoordGrid(2202, 2819, 0),
+        entrance = CoordGrid(2233, 2866, 0),
+        // The Kourend statue, as it stands in the centre of Kourend: the plinth on level 0 and the
+        // three pieces stacked above it, all facing South. The pieces are static map locs, see
+        // `CacheEnrichmentMaps.mapLocs`.
+        angle = LocAngle.South,
+        front = CoordGrid(2238, 2868, 0),
         climbIn = false,
         arrival = CoordGrid(1665, 10051, 0),
         areas = listOf(DungeonArea(1600, 9984, 1727, 10111)),

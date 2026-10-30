@@ -88,6 +88,35 @@ class NpcAttacksTest {
         }
 
     @Test
+    fun GameTestState
+        .`the fourth mastery passive cannot save a player from a hit that kills them`() =
+        runAttackTest { deps, s ->
+            // A hit of 3 is 2 after the reduction: more than the 1 hitpoint left. The hit is capped
+            // to the player's hitpoints (1) when it is queued, and the reduction must not be
+            // taken off that cap, or 1 becomes 0 and the player could never die.
+            s.first.stats[stats.hitpoints] = 1
+            TestCombatMasteries.set(s.first, MasteryStyle.Melee, 4)
+
+            deps.attacks.attack(s.npc, s.first, melee)
+            advance(ticks = 2)
+
+            assertEquals(0, s.first.hitpoints)
+        }
+
+    @Test
+    fun GameTestState.`the fourth mastery passive can still leave a player alive`() =
+        runAttackTest { deps, s ->
+            // 3 becomes 2, which is less than the 3 hitpoints left.
+            s.first.stats[stats.hitpoints] = 3
+            TestCombatMasteries.set(s.first, MasteryStyle.Melee, 4)
+
+            deps.attacks.attack(s.npc, s.first, melee)
+            advance(ticks = 2)
+
+            assertEquals(1, s.first.hitpoints)
+        }
+
+    @Test
     fun GameTestState.`no passive, no reduction`() = runAttackTest { deps, s ->
         val before = s.first.hitpoints
         TestCombatMasteries.set(s.first, MasteryStyle.Melee, 3)

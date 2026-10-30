@@ -13,6 +13,7 @@ import org.rsmod.api.combat.weapon.scripts.WeaponAttackStylesScript
 import org.rsmod.api.combat.weapon.styles.AttackStyles
 import org.rsmod.api.config.refs.components
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.death.PlayerDeathEvents
 import org.rsmod.api.hit.plugin.NpcHitScript
 import org.rsmod.api.hit.plugin.PlayerHitScript
 import org.rsmod.api.inv.HeldOpScript
@@ -26,14 +27,18 @@ import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.dungeons.PlayerPoison
 import org.rsmod.content.areas.misc.isleofsouls.dungeons.PoisonTimers
 import org.rsmod.content.areas.misc.isleofsouls.dungeons.PoisonVars
+import org.rsmod.content.areas.misc.isleofsouls.dungeons.SicknessScript
 import org.rsmod.content.areas.misc.isleofsouls.instances.InstanceTargetScope
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueProgressVarps
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.content.areas.misc.isleofsouls.waves.WaveState
+import org.rsmod.content.skills.herblore.configs.PoisonCure
 import org.rsmod.content.skills.herblore.configs.TimedEffect
+import org.rsmod.content.skills.herblore.configs.VenomCure
 import org.rsmod.content.skills.herblore.scripts.PotionEffects
+import org.rsmod.content.skills.herblore.scripts.SicknessTreatment
 import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.inv.InvObj
@@ -62,6 +67,7 @@ class ZulrahRunTest {
         val venom: PlayerVenom,
         val poison: PlayerPoison,
         val potions: PotionEffects,
+        val sickness: SicknessTreatment,
         val blocks: NpcMeleeBlocks,
         val tracker: LeagueTaskTracker,
         val hitModifier: StandardNpcHitModifier,
@@ -78,6 +84,7 @@ class ZulrahRunTest {
             Deps::class,
             ZulrahModule,
             ZulrahScript::class,
+            SicknessScript::class,
             ZulrahCombatScript::class,
             PlayerHitScript::class,
             NpcHitScript::class,
@@ -548,6 +555,104 @@ class ZulrahRunTest {
         }
 
     @Test
+    fun GameTestState.`an antipoison cures poison the moment it is drunk`() =
+        runZulrahTest { deps, alice, bob ->
+            assertTrue(deps.poison.poison(alice, 16))
+            deps.sickness.treat(alice, PoisonCure.Cure, VenomCure.Convert, poisonTicks = 150)
+            assertFalse(deps.poison.isPoisoned(alice))
+            assertEquals(0, alice.vars[PoisonVars.orb])
+            assertTrue(deps.potions.hasPoisonProtection(alice))
+            assertFalse(deps.poison.poison(alice, 16), "still protected")
+        }
+
+    @Test
+    fun GameTestState.`an antipoison turns venom into poison and a second dose cures it`() =
+        runZulrahTest { deps, alice, bob ->
+            deps.venom.envenom(alice)
+            deps.sickness.treat(alice, PoisonCure.Cure, VenomCure.Convert, poisonTicks = 150)
+            assertFalse(deps.venom.isVenomed(alice))
+            assertEquals(6, alice.vars[PoisonVars.orb], "the orb shows poison, not venom")
+            assertEquals(6, deps.poison.damageOf(alice), "venom became poison at its damage")
+
+            deps.sickness.treat(alice, PoisonCure.Cure, VenomCure.Convert, poisonTicks = 150)
+            assertFalse(deps.poison.isPoisoned(alice))
+        }
+
+    @Test
+    fun GameTestState.`an antipoison does not protect from venom`() =
+        runZulrahTest { deps, alice, bob ->
+            deps.sickness.treat(alice, PoisonCure.Cure, VenomCure.Convert, poisonTicks = 150)
+            assertTrue(deps.venom.envenom(alice))
+        }
+
+    @Test
+    fun GameTestState.`an antivenom cures venom and poison and protects from both`() =
+        runZulrahTest { deps, alice, bob ->
+            deps.venom.envenom(alice)
+            deps.poison.poisonFromVenom(alice, 4)
+            deps.sickness.treat(
+                alice,
+                PoisonCure.Cure,
+                VenomCure.Cure,
+                poisonTicks = 1230,
+                venomTicks = 75,
+            )
+            assertFalse(deps.venom.isVenomed(alice))
+            assertFalse(deps.poison.isPoisoned(alice))
+            assertFalse(deps.venom.envenom(alice), "immune to venom")
+            assertFalse(deps.poison.poison(alice, 16), "immune to poison")
+            repeat(75) { deps.potions.tick(alice) }
+            assertTrue(deps.venom.envenom(alice), "the venom immunity wears off first")
+        }
+
+    @Test
+    fun GameTestState.`an antidote plus plus gives venom immunity only when not envenomed`() =
+        runZulrahTest { deps, alice, bob ->
+            deps.sickness.treat(
+                alice,
+                PoisonCure.Cure,
+                VenomCure.Convert,
+                poisonTicks = 1200,
+                venomTicks = 45,
+            )
+            assertFalse(deps.venom.envenom(alice), "immune to venom for a short while")
+
+            deps.venom.envenom(bob)
+            deps.sickness.treat(
+                bob,
+                PoisonCure.Cure,
+                VenomCure.Convert,
+                poisonTicks = 1200,
+                venomTicks = 45,
+            )
+            assertFalse(deps.venom.isVenomed(bob))
+            assertTrue(deps.poison.isPoisoned(bob), "converted to poison")
+            assertFalse(deps.potions.hasVenomProtection(bob), "no immunity when envenomed")
+        }
+
+    @Test
+    fun GameTestState.`guthix rest weakens poison by one and a strange fruit cures it`() =
+        runZulrahTest { deps, alice, bob ->
+            deps.poison.poison(alice, 5)
+            deps.sickness.treat(alice, PoisonCure.Weaken, VenomCure.Convert)
+            assertEquals(4, deps.poison.damageOf(alice))
+            deps.sickness.treat(alice, PoisonCure.Cure, VenomCure.Cure, venomTicks = 30)
+            assertFalse(deps.poison.isPoisoned(alice))
+            assertTrue(deps.potions.hasVenomProtection(alice))
+        }
+
+    @Test
+    fun GameTestState.`dying cures venom and clears the orb`() = runZulrahTest { deps, alice, bob ->
+        deps.venom.envenom(alice)
+        assertTrue(deps.venom.isVenomed(alice))
+        eventBus.publish(PlayerDeathEvents.Died(alice))
+        assertFalse(deps.venom.isVenomed(alice), "venom is gone after death")
+        assertEquals(0, alice.vars[zulrah_vars.poison_orb])
+        advance(ticks = PlayerVenom.INTERVAL + 2)
+        assertEquals(0, deps.venom.damageOf(alice), "the venom timer no longer hurts")
+    }
+
+    @Test
     fun GameTestState.`a hit on Zulrah is taken in full, above fifty and under the water too`() =
         runZulrahTest { deps, alice, bob ->
             val run = fightOf(deps, alice, bob)
@@ -627,6 +732,27 @@ class ZulrahRunTest {
                 drops.isNotEmpty(),
                 "something dropped at $standing (hero ${hero?.username}, zulrah at ${fight.zulrah.coords}, hp ${fight.zulrah.hitpoints}, assigned ${fight.zulrah.isSlotAssigned})",
             )
+        }
+
+    @Test
+    fun GameTestState.`the league gives ten times the scales from a kill`() =
+        runZulrahTest { deps, alice, bob ->
+            val run = fightOf(deps, alice, bob)
+            val fight = checkNotNull(run.fight)
+            until("she is up", alice, bob, timeout = 40) { fight.step == ZulrahStep.Acting }
+            fight.stillFor(100_000, mapClock.cycle)
+            val standing = alice.coords
+            alice.observerUUID = 1L
+            fight.zulrah.heroPoints(alice, 5)
+            fight.zulrah.hitpoints = 0
+            fight.zulrah.queueDeath()
+            until("she is dead", alice, bob, timeout = 40) { fight.dead }
+            advance(ticks = 20)
+            val scales = objTypes[zulrah_objs.scales].id
+            val dropped = objRepo.findAll(standing).filter { it.type == scales }.sumOf { it.count }
+            // The table gives 100-299 scales, so the league's tenfold count is at least 1000 and
+            // always a multiple of ten.
+            assertTrue(dropped >= 1000 && dropped % 10 == 0, "scales dropped: $dropped")
         }
 
     @Test

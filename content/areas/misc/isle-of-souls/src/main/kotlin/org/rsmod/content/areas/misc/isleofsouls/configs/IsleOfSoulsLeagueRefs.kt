@@ -54,9 +54,19 @@ object IsleOfSoulsInterfaces : InterfaceReferences() {
 object IsleOfSoulsVarBits : VarBitReferences() {
     val league_type = find("league_type")
     val league_tutorial_completed = find("league_tutorial_completed")
+
+    /** The Tasks window's filter dropdown picks. Each holds the picked entry's index. */
+    val league_task_filter_tier = find("league_task_filter_tier")
+    val league_task_filter_completed = find("league_task_filter_completed")
+    val league_task_filter_type = find("league_task_filter_type")
+    val league_task_filter_area = find("league_task_filter_area")
+    val league_task_filter_skill = find("league_task_filter_skill")
 }
 
 object IsleOfSoulsVarps : VarpReferences() {
     /** The client's cached copy of the current world's flags (see `league_world` clientscript). */
     val map_flags_cached = find("map_flags_cached")
+
+    /** Holds `league_tasks_is_searching` and `league_tasks_search_listen_for_keyboard`. */
+    val league_temp_noprotect_extra = find("league_temp_noprotect_extra")
 }

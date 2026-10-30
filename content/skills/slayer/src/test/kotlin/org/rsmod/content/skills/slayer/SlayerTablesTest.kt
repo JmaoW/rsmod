@@ -53,6 +53,15 @@ class SlayerTablesTest {
     }
 
     @Test
+    fun `vannaka and duradel both give revenants`() {
+        for (key in listOf("vannaka", "duradel")) {
+            val revenants = tables.master(key)!!.tasks.singleOrNull { it.task.id == 107 }
+            assertTrue(revenants != null, key)
+            assertEquals("Revenants", revenants!!.task.name)
+        }
+    }
+
+    @Test
     fun `every superior belongs to a known task id`() {
         assertEquals(29, tables.superiors.size)
         assertTrue(tables.superiors.all { it.task > 0 })

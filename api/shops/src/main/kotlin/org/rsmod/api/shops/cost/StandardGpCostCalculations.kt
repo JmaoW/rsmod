@@ -74,6 +74,7 @@ public object StandardGpCostCalculations {
         availableCurrency: Int,
         sellPercentage: Double,
         changePercentage: Double,
+        fixedStock: Boolean = false,
     ): BulkPriceParameters {
         val firstObjPrice =
             calculateShopSellSingleValue(
@@ -93,7 +94,7 @@ public object StandardGpCostCalculations {
             currentCost =
                 calculateShopSellSingleValue(
                     initialStock = initialStock,
-                    currentStock = currentStock - exchangeCount,
+                    currentStock = if (fixedStock) currentStock else currentStock - exchangeCount,
                     baseCost = baseCost,
                     sellPercentage = sellPercentage,
                     changePercentage = changePercentage,
@@ -137,6 +138,7 @@ public object StandardGpCostCalculations {
         currencyCap: Int,
         buyPercentage: Double,
         changePercentage: Double,
+        fixedStock: Boolean = false,
     ): BulkPriceParameters {
         val firstObjPrice =
             calculateShopBuySingleValue(
@@ -156,7 +158,7 @@ public object StandardGpCostCalculations {
             currentPrice =
                 calculateShopBuySingleValue(
                     initialStock = initialStock,
-                    currentStock = currentStock + exchangeCount,
+                    currentStock = if (fixedStock) currentStock else currentStock + exchangeCount,
                     baseCost = baseCost,
                     buyPercentage = buyPercentage,
                     changePercentage = changePercentage,

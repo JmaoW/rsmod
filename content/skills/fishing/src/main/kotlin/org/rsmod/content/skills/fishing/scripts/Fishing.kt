@@ -37,7 +37,7 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 // TODO:
 // - spots moving around after a number of catches
-// - the other spot types (barbarian, aerial, minnows, anglerfish, dark crabs, eels, drift nets)
+// - the other spot types (barbarian, aerial, minnows, dark crabs, eels, drift nets)
 // - spirit flakes, shark lures, and other catch-rate modifiers
 //
 // Fishing spots use a real option for op1 and op3 (for example "Net"/"Bait"), so the fishing loop
@@ -72,6 +72,9 @@ constructor(
         if (id in karambwanIds) {
             return SpotMethods(FishingMethod.Karambwan, null)
         }
+        if (id in anglerfishIds) {
+            return SpotMethods(FishingMethod.Anglerfish, null)
+        }
         if (!name.endsWith("Fishing spot", ignoreCase = true)) {
             return null
         }
@@ -83,6 +86,9 @@ constructor(
         FishingNpcs.karambwanji_spots.map { it.id }.toSet()
     }
     private val karambwanIds: Set<Int> by lazy { FishingNpcs.karambwan_spots.map { it.id }.toSet() }
+    private val anglerfishIds: Set<Int> by lazy {
+        FishingNpcs.anglerfish_spots.map { it.id }.toSet()
+    }
 
     private fun ProtectedAccess.attempt(npc: Npc, method: FishingMethod, slot: Int) {
         val gear = findGear(method) ?: return
@@ -198,7 +204,8 @@ constructor(
                 FishingMethod.Karambwanji -> toolGear(FishingObjs.small_net, FishingSeqs.small_net)
                 FishingMethod.BigNet -> toolGear(FishingObjs.big_net, FishingSeqs.big_net)
                 FishingMethod.SeaBait -> toolGear(FishingObjs.fishing_rod, FishingSeqs.rod_bait)
-                FishingMethod.RiverBait -> toolGear(FishingObjs.fishing_rod, FishingSeqs.rod_bait)
+                FishingMethod.RiverBait,
+                FishingMethod.Anglerfish -> toolGear(FishingObjs.fishing_rod, FishingSeqs.rod_bait)
                 FishingMethod.FlyRod -> toolGear(FishingObjs.fly_fishing_rod, FishingSeqs.rod_lure)
                 FishingMethod.LobsterPot ->
                     toolGear(FishingObjs.lobster_pot, FishingSeqs.lobster_pot)
@@ -239,6 +246,7 @@ constructor(
             FishingMethod.RiverBait -> FishingObjs.fishing_bait
             FishingMethod.FlyRod -> FishingObjs.feather
             FishingMethod.Karambwan -> FishingObjs.raw_karambwanji
+            FishingMethod.Anglerfish -> FishingObjs.sandworms
             else -> null
         }
     }
@@ -247,6 +255,7 @@ constructor(
         when (method) {
             FishingMethod.FlyRod -> "You don't have any feathers left."
             FishingMethod.Karambwan -> "You need raw karambwanji to use as bait."
+            FishingMethod.Anglerfish -> "You need sandworms to fish at this spot."
             else -> "You don't have any fishing bait left."
         }
 

@@ -92,6 +92,7 @@ class FishingCatchesTest {
                 FishingCatches.monkfish to listOf(62, 120, 48, 90),
                 FishingCatches.karambwan to listOf(65, 50, 5, 160),
                 FishingCatches.shark to listOf(76, 110, 3, 40),
+                FishingCatches.anglerfish to listOf(82, 120, 3, 36),
                 FishingCatches.karambwanji to listOf(5, 5, 100, 250),
             )
         for ((fish, values) in expected) {

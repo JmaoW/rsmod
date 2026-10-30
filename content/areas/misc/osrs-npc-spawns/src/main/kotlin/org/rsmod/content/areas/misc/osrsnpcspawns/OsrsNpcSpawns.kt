@@ -7,8 +7,8 @@ import org.rsmod.api.type.builders.map.npc.MapNpcSpawnBuilder
  * `tools/spawns/convert.py` from the rs-map-viewer spawn list; do not edit them by hand.
  *
  * `surface.toml` holds the overworld, `underground.toml` the dungeons and the areas that sit far
- * off the main map. `revenants.toml` is also generated, by `tools/dungeons/revenants.py`: the 15
- * revenants the source list lacks, so the Revenant Caves hold the wiki's 30. Only the Gradle
+ * off the main map. `revenants.toml` is also generated, by `tools/dungeons/revenants.py`: all 30
+ * of the Revenant Caves' revenants, from the wiki's map (the source list's own are excluded). Only the Gradle
  * `packCache` task reads these.
  */
 object OsrsNpcSpawns : MapNpcSpawnBuilder() {

@@ -9,6 +9,7 @@ import org.rsmod.content.areas.misc.isleofsouls.chat.LeagueChat
 import org.rsmod.content.areas.misc.isleofsouls.event.AnnouncementMessages
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
+import org.rsmod.content.interfaces.collectionlog.CollectionLog
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjType
 
@@ -21,6 +22,7 @@ constructor(
     private val announcer: LeagueAnnouncer,
     private val teams: LeagueTeams,
     private val completions: FightCaveCompletions,
+    private val collectionLog: CollectionLog,
 ) {
     fun win(players: List<Player>, run: FightCaveRun) {
         // The "complete the Fight Caves" counters belong to the team: count the run once for each.
@@ -50,6 +52,7 @@ constructor(
 
     private fun give(player: Player, obj: ObjType, count: Int) {
         player.invAddOrDrop(objRepo, obj, count = count)
+        collectionLog.receive(player, obj.id, count)
     }
 
     private companion object {

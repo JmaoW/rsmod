@@ -26,6 +26,8 @@ internal object InternalPlayerHits {
     ): HitBuilder {
         val righthand = righthand?.id
         val secondary = secondaryObj?.id
+        // A script can still strike with an npc that has left the world: hit with no source.
+        val present = source.isSlotAssigned
         return createBuilder(
             type = type,
             hitmark = hitmark,
@@ -34,8 +36,8 @@ internal object InternalPlayerHits {
             secondaryObj = secondary,
             targetMaxDamageThreshold = null,
             sourceMaxDamageThreshold = null,
-            sourceUid = source.uid.packed,
-            sourceNpcSlot = source.slotId,
+            sourceUid = if (present) source.uid.packed else null,
+            sourceNpcSlot = if (present) source.slotId else null,
             sourcePlayerSlot = null,
             clientDelay = clientDelay,
             isPrivateHit = specific,

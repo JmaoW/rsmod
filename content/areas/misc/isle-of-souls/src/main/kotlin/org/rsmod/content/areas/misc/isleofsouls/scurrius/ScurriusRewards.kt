@@ -2,10 +2,12 @@ package org.rsmod.content.areas.misc.isleofsouls.scurrius
 
 import jakarta.inject.Inject
 import org.rsmod.api.config.constants
+import org.rsmod.api.death.NpcDeath
 import org.rsmod.api.drops.DropRoller
 import org.rsmod.api.drops.DropTables
 import org.rsmod.api.drops.NpcDropEvents
 import org.rsmod.api.repo.obj.ObjRepository
+import org.rsmod.content.interfaces.collectionlog.CollectionKillCounts
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
 
@@ -22,7 +24,9 @@ constructor(
     private val dropTables: DropTables,
     private val dropRoller: DropRoller,
     private val objRepo: ObjRepository,
+    private val npcDeath: NpcDeath,
     private val eventBus: EventBus,
+    private val killCounts: CollectionKillCounts,
 ) {
     fun win(players: List<Player>, run: ScurriusRun) {
         val hero = run.hero ?: return
@@ -33,6 +37,8 @@ constructor(
             if (player === hero) {
                 continue
             }
+            // The hero's kill is counted by the death event; the rest of the team earned theirs.
+            killCounts.addKill(player, boss.visType.name)
             val modify = NpcDropEvents.Modify(boss, player)
             eventBus.publish(modify)
             val drops = dropRoller.roll(table, modify.multiplier)
@@ -40,6 +46,8 @@ constructor(
             for (drop in drops) {
                 objRepo.add(drop.obj, at, duration, player, count = drop.count)
             }
+            // These drops skip `NpcDeath`, so the loot tracker must be told about them here.
+            npcDeath.sendLootTracker(player, boss, drops)
             eventBus.publish(NpcDropEvents.Rolled(boss, player, drops))
         }
     }

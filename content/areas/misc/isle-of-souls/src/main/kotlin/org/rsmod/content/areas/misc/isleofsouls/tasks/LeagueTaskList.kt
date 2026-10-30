@@ -1,14 +1,21 @@
 package org.rsmod.content.areas.misc.isleofsouls.tasks
 
 import org.rsmod.content.areas.misc.isleofsouls.configs.IsleOfSoulsMagicTasks
+import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
 
-/** The league difficulty tiers and the points each task of that tier awards. */
-internal enum class LeagueTier(val points: Int, val label: String, val difficulty: Int) {
-    Easy(points = 10, label = "easy", difficulty = 1),
-    Medium(points = 30, label = "medium", difficulty = 2),
-    Hard(points = 80, label = "hard", difficulty = 3),
-    Elite(points = 200, label = "elite", difficulty = 4),
-    Master(points = 400, label = "master", difficulty = 5),
+/**
+ * The league difficulty tiers and the points each task of that tier awards. The points are
+ * [EventSettings]' `taskPoints`, keyed by [label].
+ */
+internal enum class LeagueTier(val label: String, val difficulty: Int) {
+    Easy(label = "easy", difficulty = 1),
+    Medium(label = "medium", difficulty = 2),
+    Hard(label = "hard", difficulty = 3),
+    Elite(label = "elite", difficulty = 4),
+    Master(label = "master", difficulty = 5);
+
+    val points: Int
+        get() = EventSettings.current.taskPoints.getValue(label)
 }
 
 /**
@@ -178,9 +185,71 @@ internal object LeagueTaskList {
             LeagueTask(1648, LeagueTier.Medium, "Defeat Scurrius"),
             LeagueTask(1649, LeagueTier.Medium, "Defeat Scurrius 10 times"),
             LeagueTask(1650, LeagueTier.Medium, "Defeat Scurrius 25 times"),
+            LeagueTask(530, LeagueTier.Hard, "Craft a Piece of Crystal Armour"),
+            LeagueTask(531, LeagueTier.Elite, "Equip a Full Crystal Armour Set"),
+            LeagueTask(546, LeagueTier.Hard, "Equip a Crystal Bow"),
+            LeagueTask(549, LeagueTier.Hard, "Equip a Crystal Shield"),
+            LeagueTask(1512, LeagueTier.Hard, "Equip any piece of Crystal Armour"),
+            LeagueTask(1396, LeagueTier.Elite, "Equip an Enhanced Crystal Weapon"),
+            LeagueTask(534, LeagueTier.Hard, "Complete the Gauntlet"),
+            LeagueTask(535, LeagueTier.Hard, "Complete the Corrupted Gauntlet"),
+            LeagueTask(547, LeagueTier.Elite, "Complete the Corrupted Gauntlet 50 Times"),
+            LeagueTask(548, LeagueTier.Elite, "Complete the Corrupted Gauntlet 150 Times"),
             LeagueTask(864, LeagueTier.Hard, "Defeat the Kalphite Queen"),
             LeagueTask(874, LeagueTier.Hard, "Defeat the Kalphite Queen 50 Times"),
             LeagueTask(875, LeagueTier.Hard, "Defeat the Kalphite Queen 150 Times"),
+            LeagueTask(1000, LeagueTier.Hard, "Defeat the King Black Dragon"),
+            LeagueTask(596, LeagueTier.Hard, "Defeat the Dagannoth Kings Without Leaving"),
+            LeagueTask(613, LeagueTier.Hard, "Defeat Each Dagannoth King 50 Times"),
+            LeagueTask(614, LeagueTier.Hard, "Defeat Each Dagannoth King 150 Times"),
+            LeagueTask(615, LeagueTier.Elite, "Defeat Each Dagannoth King 300 Times"),
+            LeagueTask(599, LeagueTier.Hard, "Equip a Berserker Ring"),
+            LeagueTask(601, LeagueTier.Hard, "Equip a Warrior Ring"),
+            LeagueTask(604, LeagueTier.Hard, "Equip a Seer's Ring"),
+            LeagueTask(607, LeagueTier.Hard, "Equip an Archer's Ring"),
+            LeagueTask(597, LeagueTier.Elite, "Equip Every Dagannoth King Ring"),
+            LeagueTask(585, LeagueTier.Hard, "Defeat Vorkath"),
+            LeagueTask(608, LeagueTier.Hard, "Defeat Vorkath 50 Times"),
+            LeagueTask(609, LeagueTier.Hard, "Defeat Vorkath 150 Times"),
+            LeagueTask(610, LeagueTier.Elite, "Defeat Vorkath 300 Times"),
+            LeagueTask(602, LeagueTier.Elite, "Defeat Vorkath 5 Times Without Special Damage"),
+            LeagueTask(605, LeagueTier.Elite, "Defeat Vorkath 15 Times Without Leaving"),
+            LeagueTask(1186, LeagueTier.Hard, "Complete Tombs of Amascut"),
+            LeagueTask(1187, LeagueTier.Hard, "Complete Tombs of Amascut 25 times"),
+            LeagueTask(1188, LeagueTier.Elite, "Complete Tombs of Amascut 50 times"),
+            LeagueTask(1189, LeagueTier.Elite, "Complete Tombs of Amascut 100 times"),
+            LeagueTask(1228, LeagueTier.Elite, "Equip the Elidinis Ward"),
+            LeagueTask(1230, LeagueTier.Elite, "Equip a Piece of Masori Armour"),
+            LeagueTask(1231, LeagueTier.Master, "Equip a full set of Masori"),
+            LeagueTask(1232, LeagueTier.Elite, "Equip Osmumten's Fang"),
+            LeagueTask(1233, LeagueTier.Master, "Equip Osmumten's Fang (or)"),
+            LeagueTask(1236, LeagueTier.Master, "Equip the Tumeken's Shadow"),
+            LeagueTask(992, LeagueTier.Hard, "Defeat Callisto"),
+            LeagueTask(1404, LeagueTier.Hard, "Defeat Callisto 50 times"),
+            LeagueTask(1405, LeagueTier.Hard, "Defeat Callisto 150 times"),
+            LeagueTask(1406, LeagueTier.Elite, "Defeat Callisto 300 times"),
+            LeagueTask(988, LeagueTier.Hard, "Defeat Venenatis"),
+            LeagueTask(1398, LeagueTier.Hard, "Defeat Venenatis 50 times"),
+            LeagueTask(1399, LeagueTier.Hard, "Defeat Venenatis 150 times"),
+            LeagueTask(1400, LeagueTier.Elite, "Defeat Venenatis 300 times"),
+            LeagueTask(996, LeagueTier.Hard, "Defeat Vet'ion"),
+            LeagueTask(1401, LeagueTier.Hard, "Defeat Vet'ion 50 times"),
+            LeagueTask(1402, LeagueTier.Hard, "Defeat Vet'ion 150 times"),
+            LeagueTask(1403, LeagueTier.Elite, "Defeat Vet'ion 300 times"),
+            LeagueTask(1003, LeagueTier.Hard, "Equip a Dragon 2-Handed Sword"),
+            LeagueTask(993, LeagueTier.Elite, "Equip a Tyrannical Ring"),
+            LeagueTask(989, LeagueTier.Elite, "Equip a Treasonous Ring"),
+            LeagueTask(997, LeagueTier.Elite, "Equip a Ring of the Gods"),
+            LeagueTask(1256, LeagueTier.Elite, "Equip the Voidwaker"),
+            // The revenant weapons and the bracelet of ethereum.
+            LeagueTask(1014, LeagueTier.Medium, "Equip a Bracelet of Ethereum"),
+            LeagueTask(697, LeagueTier.Elite, "Equip a Thammaron's Sceptre"),
+            LeagueTask(910, LeagueTier.Elite, "Equip Viggora's Chainmace"),
+            LeagueTask(1018, LeagueTier.Elite, "Equip Craw's Bow"),
+            LeagueTask(1257, LeagueTier.Elite, "Equip the Webweaver"),
+            LeagueTask(1258, LeagueTier.Elite, "Equip the Accursed Sceptre"),
+            LeagueTask(1259, LeagueTier.Elite, "Equip the Ursine Chainmace"),
+            LeagueTask(1019, LeagueTier.Master, "Obtain Every Revenant Weapon"),
             LeagueTask(94, LeagueTier.Easy, "Restore 5 Prayer Points at an Altar"),
             LeagueTask(95, LeagueTier.Easy, "Superhuman Strength and Improved Reflexes"),
             LeagueTask(97, LeagueTier.Easy, "Bury Some Bones"),
@@ -359,7 +428,9 @@ internal object LeagueTaskList {
             LeagueTask(1798, LeagueTier.Easy, "Kill a Snake"),
             LeagueTask(1837, LeagueTier.Easy, "Kill a Rooster"),
             LeagueTask(62, LeagueTier.Medium, "Defeat a Lesser Demon"),
+            LeagueTask(472, LeagueTier.Medium, "Defeat Obor"),
             LeagueTask(476, LeagueTier.Medium, "Defeat Bryophyta"),
+            LeagueTask(477, LeagueTier.Hard, "Equip Bryophyta's Staff"),
             LeagueTask(537, LeagueTier.Medium, "Defeat a Kurask"),
             LeagueTask(598, LeagueTier.Medium, "Defeat a Dagannoth"),
             LeagueTask(606, LeagueTier.Medium, "Defeat a Turoth"),
@@ -556,6 +627,34 @@ internal object LeagueTaskList {
             LeagueTask(798, LeagueTier.Elite, "Equip an Armadyl Crossbow"),
             LeagueTask(784, LeagueTier.Elite, "Equip a Staff of the Dead"),
             LeagueTask(802, LeagueTier.Elite, "Equip a Godsword"),
+
+            // Collection log: see LeagueCollectionLogTasks.
+            LeagueTask(1448, LeagueTier.Medium, "5 Collection log slots"),
+            LeagueTask(1449, LeagueTier.Medium, "15 Collection log slots"),
+            LeagueTask(1450, LeagueTier.Medium, "30 Collection log slots"),
+            LeagueTask(1451, LeagueTier.Medium, "50 Collection log slots"),
+            LeagueTask(1452, LeagueTier.Hard, "100 Collection log slots"),
+            LeagueTask(1453, LeagueTier.Hard, "200 Collection log slots"),
+            LeagueTask(1454, LeagueTier.Elite, "350 Collection log slots"),
+            LeagueTask(1455, LeagueTier.Elite, "500 Collection log slots"),
+            LeagueTask(1456, LeagueTier.Master, "750 Collection log slots"),
+            LeagueTask(39, LeagueTier.Medium, "Fill 5 Beginner Clue Collection Log Slots"),
+            LeagueTask(40, LeagueTier.Hard, "Fill 10 Beginner Clue Collection Log Slots"),
+            LeagueTask(37, LeagueTier.Elite, "Fill Every Beginner Clue Collection Log Slot"),
+            LeagueTask(38, LeagueTier.Medium, "Fill 5 Easy Clue Collection Log Slots"),
+            LeagueTask(35, LeagueTier.Medium, "Fill 20 Easy Clue Collection Log Slots"),
+            LeagueTask(36, LeagueTier.Hard, "Fill 50 Easy Clue Collection Log Slots"),
+            LeagueTask(33, LeagueTier.Medium, "Fill 5 Medium Clue Collection Log Slots"),
+            LeagueTask(34, LeagueTier.Medium, "Fill 20 Medium Clue Collection Log Slots"),
+            LeagueTask(31, LeagueTier.Hard, "Fill 40 Medium Clue Collection Log Slots"),
+            LeagueTask(32, LeagueTier.Medium, "Fill 3 Hard Clue Collection Log Slots"),
+            LeagueTask(29, LeagueTier.Medium, "Fill 15 Hard Clue Collection Log Slots"),
+            LeagueTask(30, LeagueTier.Hard, "Fill 30 Hard Clue Collection Log Slots"),
+            LeagueTask(27, LeagueTier.Medium, "Fill 3 Elite Clue Collection Log Slots"),
+            LeagueTask(28, LeagueTier.Hard, "Fill 10 Elite Clue Collection Log Slots"),
+            LeagueTask(8, LeagueTier.Hard, "Fill 25 Elite Clue Collection Log Slots"),
+            LeagueTask(9, LeagueTier.Hard, "Fill 5 Master Clue Collection Log Slots"),
+            LeagueTask(10, LeagueTier.Elite, "Fill 25 Master Clue Collection Log Slots"),
         )
 
     val byId: Map<Int, LeagueTask> = all.associateBy(LeagueTask::id)

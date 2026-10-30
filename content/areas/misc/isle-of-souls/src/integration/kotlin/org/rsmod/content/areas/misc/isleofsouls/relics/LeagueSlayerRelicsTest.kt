@@ -137,6 +137,16 @@ class LeagueSlayerRelicsTest {
         }
 
     @Test
+    fun GameTestState
+        .`the Slayer Master's on-task count covers the drops of a monster they could be given`() =
+        runGameTest(*scripts) {
+            prepare()
+            assertFalse(engine.countsAsOnTask(player, monster(107).visType), "Without the relic")
+            choose(LeagueSlayerRelics.MASTER_TIER, LeagueSlayerRelics.MASTER_OPTION)
+            assertTrue(engine.countsAsOnTask(player, monster(107).visType), "Revenants")
+        }
+
+    @Test
     fun GameTestState.`the hundredth kill of a kind pays a bonus once`() =
         runGameTest(*scripts) {
             prepare()

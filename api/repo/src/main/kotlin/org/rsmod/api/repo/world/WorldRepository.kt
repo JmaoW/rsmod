@@ -56,6 +56,21 @@ constructor(private val zoneUpdates: ZoneUpdateMap, private val projAnims: ProjA
         zoneUpdates.mapAnim(spotanim.id, coord, height, delay)
     }
 
+    /**
+     * A graphic on [coord] that only [observer] sees (a warning only one player is meant to see).
+     * Nothing is sent to a player with no observer id.
+     */
+    public fun spotanimMapFor(
+        observer: Player,
+        spotanim: SpotanimType,
+        coord: CoordGrid,
+        height: Int = 0,
+        delay: Int = 0,
+    ) {
+        val id = observer.observerUUID ?: return
+        zoneUpdates.mapAnimPrivate(id, spotanim.id, coord, height, delay)
+    }
+
     public fun projAnim(projAnim: ProjAnim) {
         zoneUpdates.mapProjAnim(projAnim)
     }

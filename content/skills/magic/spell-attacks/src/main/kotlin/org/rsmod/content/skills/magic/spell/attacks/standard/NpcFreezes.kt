@@ -1,7 +1,8 @@
 package org.rsmod.content.skills.magic.spell.attacks.standard
 
+import jakarta.inject.Inject
 import jakarta.inject.Singleton
-import java.util.WeakHashMap
+import org.rsmod.api.spells.attack.NpcFreezeImmunity
 import org.rsmod.game.entity.Npc
 
 /**
@@ -10,16 +11,14 @@ import org.rsmod.game.entity.Npc
  * the npc cannot be held again for a short while.
  */
 @Singleton
-class NpcFreezes {
-    private val immuneUntil = WeakHashMap<Npc, Int>()
-
+class NpcFreezes @Inject constructor(private val immunity: NpcFreezeImmunity) {
     /** Whether [npc] is held, or too soon after being held to be held again. */
-    fun isHeld(npc: Npc, clock: Int): Boolean = clock < (immuneUntil[npc] ?: Int.MIN_VALUE)
+    fun isHeld(npc: Npc, clock: Int): Boolean = immunity.isImmune(npc, clock)
 
     /** Holds [npc] for [ticks] from [clock]. */
     fun freeze(npc: Npc, ticks: Int, clock: Int) {
         npc.freeze(ticks)
-        immuneUntil[npc] = clock + ticks + IMMUNITY_TICKS
+        immunity.immuneUntil(npc, clock + ticks + IMMUNITY_TICKS)
     }
 
     /**

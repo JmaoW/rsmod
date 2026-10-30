@@ -3,6 +3,7 @@ package org.rsmod.api.core.module
 import com.google.inject.Provider
 import com.google.inject.multibindings.Multibinder
 import jakarta.inject.Inject
+import org.rsmod.api.game.process.npc.hunt.HuntTolerance
 import org.rsmod.api.game.process.player.RunDrainMod
 import org.rsmod.api.player.music.MusicPlayer
 import org.rsmod.api.player.protect.ProtectedAccessContextFactory
@@ -14,6 +15,7 @@ import org.rsmod.module.ExtendedModule
 public object PlayerModule : ExtendedModule() {
     override fun bind() {
         Multibinder.newSetBinder(binder(), RunDrainMod::class.java)
+        Multibinder.newSetBinder(binder(), HuntTolerance::class.java)
         bindInstance<MusicPlayer>()
         bindInstance<ProtectedAccessContextFactory>()
         bindInstance<ProtectedAccessLauncher>()

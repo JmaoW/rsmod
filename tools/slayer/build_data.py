@@ -48,6 +48,10 @@ SUPERIOR_TASK = {k.lower(): v for k, v in SUPERIORS.items()}
 SPAWN_OVERRIDES = {92: 25}
 GROUPS = {127: [58, 59, 60, 93, 108, 109]}  # metal dragons: bronze, iron, steel, mithril, adamant, rune
 
+# The cache gives revenants (task 107) only to Krystilia, who is not on the isle. Vannaka and Duradel
+# take her row for them, with the same weight and amounts; the revenant npcs already carry task 107.
+EXTRA_MASTER_ROWS = {"vannaka": "krystillia_revenants", "duradel": "krystillia_revenants"}
+
 
 def vals(row, col):
     c = row["cols"].get(col)
@@ -161,6 +165,15 @@ def main():
     task_rows = {r["row"]: r for r in tables["slayer_task"]}
     unlock_rows = {r["row"]: r for r in tables["slayer_unlock"]}
     report = []
+
+    next_row = max(r["row"] for r in tables["slayer_master_task"]) + 1
+    for master, source in EXTRA_MASTER_ROWS.items():
+        src = next(r for r in tables["slayer_master_task"] if r["name"] == source)
+        row = json.loads(json.dumps(src))
+        row["row"], row["name"] = next_row, f"{master}_{source.split('_', 1)[1]}"
+        row["cols"]["master_id"]["values"] = [[MASTER_IDS[master]]]
+        tables["slayer_master_task"].append(row)
+        next_row += 1
 
     # npcs per task id (cache param 50), with spawn counts
     by_task = collections.defaultdict(list)

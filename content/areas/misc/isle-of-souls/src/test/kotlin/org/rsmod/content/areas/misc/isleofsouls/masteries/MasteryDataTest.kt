@@ -42,7 +42,7 @@ class MasteryDataTest {
     @Test
     fun `there are twenty points for eighteen masteries`() {
         assertEquals(10, MasteryData.taskNames.size)
-        assertEquals(20, MasteryData.TASK_COUNT * MasteryData.POINTS_PER_TASK)
+        assertEquals(20, MasteryData.TASK_COUNT * MasteryData.pointsPerTask)
         assertEquals(18, MasteryData.MASTERY_COUNT * MasteryData.UNLOCK_COST)
     }
 

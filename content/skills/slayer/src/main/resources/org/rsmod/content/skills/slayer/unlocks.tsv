@@ -52,7 +52,7 @@ bit	name	cost	refundable	kind	works	tab	index	description
 50	Actual Vampyre Slayer	80	1	task	1	0	25	Konar, Duradel, Nieve and Chaeldar will be able to assign Vampyres as your task.
 51	Task Storage	500	0	perk	0	0	26	Gain the ability to store your task, allowing you to take it at a later point in time.
 52	I Wildy More Slayer	0	1	perk	0	0	27	Krystilia will be able to assign Jellies, Dust Devils, Nechryaels and Abyssal Demons as your task.
-53	Revenenenenenants	100	0	perk	0	1	22	Whenever you get a Revenants task, it will be a bigger task.
+53	Revenenenenenants	100	0	extend	1	1	22	Whenever you get a Revenants task, it will be a bigger task.
 54	Warped Reality	60	1	perk	0	0	28	Konar, Duradel, Nieve and Chaeldar will be able to assign Warped Creatures as your task.
 55	More eyes than sense	150	1	perk	0	1	23	Whenever you get an Araxyte task, it will be a bigger task.
 56	Eye see you	1000	0	perk	0	0	19	Learn how to combine an Araxyte head with your Slayer helmet to theme it like the Araxxor.

@@ -90,6 +90,44 @@ constructor(private val eventBus: EventBus, private val teams: LeagueTeams) {
     }
 
     /**
+     * Adds one to [counter] for [player], or to their team's shared total, up to [cap], without
+     * completing a task or saying anything: for tasks that need several counters to reach a goal
+     * (the caller checks them and completes the task). Returns the new count.
+     */
+    fun addCount(player: Player, counter: VarpType, cap: Int): Int {
+        val team = teams.teamOf(player)
+        val count =
+            if (team == null) {
+                minOf(player.vars[counter] + 1, cap)
+            } else {
+                teams.incrementCounter(team, counter.internalNameValue, cap)
+            }
+        val members = if (team == null) listOf(player) else teams.onlineMembers(team)
+        for (member in members) {
+            VarPlayerIntMapSetter.set(member, counter, count)
+        }
+        return count
+    }
+
+    /**
+     * Marks [counter] as `1` for [player], or for their whole team, without completing a task: for
+     * tasks that need several different things done (each is one counter), which the caller then
+     * checks with [isMarked].
+     */
+    fun mark(player: Player, counter: VarpType) {
+        val team = teams.teamOf(player)
+        val value =
+            if (team == null) 1 else teams.incrementCounter(team, counter.internalNameValue, 1)
+        val members = if (team == null) listOf(player) else teams.onlineMembers(team)
+        for (member in members) {
+            VarPlayerIntMapSetter.set(member, counter, value)
+        }
+    }
+
+    /** Whether [counter] was marked for [player] (see [mark]). */
+    fun isMarked(player: Player, counter: VarpType): Boolean = player.vars[counter] >= 1
+
+    /**
      * Sets the [counter] progress varp back to zero, for tasks that need a streak. Does nothing
      * once [taskId] is complete.
      */

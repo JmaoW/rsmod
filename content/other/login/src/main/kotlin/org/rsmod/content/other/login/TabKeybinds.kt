@@ -51,19 +51,19 @@ internal object TabKeybinds {
     val slots: List<Slot> by lazy {
         fun dropdown(index: Int) = FIRST_DROPDOWN + index * DROPDOWN_STRIDE
         listOf(
-            Slot(varbits.stone_combat_key, settingId = 16, dropdown(0), KEY_F1),
-            Slot(varbits.stone_stats_key, settingId = 19, dropdown(1), KEY_F2),
-            Slot(varbits.stone_journal_key, settingId = 22, dropdown(2), KEY_F3),
-            Slot(varbits.stone_inv_key, settingId = 25, dropdown(3), KEY_ESC),
-            Slot(varbits.stone_worn_key, settingId = 28, dropdown(4), KEY_F4),
-            Slot(varbits.stone_prayer_key, settingId = 17, dropdown(5), KEY_F5),
-            Slot(varbits.stone_magic_key, settingId = 20, dropdown(6), KEY_F6),
-            Slot(varbits.stone_friends_key, settingId = 23, dropdown(7), KEY_F8),
-            Slot(varbits.stone_account_key, settingId = 26, dropdown(8), KEY_F9),
-            Slot(varbits.stone_logout_key, settingId = 29, dropdown(9)),
+            Slot(varbits.stone_combat_key, settingId = 16, dropdown(0), KEY_F5),
+            Slot(varbits.stone_stats_key, settingId = 19, dropdown(1), KEY_F6),
+            Slot(varbits.stone_journal_key, settingId = 22, dropdown(2), KEY_F7),
+            Slot(varbits.stone_inv_key, settingId = 25, dropdown(3), KEY_F1),
+            Slot(varbits.stone_worn_key, settingId = 28, dropdown(4), KEY_F2),
+            Slot(varbits.stone_prayer_key, settingId = 17, dropdown(5), KEY_F3),
+            Slot(varbits.stone_magic_key, settingId = 20, dropdown(6), KEY_F4),
+            Slot(varbits.stone_friends_key, settingId = 23, dropdown(7), KEY_F9),
+            Slot(varbits.stone_account_key, settingId = 26, dropdown(8)),
+            Slot(varbits.stone_logout_key, settingId = 29, dropdown(9), KEY_ESC),
             Slot(varbits.stone_options1_key, settingId = 18, dropdown(10), KEY_F10),
             Slot(varbits.stone_options2_key, settingId = 21, dropdown(11), KEY_F11),
-            Slot(varbits.stone_clanchat_key, settingId = 24, dropdown(12), KEY_F7),
+            Slot(varbits.stone_clanchat_key, settingId = 24, dropdown(12), KEY_F8),
             Slot(varbits.stone_music_key, settingId = 27, dropdown(13), KEY_F12),
         )
     }

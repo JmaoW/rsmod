@@ -107,6 +107,10 @@ constructor(
     fun playersIn(instance: TeamInstance): List<Player> =
         players.filter { instance.contains(it.coords) }
 
+    /** [player]'s team's live instance of [type], wherever [player] stands. */
+    fun teamInstance(player: Player, type: TeamInstanceType): TeamInstance? =
+        instances[Key(ownerOf(player), type.name)]?.takeIf { isActive(it) }
+
     /** Puts [player] into their team's instance of [type], creating it if nobody is in one. */
     fun enter(player: Player, type: TeamInstanceType): EnterResult {
         val key = Key(ownerOf(player), type.name)

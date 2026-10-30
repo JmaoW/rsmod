@@ -1,6 +1,7 @@
 package org.rsmod.api.combat.manager
 
 import jakarta.inject.Inject
+import java.util.WeakHashMap
 import kotlin.math.min
 import org.rsmod.api.combat.commons.CombatAttack
 import org.rsmod.api.combat.commons.fx.MeleeAnimationAndSound
@@ -22,6 +23,7 @@ import org.rsmod.api.combat.commons.types.RangedAttackType
 import org.rsmod.api.combat.formulas.AccuracyFormulae
 import org.rsmod.api.combat.formulas.MaxHitFormulae
 import org.rsmod.api.combat.mastery.CombatMasteryEffects
+import org.rsmod.api.config.refs.hitmark_groups
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.spotanims
@@ -29,6 +31,9 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
 import org.rsmod.api.npc.hit.modifier.NpcHitModifier
 import org.rsmod.api.npc.hit.queueHit
+import org.rsmod.api.player.hit.modifier.NoopPlayerHitModifier
+import org.rsmod.api.player.hit.modifier.PlayerHitModifier
+import org.rsmod.api.player.hit.modifier.StandardPlayerHitModifier
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.interact.NpcInteractions
 import org.rsmod.api.player.interact.NpcTInteractions
@@ -50,6 +55,7 @@ import org.rsmod.game.hit.Hit
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.interact.InteractionOp
 import org.rsmod.game.proj.ProjAnim
+import org.rsmod.game.type.hitmark.HitmarkTypeGroup
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.game.type.proj.ProjAnimType
@@ -68,13 +74,20 @@ constructor(
     private val accuracy: AccuracyFormulae,
     private val maxHits: MaxHitFormulae,
     private val masteryEffects: CombatMasteryEffects,
+    private val attackBuffs: AttackBuffs,
     private val npcHitModifier: NpcHitModifier,
     private val xpMods: XpModifiers,
     private val npcInteractions: NpcInteractions,
     private val npcTInteractions: NpcTInteractions,
     private val playerInteractions: PlayerInteractions,
     private val playerTInteractions: PlayerTInteractions,
+    private val boltEffects: BoltEffectRegistry,
 ) {
+    /** The enchanted bolt each player has just rolled, until its hit is queued. */
+    private val pendingBolts = WeakHashMap<Player, PendingBolt>()
+
+    private class PendingBolt(val shot: BoltShot, val target: PathingEntity)
+
     /**
      * Determines if the player is still under an active attack delay.
      *
@@ -469,6 +482,9 @@ constructor(
      *   same as [attackType], but certain scenarios override this with a fixed value. For example,
      *   a Dragon longsword special attack always uses `Slash` for [blockType], even though
      *   [attackType] remains dynamic.
+     * @param defenceFactor Scales the [target]'s Defence level for the accuracy roll only (`1.0` =
+     *   no change, `0.25` = the target defends as if its Defence level were a quarter of what it
+     *   is). The level is put back as soon as the roll is made.
      * @return `0` if the accuracy roll fails; otherwise, a random damage value from `0` up to the
      *   calculated max hit.
      */
@@ -481,6 +497,7 @@ constructor(
         attackType: MeleeAttackType? = attack.type,
         attackStyle: MeleeAttackStyle? = attack.style,
         blockType: MeleeAttackType? = attack.type,
+        defenceFactor: Double = 1.0,
     ): Int {
         val successfulAccuracyRoll =
             rollMeleeAccuracy(
@@ -490,6 +507,7 @@ constructor(
                 attackType = attackType,
                 attackStyle = attackStyle,
                 blockType = blockType,
+                defenceFactor = defenceFactor,
             )
         if (!successfulAccuracyRoll) {
             return 0
@@ -513,6 +531,8 @@ constructor(
      *   [attackType] remains dynamic.
      * @param multiplier Multiplier to apply to accuracy (`1.0` = no change, `1.1` = +10% boost,
      *   `0.9` = -10% penalty).
+     * @param defenceFactor Scales the [target]'s Defence level for this roll only (see
+     *   [rollMeleeDamage]).
      * @return `true` if the accuracy roll succeeds (the hit will "land"), `false` otherwise.
      */
     public fun rollMeleeAccuracy(
@@ -522,13 +542,30 @@ constructor(
         attackStyle: MeleeAttackStyle?,
         blockType: MeleeAttackType?,
         multiplier: Double,
+        defenceFactor: Double = 1.0,
     ): Boolean {
-        return when (target) {
-            is Npc -> {
-                rollMeleeAccuracy(source, target, attackType, attackStyle, blockType, multiplier)
-            }
-            is Player -> {
-                rollMeleeAccuracy(source, target, attackType, attackStyle, blockType, multiplier)
+        return withDefenceFactor(target, defenceFactor) {
+            when (target) {
+                is Npc -> {
+                    rollMeleeAccuracy(
+                        source,
+                        target,
+                        attackType,
+                        attackStyle,
+                        blockType,
+                        multiplier,
+                    )
+                }
+                is Player -> {
+                    rollMeleeAccuracy(
+                        source,
+                        target,
+                        attackType,
+                        attackStyle,
+                        blockType,
+                        multiplier,
+                    )
+                }
             }
         }
     }
@@ -547,7 +584,8 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
+            specMultiplier =
+                specMultiplier * masteryEffects.accuracyMultiplier(source) * buffedAccuracy(source),
             random = random,
         )
 
@@ -565,9 +603,12 @@ constructor(
             attackType = attackType,
             attackStyle = attackStyle,
             blockType = blockType,
-            specMultiplier = specMultiplier * masteryEffects.accuracyMultiplier(source),
+            specMultiplier =
+                specMultiplier * masteryEffects.accuracyMultiplier(source) * buffedAccuracy(source),
             random = random,
         )
+
+    private fun buffedAccuracy(source: Player): Double = attackBuffs.of(source)?.accuracy ?: 1.0
 
     /**
      * Rolls a random damage value between `0` and the maximum possible melee hit.
@@ -591,7 +632,7 @@ constructor(
         multiplier: Double,
     ): Int {
         val maxHit = calculateMeleeMaxHit(source, target, attackType, attackStyle, multiplier)
-        val damage = masteryEffects.rollMelee(source, maxHit)
+        val damage = masteryEffects.rollMelee(source, maxHit) + (attackBuffs.of(source)?.flatDamage ?: 0)
         if (target is Npc) {
             healPlayer(source, masteryEffects.meleeHitHeal(source, min(damage, target.hitpoints)))
         }
@@ -668,13 +709,15 @@ constructor(
         target: PathingEntity,
         damage: Int,
         delay: Int = 1,
+        ignoreProtection: Boolean = false,
     ): Hit =
         when (target) {
             is Npc -> queueMeleeHit(source, target, damage, delay)
-            is Player -> queueMeleeHit(source, target, damage, delay)
+            is Player -> queueMeleeHit(source, target, damage, delay, ignoreProtection)
         }
 
     private fun queueMeleeHit(source: Player, target: Npc, damage: Int, delay: Int): Hit {
+        attackBuffs.consume(source)
         // Note: Retaliation must be queued _before_ the hit. If queued after, every hit would
         // trigger the "speed-up" death mechanic, since the hit queues would no longer be the
         // last entries in the queue list at the time of processing.
@@ -682,18 +725,29 @@ constructor(
 
         val hit = target.queueHit(source, delay, HitType.Melee, damage, npcHitModifier)
         target.heroPoints(source, min(hit.damage, target.hitpoints))
+        publishHit(source, target, HitType.Melee, hit.damage, null)
         target.combatPlayDefendAnim()
         return hit
     }
 
-    private fun queueMeleeHit(source: Player, target: Player, damage: Int, delay: Int): Hit {
+    private fun queueMeleeHit(
+        source: Player,
+        target: Player,
+        damage: Int,
+        delay: Int,
+        ignoreProtection: Boolean,
+    ): Hit {
+        attackBuffs.consume(source)
         // Note: Retaliation must be queued _before_ the hit. If queued after, every hit would
         // trigger the "speed-up" death mechanic, since the hit queues would no longer be the
         // last entries in the queue list at the time of processing.
         target.queueCombatRetaliate(source)
 
-        val hit = target.queueHit(source, delay, HitType.Melee, damage)
+        val modifier: PlayerHitModifier =
+            if (ignoreProtection) NoopPlayerHitModifier else StandardPlayerHitModifier
+        val hit = target.queueHit(source, delay, HitType.Melee, damage, modifier = modifier)
         target.heroPoints(source, min(hit.damage, target.hitpoints))
+        publishHit(source, target, HitType.Melee, hit.damage, null)
         target.combatPlayDefendAnim(objTypes)
         return hit
     }
@@ -719,6 +773,7 @@ constructor(
                 is Player -> target.queueHit(source, delay, HitType.Melee, damage)
             }
         target.heroPoints(source, min(hit.damage, hitpointsOf(target)))
+        publishHit(source, target, HitType.Melee, hit.damage, null)
         return hit
     }
 
@@ -801,7 +856,17 @@ constructor(
         blockType: RangedAttackType? = attack.type,
         boltSpecDamage: Int = 0,
     ): Int {
-        val neverMiss = masteryEffects.neverMissRanged(source, pvm = target is Npc)
+        // A bolt rolled before but never queued must not fire for this shot.
+        pendingBolts.remove(source)
+        val boost = boltEffects.takeBoost(source)
+        val shot = boltEffects.handler?.begin(source, target, boost)
+        val bypass = shot?.rollBypass()
+        if (shot != null && bypass != null) {
+            // These effects work even if the shot misses.
+            pendingBolts[source] = PendingBolt(shot, target)
+        }
+        val neverMiss =
+            bypass?.alwaysHit == true || masteryEffects.neverMissRanged(source, pvm = target is Npc)
         val successfulAccuracyRoll =
             neverMiss ||
                 rollRangedAccuracy(
@@ -815,13 +880,22 @@ constructor(
         if (!successfulAccuracyRoll) {
             return 0
         }
+        // The effects that need the shot to hit are rolled now that it has.
+        val adjust = bypass ?: shot?.rollOnHit()
+        if (shot != null && adjust != null) {
+            pendingBolts[source] = PendingBolt(shot, target)
+        }
+        val fixedDamage = adjust?.fixedDamage
+        if (fixedDamage != null) {
+            return fixedDamage
+        }
         return rollRangedMaxHit(
             source = source,
             target = target,
             attackType = attackType,
             attackStyle = attackStyle,
-            multiplier = maxHitMultiplier,
-            boltSpecDamage = boltSpecDamage,
+            multiplier = maxHitMultiplier * (adjust?.maxHitMultiplier ?: 1.0),
+            boltSpecDamage = boltSpecDamage + (adjust?.extraDamage ?: 0),
         )
     }
 
@@ -1049,11 +1123,18 @@ constructor(
         damage: Int,
         clientDelay: Int,
         hitDelay: Int,
-    ): Hit =
-        when (target) {
-            is Npc -> queueRangedHit(source, target, ammo, damage, clientDelay, hitDelay)
-            is Player -> queueRangedHit(source, target, ammo, damage, clientDelay, hitDelay)
+    ): Hit {
+        val hit =
+            when (target) {
+                is Npc -> queueRangedHit(source, target, ammo, damage, clientDelay, hitDelay)
+                is Player -> queueRangedHit(source, target, ammo, damage, clientDelay, hitDelay)
+            }
+        val bolt = pendingBolts.remove(source)
+        if (bolt != null && bolt.target === target) {
+            bolt.shot.landed(target, hit, clientDelay, hitDelay)
         }
+        return hit
+    }
 
     private fun queueRangedHit(
         source: Player,
@@ -1078,6 +1159,7 @@ constructor(
                 sourceSecondary = ammo,
             )
         target.heroPoints(source, min(hit.damage, target.hitpoints))
+        publishHit(source, target, HitType.Ranged, hit.damage, ammo)
         target.combatPlayDefendAnim(clientDelay)
         target.combatPlayDefendSpot(objTypes, ammo, clientDelay)
         return hit
@@ -1105,6 +1187,7 @@ constructor(
                 sourceSecondary = ammo,
             )
         target.heroPoints(source, min(hit.damage, target.hitpoints))
+        publishHit(source, target, HitType.Ranged, hit.damage, ammo)
         target.combatPlayDefendAnim(objTypes, clientDelay)
         target.combatPlayDefendSpot(objTypes, ammo, clientDelay)
         return hit
@@ -1151,6 +1234,7 @@ constructor(
                 sourceSecondary = ammo,
             )
         target.heroPoints(source, min(hit.damage, target.hitpoints))
+        publishHit(source, target, HitType.Ranged, hit.damage, ammo)
         return hit
     }
 
@@ -1171,6 +1255,7 @@ constructor(
                 sourceSecondary = ammo,
             )
         target.heroPoints(source, min(hit.damage, target.hitpoints))
+        publishHit(source, target, HitType.Ranged, hit.damage, ammo)
         return hit
     }
 
@@ -2161,6 +2246,69 @@ constructor(
         )
 
     /** Restores [amount] hitpoints to [player], up to their base level. */
+    /**
+     * Queues a [HitType.Typeless] hit on [target] that no prayer or armour reduces, such as the
+     * damage a special attack deals over time or with a delay of its own. Like [queueMeleeDamage],
+     * it does not play a block animation or provoke retaliation; it awards hero points to [source].
+     */
+    public fun queueTypelessHit(
+        source: Player,
+        target: PathingEntity,
+        damage: Int,
+        delay: Int,
+        hitmark: HitmarkTypeGroup = hitmark_groups.regular_damage,
+    ): Hit {
+        val hit =
+            when (target) {
+                is Npc -> target.queueHit(source, delay, HitType.Typeless, damage, npcHitModifier, hitmark)
+                is Player -> target.queueHit(source, delay, HitType.Typeless, damage, hitmark)
+            }
+        target.heroPoints(source, min(hit.damage, hitpointsOf(target)))
+        return hit
+    }
+
+    /** Runs [block] with [target]'s Defence level scaled by [factor], then puts the level back. */
+    private inline fun <T> withDefenceFactor(
+        target: PathingEntity,
+        factor: Double,
+        block: () -> T,
+    ): T {
+        if (factor == 1.0) {
+            return block()
+        }
+        return when (target) {
+            is Npc -> {
+                val level = target.defenceLvl
+                target.defenceLvl = (level * factor).toInt().coerceAtLeast(1)
+                try {
+                    block()
+                } finally {
+                    target.defenceLvl = level
+                }
+            }
+            is Player -> {
+                val level = target.statMap.getCurrentLevel(stats.defence)
+                val scaled = ((level.toInt() and 0xFF) * factor).toInt().coerceAtLeast(1)
+                target.statMap.setCurrentLevel(stats.defence, scaled.toByte())
+                try {
+                    block()
+                } finally {
+                    target.statMap.setCurrentLevel(stats.defence, level)
+                }
+            }
+        }
+    }
+
+    private fun publishHit(
+        source: Player,
+        target: PathingEntity,
+        type: HitType,
+        damage: Int,
+        ammo: ObjType?,
+    ) {
+        eventBus.publish(PlayerAttackEvents.Hit(source, target, type, damage, ammo))
+    }
+
     private fun healPlayer(player: Player, amount: Int) {
         if (amount > 0) {
             player.statHeal(stats.hitpoints, constant = amount, percent = 0)

@@ -26,6 +26,7 @@ constructor(
     private val potions: PotionEffects,
     private val masteries: CombatMasteryEffects,
     private val random: GameRandom,
+    private val shields: ShieldCharges,
 ) {
     /** What protects [player] from dragonfire right now. */
     fun protectionOf(player: Player): DragonfireProtection =
@@ -52,6 +53,10 @@ constructor(
         val max = breath.maxHit(protection, burnt)
         setDamage(target, hit, random.of(0..max))
         target.mes(messageFor(protection, burnt, max))
+        if (protection.shield) {
+            // A shield that stores dragonfire takes a charge from the breath it absorbs.
+            shields.charge(target)
+        }
     }
 
     /**
@@ -70,10 +75,11 @@ constructor(
 
     /**
      * The combat mastery that lowers damage taken applies to the final number, which replaces the
-     * one the hit was queued with.
+     * one the hit was queued with. It is applied before the cap to the player's hitpoints: capping
+     * first would round a last hitpoint's hit down to 0 and the player could never die.
      */
     private fun setDamage(target: Player, hit: HitBuilder, rolled: Int) {
-        hit.damage = masteries.reduceDamageTaken(target, minOf(rolled, target.hitpoints))
+        hit.damage = minOf(masteries.reduceDamageTaken(target, rolled), target.hitpoints)
     }
 
     private fun messageFor(protection: DragonfireProtection, burnt: Boolean, max: Int): String =

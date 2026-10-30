@@ -47,7 +47,7 @@ constructor(private val teams: LeagueTeams, private val masteries: LeagueMastery
         for (member in members) {
             sync(member)
             member.requestAutosave()
-            member.mes(MasteryMessages.taskCompleted(slot, MasteryData.POINTS_PER_TASK))
+            member.mes(MasteryMessages.taskCompleted(slot, MasteryData.pointsPerTask))
         }
         return true
     }

@@ -5,6 +5,7 @@ import net.rsprot.protocol.game.outgoing.interfaces.IfMoveSub
 import net.rsprot.protocol.game.outgoing.interfaces.IfOpenSub
 import net.rsprot.protocol.game.outgoing.interfaces.IfOpenTop
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetAnim
+import net.rsprot.protocol.game.outgoing.interfaces.IfSetColour
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetEventsV2
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetHide
 import net.rsprot.protocol.game.outgoing.interfaces.IfSetNpcHead
@@ -234,6 +235,14 @@ public fun Player.ifSetText(target: ComponentType, text: String) {
 
 public fun Player.ifSetHide(target: ComponentType, hide: Boolean) {
     client.write(IfSetHide(target.interfaceId, target.component, hide))
+}
+
+/** Sets [target]'s colour, given as 15-bit RGB (five bits a channel, red highest). */
+public fun Player.ifSetColour(target: ComponentType, rgb15: Int) {
+    val red = (rgb15 shr 10) and 0x1F
+    val green = (rgb15 shr 5) and 0x1F
+    val blue = rgb15 and 0x1F
+    client.write(IfSetColour(target.interfaceId, target.component, red, green, blue))
 }
 
 public fun Player.ifOpenTop(topLevel: InterfaceType) {

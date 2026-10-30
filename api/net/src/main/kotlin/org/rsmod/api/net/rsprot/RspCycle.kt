@@ -131,6 +131,18 @@ class RspCycle(
     }
 
     private fun Player.rebuildArea() {
+        // A region that changed under the player (see `Player.requestRegionRebuild`) is sent again
+        // even though the build area is the same. A player outside a region has nothing to resend.
+        val forceRebuild =
+            pendingRegionRebuild && regionUid != null && knownBuildArea != CoordGrid.NULL
+        if (pendingRegionRebuild) {
+            clearRegionRebuildRequest()
+        }
+        if (forceRebuild) {
+            knownRegionUid = null
+            cachedRegionZoneProvider = null
+        }
+
         val recalcBuildArea = knownBuildArea != buildArea && buildArea != CoordGrid.NULL
         if (recalcBuildArea) {
             val zone = ZoneKey.from(buildArea)
@@ -139,7 +151,7 @@ class RspCycle(
             npcInfo.updateBuildArea(worldId, area)
         }
 
-        if (!recalcBuildArea) {
+        if (!recalcBuildArea && !forceRebuild) {
             return
         }
 
@@ -174,7 +186,13 @@ class RspCycle(
         }
 
         val zoneProvider = cachedRegionZoneProvider ?: createRegionZoneProvider(region)
-        val rebuild = RebuildRegion(x shr 3, z shr 3, true, zoneProvider)
+        // The scene is centred on the build area, not on where the player stands now: every
+        // coordinate sent afterwards is relative to `buildArea`, and a resend (see
+        // `Player.requestRegionRebuild`) happens after the player has walked. For a build area that
+        // was just recalculated the two are the same zone.
+        val center =
+            ZoneKey.from(buildArea).translate(BUILD_AREA_ZONE_RADIUS, BUILD_AREA_ZONE_RADIUS)
+        val rebuild = RebuildRegion(center.x, center.z, true, zoneProvider)
         knownBuildArea = buildArea
         cachedRegionZoneProvider = zoneProvider
         session.queue(rebuild)
@@ -400,3 +418,6 @@ class RspCycle(
         }
     }
 }
+
+/** Zones from the south-west corner of a build area to its centre (`BuildAreaUtils.SIZE` / 16). */
+private const val BUILD_AREA_ZONE_RADIUS = 6

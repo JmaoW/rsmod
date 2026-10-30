@@ -239,7 +239,9 @@ public fun Player.statHeal(stat: StatType, constant: Int, percent: Int) {
     val base = statBase(stat)
     val current = stat(stat)
     val calculated = current + (constant + (base * percent) / 100)
-    val cappedLevel = calculated.coerceIn(current, base)
+    // A stat that is already boosted above its base level is left untouched (`coerceIn` would
+    // throw as `current` would be greater than `base`).
+    val cappedLevel = if (current >= base) current else calculated.coerceIn(current, base)
 
     statMap.setCurrentLevel(stat, cappedLevel.toByte())
     updateStat(stat)

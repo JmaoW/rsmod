@@ -27,6 +27,7 @@ object IsleOfSoulsObjs : ObjReferences() {
     val raw_shark = find("raw_shark")
     val raw_karambwanji = find("tbwt_raw_karambwanji")
     val raw_karambwan = find("tbwt_raw_karambwan")
+    val raw_anglerfish = find("raw_anglerfish")
 
     val cooked_shrimp = find("shrimp")
     val cooked_sardine = find("sardine")

@@ -110,7 +110,9 @@ constructor(
         // Damage is capped to the target's hitpoints now, not on impact, so a player who eats
         // while the hit is in flight survives it ("tick-eating"). The impact modifier can only
         // lower the damage from here.
-        val damage = minOf(rollDamage(npc, target, attack), target.hitpoints)
+        val rolled = rollDamage(npc, target, attack)
+        val cap = target.hitpoints
+        val damage = minOf(rolled, cap)
 
         npc.lastAttack = npc.currentMapClock
         npc.attackingPlayer = target.uid
@@ -122,15 +124,22 @@ constructor(
         // response to the attack animation is protected.
         target.queueCombatRetaliate(npc)
         val hitType = if (attack.typeless) HitType.Typeless else attack.style.hitType()
-        target.queueImpactHit(npc, hitDelay, hitType, damage, modifier = impactModifier(onImpact))
+        target.queueImpactHit(
+            npc,
+            hitDelay,
+            hitType,
+            damage,
+            modifier = impactModifier(onImpact, rolled, cap),
+        )
         for (extra in 1..attack.extraHits) {
-            val extraDamage = minOf(rollDamage(npc, target, attack), target.hitpoints)
+            val extraRolled = rollDamage(npc, target, attack)
+            val extraCap = target.hitpoints
             target.queueImpactHit(
                 npc,
                 hitDelay + extra,
                 hitType,
-                extraDamage,
-                modifier = impactModifier(onImpact),
+                minOf(extraRolled, extraCap),
+                modifier = impactModifier(onImpact, extraRolled, extraCap),
             )
         }
         // An animation delay is limited to one byte, which a long flight (Jad across the cave)
@@ -159,13 +168,27 @@ constructor(
         return if (hit) random.of(0..maxHit) else 0
     }
 
-    private fun impactModifier(onImpact: NpcImpactListener?): PlayerHitModifier =
-        PlayerHitModifier { target ->
-            with(StandardPlayerHitModifier) { modify(target) }
-            // The fourth combat mastery passive lowers the damage taken.
-            damage = masteries.reduceDamageTaken(target, damage)
-            onImpact?.onImpact(target, this)
-        }
+    /**
+     * [rolled] is the damage rolled for the hit and [cap] the hitpoints the target had when it was
+     * queued, which the hit was capped to.
+     */
+    private fun impactModifier(
+        onImpact: NpcImpactListener?,
+        rolled: Int,
+        cap: Int,
+    ): PlayerHitModifier = PlayerHitModifier { target ->
+        with(StandardPlayerHitModifier) { modify(target) }
+        // The fourth combat mastery passive lowers the damage taken. A hit that was cut down to the
+        // target's hitpoints is lowered from what was rolled and then capped again: lowering the
+        // capped number rounds a last hitpoint's hit down to 0, and the player could never die.
+        damage =
+            if (damage >= cap && rolled > cap) {
+                minOf(masteries.reduceDamageTaken(target, rolled), cap)
+            } else {
+                masteries.reduceDamageTaken(target, damage)
+            }
+        onImpact?.onImpact(target, this)
+    }
 
     private fun rollDamage(npc: Npc, target: Player, attack: NpcAttack): Int {
         val hit =

@@ -69,6 +69,7 @@ public open class ObjCurrencyShopOperations(
         }
 
         val shopInitialObjCount = shopInv.initialStockCount(obj)
+        val fixedStock = shopInv.isDefaultStock(obj.id)
         val availableCurrencyCount = sideInv.count(currencyObj)
         val cappedRequest =
             if (objType.isStackable) {
@@ -86,22 +87,25 @@ public open class ObjCurrencyShopOperations(
                 availableCurrency = availableCurrencyCount,
                 sellPercentage = shop.sellPercentage,
                 changePercentage = shop.changePercentage,
+                fixedStock = fixedStock,
             )
         val finalPurchaseCost = max(totalCost, firstObjPrice)
 
         val transaction =
             player.invTransaction(sideInv) {
                 val inv = select(sideInv)
-                val shop = select(shopInv)
                 delete {
                     this.from = inv
                     this.obj = currencyObj.id
                     this.strictCount = finalPurchaseCost
                 }
-                delete {
-                    this.from = shop
-                    this.obj = obj.id
-                    this.strictCount = finalPurchaseCount
+                if (!fixedStock) {
+                    val shop = select(shopInv)
+                    delete {
+                        this.from = shop
+                        this.obj = obj.id
+                        this.strictCount = finalPurchaseCount
+                    }
                 }
                 insert {
                     this.into = inv
@@ -112,7 +116,8 @@ public open class ObjCurrencyShopOperations(
 
         val success = transaction.success
         val currencyDel = transaction.results[0]
-        val stockObjAdd = transaction.results.getOrNull(2)
+        // The insert into the player's inventory is always the last operation.
+        val stockObjAdd = transaction.results.last()
 
         val message =
             when {
@@ -221,6 +226,7 @@ public open class ObjCurrencyShopOperations(
         }
         val shopCurrentObjCount = shopInv.count(uncertType)
         val shopInitialObjCount = shopInv.initialStockCount(uncertType)
+        val fixedStock = shopInv.isDefaultStock(uncertType.id)
 
         val currencyCount = sideInv.count(currencyObj)
         val cappedRequest = min(Int.MAX_VALUE - shopCurrentObjCount, invCappedRequest)
@@ -234,6 +240,7 @@ public open class ObjCurrencyShopOperations(
                 currencyCap = Int.MAX_VALUE - currencyCount,
                 buyPercentage = shop.buyPercentage,
                 changePercentage = shop.changePercentage,
+                fixedStock = fixedStock,
             )
 
         val transaction =
@@ -245,10 +252,12 @@ public open class ObjCurrencyShopOperations(
                     this.obj = obj.id
                     this.strictCount = count
                 }
-                insert {
-                    this.into = shop
-                    this.obj = uncertType.id
-                    this.strictCount = count
+                if (!fixedStock) {
+                    insert {
+                        this.into = shop
+                        this.obj = uncertType.id
+                        this.strictCount = count
+                    }
                 }
                 if (payment > 0) {
                     insert {
@@ -262,6 +271,15 @@ public open class ObjCurrencyShopOperations(
         if (transaction.success) {
             restockProcess += shopInv
         }
+    }
+
+    /**
+     * Whether [objId] is one of this shop's default stock. Trading keeps the count of default stock
+     * as it is: buying takes nothing from it and selling adds nothing to it.
+     */
+    private fun Inventory.isDefaultStock(objId: Int): Boolean {
+        val startStock = type.stock ?: return false
+        return startStock.any { it?.obj == objId }
     }
 
     override fun examineDesc(player: Player, inv: Inventory, shop: Shop, slot: Int) {

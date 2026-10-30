@@ -17,6 +17,7 @@ import org.rsmod.api.specials.SpecialAttackManager
 import org.rsmod.api.specials.SpecialAttackMap
 import org.rsmod.api.specials.SpecialAttackRepository
 import org.rsmod.api.specials.combat.RangedSpecialAttack
+import org.rsmod.content.other.special.attacks.configs.sobjs
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
@@ -34,13 +35,25 @@ constructor(private val objTypes: ObjTypeList, private val ammunition: RangedAmm
         registerRanged(objs.dark_bow_blue, DarkBow(manager, ammunition, objTypes))
         registerRanged(objs.dark_bow_yellow, DarkBow(manager, ammunition, objTypes))
         registerRanged(objs.dark_bow_white, DarkBow(manager, ammunition, objTypes))
-        registerRanged(objs.dark_bow_bh, DarkBow(manager, ammunition, objTypes))
+        // The imbued dark bow's arrows deal at least 7 damage instead of 5.
+        registerRanged(
+            objs.dark_bow_bh,
+            DarkBow(manager, ammunition, objTypes, minimumHit = IMBUED_MINIMUM_HIT),
+        )
+        registerRanged(sobjs.br_darkbow, DarkBow(manager, ammunition, objTypes))
+        registerRanged(sobjs.deadman_darkbow, DarkBow(manager, ammunition, objTypes))
+        registerRanged(sobjs.deadman_blighted_dark_bow, DarkBow(manager, ammunition, objTypes))
+    }
+
+    private companion object {
+        const val IMBUED_MINIMUM_HIT = 7
     }
 
     private class DarkBow(
         private val manager: SpecialAttackManager,
         private val ammunition: RangedAmmoManager,
         private val objTypes: ObjTypeList,
+        private val minimumHit: Int = 5,
     ) : RangedSpecialAttack {
         override suspend fun ProtectedAccess.attack(
             target: Npc,
@@ -121,7 +134,7 @@ constructor(private val objTypes: ObjTypeList, private val ammunition: RangedAmm
             target.spotanim(descentImpact, height = 96, delay = clientDelay2)
 
             val damage =
-                calculateDamage(target, attack, damageRange = 5..Int.MAX_VALUE, multiplier = 1.3)
+                calculateDamage(target, attack, damageRange = minimumHit..Int.MAX_VALUE, multiplier = 1.3)
             val hitDelay1 = proj1.serverCycles
             val hitDelay2 = proj2.serverCycles
 

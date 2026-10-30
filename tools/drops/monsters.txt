@@ -20,6 +20,7 @@ Dagannoth Supreme
 Grotesque Guardians | ids_from=Dusk; Dawn
 Hespori
 Zulrah
+Vorkath
 
 Cave kraken | ids=492
 
@@ -48,3 +49,7 @@ Marble gargoyle
 Night beast
 Greater abyssal demon
 Scurrius
+
+Artio
+Spindel
+Calvar'ion

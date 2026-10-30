@@ -33,6 +33,7 @@ object DungeonCrossLocs : LocReferences() {
     val karuulm_lava_gap = find("karuulm_lava_jump")
     val karuulm_tunnel = find("karuulm_wall_tunnel")
     val karuulm_hydra_rocks = find("karuulm_hydra_room_entrance_climb")
+    val revenant_pillar = find("wild_cave_agility_jump")
 }
 
 /**
@@ -697,6 +698,60 @@ object DungeonCrossings {
                 ),
         )
 
+    /**
+     * One of the Revenant Caves' five pillars, a single rock in a band of chasm that is jumped to
+     * and then off again, three tiles each way. The cave's map holds the pillar on level 1 over a
+     * bridge flag, which puts it on level 0 in game. The Wiki's levels and experience are by
+     * pillar: 65 (6.5 xp), 75 (7.5) and 89 (8.9). It also has a failure that still crosses; that is
+     * not built.
+     */
+    private fun revenantPillar(
+        key: String,
+        x: Int,
+        z: Int,
+        alongZ: Boolean,
+        level: Int,
+        xp: Double,
+    ): DungeonCrossing {
+        val dx = if (alongZ) 0 else 3
+        val dz = if (alongZ) 3 else 0
+        return DungeonCrossing(
+            key = key,
+            name = "Pillar",
+            kind = ShortcutKind.Pillar,
+            a = t(x - dx, z - dz),
+            b = t(x + dx, z + dz),
+            levelAtoB = level,
+            levelBtoA = level,
+            xp = xp,
+            clicks =
+                listOf(
+                    click(
+                        DungeonCrossLocs.revenant_pillar,
+                        x,
+                        z,
+                        angle = if (alongZ) LocAngle.West else LocAngle.North,
+                    )
+                ),
+            stones = listOf(t(x, z)),
+        )
+    }
+
+    /** Revenant Caves, between the revenant goblin and the southern revenant ork (65). */
+    val revenantSouthPillar = revenantPillar("revenant_south_pillar", 3220, 10086, true, 65, 6.5)
+
+    /** Revenant Caves, west of the northern revenant ork (75). */
+    val revenantWestPillar = revenantPillar("revenant_west_pillar", 3200, 10136, false, 75, 7.5)
+
+    /** Revenant Caves, the two in the north-western area (75). */
+    val revenantNorthPillar = revenantPillar("revenant_north_pillar", 3180, 10209, true, 75, 7.5)
+
+    val revenantNorthWestPillar =
+        revenantPillar("revenant_northwest_pillar", 3202, 10196, false, 75, 7.5)
+
+    /** Revenant Caves, between the northern revenant ork and the eastern pyrefiend (89). */
+    val revenantEastPillar = revenantPillar("revenant_east_pillar", 3241, 10145, false, 89, 8.9)
+
     val all: List<DungeonCrossing> =
         listOf(
             taverleyPipe,
@@ -725,5 +780,10 @@ object DungeonCrossings {
             karuulmHydraGap,
             karuulmTunnel,
             karuulmHydraRocks,
+            revenantSouthPillar,
+            revenantWestPillar,
+            revenantNorthPillar,
+            revenantNorthWestPillar,
+            revenantEastPillar,
         )
 }

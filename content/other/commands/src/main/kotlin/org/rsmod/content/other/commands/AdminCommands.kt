@@ -90,7 +90,9 @@ constructor(
             invalidArgs = "Use as ::spot spotanimDebugNameOrId (ex: fx_emote_party01_active)"
         }
         onCommand("locadd", "Spawn loc", ::locAdd) {
-            invalidArgs = "Use as ::locadd duration locDebugNameOrId (ex: 100 bookcase)"
+            invalidArgs =
+                "Use as ::locadd duration locDebugNameOrId [angle] [shape] " +
+                    "(ex: 100 bookcase 2). Angle: 0=west, 1=north, 2=east, 3=south"
         }
         onCommand("locdel", "Remove loc", ::locDel) { invalidArgs = "Use as ::locdel duration" }
         onCommand("npcadd", "Spawn npc", ::npcAdd) {

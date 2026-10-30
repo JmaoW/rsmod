@@ -23,6 +23,7 @@ import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.capture.CaptureClient
 import org.rsmod.api.testing.factory.npcTypeFactory
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.content.areas.misc.isleofsouls.giants.giant_objs
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeamCommands
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
@@ -352,6 +353,17 @@ class LeagueEventFlowTest {
             assertEquals(null, deps.announcer.reload())
             deps.announcer.drop(alice, objs.logs, 1, boosted = true)
             assertEquals(1, carol.broadcasts().size)
+        }
+
+    @Test
+    fun GameTestState.`the giants' keys are boosted but not announced`() =
+        runEventTest { deps, alice, _, carol, _ ->
+            deps.announcer.load(dir)
+
+            deps.announcer.drop(alice, giant_objs.mossy_key, 1, boosted = true)
+            deps.announcer.drop(alice, giant_objs.giant_key, 1, boosted = true)
+
+            assertEquals(emptyList<String>(), carol.broadcasts())
         }
 
     @Test

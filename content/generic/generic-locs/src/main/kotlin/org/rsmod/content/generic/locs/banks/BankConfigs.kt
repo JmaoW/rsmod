@@ -46,6 +46,30 @@ internal object BankLocs : LocReferences() {
             find("chest_alchemist01_closed01"),
             find("chest_alchemist01_open01"),
         )
+
+    // Every "Bank deposit box" loc (and the deposit chest and pot) with a "Deposit" first option.
+    val deposit_boxes =
+        listOf(
+            find("bank_deposit_box"),
+            find("bank_deposit_box_2"),
+            find("bank_deposit_chest"),
+            find("sarim_deposit_box"),
+            find("corscurs_bank_deposit_box"),
+            find("wint_deposit_box"),
+            find("kr_bank_deposit_box"),
+            find("tzhaar_deposit_box"),
+            find("clan_medieval_deposit_box"),
+            find("ahoy_bank_deposit_box"),
+            find("burgh_bank_deposit_box"),
+            find("swan_bank_deposit_box"),
+            find("diary_guild_deposit_box"),
+            find("brimstone_depositbox"),
+            find("tob_surface_deposit_box"),
+            find("mm_active_deposit_box"),
+            find("gauntlet_deposit_box"),
+            find("darkm_deposit_box"),
+            find("storage_postbox01_talkasti01"),
+        )
 }
 
 internal object BankLocEditor : LocEditor() {
@@ -53,6 +77,7 @@ internal object BankLocEditor : LocEditor() {
         booth(bank_locs.bankbooth)
         booth(bank_locs.bankbooth_multi)
         bank_locs.chests.forEach(::chest)
+        bank_locs.deposit_boxes.forEach(::depositBox)
     }
 
     private fun booth(type: LocType) {
@@ -61,5 +86,9 @@ internal object BankLocEditor : LocEditor() {
 
     private fun chest(type: LocType) {
         edit(type) { contentGroup = content.bank_chest }
+    }
+
+    private fun depositBox(type: LocType) {
+        edit(type) { contentGroup = content.bank_deposit_box }
     }
 }

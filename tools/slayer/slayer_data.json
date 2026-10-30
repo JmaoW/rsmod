@@ -2298,6 +2298,39 @@
       464
      ],
      "spawns": 14
+    },
+    {
+     "row": 6770,
+     "task": "Revenants",
+     "taskId": 107,
+     "weight": 5,
+     "min": 40,
+     "max": 100,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": 30,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6446,
+      100,
+      150
+     ],
+     "npcs": [
+      7881,
+      7931,
+      7932,
+      7933,
+      7934,
+      7935,
+      7936,
+      7937,
+      7938,
+      7939,
+      7940
+     ],
+     "spawns": 15
     }
    ],
    "dropped": [
@@ -3643,6 +3676,39 @@
       8031
      ],
      "spawns": 76
+    },
+    {
+     "row": 6771,
+     "task": "Revenants",
+     "taskId": 107,
+     "weight": 5,
+     "min": 40,
+     "max": 100,
+     "combat": 0,
+     "stats": [],
+     "statsAny": [],
+     "leaguesMinCombat": 30,
+     "leaguesMaxCombat": null,
+     "unlockRow": null,
+     "extension": [
+      6446,
+      100,
+      150
+     ],
+     "npcs": [
+      7881,
+      7931,
+      7932,
+      7933,
+      7934,
+      7935,
+      7936,
+      7937,
+      7938,
+      7939,
+      7940
+     ],
+     "spawns": 15
     }
    ],
    "dropped": [

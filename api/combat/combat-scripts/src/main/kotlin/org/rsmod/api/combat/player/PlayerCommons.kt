@@ -136,6 +136,12 @@ internal suspend fun ProtectedAccess.activateMeleeSpecial(
 ): Boolean {
     val weapon = attack.weapon ?: return false
     val special = specials[weapon] ?: return false
+    if (special is SpecialAttack.Magic) {
+        // A staff's special attack is a magic attack in whatever style the staff is held (bash,
+        // pound, spell).
+        val staffAttack = CombatAttack.Staff(weapon, MagicAttackStyle.Accurate)
+        return activateMagicSpecial(target, staffAttack, specials, energy)
+    }
     if (special !is SpecialAttack.Melee) {
         return false
     }
@@ -222,14 +228,35 @@ internal suspend fun ProtectedAccess.activateMagicSpecial(
     return true
 }
 
+/**
+ * A staff's special attack, made when the player attacks with a spell they have set to autocast:
+ * the special replaces the cast, as it does for any other style.
+ */
+internal suspend fun ProtectedAccess.activateSpellSpecial(
+    target: PathingEntity,
+    attack: CombatAttack.Spell,
+    specials: SpecialAttackRegistry,
+    energy: SpecialAttackEnergy,
+): Boolean {
+    val weapon = attack.weapon ?: return false
+    if (specials[weapon] !is SpecialAttack.Magic) {
+        return false
+    }
+    val staffAttack = CombatAttack.Staff(weapon, MagicAttackStyle.Accurate)
+    return activateMagicSpecial(target, staffAttack, specials, energy)
+}
+
 internal suspend fun ProtectedAccess.activateShieldSpecial(
     target: PathingEntity,
     shield: InvObj?,
     specials: SpecialAttackRegistry,
-): Boolean = TODO()
+): Boolean {
+    val special = shield?.let { specials[it] } as? SpecialAttack.Shield ?: return false
+    return special.attack(this, target)
+}
 
 internal fun ProtectedAccess.setPkVars(target: Player) {
-    // TODO(combat): Set pk skull when applicable.
+    // The skull is handed out by content: see `PvpRules.attacked`.
     pkPrey2 = pkPrey1
     pkPrey1 = target.uid
 

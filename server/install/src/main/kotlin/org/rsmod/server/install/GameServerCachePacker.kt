@@ -13,6 +13,7 @@ import kotlin.io.path.deleteRecursively
 import org.openrs2.cache.Cache
 import org.rsmod.annotations.EnrichedCache
 import org.rsmod.annotations.GameCache
+import org.rsmod.annotations.Js5Cache
 import org.rsmod.api.cache.CacheModule
 import org.rsmod.api.cache.enricher.CacheEnricherModule
 import org.rsmod.api.cache.enricher.CacheEnrichmentConfigs
@@ -79,6 +80,7 @@ class GameServerCachePacker : CliktCommand(name = "cache-pack") {
         val resolved = resolveAllTypes(injector)
         if (resolved) {
             enrichGameCache(injector)
+            encodeClientMaps(injector)
             copyGameCache(injector)
         }
     }
@@ -139,6 +141,17 @@ class GameServerCachePacker : CliktCommand(name = "cache-pack") {
             configs.encodeAll(it)
             maps.encodeAll(it)
         }
+    }
+
+    /**
+     * The client is served from the js5 cache, which is copied from vanilla and only ever gets
+     * configs. Map terrain and locs have to be written into it too, or the client keeps the vanilla
+     * squares.
+     */
+    private fun encodeClientMaps(injector: Injector) {
+        val maps = injector.getInstance(CacheEnrichmentMaps::class.java)
+        val js5 = injector.getInstance(Key.get(Cache::class.java, Js5Cache::class.java))
+        js5.use { maps.encodeClientMaps(it) }
     }
 
     private fun copyGameCache(injector: Injector) {

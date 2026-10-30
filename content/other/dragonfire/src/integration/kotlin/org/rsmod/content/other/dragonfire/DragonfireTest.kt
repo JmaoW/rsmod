@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode
+import org.rsmod.api.combat.mastery.MasteryStyle
 import org.rsmod.api.combat.weapon.scripts.WeaponAttackStylesScript
 import org.rsmod.api.combat.weapon.scripts.WeaponAttackTypesScript
 import org.rsmod.api.combat.weapon.styles.AttackStyles
@@ -22,6 +23,7 @@ import org.rsmod.api.npc.opPlayer2
 import org.rsmod.api.player.lefthand
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
+import org.rsmod.api.testing.scope.TestCombatMasteries
 import org.rsmod.content.skills.herblore.configs.TimedEffect
 import org.rsmod.content.skills.herblore.scripts.AntifireLevel
 import org.rsmod.content.skills.herblore.scripts.PotionEffects
@@ -117,6 +119,20 @@ class DragonfireTest {
             assertTrue(hits.isNotEmpty(), "the dragon attacks")
             assertTrue(hits.max() > 12, "some breath is stronger than a bite: ${hits.sorted()}")
             assertTrue(hits.max() <= 50, "no breath tops 50: ${hits.max()}")
+        }
+
+    @Test
+    fun GameTestState
+        .`the damage reduction mastery cannot keep a player on 1 hitpoint alive from breath`() =
+        runDragonTest { deps ->
+            TestCombatMasteries.set(player, MasteryStyle.Melee, 4)
+            // Hitpoints are put back to 1 before every tick; a tick that ends with the player at 0
+            // reads as 99 taken. A steel dragon three tiles off can only breathe.
+            val hits =
+                fightFor(deps, steel, ticks = 600, far = 3) { _, _ ->
+                    player.stats[stats.hitpoints] = 1
+                }
+            assertTrue(hits.any { it == 99 }, "the player dies: ${hits.sorted()}")
         }
 
     @Test

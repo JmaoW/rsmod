@@ -28,6 +28,14 @@ object RunecraftObjs : ObjReferences() {
     val blood_rune = find("bloodrune")
     val wrath_rune = find("wrathrune")
 
+    /** The rune packs Aubury sells, each of which opens into 100 runes. */
+    val air_rune_pack = find("pack_airrune")
+    val water_rune_pack = find("pack_waterrune")
+    val earth_rune_pack = find("pack_earthrune")
+    val fire_rune_pack = find("pack_firerune")
+    val mind_rune_pack = find("pack_mindrune")
+    val chaos_rune_pack = find("pack_chaosrune")
+
     val mist_rune = find("mistrune")
     val dust_rune = find("dustrune")
     val mud_rune = find("mudrune")
@@ -141,8 +149,11 @@ object RunecraftNpcs : NpcReferences() {
 }
 
 object RunecraftInvs : InvReferences() {
-    /** The cache's rune shop, which is the Mage of Zamorak's Battle Runes here. */
+    /** The cache's rune shop, which Aubury owns. */
     val rune_shop = find("runeshop")
+
+    /** The cache's Mage Arena rune shop, which is the Mage of Zamorak's Battle Runes here. */
+    val battle_rune_shop = find("magearena_runeshop")
 }
 
 object RunecraftSeqs : SeqReferences() {

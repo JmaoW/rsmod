@@ -6,3 +6,40 @@
 # We place Yarsul ourselves in the Mining Guild (MiningGuildShopScript, 3031, 9746); the source has
 # him one tile away, which would give two.
 near 7718 3031 9746 4
+
+# The Wilderness bosses live in their lairs now (WildBosses), reached from the Revenant Caves;
+# the surface spots would be a second boss. Vet'ion 6611, Callisto 6609, Venenatis 6610.
+npc 6609
+npc 6610
+npc 6611
+
+# Bryophyta lives in a team instance of her lair now (GiantLairs); the spawn in the real lair
+# would be a second boss nobody can reach.
+npc 8195
+
+# The Revenant Caves' revenants are placed from the wiki's map instead (tools/dungeons/revenants.py,
+# revenants.toml): the source has only 15 of the 30, at slightly different spots.
+npc 7881
+npc 7931
+npc 7932
+npc 7933
+npc 7934
+npc 7935
+npc 7936
+npc 7937
+npc 7938
+npc 7939
+npc 7940
+
+# The King Black Dragon fights in a team's instance of its lair (kingblackdragon package), so the
+# one standing in the real lair is left out.
+npc 239
+npc 2642
+
+# The Dagannoth Kings and their spinolyps fight in a team's instance of the lair (dagannothkings
+# package), so the ones in the real lair and in the Slayer-only copy south of it are left out.
+rect 2880 4352 2943 4479 0
+
+# Vorkath sleeps in a team's instance of the Ungael crater (vorkath package), reached by a boat on
+# the isle; the spawn list's sleeping Vorkath in the real crater would be a second one.
+rect 2258 4054 2286 4078 0

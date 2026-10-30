@@ -2,14 +2,22 @@ package org.rsmod.content.areas.misc.isleofsouls
 
 import org.rsmod.api.account.character.CharacterDataStage
 import org.rsmod.api.combat.mastery.CombatMasteryProvider
+import org.rsmod.api.game.process.npc.hunt.HuntTolerance
 import org.rsmod.api.game.process.player.RunDrainMod
 import org.rsmod.api.shops.ShopNoting
+import org.rsmod.api.specials.SpecialAttackMap
 import org.rsmod.api.stats.xpmod.XpMod
+import org.rsmod.api.weapons.WeaponMap
+import org.rsmod.content.areas.misc.isleofsouls.dagannothkings.DagannothKings
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueEvent
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueScoreboard
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueStandings
 import org.rsmod.content.areas.misc.isleofsouls.fightcaves.FightCaves
+import org.rsmod.content.areas.misc.isleofsouls.gauntlet.Gauntlet
+import org.rsmod.content.areas.misc.isleofsouls.gauntlet.GauntletWeapons
+import org.rsmod.content.areas.misc.isleofsouls.giants.Bryophyta
+import org.rsmod.content.areas.misc.isleofsouls.giants.Obor
 import org.rsmod.content.areas.misc.isleofsouls.inferno.Inferno
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstanceLoginPipeline
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
@@ -20,8 +28,13 @@ import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTracker
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueGoldenGod
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRunDrainMod
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueXpMod
+import org.rsmod.content.areas.misc.isleofsouls.revenant.RevenantSpecials
+import org.rsmod.content.areas.misc.isleofsouls.revenant.RevenantTolerance
+import org.rsmod.content.areas.misc.isleofsouls.revenant.RevenantWeapons
 import org.rsmod.content.areas.misc.isleofsouls.scurrius.Scurrius
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
+import org.rsmod.content.areas.misc.isleofsouls.vorkath.Vorkath
+import org.rsmod.content.areas.misc.isleofsouls.wilderness.WildBosses
 import org.rsmod.content.areas.misc.isleofsouls.zulrah.Zulrah
 import org.rsmod.content.skills.magic.utility.scripts.AlchemyModifiers
 import org.rsmod.content.skills.magic.utility.scripts.SpellTeams
@@ -33,6 +46,10 @@ class IsleOfSoulsModule : PluginModule() {
         addSetBinding<XpMod>(LeagueXpMod::class.java)
         addSetBinding<RunDrainMod>(LeagueRunDrainMod::class.java)
         addSetBinding<CombatMasteryProvider>(LeagueMasteryTracker::class.java)
+        addSetBinding<WeaponMap>(RevenantWeapons::class.java)
+        addSetBinding<SpecialAttackMap>(RevenantSpecials::class.java)
+        addSetBinding<WeaponMap>(GauntletWeapons::class.java)
+        addSetBinding<HuntTolerance>(RevenantTolerance::class.java)
 
         // One shared roster, progress store and set of live instances: every script must see the
         // same ones.
@@ -44,9 +61,15 @@ class IsleOfSoulsModule : PluginModule() {
         bindInstance<LeagueScoreboard>()
         bindInstance<FightCaves>()
         bindInstance<Inferno>()
+        bindInstance<Gauntlet>()
         bindInstance<Zulrah>()
         bindInstance<Scurrius>()
         bindInstance<KalphiteQueen>()
+        bindInstance<WildBosses>()
+        bindInstance<Obor>()
+        bindInstance<Bryophyta>()
+        bindInstance<DagannothKings>()
+        bindInstance<Vorkath>()
 
         // The teleport spells go to places on the isle, not to the cache's real-world towns.
         bindProvider<TeleportDestinations>(IsleTeleportProvider::class.java)

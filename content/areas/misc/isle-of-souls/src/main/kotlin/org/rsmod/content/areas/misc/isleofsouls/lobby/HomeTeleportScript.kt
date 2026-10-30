@@ -1,6 +1,7 @@
 package org.rsmod.content.areas.misc.isleofsouls.lobby
 
 import jakarta.inject.Inject
+import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
 import org.rsmod.api.random.GameRandom
@@ -8,6 +9,7 @@ import org.rsmod.api.script.onIfOverlayButton
 import org.rsmod.content.areas.misc.isleofsouls.configs.lobby_components
 import org.rsmod.content.areas.misc.isleofsouls.configs.lobby_seqs
 import org.rsmod.content.areas.misc.isleofsouls.configs.lobby_spotanims
+import org.rsmod.content.areas.misc.isleofsouls.gauntlet.Gauntlet
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.game.type.interf.IfButtonOp
 import org.rsmod.plugin.scripts.PluginScript
@@ -24,6 +26,7 @@ constructor(
     private val protectedAccess: ProtectedAccessLauncher,
     private val random: GameRandom,
     private val tracker: LeagueTaskTracker,
+    private val gauntlet: Gauntlet,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         for (button in lobby_components.home_teleports) {
@@ -38,6 +41,10 @@ constructor(
     }
 
     private suspend fun ProtectedAccess.castHomeTeleport() {
+        if (gauntlet.runOf(player) != null) {
+            mes("You can't teleport out of the Gauntlet.")
+            return
+        }
         anim(lobby_seqs.cast_teleport)
         spotanim(lobby_spotanims.teleport_casting, height = SPOTANIM_HEIGHT)
         beginTeleport(CAST_TICKS)

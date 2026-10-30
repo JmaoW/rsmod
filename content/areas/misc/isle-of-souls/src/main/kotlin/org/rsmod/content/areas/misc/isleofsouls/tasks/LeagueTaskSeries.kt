@@ -18,6 +18,14 @@ internal object LeagueTaskSeries {
             listOf(1649, 1650),
             // Defeat the Kalphite Queen 50 / 150 times.
             listOf(874, 875),
+            // Defeat each Dagannoth King 50 / 150 / 300 times.
+            listOf(613, 614, 615),
+            // Defeat Callisto / Venenatis / Vet'ion 50 / 150 / 300 times.
+            listOf(1404, 1405, 1406),
+            listOf(1398, 1399, 1400),
+            listOf(1401, 1402, 1403),
+            // Defeat Vorkath 50 / 150 / 300 times.
+            listOf(608, 609, 610),
             // Defeat any God Wars Dungeon boss 100 / 250 / 500 times.
             listOf(809, 810, 811),
             // Kill 150 / 300 / 500 Demonic Gorillas.

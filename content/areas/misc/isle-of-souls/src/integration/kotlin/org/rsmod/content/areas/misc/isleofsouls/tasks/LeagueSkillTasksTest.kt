@@ -542,6 +542,20 @@ class LeagueSkillTasksTest {
         }
 
     @Test
+    fun GameTestState.`anglerfish tasks complete from catching and cooking`() =
+        runGameTest(LeagueSkillTasks::class) {
+            repeat(149) { caught(isle_objs.raw_anglerfish) }
+            assertFalse(tracker().isComplete(player, 1609))
+            caught(isle_objs.raw_anglerfish)
+            assertTrue(tracker().isComplete(player, 1609))
+
+            repeat(99) { cooked(isle_objs.raw_anglerfish, isle_objs.cooked_anglerfish) }
+            assertFalse(tracker().isComplete(player, 1349))
+            cooked(isle_objs.raw_anglerfish, isle_objs.cooked_anglerfish)
+            assertTrue(tracker().isComplete(player, 1349))
+        }
+
+    @Test
     fun GameTestState.`cooking tasks complete from cooked food`() =
         runGameTest(LeagueSkillTasks::class) {
             cooked(isle_objs.raw_shrimp, isle_objs.cooked_shrimp)

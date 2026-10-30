@@ -6,6 +6,7 @@ import org.rsmod.api.config.refs.invs
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.content.interfaces.bank.configs.bank_queues
+import org.rsmod.content.interfaces.bank.configs.deposit_interfaces
 import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.PlayerList
 import org.rsmod.game.type.inv.InvTypeList
@@ -52,6 +53,7 @@ constructor(private val players: PlayerList, private val invTypes: InvTypeList) 
 
     private fun Player.usesBank(): Boolean =
         ui.containsModal(interfaces.bank_main) ||
+            ui.containsModal(deposit_interfaces.deposit_box) ||
             bank_queues.bank_compress in queueList ||
             bank_queues.bank_compress in weakQueueList
 

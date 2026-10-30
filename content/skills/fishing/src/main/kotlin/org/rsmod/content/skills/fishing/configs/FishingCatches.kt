@@ -13,6 +13,7 @@ internal object FishingObjs : ObjReferences() {
     val fly_fishing_rod = find("fly_fishing_rod")
     val fishing_bait = find("fishing_bait")
     val feather = find("feather")
+    val sandworms = find("piscarilius_sandworms")
     val karambwan_vessel = find("tbwt_karambwan_vessel")
     val karambwan_vessel_loaded = find("tbwt_karambwan_vessel_loaded_with_karambwanji")
 
@@ -47,6 +48,7 @@ internal object FishingObjs : ObjReferences() {
     val raw_bass = find("raw_bass")
     val raw_karambwanji = find("tbwt_raw_karambwanji")
     val raw_karambwan = find("tbwt_raw_karambwan")
+    val raw_anglerfish = find("raw_anglerfish")
 }
 
 internal object FishingSeqs : SeqReferences() {
@@ -78,6 +80,9 @@ internal object FishingNpcs : NpcReferences() {
     val karambwanji_spots = listOf(find("0_43_47_karambwanji"), find("general_karambwanji"))
     val karambwan_spots =
         listOf(find("0_45_48_karambwan"), find("general_karambwan"), find("lubufu_karambwan"))
+
+    /** The Port Piscarilius spot: bait it with sandworms for anglerfish. */
+    val anglerfish_spots = listOf(find("piscariliusfish"))
 }
 
 internal enum class FishingMethod(
@@ -129,6 +134,10 @@ internal enum class FishingMethod(
     Karambwan(
         startMessage = "You start fishing for karambwan.",
         missingToolMessage = "You need a karambwan vessel to catch these fish.",
+    ),
+    Anglerfish(
+        startMessage = "You cast out your line...",
+        missingToolMessage = "You need a fishing rod to fish at this spot.",
     ),
 }
 
@@ -192,6 +201,16 @@ internal object FishingCatches {
         )
     val karambwan =
         FishDef(FishingObjs.raw_karambwan, 65, 50.0, 5, 160, "karambwan", "You catch a karambwan.")
+    val anglerfish =
+        FishDef(
+            FishingObjs.raw_anglerfish,
+            82,
+            120.0,
+            3,
+            36,
+            "anglerfish",
+            "You catch an anglerfish.",
+        )
 
     private val pools: Map<FishingMethod, List<FishDef>> =
         mapOf(
@@ -206,6 +225,7 @@ internal object FishingCatches {
             FishingMethod.SharkHarpoon to listOf(shark),
             FishingMethod.Karambwanji to listOf(karambwanji),
             FishingMethod.Karambwan to listOf(karambwan),
+            FishingMethod.Anglerfish to listOf(anglerfish),
         )
 
     fun pool(method: FishingMethod): List<FishDef> = pools.getValue(method)

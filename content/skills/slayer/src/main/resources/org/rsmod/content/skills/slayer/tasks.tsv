@@ -77,6 +77,7 @@ id	name	members	combat	stats	statsAny	leaguesMin	leaguesMax	extendBit	extendMin	
 95	Smoke Devils	95	85	93:18							37
 96	Tzhaar	96	0			60					253
 106	Fossil Island Wyverns	106	60	66:18				39	55	75	29
+107	Revenants	107	0			30		53	100	150	15
 111	Wyrms	111	0	62:18		60					16
 112	Drakes	112	0	84:18		75					13
 125	Crabs	125	0				50				17

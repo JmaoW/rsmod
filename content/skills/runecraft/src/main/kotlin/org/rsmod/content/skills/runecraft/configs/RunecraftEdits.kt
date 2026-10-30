@@ -53,12 +53,13 @@ internal object RiftEdits : LocEditor() {
 }
 
 /**
- * The Mage of Zamorak's shop (the wiki's Battle Runes). He sells at the rune's value and buys at
- * 55%, his prices moving 2% a purchase; percentages are in tenths. Needs `packCache`.
+ * The Mage of Zamorak's shop (the wiki's Battle Runes, the stock after the Enter the Abyss
+ * miniquest). He sells at the rune's value and buys at 55%, his prices moving 0.2% a purchase;
+ * percentages are in tenths. Needs `packCache`.
  */
-internal object RuneShopEdits : InvEditor() {
+internal object BattleRuneShopEdits : InvEditor() {
     init {
-        edit(RunecraftInvs.rune_shop) {
+        edit(RunecraftInvs.battle_rune_shop) {
             scope = InvScope.Shared
             stack = InvStackType.Always
             autoSize = true
@@ -71,6 +72,42 @@ internal object RuneShopEdits : InvEditor() {
             stock += stock(RunecraftObjs.chaos_rune, count = 500, restockCycles = 10)
             stock += stock(RunecraftObjs.death_rune, count = 500, restockCycles = 10)
             stock += stock(RunecraftObjs.blood_rune, count = 500, restockCycles = 15)
+            stock += stock(RunecraftObjs.fire_rune_pack, count = 50, restockCycles = 2)
+            stock += stock(RunecraftObjs.water_rune_pack, count = 50, restockCycles = 2)
+            stock += stock(RunecraftObjs.air_rune_pack, count = 50, restockCycles = 2)
+            stock += stock(RunecraftObjs.earth_rune_pack, count = 50, restockCycles = 2)
+            stock += stock(RunecraftObjs.mind_rune_pack, count = 35, restockCycles = 5)
+            stock += stock(RunecraftObjs.chaos_rune_pack, count = 35, restockCycles = 5)
+        }
+    }
+}
+
+/**
+ * Aubury's Rune Shop, with the stock the wiki lists. He sells at the rune's value and buys at 60%,
+ * his prices moving 0.1% a purchase; percentages are in tenths. The Runecraft cape shop the wiki
+ * lists beside it is not here, as the isle sells no skillcapes. Needs `packCache`.
+ */
+internal object RuneShopEdits : InvEditor() {
+    init {
+        edit(RunecraftInvs.rune_shop) {
+            scope = InvScope.Shared
+            stack = InvStackType.Always
+            autoSize = true
+            restock = true
+            stock += stock(RunecraftObjs.air_rune, count = 5000, restockCycles = 10)
+            stock += stock(RunecraftObjs.fire_rune, count = 5000, restockCycles = 10)
+            stock += stock(RunecraftObjs.water_rune, count = 5000, restockCycles = 10)
+            stock += stock(RunecraftObjs.earth_rune, count = 5000, restockCycles = 10)
+            stock += stock(RunecraftObjs.mind_rune, count = 5000, restockCycles = 10)
+            stock += stock(RunecraftObjs.body_rune, count = 5000, restockCycles = 10)
+            stock += stock(RunecraftObjs.chaos_rune, count = 250, restockCycles = 10)
+            stock += stock(RunecraftObjs.death_rune, count = 250, restockCycles = 15)
+            stock += stock(RunecraftObjs.fire_rune_pack, count = 80, restockCycles = 10)
+            stock += stock(RunecraftObjs.water_rune_pack, count = 80, restockCycles = 10)
+            stock += stock(RunecraftObjs.air_rune_pack, count = 80, restockCycles = 10)
+            stock += stock(RunecraftObjs.earth_rune_pack, count = 80, restockCycles = 10)
+            stock += stock(RunecraftObjs.mind_rune_pack, count = 40, restockCycles = 10)
+            stock += stock(RunecraftObjs.chaos_rune_pack, count = 35, restockCycles = 10)
         }
     }
 }
@@ -80,7 +117,13 @@ internal object RuneShopNpcEdits : NpcEditor() {
         edit(RunecraftNpcs.mage_of_zamorak) {
             param[ShopParams.shop_sell_percentage] = 1000
             param[ShopParams.shop_buy_percentage] = 550
-            param[ShopParams.shop_change_percentage] = 20
+            param[ShopParams.shop_change_percentage] = 2
+        }
+
+        edit(RunecraftNpcs.aubury) {
+            param[ShopParams.shop_sell_percentage] = 1000
+            param[ShopParams.shop_buy_percentage] = 600
+            param[ShopParams.shop_change_percentage] = 1
         }
     }
 }

@@ -12,10 +12,10 @@ import org.rsmod.game.entity.util.ShuffledPlayerList
  * loses the last couple of minutes instead of everything since the player logged in.
  *
  * A player is saved when:
- * - [AUTOSAVE_INTERVAL] cycles have passed since their last save; or
+ * - [AutosaveSettings.interval] cycles have passed since their last save; or
  * - something asked for a save with [Player.requestAutosave] (a level up, a finished task...) and
- *   [AUTOSAVE_REQUEST_DELAY] cycles have passed since their last save, so a burst of requests only
- *   saves once; or
+ *   [AutosaveSettings.requestDelay] cycles have passed since their last save, so a burst of
+ *   requests only saves once; or
  * - the request was urgent, such as their client disconnecting, in which case it happens on the
  *   next cycle.
  *
@@ -31,6 +31,7 @@ constructor(
     private val playerList: ShuffledPlayerList,
     private val accountRegistry: AccountRegistry,
     private val exceptionHandler: GameExceptionHandler,
+    private val settings: AutosaveSettings,
 ) {
     public fun process() {
         val cycle = mapClock.cycle
@@ -52,8 +53,8 @@ constructor(
         }
 
         val elapsed = cycle - lastSaveCycle
-        val periodic = elapsed >= AUTOSAVE_INTERVAL
-        val requested = autosaveRequested && (autosaveUrgent || elapsed >= AUTOSAVE_REQUEST_DELAY)
+        val periodic = elapsed >= settings.interval
+        val requested = autosaveRequested && (autosaveUrgent || elapsed >= settings.requestDelay)
         if (!periodic && !requested) {
             return
         }

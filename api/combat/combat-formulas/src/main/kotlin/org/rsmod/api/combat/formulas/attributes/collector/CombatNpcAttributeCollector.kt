@@ -25,7 +25,11 @@ public class CombatNpcAttributeCollector {
             attributes += CombatNpcAttributes.SlayerTask
         }
 
-        // TODO(combat): "In wilderness" area check.
+        // The revenant weapons' bonus is for the Wilderness. This server applies it everywhere (the
+        // event is set on an island with no Wilderness of its own), so every npc counts as one in
+        // the Wilderness. The `wilderness` area is for where npcs notice players (see the hunt
+        // processor), not for this.
+        attributes += CombatNpcAttributes.Wilderness
 
         val sizeAttribute =
             when (val size = type.size) {

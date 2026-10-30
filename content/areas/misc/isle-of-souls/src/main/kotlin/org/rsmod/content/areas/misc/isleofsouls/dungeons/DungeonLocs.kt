@@ -18,7 +18,7 @@ object DungeonLocs : LocReferences() {
     val karamja_entrance = find("volcano_entrance")
     val kraken_entrance = find("slayer_cave_kraken_maincave_entrance")
     val smoke_entrance = find("smokedevil_cave_entrance")
-    val catacombs_entrance = find("hosdun_catacomb_entrance")
+    val catacombs_entrance = find("zeah_kourend_statue_plinth")
     val forthos_entrance = find("hosdun_entrance_ladder_hole")
     val ham_entrance = find("osf_trapdoor_open")
     val slayer_basement_entrance = find("slayer_tower_dungeon_laddertop")

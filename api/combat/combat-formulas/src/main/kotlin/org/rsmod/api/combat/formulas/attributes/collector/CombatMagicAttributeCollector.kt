@@ -20,6 +20,7 @@ import org.rsmod.api.player.righthand
 import org.rsmod.api.player.ring
 import org.rsmod.api.player.torso
 import org.rsmod.api.player.worn.EquipmentChecks
+import org.rsmod.api.player.worn.RevenantEther
 import org.rsmod.api.random.GameRandom
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.isAnyType
@@ -145,7 +146,7 @@ public class CombatMagicAttributeCollector @Inject constructor(private val objTy
                     objs.accursed_sceptre_a,
                     objs.thammarons_sceptre,
                     objs.thammarons_sceptre_a,
-                ) -> {
+                ) && RevenantEther.usable(weapon) > 0 -> {
                     CombatSpellAttributes.RevenantWeapon
                 }
 
@@ -226,7 +227,7 @@ public class CombatMagicAttributeCollector @Inject constructor(private val objTy
                     objs.accursed_sceptre_a,
                     objs.thammarons_sceptre,
                     objs.thammarons_sceptre_a,
-                ) -> {
+                ) && RevenantEther.usable(weapon) > 0 -> {
                     CombatStaffAttributes.RevenantWeapon
                 }
 

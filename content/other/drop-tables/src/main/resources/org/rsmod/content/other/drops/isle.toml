@@ -36,3 +36,227 @@ main = [
 tertiary = [
   { item = "Scurrius' spine", chance = "1/33", boosted = true },
 ]
+
+# Obor's kill table (wiki, members), imported by the same code as osrs.toml. Obor is not spawned
+# in the world, so the importer's spawned list never had him.
+[[monster]]
+source = "Obor"
+# drop version: Members
+ids = [7416]
+always = [
+  { item = "Giant bones" },
+]
+main = [
+  { item = "Iron full helm", chance = "5/135" },
+  { item = "Iron dagger", chance = "4/135" },
+  { item = "Iron kiteshield", chance = "3/135" },
+  { item = "Steel longsword", chance = "2/135" },
+  { item = "Iron arrow", qty = "3", chance = "6/135" },
+  { item = "Fire rune", qty = "15", chance = "3/135" },
+  { item = "Water rune", qty = "7", chance = "3/135" },
+  { item = "Law rune", qty = "2", chance = "3/135" },
+  { item = "Steel arrow", qty = "10", chance = "2/135" },
+  { item = "Mind rune", qty = "3", chance = "2/135" },
+  { item = "Cosmic rune", qty = "2", chance = "2/135" },
+  { item = "Nature rune", qty = "6", chance = "2/135" },
+  { item = "Chaos rune", qty = "2", chance = "1/135" },
+  { item = "Death rune", qty = "2", chance = "1/135" },
+  { item = "Grimy guam leaf", chance = "1/77" },
+  { item = "Grimy marrentill", chance = "1/103" },
+  { item = "Grimy tarromin", chance = "1/137" },
+  { item = "Grimy harralander", chance = "1/176" },
+  { item = "Grimy ranarr weed", chance = "1/224" },
+  { item = "Grimy irit leaf", chance = "1/309" },
+  { item = "Grimy avantoe", chance = "1/411" },
+  { item = "Grimy kwuarm", chance = "1/494" },
+  { item = "Grimy cadantine", chance = "1/617" },
+  { item = "Grimy lantadyme", chance = "1/823" },
+  { item = "Grimy dwarf weed", chance = "1/823" },
+  { item = "Potato seed", qty = "4", chance = "1/44" },
+  { item = "Onion seed", qty = "4", chance = "1/59" },
+  { item = "Cabbage seed", qty = "4", chance = "1/89" },
+  { item = "Tomato seed", qty = "3", chance = "1/179" },
+  { item = "Sweetcorn seed", qty = "3", chance = "1/359" },
+  { item = "Strawberry seed", qty = "2", chance = "1/718" },
+  { item = "Watermelon seed", qty = "2", chance = "1/1502" },
+  { item = "Snape grass seed", qty = "2", chance = "1/2065" },
+  { item = "Barley seed", qty = "4", chance = "1/142" },
+  { item = "Hammerstone seed", qty = "3", chance = "1/143" },
+  { item = "Asgarnian seed", qty = "3", chance = "1/190" },
+  { item = "Jute seed", qty = "2", chance = "1/191" },
+  { item = "Yanillian seed", qty = "2", chance = "1/286" },
+  { item = "Krandorian seed", qty = "2", chance = "1/573" },
+  { item = "Wildblood seed", chance = "1/1128" },
+  { item = "Marigold seed", chance = "1/173" },
+  { item = "Nasturtium seed", chance = "1/261" },
+  { item = "Rosemary seed", chance = "1/404" },
+  { item = "Woad seed", chance = "1/547" },
+  { item = "Limpwurt seed", chance = "1/685" },
+  { item = "Redberry seed", chance = "1/204" },
+  { item = "Cadavaberry seed", chance = "1/292" },
+  { item = "Dwellberry seed", chance = "1/409" },
+  { item = "Jangerberry seed", chance = "1/1024" },
+  { item = "Whiteberry seed", chance = "1/2826" },
+  { item = "Poison ivy seed", chance = "1/7450" },
+  { item = "Guam seed", chance = "1/517" },
+  { item = "Marrentill seed", chance = "1/759" },
+  { item = "Tarromin seed", chance = "1/1111" },
+  { item = "Harralander seed", chance = "1/1639" },
+  { item = "Ranarr seed", chance = "1/2400" },
+  { item = "Toadflax seed", chance = "1/3523" },
+  { item = "Irit seed", chance = "1/5175" },
+  { item = "Avantoe seed", chance = "1/7528" },
+  { item = "Kwuarm seed", chance = "1/11041" },
+  { item = "Snapdragon seed", chance = "1/16562" },
+  { item = "Cadantine seed", chance = "1/23660" },
+  { item = "Lantadyme seed", chance = "1/33125" },
+  { item = "Dwarf weed seed", chance = "1/55208" },
+  { item = "Torstol seed", chance = "1/82812" },
+  { item = "Mushroom spore", chance = "1/269" },
+  { item = "Belladonna seed", chance = "1/448" },
+  { item = "Cactus seed", chance = "1/672" },
+  { item = "Potato cactus seed", chance = "1/1345" },
+  { item = "Coins", qty = "38", chance = "14/135" },
+  { item = "Coins", qty = "52", chance = "10/135" },
+  { item = "Coins", qty = "15", chance = "8/135" },
+  { item = "Coins", qty = "8", chance = "6/135" },
+  { item = "Coins", qty = "88", chance = "2/135" },
+  { item = "Limpwurt root", chance = "11/135" },
+  { item = "Beer", chance = "6/135" },
+  { item = "Body talisman", chance = "2/135" },
+  { table = "Gem drop table", chance = "3/135" },
+]
+tertiary = [
+  { item = "Giant key", chance = "1/16" },
+  { item = "Ensouled giant head", chance = "1/25" },
+  { item = "Clue scroll (beginner)", chance = "1/50" },
+  { item = "Long bone", chance = "1/400" },
+  { item = "Giant champion scroll", chance = "1/5000" },
+  { item = "Curved bone", chance = "1/5012.5" },
+]
+
+
+# Obor's chest (wiki: Chest (Obor's lair), tsps giant-boss-lairs.json). Rolled by GiantRewards
+# for the player who opens it; the uncut diamonds that come with the rubies are added in code.
+[[monster]]
+source = "Obor"
+npcs = ["gb_hillgiant_chest"]
+always = [
+  { item = "Clue scroll (beginner)" },
+  { item = "Ensouled giant head" },
+]
+main = [
+  { item = "Hill giant club", chance = "1/118" },
+  { item = "Rune kiteshield", chance = "3/118" },
+  { item = "Rune full helm", chance = "5/118" },
+  { item = "Rune med helm", chance = "6/118" },
+  { item = "Rune chainbody", chance = "3/118" },
+  { item = "Rune platelegs", chance = "3/118" },
+  { item = "Rune plateskirt", chance = "3/118" },
+  { item = "Rune battleaxe", chance = "4/118" },
+  { item = "Rune longsword", chance = "5/118" },
+  { item = "Rune 2h sword", chance = "3/118" },
+  { item = "Law rune", qty = "50-99", chance = "12/118" },
+  { item = "Cosmic rune", qty = "60-119", chance = "12/118" },
+  { item = "Chaos rune", qty = "100-199", chance = "10/118" },
+  { item = "Death rune", qty = "40-79", chance = "10/118" },
+  { item = "Nature rune", qty = "40-79", chance = "7/118" },
+  { item = "Coins", qty = "10000-15000", chance = "6/118" },
+  { item = "Coins", qty = "12000-20000", chance = "4/118" },
+  { item = "Limpwurt root", qty = "20", noted = true, chance = "8/118" },
+  { item = "Big bones", qty = "50", noted = true, chance = "8/118" },
+  { item = "Uncut ruby", qty = "5", noted = true, chance = "5/118" },
+]
+tertiary = [
+  { item = "Giant key", chance = "1/16" },
+]
+
+
+# Bryophyta's chest (wiki: Chest (Bryophyta's lair), tsps giant-boss-lairs.json). Rolled by GiantRewards
+# for the player who opens it; the uncut diamonds that come with the rubies are added in code.
+[[monster]]
+source = "Bryophyta"
+npcs = ["gb_mossgiant_chest"]
+always = [
+  { item = "Clue scroll (beginner)" },
+]
+main = [
+  { item = "Rune longsword", chance = "6/118" },
+  { item = "Rune med helm", qty = "2", chance = "6/118" },
+  { item = "Rune chainbody", chance = "6/118" },
+  { item = "Rune plateskirt", chance = "6/118" },
+  { item = "Rune platelegs", chance = "6/118" },
+  { item = "Rune sq shield", chance = "6/118" },
+  { item = "Rune sword", qty = "2", chance = "5/118" },
+  { item = "Adamant platebody", qty = "5", noted = true, chance = "3/118" },
+  { item = "Battlestaff", qty = "3", noted = true, chance = "3/118" },
+  { item = "Adamant kiteshield", qty = "3", chance = "1/118" },
+  { item = "Nature rune", qty = "100", chance = "8/118" },
+  { item = "Cosmic rune", qty = "100", chance = "6/118" },
+  { item = "Law rune", qty = "100", chance = "6/118" },
+  { item = "Death rune", qty = "100", chance = "5/118" },
+  { item = "Chaos rune", qty = "200", chance = "6/118" },
+  { item = "Chaos rune", qty = "100", chance = "5/118" },
+  { item = "Blood rune", qty = "100", chance = "1/118" },
+  { item = "Adamant arrow", qty = "100", chance = "1/118" },
+  { item = "Grimy guam leaf", chance = "1/94" },
+  { item = "Grimy marrentill", chance = "1/126" },
+  { item = "Grimy tarromin", chance = "1/168" },
+  { item = "Grimy harralander", chance = "1/216" },
+  { item = "Grimy ranarr weed", chance = "1/275" },
+  { item = "Grimy irit leaf", chance = "1/378" },
+  { item = "Grimy avantoe", chance = "1/503" },
+  { item = "Grimy kwuarm", chance = "1/604" },
+  { item = "Grimy cadantine", chance = "1/755" },
+  { item = "Grimy lantadyme", chance = "1/1007" },
+  { item = "Grimy dwarf weed", chance = "1/1007" },
+  { item = "Limpwurt seed", chance = "1/150.4" },
+  { item = "Strawberry seed", chance = "1/157.3" },
+  { item = "Marrentill seed", chance = "1/164.9" },
+  { item = "Jangerberry seed", chance = "1/224.0" },
+  { item = "Tarromin seed", chance = "1/242.5" },
+  { item = "Wildblood seed", chance = "1/248.3" },
+  { item = "Watermelon seed", chance = "1/327.2" },
+  { item = "Harralander seed", chance = "1/368.0" },
+  { item = "Snape grass seed", chance = "1/515.3" },
+  { item = "Ranarr seed", chance = "1/528.5" },
+  { item = "Whiteberry seed", chance = "1/606.2" },
+  { item = "Mushroom spore", chance = "1/710.7" },
+  { item = "Toadflax seed", chance = "1/763.4" },
+  { item = "Belladonna seed", chance = "1/1145.0" },
+  { item = "Irit seed", chance = "1/1145.0" },
+  { item = "Poison ivy seed", chance = "1/1585.4" },
+  { item = "Avantoe seed", chance = "1/1717.6" },
+  { item = "Cactus seed", chance = "1/1717.6" },
+  { item = "Kwuarm seed", chance = "1/2290.1" },
+  { item = "Potato cactus seed", chance = "1/2576.3" },
+  { item = "Snapdragon seed", chance = "1/4122.1" },
+  { item = "Cadantine seed", chance = "1/5152.7" },
+  { item = "Lantadyme seed", chance = "1/6870.2" },
+  { item = "Dwarf weed seed", chance = "1/10305.3" },
+  { item = "Torstol seed", chance = "1/20610.7" },
+  { item = "Runite bar", qty = "2", chance = "6/118" },
+  { item = "Uncut ruby", qty = "5", noted = true, chance = "4/118" },
+  { item = "Steel bar", qty = "25", noted = true, chance = "3/118" },
+  { item = "Coins", qty = "10000", chance = "5/118" },
+  { item = "Coins", qty = "8000", chance = "2/118" },
+  { item = "Bryophyta's essence", chance = "1/118" },
+]
+tertiary = [
+  { item = "Mossy key", chance = "1/16" },
+]
+
+
+# The key drops of the hill giants and moss giants get the league's drop rate boost too (they gate
+# Obor and Bryophyta). Obor's and Bryophyta's own keys are left at the wiki's 1/16.
+[[boost]]
+source = "Hill Giant"
+item = "Giant key"
+
+[[boost]]
+source = "Moss giant"
+item = "Mossy key"
+
+[[boost]]
+source = "Moss Giant (Iorwerth Dungeon)"
+item = "Mossy key"

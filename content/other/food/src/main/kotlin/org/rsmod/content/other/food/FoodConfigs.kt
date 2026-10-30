@@ -2,6 +2,8 @@ package org.rsmod.content.other.food
 
 import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.api.type.refs.timer.TimerReferences
+import org.rsmod.content.skills.herblore.configs.PoisonCure
+import org.rsmod.content.skills.herblore.configs.VenomCure
 import org.rsmod.game.type.stat.StatType
 
 internal object FoodSeqs : SeqReferences() {
@@ -52,13 +54,20 @@ internal class FoodEffects(
     val runEnergy: Int = 0,
     /** Drains this much from one random skill (Hitpoints excluded) that is above level 2. */
     val randomDrain: Int = 0,
+    /** What it does to poison and venom that are already there. */
+    val poison: PoisonCure = PoisonCure.None,
+    val venom: VenomCure = VenomCure.None,
+    /** Ticks of venom immunity it gives. */
+    val venomImmunity: Int = 0,
 ) {
     fun isEmpty(): Boolean =
         boosts.isEmpty() &&
             drains.isEmpty() &&
             restores.isEmpty() &&
             runEnergy == 0 &&
-            randomDrain == 0
+            randomDrain == 0 &&
+            poison == PoisonCure.None &&
+            venom == VenomCure.None
 
     companion object {
         val None = FoodEffects()

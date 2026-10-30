@@ -1,12 +1,13 @@
 == turael: cache 24 tasks (24 kept, 0 dropped for no spawns); wiki 24
    0 differences wiki vs cache (cache wins):
-== vannaka: cache 45 tasks (41 kept, 4 dropped); no wiki table
+== vannaka: cache 46 tasks (42 kept, 4 dropped); no wiki table
    dropped (no spawned npc): Mogres (task id 67)
    dropped (no spawned npc): Molanisks (task id 87)
    dropped (no spawned npc): Fever Spiders (task id 69)
    dropped (no spawned npc): Brine Rats (task id 84)
-== duradel: cache 40 tasks (36 kept, 4 dropped for no spawns); wiki 43
+== duradel: cache 41 tasks (37 kept, 4 dropped for no spawns); wiki 43
    wiki only (cache rev 233 lacks them): aquanite, frost dragon, gryphon
+   cache only: revenant
    4 differences wiki vs cache (cache wins):
    basilisk: combat wiki 0 cache 25
    bos: amount wiki [3, 35] cache [-1, -1]
@@ -85,6 +86,7 @@
    Abyssal Demons             w 5  40-90    4 npc types,   58 spawns
    Nechryael                  w 5  40-90    3 npc types,   53 spawns
    Gargoyles                  w 5  40-90    3 npc types,   21 spawns
+   Revenants                  w 5  40-100  11 npc types,   15 spawns
 
 ## duradel (cache master id 5), combat 100 slayer 50, block 100, points {'1': 15, '10': 75, '50': 225, '100': 375, '250': 525, '1000': 750}
    Metal Dragons              w14  35-45   12 npc types,   76 spawns
@@ -118,6 +120,7 @@
    Trolls                     w 6 130-200  56 npc types,  208 spawns
    Dust Devils                w 5 130-200   2 npc types,   44 spawns
    Ankou                      w 5  50-80    9 npc types,   81 spawns
+   Revenants                  w 5  40-100  11 npc types,   15 spawns
    Elves                      w 4 110-170  16 npc types,   68 spawns
    Blue Dragons               w 4 110-170  14 npc types,   57 spawns
    Cave Horrors               w 4 130-200   5 npc types,   70 spawns

@@ -17,6 +17,7 @@ import org.rsmod.game.shop.Shop
 import org.rsmod.game.type.interf.IfButtonOp
 import org.rsmod.game.type.inv.InvScope
 import org.rsmod.game.type.inv.InvStackType
+import org.rsmod.game.type.inv.InvStock
 import org.rsmod.game.type.inv.InvTypeList
 import org.rsmod.game.type.obj.ObjType
 
@@ -24,7 +25,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy single obj successfully`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
 
             player.inv[0] = InvObj(objs.coins, 5)
             shop.inv[0] = InvObj(objs.newcomer_map, 5)
@@ -40,7 +41,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy obj fails with no currency`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
             shop.inv[0] = InvObj(objs.newcomer_map, 5)
             buyStock(shop, objs.newcomer_map, OP_BUY1)
             assertMessageSent("You don't have enough coins.")
@@ -49,7 +50,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy obj fails with no currency or stock available`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
             shop.inv[0] = InvObj(objs.newcomer_map, 0)
             buyStock(shop, objs.newcomer_map, OP_BUY1)
             assertMessageSent("That item is currently out of stock.")
@@ -58,7 +59,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy 5 objs with limited inventory space`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
 
             player.fillInv()
             player.inv[0] = null
@@ -75,7 +76,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy 50 objs with sufficient space and currency`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
 
             player.fillInv()
             player.inv[0] = null
@@ -96,7 +97,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy 50 objs with no space and insufficient currency`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
 
             player.fillInv()
             player.inv[5] = InvObj(objs.coins, 2)
@@ -112,7 +113,7 @@ class StandardGpShopOperationsBuyTest {
     @Test
     fun GameTestState.`buy all available stock successfully`() =
         runGameTest(ShopScript::class) {
-            val shop = openGeneralShop()
+            val shop = openGeneralShop(defaultStock = emptyList())
 
             player.inv[0] = InvObj(objs.coins, Int.MAX_VALUE)
             shop.inv[0] = InvObj(objs.newcomer_map, 5)
@@ -124,6 +125,76 @@ class StandardGpShopOperationsBuyTest {
             assertNoMessageSent()
         }
 
+    @Test
+    fun GameTestState.`buying default stock does not reduce its count`() =
+        runGameTest(ShopScript::class) {
+            val shop = openGeneralShop(defaultStock = listOf(newcomerMapStock(count = 5)))
+
+            player.inv[0] = InvObj(objs.coins, 5)
+
+            buyStock(shop, objs.newcomer_map, OP_BUY1)
+
+            assertEquals(5, shop.inv.count(objs.newcomer_map))
+            assertEquals(1, player.count(objs.newcomer_map))
+            assertEquals(4, player.count(objs.coins))
+            assertNoMessageSent()
+        }
+
+    @Test
+    fun GameTestState.`buying all default stock leaves its count unchanged`() =
+        runGameTest(ShopScript::class) {
+            val shop = openGeneralShop(defaultStock = listOf(newcomerMapStock(count = 5)))
+
+            player.inv[0] = InvObj(objs.coins, Int.MAX_VALUE)
+
+            buyStock(shop, objs.newcomer_map, OP_BUY50)
+
+            assertEquals(5, shop.inv.count(objs.newcomer_map))
+            assertEquals(5, player.count(objs.newcomer_map))
+            assertNoMessageSent()
+        }
+
+    @Test
+    fun GameTestState.`buying several default stock in one purchase keeps its count`() =
+        runGameTest(ShopScript::class) {
+            val shop = openGeneralShop(defaultStock = listOf(newcomerMapStock(count = 5)))
+
+            player.inv[0] = InvObj(objs.coins, 5)
+
+            buyStock(shop, objs.newcomer_map, OP_BUY5)
+
+            assertEquals(5, shop.inv.count(objs.newcomer_map))
+            assertEquals(5, player.count(objs.newcomer_map))
+            assertEquals(0, player.count(objs.coins))
+            assertNoMessageSent()
+        }
+
+    @Test
+    fun GameTestState.`selling default stock does not raise its count`() =
+        runGameTest(ShopScript::class) {
+            val shop = openGeneralShop(defaultStock = listOf(newcomerMapStock(count = 5)))
+
+            player.inv[0] = InvObj(objs.newcomer_map, 1)
+
+            sellObj(objs.newcomer_map, OP_SELL1)
+
+            assertEquals(5, shop.inv.count(objs.newcomer_map))
+            assertEquals(0, player.count(objs.newcomer_map))
+        }
+
+    @Test
+    fun GameTestState.`selling non-stock obj still adds to its count`() =
+        runGameTest(ShopScript::class) {
+            val shop = openGeneralShop(defaultStock = emptyList())
+
+            player.inv[0] = InvObj(objs.newcomer_map, 1)
+
+            sellObj(objs.newcomer_map, OP_SELL1)
+
+            assertEquals(1, shop.inv.count(objs.newcomer_map))
+            assertEquals(0, player.count(objs.newcomer_map))
+        }
+
     private fun GameTestScope.buyStock(shop: Shop, obj: ObjType, op: IfButtonOp) {
         val slot = shop.inv.indexOfFirst { it?.id == obj.id }
         check(slot != -1) { "Obj not found in stock: obj=$obj, stock=${shop.inv}" }
@@ -133,8 +204,18 @@ class StandardGpShopOperationsBuyTest {
         advance(ticks = 1)
     }
 
-    private fun GameTestScope.openGeneralShop(): Shop {
-        val inventory = createShopInv()
+    private fun GameTestScope.sellObj(obj: ObjType, op: IfButtonOp) {
+        val slot = player.inv.indexOfFirst { it?.id == obj.id }
+        check(slot != -1) { "Obj not found in player inv: obj=$obj, inv=${player.inv}" }
+
+        player.ifButton(ShopComponents.shop_side_inv, comsub = slot, obj = obj.id, op = op)
+        advance(ticks = 1)
+    }
+
+    private fun newcomerMapStock(count: Int): InvStock = InvStock(objs.newcomer_map, count, 100)
+
+    private fun GameTestScope.openGeneralShop(defaultStock: List<InvStock>): Shop {
+        val inventory = createShopInv(defaultStock)
         val invTypes = InvTypeList(mutableMapOf(inventory.type.id to inventory.type))
         val shops = Shops(invTypes, eventBus)
 
@@ -159,7 +240,7 @@ class StandardGpShopOperationsBuyTest {
         return shop
     }
 
-    private fun createShopInv(): Inventory {
+    private fun createShopInv(defaultStock: List<InvStock>): Inventory {
         val builder =
             InvPluginBuilder().apply {
                 internal = "test_shop"
@@ -168,6 +249,7 @@ class StandardGpShopOperationsBuyTest {
                 size = Constants.shop_default_size
                 restock = true
                 allStock = true
+                stock = defaultStock.toMutableList()
             }
         val type = builder.build(-1)
         return Inventory.create(type)
@@ -177,5 +259,6 @@ class StandardGpShopOperationsBuyTest {
         private val OP_BUY1 = IfButtonOp.Op2
         private val OP_BUY5 = IfButtonOp.Op3
         private val OP_BUY50 = IfButtonOp.Op5
+        private val OP_SELL1 = IfButtonOp.Op2
     }
 }

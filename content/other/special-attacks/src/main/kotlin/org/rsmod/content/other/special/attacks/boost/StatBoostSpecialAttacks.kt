@@ -11,8 +11,10 @@ import org.rsmod.api.repo.world.WorldRepository
 import org.rsmod.api.specials.SpecialAttackManager
 import org.rsmod.api.specials.SpecialAttackMap
 import org.rsmod.api.specials.SpecialAttackRepository
+import org.rsmod.content.other.special.attacks.configs.sobjs
 import org.rsmod.content.other.special.attacks.configs.special_seqs
 import org.rsmod.content.other.special.attacks.configs.special_spots
+import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.game.type.spot.SpotanimType
 
@@ -43,6 +45,73 @@ class StatBoostSpecialAttacks @Inject constructor(private val worldRepo: WorldRe
         registerInstant(objs.infernal_pickaxe_or_uncharged, ::rockKnockerInfernalPickaxeOr)
         registerInstant(objs.third_age_pickaxe, ::rockKnockerThirdAgePickaxe)
         registerInstant(objs.crystal_pickaxe, ::rockKnockerCrystalPickaxe)
+
+        registerVariants()
+    }
+
+    /**
+     * The tools that share the special attack of a tool above: the two-handed axes, the empty and
+     * inactive versions, and the Trailblazer tools (which boost like their infernal originals).
+     */
+    private fun SpecialAttackRepository.registerVariants() {
+        // Some of these objs are already registered above under the names the rest of the game
+        // calls them (`dragon_axe_or` is `trailblazer_axe_no_infernal`), so a second registration
+        // is skipped.
+        fun register(obj: ObjType, special: (ProtectedAccess) -> Boolean) {
+            try {
+                registerInstant(obj) { special(this) }
+            } catch (_: IllegalStateException) {
+                // Already registered.
+            }
+        }
+
+        register(sobjs.dragon_axe_2h, ::lumberUpRed)
+        register(sobjs.infernal_axe_empty, ::lumberUpRed)
+        register(sobjs.crystal_axe_inactive, ::lumberUpSilver)
+        register(sobjs.crystal_axe_2h, ::lumberUpSilver)
+        register(sobjs.crystal_axe_2h_inactive, ::lumberUpSilver)
+        register(sobjs._3a_axe_2h, ::lumberUpSilver)
+
+        register(sobjs.infernal_harpoon_empty, ::fishstabberInfernalHarpoon)
+        register(sobjs.crystal_harpoon_inactive, ::fishstabberCrystalHarpoon)
+        register(sobjs.crystal_pickaxe_inactive, ::rockKnockerCrystalPickaxe)
+
+        for (axe in
+            listOf(
+                sobjs.league_trailblazer_axe,
+                sobjs.trailblazer_axe,
+                sobjs.trailblazer_axe_empty,
+                sobjs.trailblazer_axe_no_infernal,
+                sobjs.trailblazer_reloaded_axe,
+                sobjs.trailblazer_reloaded_axe_empty,
+                sobjs.trailblazer_reloaded_axe_no_infernal,
+            )) {
+            register(axe, ::lumberUpRed)
+        }
+        for (harpoon in
+            listOf(
+                sobjs.league_trailblazer_harpoon,
+                sobjs.trailblazer_harpoon,
+                sobjs.trailblazer_harpoon_empty,
+                sobjs.trailblazer_harpoon_no_infernal,
+                sobjs.trailblazer_reloaded_harpoon,
+                sobjs.trailblazer_reloaded_harpoon_empty,
+                sobjs.trailblazer_reloaded_harpoon_no_infernal,
+            )) {
+            register(harpoon, ::fishstabberInfernalHarpoonOr)
+        }
+        for (pickaxe in
+            listOf(
+                sobjs.league_trailblazer_pickaxe,
+                sobjs.trailblazer_pickaxe,
+                sobjs.trailblazer_pickaxe_empty,
+                sobjs.trailblazer_pickaxe_no_infernal,
+                sobjs.trailblazer_reloaded_pickaxe,
+                sobjs.trailblazer_reloaded_pickaxe_empty,
+                sobjs.trailblazer_reloaded_pickaxe_no_infernal,
+            )) {
+            register(pickaxe, ::rockKnockerInfernalPickaxeOr)
+        }
     }
 
     private fun lumberUpRed(access: ProtectedAccess): Boolean {

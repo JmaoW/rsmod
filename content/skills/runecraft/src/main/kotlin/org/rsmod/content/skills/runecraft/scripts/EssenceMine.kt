@@ -5,8 +5,11 @@ import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.miningLvl
 import org.rsmod.api.script.onEvent
 import org.rsmod.api.script.onOpNpc1
+import org.rsmod.api.script.onOpNpc3
 import org.rsmod.api.script.onOpNpc4
+import org.rsmod.api.shops.Shops
 import org.rsmod.content.skills.mining.scripts.Mining
+import org.rsmod.content.skills.runecraft.configs.RunecraftInvs
 import org.rsmod.content.skills.runecraft.configs.RunecraftLocs
 import org.rsmod.content.skills.runecraft.configs.RunecraftNpcs
 import org.rsmod.content.skills.runecraft.configs.RunecraftObjs
@@ -18,18 +21,23 @@ import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
 // TODO:
-// - the other wizards who teleport to the mine (Sedridor, Cromperty, Distentor, Brimstail), and
-//   Aubury's own rune shop
+// - the other wizards who teleport to the mine (Sedridor, Cromperty, Distentor, Brimstail)
 // - the Rune Mysteries quest, which the real game wants before the mine can be used
 //
-// Aubury on the isle teleports players to the rune essence mine. The big rock there is an ordinary
-// Mining ore (see [EssenceRockEdits]) that never runs out; this makes every swing succeed, and
-// gives pure essence instead of rune essence from Mining level 30, as the real game does.
+// Aubury on the isle sells runes (see [RuneShopEdits]) and teleports players to the rune essence
+// mine. The big rock there is an ordinary Mining ore (see [EssenceRockEdits]) that never runs out;
+// this makes every swing succeed, and gives pure essence instead of rune essence from Mining level
+// 30, as the real game does.
 class EssenceMine
 @Inject
-constructor(private val sites: RunecraftSites, private val eventBus: EventBus) : PluginScript() {
+constructor(
+    private val sites: RunecraftSites,
+    private val eventBus: EventBus,
+    private val shops: Shops,
+) : PluginScript() {
     override fun ScriptContext.startup() {
         onOpNpc1(RunecraftNpcs.aubury) { talkToAubury(it.npc) }
+        onOpNpc3(RunecraftNpcs.aubury) { openShop(it.npc) }
         onOpNpc4(RunecraftNpcs.aubury) { teleportToMine() }
 
         onEvent<Mining.MineRoll> {
@@ -55,17 +63,39 @@ constructor(private val sites: RunecraftSites, private val eventBus: EventBus) :
         publish(MineVisited(player))
     }
 
+    private fun ProtectedAccess.openShop(npc: Npc) {
+        shops.open(player, npc, "Aubury's Rune Shop", RunecraftInvs.rune_shop)
+    }
+
     private suspend fun ProtectedAccess.talkToAubury(npc: Npc) {
         startDialogue(npc) {
             chatNpc(neutral, "Do you want to buy any runes? Or perhaps visit the essence mine?")
-            val choice = choice2("Teleport me to the essence mine.", 1, "No, thanks.", 2)
+            val choice =
+                choice3(
+                    "Yes please!",
+                    1,
+                    "Teleport me to the essence mine.",
+                    2,
+                    "Oh, it's a rune shop. No thank you, then.",
+                    3,
+                )
             when (choice) {
                 1 -> {
+                    chatPlayer(happy, "Yes please!")
+                    access.openShop(npc)
+                }
+                2 -> {
                     chatPlayer(neutral, "Teleport me to the essence mine.")
                     chatNpc(happy, "Senventior disthine molenko!")
                     access.teleportToMine()
                 }
-                else -> chatPlayer(neutral, "No, thanks.")
+                else -> {
+                    chatPlayer(neutral, "Oh, it's a rune shop. No thank you, then.")
+                    chatNpc(
+                        neutral,
+                        "Well, if you find someone who does want to buy runes, send them my way.",
+                    )
+                }
             }
         }
     }

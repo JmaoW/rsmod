@@ -97,4 +97,37 @@ class LeagueGearTasksTest {
             wear(Wearpos.Hat, obj("steel_full_helm"))
             assertTrue(done(1072))
         }
+
+    @Test
+    fun GameTestState.`each revenant weapon and the bracelet complete their own task`() =
+        runGameTest(LeagueGearTasks::class) {
+            wear(Wearpos.Hands, obj("wild_cave_bracelet_uncharged"))
+            assertTrue(done(1014))
+            assertFalse(done(697))
+
+            wear(Wearpos.RightHand, obj("wild_cave_sceptre_charged_recol"))
+            assertTrue(done(697), "Thammaron's sceptre, in its autocast form")
+            assertFalse(done(1258))
+
+            wear(Wearpos.RightHand, obj("wild_cave_chainmace_uncharged"))
+            assertTrue(done(910))
+            assertFalse(done(1259))
+
+            wear(Wearpos.RightHand, obj("wild_cave_bow_charged"))
+            assertTrue(done(1018))
+            assertFalse(done(1257))
+        }
+
+    @Test
+    fun GameTestState.`the upgraded revenant weapons complete theirs`() =
+        runGameTest(LeagueGearTasks::class) {
+            wear(Wearpos.RightHand, obj("wild_cave_webweaver_uncharged"))
+            assertTrue(done(1257))
+
+            wear(Wearpos.RightHand, obj("wild_cave_accursed_charged"))
+            assertTrue(done(1258))
+
+            wear(Wearpos.RightHand, obj("wild_cave_ursine_uncharged"))
+            assertTrue(done(1259))
+        }
 }

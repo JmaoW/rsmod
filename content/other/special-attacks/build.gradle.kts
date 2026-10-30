@@ -1,8 +1,33 @@
 plugins {
     id("base-conventions")
+    id("integration-test-suite")
 }
 
 dependencies {
+    implementation(libs.guice)
+    implementation(projects.api.combat.combatCommons)
+    implementation(projects.api.combat.combatManager)
+    implementation(projects.api.combat.combatScripts)
+    implementation(projects.api.npc)
     implementation(projects.api.pluginCommons)
+    implementation(projects.api.repo)
     implementation(projects.api.specials)
+    implementation(projects.api.spells)
+    implementation(projects.content.interfaces.prayerTab)
+    implementation(projects.engine.utilsBits)
+    integrationImplementation(libs.guice)
+    integrationImplementation(projects.api.combat.combatCommons)
+    integrationImplementation(projects.api.combat.combatManager)
+    integrationImplementation(projects.api.combat.combatScripts)
+    integrationImplementation(projects.api.combat.combatWeapon)
+    integrationImplementation(projects.api.config)
+    integrationImplementation(projects.api.hitPlugin)
+    integrationImplementation(projects.api.npc)
+    integrationImplementation(projects.api.player)
+    integrationImplementation(projects.api.random)
+    integrationImplementation(projects.api.repo)
+    integrationImplementation(projects.api.specials)
+    integrationImplementation(projects.api.spells)
+    integrationImplementation(projects.engine.game)
+    integrationImplementation(projects.engine.map)
 }

@@ -57,6 +57,7 @@ object SlayerObjs : ObjReferences() {
     val rock_thrownhammer = find("slayer_rock_thrownhammer")
     val boots_of_stone = find("boots_of_stone")
     val reinforced_goggles = find("slayer_reinforced_goggles")
+    val anti_dragon_shield = find("antidragonbreathshield")
     val slayer_staff_enchanted = find("slayer_staff_enchanted")
     val v_shield = find("v_shield")
     val black_mask = find("harmless_black_mask")
@@ -74,6 +75,7 @@ object SlayerObjs : ObjReferences() {
     val imbued_heart = find("imbued_heart")
     val mist_battlestaff = find("mist_battlestaff")
     val dust_battlestaff = find("dust_battlestaff")
+    val avas_accumulator = find("anma_50_reward")
 }
 
 object SlayerSpots {
@@ -118,7 +120,21 @@ object SlayerShop {
             Item(SlayerObjs.boots_of_stone, 50, 1),
             // The Wiki adds these after A Porcine of Interest; the isle has no quests.
             Item(SlayerObjs.reinforced_goggles, 50, 1),
+            // Not on the Wiki's list: added for the isle so dragon slayers can protect themselves.
+            Item(SlayerObjs.anti_dragon_shield, 50, 100),
+            // Not on the Wiki's list: Ava's quest is not on the isle, so the shop sells the
+            // accumulator for [AVAS_ACCUMULATOR_COST] instead.
+            Item(SlayerObjs.avas_accumulator, 10, 100),
         )
+
+    const val AVAS_ACCUMULATOR_COST = 100_000
+}
+
+/** Sets the accumulator's value, which the shop prices it from. Needs `packCache`. */
+internal object SlayerShopObjEdits : ObjEditor() {
+    init {
+        edit(SlayerObjs.avas_accumulator) { cost = SlayerShop.AVAS_ACCUMULATOR_COST }
+    }
 }
 
 /** The shop's stock. Needs `packCache`. */

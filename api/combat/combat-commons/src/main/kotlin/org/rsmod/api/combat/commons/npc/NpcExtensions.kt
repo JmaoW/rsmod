@@ -72,11 +72,21 @@ private fun Npc.retaliate(target: Player, interactions: AiPlayerInteractions, ap
     }
 }
 
+/**
+ * Plays the npc's `defend_anim` when it is hit. Some npcs do not flinch at all, as in the real game
+ * when the cache has no block animation for them:
+ * - a `defend_anim` equal to the npc's ready (idle) animation means "no flinch". Without this rule
+ *   the default `human_unarmedblock` would be played on a rig it was not made for, which twists the
+ *   model and holds up the npc's movement while it plays.
+ * - an npc with no ready animation is a still model (an egg, a seal) and never flinches.
+ */
 public fun Npc.combatPlayDefendAnim(clientDelay: Int = 0) {
-    val defendAnim = visType.paramOrNull(params.defend_anim)
-    if (defendAnim != null) {
-        anim(defendAnim, delay = clientDelay)
+    val defendAnim = visType.paramOrNull(params.defend_anim) ?: return
+    val ready = visType.readyAnim
+    if (ready == -1 || defendAnim.id == ready) {
+        return
     }
+    anim(defendAnim, delay = clientDelay)
 }
 
 public fun Npc.combatPlayDefendSpot(objTypes: ObjTypeList, ammo: ObjType?, clientDelay: Int) {

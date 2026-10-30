@@ -119,6 +119,15 @@ public object ZoneUpdateTransformer {
         return MapAnim(spotanim, delay, height, zoneGrid.x, zoneGrid.z)
     }
 
+    /** A map graphic only the player with the observer id [observer] sees. */
+    public fun toPrivateMapAnimProt(
+        observer: Long,
+        spotanim: Int,
+        coord: CoordGrid,
+        height: Int,
+        delay: Int,
+    ): ZoneProt = MapAnimPrivate(observer, toMapAnimProt(spotanim, coord, height, delay))
+
     public fun toMapProjAnimProt(projAnim: ProjAnim): ZoneProt {
         return MapProjAnimV2(
             id = projAnim.spotanim,
@@ -166,5 +175,9 @@ public object ZoneUpdateTransformer {
         ObjPrivateZoneProt
 
     public class ObjReveal(public val obj: Obj, override val backing: ZoneProt) :
+        PartialFollowsZoneProt
+
+    /** A map graphic sent only to the player whose observer id is [observer]. */
+    public class MapAnimPrivate(public val observer: Long, override val backing: ZoneProt) :
         PartialFollowsZoneProt
 }

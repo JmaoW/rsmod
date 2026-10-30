@@ -163,6 +163,27 @@ public class Player(
 
     public var followCoord: CoordGrid = CoordGrid.NULL
     public var buildArea: CoordGrid = CoordGrid.NULL
+
+    /**
+     * Set when the region the player is in gained or lost zones while they stood in it (the
+     * Gauntlet draws a room when a node is lit). The next cycle sends the region to the client
+     * again, as if the player had walked into a new build area, and resends every zone's persistent
+     * locs and objs. See [requestRegionRebuild].
+     */
+    public var pendingRegionRebuild: Boolean = false
+        private set
+
+    /** Asks for the player's region to be sent to the client again at the end of this cycle. */
+    public fun requestRegionRebuild() {
+        pendingRegionRebuild = true
+        visibleZoneKeys.clear()
+    }
+
+    /** Called by the network layer once it has sent the rebuild. */
+    public fun clearRegionRebuildRequest() {
+        pendingRegionRebuild = false
+    }
+
     public val visibleZoneKeys: IntList = IntArrayList()
     public var lastMapBuildComplete: Int = Int.MIN_VALUE
 

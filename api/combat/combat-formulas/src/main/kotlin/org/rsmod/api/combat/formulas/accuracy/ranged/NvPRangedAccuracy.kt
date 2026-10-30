@@ -26,7 +26,8 @@ constructor(private val bonuses: WornBonuses, private val attackStyles: AttackSt
     public fun computeAttackRoll(source: Npc, sourceType: UnpackedNpcType): Int {
         val effectiveRanged = NpcRangedAccuracy.calculateEffectiveRanged(source.rangedLvl)
         val rangedBonus = sourceType.param(params.attack_ranged)
-        return NpcRangedAccuracy.calculateBaseAttackRoll(effectiveRanged, rangedBonus)
+        val attackRoll = NpcRangedAccuracy.calculateBaseAttackRoll(effectiveRanged, rangedBonus)
+        return attackRoll * source.attackRollPercent / 100
     }
 
     public fun computeDefenceRoll(target: Player): Int {

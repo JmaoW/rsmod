@@ -29,6 +29,7 @@ import org.rsmod.api.config.refs.objs
 import org.rsmod.api.db.Database
 import org.rsmod.api.db.DatabaseConnection
 import org.rsmod.api.game.process.GameCycle
+import org.rsmod.api.game.process.npc.hunt.HuntTolerance
 import org.rsmod.api.game.process.player.RunDrainMod
 import org.rsmod.api.inv.map.InvMapInit
 import org.rsmod.api.market.DefaultMarketPrices
@@ -1032,6 +1033,7 @@ constructor(
                 .toInstance(TestCombatMasteries)
 
             Multibinder.newSetBinder(binder(), RunDrainMod::class.java)
+            Multibinder.newSetBinder(binder(), HuntTolerance::class.java)
             Multibinder.newSetBinder(binder(), XpMod::class.java)
             bind(XpModifiers::class.java).`in`(Scopes.SINGLETON)
 

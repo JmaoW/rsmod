@@ -216,7 +216,7 @@ constructor(
         invDeposit(slot, count, inv)
     }
 
-    private fun ProtectedAccess.invDeposit(slot: Int, count: Int, inventory: Inventory): Boolean {
+    internal fun ProtectedAccess.invDeposit(slot: Int, count: Int, inventory: Inventory): Boolean {
         val obj = inventory[slot]
         if (obj == null) {
             resendSlot(inventory, 0)
@@ -334,7 +334,7 @@ constructor(
         }
     }
 
-    private fun ProtectedAccess.depositInv() {
+    internal fun ProtectedAccess.depositInv() {
         if (inv.isEmpty()) {
             mes("You have nothing to deposit.")
             return
@@ -342,7 +342,7 @@ constructor(
         depositInventory(inv)
     }
 
-    private fun ProtectedAccess.depositWorn() {
+    internal fun ProtectedAccess.depositWorn() {
         if (worn.isEmpty()) {
             mes("You have nothing to deposit.")
             return
@@ -571,7 +571,7 @@ constructor(
         vars[intoTab.sizeVarBit] = fromTabSize
     }
 
-    private fun ProtectedAccess.dragSideInv(drag: IfModalDrag) {
+    internal fun ProtectedAccess.dragSideInv(drag: IfModalDrag) {
         val fromSlot = drag.selectedSlot ?: return resendSlot(inv, 0)
         val intoSlot = drag.targetSlot ?: return resendSlot(inv, 0)
         invMoveToSlot(inv, inv, fromSlot, intoSlot)
@@ -1105,7 +1105,7 @@ constructor(
         player.setBankWornBonuses(wornBonuses, weaponSpeeds)
     }
 
-    private suspend fun ProtectedAccess.clickBanksideExtraOp(slot: Int) {
+    internal suspend fun ProtectedAccess.clickBanksideExtraOp(slot: Int) {
         val obj = inv[slot] ?: return resendSlot(inv, 0)
         val type = objTypes[obj]
 
@@ -1146,16 +1146,7 @@ constructor(
         val obj = worn[wornSlot] ?: return resendSlot(worn, wornSlot)
 
         if (op == IfButtonOp.Op2) {
-            val type = objTypes[obj]
-            val deposited = invDeposit(wornSlot, obj.count, worn)
-            if (deposited) {
-                val wearpos = Wearpos[type.wearpos1]
-                checkNotNull(wearpos) {
-                    "Wearpos should not be null for worn obj: " +
-                        "wornSlot=$wornSlot, obj=$obj, type=$type"
-                }
-                WornUnequipOp.notifyWornUnequip(player, wearpos, type, eventBus)
-            }
+            depositWornObj(wornSlot)
             return
         }
 
@@ -1168,6 +1159,21 @@ constructor(
             setBanksideExtraOps()
             setBankWornBonuses()
             return
+        }
+    }
+
+    /** Deposits the obj worn in [wornSlot] straight into the bank. */
+    internal fun ProtectedAccess.depositWornObj(wornSlot: Int) {
+        val obj = worn[wornSlot] ?: return resendSlot(worn, wornSlot)
+        val type = objTypes[obj]
+        val deposited = invDeposit(wornSlot, obj.count, worn)
+        if (deposited) {
+            val wearpos = Wearpos[type.wearpos1]
+            checkNotNull(wearpos) {
+                "Wearpos should not be null for worn obj: " +
+                    "wornSlot=$wornSlot, obj=$obj, type=$type"
+            }
+            WornUnequipOp.notifyWornUnequip(player, wearpos, type, eventBus)
         }
     }
 

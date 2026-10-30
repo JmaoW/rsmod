@@ -28,6 +28,7 @@ constructor(
     private val manager: PlayerAttackManager,
     private val runes: MagicRuneManager,
     private val xpMods: XpModifiers,
+    private val overrides: SpellAccuracyOverrides,
 ) {
     private val ProtectedAccess.autocastEnabled by boolVarBit(varbits.autocast_set)
 
@@ -140,13 +141,14 @@ constructor(
         attack: CombatAttack.Spell,
         castResult: MagicRuneManager.CastResult,
     ): Boolean =
-        manager.rollSpellAccuracy(
-            source = source.player,
-            target = target,
-            spell = attack.spell.obj,
-            spellbook = attack.spell.spellbook,
-            sunfireRune = castResult.consumedRune() && castResult.usedSunfire,
-        )
+        overrides.guaranteed(source.player, target, attack.spell.obj) ||
+            manager.rollSpellAccuracy(
+                source = source.player,
+                target = target,
+                spell = attack.spell.obj,
+                spellbook = attack.spell.spellbook,
+                sunfireRune = castResult.consumedRune() && castResult.usedSunfire,
+            )
 
     /** @see [PlayerAttackManager.rollSpellMaxHit] */
     public fun rollMaxHit(

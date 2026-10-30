@@ -54,6 +54,12 @@ internal data class MonsterDef(
     val mainRolls: Int = 1,
     val levels: List<Int> = emptyList(),
     val npcs: List<String> = emptyList(),
+    /**
+     * Makes this a variant of the monster's table (`skulled`, `on-task` or `on-task skulled`),
+     * rolled instead of the usual table in that state (see `DropVariant`). Blank means the usual
+     * table.
+     */
+    val variant: String? = null,
     val replace: Boolean = false,
     val always: List<EntryDef> = emptyList(),
     val main: List<EntryDef> = emptyList(),

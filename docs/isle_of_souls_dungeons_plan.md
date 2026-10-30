@@ -28,9 +28,9 @@ only a server restart, no `packCache`**, except for the revenants (`./gradlew pa
   object on its tile, arrivals are walkable, entrances are on clear lobby ground, and no
   `ladder_from_cellar` reachable from an arrival lies outside a dungeon area, which would leak to
   the mainland). It reports no problems.
-- **Revenants:** `tools/dungeons/revenants.py` adds the 15 missing ones (30 in all, the wiki's
-  quantities) to `revenants.toml`. Positions are mine: each extra sits on walkable cave ground near the
-  known spawn of its type, at least 8 tiles from the same type and 10 from the entrances.
+- **Revenants:** `tools/dungeons/revenants.py` writes all 30 (the wiki's quantities) to
+  `revenants.toml`, at the spots on the wiki's Revenant Caves map (fitted to the cave's walkable tiles,
+  4 px a tile, so a tile off at most). `tools/spawns/exclusions.txt` drops the source list's own 15.
 - **Fight Cave and Inferno exits** now put you in Mor Ul Rek: (2438,5168) in front of the real Fight Cave
   wall entrance, and (2497,5119) at the end of the corridor south of the Inferno entrance. The plaza
   entrances for both still exist and still work.
@@ -70,15 +70,21 @@ failure, `InfernoRunTest` "entering starts a run...", is the old shortened-mode 
 - **Revenants** (`DungeonRevenantScript`): the eleven kinds fight in melee, ranged or magic with the
   Wiki's max hits (2 to 30), pick the style the player's defence is weakest against (60%) and avoid
   one they are protecting from, and heal when under half their hitpoints (one heal every 15 ticks at
-  most, 8 to 36 of them). Attack speed 4 ticks, heal size and odds are guesses; the bracelet of
-  ethereum is not handled.
+  most, 8 to 36 of them). Attack speed 4 ticks, heal size and odds are guesses. The bracelet of
+  ethereum, the revenant weapons and their ether are in `isle_of_souls_revenant_weapons_plan.md`.
 - **Tools** added: `collision.py` (flood fill), `localmap.py` (ASCII map round a tile with reachability),
   `barriers.py` (passage objects each arrival can reach), `audit.py` now also checks the crossings.
+
+- **Revenant Caves pillars (2026-10-20):** all five `wild_cave_agility_jump` pillars are crossings (3 tiles in, 3 out, jumped
+  via the pillar tile; `ShortcutKind.Pillar` now honours a `stones` list). Levels/xp from the Wiki: 65 (6.5) at 3220,10086; 75 (7.5)
+  at 3200,10136, 3180,10209 and 3202,10196; 89 (8.9) at 3241,10145. The Wiki's failed jump (reduced xp, 4-11 damage, still crosses)
+  is not built. The map has the pillars on level 1 over a bridge flag, i.e. level 0 in game. No `packCache` needed.
 
 Still not done: the Forthos temple library shortcut (63 Agility) and the thick webs to Sarachnis, the
 Taverley hellhound-cave crawl, dragon rocks and steps, Brimhaven's log balance and crevices to the
 metal dragons, the Stronghold Slayer Cave tunnels, Mor Ul Rek's hot vent doors, the Kraken boss's
-whirlpools, the Obor gates and the H.A.M. storeroom door. The H.A.M. Hideout past its first door is
+whirlpools and the H.A.M. storeroom door (the Obor gate and Bryophyta's lair were built on
+2026-10-19, see `isle_of_souls_giants_plan.md`). The H.A.M. Hideout past its first door is
 unchecked (the flood-fill model cannot read the diagonal door there).
 
 ## Built so far (round 4, 2026-10-12): four more dungeons

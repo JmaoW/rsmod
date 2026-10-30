@@ -9,7 +9,9 @@ dependencies {
     implementation(projects.api.combat.combatMastery)
     implementation(projects.api.combat.combatScripts)
     implementation(projects.api.pluginCommons)
+    implementation(projects.api.specials)
     implementation(projects.content.skills.herblore)
+    implementation(projects.engine.utilsBits)
     integrationImplementation(libs.guice)
     integrationImplementation(projects.api.combat.combatCommons)
     integrationImplementation(projects.api.combat.combatFormulas)
@@ -21,6 +23,8 @@ dependencies {
     integrationImplementation(projects.api.invPlugin)
     integrationImplementation(projects.api.invtx)
     integrationImplementation(projects.api.player)
+    integrationImplementation(projects.api.specials)
+    integrationImplementation(projects.engine.utilsBits)
     integrationImplementation(projects.api.statsPlugin)
     integrationImplementation(projects.content.skills.herblore)
 }

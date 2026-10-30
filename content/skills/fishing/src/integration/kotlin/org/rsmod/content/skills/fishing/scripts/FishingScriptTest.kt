@@ -209,4 +209,54 @@ class FishingScriptTest {
 
             assertMessageSent("You need a karambwan vessel to catch these fish.")
         }
+
+    @Test
+    fun GameTestState.`anglerfish uses a rod and sandworms`() =
+        runGameTest(Fishing::class) {
+            val type = npcTypes.values.first { it.internalName == "piscariliusfish" }
+            val npc = fishAt(type)
+            player.clearInv()
+            player.inv[0] = InvObj(obj("fishing_rod"))
+            player.inv[1] = InvObj(obj("piscarilius_sandworms"), 10)
+            player.stats[stats.fishing] = 82
+
+            random.next = 0
+            player.opNpc1(npc)
+            advanceUntil({ player.count(obj("raw_anglerfish")) >= 1 }, timeoutTicks = 20)
+
+            assertMessageSent("You catch an anglerfish.")
+            check(player.count(obj("piscarilius_sandworms")) == 9) { "Expected one worm used." }
+        }
+
+    @Test
+    fun GameTestState.`anglerfish needs level 82`() =
+        runGameTest(Fishing::class) {
+            val type = npcTypes.values.first { it.internalName == "piscariliusfish" }
+            val npc = fishAt(type)
+            player.clearInv()
+            player.inv[0] = InvObj(obj("fishing_rod"))
+            player.inv[1] = InvObj(obj("piscarilius_sandworms"), 10)
+            player.stats[stats.fishing] = 81
+
+            player.opNpc1(npc)
+            advance(ticks = 1)
+
+            assertMessageSent("You need a Fishing level of 82 to catch anglerfish.")
+        }
+
+    @Test
+    fun GameTestState.`anglerfish needs sandworms`() =
+        runGameTest(Fishing::class) {
+            val type = npcTypes.values.first { it.internalName == "piscariliusfish" }
+            val npc = fishAt(type)
+            player.clearInv()
+            player.inv[0] = InvObj(obj("fishing_rod"))
+            player.inv[1] = InvObj(obj("fishing_bait"), 10)
+            player.stats[stats.fishing] = 99
+
+            player.opNpc1(npc)
+            advance(ticks = 1)
+
+            assertMessageSent("You need sandworms to fish at this spot.")
+        }
 }

@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation(projects.api.combat.combatMastery)
+    implementation(projects.api.death)
     implementation(projects.api.pluginCommons)
     implementation(projects.api.statsPlugin)
     integrationImplementation(projects.api.combat.combatMastery)

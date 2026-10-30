@@ -116,15 +116,18 @@ constructor(
     /**
      * Announces a drop if it is [boosted] by the relics' drop rate, is a pet, or [obj] is on the
      * configured list. [LeagueEventScript] calls this for everything a monster's drop table hands
-     * out. Pets get their own line.
+     * out. Pets get their own line. The giants' keys are boosted so they drop more often, but they
+     * are not worth a broadcast unless they are on the configured list.
      */
     fun drop(player: Player, obj: ObjType, count: Int, boosted: Boolean = false) {
         val type = objTypes[obj]
         val pet = LeaguePets.isPet(type.name)
+        val quiet = type.internalName?.lowercase() in QUIET_BOOSTED_DROPS
         if (pet && config.dropPets) {
             broadcast(AnnouncementMessages.pet(who(player), type.name))
         } else if (
-            config.announcesDrop(boosted, pet = false) || config.announcesDrop(type.internalName)
+            config.announcesDrop(boosted && !quiet, pet = false) ||
+                config.announcesDrop(type.internalName)
         ) {
             broadcast(AnnouncementMessages.drop(who(player), type.name, count))
         }
@@ -160,6 +163,9 @@ constructor(
     companion object {
         const val FILE = "announcements.json"
         private const val TOP_COUNT = 3
+
+        /** Boosted drops that are never announced for being boosted (the giants' keys). */
+        private val QUIET_BOOSTED_DROPS = setOf("mossy_key", "hillgiant_boss_key")
         private val logger = InlineLogger()
     }
 }

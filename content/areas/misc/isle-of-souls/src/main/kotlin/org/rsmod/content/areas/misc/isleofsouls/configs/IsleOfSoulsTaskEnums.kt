@@ -514,6 +514,79 @@ internal object IsleOfSoulsTaskEnums : EnumBuilder() {
             this[489] = 2372
             this[490] = 2071
             this[491] = 2077
+            this[492] = 2502
+            this[493] = 5205
+            this[494] = 2510
+            this[495] = 5206
+            this[496] = 2503
+            this[497] = 2507
+            this[498] = 2511
+            this[499] = 5000
+            this[500] = 5717
+            this[501] = 5718
+            this[502] = 5719
+            this[503] = 5720
+            this[504] = 5721
+            this[505] = 5722
+            this[506] = 5723
+            this[507] = 5724
+            this[508] = 5725
+            this[509] = 1966
+            this[510] = 1971
+            this[511] = 2528
+            this[512] = 2205
+            this[513] = 5190
+            this[514] = 5209
+            this[515] = 5001
+            this[516] = 5002
+            this[517] = 5003
+            this[518] = 5210
+            // The Gauntlet: complete it, complete the Corrupted one, and 50 and 150 Corrupted
+            // completions (their structs are 2028, 2029, 4864 and 4865).
+            this[519] = 2028
+            this[520] = 2029
+            this[521] = 4864
+            this[522] = 4865
+            // Crystal singing and crystal gear (structs 2024, 2025, 2048, 2051, 5831 and 739).
+            this[523] = 2024
+            this[524] = 2025
+            this[525] = 2048
+            this[526] = 2051
+            this[527] = 5831
+            this[528] = 739
+            // Defeat the King Black Dragon (struct 2514).
+            this[529] = 2514
+            // The Tombs of Amascut tasks (structs 4930, 5943, 4931, 5944, 4972, 4974, 5950, 4976,
+            // 4977, 4980).
+            this[530] = 4930
+            this[531] = 5943
+            this[532] = 4931
+            this[533] = 5944
+            this[534] = 4972
+            this[535] = 4974
+            this[536] = 5950
+            this[537] = 4976
+            this[538] = 4977
+            this[539] = 4980
+            // The Dagannoth Kings: without leaving, each 50 / 150 / 300 times, the four rings and
+            // all of them (structs 2101, 4881, 4882, 2118, 2104, 2106, 2109, 2112, 2102).
+            this[540] = 2101
+            this[541] = 4881
+            this[542] = 4882
+            this[543] = 2118
+            this[544] = 2104
+            this[545] = 2106
+            this[546] = 2109
+            this[547] = 2112
+            this[548] = 2102
+            // Vorkath: defeat, 50 / 150 / 300 times, 5 without special damage, 15 without leaving
+            // (structs 2087, 4878, 4879, 4880, 4877, 2110).
+            this[549] = 2087
+            this[550] = 4878
+            this[551] = 4879
+            this[552] = 4880
+            this[553] = 4877
+            this[554] = 2110
         }
     }
 }

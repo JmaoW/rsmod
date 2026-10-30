@@ -37,7 +37,7 @@ by the ordinary drop system: scales always, two rolls on the main table, uniques
 ### How the fight works
 
 - **Entrance:** the sacrificial boat (`snakeboss_boat_1op`, "Board", 3x3) on the lobby plaza at
-  (2200, 2855); leaving puts you at (2203, 2856). The lair is a copy of the block of 8x8 zones x 2240-2303,
+  (2091, 2937); leaving puts you at (2094, 2938). The lair is a copy of the block of 8x8 zones x 2240-2303,
   z 3040-3103 (the shrine lies across map squares 35_47 and 35_48). Players appear at (2268, 3069); the
   Zul-andra teleport scroll (`snakeboss_exit`, "Read") at (2268, 3068) is the way out.
 - **Zulrah** is one npc. The form is changed with `Npc.transmog` (the player formulas read `visType`, so
@@ -161,7 +161,7 @@ wiki's infobox) or 4 in play.
 
 ## Client checklist (with the server stopped and `./gradlew packCache` run once)
 
-1. The boat on the plaza at (2200, 2855): where it stands, that "Board" works from the front.
+1. The boat on the plaza at (2091, 2937): where it stands, that "Board" works from the front.
 2. In the lair: Zulrah's size and where she rises (centre, west, east, south); does she overlap the
    platform or float over land?
 3. Dive and rise animations; does the transmog flicker her health bar or target?

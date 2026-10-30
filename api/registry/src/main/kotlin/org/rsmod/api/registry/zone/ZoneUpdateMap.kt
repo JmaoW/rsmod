@@ -91,6 +91,19 @@ public class ZoneUpdateMap {
         updates += prot
     }
 
+    /** A map graphic that only the player with the observer id [observer] sees. */
+    public fun mapAnimPrivate(
+        observer: Long,
+        spotanim: Int,
+        coord: CoordGrid,
+        height: Int,
+        delay: Int,
+    ) {
+        val updates = coord.getOrPutUpdateList()
+        updates +=
+            ZoneUpdateTransformer.toPrivateMapAnimProt(observer, spotanim, coord, height, delay)
+    }
+
     public fun mapProjAnim(projAnim: ProjAnim) {
         val updates = projAnim.startCoord.getOrPutUpdateList()
         val prot = ZoneUpdateTransformer.toMapProjAnimProt(projAnim)

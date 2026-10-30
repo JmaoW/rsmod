@@ -44,6 +44,20 @@ public data class IfModalButton(
     override val id: Long = component.packed.toLong()
 }
 
+/**
+ * A pause button (`cc_resume_pausebutton`) was clicked on a modal or overlay. The default is to close
+ * that interface and resume the player's suspended coroutine; an interface that stays open for
+ * several clicks (such as a party board) subscribes with [onIfPauseButton] instead, and the default
+ * is skipped when anything handled the click.
+ */
+public data class IfPauseButton(
+    val player: Player,
+    val component: ComponentType,
+    val comsub: Int,
+) : KeyedEvent {
+    override val id: Long = component.packed.toLong()
+}
+
 public data class IfOverlayButton(
     val player: Player,
     val component: ComponentType,

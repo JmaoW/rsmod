@@ -15,20 +15,20 @@ class TabKeybindsTest {
         runGameTest(LoginScript::class) {
             val expected =
                 mapOf(
-                    varbits.stone_combat_key to 1,
-                    varbits.stone_stats_key to 2,
-                    varbits.stone_journal_key to 3,
-                    varbits.stone_worn_key to 4,
-                    varbits.stone_prayer_key to 5,
-                    varbits.stone_magic_key to 6,
-                    varbits.stone_clanchat_key to 7,
-                    varbits.stone_friends_key to 8,
-                    varbits.stone_account_key to 9,
+                    varbits.stone_combat_key to 5,
+                    varbits.stone_stats_key to 6,
+                    varbits.stone_journal_key to 7,
+                    varbits.stone_worn_key to 2,
+                    varbits.stone_prayer_key to 3,
+                    varbits.stone_magic_key to 4,
+                    varbits.stone_clanchat_key to 8,
+                    varbits.stone_friends_key to 9,
+                    varbits.stone_account_key to 0,
                     varbits.stone_options1_key to 10,
                     varbits.stone_options2_key to 11,
                     varbits.stone_music_key to 12,
-                    varbits.stone_inv_key to 13,
-                    varbits.stone_logout_key to 0,
+                    varbits.stone_inv_key to 1,
+                    varbits.stone_logout_key to 13,
                 )
             for ((varbit, key) in expected) {
                 val actual = player.vars[varbit]
@@ -71,8 +71,8 @@ class TabKeybindsTest {
         // Setting 17 is the prayer tab, entry 9 is F9.
         check(commands.execute(player, "fkeyset", listOf("17", "9")))
         check(key(varbits.stone_prayer_key) == 9) { "Prayer key not set." }
-        // F9 was the account tab's key, a key opens one tab only.
-        check(key(varbits.stone_account_key) == 0) { "Old owner of F9 kept the key." }
+        // F9 was the friends tab's key, a key opens one tab only.
+        check(key(varbits.stone_friends_key) == 0) { "Old owner of F9 kept the key." }
     }
 
     @Test
@@ -91,8 +91,8 @@ class TabKeybindsTest {
         commands.execute(player, "fkeyset", listOf("17", "14"))
         commands.execute(player, "fkeyset", listOf("99", "3"))
         commands.execute(player, "fkeydrop", listOf("7", "3"))
-        check(key(varbits.stone_prayer_key) == 5) { "Prayer key changed." }
-        check(key(varbits.stone_combat_key) == 1) { "Combat key changed." }
+        check(key(varbits.stone_prayer_key) == 3) { "Prayer key changed." }
+        check(key(varbits.stone_combat_key) == 5) { "Combat key changed." }
     }
 
     @Test

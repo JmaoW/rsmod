@@ -29,6 +29,16 @@ constructor(private val objTypes: ObjTypeList, private val enumResolver: EnumTyp
             objs.spell_enchant_lvl_5,
             objs.spell_enchant_lvl_6,
             objs.spell_enchant_lvl_7,
+            objs.spell_enchant_bolt_opal,
+            objs.spell_enchant_bolt_sapphire,
+            objs.spell_enchant_bolt_jade,
+            objs.spell_enchant_bolt_pearl,
+            objs.spell_enchant_bolt_emerald,
+            objs.spell_enchant_bolt_topaz,
+            objs.spell_enchant_bolt_ruby,
+            objs.spell_enchant_bolt_diamond,
+            objs.spell_enchant_bolt_dragonstone,
+            objs.spell_enchant_bolt_onyx,
         )
 
     public fun getObjSpell(obj: ObjType): MagicSpell? = objSpells[obj.id]
@@ -69,8 +79,9 @@ constructor(private val objTypes: ObjTypeList, private val enumResolver: EnumTyp
             }
         }
 
-        // The jewellery enchantment spells are not in a spellbook enum: the spellbook only lists
-        // the "view" button that reveals them. They are still real spells with full parameters.
+        // The jewellery and bolt enchantment spells are not in a spellbook enum: the spellbook only
+        // lists the "view" button that reveals them. They are still real spells with full
+        // parameters.
         for (spellObj in additionalSpells) {
             spells[spellObj.id] = spellObj.toMagicSpell()
         }

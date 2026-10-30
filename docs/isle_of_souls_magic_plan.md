@@ -136,7 +136,7 @@ teleport test; sandbox server boot loads 185 scripts without a script error):
 | Low and High Alchemy | 40% and 60% of the item value, noted items by their cert link, coins refused, 5 tick cooldown. Publishes `Alchemy.Alchemised` |
 | Bones to Bananas and Peaches | Every bone in the wiki's list; long and curved bones, dragon bones and noted bones left alone |
 | Superheat Item | Own recipe table (`SuperheatRecipes`), Smithing level and xp as a furnace, iron becomes steel with 2 coal, never fails |
-| Lvl-1 to Lvl-7 Enchant | Tables in `Enchantments.kt` (all gems, charged items come out full). **Enchant Crossbow Bolt is not built.** The seven spells are not in the spellbook enum, so `MagicSpellRegistry` registers them itself |
+| Lvl-1 to Lvl-7 Enchant | Tables in `Enchantments.kt` (all gems, charged items come out full). The seven spells are not in the spellbook enum, so `MagicSpellRegistry` registers them itself. Enchant Crossbow Bolt (10 spells) is built too, see `docs/isle_of_souls_enchanted_bolts.md` |
 | Telekinetic Grab | Needed a small engine addition: the `OpObjT` message (spell on a ground item) now has a handler (`api/net` `OpObjTHandler`, event `ObjTEvents.Cast`, script hook `onOpObjT`). Range 10, no line of sight check yet |
 | Charge | Sets the `buff_charge_spell_disabled` varbit, which is what the damage formulas read for the +10 god spell maximum, for 700 ticks (soft timer `magic_charge`, added to `timer.sym`) |
 | Charge Orb spells | Done, but they need an obelisk (`obelisk_*` locs); the isle has none, and I did not test spell-on-loc |
@@ -160,7 +160,7 @@ teleport test; sandbox server boot loads 185 scripts without a script error):
 
 **Not done in this phase (M1)**
 - League tasks and milestones (M6)
-- Enchant Crossbow Bolt, Tome of water, swampbark, Iban's staff and Slayer staff (e) charges, line of
+- Tome of water, swampbark, Iban's staff and Slayer staff (e) charges, line of
   sight for Telekinetic Grab, Mage Arena casts for the god spells
 - Everything from M2 on (Ancient combat spells, Lunar, Arceuus)
 - Group teleports (Lunar) are mapped to destinations and, until M3, move only the caster

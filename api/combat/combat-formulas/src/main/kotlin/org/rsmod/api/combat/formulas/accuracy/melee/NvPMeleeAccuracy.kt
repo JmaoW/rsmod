@@ -37,7 +37,8 @@ constructor(private val bonuses: WornBonuses, private val attackStyles: AttackSt
     public fun computeAttackRoll(source: Npc, sourceType: UnpackedNpcType): Int {
         val effectiveAttack = NpcMeleeAccuracy.calculateEffectiveAttack(source.attackLvl)
         val attackBonus = sourceType.param(params.attack_melee)
-        return NpcMeleeAccuracy.calculateBaseAttackRoll(effectiveAttack, attackBonus)
+        val attackRoll = NpcMeleeAccuracy.calculateBaseAttackRoll(effectiveAttack, attackBonus)
+        return attackRoll * source.attackRollPercent / 100
     }
 
     public fun computeDefenceRoll(target: Player, attackType: MeleeAttackType?): Int {

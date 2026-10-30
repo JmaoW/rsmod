@@ -67,6 +67,25 @@ class RspNpcInfo(val rspAvatar: NpcAvatar) : NpcInfoProtocol {
         rspAvatar.extendedInfo.setHeadIconChange(slot, graphic, index)
     }
 
+    override fun setTinting(
+        start: Int,
+        end: Int,
+        hue: Int,
+        saturation: Int,
+        lightness: Int,
+        weight: Int,
+    ) {
+        // The client reads the channels as signed bytes, so KEEP (-1) goes out as 255.
+        rspAvatar.extendedInfo.setTinting(
+            start,
+            end,
+            hue and 0xFF,
+            saturation and 0xFF,
+            lightness and 0xFF,
+            weight and 0xFF,
+        )
+    }
+
     override fun exactMove(
         deltaX1: Int,
         deltaZ1: Int,

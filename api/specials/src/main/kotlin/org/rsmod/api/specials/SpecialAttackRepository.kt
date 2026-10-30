@@ -7,6 +7,7 @@ import org.rsmod.api.specials.combat.MeleeSpecialAttack
 import org.rsmod.api.specials.combat.RangedSpecialAttack
 import org.rsmod.api.specials.configs.SpecialAttackEnergyEnums
 import org.rsmod.api.specials.instant.InstantSpecialAttack
+import org.rsmod.api.specials.shield.ShieldSpecialAttack
 import org.rsmod.api.specials.weapon.SpecialAttackWeapons
 import org.rsmod.game.type.obj.ObjType
 
@@ -151,6 +152,19 @@ constructor(private val registry: SpecialAttackRegistry) {
     public fun registerMagic(specWeapon: ObjType, special: MagicSpecialAttack) {
         val result = registry.add(specWeapon, special)
         assertValidResult(specWeapon, result)
+    }
+
+    /**
+     * Registers the [specShield] special attack ([special]) as a [ShieldSpecialAttack], which the
+     * player enables from the worn shield and which replaces their next swing.
+     *
+     * No special attack energy is checked or taken for it. See [ShieldSpecialAttack].
+     *
+     * @throws IllegalStateException if [specShield] is already registered with any special attack.
+     */
+    public fun registerShield(specShield: ObjType, special: ShieldSpecialAttack) {
+        val result = registry.add(specShield, special)
+        assertValidResult(specShield, result)
     }
 
     private fun assertValidResult(specWeapon: ObjType, result: SpecialAttackRegistry.Result.Add) {

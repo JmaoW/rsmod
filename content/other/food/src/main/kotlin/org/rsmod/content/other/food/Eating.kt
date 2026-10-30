@@ -18,6 +18,9 @@ import org.rsmod.api.player.stat.statHeal
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onOpHeld1
 import org.rsmod.api.script.onPlayerSoftTimer
+import org.rsmod.content.skills.herblore.configs.PoisonCure
+import org.rsmod.content.skills.herblore.configs.VenomCure
+import org.rsmod.content.skills.herblore.scripts.SicknessTreatment
 import org.rsmod.events.UnboundEvent
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjType
@@ -29,7 +32,6 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 // TODO:
 // - the eating sound (there is no named synth for it in the symbols yet)
-// - curing poison (strange fruit, moonlight antelope) and poison immunity: nothing here poisons
 // - blighted food is meant for the Wilderness only. It can be eaten anywhere here.
 // - potions are drunk by content/skills/herblore (Drinking), which keeps its own cooldown
 //
@@ -42,6 +44,8 @@ constructor(
     private val statTypes: StatTypeList,
     private val masteries: CombatMasteryEffects,
     private val random: GameRandom,
+    private val sickness: SicknessTreatment,
+    private val rules: EatRules,
 ) : PluginScript() {
     /** The cycle each player can next eat each kind of food. */
     private val cooldowns = WeakHashMap<Player, IntArray>()
@@ -86,6 +90,11 @@ constructor(
     private fun ProtectedAccess.eat(event: HeldObjEvents.Op1, def: FoodDef, bite: Bite) {
         if (def.refuse != null) {
             mes(def.refuse)
+            return
+        }
+        val denial = rules.denial(player, bite.obj)
+        if (denial != null) {
+            mes(denial)
             return
         }
         val ready = cooldowns.getOrPut(player) { IntArray(FoodKind.entries.size) { Int.MIN_VALUE } }
@@ -202,6 +211,14 @@ constructor(
         }
         if (effects.runEnergy > 0) {
             restoreRunEnergy(player, effects.runEnergy)
+        }
+        if (effects.poison != PoisonCure.None || effects.venom != VenomCure.None) {
+            sickness.treat(
+                player,
+                effects.poison,
+                effects.venom,
+                venomTicks = effects.venomImmunity,
+            )
         }
         if (effects.randomDrain > 0) {
             return drainRandom(player, effects.randomDrain)?.displayName

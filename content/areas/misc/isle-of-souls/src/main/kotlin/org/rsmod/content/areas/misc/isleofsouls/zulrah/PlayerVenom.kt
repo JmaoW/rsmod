@@ -7,6 +7,7 @@ import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.random.GameRandom
+import org.rsmod.content.areas.misc.isleofsouls.dungeons.PlayerPoison
 import org.rsmod.content.skills.herblore.scripts.PotionEffects
 import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.HitType
@@ -17,34 +18,39 @@ import org.rsmod.game.inv.isType
  * [INTERVAL] ticks: 6 the first time, 2 more each time after, up to 20 (wiki). It lasts until it is
  * cured.
  *
- * The isle has no antivenom, so the cures are: wearing the charged serpentine helm (immune), the
- * protection of an antipoison potion (immune while it lasts). Leaving Zulrah's lair, logging out
- * and logging in do not cure it. Poison, the weaker sickness, is not modelled: nothing on the isle
- * poisons.
+ * The charged serpentine helm makes the wearer immune, and so does the venom immunity an antidote++
+ * or an antivenom gives while it lasts. Drinking an antivenom cures venom, an antipoison turns it
+ * into poison (see `SicknessScript`). Leaving Zulrah's lair, logging out and logging in do not cure
+ * it. Poison, the weaker sickness, is `PlayerPoison`.
  */
 @Singleton
 class PlayerVenom
 @Inject
-constructor(private val potions: PotionEffects, private val random: GameRandom) {
+constructor(
+    private val potions: PotionEffects,
+    private val random: GameRandom,
+    private val poison: PlayerPoison,
+) {
     /** The damage of [player]'s next venom hit, or `0` if they are not venomed. */
     fun damageOf(player: Player): Int = player.vars[zulrah_vars.venom]
 
     fun isVenomed(player: Player): Boolean = damageOf(player) > 0
 
     /** Whether [player] cannot be venomed right now. */
-    fun isImmune(player: Player): Boolean = wearsHelm(player) || potions.hasPoisonProtection(player)
+    fun isImmune(player: Player): Boolean = wearsHelm(player) || potions.hasVenomProtection(player)
 
     private fun wearsHelm(player: Player): Boolean =
         player.worn.objs.any { it != null && it.isType(zulrah_objs.serpentine_helm_charged) }
 
     /**
      * Envenoms [player] unless they are immune or already venomed (a second dose does not make it
-     * worse). Returns whether they were envenomed now.
+     * worse); venom replaces any poison they had. Returns whether they were envenomed now.
      */
     fun envenom(player: Player): Boolean {
         if (isVenomed(player) || isImmune(player)) {
             return false
         }
+        poison.cure(player)
         set(player, FIRST_DAMAGE)
         player.softTimer(zulrah_timers.venom, INTERVAL)
         player.mes("You have been injected with venom!")

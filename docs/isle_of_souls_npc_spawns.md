@@ -76,7 +76,7 @@ rest sit on the isle where the source has none of those NPCs.
 2. **Older monsters the source does not have (408 names).** Slayer-relevant: Aquanite, Cave kraken
    and Kraken (disguised only), Gryphon, Molanisk, Wall beast, Mutated zygomite, Mogre (only the
    guard), Venator, Wyrmling/Lava strykewyrm, Shadow Wyrm/Guardian Drake/Colossal Hydra (Karuulm
-   bosses), Skotizo, Spindel/Artio/Calvar'ion, Revenants (only 15 of the many in the cave).
+   bosses), Skotizo, Spindel/Artio/Calvar'ion, Revenants (now placed by hand from the wiki's map, see `tools/dungeons/revenants.py`).
    The rest are bosses and instance variants (Nex, Great Olm, Zulrah, Hunllef, Nightmare, ...)
    that are meant to be scripted, not world spawns.
 

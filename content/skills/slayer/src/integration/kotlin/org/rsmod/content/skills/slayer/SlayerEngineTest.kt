@@ -255,6 +255,19 @@ class SlayerEngineTest {
         }
 
     @Test
+    fun GameTestState.`a revenant task is on task for the revenants, from Vannaka and Duradel`() =
+        runGameTest(SlayerEngineHolder::class, SlayerScript::class) {
+            prepare(combat = 120, slayer = 80)
+            for (key in listOf("vannaka", "duradel")) {
+                val master = master(key)
+                random.next = 40
+                engine.cancel(player)
+                engine.assign(player, master, entry(master, 107)) // Revenants.
+                assertTrue(engine.isOnTask(player, monster(107)), key)
+            }
+        }
+
+    @Test
     fun GameTestState.`the cave kraken task is on offer and counts the kraken`() =
         runGameTest(SlayerEngineHolder::class, SlayerScript::class) {
             val duradel = master("duradel")

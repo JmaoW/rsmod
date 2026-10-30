@@ -63,20 +63,32 @@ constructor(
         val duration = hero.lootDropDuration ?: constants.lootdrop_duration
         val table = dropTables[type]
         if (table == null) {
-            // Monsters without a drop table keep dropping bones only.
-            objRepo.add(objs.bones, dropCoords, duration, hero)
-            hero.sendLootTrackerEntries(this, listOf(DropResult(objs.bones, 1)))
+            // Monsters without a drop table keep dropping bones only. Subscribers may still change
+            // what is dropped (a minigame that replaces the drops of its own monsters).
+            val bones = listOf(DropResult(objs.bones, 1))
+            val claim = NpcDropEvents.Claim(this, hero, bones.toMutableList())
+            eventBus.publish(claim)
+            for (drop in claim.drops) {
+                objRepo.add(drop.obj, dropCoords, duration, hero, count = drop.count)
+            }
+            sendLootTracker(hero, this, claim.drops)
             return
         }
 
         val modify = NpcDropEvents.Modify(this, hero)
         eventBus.publish(modify)
 
-        val drops = dropRoller.roll(table, modify.multiplier)
-        for (drop in drops) {
+        val rolled = modify.variant?.let { dropTables.variantOf(type, it) } ?: table
+        val roll =
+            dropRoller.roll(rolled, modify.multiplier).map { it.copy(count = modify.countOf(it)) }
+        val drops =
+            roll + modify.guaranteed.filter { extra -> roll.none { it.obj.id == extra.obj.id } }
+        val claim = NpcDropEvents.Claim(this, hero, drops.toMutableList())
+        eventBus.publish(claim)
+        for (drop in claim.drops) {
             objRepo.add(drop.obj, dropCoords, duration, hero, count = drop.count)
         }
-        hero.sendLootTrackerEntries(this, drops)
+        sendLootTracker(hero, this, drops)
         eventBus.publish(NpcDropEvents.Rolled(this, hero, drops))
     }
 
@@ -86,13 +98,23 @@ constructor(
      * with `(npc id, kill id, item id, count)`. Entries that share a kill id are grouped into one
      * kill.
      */
-    private fun Player.sendLootTrackerEntries(npc: Npc, drops: List<DropResult>) {
+    /**
+     * Sends [drops] that [hero] received from [npc] to the loot tracker. Any drop path that does
+     * not go through [spawnDrops] or [deathWithDrops] (custom drop rolls) must call this itself.
+     */
+    public fun sendLootTracker(hero: Player, npc: Npc, drops: List<DropResult>) {
         if (drops.isEmpty()) {
             return
         }
         lootEventId = (lootEventId + 1) and Int.MAX_VALUE
         for (drop in drops) {
-            runClientScript(LOOT_TRACKER_ADD_LOOT, npc.type.id, lootEventId, drop.obj.id, drop.count)
+            hero.runClientScript(
+                LOOT_TRACKER_ADD_LOOT,
+                npc.type.id,
+                lootEventId,
+                drop.obj.id,
+                drop.count,
+            )
         }
     }
 
@@ -105,6 +127,8 @@ constructor(
 }
 
 private const val LOOT_TRACKER_ADD_LOOT: Int = 7192
+
+private const val UNKNOWN_DEATH_ANIM_TICKS: Int = 4
 
 private var Player.lastCombat: Int by intVarp(varps.lastcombat)
 private var Player.aggressiveNpc: NpcUid? by typeNpcUidVarp(varps.aggressive_npc)
@@ -154,7 +178,8 @@ public suspend fun StandardNpcAccess.death(
 
     val deathAnim = param(params.death_anim)
     anim(deathAnim)
-    delay(seqTypes[deathAnim])
+    // A keyframe death anim with no range in the cache has no length the server can read.
+    delay(seqTypes[deathAnim].tickDuration.takeIf { it > 0 } ?: UNKNOWN_DEATH_ANIM_TICKS)
 
     if (npc.respawns) {
         npcRepo.despawn(npc, npcRepo.respawnSpeed.scale(npc.type.respawnRate))

@@ -1160,6 +1160,82 @@ tertiary = [
 ]
 
 [[monster]]
+source = "Vorkath"
+# drop version: Post-quest
+ids = [8059, 8061]
+main_rolls = 2
+always = [
+  { item = "Superior dragon bones", qty = "2" },
+  { item = "Blue dragonhide", qty = "2" },
+]
+main = [
+  { item = "Rune longsword", qty = "2-3", chance = "5/150" },
+  { item = "Rune kiteshield", qty = "2-3", chance = "5/150" },
+  { item = "Battlestaff", qty = "5-15", noted = true, chance = "4/150" },
+  { item = "Dragon battleaxe", chance = "2/150" },
+  { item = "Dragon longsword", chance = "2/150" },
+  { item = "Dragon platelegs", chance = "2/150" },
+  { item = "Dragon plateskirt", chance = "2/150" },
+  { item = "Chaos rune", qty = "250-350", chance = "6/150" },
+  { item = "Death rune", qty = "200-300", chance = "6/150" },
+  { item = "Wrath rune", qty = "30-60", chance = "3/150" },
+  { item = "Blue dragonhide", qty = "25-30", noted = true, chance = "8/150" },
+  { item = "Green dragonhide", qty = "25-30", noted = true, chance = "7/150" },
+  { item = "Red dragonhide", qty = "20-25", noted = true, chance = "7/150" },
+  { item = "Black dragonhide", qty = "15-25", noted = true, chance = "7/150" },
+  { item = "Dragon bolts (unf)", qty = "50-100", chance = "8/150" },
+  { item = "Dragonstone bolt tips", qty = "11-25", chance = "5/150" },
+  { item = "Onyx bolt tips", qty = "5-10", chance = "4/150" },
+  { item = "Rune dart tip", qty = "75-100", chance = "3/150" },
+  { item = "Dragon dart tip", qty = "10-50", chance = "6/150" },
+  { item = "Dragon arrowtips", qty = "25-50", chance = "3/150" },
+  { item = "Diamond bolt tips", qty = "25-30", chance = "25/2730" },
+  { item = "Emerald bolt tips", qty = "25-30", chance = "20/2730" },
+  { item = "Ruby bolt tips", qty = "25-30", chance = "20/2730" },
+  { item = "Dragonstone bolt tips", qty = "25-30", chance = "14/2730" },
+  { item = "Onyx bolt tips", qty = "25-30", chance = "7/2730" },
+  { item = "Sapphire bolt tips", qty = "25-30", chance = "5/2730" },
+  { item = "Ranarr seed", chance = "1/416.7" },
+  { item = "Snapdragon seed", chance = "1/446.4" },
+  { item = "Torstol seed", chance = "1/568.2" },
+  { item = "Watermelon seed", qty = "15", chance = "1/595.2" },
+  { item = "Willow seed", chance = "1/625.0" },
+  { item = "Mahogany seed", chance = "1/694.4" },
+  { item = "Maple seed", chance = "1/694.4" },
+  { item = "Teak seed", chance = "1/694.4" },
+  { item = "Yew seed", chance = "1/694.4" },
+  { item = "Papaya tree seed", chance = "1/892.9" },
+  { item = "Magic seed", chance = "1/1136.4" },
+  { item = "Palm tree seed", chance = "1/1250.0" },
+  { item = "Spirit seed", chance = "1/1562.5" },
+  { item = "Dragonfruit tree seed", chance = "1/2083.3" },
+  { item = "Celastrus seed", chance = "1/3125.0" },
+  { item = "Redwood tree seed", chance = "1/3125.0" },
+  { item = "Raw shark", qty = "35-55", noted = true, chance = "3/300" },
+  { item = "Shark lure", qty = "70-110", chance = "3/300" },
+  { item = "Manta ray", qty = "35-55", noted = true, chance = "2/300" },
+  { item = "Adamantite ore", qty = "10-30", noted = true, chance = "7/150" },
+  { item = "Coins", qty = "20000-80000", chance = "5/150" },
+  { item = "Grapes", qty = "250-300", noted = true, chance = "5/150" },
+  { item = "Magic logs", qty = "50", noted = true, chance = "5/150" },
+  { item = "Dragon bones", qty = "15-20", noted = true, chance = "4/150" },
+  { item = "Diamond", qty = "10-20", noted = true, chance = "4/150" },
+  { item = "Dragonstone", qty = "2-3", noted = true, chance = "3/150" },
+  { item = "Wrath talisman", chance = "3/150" },
+  { table = "Rare drop table", chance = "5/150" },
+]
+tertiary = [
+  { item = "Scaly blue dragonhide", chance = "1/10" },
+  { item = "Vorkath's head", chance = "1/50" },
+  { item = "Clue scroll (elite)", chance = "1/65" },
+  { item = "Dragonbone necklace", chance = "1/1000" },
+  { item = "Jar of Decay", chance = "1/3000" },
+  { item = "Vorki", chance = "1/3000" },
+  { item = "Draconic visage", chance = "1/5000" },
+  { item = "Skeletal visage", chance = "1/5000" },
+]
+
+[[monster]]
 source = "Cave kraken"
 ids = [493, 492]
 main = [
@@ -2298,6 +2374,167 @@ tertiary = [
   { item = "Long bone", chance = "1/400" },
   { item = "Curved bone", chance = "1/5012.5" },
   { item = "Scurry", chance = "1/3000" },
+]
+
+[[monster]]
+source = "Artio"
+ids = [11992]
+always = [
+  { item = "Big bones" },
+]
+main = [
+  { item = "Dragon 2h sword", chance = "0.00207984" },
+  { item = "Dragon pickaxe", chance = "0.00207984" },
+  { item = "Claws of Callisto", chance = "0.00120483" },
+  { item = "Tyrannical ring", chance = "0.00103992" },
+  { item = "Voidwaker hilt", chance = "0.00081643" },
+  { item = "Dark crab", qty = "9", chance = "0.02908533" },
+  { item = "Super restore(4)", qty = "3", chance = "0.02908533" },
+  { item = "Rune 2h sword", chance = "0.0174512" },
+  { item = "Rune pickaxe", chance = "0.06980478" },
+  { item = "Chaos rune", qty = "300", chance = "0.04071946" },
+  { item = "Death rune", qty = "220", chance = "0.04071946" },
+  { item = "Blood rune", qty = "140", chance = "0.04071946" },
+  { item = "Soul rune", qty = "150", chance = "0.02908533" },
+  { item = "Cannonball", qty = "190", chance = "0.02326826" },
+  { item = "Uncut ruby", qty = "17", noted = true, chance = "0.02326826" },
+  { item = "Uncut diamond", qty = "7", noted = true, chance = "0.0174512" },
+  { item = "Uncut dragonstone", chance = "0.01163413" },
+  { item = "Limpwurt root", qty = "20", noted = true, chance = "0.02908533" },
+  { item = "Magic logs", qty = "60", noted = true, chance = "0.02908533" },
+  { item = "Mahogany logs", qty = "200", noted = true, chance = "0.03490239" },
+  { item = "Dragon bones", qty = "25", noted = true, chance = "0.0174512" },
+  { item = "Grimy toadflax", qty = "40", noted = true, chance = "0.00581707" },
+  { item = "Coconut", qty = "30", noted = true, chance = "0.01163413" },
+  { item = "Red dragonhide", qty = "55", noted = true, chance = "0.0174512" },
+  { item = "Coins", qty = "12000", chance = "0.12215837" },
+  { item = "Dark fishing bait", qty = "300", chance = "0.00581707" },
+  { item = "Supercompost", qty = "60", noted = true, chance = "0.02326826" },
+  { item = "Yew seed", chance = "0.00581707" },
+  { item = "Magic seed", chance = "0.00581707" },
+  { item = "Ranarr seed", qty = "3", chance = "0.02908533" },
+  { item = "Snapdragon seed", chance = "0.02908533" },
+  { item = "Palm tree seed", chance = "0.00581707" },
+  { item = "Blighted anglerfish", qty = "5-6", chance = "0.0413658" },
+  { item = "Blighted karambwan", qty = "5-6", chance = "0.0413658" },
+  { item = "Blighted super restore(3)", qty = "3-4", chance = "0.0413658" },
+  { item = "Blighted super restore(4)", qty = "3-4", chance = "0.0413658" },
+  { item = "Ranging potion(2)", qty = "2-3", chance = "0.0413658" },
+  { item = "Super combat potion(2)", qty = "2-3", chance = "0.0413658" },
+]
+tertiary = [
+  { item = "Looting bag", chance = "1/3" },
+  { item = "Long bone", chance = "1/400" },
+  { item = "Curved bone", chance = "1/5012.5" },
+  { item = "Clue scroll (elite)", chance = "1/100" },
+  { item = "Callisto cub", chance = "1/2800" },
+]
+
+[[monster]]
+source = "Spindel"
+ids = [11998]
+always = [
+  { item = "Big bones" },
+]
+main = [
+  { item = "Dragon 2h sword", chance = "0.00178456" },
+  { item = "Dragon pickaxe", chance = "0.00178456" },
+  { item = "Fangs of Venenatis", chance = "0.00103378" },
+  { item = "Treasonous ring", chance = "0.00089228" },
+  { item = "Voidwaker gem", chance = "0.00070052" },
+  { item = "Dark crab", qty = "8", chance = "0.02495602" },
+  { item = "Super restore(4)", qty = "3", chance = "0.02495602" },
+  { item = "Rune knife", qty = "30", chance = "0.02495602" },
+  { item = "Rune pickaxe", chance = "0.05989446" },
+  { item = "Rune 2h sword", chance = "0.01497361" },
+  { item = "Chaos rune", qty = "180", chance = "0.03493843" },
+  { item = "Blood rune", qty = "150", chance = "0.03493843" },
+  { item = "Death rune", qty = "220", chance = "0.03493843" },
+  { item = "Cannonball", qty = "200", chance = "0.01996482" },
+  { item = "Diamond bolts (e)", qty = "60", chance = "0.02495602" },
+  { item = "Uncut diamond", qty = "7", noted = true, chance = "0.03992964" },
+  { item = "Gold ore", qty = "180", noted = true, chance = "0.02994723" },
+  { item = "Magic logs", qty = "60", noted = true, chance = "0.02495602" },
+  { item = "Limpwurt root", qty = "18", noted = true, chance = "0.02495602" },
+  { item = "Onyx bolt tips", qty = "35", chance = "0.02495602" },
+  { item = "Red spiders' eggs", qty = "250", noted = true, chance = "0.01497361" },
+  { item = "Uncut dragonstone", chance = "0.00998241" },
+  { item = "Uncut ruby", qty = "14", noted = true, chance = "0.0049912" },
+  { item = "Grimy snapdragon", qty = "40", noted = true, chance = "0.0049912" },
+  { item = "Unicorn horn", qty = "60", noted = true, chance = "0.0049912" },
+  { item = "Coins", qty = "14000", chance = "0.1048153" },
+  { item = "Supercompost", qty = "60", noted = true, chance = "0.01996482" },
+  { item = "Antidote++(4)", qty = "6", noted = true, chance = "0.01497361" },
+  { item = "Dark fishing bait", qty = "200", chance = "0.0049912" },
+  { item = "Magic seed", chance = "0.0049912" },
+  { item = "Palm tree seed", chance = "0.0049912" },
+  { item = "Blighted anglerfish", qty = "5-6", chance = "0.05915502" },
+  { item = "Blighted karambwan", qty = "5-6", chance = "0.05915502" },
+  { item = "Blighted super restore(3)", qty = "3-4", chance = "0.05915502" },
+  { item = "Blighted super restore(4)", qty = "3-4", chance = "0.05915502" },
+  { item = "Ranging potion(2)", qty = "2-3", chance = "0.05915502" },
+  { item = "Super combat potion(2)", qty = "2-3", chance = "0.05915502" },
+]
+tertiary = [
+  { item = "Looting bag", chance = "1/3" },
+  { item = "Strange fruit", chance = "1/5" },
+  { item = "Clue scroll (elite)", chance = "1/100" },
+  { item = "Venenatis spiderling", chance = "1/2800" },
+]
+
+[[monster]]
+source = "Calvar'ion"
+ids = [11993, 11994]
+always = [
+  { item = "Big bones" },
+]
+main = [
+  { item = "Dragon 2h sword", chance = "0.00207984" },
+  { item = "Dragon pickaxe", chance = "0.00207984" },
+  { item = "Skull of Vet'ion", chance = "0.00120483" },
+  { item = "Ring of the gods", chance = "0.00103992" },
+  { item = "Voidwaker blade", chance = "0.00081643" },
+  { item = "Dark crab", qty = "8", chance = "0.02908533" },
+  { item = "Super restore(4)", qty = "3", chance = "0.02908533" },
+  { item = "Ancient staff", chance = "0.0174512" },
+  { item = "Rune 2h sword", chance = "0.0174512" },
+  { item = "Rune pickaxe", chance = "0.06980478" },
+  { item = "Chaos rune", qty = "220", chance = "0.04071946" },
+  { item = "Death rune", qty = "120", chance = "0.04071946" },
+  { item = "Blood rune", qty = "180", chance = "0.04071946" },
+  { item = "Cannonball", qty = "180", chance = "0.02326826" },
+  { item = "Uncut ruby", qty = "17", noted = true, chance = "0.02326826" },
+  { item = "Uncut diamond", qty = "7", noted = true, chance = "0.0174512" },
+  { item = "Uncut dragonstone", chance = "0.01163413" },
+  { item = "Gold ore", qty = "200", noted = true, chance = "0.03490239" },
+  { item = "Limpwurt root", qty = "19", noted = true, chance = "0.02908533" },
+  { item = "Magic logs", qty = "60", noted = true, chance = "0.02908533" },
+  { item = "Oak plank", qty = "220", noted = true, chance = "0.02908533" },
+  { item = "Dragon bones", qty = "60", noted = true, chance = "0.0174512" },
+  { item = "Mort myre fungus", qty = "120", noted = true, chance = "0.01163413" },
+  { item = "Wine of Zamorak", qty = "35", noted = true, chance = "0.02908533" },
+  { item = "Grimy ranarr weed", qty = "60", noted = true, chance = "0.00581707" },
+  { item = "Coins", qty = "12000", chance = "0.12215837" },
+  { item = "Yew seed", chance = "0.00581707" },
+  { item = "Magic seed", chance = "0.00581707" },
+  { item = "Palm tree seed", chance = "0.00581707" },
+  { item = "Supercompost", qty = "60", noted = true, chance = "0.02326826" },
+  { item = "Sanfew serum(4)", qty = "6", noted = true, chance = "0.02908533" },
+  { item = "Dark fishing bait", qty = "280", chance = "0.00581707" },
+  { item = "Blighted anglerfish", qty = "5-6", chance = "0.0413658" },
+  { item = "Blighted karambwan", qty = "5-6", chance = "0.0413658" },
+  { item = "Blighted super restore(3)", qty = "3-4", chance = "0.0413658" },
+  { item = "Blighted super restore(4)", qty = "3-4", chance = "0.0413658" },
+  { item = "Ranging potion(2)", qty = "2-3", chance = "0.0413658" },
+  { item = "Super combat potion(2)", qty = "2-3", chance = "0.0413658" },
+]
+tertiary = [
+  { item = "Looting bag", chance = "1/3" },
+  { item = "Long bone", chance = "1/400" },
+  { item = "Curved bone", chance = "1/5012.5" },
+  { item = "Skeleton champion scroll", chance = "1/5000" },
+  { item = "Clue scroll (elite)", chance = "1/100" },
+  { item = "Vet'ion Jr.", chance = "1/2800" },
 ]
 
 [[monster]]

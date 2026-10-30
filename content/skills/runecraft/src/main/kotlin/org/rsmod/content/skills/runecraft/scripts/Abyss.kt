@@ -77,7 +77,7 @@ class Abyss @Inject constructor(private val sites: RunecraftSites, private val s
     }
 
     private fun ProtectedAccess.openShop(npc: Npc) {
-        shops.open(player, npc, "Mage of Zamorak's Battle Runes", RunecraftInvs.rune_shop)
+        shops.open(player, npc, "Mage of Zamorak's Battle Runes", RunecraftInvs.battle_rune_shop)
     }
 
     private suspend fun ProtectedAccess.talkToMage(npc: Npc) {

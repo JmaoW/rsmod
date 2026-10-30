@@ -4,9 +4,11 @@ import com.google.inject.AbstractModule
 import com.google.inject.Scopes
 import jakarta.inject.Inject
 import org.junit.jupiter.api.Test
+import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.shops.ShopScript
 import org.rsmod.api.shops.Shops
+import org.rsmod.api.shops.config.ShopComponents
 import org.rsmod.api.shops.operation.ShopOperationMap
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
@@ -16,6 +18,7 @@ import org.rsmod.content.skills.runecraft.configs.RuneAltars
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.loc.BoundLocInfo
+import org.rsmod.game.type.interf.IfButtonOp.Op2
 import org.rsmod.game.type.obj.UnpackedObjType
 import org.rsmod.map.CoordGrid
 
@@ -97,6 +100,80 @@ class RunecraftWorldTest {
         val death = obj("deathrune")
         check(shop.inv.any { it?.id == fire.id }) { "Expected fire runes for sale." }
         check(shop.inv.any { it?.id == death.id }) { "Expected death runes for sale." }
+        val stock =
+            listOf(
+                "firerune" to 1000,
+                "waterrune" to 1000,
+                "airrune" to 1000,
+                "earthrune" to 1000,
+                "mindrune" to 1000,
+                "chaosrune" to 500,
+                "deathrune" to 500,
+                "bloodrune" to 500,
+                "pack_firerune" to 50,
+                "pack_waterrune" to 50,
+                "pack_airrune" to 50,
+                "pack_earthrune" to 50,
+                "pack_mindrune" to 35,
+                "pack_chaosrune" to 35,
+            )
+        for ((name, count) in stock) {
+            val held = shop.inv.firstOrNull { it?.id == obj(name).id }
+            check(held != null) { "Expected $name for sale." }
+            check(held.count == count) { "Expected $count of $name, was ${held.count}." }
+        }
+        check(shop.inv.count { it != null } == stock.size) { "The mage sells nothing else." }
+    }
+
+    @Test
+    fun GameTestState.`aubury sells the wiki's runes and rune packs`() = runWorldTest {
+        val aubury = npc("aubury_3op")
+
+        player.opNpc3(aubury)
+        advance(ticks = 3)
+
+        val shop = checkNotNull(player.openedShop) { "Aubury should open a shop." }
+        val stock =
+            listOf(
+                "airrune" to 5000,
+                "firerune" to 5000,
+                "waterrune" to 5000,
+                "earthrune" to 5000,
+                "mindrune" to 5000,
+                "bodyrune" to 5000,
+                "chaosrune" to 250,
+                "deathrune" to 250,
+                "pack_firerune" to 80,
+                "pack_waterrune" to 80,
+                "pack_airrune" to 80,
+                "pack_earthrune" to 80,
+                "pack_mindrune" to 40,
+                "pack_chaosrune" to 35,
+            )
+        for ((name, count) in stock) {
+            val held = shop.inv.firstOrNull { it?.id == obj(name).id }
+            check(held != null) { "Expected $name for sale." }
+            check(held.count == count) { "Expected $count of $name, was ${held.count}." }
+        }
+        check(shop.inv.count { it != null } == stock.size) { "Aubury sells nothing else." }
+    }
+
+    @Test
+    fun GameTestState.`aubury sells a rune pack at its listed price`() = runWorldTest {
+        val aubury = npc("aubury_3op")
+        val pack = obj("pack_airrune")
+        player.opNpc3(aubury)
+        advance(ticks = 3)
+        val shop = checkNotNull(player.openedShop) { "Aubury should open a shop." }
+        val slot = shop.inv.indexOfFirst { it?.id == pack.id }
+
+        player.clearInv()
+        player.inv[0] = InvObj(objs.coins, 430)
+        player.ifButton(ShopComponents.shop_inv, comsub = slot + 1, obj = pack.id, op = Op2)
+        advance(ticks = 1)
+
+        check(player.inv.count { it?.id == pack.id } == 1) { "Expected the pack to be bought." }
+        check(player.inv.none { it?.id == objs.coins.id }) { "Expected 430 coins to be spent." }
     }
 
     @Test

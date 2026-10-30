@@ -129,7 +129,7 @@ constructor(
         val AXE_STUMP = CoordGrid(2168, 2808, 0)
 
         /** Gerrant stands in the fishing area. */
-        val GERRANT = CoordGrid(2167, 2786, 0)
+        val GERRANT = CoordGrid(2088, 2894, 0)
 
         /** The general store's shop keeper, in the crafting area. */
         val SHOP_KEEPER = CoordGrid(2162, 2805, 0)

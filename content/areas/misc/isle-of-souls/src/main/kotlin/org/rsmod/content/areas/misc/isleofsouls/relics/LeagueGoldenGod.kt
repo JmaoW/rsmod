@@ -72,6 +72,7 @@ class LeagueGoldenGod @Inject constructor(private val relics: LeagueRelicTracker
         val NOTED_SHOPS =
             listOf(
                 RunecraftInvs.rune_shop,
+                RunecraftInvs.battle_rune_shop,
                 MiningGuildInvs.pickaxe_shop,
                 MiningGuildInvs.nugget_shop,
             )

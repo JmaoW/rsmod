@@ -69,9 +69,9 @@ import org.rsmod.plugin.scripts.ScriptContext
 /**
  * Completes league tasks from mining, woodcutting, fishing, cooking, firemaking, smithing,
  * fletching, prayer, herblore, crafting and runecraft. Tasks that depend on a guild, or on content
- * that does not exist yet (dark crabs, anglerfish fishing, pizzas, Wintertodt, pyre logs, torches
- * and lanterns, soft clay, granite, oak planks), are left locked. Tasks that used to name a place
- * (see `IsleOfSoulsTaskEdits`) complete anywhere.
+ * that does not exist yet (dark crabs, pizzas, Wintertodt, pyre logs, torches and lanterns, soft
+ * clay, granite, oak planks), are left locked. Tasks that used to name a place (see
+ * `IsleOfSoulsTaskEdits`) complete anywhere.
  */
 class LeagueSkillTasks
 @Inject
@@ -690,6 +690,7 @@ constructor(
             ItemCount(646, listOf(isle_objs.raw_karambwan), 50, league_progress.catch_karambwan),
             ItemCount(1825, listOf(isle_objs.raw_sardine), 25, league_progress.catch_sardine),
             ItemCount(1827, listOf(isle_objs.raw_pike), 10, league_progress.catch_pike),
+            ItemCount(1609, listOf(isle_objs.raw_anglerfish), 150, league_progress.catch_anglerfish),
         )
 
     private val burnOnce =

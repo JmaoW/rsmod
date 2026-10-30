@@ -8,6 +8,7 @@ import org.rsmod.api.drops.DropEntry
 import org.rsmod.api.drops.DropOutcome
 import org.rsmod.api.drops.DropStack
 import org.rsmod.api.drops.DropTable
+import org.rsmod.api.drops.DropVariant
 import org.rsmod.api.parsers.toml.Toml
 import org.rsmod.game.type.npc.NpcTypeList
 import org.rsmod.game.type.npc.UnpackedNpcType
@@ -25,6 +26,8 @@ internal class DropSource(val name: String, val bytes: ByteArray)
 internal class DropLoadResult(
     val tables: Map<Int, DropTable>,
     val warnings: List<String>,
+    /** The variant tables (skulled, on task) of the monsters that have them, by npc type id. */
+    val variants: Map<Int, Map<DropVariant, DropTable>> = emptyMap(),
     /** `[[boost]]` lines (as `source: item`) that matched no drop in any monster's table. */
     val unmatchedBoosts: List<String> = emptyList(),
     val boostedEntries: Int = 0,
@@ -82,11 +85,21 @@ constructor(@Toml private val mapper: ObjectMapper, objTypes: ObjTypeList, npcTy
         val boosts = Boosts(files.flatMap { it.second.boost })
 
         val drafts = HashMap<Int, Draft>()
+        val variantDrafts = HashMap<Int, HashMap<DropVariant, Draft>>()
         val sourceDrafts = HashMap<String, Draft>()
         for ((source, file) in files) {
             for (def in file.monster) {
                 val label = "${source.name}: `${def.label()}`"
                 val npcs = resolveNpcs(def, label, warnings)
+                val variant =
+                    def.variant?.let { key ->
+                        DropVariant.fromKey(key).also {
+                            if (it == null) warnings += "$label: unknown variant `$key`."
+                        }
+                    }
+                if (def.variant != null && variant == null) {
+                    continue
+                }
                 val block =
                     if (def.attach) {
                         sourceDrafts[def.label().lowercase()].also {
@@ -99,6 +112,15 @@ constructor(@Toml private val mapper: ObjectMapper, objTypes: ObjTypeList, npcTy
                         }
                     }
                 if (block == null) {
+                    continue
+                }
+                if (variant != null) {
+                    for (npc in npcs) {
+                        val byVariant = variantDrafts.getOrPut(npc.id) { HashMap() }
+                        val existing = byVariant[variant]
+                        byVariant[variant] =
+                            if (def.replace || existing == null) block else existing + block
+                    }
                     continue
                 }
                 if (!def.attach) {
@@ -117,7 +139,18 @@ constructor(@Toml private val mapper: ObjectMapper, objTypes: ObjTypeList, npcTy
         for ((npcId, draft) in drafts) {
             tables[npcId] = built.getOrPut(draft) { draft.toTable() }
         }
-        return DropLoadResult(tables, warnings, boosts.unmatched(), boosts.matchedEntries)
+        val variants = HashMap<Int, Map<DropVariant, DropTable>>()
+        for ((npcId, byVariant) in variantDrafts) {
+            variants[npcId] =
+                byVariant.mapValues { (_, draft) -> built.getOrPut(draft) { draft.toTable() } }
+        }
+        return DropLoadResult(
+            tables = tables,
+            warnings = warnings,
+            unmatchedBoosts = boosts.unmatched(),
+            boostedEntries = boosts.matchedEntries,
+            variants = variants,
+        )
     }
 
     private fun parse(source: DropSource): DropFile =
@@ -261,6 +294,9 @@ constructor(@Toml private val mapper: ObjectMapper, objTypes: ObjTypeList, npcTy
         val name = def.item ?: def.obj
         require(name != null) { "$label: this line needs an `item`, `obj` or `table`: $def" }
         if (def.item != null && def.item.equals("nothing", ignoreCase = true)) {
+            return null
+        }
+        if (def.item != null && ExcludedDrops.isExcluded(def.item)) {
             return null
         }
 

@@ -25,6 +25,15 @@ public class NpcHitEvents {
         public val source: Player?,
     ) : UnboundEvent
 
+    /**
+     * Published as a queued hit lands, before the npc takes it. [damage] may be lowered here: hits
+     * are modified when they are queued, so two in flight at once can together take more than
+     * either was allowed to (a boss that may not yet be taken below a threshold, or that became
+     * immune after the hit was queued).
+     */
+    public class Landing(public val npc: Npc, public val hit: Hit, public var damage: Int) :
+        UnboundEvent
+
     public data class Impact(
         public val npc: Npc,
         public val hit: Hit,

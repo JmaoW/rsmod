@@ -252,8 +252,9 @@ internal object InfernoVarpBuilder : VarpBuilder() {
  * going only while the target is within `maxRange + attackRange` of where the npc spawned, and
  * reads the distance a npc attacks from out of its type, so both are set here. They also get the
  * animation they flinch with when a player hits them: the cache's npcs have no `defend_anim`, so
- * without it they would not react at all. (The Jal-Zek has no block animation in the cache and so
- * none here either.) Each type is edited once only. Needs `packCache`.
+ * without it they would flinch with the default human block. (The Jal-Zek has no block animation in
+ * the cache, so `npc_anims.toml` gives it its idle, which means it does not flinch.) Each type is
+ * edited once only. Needs `packCache`.
  */
 internal object InfernoNpcEdits : NpcEditor() {
     init {

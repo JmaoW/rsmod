@@ -9,6 +9,7 @@ import org.rsmod.api.combat.player.activateMagicSpecial
 import org.rsmod.api.combat.player.activateMeleeSpecial
 import org.rsmod.api.combat.player.activateRangedSpecial
 import org.rsmod.api.combat.player.activateShieldSpecial
+import org.rsmod.api.combat.player.activateSpellSpecial
 import org.rsmod.api.combat.player.specialAttackType
 import org.rsmod.api.combat.weapon.WeaponSpeeds
 import org.rsmod.api.config.constants
@@ -42,6 +43,7 @@ constructor(
     private val ammunition: RangedAmmoManager,
     private val spellsReg: SpellAttackRegistry,
     private val delays: NpcAttackDelays,
+    private val rules: PvnRules,
 ) {
     suspend fun attack(access: ProtectedAccess, target: Npc, attack: CombatAttack.PlayerAttack) {
         when (attack) {
@@ -240,6 +242,15 @@ constructor(
         val attackRate = speeds.playerSpellDelay(player)
         manager.setNextAttackDelay(player, delays.adjust(player, npc, attackRate))
 
+        // A staff's special attack replaces the spell that is set to autocast.
+        if (specialAttackType == SpecialAttackType.Weapon) {
+            specialAttackType = SpecialAttackType.None
+            val activatedSpec = activateSpellSpecial(npc, attack, specialsReg, specialEnergy)
+            if (activatedSpec) {
+                return
+            }
+        }
+
         val spell = spellsReg[attack.spell.obj]
         if (spell != null) {
             spell.attack(this, npc, attack)
@@ -306,9 +317,16 @@ constructor(
             return false
         }
 
-        val hasAttackOp = npc.visType.hasOp(InteractionOp.Op2)
+        val hasAttackOp = npc.visType.hasOp(InteractionOp.Op2) || rules.isAttackable(npc)
         if (!hasAttackOp) {
             mes("You can't attack this npc.")
+            return false
+        }
+
+        val denial = rules.denial(player, npc)
+        if (denial != null) {
+            manager.stopCombat(player)
+            mes(denial)
             return false
         }
 

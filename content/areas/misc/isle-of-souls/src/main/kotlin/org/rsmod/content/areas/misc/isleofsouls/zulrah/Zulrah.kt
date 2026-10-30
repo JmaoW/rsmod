@@ -65,9 +65,10 @@ object ZulrahArena {
 
     /**
      * The sacrificial boat on the lobby plaza (3x3, south-west tile) and where players leave to.
+     * [exit] stays three tiles east of [boat] and one north, the side the boat is boarded from.
      */
-    val boat = CoordGrid(2200, 2855, 0)
-    val exit = CoordGrid(2203, 2856, 0)
+    val boat = CoordGrid(2089, 2937, 0)
+    val exit = CoordGrid(2092, 2938, 0)
 
     /** The box that holds the platform: the tiles of it that can be walked on are the platform. */
     val platformX = 2262..2274

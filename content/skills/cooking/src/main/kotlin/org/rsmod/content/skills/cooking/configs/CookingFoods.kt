@@ -6,6 +6,11 @@ import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.game.type.obj.ObjType
 
 internal object CookingObjs : ObjReferences() {
+    /** The Gauntlet's raw paddlefish (cooked on its own range). */
+    val gauntlet_raw_food = find("gauntlet_raw_food")
+    val gauntlet_food = find("gauntlet_food")
+    val gauntlet_burnt_food = find("gauntlet_burnt_food")
+
     val raw_beef = find("raw_beef")
     val raw_chicken = find("raw_chicken")
     val raw_rabbit = find("raw_rabbit")
@@ -348,6 +353,19 @@ internal object CookingFoods {
                 143.0,
                 48,
                 352,
+            ),
+            // The Gauntlet's paddlefish: no level, 15 xp, range only. The wiki gives no burn
+            // chance;
+            // this follows Near-Reality's `48 - level` per cent (at most 34), which is never at
+            // 48 and above.
+            CookableFood(
+                CookingObjs.gauntlet_raw_food,
+                CookingObjs.gauntlet_food,
+                CookingObjs.gauntlet_burnt_food,
+                level = 1,
+                xp = 15.0,
+                fire = null,
+                range = CookRate(low = 169, high = 350),
             ),
         ) + CookingExtras.all
 

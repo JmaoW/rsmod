@@ -6,11 +6,11 @@ import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
 import org.rsmod.api.player.ui.ifClose
-import org.rsmod.api.player.ui.ifOpenOverlay
 import org.rsmod.api.player.ui.ifSetEvents
 import org.rsmod.api.player.vars.boolVarBit
 import org.rsmod.api.script.onIfOpen
 import org.rsmod.api.script.onIfOverlayButton
+import org.rsmod.content.interfaces.collectionlog.CollectionLogScreens
 import org.rsmod.content.interfaces.journal.tab.SideJournalTab
 import org.rsmod.content.interfaces.journal.tab.configs.journal_components
 import org.rsmod.content.interfaces.journal.tab.configs.journal_varbits
@@ -24,8 +24,11 @@ import org.rsmod.plugin.scripts.ScriptContext
 
 class SummarySideScript
 @Inject
-constructor(private val eventBus: EventBus, private val protectedAccess: ProtectedAccessLauncher) :
-    PluginScript() {
+constructor(
+    private val eventBus: EventBus,
+    private val protectedAccess: ProtectedAccessLauncher,
+    private val collection: CollectionLogScreens,
+) : PluginScript() {
     private var ProtectedAccess.displayPlaytime by boolVarBit(journal_varbits.display_playtime)
     private var ProtectedAccess.displayPlaytimeReminderDisabled by
         boolVarBit(journal_varbits.display_playtime_remind_disable)
@@ -76,7 +79,7 @@ constructor(private val eventBus: EventBus, private val protectedAccess: Protect
     }
 
     private fun Player.clickCollectionLog() {
-        ifOpenOverlay(interfaces.collection, eventBus)
+        collection.openOverview(this)
     }
 
     private fun Player.selectTimePlayedToggle() {

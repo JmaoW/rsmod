@@ -17,6 +17,7 @@ import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onAiApPlayer2
 import org.rsmod.api.script.onAiOpPlayer2
+import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.category.isType
@@ -42,9 +43,11 @@ import org.rsmod.plugin.scripts.ScriptContext
  * volcanic breath at the tile the player stands on. It is treated as dragonfire ([DrakeBreath]): it
  * burns the player four times, but a player who steps off the tile before it lands is not hit.
  *
- * Not built: the King Black Dragon's poison, freeze and stat-drain side effects, the dragonfire
- * shield's charges and special attack, the brutal dragons' magic attack, wyverns, Vorkath and
- * Galvek.
+ * The King Black Dragon's special breaths publish a [DragonBreathLanded] when they hurt, for
+ * whoever owns the poison, the freeze and the stat drain (see [BreathEffect]).
+ *
+ * Not built: the dragonfire shield's charges and special attack, the brutal dragons' magic attack,
+ * wyverns, Vorkath and Galvek.
  */
 class DragonScript
 @Inject
@@ -53,6 +56,7 @@ constructor(
     private val accuracy: AccuracyFormulae,
     private val dragonfire: Dragonfire,
     private val random: GameRandom,
+    private val eventBus: EventBus,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         for (kind in DragonKind.entries) {
@@ -94,6 +98,14 @@ constructor(
             onImpact =
                 NpcImpactListener { player, hit ->
                     dragonfire.resolve(player, hit, style.breath, burnt)
+                    // Only a breath that hurt can carry its second effect, and not every one does.
+                    if (
+                        style.effect != BreathEffect.None &&
+                            hit.damage > 0 &&
+                            random.of(EFFECT_ODDS) == 0
+                    ) {
+                        eventBus.publish(DragonBreathLanded(player, npc, style.effect, hit.damage))
+                    }
                 },
         )
     }
@@ -149,7 +161,12 @@ constructor(
     }
 
     /** One way of breathing: the table it uses and how it looks. */
-    class BreathStyle(val breath: Breath, anim: SeqType, projectile: SpotanimType) {
+    class BreathStyle(
+        val breath: Breath,
+        anim: SeqType,
+        projectile: SpotanimType,
+        val effect: BreathEffect = BreathEffect.None,
+    ) {
         /**
          * The hit is made typeless and always lands with a placeholder damage: [Dragonfire] works
          * out the real damage when the breath lands, from what the player has on then.
@@ -169,6 +186,12 @@ constructor(
     companion object {
         /** How far from its target a long-ranged dragon breathes. A guess, the Wiki gives none. */
         const val BREATH_RANGE = 5
+
+        /**
+         * Out of how many special breaths that hurt one carries its second effect. The Wiki says "a
+         * chance" and gives no number: this is a guess.
+         */
+        const val EFFECT_ODDS = 2
 
         private val CHROMATIC =
             BreathStyle(Breath.Chromatic, DragonSeqs.breath, DragonSpotanims.fireball)
@@ -208,16 +231,27 @@ constructor(
                 extraHits = DrakeBreath.HITS - 1,
             )
         private val KING_FIRE =
-            BreathStyle(Breath.KingBlackDragon, DragonSeqs.breath, DragonSpotanims.fire)
+            BreathStyle(Breath.KingBlackDragon, DragonSeqs.king_breath, DragonSpotanims.fire)
         private val KING_SPECIAL =
             listOf(
                 BreathStyle(
                     Breath.KingBlackDragonSpecial,
-                    DragonSeqs.breath,
+                    DragonSeqs.king_breath,
                     DragonSpotanims.toxic,
+                    BreathEffect.Poison,
                 ),
-                BreathStyle(Breath.KingBlackDragonSpecial, DragonSeqs.breath, DragonSpotanims.ice),
-                BreathStyle(Breath.KingBlackDragonSpecial, DragonSeqs.breath, DragonSpotanims.shock),
+                BreathStyle(
+                    Breath.KingBlackDragonSpecial,
+                    DragonSeqs.king_breath,
+                    DragonSpotanims.ice,
+                    BreathEffect.Freeze,
+                ),
+                BreathStyle(
+                    Breath.KingBlackDragonSpecial,
+                    DragonSeqs.king_breath,
+                    DragonSpotanims.shock,
+                    BreathEffect.Shock,
+                ),
             )
     }
 }

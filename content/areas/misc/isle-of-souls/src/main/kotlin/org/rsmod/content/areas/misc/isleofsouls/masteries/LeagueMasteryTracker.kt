@@ -38,7 +38,7 @@ class LeagueMasteryTracker @Inject constructor() : CombatMasteryProvider {
         MasteryVarBits.point_unlock.count { player.vars[it] >= 1 }
 
     /** Points earned from finished tasks so far, spent or not. */
-    fun pointsEarned(player: Player): Int = completedTasks(player) * MasteryData.POINTS_PER_TASK
+    fun pointsEarned(player: Player): Int = completedTasks(player) * MasteryData.pointsPerTask
 
     /** Points [player] can spend now. */
     fun pointsToSpend(player: Player): Int =

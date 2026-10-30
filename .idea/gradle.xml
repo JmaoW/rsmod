@@ -124,6 +124,7 @@
             <option value="$PROJECT_DIR$/content/generic/generic-npcs" />
             <option value="$PROJECT_DIR$/content/interfaces" />
             <option value="$PROJECT_DIR$/content/interfaces/bank" />
+            <option value="$PROJECT_DIR$/content/interfaces/collection-log" />
             <option value="$PROJECT_DIR$/content/interfaces/combat-tab" />
             <option value="$PROJECT_DIR$/content/interfaces/emotes" />
             <option value="$PROJECT_DIR$/content/interfaces/equipment" />
@@ -137,12 +138,14 @@
             <option value="$PROJECT_DIR$/content/interfaces/skill-guides" />
             <option value="$PROJECT_DIR$/content/interfaces/world-map" />
             <option value="$PROJECT_DIR$/content/other" />
+            <option value="$PROJECT_DIR$/content/other/bolt-effects" />
             <option value="$PROJECT_DIR$/content/other/commands" />
             <option value="$PROJECT_DIR$/content/other/dragonfire" />
             <option value="$PROJECT_DIR$/content/other/drop-tables" />
             <option value="$PROJECT_DIR$/content/other/food" />
             <option value="$PROJECT_DIR$/content/other/login" />
             <option value="$PROJECT_DIR$/content/other/mapclock" />
+            <option value="$PROJECT_DIR$/content/other/packs" />
             <option value="$PROJECT_DIR$/content/other/special-attacks" />
             <option value="$PROJECT_DIR$/content/other/special-weapons" />
             <option value="$PROJECT_DIR$/content/other/windmill" />

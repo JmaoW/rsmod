@@ -3,6 +3,7 @@ package org.rsmod.game.entity
 import org.rsmod.annotations.InternalApi
 import org.rsmod.game.entity.npc.NpcInfoProtocol
 import org.rsmod.game.entity.npc.NpcMode
+import org.rsmod.game.entity.npc.NpcTint
 import org.rsmod.game.entity.npc.NpcUid
 import org.rsmod.game.entity.npc.OpVisibility
 import org.rsmod.game.entity.player.PlayerUid
@@ -50,7 +51,13 @@ public class Npc(
         get() = blockWalk.collisionFlag
 
     override val collisionStrategy: CollisionStrategy?
-        get() = moveRestrict.collisionStrategy
+        get() = collisionOverride ?: moveRestrict.collisionStrategy
+
+    /**
+     * Replaces the type's [moveRestrict] collision for this npc alone, e.g. with
+     * [CollisionStrategy.Ignore] for a scripted mover that passes through walls and players.
+     */
+    public var collisionOverride: CollisionStrategy? = null
 
     override val heroPoints: HeroPoints = HeroPoints(type.heroCount)
 
@@ -85,6 +92,12 @@ public class Npc(
     public var lifecycleChangeCycle: Int = -1
     public var lifecycleDelayedAddCycle: Int = -1
     public var lifecycleDelayedAddDuration: Int = -1
+
+    /**
+     * The percentage the npc's attack rolls are scaled by (100 for none). Raid content raises it
+     * with the raid level; the formulas for npc-versus-player accuracy read it.
+     */
+    public var attackRollPercent: Int = 100
 
     public var attackLvl: Int = type.attack
     public var strengthLvl: Int = type.strength
@@ -166,6 +179,9 @@ public class Npc(
 
     public val visType: UnpackedNpcType
         get() = transmog ?: type
+
+    private var tint: NpcTint? = null
+    private var tintEndClock: Int = -1
 
     public var infoProtocol: NpcInfoProtocol
         get() = avatar.infoProtocol
@@ -365,6 +381,40 @@ public class Npc(
         transmog = null
         lifecycleChangeCycle = -1
         infoProtocol.resetTransmog(originalType = id)
+    }
+
+    /** The colour overlay last sent with [tint], while it lasts. */
+    public val activeTint: NpcTint?
+        get() = tint?.takeIf { currentMapClock < tintEndClock }
+
+    /**
+     * Blends [tint] over the npc's model for [duration] ticks, starting after [delay] ticks. Only
+     * players who see the npc when it is sent get it, so a long tint is worth sending again now and
+     * then (sending the same tint again does not flicker).
+     */
+    public fun tint(tint: NpcTint, duration: Int, delay: Int = 0) {
+        require(delay >= 0 && duration > 0 && delay + duration <= NpcTint.MAX_DURATION) {
+            "`delay` + `duration` must be in 1..${NpcTint.MAX_DURATION} ticks: $delay + $duration"
+        }
+        this.tint = tint
+        this.tintEndClock = currentMapClock + delay + duration
+        infoProtocol.setTinting(
+            start = delay * NpcTint.CLIENT_CYCLES_PER_TICK,
+            end = (delay + duration) * NpcTint.CLIENT_CYCLES_PER_TICK,
+            hue = tint.hue,
+            saturation = tint.saturation,
+            lightness = tint.lightness,
+            weight = tint.weight,
+        )
+    }
+
+    public fun resetTint() {
+        if (tint == null) {
+            return
+        }
+        tint = null
+        tintEndClock = -1
+        infoProtocol.setTinting(0, 0, NpcTint.KEEP, NpcTint.KEEP, NpcTint.KEEP, 0)
     }
 
     public fun copyStats(from: UnpackedNpcType) {

@@ -11,6 +11,20 @@ public interface CollisionStrategy {
         }
     }
 
+    /** Moves anywhere: no wall, loc, floor or entity flag blocks it. */
+    public object Ignore : CollisionStrategy {
+        override fun canMove(tileFlag: Int, blockFlag: Int): Boolean = true
+    }
+
+    /** Stopped by walls, locs and the floor as usual, but moves through players and npcs. */
+    public object IgnoreEntities : CollisionStrategy {
+        private const val ENTITIES = CollisionFlag.BLOCK_NPCS or CollisionFlag.BLOCK_PLAYERS
+
+        override fun canMove(tileFlag: Int, blockFlag: Int): Boolean {
+            return (tileFlag and (blockFlag and ENTITIES.inv())) == 0
+        }
+    }
+
     public object Blocked : CollisionStrategy {
         override fun canMove(tileFlag: Int, blockFlag: Int): Boolean {
             val flag = blockFlag and CollisionFlag.BLOCK_WALK.inv()

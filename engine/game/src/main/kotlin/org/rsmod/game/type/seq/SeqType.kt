@@ -63,7 +63,9 @@ public data class UnpackedSeqType(
     public val debugName: String?,
     public val crossWorldSound: Boolean,
     public val totalDelay: Int = delay.sum(),
-    public val tickDuration: Int = delay.tickDuration(),
+    public val tickDuration: Int =
+        if (delay.isEmpty()) keyframeTickDuration(keyframeRangeStart, keyframeRangeEnd)
+        else delay.tickDuration(),
     override var internalPriority: Int,
     override var internalId: Int?,
     override var internalName: String?,
@@ -152,6 +154,19 @@ public data class UnpackedSeqType(
     }
 
     override fun hashCode(): Int = computeIdentityHash().toInt()
+}
+
+/**
+ * Keyframe (maya) seqs have no frame delays: the client steps one keyframe per client cycle (20ms)
+ * from [start] to [end]. A keyframe seq without a range takes its length from the keyframe file,
+ * which the server does not have, so its duration stays `0`.
+ */
+private fun keyframeTickDuration(start: Int, end: Int): Int {
+    val cycles = end - start
+    if (cycles <= 0) {
+        return 0
+    }
+    return ceil(cycles * 20 / 600.0).toInt()
 }
 
 private fun ShortArray.tickDuration(): Int {

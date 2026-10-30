@@ -4,6 +4,8 @@ import jakarta.inject.Inject
 import net.rsprot.protocol.game.incoming.resumed.ResumePauseButton
 import org.rsmod.api.net.rsprot.player.InterfaceEvents
 import org.rsmod.api.player.input.ResumePauseButtonInput
+import org.rsmod.api.player.ui.IfPauseButton
+import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.comp.ComponentTypeList
 import org.rsmod.game.type.interf.IfEvent
@@ -14,6 +16,7 @@ import org.rsmod.game.ui.UserInterface
 class ResumePauseButtonHandler
 @Inject
 constructor(
+    private val eventBus: EventBus,
     private val interfaceTypes: InterfaceTypeList,
     private val componentTypes: ComponentTypeList,
 ) : MessageHandler<ResumePauseButton> {
@@ -28,6 +31,11 @@ constructor(
         val pauseEnabled =
             InterfaceEvents.isEnabled(player.ui, componentType, message.sub, IfEvent.PauseButton)
         if (!pauseEnabled) {
+            return
+        }
+
+        // Interfaces that keep themselves open for many clicks claim the click here.
+        if (eventBus.publish(IfPauseButton(player, componentType, message.sub))) {
             return
         }
 

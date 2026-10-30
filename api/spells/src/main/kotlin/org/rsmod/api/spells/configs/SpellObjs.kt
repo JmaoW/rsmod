@@ -3,15 +3,40 @@ package org.rsmod.api.spells.configs
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.type.editors.obj.ObjEditor
+import org.rsmod.api.type.refs.comp.ComponentReferences
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.map.CoordGrid
 
+/** The spellbook button that reveals the bolt enchantment spells. */
+internal object BoltSpellComponents : ComponentReferences() {
+    val view = find("magic_spellbook:xbows_enchant")
+}
+
 internal object SpellObjEditor : ObjEditor() {
     init {
+        editBoltSpells()
         editStandardSpells()
         editAncientSpells()
         editLunarSpells()
         editArceuusSpells()
+    }
+
+    /**
+     * The ten Enchant Crossbow Bolt spells only have their runes in the cache. The rest of what a
+     * spell needs (OSRS Wiki, "Enchant Crossbow Bolt") is set here; they all share the button that
+     * reveals them, since the server asks which one with a menu.
+     */
+    private fun editBoltSpells() {
+        bolt(objs.spell_enchant_bolt_opal, "Enchant Opal Bolt", level = 4, xp = 9.0)
+        bolt(objs.spell_enchant_bolt_sapphire, "Enchant Sapphire Bolt", level = 7, xp = 17.5)
+        bolt(objs.spell_enchant_bolt_jade, "Enchant Jade Bolt", level = 14, xp = 19.0)
+        bolt(objs.spell_enchant_bolt_pearl, "Enchant Pearl Bolt", level = 24, xp = 29.0)
+        bolt(objs.spell_enchant_bolt_emerald, "Enchant Emerald Bolt", level = 27, xp = 37.0)
+        bolt(objs.spell_enchant_bolt_topaz, "Enchant Red Topaz Bolt", level = 29, xp = 33.0)
+        bolt(objs.spell_enchant_bolt_ruby, "Enchant Ruby Bolt", level = 49, xp = 59.0)
+        bolt(objs.spell_enchant_bolt_diamond, "Enchant Diamond Bolt", level = 57, xp = 67.0)
+        bolt(objs.spell_enchant_bolt_dragonstone, "Enchant Dragonstone Bolt", level = 68, xp = 78.0)
+        bolt(objs.spell_enchant_bolt_onyx, "Enchant Onyx Bolt", level = 87, xp = 97.0)
     }
 
     private fun editStandardSpells() {
@@ -214,6 +239,18 @@ internal object SpellObjEditor : ObjEditor() {
 
     private fun spell(type: ObjType, xp: Double) {
         edit(type) { param[params.spell_castxp] = (xp * 10).toInt() }
+    }
+
+    private fun bolt(type: ObjType, name: String, level: Int, xp: Double) {
+        edit(type) {
+            param[params.spell_name] = name
+            param[params.spell_button] = BoltSpellComponents.view
+            param[params.spell_levelreq] = level
+            param[params.spell_castxp] = (xp * 10).toInt()
+            param[params.spell_spellbook] = 0
+            param[params.spell_type] = 1
+            param[params.spell_maxhit] = 0
+        }
     }
 
     private fun tele(type: ObjType, xp: Double, dest: CoordGrid) {

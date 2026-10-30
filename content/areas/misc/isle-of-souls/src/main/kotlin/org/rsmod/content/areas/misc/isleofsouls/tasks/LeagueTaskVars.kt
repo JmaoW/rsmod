@@ -44,6 +44,12 @@ object LeagueProgressVarps : VarpReferences() {
     val catch_karambwan = find("isle_count_catch_karambwan")
     val catch_sardine = find("isle_count_catch_sardine")
     val catch_pike = find("isle_count_catch_pike")
+    val catch_anglerfish = find("isle_count_catch_anglerfish")
+
+    /** Revenant weapons dropped so far (0 or 1 each): see `RevenantBraceletScript`. */
+    val revenant_craw = find("isle_revenant_craw")
+    val revenant_viggora = find("isle_revenant_viggora")
+    val revenant_thammaron = find("isle_revenant_thammaron")
     val cook_food = find("isle_count_cook_food")
     val cook_lobster = find("isle_count_cook_lobster")
     val cook_shark = find("isle_count_cook_shark")
@@ -117,6 +123,23 @@ object LeagueProgressVarps : VarpReferences() {
     val kill_scurrius_25 = find("isle_count_kill_scurrius_25")
     val kill_kalphite_queen_50 = find("isle_count_kill_kalphite_queen_50")
     val kill_kalphite_queen_150 = find("isle_count_kill_kalphite_queen_150")
+    val kill_callisto_50 = find("isle_count_kill_callisto_50")
+    val kill_callisto_150 = find("isle_count_kill_callisto_150")
+    val kill_callisto_300 = find("isle_count_kill_callisto_300")
+    val kill_venenatis_50 = find("isle_count_kill_venenatis_50")
+    val kill_venenatis_150 = find("isle_count_kill_venenatis_150")
+    val kill_venenatis_300 = find("isle_count_kill_venenatis_300")
+    val kill_vetion_50 = find("isle_count_kill_vetion_50")
+    val kill_vetion_150 = find("isle_count_kill_vetion_150")
+    val kill_vetion_300 = find("isle_count_kill_vetion_300")
+    val kill_dk_rex = find("isle_count_kill_dk_rex")
+    val kill_dk_prime = find("isle_count_kill_dk_prime")
+    val kill_dk_supreme = find("isle_count_kill_dk_supreme")
+    val kill_vorkath_50 = find("isle_count_kill_vorkath_50")
+    val kill_vorkath_150 = find("isle_count_kill_vorkath_150")
+    val kill_vorkath_300 = find("isle_count_kill_vorkath_300")
+    val gauntlet_hm_50 = find("isle_count_gauntlet_hm_50")
+    val gauntlet_hm_150 = find("isle_count_gauntlet_hm_150")
 
     val clean_guam = find("isle_count_clean_guam")
     val clean_tarromin = find("isle_count_clean_tarromin")
@@ -184,6 +207,7 @@ object LeagueProgressVarps : VarpReferences() {
             catch_karambwan,
             catch_sardine,
             catch_pike,
+            catch_anglerfish,
             cook_food,
             cook_lobster,
             cook_shark,
@@ -284,6 +308,26 @@ object LeagueProgressVarps : VarpReferences() {
             kill_scurrius_25,
             kill_kalphite_queen_50,
             kill_kalphite_queen_150,
+            kill_callisto_50,
+            kill_callisto_150,
+            kill_callisto_300,
+            kill_venenatis_50,
+            kill_venenatis_150,
+            kill_venenatis_300,
+            kill_vetion_50,
+            kill_vetion_150,
+            kill_vetion_300,
+            kill_dk_rex,
+            kill_dk_prime,
+            kill_dk_supreme,
+            kill_vorkath_50,
+            kill_vorkath_150,
+            kill_vorkath_300,
+            gauntlet_hm_50,
+            gauntlet_hm_150,
+            revenant_craw,
+            revenant_viggora,
+            revenant_thammaron,
         )
 }
 
@@ -305,6 +349,10 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_catch_karambwan") {}
         build("isle_count_catch_sardine") {}
         build("isle_count_catch_pike") {}
+        build("isle_count_catch_anglerfish") {}
+        build("isle_revenant_craw") {}
+        build("isle_revenant_viggora") {}
+        build("isle_revenant_thammaron") {}
         build("isle_count_cook_food") {}
         build("isle_count_cook_lobster") {}
         build("isle_count_cook_shark") {}
@@ -405,5 +453,22 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_kill_scurrius_25") {}
         build("isle_count_kill_kalphite_queen_50") {}
         build("isle_count_kill_kalphite_queen_150") {}
+        build("isle_count_kill_callisto_50") {}
+        build("isle_count_kill_callisto_150") {}
+        build("isle_count_kill_callisto_300") {}
+        build("isle_count_kill_venenatis_50") {}
+        build("isle_count_kill_venenatis_150") {}
+        build("isle_count_kill_venenatis_300") {}
+        build("isle_count_kill_vetion_50") {}
+        build("isle_count_kill_vetion_150") {}
+        build("isle_count_kill_vetion_300") {}
+        build("isle_count_kill_dk_rex") {}
+        build("isle_count_kill_dk_prime") {}
+        build("isle_count_kill_dk_supreme") {}
+        build("isle_count_kill_vorkath_50") {}
+        build("isle_count_kill_vorkath_150") {}
+        build("isle_count_kill_vorkath_300") {}
+        build("isle_count_gauntlet_hm_50") {}
+        build("isle_count_gauntlet_hm_150") {}
     }
 }

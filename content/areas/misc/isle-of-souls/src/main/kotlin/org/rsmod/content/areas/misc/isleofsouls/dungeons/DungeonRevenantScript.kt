@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.combat.NpcAttack
 import org.rsmod.api.combat.NpcAttackStyle
 import org.rsmod.api.combat.NpcAttacks
+import org.rsmod.api.combat.NpcImpactListener
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.npc.access.StandardNpcAccess
@@ -11,10 +12,13 @@ import org.rsmod.api.player.bonus.WornBonuses
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onAiOpPlayer2
 import org.rsmod.api.type.refs.npc.NpcReferences
+import org.rsmod.api.type.refs.seq.SeqReferences
 import org.rsmod.api.type.refs.spot.SpotanimReferences
+import org.rsmod.content.areas.misc.isleofsouls.revenant.EtherCharges
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.npc.NpcType
+import org.rsmod.game.type.seq.SeqType
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
@@ -39,8 +43,30 @@ object RevenantSpotanims : SpotanimReferences() {
     val arrow_travel = find("wild_cave_bow_arrow_travel")
 }
 
-/** One revenant kind and its Wiki max hit (the same for all three attack styles). */
-data class RevenantKind(val type: NpcType, val maxHit: Int)
+/**
+ * Animations the revenants use for a ranged or magic attack. A revenant without one swings its own
+ * attack animation for every style. The ids are the ones tsps lists per revenant npc (RuneLite
+ * data).
+ */
+object RevenantSeqs : SeqReferences() {
+    val ork_ranged = find("godwars_spiritual_ork_ranger_ranged_attack")
+    val ork_magic = find("godwars_spiritual_ork_mage_magic_attack")
+    val pyrefiend_magic = find("pyrefiend_casting")
+    val demon_magic = find("demon_casting")
+    val knight_ranged = find("ii_human_dart_throw")
+    val knight_magic = find("zaros_casting")
+}
+
+/**
+ * One revenant kind and its Wiki max hit (the same for all three attack styles). [rangedAnim] and
+ * [magicAnim] replace the npc's own attack animation (its melee one) for those styles.
+ */
+data class RevenantKind(
+    val type: NpcType,
+    val maxHit: Int,
+    val rangedAnim: SeqType? = null,
+    val magicAnim: SeqType? = null,
+)
 
 /**
  * How the Revenant Caves' revenants fight (OSRS Wiki): they use melee, ranged and magic, and pick
@@ -49,9 +75,12 @@ data class RevenantKind(val type: NpcType, val maxHit: Int)
  * hitpoints: a heal is a fraction of their health, at most one every 15 ticks, and each revenant
  * has 8 to 36 of them.
  *
+ * A charged bracelet of ethereum takes three quarters off each of their hits and spends an ether
+ * for it (Wiki), and keeps them from starting a fight (see `RevenantTolerance`).
+ *
  * Guesses where the Wiki is silent: the attack speed (4 ticks), the size of a heal (a sixth of
  * their hitpoints), the odds of healing on a given attack (one in three while hurt) and how often
- * the weakest style is picked (60%). The bracelet of ethereum is not handled.
+ * the weakest style is picked (60%).
  */
 class DungeonRevenantScript
 @Inject
@@ -65,6 +94,13 @@ constructor(
 
     private val healing = java.util.IdentityHashMap<Npc, HealState>()
 
+    /** The bracelet of ethereum: a quarter of the damage, for an ether. */
+    private val braceletImpact = NpcImpactListener { player, hit ->
+        if (EtherCharges.spendBraceletEther(player)) {
+            hit.damage = EtherCharges.braceletDamage(hit.damage)
+        }
+    }
+
     override fun ScriptContext.startup() {
         for (kind in KINDS) {
             onAiOpPlayer2(kind.type) { fight(kind, it.target) }
@@ -76,7 +112,7 @@ constructor(
             return
         }
         val style = pickStyle(target)
-        attacks.attack(npc, target, attackOf(kind, style))
+        attacks.attack(npc, target, attackOf(kind, style), onImpact = braceletImpact)
         actionDelay = mapClock + ATTACK_RATE
         maybeHeal(npc)
     }
@@ -144,14 +180,24 @@ constructor(
             listOf(
                 RevenantKind(RevenantNpcs.imp, 2),
                 RevenantKind(RevenantNpcs.goblin, 3),
-                RevenantKind(RevenantNpcs.pyrefiend, 5),
+                RevenantKind(RevenantNpcs.pyrefiend, 5, magicAnim = RevenantSeqs.pyrefiend_magic),
                 RevenantKind(RevenantNpcs.hobgoblin, 8),
                 RevenantKind(RevenantNpcs.cyclops, 16),
                 RevenantKind(RevenantNpcs.hellhound, 14),
-                RevenantKind(RevenantNpcs.demon, 18),
-                RevenantKind(RevenantNpcs.ork, 20),
+                RevenantKind(RevenantNpcs.demon, 18, magicAnim = RevenantSeqs.demon_magic),
+                RevenantKind(
+                    RevenantNpcs.ork,
+                    20,
+                    rangedAnim = RevenantSeqs.ork_ranged,
+                    magicAnim = RevenantSeqs.ork_magic,
+                ),
                 RevenantKind(RevenantNpcs.dark_beast, 23),
-                RevenantKind(RevenantNpcs.knight, 27),
+                RevenantKind(
+                    RevenantNpcs.knight,
+                    27,
+                    rangedAnim = RevenantSeqs.knight_ranged,
+                    magicAnim = RevenantSeqs.knight_magic,
+                ),
                 RevenantKind(RevenantNpcs.dragon, 30),
             )
 
@@ -165,6 +211,7 @@ constructor(
                 NpcAttackStyle.Ranged ->
                     NpcAttack(
                         style = style,
+                        anim = kind.rangedAnim,
                         castSpot = RevenantSpotanims.arrow_launch,
                         projectile = RevenantSpotanims.arrow_travel,
                         projanim = projanims.arrow,
@@ -174,6 +221,7 @@ constructor(
                 NpcAttackStyle.Magic ->
                     NpcAttack(
                         style = style,
+                        anim = kind.magicAnim,
                         projectile = RevenantSpotanims.magic_travel,
                         projanim = projanims.magic_spell,
                         impactSpot = RevenantSpotanims.magic_impact,

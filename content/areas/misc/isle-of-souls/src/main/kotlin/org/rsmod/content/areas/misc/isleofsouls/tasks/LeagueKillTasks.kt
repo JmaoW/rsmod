@@ -11,9 +11,15 @@ import org.rsmod.plugin.scripts.ScriptContext
 /**
  * A league task that is completed by killing monsters called [monster] (any letter case): once, or
  * [count] times for a counted task, whose progress is kept in the progress varp [LeagueKillTasks]
- * pairs it with.
+ * pairs it with. A kill of any of the [alsoMonsters] counts as well (Artio is a Callisto for the
+ * tasks that say "Callisto or Artio").
  */
-internal data class KillTask(val taskId: Int, val monster: String, val count: Int = 1)
+internal data class KillTask(
+    val taskId: Int,
+    val monster: String,
+    val count: Int = 1,
+    val alsoMonsters: List<String> = emptyList(),
+)
 
 /**
  * Completes the league's kill tasks ("Defeat a Goblin", "Kill 30 Bandits"). The kill goes to the
@@ -59,6 +65,18 @@ class LeagueKillTasks @Inject constructor(private val tracker: LeagueTaskTracker
                 1650 to league_progress.kill_scurrius_25,
                 874 to league_progress.kill_kalphite_queen_50,
                 875 to league_progress.kill_kalphite_queen_150,
+                1404 to league_progress.kill_callisto_50,
+                1405 to league_progress.kill_callisto_150,
+                1406 to league_progress.kill_callisto_300,
+                1398 to league_progress.kill_venenatis_50,
+                1399 to league_progress.kill_venenatis_150,
+                1400 to league_progress.kill_venenatis_300,
+                1401 to league_progress.kill_vetion_50,
+                1402 to league_progress.kill_vetion_150,
+                1403 to league_progress.kill_vetion_300,
+                608 to league_progress.kill_vorkath_50,
+                609 to league_progress.kill_vorkath_150,
+                610 to league_progress.kill_vorkath_300,
             )
 
         val tasks: List<KillTask> =
@@ -88,6 +106,7 @@ class LeagueKillTasks @Inject constructor(private val tracker: LeagueTaskTracker
                 KillTask(1798, "snake"),
                 KillTask(1837, "rooster"),
                 KillTask(62, "lesser demon"),
+                KillTask(472, "obor"),
                 KillTask(476, "bryophyta"),
                 KillTask(537, "kurask"),
                 KillTask(598, "dagannoth"),
@@ -119,6 +138,23 @@ class LeagueKillTasks @Inject constructor(private val tracker: LeagueTaskTracker
                 KillTask(864, "kalphite queen"),
                 KillTask(874, "kalphite queen", 50),
                 KillTask(875, "kalphite queen", 150),
+                KillTask(1000, "king black dragon"),
+                KillTask(992, "callisto"),
+                KillTask(1404, "callisto", 50, listOf("artio")),
+                KillTask(1405, "callisto", 150, listOf("artio")),
+                KillTask(1406, "callisto", 300, listOf("artio")),
+                KillTask(988, "venenatis"),
+                KillTask(1398, "venenatis", 50, listOf("spindel")),
+                KillTask(1399, "venenatis", 150, listOf("spindel")),
+                KillTask(1400, "venenatis", 300, listOf("spindel")),
+                KillTask(996, "vet'ion"),
+                KillTask(1401, "vet'ion", 50, listOf("calvar'ion")),
+                KillTask(1402, "vet'ion", 150, listOf("calvar'ion")),
+                KillTask(1403, "vet'ion", 300, listOf("calvar'ion")),
+                KillTask(585, "vorkath"),
+                KillTask(608, "vorkath", 50),
+                KillTask(609, "vorkath", 150),
+                KillTask(610, "vorkath", 300),
                 KillTask(1580, "bunny", 5),
                 KillTask(1750, "dire wolf"),
                 KillTask(1807, "brine rat"),
@@ -136,6 +172,9 @@ class LeagueKillTasks @Inject constructor(private val tracker: LeagueTaskTracker
                 KillTask(733, "demonic gorilla", 500),
             )
 
-        private val byMonster: Map<String, List<KillTask>> = tasks.groupBy { it.monster }
+        private val byMonster: Map<String, List<KillTask>> =
+            tasks
+                .flatMap { task -> (listOf(task.monster) + task.alsoMonsters).map { it to task } }
+                .groupBy({ it.first }, { it.second })
     }
 }

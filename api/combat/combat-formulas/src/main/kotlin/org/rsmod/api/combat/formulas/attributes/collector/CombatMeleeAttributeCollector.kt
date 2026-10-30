@@ -14,6 +14,7 @@ import org.rsmod.api.player.legs
 import org.rsmod.api.player.righthand
 import org.rsmod.api.player.torso
 import org.rsmod.api.player.worn.EquipmentChecks
+import org.rsmod.api.player.worn.RevenantEther
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.isAnyType
 import org.rsmod.game.inv.isType
@@ -108,7 +109,8 @@ public class CombatMeleeAttributeCollector @Inject constructor(private val objTy
                     CombatMeleeAttributes.BarroniteMaceWeapon
                 }
 
-                weapon.isAnyType(objs.viggoras_chainmace, objs.ursine_chainmace) -> {
+                weapon.isAnyType(objs.viggoras_chainmace, objs.ursine_chainmace) &&
+                    RevenantEther.usable(weapon) > 0 -> {
                     CombatMeleeAttributes.RevenantWeapon
                 }
 

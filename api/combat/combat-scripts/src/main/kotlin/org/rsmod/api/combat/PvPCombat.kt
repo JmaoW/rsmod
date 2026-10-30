@@ -9,6 +9,7 @@ import org.rsmod.api.combat.player.activateMagicSpecial
 import org.rsmod.api.combat.player.activateMeleeSpecial
 import org.rsmod.api.combat.player.activateRangedSpecial
 import org.rsmod.api.combat.player.activateShieldSpecial
+import org.rsmod.api.combat.player.activateSpellSpecial
 import org.rsmod.api.combat.player.setPkVars
 import org.rsmod.api.combat.player.specialAttackType
 import org.rsmod.api.combat.weapon.WeaponSpeeds
@@ -41,6 +42,7 @@ constructor(
     private val manager: PlayerAttackManager,
     private val ammunition: RangedAmmoManager,
     private val spellsReg: SpellAttackRegistry,
+    private val rules: PvpRules,
 ) {
     suspend fun attack(access: ProtectedAccess, target: Player, attack: CombatAttack.PlayerAttack) {
         when (attack) {
@@ -76,7 +78,7 @@ constructor(
             specialAttackType = SpecialAttackType.None
             val activatedSpec = activateMeleeSpecial(target, attack, specialsReg, specialEnergy)
             if (activatedSpec) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -85,7 +87,7 @@ constructor(
             specialAttackType = SpecialAttackType.None
             val activatedSpec = activateShieldSpecial(target, player.lefthand, specialsReg)
             if (activatedSpec) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -96,12 +98,12 @@ constructor(
         if (specializedWeapon != null) {
             val attackHandled = specializedWeapon.attack(this, target, attack)
             if (attackHandled) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
 
-        setPkVars(target)
+        markPk(target)
 
         val damage = manager.rollMeleeDamage(player, target, attack)
         manager.giveCombatXp(player, target, attack, damage)
@@ -132,7 +134,7 @@ constructor(
             specialAttackType = SpecialAttackType.None
             val activatedSpec = activateRangedSpecial(target, attack, specialsReg, specialEnergy)
             if (activatedSpec) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -141,7 +143,7 @@ constructor(
             specialAttackType = SpecialAttackType.None
             val activatedSpec = activateShieldSpecial(target, player.lefthand, specialsReg)
             if (activatedSpec) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -154,7 +156,7 @@ constructor(
         if (specializedWeapon != null) {
             val attackHandled = specializedWeapon.attack(this, target, attack)
             if (attackHandled) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -209,7 +211,7 @@ constructor(
             return
         }
 
-        setPkVars(target)
+        markPk(target)
 
         // Official behavior: If the weapon (quiver or righthand, based on the thrown weapon flag)
         // has no `proj_launch` param, a "null" (-1) spotanim will still be sent in the same slot
@@ -261,9 +263,19 @@ constructor(
         val attackRate = speeds.playerSpellDelay(player)
         manager.setNextAttackDelay(player, attackRate)
 
+        // A staff's special attack replaces the spell that is set to autocast.
+        if (specialAttackType == SpecialAttackType.Weapon) {
+            specialAttackType = SpecialAttackType.None
+            val activatedSpec = activateSpellSpecial(target, attack, specialsReg, specialEnergy)
+            if (activatedSpec) {
+                markPk(target)
+                return
+            }
+        }
+
         val spell = spellsReg[attack.spell.obj]
         if (spell != null) {
-            setPkVars(target)
+            markPk(target)
             spell.attack(this, target, attack)
             return
         }
@@ -298,7 +310,7 @@ constructor(
             specialAttackType = SpecialAttackType.None
             val activatedSpec = activateMagicSpecial(target, attack, specialsReg, specialEnergy)
             if (activatedSpec) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -307,7 +319,7 @@ constructor(
             specialAttackType = SpecialAttackType.None
             val activatedSpec = activateShieldSpecial(target, player.lefthand, specialsReg)
             if (activatedSpec) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -318,7 +330,7 @@ constructor(
         if (specializedWeapon != null) {
             val attackHandled = specializedWeapon.attack(this, target, attack)
             if (attackHandled) {
-                setPkVars(target)
+                markPk(target)
                 return
             }
         }
@@ -330,5 +342,24 @@ constructor(
         mes("Your staff fails to respond.")
     }
 
-    private fun canAttack(target: Player): Boolean = target.isValidTarget()
+    private fun ProtectedAccess.canAttack(target: Player): Boolean {
+        if (!target.isValidTarget()) {
+            return false
+        }
+        // Content decides where players may fight. Checked on every swing, so walking out of a
+        // zone or turning it off ends a fight that is already going.
+        val denial = rules.denial(player, target)
+        if (denial != null) {
+            manager.stopCombat(player)
+            mes(denial)
+            return false
+        }
+        return true
+    }
+
+    /** Records the attack in the pk vars and tells content, which hands out the skull. */
+    private fun ProtectedAccess.markPk(target: Player) {
+        setPkVars(target)
+        rules.attacked(player, target)
+    }
 }

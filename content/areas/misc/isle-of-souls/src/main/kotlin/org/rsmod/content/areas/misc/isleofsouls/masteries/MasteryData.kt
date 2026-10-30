@@ -2,6 +2,7 @@ package org.rsmod.content.areas.misc.isleofsouls.masteries
 
 import org.rsmod.api.combat.mastery.CombatMasteries
 import org.rsmod.api.combat.mastery.MasteryStyle
+import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
 
 /** A combat mastery: the [tier] (1 to 6) unlocked on the [style] path. */
 data class MasteryChoice(val style: MasteryStyle, val tier: Int) {
@@ -38,8 +39,9 @@ object MasteryData {
     /** The number of mastery tasks (cache enum `5695`). */
     const val TASK_COUNT = 10
 
-    /** Mastery points each completed task is worth. */
-    const val POINTS_PER_TASK = 2
+    /** Mastery points each completed task is worth ([EventSettings]' `masteryPointsPerTask`). */
+    val pointsPerTask: Int
+        get() = EventSettings.current.masteryPointsPerTask
 
     /** Mastery points one unlock costs. */
     const val UNLOCK_COST = 1

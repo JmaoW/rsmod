@@ -39,10 +39,10 @@ enum class AntifireLevel {
  * Each is a count of ticks left, run down by a soft timer that only exists while the player has an
  * effect running.
  *
- * Poison and venom read the protection from [hasPoisonProtection]. Dragonfire reads [antifire]
- * (`content/other/dragonfire`). Goading likewise is only recorded, see [isGoading]. Antipoison is
- * saved on log-out (its ticks are kept in [PotionVars]) and picked up again on log-in; the rest is
- * not saved, so it ends on logout.
+ * Poison and venom read the protection from [hasPoisonProtection] and [hasVenomProtection].
+ * Dragonfire reads [antifire] (`content/other/dragonfire`). Goading likewise is only recorded, see
+ * [isGoading]. Antipoison is saved on log-out (its ticks are kept in [PotionVars]) and picked up
+ * again on log-in; the rest is not saved, so it ends on logout.
  */
 @Singleton
 class PotionEffects
@@ -73,6 +73,9 @@ constructor(
     private val states = WeakHashMap<Player, State>()
 
     fun hasPoisonProtection(player: Player): Boolean = ticksLeft(player, TimedEffect.Antipoison) > 0
+
+    fun hasVenomProtection(player: Player): Boolean =
+        ticksLeft(player, TimedEffect.VenomImmunity) > 0
 
     fun hasDragonfireProtection(player: Player): Boolean = antifire(player) != AntifireLevel.None
 
@@ -287,6 +290,30 @@ constructor(
         val left = player.vars[PotionVars.antipoison_ticks]
         if (left > 0) {
             start(player, TimedEffect.Antipoison, left)
+        }
+    }
+
+    /**
+     * Ends every effect [player] has when they die, without the messages: protection from poison
+     * and dragonfire, stamina, and the stat boosts a divine potion or overload holds up (the death
+     * sequence then restores the stats themselves).
+     */
+    fun died(player: Player) {
+        val state = states.remove(player)
+        if (state != null) {
+            for (stat in state.divineStats) {
+                holds.release(player, stat)
+            }
+            if (state.overload != null) {
+                for (stat in OVERLOAD_STATS) {
+                    holds.release(player, stat)
+                }
+            }
+        }
+        player.clearSoftTimer(HerbloreTimers.effects)
+        VarPlayerIntMapSetter.set(player, varbits.stamina_active, 0)
+        if (player.vars[PotionVars.antipoison_ticks] != 0) {
+            VarPlayerIntMapSetter.set(player, PotionVars.antipoison_ticks, 0)
         }
     }
 

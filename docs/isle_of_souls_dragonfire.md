@@ -11,7 +11,7 @@ tests with real dragons).
 | Chromatic | green, blue, red, black, lava, reanimated | next to the player only, 1 attack in 6 (wiki) | `Breath.Chromatic` |
 | Brutal | brutal green/blue/red/black | up to 5 tiles; next to the player 1 in 3 (guess) | `Breath.Chromatic` |
 | Metallic | bronze, iron, steel, mithril, adamant, rune | as brutal | `Breath.Metallic` (Protect from Magic does nothing) |
-| King Black Dragon | `king_dragon` | as above, 1 in 2 (guess); half its breaths are fire, half poison/ice/shock | `KingBlackDragon`, `KingBlackDragonSpecial` |
+| King Black Dragon | `king_dragon` | as above, 1 in 2 (guess); half its breaths are fire, half poison/ice/shock, which carry their second effect 1 time in 2 (guess, see `isle_of_souls_king_black_dragon.md`) | `KingBlackDragon`, `KingBlackDragonSpecial` |
 | Elvarg | `elvarg`, `elvarg_alive` | as above, 1 in 2 (guess) | `Elvarg` |
 | Drake | `drake` | see below | `DrakeBreath` |
 
@@ -48,5 +48,4 @@ seen in a client.
 
 ## Not built
 
-King Black Dragon's poison, freeze and stat-drain side effects; dragonfire shield charges and special
-attack; the brutal dragons' magic attack; wyverns, Vorkath, Galvek; the guesses in the table above.
+Dragonfire shield charges and special attack; the brutal dragons' magic attack; wyverns, Vorkath, Galvek; the guesses in the table above.

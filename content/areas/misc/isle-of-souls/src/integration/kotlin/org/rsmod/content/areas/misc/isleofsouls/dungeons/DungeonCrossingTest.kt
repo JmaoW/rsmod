@@ -158,4 +158,33 @@ class DungeonCrossingTest {
                 Dungeon.containing(DungeonCrossings.kalphiteCrevice.a.coords()),
             )
         }
+
+    @Test
+    fun GameTestState
+        .`the Revenant Caves pillars ask for the Wiki's levels and give its experience`() =
+        runCrossingTest { _ ->
+            val pillars =
+                mapOf(
+                    DungeonCrossings.revenantSouthPillar to (65 to 6.5),
+                    DungeonCrossings.revenantWestPillar to (75 to 7.5),
+                    DungeonCrossings.revenantNorthPillar to (75 to 7.5),
+                    DungeonCrossings.revenantNorthWestPillar to (75 to 7.5),
+                    DungeonCrossings.revenantEastPillar to (89 to 8.9),
+                )
+            for ((crossing, expected) in pillars) {
+                assertEquals(expected.first, crossing.levelAtoB, crossing.key)
+                assertEquals(expected.first, crossing.levelBtoA, crossing.key)
+                assertEquals(expected.second, crossing.xp, crossing.key)
+                assertEquals(
+                    Dungeon.REVENANT_CAVES,
+                    Dungeon.containing(crossing.a.coords()),
+                    crossing.key,
+                )
+            }
+            val east = DungeonCrossings.revenantEastPillar
+            setAgility(89)
+            val before = player.statMap.getFineXP(stats.agility)
+            assertEquals(east.b.coords(), use(east, east.a))
+            assertTrue(player.statMap.getFineXP(stats.agility) > before)
+        }
 }

@@ -502,6 +502,36 @@ class DropTableLoaderTest {
     }
 
     @Test
+    fun `excluded items are skipped without a warning`() {
+        val result =
+            loader.load(
+                listOf(
+                    source(
+                        "osrs.toml",
+                        """
+                        [[monster]]
+                        name = "cow"
+                        always = [{ item = "Bones" }]
+                        main = [
+                          { item = "Looting bag", chance = "1/3" },
+                          { item = "Wolf bone", chance = "1/4" },
+                          { item = "Coins", chance = "1/8" },
+                        ]
+                        """,
+                    )
+                )
+            )
+
+        val table = result.tables.getValue(cow.id)
+        assertEquals(listOf(DropStack(bones, 1, 1)), table.always)
+        assertEquals(
+            listOf(DropOutcome.Item(DropStack(coins, 1, 1))),
+            table.main.map { it.outcome },
+        )
+        assertEquals(emptyList<String>(), result.warnings)
+    }
+
+    @Test
     fun `lookup for an npc without a table is null`() {
         val result = loader.load(listOf(source("a.toml", "monster = []")))
         assertNull(result.tables[cow.id])

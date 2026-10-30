@@ -64,7 +64,17 @@ enum class Breath(private val burnt: IntArray, private val resisted: IntArray = 
 
     /** The King Black Dragon's poison, ice and shock breaths: all three share these numbers. */
     KingBlackDragonSpecial(intArrayOf(50, 10, 15, 10, 50, 50, 10, 10, 15, 15, 10, 10)),
-    Elvarg(intArrayOf(70, 10, 55, 7, 55, 0, 7, 0, 40, 0, 4, 0));
+    Elvarg(intArrayOf(70, 10, 55, 7, 55, 0, 7, 0, 40, 0, 4, 0)),
+
+    /**
+     * Vorkath's fiery, venomous and corrupting breaths (OSRS Wiki, "Dragonfire/Vorkath"): an
+     * antifire potion alone does much less against it, only a shield with a super antifire potion
+     * stops it.
+     */
+    Vorkath(
+        burnt = intArrayOf(80, 20, 30, 20, 70, 60, 10, 0, 20, 10, 10, 0),
+        resisted = intArrayOf(50, 20, 30, 20, 40, 30, 10, 0, 20, 10, 10, 0),
+    );
 
     init {
         require(burnt.size == BREATH_ROWS && resisted.size == BREATH_ROWS) {

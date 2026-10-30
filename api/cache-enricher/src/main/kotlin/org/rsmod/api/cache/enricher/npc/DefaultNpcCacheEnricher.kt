@@ -45,7 +45,39 @@ constructor(
                     .toCacheType()
             }
         val unconfigured = derived.map { (name, anims) -> animsOnlyType(name, anims) }
-        return configured + unconfigured
+        val attributes = loadDerivedAttributes().map { (name, set) -> attributesType(name, set) }
+        return configured + unconfigured + attributes
+    }
+
+    /**
+     * The "type" params (undead, demon, ...) that the combat formulas read, found by
+     * `tools/npc-attributes/derive_attributes.py`. Nothing else sets them, so without this none of
+     * the bonuses that depend on them (salve amulet, demonbane weapons, ...) would apply. These are
+     * kept apart from `npcs.toml` so they merge with whatever else an npc has configured.
+     */
+    private fun loadDerivedAttributes(): Map<String, List<ParamInt>> {
+        val input = InputStreams.readAllBytes<DefaultNpcCacheEnricher>("npc_attributes.toml")
+        val type = object : TypeReference<Map<String, Map<String, Int>>>() {}
+        val map = mapper.readValue(input, type)
+        val derived = mutableMapOf<String, MutableList<ParamInt>>()
+        for ((section, npcs) in map) {
+            val param = attributeParams[section] ?: error("Unknown npc attribute section: $section")
+            for ((name, value) in npcs) {
+                if (value != 0) {
+                    derived.getOrPut(name, ::mutableListOf) += param
+                }
+            }
+        }
+        return derived
+    }
+
+    private fun attributesType(name: String, attributes: List<ParamInt>): UnpackedNpcType {
+        val id = names[name] ?: error("Mapping with name not found: $name")
+        val builder = NpcPluginBuilder(name)
+        for (attribute in attributes) {
+            builder.param[attribute] = 1
+        }
+        return builder.build(id)
     }
 
     /**
@@ -200,6 +232,20 @@ constructor(
             }
         param[params.venom_immunity] = id
     }
+
+    private val attributeParams: Map<String, ParamInt>
+        get() =
+            mapOf(
+                "undead" to params.undead,
+                "demon" to params.demon,
+                "demonbane_resistant" to params.demonbane_resistant,
+                "shade" to params.shade,
+                "leafy" to params.leafy,
+                "xerician" to params.xerician,
+                "rat" to params.rat,
+                "tormented_demon" to params.tormented_demon,
+                "amascutnpc" to params.amascutnpc,
+            )
 
     private companion object {
         const val CONFIG_MAP_KEY: String = "config"

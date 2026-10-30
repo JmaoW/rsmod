@@ -6,7 +6,6 @@ import org.rsmod.api.player.back
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.torso
 import org.rsmod.api.player.worn.WornUnequipOp
-import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Player
@@ -22,8 +21,12 @@ import org.rsmod.map.CoordGrid
 import org.rsmod.routefinder.collision.CollisionFlagMap
 
 public object RangedAmmunition {
-    /** The default chance for standard ammunition to drop on the ground instead of disappearing. */
-    public const val DEFAULT_AMMO_DROP_RATE: Int = 5
+    /**
+     * The percent of fired ammunition that breaks on impact, whatever Ava's device is worn. A
+     * device's recovery rate comes out of the other 80%, and what it does not recover drops to the
+     * ground.
+     */
+    public const val AMMO_BREAK_PERCENT: Int = 20
 
     /** The obj spawn duration when an ammunition is dropped on the ground after being fired. */
     public const val DEFAULT_AMMO_DROP_DURATION: Int = 200
@@ -113,19 +116,20 @@ public object RangedAmmunition {
         return true
     }
 
-    public fun conserveAmmo(player: Player, objTypes: ObjTypeList, random: GameRandom): Boolean {
-        val cape = objTypes.getOrNull(player.back)
-        if (cape != null) {
-            val recoveryRate = cape.paramOrNull(params.ammo_recovery_rate) ?: return false
+    /**
+     * The percent of fired ammunition that [player]'s Ava's device recovers automatically, or 0
+     * when no device is worn or the body armour interferes with it.
+     */
+    public fun recoveryRate(player: Player, objTypes: ObjTypeList): Int {
+        val cape = objTypes.getOrNull(player.back) ?: return 0
+        val recoveryRate = cape.paramOrNull(params.ammo_recovery_rate) ?: return 0
 
-            val body = objTypes.getOrNull(player.torso)
-            if (body != null && body.param(params.metallic_interference)) {
-                return false
-            }
-
-            return recoveryRate > random.of(maxExclusive = 100)
+        val body = objTypes.getOrNull(player.torso)
+        if (body != null && body.param(params.metallic_interference)) {
+            return 0
         }
-        return false
+
+        return recoveryRate
     }
 
     public fun detractAmmo(

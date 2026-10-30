@@ -7,7 +7,6 @@ import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.script.onGameStartup
-import org.rsmod.api.script.onOpHeld1
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpc2
 import org.rsmod.api.script.onOpNpc3
@@ -23,7 +22,6 @@ import org.rsmod.content.skills.agility.configs.Courses
 import org.rsmod.content.skills.agility.configs.GraceCurrencies
 import org.rsmod.content.skills.agility.configs.GraceInvs
 import org.rsmod.content.skills.agility.configs.GraceNpcs
-import org.rsmod.content.skills.agility.configs.GraceObjs
 import org.rsmod.content.skills.agility.configs.GraceSpot
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
@@ -44,10 +42,7 @@ constructor(objTypes: ObjTypeList, restockProcess: ShopRestockProcess, marketPri
         "mark of grace",
     )
 
-/**
- * Grace, who sells the graceful outfit for marks of grace and amylase packs, and the packs' "Open"
- * option, which gives the hundred crystals inside.
- */
+/** Grace, who sells the graceful outfit for marks of grace and amylase packs. */
 class Grace
 @Inject
 constructor(
@@ -67,7 +62,6 @@ constructor(
         onOpNpc3(GraceNpcs.grace) { player.openShop(it.npc) }
         onOpNpc4(GraceNpcs.grace) { viewLaps(player) }
         onOpNpc5(GraceNpcs.grace) { toggleCounter(player) }
-        onOpHeld1(GraceObjs.amylase_pack) { openPack() }
     }
 
     /** Teaches the shop code to take marks of grace. Runs when the server starts. */
@@ -141,14 +135,5 @@ constructor(
             if (off) "Your lap count will no longer be shown when you finish a lap."
             else "Your lap count will be shown when you finish a lap."
         )
-    }
-
-    private fun ProtectedAccess.openPack() {
-        if (invTotal(inv, GraceObjs.amylase_pack) == 0) {
-            return
-        }
-        invDel(inv, GraceObjs.amylase_pack, 1)
-        invAdd(inv, GraceObjs.amylase, 100)
-        mes("You open the pack and find 100 amylase crystals.")
     }
 }

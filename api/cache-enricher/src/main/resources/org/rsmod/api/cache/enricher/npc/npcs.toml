@@ -917,6 +917,14 @@ examine = "It's a Viceroy Butterfly."
 [[config]]
 npc = 'king_dragon'
 examine = 'One of the biggest, meanest dragons around.'
+bonus_xp = 7.5
+slayer_xp = 258.0
+defence_light = 70
+defence_standard = 70
+defence_heavy = 40
+elemental_weakness_type = 'Water'
+elemental_weakness_percent = 50
+burn_immunity = true
 
 [[config]]
 npc = 'black_demon_strongholdcave_1'
@@ -8505,14 +8513,50 @@ examine = 'A knee-high horror from the ocean depths...'
 [[config]]
 npc = 'dagcave_ranged_boss'
 examine = 'The dagannoth king responsible for the death of the Bukalla.'
+respawn_rate = 150
+slayer_xp = 255.0
+defence_light = 550
+defence_standard = 550
+defence_heavy = 550
+venom_immunity = 'PoisonsInstead'
+elemental_weakness_type = 'Earth'
+elemental_weakness_percent = 35
+attack_anim = 2855
+defend_anim = 2852
+death_anim = 2856
 
 [[config]]
 npc = 'dagcave_magic_boss'
 examine = 'A legendary dagannoth king, rumoured to fly on the North winds.'
+respawn_rate = 150
+bonus_xp = 30.0
+slayer_xp = 331.4
+defence_light = 10
+defence_standard = 10
+defence_heavy = 10
+venom_immunity = 'PoisonsInstead'
+elemental_weakness_type = 'Earth'
+elemental_weakness_percent = 35
+attack_anim = 2854
+defend_anim = 2852
+death_anim = 2856
 
 [[config]]
 npc = 'dagcave_melee_boss'
 examine = 'Firstborn of the legendary dagannoth kings.'
+attack_type = 'Slash'
+respawn_rate = 150
+bonus_xp = 30.0
+slayer_xp = 331.4
+defence_light = 255
+defence_standard = 255
+defence_heavy = 255
+venom_immunity = 'PoisonsInstead'
+elemental_weakness_type = 'Earth'
+elemental_weakness_percent = 35
+attack_anim = 2853
+defend_anim = 2852
+death_anim = 2856
 
 [[config]]
 npc = 'dorgesh_male_1'
@@ -29425,6 +29469,7 @@ examine = 'It looks like her life is a struggle.'
 [[config]]
 npc = 'wild_cave_goblin'
 examine = 'The ghost of a goblin slain long ago.'
+attack_anim = 6184
 
 [[config]]
 npc = 'wild_cave_pyrefiend'
@@ -29433,6 +29478,7 @@ examine = 'The ghost of a pyrefiend slain long ago.'
 [[config]]
 npc = 'wild_cave_hobgoblin'
 examine = 'The ghost of a hobgoblin slain long ago.'
+attack_anim = 164
 
 [[config]]
 npc = 'wild_cave_cyclops'
@@ -29441,6 +29487,9 @@ examine = 'The ghost of a cyclops slain long ago.'
 [[config]]
 npc = 'wild_cave_hellhound'
 examine = 'The ghost of a hellhound slain long ago.'
+attack_anim = 6579
+defend_anim = 6578
+death_anim = 6558
 
 [[config]]
 npc = 'wild_cave_demon'
@@ -29449,6 +29498,7 @@ examine = 'The ghost of a demon slain long ago.'
 [[config]]
 npc = 'wild_cave_ork'
 examine = 'The ghost of an ork slain long ago.'
+attack_anim = 4320
 
 [[config]]
 npc = 'wild_cave_darkbeast'
@@ -29457,6 +29507,8 @@ examine = 'The ghost of a dark beast slain long ago.'
 [[config]]
 npc = 'wild_cave_knight'
 examine = 'The ghost of a knight slain long ago.'
+attack_anim = 390
+defend_anim = 388
 
 [[config]]
 npc = 'wild_cave_dragon'
@@ -29885,6 +29937,15 @@ examine = "This won't be fun."
 [[config]]
 npc = 'vorkath'
 examine = "This won't be fun."
+attack_type = 'Slash'
+slayer_xp = 750.0
+defence_light = 26
+defence_standard = 26
+defence_heavy = 26
+poison_immunity = true
+venom_immunity = 'Immune'
+elemental_weakness_type = 'Fire'
+elemental_weakness_percent = 40
 
 [[config]]
 npc = 'vorkath_spawn_quest'
@@ -29893,6 +29954,15 @@ examine = 'Nasty looking thing.'
 [[config]]
 npc = 'vorkath_spawn'
 examine = 'Nasty looking thing.'
+attack_type = 'Slash'
+defence_light = 3
+defence_standard = 3
+defence_heavy = 3
+poison_immunity = true
+venom_immunity = 'Immune'
+freeze_resistance = 100
+elemental_weakness_type = 'Fire'
+elemental_weakness_percent = 50
 
 [[config]]
 npc = 'ds2_golem_melee'

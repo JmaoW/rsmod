@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation(projects.api.combat.combatMastery)
+    implementation(projects.content.skills.herblore)
     implementation(projects.api.pluginCommons)
     integrationImplementation(projects.api.combat.combatMastery)
     integrationImplementation(projects.api.invPlugin)

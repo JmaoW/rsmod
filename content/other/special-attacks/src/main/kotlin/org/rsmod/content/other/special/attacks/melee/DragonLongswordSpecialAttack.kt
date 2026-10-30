@@ -9,6 +9,7 @@ import org.rsmod.api.specials.SpecialAttackManager
 import org.rsmod.api.specials.SpecialAttackMap
 import org.rsmod.api.specials.SpecialAttackRepository
 import org.rsmod.api.specials.combat.MeleeSpecialAttack
+import org.rsmod.content.other.special.attacks.configs.sobjs
 import org.rsmod.content.other.special.attacks.configs.special_seqs
 import org.rsmod.content.other.special.attacks.configs.special_spots
 import org.rsmod.game.entity.Npc
@@ -18,9 +19,15 @@ import org.rsmod.game.entity.Player
 class DragonLongswordSpecialAttack : SpecialAttackMap {
     override fun SpecialAttackRepository.register(manager: SpecialAttackManager) {
         registerMelee(objs.dragon_longsword, DragonLongsword(manager))
+        registerMelee(sobjs.bh_dragon_longsword_corrupted, DragonLongsword(manager))
+        // The imbued longsword also swings a tick faster.
+        registerMelee(sobjs.bh_dragon_longsword_imbue, DragonLongsword(manager, quickened = true))
     }
 
-    private class DragonLongsword(private val manager: SpecialAttackManager) : MeleeSpecialAttack {
+    private class DragonLongsword(
+        private val manager: SpecialAttackManager,
+        private val quickened: Boolean = false,
+    ) : MeleeSpecialAttack {
         override suspend fun ProtectedAccess.attack(
             target: Npc,
             attack: CombatAttack.Melee,
@@ -56,6 +63,9 @@ class DragonLongswordSpecialAttack : SpecialAttackMap {
                 )
             manager.giveCombatXp(this, target, attack, damage)
             manager.queueMeleeHit(this, target, damage)
+            if (quickened) {
+                manager.setNextAttackDelay(this, (actionDelay - mapClock - 1).coerceAtLeast(1))
+            }
             manager.continueCombat(this, target)
         }
     }

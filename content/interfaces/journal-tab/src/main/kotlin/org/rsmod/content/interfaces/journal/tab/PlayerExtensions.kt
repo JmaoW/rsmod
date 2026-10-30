@@ -9,6 +9,7 @@ import org.rsmod.api.player.ui.ifCloseSub
 import org.rsmod.api.player.ui.ifOpenOverlay
 import org.rsmod.api.player.vars.enumVarBit
 import org.rsmod.api.player.vars.resyncVar
+import org.rsmod.content.interfaces.collectionlog.clog_varps
 import org.rsmod.content.interfaces.journal.tab.configs.journal_components
 import org.rsmod.content.interfaces.journal.tab.configs.journal_interfaces
 import org.rsmod.events.EventBus
@@ -82,6 +83,7 @@ internal fun Player.prepareSummaryTab() {
     resyncVar(varps.collection_count_bosses)
     resyncVar(varps.collection_count_max)
     resyncVar(varps.collection_count)
+    resyncVar(clog_varps.count_highscores)
 }
 
 internal fun Player.prepareQuestTab() {

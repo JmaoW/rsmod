@@ -175,7 +175,8 @@ constructor(
 
     private fun ZoneProt.isHidden(observerId: Long?): Boolean =
         this is ZoneUpdateTransformer.ObjPrivateZoneProt && !isVisibleTo(observerId) ||
-            this is ZoneUpdateTransformer.ObjReveal && observerId == obj.receiverId
+            this is ZoneUpdateTransformer.ObjReveal && observerId == obj.receiverId ||
+            this is ZoneUpdateTransformer.MapAnimPrivate && observerId != observer
 
     private fun ZoneKey.computeVisibleNeighbouringZones(): IntList {
         val zones = IntArrayList(ZONE_VIEW_TOTAL_COUNT)

@@ -10,6 +10,7 @@ import org.rsmod.api.combat.formulas.AccuracyFormulae
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.death.NpcDeathEvents
+import org.rsmod.api.death.PlayerDeathEvents
 import org.rsmod.api.npc.access.StandardNpcAccess
 import org.rsmod.api.npc.apPlayer2
 import org.rsmod.api.npc.interact.AiPlayerInteractions
@@ -114,6 +115,7 @@ constructor(
             }
         }
         onPlayerInit { poison.resume(player) }
+        onEvent<PlayerDeathEvents.Died> { poison.cure(player) }
     }
 
     private fun StandardNpcAccess.fightKril(target: Player) {

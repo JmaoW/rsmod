@@ -14,7 +14,12 @@ object Shortcuts {
         return when (shortcut.kind) {
             ShortcutKind.Stones ->
                 hops(from, (if (forward) shortcut.stones else shortcut.stones.reversed()) + to)
-            ShortcutKind.Pillar -> hops(from, pillarHops(from, to))
+            ShortcutKind.Pillar ->
+                if (shortcut.stones.isEmpty()) {
+                    hops(from, pillarHops(from, to))
+                } else {
+                    hops(from, (if (forward) shortcut.stones else shortcut.stones.reversed()) + to)
+                }
             ShortcutKind.Log,
             ShortcutKind.RopeBalance,
             ShortcutKind.Plank -> listOf(Step.Walk(listOf(to)))

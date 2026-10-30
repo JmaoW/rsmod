@@ -10,6 +10,7 @@ class StatChange(val stat: StatType, val constant: Int, val percent: Int)
 /** The timed effects that only matter while they run, kept by `PotionEffects`. */
 enum class TimedEffect(val message: String) {
     Antipoison("Your immunity to poison has worn off."),
+    VenomImmunity("Your immunity to venom has worn off."),
     Antifire("Your resistance to dragonfire has run out."),
     ExtendedAntifire("Your resistance to dragonfire has run out."),
     SuperAntifire("Your resistance to dragonfire has run out."),
@@ -20,6 +21,24 @@ enum class TimedEffect(val message: String) {
     Overload("The effects of the overload have worn off, and you feel normal again."),
     PrayerEnhance("Your prayer enhance effect has worn off."),
     Menaphite("The effects of your Menaphite remedy have worn off."),
+}
+
+/** What a cure does to poison that is already there. */
+enum class PoisonCure {
+    None,
+
+    /** Takes 1 off the damage of each hit (Guthix rest). */
+    Weaken,
+    Cure,
+}
+
+/** What a cure does to venom that is already there. */
+enum class VenomCure {
+    None,
+
+    /** Venom becomes poison of the same damage, and another dose is needed to cure that. */
+    Convert,
+    Cure,
 }
 
 /** What drinking a potion does. */
@@ -51,6 +70,18 @@ sealed interface PotionEffect {
 
     /** Starts [effect], which lasts [ticks]. */
     class Timed(val effect: TimedEffect, val ticks: Int) : PotionEffect
+
+    /**
+     * Treats poison and venom: cures or weakens what is there ([poison], [venom]), then gives
+     * immunity to poison for [poisonTicks] and to venom for [venomTicks]. Venom immunity that does
+     * not come with a cure is only given to a player who is not envenomed.
+     */
+    class Treat(
+        val poison: PoisonCure,
+        val venom: VenomCure,
+        val poisonTicks: Int = 0,
+        val venomTicks: Int = 0,
+    ) : PotionEffect
 
     /** One prayer point every [REGEN_INTERVAL] ticks, for [REGEN_POINTS] points a dose. */
     data object PrayerRegeneration : PotionEffect
@@ -192,13 +223,13 @@ object Potions {
         Potion(
             "Antipoison",
             HerbloreObjs.antipoison,
-            PotionEffect.Timed(TimedEffect.Antipoison, 150),
+            PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, 150),
         )
     val super_antipoison =
         Potion(
             "Superantipoison",
             HerbloreObjs.super_antipoison,
-            PotionEffect.Timed(TimedEffect.Antipoison, 600),
+            PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, 600),
         )
     val energy = Potion("Energy potion", HerbloreObjs.energy, PotionEffect.RunEnergy(10))
     val super_energy = Potion("Super energy", HerbloreObjs.super_energy, PotionEffect.RunEnergy(20))

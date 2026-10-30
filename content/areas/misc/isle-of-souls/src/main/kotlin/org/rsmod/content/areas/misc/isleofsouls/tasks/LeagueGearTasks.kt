@@ -51,6 +51,33 @@ constructor(private val tracker: LeagueTaskTracker, private val objTypes: ObjTyp
             tracker.complete(player, TASK_ELEMENTAL_BATTLESTAFF)
         }
 
+        // The Wilderness bosses' drops (the rings come in an imbued version too).
+        if ("dragon_2h_sword" in worn) {
+            tracker.complete(player, TASK_DRAGON_2H)
+        }
+        if (worn.any { it in tyrannicalRings }) {
+            tracker.complete(player, TASK_TYRANNICAL_RING)
+        }
+        if (worn.any { it in treasonousRings }) {
+            tracker.complete(player, TASK_TREASONOUS_RING)
+        }
+        if (worn.any { it in ringsOfTheGods }) {
+            tracker.complete(player, TASK_RING_OF_THE_GODS)
+        }
+        if ("voidwaker" in worn) {
+            tracker.complete(player, TASK_VOIDWAKER)
+        }
+        // The revenant weapons and the bracelet, charged or not (and the sceptres in either form).
+        for ((names, task) in revenantGear) {
+            if (worn.any { it in names }) {
+                tracker.complete(player, task)
+            }
+        }
+        // Bryophyta's staff, charged or not.
+        if ("nature_staff_charged" in worn || "nature_staff_uncharged" in worn) {
+            tracker.complete(player, TASK_BRYOPHYTAS_STAFF)
+        }
+
         // "Equip some Steel armour": any one piece will do.
         if (worn.any { it in steelPieces }) {
             tracker.complete(player, TASK_STEEL_ARMOUR)
@@ -77,6 +104,39 @@ constructor(private val tracker: LeagueTaskTracker, private val objTypes: ObjTyp
         const val TASK_STEEL_ARMOUR = 1072
         const val TASK_ELEMENTAL_STAFF = 430
         const val TASK_ELEMENTAL_BATTLESTAFF = 433
+        const val TASK_DRAGON_2H = 1003
+        const val TASK_TYRANNICAL_RING = 993
+        const val TASK_TREASONOUS_RING = 989
+        const val TASK_RING_OF_THE_GODS = 997
+        const val TASK_VOIDWAKER = 1256
+        const val TASK_BRYOPHYTAS_STAFF = 477
+
+        val revenantGear: List<Pair<Set<String>, Int>> =
+            listOf(
+                setOf("wild_cave_bracelet_charged", "wild_cave_bracelet_uncharged") to 1014,
+                setOf(
+                    "wild_cave_sceptre_charged",
+                    "wild_cave_sceptre_uncharged",
+                    "wild_cave_sceptre_charged_recol",
+                    "wild_cave_sceptre_uncharged_recol",
+                ) to 697,
+                setOf("wild_cave_chainmace_charged", "wild_cave_chainmace_uncharged") to 910,
+                setOf("wild_cave_bow_charged", "wild_cave_bow_uncharged") to 1018,
+                setOf("wild_cave_webweaver_charged", "wild_cave_webweaver_uncharged") to 1257,
+                setOf(
+                    "wild_cave_accursed_charged",
+                    "wild_cave_accursed_uncharged",
+                    "wild_cave_accursed_charged_recol",
+                    "wild_cave_accursed_uncharged_recol",
+                ) to 1258,
+                setOf("wild_cave_ursine_charged", "wild_cave_ursine_uncharged") to 1259,
+            )
+
+        val tyrannicalRings =
+            setOf("heavy_ring", "nzone_heavy_ring", "sw_heavy_ring", "pvpa_heavy_ring")
+        val treasonousRings =
+            setOf("sharp_ring", "nzone_sharp_ring", "sw_sharp_ring", "pvpa_sharp_ring")
+        val ringsOfTheGods = setOf("rotg", "nzone_rotg", "sw_rotg", "pvpa_rotg")
 
         val elementalStaffs = setOf("air", "water", "earth", "fire").map { "staff_of_$it" }.toSet()
 

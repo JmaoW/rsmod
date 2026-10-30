@@ -135,6 +135,9 @@ object DragonObjs : ObjReferences() {
 
 object DragonSeqs : SeqReferences() {
     val breath = find("dragon_firebreath_attack")
+
+    /** The King Black Dragon's breath: tsps and the old games play 84, the "middle" breath. */
+    val king_breath = find("dragon_firebreath_middle_attack")
     val drake_attack = find("drake_ranged")
 }
 

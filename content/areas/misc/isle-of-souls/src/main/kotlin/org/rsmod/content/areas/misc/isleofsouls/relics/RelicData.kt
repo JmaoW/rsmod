@@ -1,5 +1,7 @@
 package org.rsmod.content.areas.misc.isleofsouls.relics
 
+import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
+
 /** A relic choice: the [tier] it belongs to and its 1-based [option] within that tier. */
 data class RelicChoice(val tier: Int, val option: Int, val name: String)
 
@@ -9,8 +11,9 @@ data class RelicChoice(val tier: Int, val option: Int, val name: String)
  * which is the value the client expects in the `league_relic_selection_N` varbits.
  */
 object RelicData {
-    /** League points needed before a relic from each tier can be chosen. */
-    val thresholds = intArrayOf(0, 750, 1500, 2500, 5000, 8000, 16000, 25000)
+    /** League points needed before a relic from each tier can be chosen ([EventSettings]'). */
+    val thresholds: List<Int>
+        get() = EventSettings.current.relicPointThresholds
 
     /** Relic names per tier, in option order (option `1` is the first entry). */
     val names: List<List<String>> =

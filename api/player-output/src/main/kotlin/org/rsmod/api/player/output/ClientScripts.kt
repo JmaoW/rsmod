@@ -253,6 +253,13 @@ public object ClientScripts {
     public fun pvpIconsComLevelRange(player: Player, combatLevel: Int): Unit =
         player.runClientScript(5224, combatLevel)
 
+    /**
+     * Tells the Wilderness overlay whether the player is inside the Wilderness (`1`) or not (`0`)
+     * and redraws it.
+     */
+    public fun combatWildernessTransmit(player: Player, inside: Int): Unit =
+        player.runClientScript(390, inside)
+
     public fun statGroupTooltip(
         player: Player,
         tooltip: ComponentType,

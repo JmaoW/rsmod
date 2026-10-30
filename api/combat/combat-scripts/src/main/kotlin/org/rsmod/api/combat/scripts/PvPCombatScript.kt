@@ -2,6 +2,7 @@ package org.rsmod.api.combat.scripts
 
 import jakarta.inject.Inject
 import org.rsmod.api.combat.PvPCombat
+import org.rsmod.api.combat.PvpRules
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.commons.styles.AttackStyle
 import org.rsmod.api.combat.manager.MagicRuneManager
@@ -37,6 +38,7 @@ constructor(
     private val spells: MagicSpellRegistry,
     private val runes: MagicRuneManager,
     private val autocast: AutocastWeapons,
+    private val rules: PvpRules,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onApPlayer2 { attemptCombatAp(it.target) }
@@ -103,6 +105,14 @@ constructor(
     }
 
     private fun ProtectedAccess.canAttack(target: Player): Boolean {
+        // Content decides where players may fight (and who).
+        val denial = rules.denial(player, target)
+        if (denial != null) {
+            mes(denial)
+            clearPendingAction()
+            return false
+        }
+
         val weapon = objTypes.getOrNull(player.righthand)
         if (weapon != null && weapon.isCategoryType(categories.dinhs_bulwark)) {
             val attackStyle = styles.get(player)

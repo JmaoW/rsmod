@@ -26,7 +26,8 @@ constructor(private val bonuses: WornBonuses, private val attackStyles: AttackSt
     public fun computeAttackRoll(source: Npc, sourceType: UnpackedNpcType): Int {
         val effectiveMagic = NpcMagicAccuracy.calculateEffectiveMagic(source.magicLvl)
         val magicBonus = sourceType.param(params.attack_magic)
-        return NpcMagicAccuracy.calculateBaseAttackRoll(effectiveMagic, magicBonus)
+        val attackRoll = NpcMagicAccuracy.calculateBaseAttackRoll(effectiveMagic, magicBonus)
+        return attackRoll * source.attackRollPercent / 100
     }
 
     public fun computeDefenceRoll(target: Player): Int {

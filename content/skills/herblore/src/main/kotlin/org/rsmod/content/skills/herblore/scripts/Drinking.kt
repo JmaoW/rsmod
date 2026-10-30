@@ -6,6 +6,7 @@ import org.rsmod.api.combat.mastery.CombatMasteryEffects
 import org.rsmod.api.config.refs.hitmark_groups
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.death.PlayerDeathEvents
 import org.rsmod.api.player.events.interact.HeldObjEvents
 import org.rsmod.api.player.output.UpdateRun
 import org.rsmod.api.player.protect.ProtectedAccess
@@ -16,16 +17,19 @@ import org.rsmod.api.player.stat.stat
 import org.rsmod.api.player.stat.statBase
 import org.rsmod.api.player.stat.statSub
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
+import org.rsmod.api.script.onEvent
 import org.rsmod.api.script.onOpHeld1
 import org.rsmod.api.script.onPlayerLogin
 import org.rsmod.api.script.onPlayerSoftTimer
 import org.rsmod.content.skills.herblore.configs.HerbloreSeqs
 import org.rsmod.content.skills.herblore.configs.HerbloreTimers
+import org.rsmod.content.skills.herblore.configs.PoisonCure
 import org.rsmod.content.skills.herblore.configs.Potion
 import org.rsmod.content.skills.herblore.configs.PotionEffect
 import org.rsmod.content.skills.herblore.configs.Potions
 import org.rsmod.content.skills.herblore.configs.StatChange
 import org.rsmod.content.skills.herblore.configs.TimedEffect
+import org.rsmod.content.skills.herblore.configs.VenomCure
 import org.rsmod.events.UnboundEvent
 import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.HitType
@@ -48,8 +52,10 @@ class Drinking
 constructor(
     private val statTypes: StatTypeList,
     private val effects: PotionEffects,
+    private val sickness: SicknessTreatment,
     private val masteries: CombatMasteryEffects,
     private val launcher: ProtectedAccessLauncher,
+    private val rules: DrinkRules,
 ) : PluginScript() {
     /** The cycle each player can next drink a potion. */
     private val ready = WeakHashMap<Player, Int>()
@@ -66,10 +72,16 @@ constructor(
         }
         onPlayerSoftTimer(HerbloreTimers.effects) { effects.tick(player) }
         onPlayerLogin { effects.reset(player) }
+        onEvent<PlayerDeathEvents.Died> { effects.died(player) }
     }
 
     private fun ProtectedAccess.drink(event: HeldObjEvents.Op1, potion: Potion, doses: Int) {
         if (mapClock < (ready[player] ?: Int.MIN_VALUE)) {
+            return
+        }
+        val denial = rules.denial(player, potion)
+        if (denial != null) {
+            mes(denial)
             return
         }
         val effect = potion.effect
@@ -137,6 +149,14 @@ constructor(
             is PotionEffect.RunEnergy -> restoreRunEnergy(effect.percent)
             is PotionEffect.Stamina -> stamina(effect)
             is PotionEffect.Timed -> effects.start(player, effect.effect, effect.ticks)
+            is PotionEffect.Treat ->
+                sickness.treat(
+                    player,
+                    effect.poison,
+                    effect.venom,
+                    effect.poisonTicks,
+                    effect.venomTicks,
+                )
             PotionEffect.PrayerRegeneration -> effects.addRegeneration(player)
             PotionEffect.SaradominBrew -> saradominBrew()
             PotionEffect.ZamorakBrew -> zamorakBrew()
@@ -166,14 +186,22 @@ constructor(
         }
     }
 
-    /** Hitpoints and prayer back to full and a quarter (a fifth) over, full run energy. */
+    /**
+     * Hitpoints and prayer back to full and a quarter (a fifth) over, full run energy, and poison
+     * and venom cured, with poison immunity after.
+     */
     private fun ProtectedAccess.ambrosia() {
         restoreStat(stats.hitpoints, 255, 0)
         statBoost(stats.hitpoints, 2, 25)
         restoreStat(stats.prayer, 255, 0)
         statBoost(stats.prayer, 5, 20)
         restoreRunEnergy(100)
-        effects.start(player, TimedEffect.Antipoison, AMBROSIA_ANTIPOISON_TICKS)
+        sickness.treat(
+            player,
+            PoisonCure.Cure,
+            VenomCure.Cure,
+            poisonTicks = AMBROSIA_ANTIPOISON_TICKS,
+        )
     }
 
     private fun ProtectedAccess.boost(changes: List<StatChange>) {

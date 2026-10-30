@@ -2,10 +2,12 @@ package org.rsmod.content.areas.misc.isleofsouls.zulrah
 
 import com.github.michaelbull.logging.InlineLogger
 import jakarta.inject.Inject
+import org.rsmod.api.death.PlayerDeathEvents
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.repo.loc.LocRepository
 import org.rsmod.api.repo.obj.ObjRepository
+import org.rsmod.api.script.onEvent
 import org.rsmod.api.script.onGameStartup
 import org.rsmod.api.script.onOpHeld4
 import org.rsmod.api.script.onOpLoc1
@@ -59,6 +61,7 @@ constructor(
         }
         onPlayerLogout { zulrah.sweep(except = player) }
         onPlayerInit { venom.resume(player) }
+        onEvent<PlayerDeathEvents.Died> { venom.cure(player) }
 
         for (unique in DISMANTLED) {
             onOpHeld4(unique) { dismantle(it.inventory, it.slot, unique) }
@@ -71,7 +74,7 @@ constructor(
             ZulrahArena.boat,
             locTypes[zulrah_locs.boat],
             duration = Int.MAX_VALUE,
-            angle = LocAngle.South,
+            angle = LocAngle.West,
             shape = LocShape.CentrepieceStraight,
         )
         logger.info { "Zulrah's boat is at ${ZulrahArena.boat}" }

@@ -123,7 +123,7 @@ object MinigamePotions {
             MinigamePotionObjs.sanfew,
             PotionEffect.Composite(
                 PotionEffect.Restore(4, 30, true),
-                PotionEffect.Timed(TimedEffect.Antipoison, 600),
+                PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, 600),
             ),
         )
     val ba_sanfew = copy(sanfew, MinigamePotionObjs.ba_sanfew)
@@ -131,25 +131,25 @@ object MinigamePotions {
         potion(
             "Antidote+",
             MinigamePotionObjs.antidote_plus,
-            PotionEffect.Timed(TimedEffect.Antipoison, 900),
+            PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, 900),
         )
     val antidote_plus_plus =
         potion(
             "Antidote++",
             MinigamePotionObjs.antidote_plus_plus,
-            PotionEffect.Timed(TimedEffect.Antipoison, 1200),
+            PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, 1200, venomTicks = 45),
         )
     val anti_venom =
         potion(
             "Anti-venom",
             MinigamePotionObjs.anti_venom,
-            PotionEffect.Timed(TimedEffect.Antipoison, 1200),
+            PotionEffect.Treat(PoisonCure.Cure, VenomCure.Cure, 1230, venomTicks = 75),
         )
     val anti_venom_plus =
         potion(
             "Anti-venom+",
             MinigamePotionObjs.anti_venom_plus,
-            PotionEffect.Timed(TimedEffect.Antipoison, 1500),
+            PotionEffect.Treat(PoisonCure.Cure, VenomCure.Cure, 1500, venomTicks = 360),
         )
 
     private fun brew(magicConstant: Int, magicPercent: Int) =
@@ -172,23 +172,33 @@ object MinigamePotions {
             PotionEffect.MenaphiteRemedy,
         )
 
-    /** A cup of herbal tea that heals 5 hitpoints, up to 5 above the base level. */
+    /**
+     * A cup of herbal tea that heals 5 hitpoints, up to 5 above the base level, takes 1 off the
+     * damage of poison and turns venom into poison.
+     */
     val guthix_rest =
         potion(
             "Guthix rest",
             MinigamePotionObjs.guthix_rest,
-            PotionEffect.Composite(PotionEffect.Heal(5, 0, true), PotionEffect.RunEnergy(5)),
+            PotionEffect.Composite(
+                PotionEffect.Heal(5, 0, true),
+                PotionEffect.RunEnergy(5),
+                PotionEffect.Treat(PoisonCure.Weaken, VenomCure.Convert),
+            ),
             empty = MinigamePotionObjs.cup_empty,
         )
 
-    /** Tombs of Amascut: heals 15% plus 3 above the base level and lowers the offensive stats. */
+    /**
+     * Tombs of Amascut: heals 15% plus 3 above the base level and lowers the offensive stats by a
+     * twentieth plus 5 (wiki).
+     */
     val nectar =
         potion(
             "Nectar",
             MinigamePotionObjs.nectar,
             PotionEffect.Composite(
                 PotionEffect.Heal(3, 15, true),
-                PotionEffect.Drain(offence.map { boost(it, 2, 10) }),
+                PotionEffect.Drain((offence + stats.defence).map { boost(it, 5, 5) }),
             ),
             empty = null,
         )
@@ -329,19 +339,19 @@ object MinigamePotions {
             cox(
                 "Antipoison",
                 MinigamePotionObjs.raids_antipoison_weak,
-                PotionEffect.Timed(TimedEffect.Antipoison, weak.antipoisonTicks),
+                PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, weak.antipoisonTicks),
                 " (-)",
             ),
             cox(
                 "Antipoison",
                 MinigamePotionObjs.raids_antipoison,
-                PotionEffect.Timed(TimedEffect.Antipoison, normal.antipoisonTicks),
+                PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, normal.antipoisonTicks),
                 " potion",
             ),
             cox(
                 "Antipoison",
                 MinigamePotionObjs.raids_antipoison_strong,
-                PotionEffect.Timed(TimedEffect.Antipoison, strong.antipoisonTicks),
+                PotionEffect.Treat(PoisonCure.Cure, VenomCure.Convert, strong.antipoisonTicks),
                 " (+)",
             ),
         )

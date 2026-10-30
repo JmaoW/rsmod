@@ -26,6 +26,19 @@ public interface NpcInfoProtocol {
 
     public fun setHeadIcon(slot: Int, graphic: Int, index: Int)
 
+    /**
+     * [start] and [end] are in client cycles from now; hue, saturation and lightness use
+     * [NpcTint.KEEP] for a channel left alone, and a [weight] of 0 clears the tint.
+     */
+    public fun setTinting(
+        start: Int,
+        end: Int,
+        hue: Int,
+        saturation: Int,
+        lightness: Int,
+        weight: Int,
+    ) {}
+
     public fun exactMove(
         deltaX1: Int,
         deltaZ1: Int,
@@ -75,6 +88,15 @@ public data object NoopNpcInfo : NpcInfoProtocol {
     override fun toggleOps(ops: OpVisibility) {}
 
     override fun setHeadIcon(slot: Int, graphic: Int, index: Int) {}
+
+    override fun setTinting(
+        start: Int,
+        end: Int,
+        hue: Int,
+        saturation: Int,
+        lightness: Int,
+        weight: Int,
+    ) {}
 
     override fun exactMove(
         deltaX1: Int,

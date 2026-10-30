@@ -14,6 +14,7 @@ import org.rsmod.content.areas.misc.isleofsouls.masteries.MasteryKills
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.tasks.league_progress
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
+import org.rsmod.content.interfaces.collectionlog.CollectionLog
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.obj.ObjType
 
@@ -58,6 +59,7 @@ constructor(
     private val announcer: LeagueAnnouncer,
     private val teams: LeagueTeams,
     private val completions: InfernoCompletions,
+    private val collectionLog: CollectionLog,
 ) {
     /**
      * Gives each of [players] the infernal cape, the Tokkul and a chance at the pet, finishes their
@@ -101,6 +103,7 @@ constructor(
 
     private fun give(player: Player, obj: ObjType, count: Int) {
         player.invAddOrDrop(objRepo, obj, count = count)
+        collectionLog.receive(player, obj.id, count)
     }
 
     companion object {

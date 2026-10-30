@@ -3,6 +3,7 @@ package org.rsmod.content.areas.misc.isleofsouls.relics
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
+import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskVars
 import org.rsmod.game.entity.Player
 import org.rsmod.game.type.stat.StatType
@@ -93,29 +94,32 @@ class LeagueRelicTracker @Inject constructor() {
     /**
      * The league XP multiplier for [stat]. It starts at 5x and is raised by the passives of tiers 2
      * (8x), 5 (12x) and 7 (16x) once a relic from that tier is chosen. Choosing a tier 3 relic also
-     * doubles XP for combat skills, multiplicatively.
+     * doubles XP for combat skills, multiplicatively. The numbers are [EventSettings]'.
      */
     fun xpMultiplier(player: Player, stat: StatType): Double {
-        var multiplier = BASE_XP_MULTIPLIER
-        for ((tier, value) in XP_MULTIPLIER_TIERS) {
-            if (selected(player, tier) != 0) {
+        val settings = EventSettings.current
+        var multiplier = settings.xpBase
+        for ((tier, value) in settings.xpByRelicTier) {
+            if (selected(player, tier - 1) != 0) {
                 multiplier = value
             }
         }
-        if (selected(player, COMBAT_BONUS_TIER) != 0 && combatStats.any { it.isType(stat) }) {
-            multiplier *= COMBAT_BONUS
+        val bonusTier = settings.combatXpBonusTier - 1
+        if (selected(player, bonusTier) != 0 && combatStats.any { it.isType(stat) }) {
+            multiplier *= settings.combatXpBonus
         }
         return multiplier
     }
 
     /**
      * How many times as likely monster drops are for [player]: 5x once a tier 1 relic is chosen,
-     * and 20x once a tier 4 relic is chosen (replacing the 5x, not stacking with it).
+     * and 20x once a tier 4 relic is chosen (replacing the 5x, not stacking with it). The numbers
+     * are [EventSettings]'.
      */
     fun dropMultiplier(player: Player): Double {
         var multiplier = 1.0
-        for ((tier, value) in DROP_MULTIPLIER_TIERS) {
-            if (selected(player, tier) != 0) {
+        for ((tier, value) in EventSettings.current.dropByRelicTier) {
+            if (selected(player, tier - 1) != 0) {
                 multiplier = value
             }
         }
@@ -140,15 +144,5 @@ class LeagueRelicTracker @Inject constructor() {
         const val STATE_SELECTABLE = 2
         const val STATE_PREVIOUS_TIER = 3
         const val STATE_TIER_CHOSEN = 4
-
-        const val BASE_XP_MULTIPLIER = 5.0
-        const val COMBAT_BONUS = 2.0
-        const val COMBAT_BONUS_TIER = 2
-
-        /** Tier index to the XP multiplier it raises the league to; later entries take priority. */
-        val XP_MULTIPLIER_TIERS = listOf(1 to 8.0, 4 to 12.0, 6 to 16.0)
-
-        /** Tier index to the drop multiplier it raises the league to; later entries win. */
-        val DROP_MULTIPLIER_TIERS = listOf(0 to 5.0, 3 to 20.0)
     }
 }
