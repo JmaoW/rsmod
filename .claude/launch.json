@@ -6,6 +6,13 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8765", "--directory", "wiki"],
       "port": 8765
+    },
+    {
+      "name": "wiki-2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8767", "--directory", "wiki"],
+      "port": 8767,
+      "autoPort": false
     }
   ]
 }
