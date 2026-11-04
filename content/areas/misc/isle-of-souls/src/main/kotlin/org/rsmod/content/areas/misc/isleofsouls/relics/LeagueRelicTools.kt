@@ -20,6 +20,10 @@ enum class RelicItem(val tier: Int, val option: Int, val item: ObjType) {
     AnimalWrangler(0, 3, objs.league_trailblazer_harpoon),
     CornerCutter(1, 1, isle_objs.sages_greaves),
     FriendlyForager(1, 2, isle_objs.foragers_pouch),
+    TotalRecall(5, 1, isle_objs.crystal_of_echoes),
+    BankersNote(5, 2, isle_objs.bankers_note),
+    Grimoire(6, 2, isle_objs.arcane_grimoire),
+    Guardian(7, 2, isle_objs.guardian_horn),
 }
 
 /** Hands out the relic items and tells the relic effects whether they are active. */
@@ -48,7 +52,7 @@ constructor(private val relics: LeagueRelicTracker, private val objTypes: ObjTyp
 
     /** Whether [relic] is the chosen relic of its tier, whether or not its item is carried. */
     fun isChosen(player: Player, relic: RelicItem): Boolean =
-        relics.selected(player, relic.tier) == relic.option
+        relics.has(player, relic.tier, relic.option)
 
     private fun holds(player: Player, item: ObjType): Boolean =
         item in player.inv || item in player.worn

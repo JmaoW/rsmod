@@ -33,7 +33,7 @@ import org.rsmod.plugin.scripts.ScriptContext
  */
 class LeagueGoldenGod @Inject constructor(private val relics: LeagueRelicTracker) :
     AlchemyModifiers, ShopNoting {
-    fun isActive(player: Player): Boolean = relics.selected(player, TIER) == OPTION
+    fun isActive(player: Player): Boolean = relics.has(player, TIER, OPTION)
 
     override fun isFree(player: Player): Boolean = isActive(player)
 

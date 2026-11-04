@@ -11,6 +11,18 @@ object IsleOfSoulsObjs : ObjReferences() {
     /** Handed out by the Friendly Forager relic. */
     val foragers_pouch = find("foragers_pouch")
 
+    /** Crystal of echoes, handed out by the Total Recall relic. */
+    val crystal_of_echoes = find("league_trailblazer_last_recall_teleport")
+
+    /** Handed out by the Banker's Note relic. */
+    val bankers_note = find("league_bankers_note")
+
+    /** Arcane grimoire, handed out by the Grimoire relic. */
+    val arcane_grimoire = find("league_3_magic_book")
+
+    /** Handed out by the Guardian relic. */
+    val guardian_horn = find("league_guardian_summon")
+
     val dragon_bones = find("dragon_bones")
     val wyvern_bones = find("wyvern_bones")
 

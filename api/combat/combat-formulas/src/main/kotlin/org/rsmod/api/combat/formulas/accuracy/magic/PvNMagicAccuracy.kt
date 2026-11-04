@@ -172,13 +172,30 @@ constructor(
         npcAttributes: EnumSet<CombatNpcAttributes>,
     ): Int {
         val effectiveMagic = MagicAccuracyOperations.calculateEffectiveMagic(source, attackStyle)
-        val magicBonus = bonuses.offensiveMagicBonus(source)
+        val wornBonus = bonuses.offensiveMagicBonus(source)
+        val magicBonus = tumekensShadowBonus(wornBonus, staffAttributes, npcAttributes)
         val attackRoll = PlayerMagicAccuracy.calculateBaseAttackRoll(effectiveMagic, magicBonus)
         return MagicAccuracyOperations.modifyStaffAttackRoll(
             attackRoll = attackRoll,
             staffAttributes = staffAttributes,
             npcAttributes = npcAttributes,
         )
+    }
+
+    /**
+     * [WornBonuses] already triples the magic attack bonus while Tumeken's shadow is wielded;
+     * against Amascut's npcs it is four times instead (wiki), the same as its damage bonus. The
+     * tripled bonus is always a whole multiple of 3, so this is exact.
+     */
+    private fun tumekensShadowBonus(
+        wornBonus: Int,
+        staffAttributes: EnumSet<CombatStaffAttributes>,
+        npcAttributes: EnumSet<CombatNpcAttributes>,
+    ): Int {
+        val raidBonus =
+            CombatStaffAttributes.TumekensShadow in staffAttributes &&
+                CombatNpcAttributes.Amascut in npcAttributes
+        return if (raidBonus) wornBonus / 3 * 4 else wornBonus
     }
 
     public fun computeDefenceRoll(

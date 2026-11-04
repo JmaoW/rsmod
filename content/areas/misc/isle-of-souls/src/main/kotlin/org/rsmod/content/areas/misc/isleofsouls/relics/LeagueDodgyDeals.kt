@@ -23,7 +23,7 @@ import org.rsmod.plugin.scripts.ScriptContext
  */
 class LeagueDodgyDeals @Inject constructor(private val relics: LeagueRelicTracker) :
     PluginScript() {
-    fun isActive(player: Player): Boolean = relics.selected(player, TIER) == OPTION
+    fun isActive(player: Player): Boolean = relics.has(player, TIER, OPTION)
 
     override fun ScriptContext.startup() {
         onEvent<Pickpocketing.Modifiers> {

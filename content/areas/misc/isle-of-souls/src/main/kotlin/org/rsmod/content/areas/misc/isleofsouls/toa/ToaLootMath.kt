@@ -105,26 +105,53 @@ object ToaLootMath {
      * it).
      */
     fun pickUnique(raidLevel: Int, roll: (Int) -> Int): ToaUnique? {
-        val weights = uniqueWeights(raidLevel)
-        var point = roll(WEIGHT_PRECISION) / WEIGHT_PRECISION.toDouble()
-        var chosen = weights.keys.last()
-        for ((unique, weight) in weights) {
-            if (point < weight) {
-                chosen = unique
-                break
-            }
-            point -= weight
-        }
-        val outOfLevel =
-            raidLevel < 50 ||
-                (raidLevel < 150 &&
-                    (chosen == ToaUnique.ElidinisWard ||
-                        chosen.isMasori ||
-                        chosen == ToaUnique.TumekensShadow))
-        if (outOfLevel && roll(OUT_OF_LEVEL_ODDS) != 0) {
+        val chosen = weightedPick(uniqueWeights(raidLevel), roll)
+        if (isOutOfLevel(chosen, raidLevel) && roll(OUT_OF_LEVEL_ODDS) != 0) {
             return null
         }
         return chosen
+    }
+
+    /**
+     * The unique a teammate gets when the raid gives everyone one (the league's team uniques): a
+     * normal [pickUnique], and if that misses on the out-of-level roll, another pick among the
+     * uniques the raid level allows, so the teammate always gets one. Below level 50 nothing is in
+     * level, so the fang and Lightbearer are used.
+     */
+    fun pickTeamUnique(raidLevel: Int, roll: (Int) -> Int): ToaUnique {
+        pickUnique(raidLevel, roll)?.let {
+            return it
+        }
+        val weights = uniqueWeights(raidLevel)
+        val allowed =
+            weights
+                .filterKeys { !isOutOfLevel(it, raidLevel) }
+                .ifEmpty {
+                    weights.filterKeys {
+                        it == ToaUnique.OsmumtensFang || it == ToaUnique.Lightbearer
+                    }
+                }
+        val sum = allowed.values.sum()
+        return weightedPick(allowed.mapValues { it.value / sum }, roll)
+    }
+
+    private fun isOutOfLevel(unique: ToaUnique, raidLevel: Int): Boolean =
+        raidLevel < 50 ||
+            (raidLevel < 150 &&
+                (unique == ToaUnique.ElidinisWard ||
+                    unique.isMasori ||
+                    unique == ToaUnique.TumekensShadow))
+
+    /** Picks from [weights], which add up to 1. */
+    private fun weightedPick(weights: Map<ToaUnique, Double>, roll: (Int) -> Int): ToaUnique {
+        var point = roll(WEIGHT_PRECISION) / WEIGHT_PRECISION.toDouble()
+        for ((unique, weight) in weights) {
+            if (point < weight) {
+                return unique
+            }
+            point -= weight
+        }
+        return weights.keys.last()
     }
 
     private const val WEIGHT_PRECISION = 1_000_000
@@ -184,8 +211,11 @@ object ToaLootMath {
         return (quantity + 1e-6).toInt().coerceAtLeast(1)
     }
 
-    /** Wiki: below 1,500 reward points the chest gives fossilised dung instead of the table. */
-    fun givesDung(totalPoints: Int): Boolean = totalPoints < DUNG_BELOW
+    /**
+     * Wiki: below 1,500 reward points the chest gives fossilised dung instead of the table. These
+     * are the player's own loot points (the starting 5,000 taken off), as TSPS has it.
+     */
+    fun givesDung(lootPoints: Int): Boolean = lootPoints < DUNG_BELOW
 
     const val DUNG_BELOW = 1_500
 

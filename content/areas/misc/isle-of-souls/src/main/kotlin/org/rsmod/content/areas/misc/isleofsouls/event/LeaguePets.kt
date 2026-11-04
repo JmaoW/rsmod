@@ -22,6 +22,7 @@ object LeaguePets {
                 "Noon",
                 "Prince Black Dragon",
                 "Scorpia's offspring",
+                "Smol heredit",
                 "Smolcano",
                 "Sraracha",
                 "Tangleroot",

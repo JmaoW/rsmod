@@ -428,6 +428,20 @@ public class Player(
         softTimerMap.remove(timerType)
     }
 
+    /** Cycles until soft timer [timerType] next fires, or `null` if it is not running. */
+    @OptIn(InternalApi::class)
+    public fun softTimerRemaining(timerType: TimerType): Int? {
+        val packed = softTimerMap[timerType.id.toShort()] ?: return null
+        return softTimerMap.extractExpiry(packed) - currentMapClock
+    }
+
+    /** The interval soft timer [timerType] repeats at, or `null` if it is not running. */
+    @OptIn(InternalApi::class)
+    public fun softTimerInterval(timerType: TimerType): Int? {
+        val packed = softTimerMap[timerType.id.toShort()] ?: return null
+        return softTimerMap.extractInterval(packed)
+    }
+
     public fun weakQueue(queue: QueueType, cycles: Int, args: Any? = null) {
         require(cycles > 0) { "`cycles` must be greater than 0. (cycles=$cycles)" }
         weakQueueList.add(queue, QueueCategory.Weak, cycles, args)

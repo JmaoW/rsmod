@@ -19,7 +19,7 @@ constructor(private val bonuses: WornBonuses, private val attackStyles: AttackSt
 
     public fun computeHitChance(source: Npc, sourceType: UnpackedNpcType, target: Player): Int {
         val attackRoll = computeAttackRoll(source, sourceType)
-        val defenceRoll = computeDefenceRoll(target)
+        val defenceRoll = computeDefenceRoll(target) * source.targetDefenceRollPercent / 100
         return AccuracyOperations.calculateHitChance(attackRoll, defenceRoll)
     }
 

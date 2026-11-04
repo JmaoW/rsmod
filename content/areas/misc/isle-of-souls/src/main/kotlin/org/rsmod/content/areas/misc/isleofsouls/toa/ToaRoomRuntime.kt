@@ -15,13 +15,10 @@ import org.rsmod.api.player.bonus.WornBonuses
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.player.output.mes
-import org.rsmod.api.player.output.runClientScript
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.stat.stat
 import org.rsmod.api.player.stat.statAdd
 import org.rsmod.api.player.stat.statBase
-import org.rsmod.api.player.ui.ifSetColour
-import org.rsmod.api.player.ui.ifSetHide
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.loc.LocRepository
@@ -29,8 +26,11 @@ import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.api.repo.world.WorldRepository
 import org.rsmod.api.type.refs.varbit.VarBitReferences
-import org.rsmod.api.type.refs.varp.VarpReferences
 import org.rsmod.content.areas.misc.isleofsouls.dungeons.PlayerPoison
+import org.rsmod.content.areas.misc.isleofsouls.instances.BossBarBits
+import org.rsmod.content.areas.misc.isleofsouls.instances.BossBarScripts
+import org.rsmod.content.areas.misc.isleofsouls.instances.BossBarVars
+import org.rsmod.content.areas.misc.isleofsouls.instances.BossHealthBar
 import org.rsmod.content.areas.misc.isleofsouls.zulrah.PlayerVenom
 import org.rsmod.events.EventBus
 import org.rsmod.game.MapClock
@@ -49,7 +49,6 @@ import org.rsmod.game.loc.LocShape
 import org.rsmod.game.map.Direction
 import org.rsmod.game.obj.Obj
 import org.rsmod.game.proj.ProjAnim
-import org.rsmod.game.type.comp.ComponentType
 import org.rsmod.game.type.loc.LocType
 import org.rsmod.game.type.loc.LocTypeList
 import org.rsmod.game.type.npc.NpcType
@@ -909,7 +908,7 @@ abstract class ToaRoomRuntime(protected val env: ToaRoomEnv, val raid: ToaRaid, 
     /** The npc whose health the room's players see at the top of the screen, if any. */
     var bossBar: Npc? = null
 
-    private val barShownTo = HashMap<Int, Long>()
+    private val bar = BossHealthBar()
 
     /** The health [bossBar] shows: the npc's own, unless the room counts something else. */
     open fun bossBarHp(npc: Npc): Int = npc.hitpoints
@@ -917,79 +916,31 @@ abstract class ToaRoomRuntime(protected val env: ToaRoomEnv, val raid: ToaRaid, 
     /** The bar's colours for [npc]: the usual red and green, or a shield's blue. */
     open fun bossBarColours(npc: Npc): List<Int> = ToaBossBarScripts.COLOURS
 
-    /** The colours each player's bar was last drawn in. */
-    private val barColoursOf = HashMap<Int, List<Int>>()
-
     /**
-     * Keeps every player in the room shown [bossBar]'s health (the client's boss health overlay
-     * reads the npc type and two numbers), and takes it away from anyone who left.
-     *
-     * The client only opens the overlay by itself when the player hits the npc, so the first time a
-     * player is shown it the server runs the overlay's open and fade-in scripts (as captured by
-     * TSPS): an npc nobody hits, such as Crondis's palm, otherwise never shows a bar.
+     * Keeps every player in the room shown [bossBar]'s health, and takes it away from anyone who
+     * left (see [BossHealthBar]).
      */
     private fun tickBossBar() {
         val boss = bossBar?.takeIf { it.isSlotAssigned }
         val inRoom = roomPlayers()
         for (player in inRoom) {
             if (boss == null) {
-                hideBar(player)
-                continue
-            }
-            val hp = bossBarHp(boss).coerceIn(0, 0xFFFF)
-            val base = boss.baseHitpointsLvl.coerceIn(1, 0xFFFF)
-            val key = (boss.visType.id.toLong() shl 32) or (hp.toLong() shl 16) or base.toLong()
-            val previous = barShownTo[player.accountId]
-            val colours = bossBarColours(boss)
-            if (previous != null && barColoursOf[player.accountId] != colours) {
-                barColoursOf[player.accountId] = colours
-                setBarColours(player, colours)
-                player.runClientScript(ToaBossBarScripts.REDRAW, ToaBossBarScripts.redrawArgs)
-            }
-            if (previous == key) {
-                continue
-            }
-            barShownTo[player.accountId] = key
-            VarPlayerIntMapSetter.set(player, ToaBossBarBits.base, base)
-            VarPlayerIntMapSetter.set(player, ToaBossBarBits.hp, hp)
-            VarPlayerIntMapSetter.set(player, ToaBossBarVars.npc, boss.visType.id)
-            if (previous == null) {
-                VarPlayerIntMapSetter.set(player, ToaBossBarBits.boss, 1)
-                barColoursOf[player.accountId] = colours
-                setBarColours(player, colours)
-                // The open script only resets the bar and fades it in when its `hp` layer is
-                // hidden. A bar faded out earlier is still "shown" (just fully transparent), and
-                // the fade in below does nothing unless it starts from the bar's transparency, so
-                // without this only the first bar after logging in ever appeared.
-                player.ifSetHide(ToaBossBarComponents.hp, true)
-                player.runClientScript(ToaBossBarScripts.OPEN, ToaBossBarScripts.openArgs)
-                player.runClientScript(ToaBossBarScripts.FADE_IN, ToaBossBarScripts.fadeInArgs)
+                bar.hide(player)
+            } else {
+                bar.show(player, boss, bossBarHp(boss), bossBarColours(boss))
             }
         }
-        if (barShownTo.size > inRoom.size) {
+        if (bar.viewers.size > inRoom.size) {
             for (member in raid.members) {
                 if (member.player !in inRoom) {
-                    hideBar(member.player)
+                    bar.hide(member.player)
                 }
             }
         }
     }
 
-    private fun setBarColours(player: Player, colours: List<Int>) {
-        for ((component, colour) in ToaBossBarComponents.coloured.zip(colours)) {
-            player.ifSetColour(component, colour)
-        }
-    }
-
     private fun hideBar(player: Player) {
-        barColoursOf.remove(player.accountId)
-        if (barShownTo.remove(player.accountId) != null) {
-            player.runClientScript(ToaBossBarScripts.FADE_OUT, ToaBossBarScripts.fadeOutArgs)
-            VarPlayerIntMapSetter.set(player, ToaBossBarVars.npc, -1)
-            VarPlayerIntMapSetter.set(player, ToaBossBarBits.hp, 0)
-            VarPlayerIntMapSetter.set(player, ToaBossBarBits.base, 0)
-            VarPlayerIntMapSetter.set(player, ToaBossBarBits.boss, 0)
-        }
+        bar.hide(player)
     }
 
     // Changing the room's own locs
@@ -1092,62 +1043,11 @@ class ToaMonster(
     var counter: Int = 0
 }
 
-/**
- * The client's boss health overlay: the npc type whose name and health it shows (-1 for none), and
- * the health and maximum it draws.
- */
-object ToaBossBarVars : VarpReferences() {
-    val npc = find("hpbar_hud_npc")
-}
+typealias ToaBossBarScripts = BossBarScripts
 
-object ToaBossBarBits : VarBitReferences() {
-    val hp = find("hpbar_hud_hp")
-    val base = find("hpbar_hud_basehp")
-    val boss = find("hpbar_hud_boss")
-}
+typealias ToaBossBarVars = BossBarVars
 
-/**
- * The overlay's (interface 303) client scripts and their component arguments, as TSPS captured
- * them: 2376 opens it (the 19 components its own onload passes), 2887 and 2889 fade it in and out
- * (14 components and the transparency to start from). A fade step only runs when told the
- * transparency the bar has now (that is how its timer carries a fade on), so the fade in that
- * matters is the one 2376 starts itself, which it does only while the `hp` layer is hidden; the
- * captured 2887 from 254 after it is then a no-op.
- */
-object ToaBossBarScripts {
-    const val OPEN = 2376
-    const val FADE_IN = 2887
-    const val FADE_OUT = 2889
-
-    private fun components(vararg children: Int): List<Int> = children.map { (303 shl 16) or it }
-
-    val openArgs: List<Any> =
-        components(0, 2, 4, 5, 8, 10, 20, 13, 14, 15, 9, 6, 7, 11, 18, 19, 16, 17, 3)
-    private val fadeComponents = components(5, 8, 6, 7, 9, 11, 13, 14, 15, 20, 18, 19, 16, 17)
-    val fadeInArgs: List<Any> = fadeComponents + 254
-    val fadeOutArgs: List<Any> = fadeComponents + 0
-
-    /**
-     * The colours of the bar's back, sliding and remaining parts (15-bit RGB, captured by TSPS):
-     * the usual red and green, and the blue a shield is drawn in (the Doom of Mokhaiotl's).
-     */
-    val COLOURS = listOf(25600, 576, 800)
-    val SHIELD_COLOURS = listOf(132, 623, 853)
-
-    /** Redraws the bar in new colours: 11 components and a flag. */
-    const val REDRAW = 2102
-    val redrawArgs: List<Any> = components(5, 20, 13, 14, 15, 8, 9, 18, 19, 16, 17) + 1
-}
-
-object ToaBossBarComponents : org.rsmod.api.type.refs.comp.ComponentReferences() {
-    val hp = find("hpbar_hud:hp")
-    val back = find("hpbar_hud:health_bar_back")
-    val sliding = find("hpbar_hud:health_bar_sliding")
-    val remaining = find("hpbar_hud:health_bar_remaining")
-
-    val coloured: List<ComponentType>
-        get() = listOf(back, sliding, remaining)
-}
+typealias ToaBossBarBits = BossBarBits
 
 /** Osmumten rising from the floor when a room is won (TSPS uses the same seq). */
 object ToaOsmumtenSeqs : org.rsmod.api.type.refs.seq.SeqReferences() {

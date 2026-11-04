@@ -24,7 +24,15 @@ constructor(
     private val worldQueues: WorldQueueList,
     private val objRepo: ObjRepository,
     private val masteries: CombatMasteryEffects,
+    private val pouches: AmmoPouches,
 ) {
+    /**
+     * Lets any [AmmoPouch] put the ammunition [weapon] fires into [player]'s ammo slot. Call it
+     * before the attack reads the slot.
+     */
+    public fun readyAmmo(player: Player, weapon: UnpackedObjType): Unit =
+        pouches.ready(player, weapon)
+
     /**
      * Validates whether the given [weapon] and [ammo] combination are usable by [player].
      *

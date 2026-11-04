@@ -74,32 +74,7 @@ constructor(private val tracker: LeagueTaskTracker, private val masteryTasks: Le
     private companion object {
         const val TASK_FIRST_LEVEL_UP = 191
 
-        val allStats: List<StatType> =
-            listOf(
-                stats.attack,
-                stats.defence,
-                stats.strength,
-                stats.hitpoints,
-                stats.ranged,
-                stats.prayer,
-                stats.magic,
-                stats.cooking,
-                stats.woodcutting,
-                stats.fletching,
-                stats.fishing,
-                stats.firemaking,
-                stats.crafting,
-                stats.smithing,
-                stats.mining,
-                stats.herblore,
-                stats.agility,
-                stats.thieving,
-                stats.slayer,
-                stats.farming,
-                stats.runecrafting,
-                stats.hunter,
-                stats.construction,
-            )
+        val allStats: List<StatType> = leagueStats
 
         /** The tasks' descriptions leave these out, as they start above level 1. */
         val notLevelFive = setOf(stats.agility, stats.hitpoints, stats.runecrafting)
@@ -167,3 +142,31 @@ constructor(private val tracker: LeagueTaskTracker, private val masteryTasks: Le
             )
     }
 }
+
+/** Every skill, in the order of the league's level tasks. */
+val leagueStats: List<StatType> =
+    listOf(
+        stats.attack,
+        stats.defence,
+        stats.strength,
+        stats.hitpoints,
+        stats.ranged,
+        stats.prayer,
+        stats.magic,
+        stats.cooking,
+        stats.woodcutting,
+        stats.fletching,
+        stats.fishing,
+        stats.firemaking,
+        stats.crafting,
+        stats.smithing,
+        stats.mining,
+        stats.herblore,
+        stats.agility,
+        stats.thieving,
+        stats.slayer,
+        stats.farming,
+        stats.runecrafting,
+        stats.hunter,
+        stats.construction,
+    )

@@ -587,6 +587,22 @@ internal object IsleOfSoulsTaskEnums : EnumBuilder() {
             this[552] = 4880
             this[553] = 4877
             this[554] = 2110
+            // The Fortis Colosseum: the teleport, waves 1 / 6 / 12, the bank chest, the fanatic
+            // piece and set, 20k / 40k / 58k Glory, the blessed quiver, Sol Heredit 5 and 10 times
+            // (structs 3818, 3827, 3828, 3829, 3825, 3833, 3834, 3830-3832, 3835, 3846, 3847).
+            this[555] = 3818
+            this[556] = 3827
+            this[557] = 3828
+            this[558] = 3829
+            this[559] = 3825
+            this[560] = 3833
+            this[561] = 3834
+            this[562] = 3830
+            this[563] = 3831
+            this[564] = 3832
+            this[565] = 3835
+            this[566] = 3846
+            this[567] = 3847
         }
     }
 }

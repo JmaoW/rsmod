@@ -7,6 +7,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.craftingLvl
 import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.content.skills.crafting.configs.CraftingMethod
@@ -42,15 +43,20 @@ constructor(private val objTypes: ObjTypeList, private val xpMods: XpModifiers) 
     }
 
     /**
-     * Makes one action of [job], then queues the next unless the job is done or out of materials.
+     * Makes one action of [job] (more with a [ProductionBatch] rule), then queues the next unless
+     * the job is done or out of materials.
      */
     fun next(access: ProtectedAccess, job: CraftJob) {
         val recipe = job.recipe
-        if (!access.canMake(recipe, notify = true) || !access.makeOnce(recipe)) {
+        val made =
+            ProductionBatch.make(access.player, job.remaining) { first ->
+                access.canMake(recipe, notify = first) && access.makeOnce(recipe)
+            }
+        if (made == 0) {
             access.resetAnim()
             return
         }
-        job.remaining--
+        job.remaining -= made
         // Running out of materials after the first action ends the job without a message.
         if (job.remaining > 0 && access.canMake(recipe, notify = false)) {
             schedule(access, job)

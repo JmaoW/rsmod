@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.SortedMap
+import org.rsmod.content.areas.misc.isleofsouls.colosseum.ColosseumMode
+import org.rsmod.content.areas.misc.isleofsouls.colosseum.ColosseumSettings
 import org.rsmod.content.areas.misc.isleofsouls.fightcaves.FightCaveSettings
 import org.rsmod.content.areas.misc.isleofsouls.pvp.PvpSettings
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueFiles
@@ -26,7 +28,9 @@ import org.rsmod.content.areas.misc.isleofsouls.toa.ToaSettings
  *   "gauntletNodesDeplete": false,
  *   "autosave": { "intervalTicks": 200, "requestDelayTicks": 50 },
  *   "pvp": { "soulWarsArena": false, "revenantCaves": false, "wildernessBossLairs": false,
- *            "escapeCaves": false }
+ *            "escapeCaves": false },
+ *   "colosseum": { "mode": "full", "shortenedWaves": [1, 4, 7, 10, 12], "bankChestGlory": 0,
+ *                  "ringGlory": 0 }
  * }
  * ```
  *
@@ -57,6 +61,10 @@ class EventSettings(
     val pvp: PvpSettings = PvpSettings(),
     /** The Tombs of Amascut: how many paths a raid needs, and the unique chance multiplier. */
     val toa: ToaSettings = ToaSettings(),
+    /**
+     * The Fortis Colosseum: which waves a run plays, and its Glory gates (see [ColosseumSettings]).
+     */
+    val colosseum: ColosseumSettings = ColosseumSettings(),
     /** Keys in the file that no setting reads, most likely typos. */
     val unknownKeys: List<String> = emptyList(),
 ) {
@@ -110,6 +118,7 @@ class EventSettings(
             val autosave = root.obj("autosave")
             val pvp = root.obj("pvp")
             val toa = root.obj("toa")
+            val colosseum = root.obj("colosseum")
             val known =
                 OTHER_KEYS +
                     setOf(
@@ -125,6 +134,7 @@ class EventSettings(
                         "autosave",
                         "pvp",
                         "toa",
+                        "colosseum",
                     )
             val unknown =
                 root.unknown(known) +
@@ -135,7 +145,8 @@ class EventSettings(
                     drops.unknown(setOf("byRelicTier"), "dropMultiplier.") +
                     autosave.unknown(setOf("intervalTicks", "requestDelayTicks"), "autosave.") +
                     pvp.unknown(PvpSettings.KEYS, "pvp.") +
-                    toa.unknown(ToaSettings.KEYS, "toa.")
+                    toa.unknown(ToaSettings.KEYS, "toa.") +
+                    colosseum.unknown(ColosseumSettings.KEYS, "colosseum.")
             return EventSettings(
                 baseXpRate = root.number("baseXpRate", above = 0.0),
                 xpBase = xp.number("base", above = 0.0, path = "xpMultiplier") ?: DEFAULT_XP_BASE,
@@ -171,6 +182,7 @@ class EventSettings(
                         ?: DEFAULT_AUTOSAVE_REQUEST_DELAY,
                 pvp = pvp.pvpSettings(),
                 toa = toa.toaSettings(),
+                colosseum = colosseum.colosseumSettings(),
                 unknownKeys = unknown,
             )
         }
@@ -216,7 +228,39 @@ class EventSettings(
             val paths = whole("pathsRequired", atLeast = 1, path = "toa") ?: 4
             require(paths <= 4) { "toa.pathsRequired must be 1 to 4, not $paths" }
             val unique = number("uniqueMultiplier", above = 0.0, path = "toa") ?: 1.0
-            return ToaSettings(paths, unique)
+            val teamUniques = whole("teamUniquesFromLevel", atLeast = 0, path = "toa") ?: 0
+            return ToaSettings(paths, unique, teamUniques)
+        }
+
+        private fun JsonNode?.colosseumSettings(): ColosseumSettings {
+            if (this == null) {
+                return ColosseumSettings()
+            }
+            val mode =
+                get("mode")?.let { raw ->
+                    ColosseumMode.fromKey(raw.asText())
+                        ?: throw IllegalArgumentException(
+                            "colosseum.mode must be \"full\" or \"shortened\", not $raw"
+                        )
+                } ?: ColosseumMode.Full
+            val shortened =
+                get("shortenedWaves")?.let { node ->
+                    require(node.isArray && node.all { it.isIntegralNumber }) {
+                        "colosseum.shortenedWaves must be a list of wave numbers, not $node"
+                    }
+                    val waves = node.map { it.asInt() }
+                    require(ColosseumSettings.validShortened(waves)) {
+                        "colosseum.shortenedWaves must rise from 1 to 12 and end on wave 12, " +
+                            "not $node"
+                    }
+                    waves
+                } ?: ColosseumSettings.DEFAULT_SHORTENED
+            return ColosseumSettings(
+                mode = mode,
+                shortenedWaves = shortened,
+                bankChestGlory = whole("bankChestGlory", atLeast = 0, path = "colosseum") ?: 0,
+                ringGlory = whole("ringGlory", atLeast = 0, path = "colosseum") ?: 0,
+            )
         }
 
         private fun JsonNode?.pvpSettings(): PvpSettings {

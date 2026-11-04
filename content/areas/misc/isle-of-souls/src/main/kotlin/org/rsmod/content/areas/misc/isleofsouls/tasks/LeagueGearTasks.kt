@@ -78,6 +78,18 @@ constructor(private val tracker: LeagueTaskTracker, private val objTypes: ObjTyp
             tracker.complete(player, TASK_BRYOPHYTAS_STAFF)
         }
 
+        // The Fortis Colosseum's rewards: a Sunfire fanatic piece, the full set, the blessed
+        // quiver.
+        val fanatic = fanaticPieces.count { it in worn }
+        if (fanatic > 0) {
+            tracker.complete(player, TASK_SUNFIRE_PIECE)
+        }
+        if (fanatic == fanaticPieces.size) {
+            tracker.complete(player, TASK_SUNFIRE_SET)
+        }
+        if (worn.any { it in blessedQuivers }) {
+            tracker.complete(player, TASK_BLESSED_QUIVER)
+        }
         // "Equip some Steel armour": any one piece will do.
         if (worn.any { it in steelPieces }) {
             tracker.complete(player, TASK_STEEL_ARMOUR)
@@ -110,6 +122,17 @@ constructor(private val tracker: LeagueTaskTracker, private val objTypes: ObjTyp
         const val TASK_RING_OF_THE_GODS = 997
         const val TASK_VOIDWAKER = 1256
         const val TASK_BRYOPHYTAS_STAFF = 477
+        const val TASK_SUNFIRE_PIECE = 1670
+        const val TASK_SUNFIRE_SET = 1671
+        const val TASK_BLESSED_QUIVER = 1672
+
+        val fanaticPieces = setOf("sunfire_helm", "sunfire_body", "sunfire_legs")
+        val blessedQuivers =
+            setOf(
+                "dizanas_quiver_infinite",
+                "dizanas_quiver_infinite_trouver",
+                "skillcape_max_dizanas",
+            )
 
         val revenantGear: List<Pair<Set<String>, Int>> =
             listOf(

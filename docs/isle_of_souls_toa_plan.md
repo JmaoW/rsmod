@@ -640,3 +640,29 @@ that runs against this server is the one RSProx's RuneLite 1.11.19 loads, from
   the loot away. Discarded loot is never logged.
 - **Client check:** every boss bar shows (seal, Akkha, palm, Ba-Ba, Zebak, Kephri, obelisk,
   Wardens), the volatile burst, a doomed boulder rolling through you, the Warden's hitsplats.
+
+### Loot points fix (2026-11-03)
+
+- **Points are per player now.** Jagex's drop mechanics post: every player starts on 5,000, "you
+  cannot accumulate more than 64,000 Total points as an individual", and a death takes 20% of the
+  dying player's own total. `ToaPoints` used to keep one team total with one 64,000 cap, so no
+  raid could pass about 13% purple at level 300 or 18% at 500 (the 55% cap was unreachable) and a
+  death cost the whole team 20%.
+- **Unique and pet** are each one roll on the team's summed loot points (`teamLootPoints`,
+  players who left included, per Mod Ash) and go to a player by their share of those points. The
+  pet used to be rolled for each player at the team's chance.
+- **Commons, fossilised dung, the elite clue and the personal contribution varp** use the player's
+  own loot points (the dung check used the team total, so it never fired).
+- **Guess:** a unique or pet roll that lands on the share of a player who left gives nobody the
+  drop.
+- **League drop boost (same day):** the purple chance is multiplied by the league's drop-rate
+  relics (`dropMultiplier.byRelicTier`, 5x from tier 1 and 20x from tier 4), after the wiki's 55%
+  cap and capped at 100%. Relics are per player, so the team's boost is each player's multiplier
+  weighted by their loot points (`ToaRewards.relicBoost`). `toa.uniqueMultiplier` still multiplies
+  on top. The pet is not boosted (Raging Echoes did not boost pets).
+- **Team uniques (same day):** when the raid gives a purple, the finder (picked as before by
+  share of points) claims it from the sarcophagus, which only they can open now; everyone else
+  still in the raid gets a unique of their own in their chest, in place of their common rolls
+  (`ToaLootMath.pickTeamUnique`: a normal pick, redone among in-level uniques if the 1 in 50
+  misses, fang/Lightbearer below level 50). Event key `toa.teamUniquesFromLevel` (default 0 =
+  every raid; Raging Echoes used 500).

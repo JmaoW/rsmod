@@ -72,7 +72,7 @@ The order matters because early items unblock everything after them (section 9).
 | Teams | Done, 64 tests pass, **not yet tried in a real client**: roster file, shared tasks/points/bank/loot, rankings, freeze, announcements, scoreboard |
 | Instances | `TeamInstances` done, **not yet tried in a real client** (no real content uses it yet) |
 | Skills | Mining, woodcutting, fishing, cooking, firemaking, smithing, fletching and prayer built and wired to tasks; gem cutting partly |
-| Relics | Tier 1 and tier 2 effects mostly done; tiers 3-8 have only the XP passives |
+| Relics | 17 of 23 relics have effects (2026-11-03); left: the three tier 3 teleports, Treasure Arbiter, Pocket Kingdom, Overgrown |
 | Combat content | Combat engine exists, but there are **no drop tables, no combat NPC content, no bosses and no two-player NPC targeting** |
 | Combat masteries | Screen, unlock rules, points and the 10 mastery tasks (state only) are built and tested; **no combat effects yet** (section 3.6) |
 
@@ -158,7 +158,7 @@ a repick; tier 3 teleports become island teleports.
 
 ### 2.1 P0
 - [ ] Rework thresholds (section 6.2) so tier 8 is reachable in the event.
-- [ ] **Reloaded** repick flow (tier 4 is now certain to be reached).
+- [x] **Reloaded** repick flow (done 2026-11-03).
 - [ ] Drop-rate passives need the drop-table system (section 3.1).
 - [ ] Remove any relic that cannot be finished: a selectable relic that does nothing is worse than none.
 
@@ -174,18 +174,18 @@ a repick; tier 3 teleports become island teleports.
 | 3 | Clue Compass, Bank Heist, Fairy's Flight | Nothing | Island teleports (destinations in section 5). There are no treasure trails, so the Compass cannot teleport to clue steps: **(proposed)** it teleports to boss entrances and other named places on the isle |
 | 3 | Passives | Done: 2x combat XP; 2026-10-11 5x Slayer points, free Bigger and Badder, superiors 1 in 50 | Check in client |
 | 4 | Golden God | Done 2026-10-08: free, +15%, 65% kept, repeating alchemy; 20,000 coins on an altar for dragon bone XP; noted shop purchases through the shop's Noted items button | Check in client |
-| 4 | Reloaded | Nothing | Repick flow |
-| 4 | Equilibrium | Nothing | XP hook only, cheap |
-| 5 | Production Master | Nothing | Needs the production skills; cheap once they exist |
+| 4 | Reloaded | Done 2026-11-03: one extra relic from tiers 1-3, in the client's `selection_other` varbits | Check in client |
+| 4 | Equilibrium | Done 2026-11-03: wiki numbers, bonus skips every multiplier | Check in client |
+| 5 | Production Master | Done 2026-11-03: every production job in one go (ammo 10 sets) | Check in client |
 | 5 | Treasure Arbiter | Nothing | **(decided)** clues drop more often and caskets always roll the maximum number of times (section 3.5). Needs the clue and casket system |
 | 5 | Slayer Master | Done 2026-10-11: always on task, free perks and store, 100th-kill bonus XP | Check in client |
-| 6 | Total Recall, Banker's Note | Nothing | Both cheap; Total Recall is handy for boss runs |
+| 6 | Total Recall, Banker's Note | Done 2026-11-03: crystal of echoes (not in instances), banker's note (Toggle guessed) | Check in client |
 | 7 | Pocket Kingdom | Nothing | **(decided)** replaced by "Pocket Workshop": portable furnace, anvil, range and loom (no Miscellania) |
-| 7 | Grimoire | Nothing | Spellbook swap, needs the spellbooks |
+| 7 | Grimoire | Done 2026-11-03: arcane grimoire swaps spellbooks | Check in client |
 | 7 | Overgrown | Nothing | Farming |
-| 8 | Specialist | Nothing | Special attack system exists for a few weapons only |
-| 8 | Guardian | Nothing | A summoned thrall NPC with combat |
-| 8 | Last Stand | Nothing | Combat hook only |
+| 8 | Specialist | Done 2026-11-03: 20% cost, 2x accuracy, refunds | Check in client |
+| 8 | Guardian | Done 2026-11-03: horn follower, weakest-style hits, area attack; looks like a royal guard (cache npc has no model) | Check in client |
+| 8 | Last Stand | Done 2026-11-03: heal from damage dealt; food not blocked | Check in client |
 
 Relics that depend on a skill are built when that skill is.
 

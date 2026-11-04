@@ -3,15 +3,16 @@ package org.rsmod.content.areas.misc.isleofsouls.toa
 import kotlin.math.min
 
 /**
- * The reward points of one raid. Wiki (Chest (Tombs of Amascut)): the team starts on 5,000; each
- * point of damage is a room point for most monsters (a multiplier per monster, see [Multiplier]), a
- * player's room points are capped at 20,000 a room; when a room is completed they are added to the
- * team's total, capped at 64,000, and the player with the most gets a bonus of 300 times the team
- * size. A death costs 20% of the total, at least 1,000. At the end the starting 5,000 is taken off
- * again.
+ * The reward points of one raid, kept for each player. Wiki (Chest (Tombs of Amascut)) and Jagex's
+ * drop mechanics post: every player starts on 5,000; each point of damage is a room point for most
+ * monsters (a multiplier per monster, see [Multiplier]), a player's room points are capped at
+ * 20,000 a room; when a room is completed they are added to that player's total, capped at 64,000
+ * "as an individual", and the player with the most gets a bonus of 300 times the team size. A death
+ * costs the player who died 20% of their own total, at least 1,000. At the end the starting 5,000
+ * is taken off again.
  *
- * Whether a death costs the team or the player the 20% is not in the wiki's text; it is the team's
- * total here.
+ * The team's unique and pet chances use the sum of everyone's loot points ([teamLootPoints]),
+ * including players who left the raid early (Mod Ash: their contribution still counts).
  */
 class ToaPoints(private val teamSize: () -> Int) {
     /** Points per damage dealt to the kinds of monster the wiki lists. */
@@ -28,11 +29,11 @@ class ToaPoints(private val teamSize: () -> Int) {
         const val WARDENS_P3 = 2.5
     }
 
-    var total: Int = START
-        private set
-
+    private val totals = HashMap<Int, Int>()
     private val room = HashMap<Int, Double>()
-    private val contribution = HashMap<Int, Int>()
+
+    /** [player]'s total points, the starting 5,000 included. */
+    fun total(player: Int): Int = totals.getOrDefault(player, START)
 
     /** [player] dealt [damage] to something worth [multiplier] points a point of damage. */
     fun damage(player: Int, damage: Int, multiplier: Double = Multiplier.DEFAULT) {
@@ -47,17 +48,15 @@ class ToaPoints(private val teamSize: () -> Int) {
     fun roomPoints(player: Int): Int = room.getOrDefault(player, 0.0).toInt()
 
     /**
-     * The room was completed: everyone's room points join the total and the best earner gets the
-     * bonus. Returns the player who earned it, if anyone dealt damage.
+     * The room was completed: everyone's room points join their own total and the best earner gets
+     * the bonus. Returns the player who earned it, if anyone dealt damage.
      */
     fun completeRoom(): Int? {
-        var added = 0
         var best: Int? = null
         var bestPoints = 0
         for ((player, points) in room) {
             val whole = points.toInt()
-            added += whole
-            contribution.merge(player, whole, Int::plus)
+            add(player, whole)
             if (whole > bestPoints) {
                 bestPoints = whole
                 best = player
@@ -65,10 +64,8 @@ class ToaPoints(private val teamSize: () -> Int) {
         }
         room.clear()
         if (best != null) {
-            added += MVP_PER_PLAYER * teamSize().coerceAtLeast(1)
-            contribution.merge(best, MVP_PER_PLAYER * teamSize().coerceAtLeast(1), Int::plus)
+            add(best, MVP_PER_PLAYER * teamSize().coerceAtLeast(1))
         }
-        total = min(total + added, TOTAL_CAP)
         return best
     }
 
@@ -77,22 +74,26 @@ class ToaPoints(private val teamSize: () -> Int) {
         if (points <= 0) {
             return
         }
-        contribution.merge(player, points, Int::plus)
-        total = min(total + points, TOTAL_CAP)
+        add(player, points)
     }
 
-    /** A death: 20% of the total goes, at least 1,000. */
-    fun death() {
+    /** [player] died: 20% of their total goes, at least 1,000. */
+    fun death(player: Int) {
+        val total = total(player)
         val lost = maxOf(DEATH_MINIMUM, total / 5)
-        total = (total - lost).coerceAtLeast(0)
+        totals[player] = (total - lost).coerceAtLeast(0)
     }
 
-    /** What the loot and the purple chance are worked out from. */
-    val lootPoints: Int
-        get() = (total - START).coerceAtLeast(0)
+    /** What [player]'s loot, clue chance and share of a unique are worked out from. */
+    fun lootPoints(player: Int): Int = (total(player) - START).coerceAtLeast(0)
 
-    /** A player's own share of what the team earned, for splitting a unique between players. */
-    fun personal(player: Int): Int = contribution.getOrDefault(player, 0)
+    /** What the team's unique and pet chances are worked out from: everyone's loot points. */
+    val teamLootPoints: Int
+        get() = totals.keys.sumOf { lootPoints(it) }
+
+    private fun add(player: Int, points: Int) {
+        totals[player] = min(total(player) + points, TOTAL_CAP)
+    }
 
     companion object {
         const val START = 5_000

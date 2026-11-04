@@ -667,7 +667,7 @@ constructor(
         raid.totalDeaths++
         member.deaths++
         addStat(player, toa_varps.deaths[raid.mode.ordinal])
-        raid.points.death()
+        raid.points.death(player.accountId)
         player.mes("You have died. Total deaths: ${raid.totalDeaths}.")
         broadcast(
             raid,

@@ -5,6 +5,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.fletchingLvl
 import org.rsmod.api.script.onOpHeldU
 import org.rsmod.api.script.onPlayerQueueWithArgs
@@ -77,15 +78,22 @@ constructor(
     }
 
     /**
-     * Makes one batch of [job], then queues the next unless the job is done or out of materials.
+     * Makes one batch of [job] (more with a [ProductionBatch] rule), then queues the next unless
+     * the job is done or out of materials.
      */
     private fun ProtectedAccess.makeNext(job: FletchJob) {
         val recipe = job.recipe
-        if (!canMake(recipe, notify = true) || !makeOnce(recipe)) {
+        val cap =
+            if (recipe.method == FletchingMethod.Attach) ProductionBatch.AMMO_CAP else Int.MAX_VALUE
+        val made =
+            ProductionBatch.make(player, job.remaining, cap) { first ->
+                canMake(recipe, notify = first) && makeOnce(recipe)
+            }
+        if (made == 0) {
             resetAnim()
             return
         }
-        job.remaining--
+        job.remaining -= made
         // Running out of materials after the first action ends the job without a message.
         if (job.remaining > 0 && canMake(recipe, notify = false)) {
             schedule(job)

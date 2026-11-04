@@ -8,6 +8,8 @@ import org.rsmod.api.shops.ShopNoting
 import org.rsmod.api.specials.SpecialAttackMap
 import org.rsmod.api.stats.xpmod.XpMod
 import org.rsmod.api.weapons.WeaponMap
+import org.rsmod.content.areas.misc.isleofsouls.colosseum.Colosseum
+import org.rsmod.content.areas.misc.isleofsouls.colosseum.ColosseumWeapons
 import org.rsmod.content.areas.misc.isleofsouls.dagannothkings.DagannothKings
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueEvent
@@ -49,6 +51,7 @@ class IsleOfSoulsModule : PluginModule() {
         addSetBinding<WeaponMap>(RevenantWeapons::class.java)
         addSetBinding<SpecialAttackMap>(RevenantSpecials::class.java)
         addSetBinding<WeaponMap>(GauntletWeapons::class.java)
+        addSetBinding<WeaponMap>(ColosseumWeapons::class.java)
         addSetBinding<HuntTolerance>(RevenantTolerance::class.java)
 
         // One shared roster, progress store and set of live instances: every script must see the
@@ -70,6 +73,7 @@ class IsleOfSoulsModule : PluginModule() {
         bindInstance<Bryophyta>()
         bindInstance<DagannothKings>()
         bindInstance<Vorkath>()
+        bindInstance<Colosseum>()
 
         // The teleport spells go to places on the isle, not to the cache's real-world towns.
         bindProvider<TeleportDestinations>(IsleTeleportProvider::class.java)

@@ -6,6 +6,7 @@ import org.rsmod.api.player.events.interact.HeldObjEvents
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.herbloreLvl
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onOpHeld1
@@ -60,7 +61,20 @@ constructor(
             mes("You do not have the Herblore level required to clean this herb.")
             return
         }
-        if (invReplaceSlot(event.inventory, event.slot, 1, herb.clean).failure) {
+        // A [ProductionBatch] rule cleans every herb of the kind in the inventory at once.
+        val inventory = event.inventory
+        val others =
+            (0 until inventory.size).filter {
+                it != event.slot && inventory[it]?.id == herb.grimy.id
+            }
+        val count = ProductionBatch.actions(player, others.size + 1)
+        for (slot in listOf(event.slot) + others.take(count - 1)) {
+            cleanSlot(event, slot, herb)
+        }
+    }
+
+    private fun ProtectedAccess.cleanSlot(event: HeldObjEvents.Op1, slot: Int, herb: Herb) {
+        if (invReplaceSlot(event.inventory, slot, 1, herb.clean).failure) {
             return
         }
         statAdvance(stats.herblore, herb.cleanXp * xpMods.get(player, stats.herblore))
@@ -92,14 +106,23 @@ constructor(
         weakQueue(HerbloreQueues.make, job.recipe.method.ticks, job)
     }
 
-    /** Makes one of [job], then queues the next unless the job is done or out of materials. */
+    /**
+     * Makes one of [job] (more with a [ProductionBatch] rule, unless the secondary stacks), then
+     * queues the next unless the job is done or out of materials.
+     */
     private fun ProtectedAccess.makeNext(job: MakeJob) {
         val recipe = job.recipe
-        if (!canMake(recipe, notify = true) || !makeOnce(recipe)) {
+        val stackingSecondary = recipe.secondary?.let { objTypes[it].stackable } == true
+        val cap = if (stackingSecondary) 1 else Int.MAX_VALUE
+        val made =
+            ProductionBatch.make(player, job.remaining, cap) { first ->
+                canMake(recipe, notify = first) && makeOnce(recipe)
+            }
+        if (made == 0) {
             resetAnim()
             return
         }
-        job.remaining--
+        job.remaining -= made
         // Running out of materials after the first action ends the job without a message.
         if (job.remaining > 0 && canMake(recipe, notify = false)) {
             schedule(job)

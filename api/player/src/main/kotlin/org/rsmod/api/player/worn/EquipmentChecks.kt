@@ -13,6 +13,11 @@ public object EquipmentChecks {
 
     public fun isTumekensShadow(obj: InvObj?): Boolean = obj.isType(objs.tumekens_shadow)
 
+    public fun isOsmumtensFang(obj: InvObj?): Boolean =
+        obj.isAnyType(objs.osmumtens_fang, objs.osmumtens_fang_or)
+
+    public fun isLightbearer(obj: InvObj?): Boolean = obj.isType(objs.lightbearer)
+
     public fun isTwistedBow(obj: InvObj?): Boolean = obj.isType(objs.twisted_bow)
 
     public fun isDragonHunterCrossbow(obj: InvObj?): Boolean =

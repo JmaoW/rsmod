@@ -22,13 +22,23 @@ enum class RelicResult {
  * Tracks which league relics a player has chosen. Choices live in the client's own
  * `league_relic_selection_N` varbits, so the Relics screen and Leagues tab read them directly.
  *
- * The XP multiplier passives (see [xpMultiplier]) and the tier 1 relics (see
- * [LeagueGatheringRelics]) have an effect so far; the other relics are recorded but do not do
- * anything yet.
+ * A relic's effect checks [has], which also counts the extra relic picked with Reloaded (stored in
+ * the client's `league_relic_selection_other_N` varbits). The tier passives go by [selected].
  */
 class LeagueRelicTracker @Inject constructor() {
     /** The 1-based option chosen for [tier], or `0` if none. */
     fun selected(player: Player, tier: Int): Int = player.vars[RelicVarBits.selection[tier]]
+
+    /** The extra option Reloaded picked in [tier], or `0`. */
+    fun other(player: Player, tier: Int): Int = player.vars[RelicVarBits.other[tier]]
+
+    /** Whether [player] has relic [option] of [tier], chosen normally or with Reloaded. */
+    fun has(player: Player, tier: Int, option: Int): Boolean =
+        selected(player, tier) == option || other(player, tier) == option
+
+    /** The tier of the relic Reloaded picked, or `null` if it has not picked one. */
+    fun reloadedTier(player: Player): Int? =
+        RelicVarBits.other.indices.firstOrNull { other(player, it) != 0 }
 
     /** The relic whose card was last clicked, ready for [confirm]. */
     fun viewedChoice(player: Player): RelicChoice? =
@@ -36,7 +46,7 @@ class LeagueRelicTracker @Inject constructor() {
 
     /** Clears every relic choice and the viewed relic. Used by dev commands. */
     fun reset(player: Player) {
-        for (selection in RelicVarBits.selection) {
+        for (selection in RelicVarBits.selection + RelicVarBits.other) {
             VarPlayerIntMapSetter.set(player, selection, 0)
         }
         VarPlayerIntMapSetter.set(player, RelicVarBits.last_viewed, 0)
@@ -49,7 +59,8 @@ class LeagueRelicTracker @Inject constructor() {
     fun viewState(player: Player, choice: RelicChoice): Int {
         val current = selected(player, choice.tier)
         return when {
-            current == choice.option -> STATE_UNLOCKED
+            has(player, choice.tier, choice.option) -> STATE_UNLOCKED
+            canReload(player, choice) -> STATE_SELECTABLE
             current != 0 -> STATE_TIER_CHOSEN
             choice.tier > 0 && selected(player, choice.tier - 1) == 0 -> STATE_PREVIOUS_TIER
             player.vars[LeagueTaskVars.points_claimed] < RelicData.thresholds[choice.tier] ->
@@ -73,9 +84,15 @@ class LeagueRelicTracker @Inject constructor() {
         val current = selected(player, choice.tier)
         val points = player.vars[LeagueTaskVars.points_claimed]
 
+        if (!has(player, choice.tier, choice.option) && canReload(player, choice)) {
+            VarPlayerIntMapSetter.set(player, RelicVarBits.other[choice.tier], choice.option)
+            player.requestAutosave()
+            return RelicResult.Selected
+        }
+
         val failure =
             when {
-                current == choice.option -> RelicResult.AlreadyUnlocked
+                has(player, choice.tier, choice.option) -> RelicResult.AlreadyUnlocked
                 current != 0 -> RelicResult.TierAlreadyChosen
                 choice.tier > 0 && selected(player, choice.tier - 1) == 0 ->
                     RelicResult.PreviousTierMissing
@@ -90,6 +107,15 @@ class LeagueRelicTracker @Inject constructor() {
         player.requestAutosave()
         return RelicResult.Selected
     }
+
+    /**
+     * Whether Reloaded lets [player] take [choice] as their extra relic: they have Reloaded, have
+     * not used it yet, and [choice] is from an earlier tier than Reloaded's.
+     */
+    private fun canReload(player: Player, choice: RelicChoice): Boolean =
+        choice.tier < RELOADED_TIER &&
+            selected(player, RELOADED_TIER) == RELOADED_OPTION &&
+            reloadedTier(player) == null
 
     /**
      * The league XP multiplier for [stat]. It starts at 5x and is raised by the passives of tiers 2
@@ -137,12 +163,16 @@ class LeagueRelicTracker @Inject constructor() {
             stats.magic,
         )
 
-    private companion object {
+    companion object {
+        /** Reloaded is tier 3 in the code ("tier 4" in the plan and on the wiki), option 2. */
+        const val RELOADED_TIER = 3
+        const val RELOADED_OPTION = 2
+
         // State codes read by `league_relic_expanded_view` and `league_relic_not_available`.
-        const val STATE_NOT_ENOUGH_POINTS = 0
-        const val STATE_UNLOCKED = 1
-        const val STATE_SELECTABLE = 2
-        const val STATE_PREVIOUS_TIER = 3
-        const val STATE_TIER_CHOSEN = 4
+        private const val STATE_NOT_ENOUGH_POINTS = 0
+        private const val STATE_UNLOCKED = 1
+        private const val STATE_SELECTABLE = 2
+        private const val STATE_PREVIOUS_TIER = 3
+        private const val STATE_TIER_CHOSEN = 4
     }
 }

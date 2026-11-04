@@ -16810,23 +16810,23 @@ block_anim = 424
 equipment_sound = 2232
 proj_anim = 'thrown'
 speed = 7
-range = 5
+range = 6
 weapon_category = 'Thrown'
 
 [[config]]
 obj = 'tonalztics_of_ralos_charged'
-anim_stance1 = 10922
+anim_stance1 = 10923
 sound_stance1 = 7940
-anim_stance2 = 10922
+anim_stance2 = 10923
 sound_stance2 = 7940
-anim_stance4 = 10922
+anim_stance4 = 10923
 sound_stance4 = 7940
 block_anim = 424
 equipment_sound = 2232
 untradable = true
 proj_anim = 'thrown'
 speed = 7
-range = 5
+range = 7
 weapon_category = 'Thrown'
 
 [[config]]

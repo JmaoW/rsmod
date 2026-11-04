@@ -89,6 +89,9 @@ class ToaRaid(
     /** A unique dropped for someone: the vault's flames and sarcophagus turn purple. */
     var uniqueFound: Boolean = false
 
+    /** Who the unique rolled for: only they can open the purple sarcophagus. */
+    var uniqueFinder: Player? = null
+
     /** The raid level once a missed target time has cost its penalty; set at the end. */
     var finalRaidLevel: Int = raidLevel
 

@@ -6,6 +6,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.smithingLvl
 import org.rsmod.api.script.onOpLoc4
 import org.rsmod.api.script.onOpLocU
@@ -98,7 +99,14 @@ constructor(
         if (actionDelay < mapClock) {
             actionDelay = mapClock + SMELT_DELAY
         } else if (actionDelay == mapClock) {
-            smeltOne(job)
+            // A [ProductionBatch] rule smelts the whole job at once.
+            ProductionBatch.make(player, job.remaining) { first ->
+                val more = first || (job.remaining > 0 && hasIngredients(job.recipe))
+                if (more) {
+                    smeltOne(job)
+                }
+                more
+            }
             if (job.remaining <= 0 || !hasIngredients(job.recipe)) {
                 stop()
                 return

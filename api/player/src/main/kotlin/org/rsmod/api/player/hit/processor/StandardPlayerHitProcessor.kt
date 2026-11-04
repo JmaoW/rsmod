@@ -41,8 +41,12 @@ public object StandardPlayerHitProcessor : QueuedPlayerHitProcessor {
         // TODO(combat): Process degradation, ring of recoil, retribution, etc.
 
         // A player who is teleporting is out of reach of the hit, so it does no damage.
-        val damage =
-            if (mapClock <= player.teleportingUntil) 0 else min(player.hitpoints, hit.damage)
+        val teleporting = mapClock <= player.teleportingUntil
+        val landing = PlayerHitEvents.Landing(player, hit, if (teleporting) 0 else hit.damage)
+        if (landing.damage > 0) {
+            publish(landing)
+        }
+        val damage = min(player.hitpoints, landing.damage.coerceAtLeast(0))
         if (damage > 0) {
             statSub(stats.hitpoints, constant = damage, percent = 0)
             val npcSource = if (hit.isFromNpc) findHitNpcSource(hit) else null

@@ -2,6 +2,7 @@ package org.rsmod.api.inv
 
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.enums
+import org.rsmod.api.player.interact.WornClickHooks
 import org.rsmod.api.player.interact.WornInteractions
 import org.rsmod.api.player.output.UpdateInventory.resendSlot
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
@@ -24,6 +25,7 @@ constructor(
     private val enumResolver: EnumTypeMapResolver,
     private val interactions: WornInteractions,
     private val protectedAccess: ProtectedAccessLauncher,
+    private val clickHooks: WornClickHooks,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         val mappedComponents = mappedComponents()
@@ -44,6 +46,10 @@ constructor(
     private fun IfOverlayButton.opWornButton(wornSlot: Int, op: IfButtonOp) {
         if (op == IfButtonOp.Op10) {
             interactions.examine(player, player.worn, wornSlot)
+            return
+        }
+        if (clickHooks.consume(player, wornSlot)) {
+            resendSlot(player.worn, 0)
             return
         }
         player.opWorn(wornSlot, op)

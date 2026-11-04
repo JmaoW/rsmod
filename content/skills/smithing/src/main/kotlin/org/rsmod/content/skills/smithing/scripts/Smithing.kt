@@ -6,6 +6,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.smithingLvl
 import org.rsmod.api.player.vars.intVarBit
 import org.rsmod.api.script.onIfModalButton
@@ -131,7 +132,13 @@ constructor(private val locTypes: LocTypeList, private val xpMods: XpModifiers) 
         if (actionDelay < mapClock) {
             actionDelay = mapClock + SMITH_DELAY
         } else if (actionDelay == mapClock) {
-            if (!smithOne(job.product)) {
+            // A [ProductionBatch] rule smiths as many as the bars allow at once.
+            val possible = invTotal(inv, job.product.metal.bar) / job.product.bars
+            val made =
+                ProductionBatch.make(player, possible) { first ->
+                    (first || hasBars(job.product)) && smithOne(job.product)
+                }
+            if (made == 0) {
                 stop()
                 return
             }

@@ -55,6 +55,22 @@ class ToaLootMathTest {
     }
 
     @Test
+    fun `a teammate's unique always comes, picked again among the in-level ones on a miss`() {
+        val roll = { n: Int -> if (n == 1_000_000) 999_999 else 7 }
+        // At level 100 the shadow misses its 1 in 50, so the pick is redone among the fang and
+        // the Lightbearer; the same high roll lands on the Lightbearer, the last of them.
+        assertEquals(ToaUnique.Lightbearer, ToaLootMath.pickTeamUnique(100, roll))
+        // An out-of-level unique that passes its roll is kept.
+        assertEquals(
+            ToaUnique.TumekensShadow,
+            ToaLootMath.pickTeamUnique(100) { n -> if (n == 1_000_000) 999_999 else 0 },
+        )
+        // Below level 50 nothing is in level, so it falls back to the fang and Lightbearer.
+        val low = ToaLootMath.pickTeamUnique(10) { n -> if (n == 1_000_000) 0 else 3 }
+        assertEquals(ToaUnique.OsmumtensFang, low)
+    }
+
+    @Test
     fun `common quantities are points over the divisor, with the bonus from level 300`() {
         val coins = ToaLootMath.common.first { it.name == "Coins" }
         val death = ToaLootMath.common.first { it.name == "Death rune" }

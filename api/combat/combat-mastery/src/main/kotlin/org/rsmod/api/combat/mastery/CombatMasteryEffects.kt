@@ -171,17 +171,17 @@ constructor(private val masteries: CombatMasteries, private val random: GameRand
 
     /**
      * Melee I: "Melee hits have a 25% chance to roll damage twice and take the highest result."
-     * Rolls a melee hit from `1` to [maxHit].
+     * Rolls a melee hit from [minHit] to [maxHit].
      */
-    public fun rollMelee(player: Player, maxHit: Int): Int {
-        val first = random.of(1..maxHit)
+    public fun rollMelee(player: Player, maxHit: Int, minHit: Int = 1): Int {
+        val first = random.of(minHit..maxHit)
         if (!masteries.has(player, MasteryStyle.Melee, 1)) {
             return first
         }
         if (random.of(PERCENT) >= MELEE_REROLL_CHANCE) {
             return first
         }
-        return max(first, random.of(1..maxHit))
+        return max(first, random.of(minHit..maxHit))
     }
 
     /**

@@ -136,18 +136,28 @@ constructor(
         attackStyle: MeleeAttackStyle? = attack.style,
         blockType: MeleeAttackType? = attack.type,
         defenceFactor: Double = 1.0,
-    ): Int =
-        manager.rollMeleeDamage(
-            source = source.player,
-            target = target,
-            attack = attack,
-            accuracyMultiplier = accuracyMultiplier,
-            maxHitMultiplier = maxHitMultiplier,
-            attackType = attackType,
-            attackStyle = attackStyle,
-            blockType = blockType,
-            defenceFactor = defenceFactor,
+    ): Int {
+        val hit =
+            rollMeleeAccuracy(
+                source = source,
+                target = target,
+                attackType = attackType,
+                attackStyle = attackStyle,
+                blockType = blockType,
+                multiplier = accuracyMultiplier,
+                defenceFactor = defenceFactor,
+            )
+        if (!hit) {
+            return 0
+        }
+        return manager.rollMeleeMaxHit(
+            source.player,
+            target,
+            attackType,
+            attackStyle,
+            maxHitMultiplier,
         )
+    }
 
     /** @see [PlayerAttackManager.rollMeleeAccuracy] */
     public fun rollMeleeAccuracy(
@@ -159,14 +169,17 @@ constructor(
         multiplier: Double,
         defenceFactor: Double = 1.0,
     ): Boolean =
-        manager.rollMeleeAccuracy(
-            source = source.player,
-            target = target,
-            attackType = attackType,
-            attackStyle = attackStyle,
-            blockType = blockType,
-            multiplier = multiplier,
-            defenceFactor = defenceFactor,
+        SpecialAccuracy.result(
+            source.player,
+            manager.rollMeleeAccuracy(
+                source = source.player,
+                target = target,
+                attackType = attackType,
+                attackStyle = attackStyle,
+                blockType = blockType,
+                multiplier = multiplier * SpecialAccuracy.multiplier(source.player),
+                defenceFactor = defenceFactor,
+            ),
         )
 
     /** @see [PlayerAttackManager.rollMeleeMaxHit] */
@@ -225,18 +238,23 @@ constructor(
         attackStyle: RangedAttackStyle? = attack.style,
         blockType: RangedAttackType? = attack.type,
         boltSpecDamage: Int = 0,
-    ): Int =
-        manager.rollRangedDamage(
-            source = source.player,
-            target = target,
-            attack = attack,
-            accuracyMultiplier = accuracyMultiplier,
-            maxHitMultiplier = maxHitMultiplier,
-            attackType = attackType,
-            attackStyle = attackStyle,
-            blockType = blockType,
-            boltSpecDamage = boltSpecDamage,
-        )
+    ): Int {
+        // The bolt effects and masteries roll inside, so a 0 is counted as a missed roll here.
+        val damage =
+            manager.rollRangedDamage(
+                source = source.player,
+                target = target,
+                attack = attack,
+                accuracyMultiplier = accuracyMultiplier * SpecialAccuracy.multiplier(source.player),
+                maxHitMultiplier = maxHitMultiplier,
+                attackType = attackType,
+                attackStyle = attackStyle,
+                blockType = blockType,
+                boltSpecDamage = boltSpecDamage,
+            )
+        SpecialAccuracy.result(source.player, damage > 0)
+        return damage
+    }
 
     /** @see [PlayerAttackManager.rollRangedAccuracy] */
     public fun rollRangedAccuracy(
@@ -247,13 +265,16 @@ constructor(
         blockType: RangedAttackType?,
         multiplier: Double,
     ): Boolean =
-        manager.rollRangedAccuracy(
-            source = source.player,
-            target = target,
-            attackType = attackType,
-            attackStyle = attackStyle,
-            blockType = blockType,
-            multiplier = multiplier,
+        SpecialAccuracy.result(
+            source.player,
+            manager.rollRangedAccuracy(
+                source = source.player,
+                target = target,
+                attackType = attackType,
+                attackStyle = attackStyle,
+                blockType = blockType,
+                multiplier = multiplier * SpecialAccuracy.multiplier(source.player),
+            ),
         )
 
     /** @see [PlayerAttackManager.rollRangedMaxHit] */
@@ -333,11 +354,14 @@ constructor(
         attackStyle: MagicAttackStyle?,
         multiplier: Double,
     ): Boolean =
-        manager.rollStaffAccuracy(
-            source = source.player,
-            target = target,
-            attackStyle = attackStyle,
-            multiplier = multiplier,
+        SpecialAccuracy.result(
+            source.player,
+            manager.rollStaffAccuracy(
+                source = source.player,
+                target = target,
+                attackStyle = attackStyle,
+                multiplier = multiplier * SpecialAccuracy.multiplier(source.player),
+            ),
         )
 
     /** @see [PlayerAttackManager.rollStaffMaxHit] */

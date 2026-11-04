@@ -138,6 +138,8 @@ object LeagueProgressVarps : VarpReferences() {
     val kill_vorkath_50 = find("isle_count_kill_vorkath_50")
     val kill_vorkath_150 = find("isle_count_kill_vorkath_150")
     val kill_vorkath_300 = find("isle_count_kill_vorkath_300")
+    val kill_sol_heredit_5 = find("isle_count_kill_sol_heredit_5")
+    val kill_sol_heredit_10 = find("isle_count_kill_sol_heredit_10")
     val gauntlet_hm_50 = find("isle_count_gauntlet_hm_50")
     val gauntlet_hm_150 = find("isle_count_gauntlet_hm_150")
 
@@ -323,6 +325,8 @@ object LeagueProgressVarps : VarpReferences() {
             kill_vorkath_50,
             kill_vorkath_150,
             kill_vorkath_300,
+            kill_sol_heredit_5,
+            kill_sol_heredit_10,
             gauntlet_hm_50,
             gauntlet_hm_150,
             revenant_craw,
@@ -468,6 +472,8 @@ internal object LeagueProgressVarpBuilder : VarpBuilder() {
         build("isle_count_kill_vorkath_50") {}
         build("isle_count_kill_vorkath_150") {}
         build("isle_count_kill_vorkath_300") {}
+        build("isle_count_kill_sol_heredit_5") {}
+        build("isle_count_kill_sol_heredit_10") {}
         build("isle_count_gauntlet_hm_50") {}
         build("isle_count_gauntlet_hm_150") {}
     }

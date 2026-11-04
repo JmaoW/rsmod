@@ -6,6 +6,7 @@ import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.cookingLvl
 import org.rsmod.api.script.onOpLoc1
 import org.rsmod.api.script.onOpLoc4
@@ -106,7 +107,10 @@ constructor(
         if (actionDelay < mapClock) {
             actionDelay = mapClock + COOK_DELAY
         } else if (actionDelay == mapClock) {
-            cookOne(food, source)
+            // A [ProductionBatch] rule cooks every piece of the food in the inventory at once.
+            repeat(ProductionBatch.actions(player, invTotal(inv, food.raw))) {
+                cookOne(food, source)
+            }
             if (food.raw !in inv) {
                 stop()
                 return

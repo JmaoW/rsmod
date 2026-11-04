@@ -1,19 +1,266 @@
-# Isle of Souls: the Fortis Colosseum (implementation plan)
+# Isle of Souls: the Fortis Colosseum (plan and as built)
 
-Written 2026-10-30 for review before any code. **Status: scoped, nothing built.**
+Written 2026-10-30, built the same day. **Status: everything below is built and tested in the test
+harness (14 unit and 22 integration tests). Not seen in a real client yet: run `packCache` and work
+through the client checklist.**
 
-Sources: the tsps `docs/fortis-colosseum.md` (read 2026-10-30; it is built from the OSRS wiki, a live
-rsprox capture of the lobby to wave 1, the cache, and Offline_Scape's port, and it marks which is
-which), the revision 233 cache symbols, and the Raging Echoes task list. **I have not yet checked
-tsps's wiki numbers against the wiki itself**; step 0 does that. Anything that is neither wiki nor
-capture is marked **(guess)** or **(RSPS)** (an RSPS port's value) and listed under "Open numbers".
+Sources: the OSRS wiki (read 2026-10-30 through its API: "Fortis Colosseum", "Fortis
+Colosseum/Modifiers", "Fortis Colosseum/Strategies", "Sol Heredit", "Glory", "Rewards Chest (Fortis
+Colosseum)", the items' pages, and the Sol Heredit, Minimus and Gloria transcripts), tsps'
+`docs/fortis-colosseum.md` and its plugin source (its live rsprox capture of the lobby to wave 1, and
+the screens' client script arguments), and the revision 233 cache. The wiki agrees with tsps' numbers
+(one change: the serpent shaman's max hit is 28 on the wiki, tsps says 27). Anything that is neither
+wiki nor capture is marked **(guess)** or **(RSPS)**.
+
+## As built (2026-10-30)
+
+### Where things are
+
+Package `content/areas/misc/isle-of-souls/.../isleofsouls/colosseum/`:
+
+| File | What |
+|------|------|
+| `ColosseumConfigs.kt` | refs (npcs, locs, objs, seqs, spotanims, varps, varbits, the two screens, the reward invs, a queue), the projectile flights (`ColosseumProjAnimBuilder`) and the npc edits (`ColosseumNpcEdits`) |
+| `ColosseumArena.kt` | every tile (isle arch, lobby, arena, spawn points, pillars, gates, chest, Sol's floor), the arena template (map square 28_48) and the instance type |
+| `ColosseumSettings.kt` | the `colosseum` block of `event-settings.json` |
+| `ColosseumWaves.kt`, `ColosseumModifiers.kt`, `ColosseumLoot.kt` | what each wave sends, the 14 modifiers and their offer rules, the chest's tables |
+| `ColosseumRun.kt` | a team's run and each member's chest, Glory and hits |
+| `Colosseum.kt` | the director: entry, rejoin, the intermission, waves, reinforcements, deaths, forfeit, the chest, Glory |
+| `ColosseumEnemies.kt` | the seven monsters' attacks, the warband's movement, the Minotaur's healing, Red Flag's routefinding |
+| `ColosseumEffects.kt`, `ColosseumHazards.kt` | the modifiers that change blows and players; the ones that put things in the arena |
+| `SolHeredit.kt` | Sol Heredit and his attack patterns (`SolPatterns`) |
+| `ColosseumScreens.kt` | the intermission screen (865) and the rewards chest (246) |
+| `ColosseumScript.kt`, `ColosseumLobbyScript.kt`, `ColosseumItemsScript.kt`, `ColosseumCommands.kt` | the handlers, the lobby, the items and the ring, admin commands |
+| `ColosseumWorld.kt`, `ColosseumCompletions.kt` | shared helpers; the league tasks |
+| `ColosseumWeapons.kt` | the Tonalztics of Ralos's attack (added 2026-10-30, see "Follow-up") |
+| `DizanasQuiverPouch.kt` | the quiver's extra ammunition slot (added 2026-10-30) |
+
+Engine and API hooks (small and generic; only the Colosseum uses them so far):
+- `Npc.targetDefenceRollPercent` (engine): scales a player's defence roll against that npc; the three
+  npc-versus-player accuracy formulas read it (Relentless).
+- `ForcedMaxHits` (combat-manager): rules that make a player's attack always hit for its max; the
+  melee, ranged, spell and staff rolls ask them (the warband's weaknesses, Sol's perfect parry).
+- `AttackRangeModifiers` (combat-manager): changes a player's weapon or autocast range against a npc;
+  `PvNCombatScript` applies it (Myopia). Spells cast by hand are untouched.
+- `WornClickHooks` (api/player): sees a click on a worn slot before the item's option (Sol's grapple).
+- `WornBonuses`: Dizana's Sunfire, +10 ranged accuracy and +1 ranged strength with arrows or bolts and
+  a charged or blessed quiver worn (replaces the old TODO).
+
+Also changed: `EventSettings` (the `colosseum` block), `LobbySpawnScript` (a Colosseum death wakes up
+in its lobby), `LeagueGearTasks`, `LeagueKillTasks`, `LeagueTaskList`, `LeagueTaskVars`,
+`IsleOfSoulsTaskEnums`, `LeaguePets` (Smol heredit), `IsleOfSoulsModule` (the director is a
+singleton).
+
+### What it does
+
+- **The way in.** A copy of the city's arch at (2227, 2820) on the field south of the plaza (a
+  temporary spot) takes players to the real lobby under the Colosseum; the lobby's stairs bring them
+  back. Minimus must be spoken to once (that opens the tunnel); the tunnel shows the warning and its
+  "don't ask again" option, then puts the team in its own copy of the arena.
+- **The lobby.** Minimus (introduction, questions, and a spare quiver for 4,000 splinters or one more
+  1/200 roll at the pet), Gloria (your Glory and the next title), four guards, the bank chest (its
+  Glory gate is `bankChestGlory`, 0 for the event), the scoreboard (a chat message with your best
+  Glory, highest wave and waves completed), and a copy of a Shrine of Ralos at (1798, 9511) for
+  blessing the quiver.
+- **A run.** Minimus's Start-wave opens the intermission screen (each player's own loot, the team's
+  three modifiers); the first player to confirm picks for the team, the screen closes for the other,
+  and the wave comes in 5 ticks later. Waves are the wiki's; reinforcements arrive after 67 ticks
+  through the gate on the half most players are on. Clearing a wave adds its loot to each player's
+  chest, rolls the next wave's, adds the wave's Glory, and brings Minimus back.
+- **Duo rules.** Each monster goes for the nearest player and keeps its target; the warband stand round
+  their own target. Damage, Doom, Blasphemy and the "no damage" Glory are per player. A player who
+  dies wakes in the lobby with their chest frozen and walks back in at the next intermission; they get
+  nothing for waves they miss. If everyone fighting dies, the run is lost (the dead lose their
+  chests); the run ends when nobody is in the arena.
+- **Leaving.** Leave before wave 1, or with nothing earned, goes straight to the lobby. Between waves
+  it is a forfeit: the chest comes out for that player, Start-wave waits until they have left, and
+  their partner can carry on. Leaving through Minimus restores combat stats. Teleporting or logging out
+  loses the loot and the run's Glory; dying keeps the Glory.
+- **Sol Heredit.** He greets each player who has not beaten him (by attempt), jumps down, the
+  barricade goes up, and the fight is the wiki's: Spear and Shield patterns, the triple (with the
+  early-prayer rule), the grapple (click the called slot; the last tick is a perfect parry), phases
+  with sand and crystals, the enrage. Beating him gives each player wave 12's loot with Dizana's
+  quiver and a 1/200 pet roll, clears his sand, and brings the chest out.
+- **Glory, titles and the emote.** Best Glory is the vanilla varp `colosseum_glory`, which the existing
+  Fortis Salute handler already reads (Grand Champion, 20,000).
+- **Items.** Splinters charge Dizana's quiver (up to 20,000; each arrow or bolt fired uses one);
+  Uncharge gives them back; the shrine blesses it for 150,000 splinters, counting its charges. An echo
+  crystal on guardian boots makes echo boots. The ring of dueling's Rub and its worn "Fortis
+  Colosseum" option go to the isle's arch (Glory gate `ringGlory`, 0 for the event; the real one is
+  12,000) and use a charge; its other places say they are not on the isle.
+- **Tasks.** 1655 (ring teleport), 1664/1665/1666 (wave 1/6/12, "or later"), 1662 (bank chest),
+  1670/1671 (a fanatic piece, the set), 1667/1668/1669 (20k/40k/58k Glory), 1672 (blessed quiver),
+  1683/1684 (Sol 5/10 times, team counters). The collection log gets claimed loot (as it is taken from
+  the chest), the pet, and Sol's kill count.
+- **Admin commands.** `::colosseum` (to the lobby, intro done), `::colowave <n>`, `::colokill`,
+  `::cologlory <n>`, `::colomod <name> <tier>`.
+
+### Follow-up (2026-10-30, second session): the parts left out, and an animation audit
+
+All five things the first build left out are now built:
+
+- **Sol Heredit's health bar.** ToA's boss bar is now a shared class,
+  `instances/BossHealthBar.kt` (ToA uses it unchanged). Each run has one; every fighter sees Sol's
+  bar from his landing until he is gone, and it fades for anyone who dies, leaves or logs out.
+- **His jump cutscene.** A new stage, `SolJump`, between the greeting and the fight. The players'
+  cameras are put on his seat and they cannot act or click npcs, locs or objs; he plays his jump
+  (it was never seen before: the seated Sol was removed the same tick it started), the screen fades
+  to black over the next 2 ticks, he lands behind the black (barricade, players moved, landing
+  animation and graphic), the camera turns to him and the screen fades back in, and 3 ticks later
+  everyone gets their camera back. The wiki only says a cutscene plays: **the camera spots, heights
+  and fade timing are mine**. "Sol Heredit jumps down from his seat..." now comes with the jump.
+- **Dizana's quiver's extra ammunition slot.** The client draws it from varps
+  `dizanas_quiver_temp_ammo` (obj, `-1` for none) and `dizanas_quiver_temp_ammo_amount` (client
+  scripts 5023-5028 decoded: it shows while a quiver is worn or carried). In the worn equipment tab
+  (and the equipment stats screen): empty, **Fill** moves the ammo slot's arrows or bolts in;
+  filled, **Quiver-Remove** takes them to the inventory and **Swap** trades them with the ammo slot.
+  The quiver's **Open** shows its own screen (592: Remove, the charges) and **Empty** takes the
+  ammunition out. Only arrows and bolts go in. Firing: the real game fires from whichever slot holds
+  what the weapon needs. Here, a new combat hook (`AmmoPouches` in combat-manager, asked by the
+  player-versus-npc and player-versus-player ranged attacks before they read the ammo slot) swaps
+  the pouch into the ammo slot when the slot's ammunition does not suit the bow or crossbow and the
+  pouch's does. So the ammo slot always shows what is being fired, and bonuses, bolt effects and
+  ammo use work unchanged. **A visible difference from the real game**: switching between a bow
+  and a crossbow moves the stacks between the two slots.
+- **The Tonalztics of Ralos.** It has its own attack now (`ColosseumWeapons`): as a thrown weapon
+  the engine used to throw it away like a dart. It comes back, hits for up to 75% of the max hit,
+  and charged throws two blades (each rolled on its own) for one charge a throw. The last charge
+  turns it back into the uncharged weapon. Splinters on it (or its Charge option) charge it up to
+  20,000; Check and Uncharge too. The special, Division, now follows the wiki: 50% more accuracy,
+  a Defence drain of an eighth of the target's Magic per blade that lands (it was a tenth), one
+  blade uncharged and two charged, its own animation and graphics for each, and a charge a throw.
+  Range 6 uncharged and 7 charged (the obj data said 5).
+- **Echo boots.** An echo crystal on guardian boots gives them 6,000 charges; another crystal on the
+  boots adds 6,000 (60,000 at most). While active, whatever damages the wearer from within the 3x3
+  round them takes 1 back, for a charge (`PlayerHitEvents.Impact`). Check, Toggle-activity (our own
+  varp `isle_echo_boots_recoil_off`, 65168) and Revert (back to guardian boots; the crystal is
+  lost). Typeless hits from players are not recoiled, so two players in echo boots do not ping-pong.
+
+**Animation audit.** Every Colosseum npc's seqs were checked against its model's skeleton (the
+`seqs.py`/`derive_anims` tools) and against tsps' captured ids. All the attack, death, block and
+special seqs already used match their skeletons and tsps. Fixed:
+
+| What was wrong | Now |
+|---|---|
+| Sol's jump never showed (seated Sol removed the same tick) | the cutscene above plays it in full |
+| The serpent shaman flinched with the human unarmed block (tsps: no block) | it holds its staff stance (no flinch) |
+| Sol's death graphic (spotanim 2680) was never played | played with his death animation |
+| His light crystals vanished on his death | they play their break-up (seq 10800), then go |
+| Bees! swarms never animated | appear (10821), sting (10823, every other tick while stinging), break up when killed (10824) |
+| The Manticore and Minotaur appeared with no animation | their own appear seqs (10870/10871 for the first/second Manticore, 10845 for the Minotaur): **guesses**, they are only used by these npcs and tsps never played them |
+| The charged Tonalztics threw with the uncharged animation | charged throw 10923 (obj data) |
+| Division always used the charged animation | 10914 charged, 10916 uncharged |
+
+Not changed, and why: Sol and the colossi/Manticore keep no block animation (none in the cache, they
+hold their stance); the warband, jaguar and Minotaur blocks were already their own; the javelin's
+`walkfade` and the gib npcs' seqs are not used (the explosions are spotanims, as tsps does).
+
+### For you to do
+
+1. Stop the server and run `./gradlew packCache`, then restart. It packs the npc edits (modes,
+   ranges, block animations, walking through npcs), the seven projectile flights (new `projanim.sym`
+   ids 38-44), the task enum keys 555-567, and the new varps (65170, 65169) and queue (38). The
+   follow-up adds varp 65168 (echo boots' toggle), the shaman's block, and the Tonalztics's
+   animation and ranges (obj data), so it needs `packCache` too.
+2. Work through the checklist below with two accounts on one team.
+
+## Client checklist (two accounts, same team)
+
+1. The arch at (2227, 2820) shows and "Enter" goes to the lobby; the stairs bring you back in front of
+   it. (The arch is a 1x2 piece of the Colosseum's wall and may look odd on its own; we said we would
+   look at that later.)
+2. Minimus, Gloria, the guards and the shrine stand in the lobby; Minimus's first talk opens the tunnel.
+3. The tunnel's warning and its three options; both players end up in the same arena, Minimus says "A
+   Rookie approaches!" and the seated Sol is above the north gate.
+4. **Start-wave opens the intermission screen with your loot (80 sunfire splinters) and the three
+   modifiers.** The client's own scripts draw this screen from what tsps captured; check that the
+   modifier buttons highlight, the tier text shows, and Continue works. The value line uses the items'
+   store values, not Grand Exchange prices.
+5. The first confirm closes the other player's screen; the wave comes in 5 ticks later and "Wave: 1"
+   is red in the chat.
+6. The trio run at you and stand north, east and west; the shaman shoots from range. Magic on the
+   berserker, ranged on the seer and melee on the archer always max hit.
+7. Wave 2's Javelin Colossus throws a sky javelin every fifth attack (a shadow, landing on your tile).
+8. Wave 4's Manticore: the three orbs show on it while it charges and come a tick apart; praying each
+   as it is thrown blocks it.
+9. Reinforcements come through a gate after 40 seconds; the Minotaur (wave 7+) can be safespotted
+   behind a pillar, Red Flag's cannot.
+10. A cleared wave: "Wave N completed! Duration: ...", Minimus reappears next to you, and the screen
+    shows the loot so far and the next wave's.
+11. Modifiers: `::colomod` each one between waves and check it (bees, the Solarflare orb's path round a
+    pillar, totems, Volatility's explosions, Reentry's molten sand, the Doom hitsplat with its count,
+    Frailty's cap, Myopia's shorter range).
+12. One player dies: they wake in the lobby, the tunnel refuses them during the wave and lets them in
+    at the next intermission, with their chest.
+13. Leave between waves: the forfeit line, the chest comes out (3x3, rising), Search opens it,
+    Take-all, Bank-all, Discard-all and clicking an item work, and Leave again goes to the lobby.
+14. Wave 12 (`::colowave 12`): his greeting, the jump, the barricade of shield-bearers, the Spear and
+    Shield smoke, the triple's telegraph, the grapple's call and clicking the slot, a phase's beams of
+    light and sand, the crystals patrolling and firing.
+15. Beating him: the chest with the quiver, his last words overhead, the task popups.
+16. The emote tab's Fortis Salute works at 20,000 Glory (`::cologlory 20000`).
+17. The ring of dueling: Rub offers "Fortis Colosseum.", the worn option works, the charge message.
+18. Splinters on Dizana's quiver charge it; the ranged bonus applies with arrows.
+19. **Sol's jump cutscene**: the camera looks at his seat, he jumps, the screen goes black and comes
+    back on his landing, then your own camera returns. Tune the camera constants in `SolHeredit`
+    (`JUMP_CAMERA_*`, `LAND_CAMERA_*`, `FADE_*`) if it looks wrong.
+20. **His health bar** shows at the top from his landing, goes down as he is hit, and fades when he
+    dies (and for a player who dies or leaves).
+21. **The quiver's extra slot**: with the quiver worn or in the inventory, the slot shows above the
+    ammo slot in the worn equipment tab. Fill, Swap, Quiver-Remove, Examine; the quiver's Open and
+    Empty. With bolts in the ammo slot and arrows in the pouch, a bow fires the arrows (they swap
+    in). Also check the equipment stats screen's slot.
+22. **The Tonalztics**: charged throws show two blades and use a charge each throw; Check, Charge,
+    Uncharge; the weapon is never dropped. Division with and without charges.
+23. **Echo boots**: Check, Toggle-activity, Revert; a monster hitting you in melee takes 1s.
+24. **Animations**: the shaman does not flinch; bees appear, sting and break up; the crystals break up
+    when Sol dies, with his death graphic; the Manticore's and Minotaur's appear poses (guesses).
+
+## Numbers to tune after the client check
+
+| What | Value | Source |
+|------|-------|--------|
+| Sky javelin delay | 3 ticks (the wiki says 6) | RSPS capture |
+| Upgrade weight in the offer | 2x a new modifier | tsps |
+| Solarflare damage | up to 5/10/15 | tsps guess |
+| Volatility explosion | up to 15 | tsps guess |
+| Totem heal rate | every 5 ticks | tsps guess |
+| Minotaur heal rate | every 5 ticks, to full | tsps guess |
+| Bee spawn | a random spawn point 4+ tiles from every player | tsps guess |
+| Sol's landing, the players' tiles, the barricade, crystal patrols, the 25-35 tick laser cooldown | | RSPS |
+| The grapple's 20 minimum, the triple's 12/11-tick speed, the transitions' 7 | | RSPS |
+| Sol's greeting time: 3 ticks plus 3 a line, then he jumps | | guess |
+| Sol's cutscene camera and fade | | mine |
+| Which Tonalztics graphics go with which throw | | guess from their names |
+| Duo: targeting, the reinforcement gate, beams round each player | | mine |
+| The lobby guards', Gloria's and the shrine's tiles | | guesses |
+
+## Known gaps
+
+- **Frailty** does not lower the Hitpoints level the client shows: the engine has no temporary level
+  cap, and lowering the saved base level would be undone by the next Hitpoints xp. Healing above the
+  cap is taken off every tick instead.
+- **Relentless** lowers the player's defence roll by 33/66% rather than their Defence level: close,
+  not exact.
+- **Dizana's quiver's extra slot** swaps into the ammo slot to be fired rather than firing from
+  where it is (see "Follow-up"). The bank's and the deposit box's copies of the slot
+  (`bankmain:extra_quiver_slot`, `bank_depositbox:extra_quiver_slot`) have no handlers, and Ava's
+  upgrade to the quiver is not built.
+- **Echo boots** keep their charges on the account (the cache's varbit), not on the item.
+- **Two Manticores** do not copy each other's orb order; the enraged crystals do not aim at the player.
+- **The scoreboard** (interface 867) is a chat message, not the real screen.
+- The sky javelin, Solarflare, sand and explosions never cost the "no damage" Glory (wiki); bees are
+  treated the same.
+- A player who logs out in the arena wakes at the first registered instance type's exit (the shared
+  `TeamInstanceLogin` rule), not the Colosseum lobby.
+- "Colosseum Combat Achievements" (1675) is not in the task list.
 
 ## Decisions (user, 2026-10-30)
 
 | Question | Decision |
 |----------|----------|
 | Who plays | **Team of 2** in one instance, as the Inferno and Gauntlet. No scaling. |
-| Length | **Full 12 waves + a shortened mode**, picked by an event-settings key (`colosseumMode`, like `infernoMode`). |
+| Length | **Full 12 waves + a shortened mode**, picked by an event-settings key (`colosseum.mode`; the list is `colosseum.shortenedWaves`). |
 | Shortened run | **Waves 1, 4, 7, 10, then Sol (12)**. Each keeps its real wave number for composition, loot and Glory. Modifier picks still happen before each. |
 | Modifiers | **All 14 with their tiers**, the real offer rules, real Glory. |
 | Entrance | **The real underground lobby** (Minimus, Gloria, bank chest gated by Glory, the tunnel warning), copied into the team instance, reached from an entrance on the isle. |
@@ -251,5 +498,5 @@ heals npcs +1/tick), grapple defend/parry/fail.
    May be revisited.
 3. **Wave 6 task in shortened mode**: clearing wave 7 counts ("wave 6 or later"). Same rule for wave 1 and
    12, which the shortened run plays anyway.
-4. **Bank chest Glory gate**: build it, with an event-settings key `colosseumBankGlory` (default 0 = no gate
+4. **Bank chest Glory gate**: build it, with an event-settings key `colosseum.bankChestGlory` (default 0 = no gate
    for the event, 2,000 = the real rule).

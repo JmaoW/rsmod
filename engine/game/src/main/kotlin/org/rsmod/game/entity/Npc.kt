@@ -99,6 +99,13 @@ public class Npc(
      */
     public var attackRollPercent: Int = 100
 
+    /**
+     * The percentage a player's defence roll against this npc's attacks is scaled by (100 for
+     * none). Content that lets a npc ignore part of a player's Defence lowers it (the Fortis
+     * Colosseum's Relentless); the formulas for npc-versus-player accuracy read it.
+     */
+    public var targetDefenceRollPercent: Int = 100
+
     public var attackLvl: Int = type.attack
     public var strengthLvl: Int = type.strength
     public var defenceLvl: Int = type.defence

@@ -107,6 +107,7 @@ object Constants {
     const val stat_boost_restore_interval = 100
     const val health_regen_interval = 100
     const val spec_regen_interval = 50
+    const val spec_regen_interval_lightbearer = 25
 
     const val bodytype_a = 0
     const val bodytype_b = 1

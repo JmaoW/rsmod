@@ -14,6 +14,7 @@ import org.rsmod.api.player.ui.ifSetEvents
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.random.GameRandom
 import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
+import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRelicTracker
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.interfaces.collectionlog.CollectionKillCounts
 import org.rsmod.content.interfaces.collectionlog.CollectionLog
@@ -66,10 +67,12 @@ class ToaLootEntry(val obj: UnpackedObjType, val count: Int)
  * it.
  *
  * Wiki (Chest (Tombs of Amascut)): the team may get one unique, with chance 1% per (10,500 - 20 x
- * level) points; whoever gets it takes no common rolls; everyone else gets three rolls on the
- * common table, or fossilised dung below 1,500 points. The thread, the keris jewels, the pet and
- * the clue are rolled on their own for each player. [EventSettings]' `toa.uniqueMultiplier` scales
- * the unique chance for the event.
+ * level) of the team's summed loot points, given to a player by their share of those points;
+ * whoever gets it takes no common rolls; everyone else gets three rolls on the common table sized
+ * by their own loot points, or fossilised dung below 1,500 of them. The pet is one roll for the
+ * team, given out the same way; the thread, the keris jewels and the clue are rolled on their own
+ * for each player. The league's drop-rate relics ([relicBoost]) and [EventSettings]'
+ * `toa.uniqueMultiplier` scale the unique chance for the event.
  */
 @Singleton
 class ToaRewards
@@ -81,6 +84,7 @@ constructor(
     private val random: GameRandom,
     private val raids: ToaRaids,
     private val tracker: LeagueTaskTracker,
+    private val relics: LeagueRelicTracker,
     private val kills: CollectionKillCounts,
     private val collectionLog: CollectionLog,
 ) {
@@ -110,10 +114,22 @@ constructor(
 
         val winner = uniqueWinner(raid, level)
         raid.uniqueFound = winner != null
+        raid.uniqueFinder = winner?.first?.player
+        val teamUniques = winner != null && level >= EventSettings.current.toa.teamUniquesFromLevel
+        val petWinner = petWinner(raid, level)
         for (member in members) {
             val player = member.player
+            val points = raid.points.lootPoints(player.accountId)
             val loot = ArrayList<ToaLootEntry>()
-            val unique = winner?.takeIf { it.first === member }?.second
+            val unique =
+                when {
+                    winner == null -> null
+                    winner.first === member -> winner.second
+                    // The league's team uniques: everyone else gets one of their own, in their
+                    // own chest, in place of their common rolls.
+                    teamUniques -> ToaLootMath.pickTeamUnique(level, pick)
+                    else -> null
+                }
             if (unique != null) {
                 items.unique(unique)?.let { loot += ToaLootEntry(it, 1) }
                 raid.active.forEach { other ->
@@ -122,22 +138,21 @@ constructor(
                             "<col=ff0000>${unique.label}</col>"
                     )
                 }
-            } else if (ToaLootMath.givesDung(raid.points.total)) {
+            } else if (ToaLootMath.givesDung(points)) {
                 items.named("Fossilised dung")?.let { loot += ToaLootEntry(it, 1) }
             } else {
-                repeat(COMMON_ROLLS) { commonRoll(raid.points.lootPoints, level)?.let(loot::add) }
+                repeat(COMMON_ROLLS) { commonRoll(points, level)?.let(loot::add) }
             }
-            tertiaries(player, raid, before.getValue(player.accountId), level, loot)
+            tertiaries(player, raid, before.getValue(player.accountId), points, loot)
+            if (member === petWinner) {
+                pet(player, raid, loot)
+            }
             // The collection log hears of each item only when it is claimed (see [claimed]), so
             // its popup does not give the loot away before the chest is opened.
             for (entry in loot) {
                 add(player, entry)
             }
-            VarPlayerIntMapSetter.set(
-                player,
-                toa_varps.personal_contribution,
-                raid.points.personal(player.accountId),
-            )
+            VarPlayerIntMapSetter.set(player, toa_varps.personal_contribution, points)
             sync(player)
             if (loot.isNotEmpty()) {
                 player.mes("Your rewards await you in the chest.")
@@ -148,7 +163,8 @@ constructor(
     private fun uniqueWinner(raid: ToaRaid, level: Int): Pair<ToaMember, ToaUnique>? {
         val chance =
             min(
-                ToaLootMath.uniqueChance(raid.points.lootPoints, level) *
+                ToaLootMath.uniqueChance(raid.points.teamLootPoints, level) *
+                    relicBoost(raid) *
                     EventSettings.current.toa.uniqueMultiplier,
                 1.0,
             )
@@ -156,17 +172,57 @@ constructor(
             return null
         }
         val unique = ToaLootMath.pickUnique(level, pick) ?: return null
-        val members = raid.active
-        // The more a player earned, the likelier the unique is theirs.
-        val weights = members.map { raid.points.personal(it.player.accountId) + 1 }
-        var point = pick(weights.sum())
+        val member = byShare(raid) ?: return null
+        return member to unique
+    }
+
+    /**
+     * The league's drop-rate relics (monster drops' multiplier, 5x from tier 1 and 20x from tier 4
+     * by default) applied to the wiki's unique chance after its 55% cap. Relics are per player, so
+     * this is the team's average multiplier weighted by each player's loot points: a party all on
+     * one tier gets exactly that tier's boost, and in a mixed party each player's boost counts for
+     * what they earned. The pet is not boosted (Raging Echoes did not boost pets).
+     */
+    fun relicBoost(raid: ToaRaid): Double {
+        var points = 0L
+        var boosted = 0.0
+        for (member in raid.members) {
+            val earned = raid.points.lootPoints(member.player.accountId)
+            points += earned
+            boosted += earned * relics.dropMultiplier(member.player)
+        }
+        return if (points > 0) boosted / points else 1.0
+    }
+
+    /** Wiki: the pet is rolled like a unique, once for the team, and given out the same way. */
+    private fun petWinner(raid: ToaRaid, level: Int): ToaMember? {
+        val chance = ToaLootMath.petChance(raid.points.teamLootPoints, level)
+        if (pick(PRECISION) >= chance * PRECISION) {
+            return null
+        }
+        return byShare(raid)
+    }
+
+    /**
+     * Wiki: the chance of a unique being yours is your share of the team's loot points. Players who
+     * left keep their share (their points still count towards the chance), so a roll that lands on
+     * one of them gives nobody the drop (a guess: the wiki does not say).
+     */
+    private fun byShare(raid: ToaRaid): ToaMember? {
+        val members = raid.members
+        val weights = members.map { raid.points.lootPoints(it.player.accountId) }
+        val sum = weights.sum()
+        if (sum <= 0) {
+            return null
+        }
+        var point = pick(sum)
         for ((index, weight) in weights.withIndex()) {
             if (point < weight) {
-                return members[index] to unique
+                return members[index].takeIf { !it.left }
             }
             point -= weight
         }
-        return members.last() to unique
+        return null
     }
 
     private fun commonRoll(lootPoints: Int, level: Int): ToaLootEntry? {
@@ -182,7 +238,7 @@ constructor(
         player: Player,
         raid: ToaRaid,
         completionsBefore: Int,
-        level: Int,
+        lootPoints: Int,
         loot: MutableList<ToaLootEntry>,
     ) {
         items.named("Thread of Elidinis")?.let { thread ->
@@ -197,22 +253,26 @@ constructor(
             val missing = jewels.filter { !owns(player, it) }.ifEmpty { jewels }
             loot += ToaLootEntry(missing[pick(missing.size)], 1)
         }
-        items.named("Tumeken's guardian")?.let { pet ->
-            val chance = ToaLootMath.petChance(raid.points.lootPoints, level)
-            if (!owns(player, pet) && pick(PRECISION) < chance * PRECISION) {
-                loot += ToaLootEntry(pet, 1)
-                raid.active.forEach {
-                    it.player.mes(
-                        "<col=ff0000>${player.displayName} has a funny feeling like they would " +
-                            "have been followed...</col>"
-                    )
-                }
-            }
-        }
+        // Mod Ash: the clue counts the player's own contribution.
         items.named("Clue scroll (elite)")?.let { clue ->
-            if (pick(PRECISION) < ToaLootMath.eliteClueChance(raid.points.lootPoints) * PRECISION) {
+            if (pick(PRECISION) < ToaLootMath.eliteClueChance(lootPoints) * PRECISION) {
                 loot += ToaLootEntry(clue, 1)
             }
+        }
+    }
+
+    /** [player] won the team's pet roll; one they already own is not given again. */
+    private fun pet(player: Player, raid: ToaRaid, loot: MutableList<ToaLootEntry>) {
+        val pet = items.named("Tumeken's guardian") ?: return
+        if (owns(player, pet)) {
+            return
+        }
+        loot += ToaLootEntry(pet, 1)
+        raid.active.forEach {
+            it.player.mes(
+                "<col=ff0000>${player.displayName} has a funny feeling like they would " +
+                    "have been followed...</col>"
+            )
         }
     }
 

@@ -30,7 +30,8 @@ constructor(private val bonuses: WornBonuses, private val attackStyles: AttackSt
         attackType: MeleeAttackType?,
     ): Int {
         val attackRoll = computeAttackRoll(source, sourceType)
-        val defenceRoll = computeDefenceRoll(target, attackType)
+        val defenceRoll =
+            computeDefenceRoll(target, attackType) * source.targetDefenceRollPercent / 100
         return AccuracyOperations.calculateHitChance(attackRoll, defenceRoll)
     }
 

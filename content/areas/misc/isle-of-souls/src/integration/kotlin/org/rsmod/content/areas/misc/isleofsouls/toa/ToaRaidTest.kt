@@ -10,12 +10,16 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertSame
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.rsmod.api.invtx.invAdd
+import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
+import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRelicTracker
+import org.rsmod.content.areas.misc.isleofsouls.relics.RelicVarBits
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.content.interfaces.collectionlog.CollectionLog
@@ -409,7 +413,8 @@ class ToaRaidTest {
 
             die(deps, bob)
             assertEquals(1, raid.totalDeaths)
-            assertEquals(4_000, raid.points.total)
+            assertEquals(4_000, raid.points.total(bob.accountId))
+            assertEquals(5_000, raid.points.total(alice.accountId))
             assertEquals(1, bob.vars[toa_varps.deaths[ToaMode.Entry.ordinal]])
             assertTrue(deps.raids.isGhost(bob))
             assertNotNull(bob.transmog)
@@ -519,26 +524,40 @@ class ToaRaidTest {
             assertFalse(deps.tracker.isComplete(alice, ToaRewards.TASK_COMPLETE))
         }
 
+    /** Level 150 is Normal mode: Pathseeker, Pathfinder is exclusive, so use others. */
+    private fun normalModeParty(deps: Deps, alice: Player, bob: Player) {
+        val party = deps.party(alice, bob)
+        for (name in
+            listOf(
+                Inv.PATHSEEKER,
+                Inv.DEADLY_PRAYERS,
+                Inv.DOUBLE_TROUBLE,
+                Inv.ON_A_DIET,
+                Inv.DEHYDRATION,
+                Inv.AERIAL_ASSAULT,
+                Inv.MEDIC,
+                Inv.UPSET_STOMACH,
+                Inv.BOULDERDASH,
+            )) {
+            party.settings.toggle(checkNotNull(deps.parties.catalog.byName(name)))
+        }
+    }
+
+    private fun chestNames(deps: Deps, player: Player): List<String?> =
+        deps.rewards.chest(player).let { c ->
+            (0 until c.size).mapNotNull { c[it] }.map { deps.objTypes[it.id]?.name }
+        }
+
     @Test
     fun GameTestState.`a unique goes to one player and takes their common rolls`() =
         runToaTest { deps, alice, bob ->
-            val party = deps.party(alice, bob)
-            // Level 150 is Normal mode: Pathseeker, Pathfinder is exclusive, so use others.
-            for (name in
-                listOf(
-                    Inv.PATHSEEKER,
-                    Inv.DEADLY_PRAYERS,
-                    Inv.DOUBLE_TROUBLE,
-                    Inv.ON_A_DIET,
-                    Inv.DEHYDRATION,
-                    Inv.AERIAL_ASSAULT,
-                    Inv.MEDIC,
-                    Inv.UPSET_STOMACH,
-                    Inv.BOULDERDASH,
-                )) {
-                party.settings.toggle(checkNotNull(deps.parties.catalog.byName(name)))
-            }
+            normalModeParty(deps, alice, bob)
             val raid = reachWardens(deps, alice, bob)
+            // Team uniques off, as in the real game.
+            EventSettings.current =
+                EventSettings(
+                    toa = ToaSettings(pathsRequired = 1, teamUniquesFromLevel = Int.MAX_VALUE)
+                )
             assertTrue(raid.raidLevel >= 100)
             raid.points.damage(alice.accountId, 20_000)
             raid.points.completeRoom()
@@ -549,18 +568,85 @@ class ToaRaidTest {
             deps.win(raid)
 
             assertTrue(raid.uniqueFound)
-            val aliceChest = deps.rewards.chest(alice)
-            val names =
-                (0 until aliceChest.size)
-                    .mapNotNull { aliceChest[it] }
-                    .map { deps.objTypes[it.id]?.name }
+            assertSame(alice, raid.uniqueFinder)
+            val names = chestNames(deps, alice)
             assertTrue("Osmumten's fang" in names, "$names")
-            val bobNames =
-                deps.rewards.chest(bob).let { c ->
-                    (0 until c.size).mapNotNull { c[it] }.map { deps.objTypes[it.id]?.name }
-                }
+            val bobNames = chestNames(deps, bob)
             assertFalse("Osmumten's fang" in bobNames, "$bobNames")
             assertTrue(bobNames.isNotEmpty())
+        }
+
+    @Test
+    fun GameTestState.`with team uniques everyone else gets a unique in their own chest`() =
+        runToaTest { deps, alice, bob ->
+            normalModeParty(deps, alice, bob)
+            val raid = reachWardens(deps, alice, bob)
+            raid.points.damage(alice.accountId, 20_000)
+            raid.points.damage(bob.accountId, 5_000)
+            raid.points.completeRoom()
+
+            deps.rewards.pick = { 0 }
+            deps.win(raid)
+
+            // Alice's unique is the sarcophagus one; Bob gets his own in place of his commons.
+            assertSame(alice, raid.uniqueFinder)
+            assertTrue("Osmumten's fang" in chestNames(deps, alice))
+            val bobNames = chestNames(deps, bob)
+            assertTrue("Osmumten's fang" in bobNames, "$bobNames")
+            assertFalse("Coins" in bobNames, "$bobNames")
+            assertFalse("Fossilised dung" in bobNames, "$bobNames")
+        }
+
+    @Test
+    fun GameTestState.`the unique chance sums each player's points past the 64,000 cap`() =
+        runToaTest { deps, alice, bob ->
+            val party = deps.party(alice, bob)
+            party.settings.toggle(checkNotNull(deps.parties.catalog.byName(Inv.PATHSEEKER)))
+            val raid = reachWardens(deps, alice, bob)
+            repeat(2) {
+                raid.points.damage(alice.accountId, 20_000)
+                raid.points.damage(bob.accountId, 20_000)
+                raid.points.completeRoom()
+            }
+            assertTrue(raid.points.teamLootPoints > 80_000)
+
+            // A unique roll that a single team-wide cap (59,000 loot points) would miss.
+            val level = raid.finalRaidLevel
+            val capped = ToaLootMath.uniqueChance(59_000, level)
+            val summed = ToaLootMath.uniqueChance(raid.points.teamLootPoints, level)
+            assertTrue(capped < summed, "level $level: $capped vs $summed")
+            val roll = ((capped + summed) / 2 * 1_000_000).toInt()
+            deps.rewards.pick = { n -> if (n == 1_000_000) roll else 0 }
+            deps.win(raid)
+
+            assertTrue(raid.uniqueFound)
+        }
+
+    @Test
+    fun GameTestState.`the drop rate relics boost the unique chance by each player's share`() =
+        runToaTest { deps, alice, bob ->
+            val party = deps.party(alice, bob)
+            party.settings.toggle(checkNotNull(deps.parties.catalog.byName(Inv.PATHSEEKER)))
+            val raid = reachWardens(deps, alice, bob)
+            raid.points.award(alice.accountId, 6_000)
+            raid.points.award(bob.accountId, 2_000)
+            assertEquals(1.0, deps.rewards.relicBoost(raid))
+
+            // Alice has a tier 1 relic and earned three quarters of the points; Bob has none.
+            VarPlayerIntMapSetter.set(alice, RelicVarBits.selection[0], 1)
+            val relic = LeagueRelicTracker().dropMultiplier(alice)
+            assertTrue(relic > 1.0)
+            val boost = deps.rewards.relicBoost(raid)
+            assertEquals(0.75 * relic + 0.25, boost, 1e-9)
+
+            // A roll above the wiki's chance but under the boosted one finds a unique.
+            val base = ToaLootMath.uniqueChance(raid.points.teamLootPoints, raid.finalRaidLevel)
+            val roll = ((base + base * boost) / 2 * 1_000_000).toInt()
+            assertTrue(roll > base * 1_000_000)
+            deps.rewards.pick = { n -> if (n == 1_000_000) roll else 0 }
+            deps.win(raid)
+
+            assertTrue(raid.uniqueFound)
         }
 
     @Test

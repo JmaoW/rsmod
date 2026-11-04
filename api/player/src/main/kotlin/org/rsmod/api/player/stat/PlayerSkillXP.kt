@@ -10,11 +10,16 @@ import org.rsmod.game.stat.PlayerStatMap
 import org.rsmod.game.type.stat.StatType
 
 public object PlayerSkillXP {
+    /** Flat xp added to every gain, such as a league relic's. `null` when nothing adds any. */
+    @Volatile public var bonus: XpBonus? = null
+
     public fun internalAddXP(player: Player, stat: StatType, xp: Double, rate: Double): Int =
         player.addXP(stat, xp, rate)
 
     private fun Player.addXP(stat: StatType, xp: Double, rate: Double): Int {
-        val fineXp = PlayerStatMap.toFineXP(xp * rate)
+        val gained = xp * rate
+        val extra = if (gained > 0.0) bonus?.bonus(this, stat, gained) ?: 0.0 else 0.0
+        val fineXp = PlayerStatMap.toFineXP(gained + extra)
         if (fineXp.isInfinite()) {
             throw IllegalArgumentException("Total XP being added is too high! (xp=$xp, rate=$rate)")
         }

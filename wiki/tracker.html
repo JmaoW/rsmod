@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content tracker · Isle of Souls wiki</title>
+  <link rel="stylesheet" href="assets/wiki.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Isle of <span>Souls</span> wiki</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="tracker.html" aria-current="page">Content tracker</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <h1>Content tracker</h1>
+      <p>Everything planned for the Isle of Souls league, how much of it is built, and whether it has been tested in the game. Click any row for details.</p>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <details class="scale">
+      <summary>What the numbers mean</summary>
+      <div class="scale-grid">
+        <b>0%</b><span>Not started</span>
+        <b>25%</b><span>Planned: decisions made, plan written</span>
+        <b>50%</b><span>The main part works on the server</span>
+        <b>75%</b><span>Everything in the plan is built and its automated tests pass</span>
+        <b>90%</b><span>Only guessed numbers or deliberate leftovers remain</span>
+        <b>100%</b><span>Nothing left to build; waiting to be tested in the game</span>
+      </div>
+      <p class="scale-note">Tested is checked by hand in the real game client: <b>Not tested</b>, <b>Issues</b> (tried, something was wrong) or <b>Passed</b>. Priority: <b>P0</b> the event can't run without it, <b>P1</b> much better with it, <b>P2</b> only if there's time.</p>
+    </details>
+
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search, e.g. Zulrah" aria-label="Search items">
+      <select id="f-tested" aria-label="Filter by tested">
+        <option value="">Any test state</option>
+        <option value="no">Not tested</option>
+        <option value="issues">Issues</option>
+        <option value="passed">Passed</option>
+      </select>
+      <select id="f-prio" aria-label="Filter by priority">
+        <option value="">Any priority</option>
+        <option value="P0">P0</option>
+        <option value="P1">P1</option>
+        <option value="P2">P2</option>
+      </select>
+      <select id="f-built" aria-label="Filter by build state">
+        <option value="">Any build state</option>
+        <option value="todo">Still being built</option>
+        <option value="ready">Built, not yet passed</option>
+        <option value="zero">Not started</option>
+      </select>
+    </div>
+
+    <div class="chips" id="chips"></div>
+    <div id="sections"></div>
+
+    <p class="footer" id="footer"></p>
+  </main>
+
+  <script src="data/content.js"></script>
+  <script src="assets/tracker.js"></script>
+</body>
+</html>

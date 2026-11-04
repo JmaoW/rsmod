@@ -98,6 +98,17 @@ public class WornBonuses @Inject constructor(private val objTypes: ObjTypeList) 
         return bonuses.prayer
     }
 
+    private fun hasDizanasSunfire(player: Player): Boolean {
+        val back = objTypes.getOrNull(player.worn[Wearpos.Back.slot]) ?: return false
+        if (back.internalName !in DIZANA_SUNFIRE_CAPES) {
+            return false
+        }
+        val ammo = objTypes.getOrNull(player.worn[Wearpos.Quiver.slot]) ?: return false
+        return ammo.isCategoryType(categories.arrows) ||
+            ammo.isCategoryType(categories.dragon_arrow) ||
+            ammo.isCategoryType(categories.crossbow_bolt)
+    }
+
     public fun calculate(player: Player): Bonuses {
         var offStab = 0
         var offSlash = 0
@@ -158,8 +169,9 @@ public class WornBonuses @Inject constructor(private val objTypes: ObjTypeList) 
         // TODO: Apply toxic blowpipe dart bonuses.
 
         if (EquipmentChecks.isTumekensShadow(player.righthand)) {
-            // TODO: 4.0 while in tombs of amascut. This is purely for the visual bonus, the actual
-            //  combat formula should use a separate resolved multiplier that matches.
+            // 4.0 against Amascut's npcs is applied by the combat formulas themselves
+            // (`PvNMagicAccuracy.tumekensShadowBonus`, `MagicMaxHitOperations`); the bonus screen
+            // still shows 3.0 inside the raid.
             val multiplier = 3.0
             magicDmgMultiplier = multiplier
 
@@ -196,9 +208,12 @@ public class WornBonuses @Inject constructor(private val objTypes: ObjTypeList) 
             magicDmg += 50
         }
 
-        // TODO: +10 off ranged and +1 ranged str with dizana's quiver.
-        //  Verify if this is visible in equipment bonus interface. If it's not then it can be
-        //  handled purely in combat formulae and not here.
+        // Dizana's Sunfire (wiki): a charged or blessed Dizana's quiver gives +10 ranged accuracy
+        // and +1 ranged strength to arrows and bolts. The equipment screen does not show it.
+        if (!ignoreQuiverBonuses && hasDizanasSunfire(player)) {
+            offRange += DIZANA_ACCURACY
+            rangedStr += DIZANA_STRENGTH
+        }
 
         return Bonuses(
             offStab = offStab,
@@ -254,5 +269,21 @@ public class WornBonuses @Inject constructor(private val objTypes: ObjTypeList) 
     ) {
         val multipliedMagicDmg: Int
             get() = magicDmg * (magicDmgMultiplier / 10)
+    }
+
+    private companion object {
+        const val DIZANA_ACCURACY = 10
+        const val DIZANA_STRENGTH = 1
+
+        /** The capes that carry Dizana's Sunfire: the charged and the blessed quiver. */
+        val DIZANA_SUNFIRE_CAPES =
+            setOf(
+                "dizanas_quiver_charged",
+                "dizanas_quiver_charged_trouver",
+                "dizanas_quiver_infinite",
+                "dizanas_quiver_infinite_trouver",
+                "skillcape_max_dizanas",
+                "skillcape_max_dizanas_trouver",
+            )
     }
 }

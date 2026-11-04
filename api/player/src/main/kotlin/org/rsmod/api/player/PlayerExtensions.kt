@@ -14,6 +14,7 @@ import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.vars.enabledPrayers
 import org.rsmod.api.player.vars.prayerDrainCounter
 import org.rsmod.api.player.vars.usingQuickPrayers
+import org.rsmod.api.player.worn.EquipmentChecks
 import org.rsmod.game.entity.Player
 import org.rsmod.game.inv.Inventory
 import org.rsmod.game.type.inv.InvScope
@@ -63,8 +64,16 @@ public fun Player.deathResetTimers() {
 
     // Note: RL regeneration meter plugin does not reset on death. This can lead to de-sync, but
     // it is (currently) the official behavior.
-    softTimer(timers.spec_regen, constants.spec_regen_interval)
+    softTimer(timers.spec_regen, specRegenInterval())
 }
+
+/** Cycles per 10% special attack energy: halved while the Lightbearer is worn. */
+public fun Player.specRegenInterval(): Int =
+    if (EquipmentChecks.isLightbearer(ring)) {
+        constants.spec_regen_interval_lightbearer
+    } else {
+        constants.spec_regen_interval
+    }
 
 public fun Player.isValidTarget(): Boolean {
     val isLoggingOut = pendingLogout || loggingOut

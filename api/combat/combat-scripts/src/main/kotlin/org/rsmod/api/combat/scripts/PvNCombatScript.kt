@@ -7,6 +7,7 @@ import org.rsmod.api.combat.NpcMeleeBlocks
 import org.rsmod.api.combat.PvNCombat
 import org.rsmod.api.combat.commons.magic.MagicSpell
 import org.rsmod.api.combat.commons.styles.AttackStyle
+import org.rsmod.api.combat.manager.AttackRangeModifiers
 import org.rsmod.api.combat.manager.MagicRuneManager
 import org.rsmod.api.combat.npc.aggressivePlayer
 import org.rsmod.api.combat.npc.lastCombat
@@ -43,6 +44,7 @@ constructor(
     private val autocast: AutocastWeapons,
     private val meleeBlocks: NpcMeleeBlocks,
     private val attackChecks: NpcAttackChecks,
+    private val rangeModifiers: AttackRangeModifiers,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onDefaultApNpc2 { attemptCombatAp(it.npc) }
@@ -76,7 +78,7 @@ constructor(
         }
         val type = types.get(player)
         val style = styles.get(player)
-        val attackRange = attackRange(style)
+        val attackRange = rangeModifiers.modify(player, target, attackRange(style))
         val canAttack = canAttack(target)
 
         // Weapons such as salamanders have an attack range of `1` but can attack with both ranged

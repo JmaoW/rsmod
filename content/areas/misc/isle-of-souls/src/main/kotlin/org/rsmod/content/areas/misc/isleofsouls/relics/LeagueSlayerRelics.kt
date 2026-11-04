@@ -41,8 +41,7 @@ constructor(
 ) : PluginScript() {
     fun hasPassives(player: Player): Boolean = relics.selected(player, PASSIVES_TIER) != 0
 
-    fun isSlayerMaster(player: Player): Boolean =
-        relics.selected(player, MASTER_TIER) == MASTER_OPTION
+    fun isSlayerMaster(player: Player): Boolean = relics.has(player, MASTER_TIER, MASTER_OPTION)
 
     override fun ScriptContext.startup() {
         val hooks = engine.hooks

@@ -205,7 +205,7 @@ varbit (`LeagueGoldenGodScript`). No new variables, so no `packCache` for this. 
 ### Reloaded
 - Choose another relic from any previous tier.
 
-**Status:** ❌ Repick flow not implemented.
+**Status:** ✅ Built 2026-11-03 (`LeagueRelicTracker`): with Reloaded chosen, one relic from tiers 1-3 can be picked on the Relics screen; it is kept in the client's own `league_relic_selection_other_N` varbits, which the client already counts as active. Every relic effect checks `LeagueRelicTracker.has`, so the extra pick works like a normal one. Check in client.
 **Mini-league change:** _TBD_
 
 ### Equilibrium
@@ -214,7 +214,7 @@ varbit (`LeagueGoldenGodScript`). No new variables, so no `packCache` for this. 
 - The extra XP is not multiplied by the Leagues XP multiplier.
 - Triggers per individual XP instance.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueEquilibrium`, via the new `XpBonus` hook in `PlayerSkillXP`): wiki numbers (10% / 20% of total level per xp drop). The bonus skips every multiplier, the realm's 150x too, so it is small next to normal xp. "Least experience" is the lowest xp of all 23 skills; a tie counts.
 **Mini-league change:** _TBD_
 
 ---
@@ -247,7 +247,7 @@ varbit (`LeagueGoldenGodScript`). No new variables, so no `packCache` for this. 
   - Crafting leather, uncut gems, glassblowing, jewelry, pottery, battlestaves, and spinning
     flax/wool.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueProductionMaster`, via the new `ProductionBatch` hook used by each skill): smelting, smithing (as many as the bars allow), fletching (ammo capped at 10 sets per action), herb cleaning (every herb of the kind), potions (not with a stackable secondary), range/fire cooking (every raw piece), pies/pizzas/wine, and every crafting job. Cannonballs do not exist on the server.
 **Mini-league change:** _TBD_
 
 ### Slayer Master
@@ -274,7 +274,7 @@ effects. "Unique slayer monster" is each Slayer task kind. Check in client.
   special attack energy.
 - Teleport back to the coordinate at any time, restoring the saved stats.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueTotalRecall`): the cache's Crystal of echoes, saved in the cache's own `league_last_recall_*` variables. Save-memory refuses inside instances; the memory stays after use and after death, as on the wiki. Uses the normal spell teleport animation. Check in client.
 **Mini-league change:** _TBD_
 
 ### Banker's Note
@@ -282,7 +282,7 @@ effects. "Unique slayer monster" is each Slayer task kind. Check in client.
 - The "Activate" option notes/un-notes in one action with a chosen quantity.
 - Customisable quantities for noting and un-noting.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueBankersNote`): use an item on the note to note or un-note it; Note-Quantity / Un-note-Quantity set the amounts (0 = all); Activate repeats the last item. **Guess:** Toggle switches Activate between noting and un-noting. The last item is not saved over logout.
 **Mini-league change:** _TBD_
 
 ---
@@ -307,7 +307,7 @@ effects. "Unique slayer monster" is each Slayer task kind. Check in client.
 - Unlocking this relic grants access to all prayers and spells regardless of area, quest or diary
   requirements.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueGrimoire`): the cache's Arcane grimoire changes to any spellbook and back to the previous one, from the inventory or worn. The "all spells and prayers" part was already true for everyone, and nothing on the server needs a Book of the Dead.
 **Mini-league change:** _TBD_
 
 ### Overgrown
@@ -333,7 +333,7 @@ effects. "Unique slayer monster" is each Slayer task kind. Check in client.
 - Each failed accuracy roll gives 10% special attack energy.
 - Killing an NPC restores 15% special attack energy.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueSpecialist`, via the new `SpecialAccuracy` hook in `api/specials`): flat 20% cost, 2x accuracy, 10% back per failed roll, 15% per kill. A ranged special that rolls damage in one call counts a 0 as a miss.
 **Mini-league change:** _TBD_
 
 ### Guardian
@@ -344,7 +344,7 @@ effects. "Unique slayer monster" is each Slayer task kind. Check in client.
 - Does not work in PvP; works inside The Gauntlet.
 - Horn can be retrieved from The Sage if lost.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueGuardian`): the cache's Guardian horn summons a follower for 30 minutes that hits the player's target every 4 ticks with its weakest style (45,000 accuracy roll, 5-13 damage), with the area attack on ranged/magic (Toggle-modes switches it off). The cache's `league_guardian` npc has no model, so the user chose a female Kourend royal guard to stand in; Change-outfit cycles royal guard (female, male) and white knight. **Guesses:** the area attack reaches npcs within one tile of the target; the guardian hits from where it stands like the Arceuus thralls; Toggle-modes and the outfit are not saved over logout; auto-summon and Echo Cuthbert are not built. Uses the cache's own guardian cast animation, projectiles and summon animation. Check in client.
 **Mini-league change:** _TBD_
 
 ### Last Stand
@@ -355,7 +355,7 @@ effects. "Unique slayer monster" is each Slayer task kind. Check in client.
   the damage dealt over those 16 ticks.
 - Cannot be used again until death or 3 minutes pass.
 
-**Status:** ❌
+**Status:** ✅ Built 2026-11-03 (`LeagueLastStand`, via the new `PlayerHitEvents.Landing` event): 1 HP instead of dying, Attack/Strength/Defence/Ranged/Magic to 255 draining 16 a tick to base + 15, 16 ticks of no damage below 1 HP, then a heal equal to the damage dealt in those ticks; 3-minute cooldown, reset by death. Not done: blocking food heals during the effect, the red heal bar. The cooldown is kept in memory, so logging out resets it.
 **Mini-league change:** _TBD_
 
 ---

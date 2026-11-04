@@ -115,6 +115,9 @@ constructor(
             return
         }
 
+        // A second ammo slot (Dizana's quiver) may swap in what this weapon fires.
+        ammunition.readyAmmo(player, objTypes[attack.weapon])
+
         // Set the next attack clock before executing any special attack, ensuring all attacks
         // default to the weapon's standard attack delay.
         val attackRate = speeds.playerAttackDelay(player, MasteryStyle.Ranged)

@@ -2,6 +2,7 @@ package org.rsmod.api.combat.manager
 
 import jakarta.inject.Inject
 import java.util.WeakHashMap
+import kotlin.math.max
 import kotlin.math.min
 import org.rsmod.api.combat.commons.CombatAttack
 import org.rsmod.api.combat.commons.fx.MeleeAnimationAndSound
@@ -41,9 +42,11 @@ import org.rsmod.api.player.interact.PlayerInteractions
 import org.rsmod.api.player.interact.PlayerTInteractions
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.protect.clearPendingAction
+import org.rsmod.api.player.righthand
 import org.rsmod.api.player.stat.hitpoints
 import org.rsmod.api.player.stat.statAdvance
 import org.rsmod.api.player.stat.statHeal
+import org.rsmod.api.player.worn.EquipmentChecks
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.world.WorldRepository
 import org.rsmod.api.stats.xpmod.XpModifiers
@@ -82,6 +85,7 @@ constructor(
     private val playerInteractions: PlayerInteractions,
     private val playerTInteractions: PlayerTInteractions,
     private val boltEffects: BoltEffectRegistry,
+    private val forcedMaxHits: ForcedMaxHits,
 ) {
     /** The enchanted bolt each player has just rolled, until its hit is queued. */
     private val pendingBolts = WeakHashMap<Player, PendingBolt>()
@@ -544,6 +548,9 @@ constructor(
         multiplier: Double,
         defenceFactor: Double = 1.0,
     ): Boolean {
+        if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Melee)) {
+            return true
+        }
         return withDefenceFactor(target, defenceFactor) {
             when (target) {
                 is Npc -> {
@@ -616,6 +623,9 @@ constructor(
      * This function first calculates the maximum melee hit with any applicable boosts by calling
      * [calculateMeleeMaxHit], and then rolls a random value within that range.
      *
+     * Osmumten's fang rolls between 15% and 85% of its max hit with any attack style (wiki). Its
+     * special attack does not come through here, so it keeps the fang's true max hit.
+     *
      * @param attackType The [MeleeAttackType] used for the [source]'s max hit calculation. Usually
      *   based on the current `CombatAttack.Melee` attack but can be overridden.
      * @param attackStyle The [MeleeAttackStyle] used for the [source]'s max hit calculation.
@@ -632,11 +642,31 @@ constructor(
         multiplier: Double,
     ): Int {
         val maxHit = calculateMeleeMaxHit(source, target, attackType, attackStyle, multiplier)
-        val damage = masteryEffects.rollMelee(source, maxHit) + (attackBuffs.of(source)?.flatDamage ?: 0)
+        val range = meleeRollRange(source, maxHit)
+        val rolled =
+            if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Melee)) {
+                range.last
+            } else {
+                masteryEffects.rollMelee(source, range.last, range.first)
+            }
+        val damage = rolled + (attackBuffs.of(source)?.flatDamage ?: 0)
         if (target is Npc) {
             healPlayer(source, masteryEffects.meleeHitHeal(source, min(damage, target.hitpoints)))
         }
         return damage
+    }
+
+    /**
+     * The damage a landed melee hit rolls between: `1` to [maxHit], or for Osmumten's fang with 15%
+     * trimmed off each end (the wiki dps calculator's `max * 3 / 20`, rounded down).
+     */
+    private fun meleeRollRange(source: Player, maxHit: Int): IntRange {
+        if (maxHit <= 0 || !EquipmentChecks.isOsmumtensFang(source.righthand)) {
+            return 1..maxHit
+        }
+        val shrink = maxHit * 3 / 20
+        val low = max(1, shrink)
+        return low..max(low, maxHit - shrink)
     }
 
     /**
@@ -923,6 +953,9 @@ constructor(
         blockType: RangedAttackType?,
         multiplier: Double,
     ): Boolean {
+        if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Ranged)) {
+            return true
+        }
         return when (target) {
             is Npc -> {
                 rollRangedAccuracy(source, target, attackType, attackStyle, blockType, multiplier)
@@ -998,7 +1031,12 @@ constructor(
                 multiplier = multiplier * masteryEffects.rangedMaxHitMultiplier(source),
                 boltSpecDamage = boltSpecDamage,
             )
-        val damage = masteryEffects.rollRanged(source, maxHit)
+        val damage =
+            if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Ranged)) {
+                maxHit
+            } else {
+                masteryEffects.rollRanged(source, maxHit)
+            }
         if (target is Npc) {
             healPlayer(source, masteryEffects.rangedHitHeal(source, min(damage, target.hitpoints)))
         }
@@ -1279,10 +1317,11 @@ constructor(
         spellbook: Spellbook?,
         sunfireRune: Boolean,
     ): Boolean =
-        when (target) {
-            is Npc -> rollSpellAccuracy(source, target, spell, spellbook, sunfireRune)
-            is Player -> rollSpellAccuracy(source, target, spell, spellbook, sunfireRune)
-        }
+        forcedMaxHits.isForced(source, target, PlayerAttackKind.Magic) ||
+            when (target) {
+                is Npc -> rollSpellAccuracy(source, target, spell, spellbook, sunfireRune)
+                is Player -> rollSpellAccuracy(source, target, spell, spellbook, sunfireRune)
+            }
 
     private fun rollSpellAccuracy(
         source: Player,
@@ -1358,7 +1397,12 @@ constructor(
         val targetHitpoints = hitpointsOf(target)
         val multiplier = masteryEffects.magicMaxHitMultiplier(source, targetHitpoints)
         val scaledRange = masteryEffects.scale(hitRange, multiplier)
-        val damage = random.of(scaledRange)
+        val damage =
+            if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Magic)) {
+                scaledRange.last
+            } else {
+                random.of(scaledRange)
+            }
         val adjusted =
             masteryEffects.adjustMagicDamage(source, damage, scaledRange.last, targetHitpoints)
         if (target is Npc) {
@@ -1480,6 +1524,9 @@ constructor(
         attackStyle: MagicAttackStyle?,
         multiplier: Double,
     ): Boolean {
+        if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Magic)) {
+            return true
+        }
         return when (target) {
             is Npc -> rollStaffAccuracy(source, target, attackStyle, multiplier)
             is Player -> rollStaffAccuracy(source, target, attackStyle, multiplier)
@@ -1537,7 +1584,12 @@ constructor(
         val masteryMultiplier = masteryEffects.magicMaxHitMultiplier(source, targetHitpoints)
         val maxHit =
             calculateStaffMaxHit(source, target, baseMaxHit, multiplier * masteryMultiplier)
-        val damage = random.of(1..maxHit)
+        val damage =
+            if (forcedMaxHits.isForced(source, target, PlayerAttackKind.Magic)) {
+                maxHit
+            } else {
+                random.of(1..maxHit)
+            }
         val adjusted = masteryEffects.adjustMagicDamage(source, damage, maxHit, targetHitpoints)
         if (target is Npc) {
             val heal =
@@ -2260,7 +2312,15 @@ constructor(
     ): Hit {
         val hit =
             when (target) {
-                is Npc -> target.queueHit(source, delay, HitType.Typeless, damage, npcHitModifier, hitmark)
+                is Npc ->
+                    target.queueHit(
+                        source,
+                        delay,
+                        HitType.Typeless,
+                        damage,
+                        npcHitModifier,
+                        hitmark,
+                    )
                 is Player -> target.queueHit(source, delay, HitType.Typeless, damage, hitmark)
             }
         target.heroPoints(source, min(hit.damage, hitpointsOf(target)))

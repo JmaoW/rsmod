@@ -7,6 +7,7 @@ import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.spam
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.protect.ProtectedAccessLauncher
+import org.rsmod.api.player.stat.ProductionBatch
 import org.rsmod.api.player.stat.cookingLvl
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onOpHeldU
@@ -129,12 +130,19 @@ constructor(
         weakQueue(CookingQueues.prepare, TICKS, job)
     }
 
-    /** Makes one of [job], then queues the next unless the job is done or out of materials. */
+    /**
+     * Makes one of [job] (more with a [ProductionBatch] rule), then queues the next unless the job
+     * is done or out of materials.
+     */
     private fun ProtectedAccess.makeNext(job: Job) {
-        if (!canMake(job.recipe, notify = true) || !makeOnce(job.recipe)) {
+        val made =
+            ProductionBatch.make(player, job.remaining) { first ->
+                canMake(job.recipe, notify = first) && makeOnce(job.recipe)
+            }
+        if (made == 0) {
             return
         }
-        job.remaining--
+        job.remaining -= made
         if (job.remaining > 0 && canMake(job.recipe, notify = false)) {
             schedule(job)
         }

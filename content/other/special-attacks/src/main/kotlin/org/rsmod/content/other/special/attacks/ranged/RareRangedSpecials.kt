@@ -55,8 +55,10 @@ constructor(private val kit: RangedKit, private val dots: SpecialDots) : Special
     }
 
     /**
-     * Two shots of a piercing blade. Each that lands takes a tenth of the target's Magic level off
-     * its Defence. The blade needs no ammunition (its charges are the weapon's own).
+     * Division (wiki): 50% more accuracy, and each blade that lands takes an eighth of the
+     * target's Magic level off its Defence (on an npc the second blade is rolled against the
+     * lowered Defence). A charged weapon throws two blades, an uncharged one one; each hits for up
+     * to 75% of the max hit, like its normal attack, and the throw uses a charge.
      */
     private class Division(manager: SpecialAttackManager, kit: RangedKit) :
         RangedSpecial(manager, kit) {
@@ -64,17 +66,28 @@ constructor(private val kit: RangedKit, private val dots: SpecialDots) : Special
             target: PathingEntity,
             attack: CombatAttack.Ranged,
         ): Boolean {
-            anim(fx_seqs.human_glaive_ralos01_charged_special)
-            spotanim(fx_spots.vfx_glaive_charged_special, height = 96, slot = constants.spotanim_slot_combat)
-            repeat(2) { index ->
+            val seqs = TonalzticsOfRalos.Seqs
+            val spots = TonalzticsOfRalos.Spots
+            val charged = TonalzticsOfRalos.spendCharge(player)
+            if (charged) {
+                anim(seqs.special_charged)
+                spotanim(spots.special_launch_charged, height = 96, slot = constants.spotanim_slot_combat)
+            } else {
+                anim(seqs.special_uncharged)
+                spotanim(spots.special_launch_uncharged, height = 96, slot = constants.spotanim_slot_combat)
+            }
+            val blades = if (charged) 2 else 1
+            repeat(blades) { index ->
                 val proj =
                     manager.spawnProjectile(
                         this,
                         target,
-                        fx_spots.projanim_glaive_01_special,
-                        if (index == 0) projanims.doublearrow_one else projanims.doublearrow_two,
+                        if (index == 0) spots.special_travel_1 else spots.special_travel_2,
+                        if (blades == 1) projanims.thrown
+                        else if (index == 0) projanims.doublearrow_one
+                        else projanims.doublearrow_two,
                     )
-                val roll = rollRanged(target, attack)
+                val roll = rollRanged(target, attack, accuracy = 1.5, damage = TonalzticsOfRalos.MAX_HIT_FRACTION)
                 manager.giveCombatXp(this, target, attack, roll.damage)
                 manager.queueRangedHit(
                     this,
@@ -85,8 +98,13 @@ constructor(private val kit: RangedKit, private val dots: SpecialDots) : Special
                     proj.serverCycles,
                 )
                 if (roll.landed) {
+                    target.spotanim(
+                        if (index == 0) spots.special_impact_1 else spots.special_impact_2,
+                        height = 96,
+                        delay = proj.clientCycles,
+                    )
                     val magic = TargetStats.level(target, CombatSkill.Magic)
-                    TargetStats.lower(target, CombatSkill.Defence, magic / 10)
+                    TargetStats.lower(target, CombatSkill.Defence, magic / 8)
                 }
             }
             return resume(target)

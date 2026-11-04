@@ -7,6 +7,13 @@ import org.rsmod.game.hit.Hit
 
 public class PlayerHitEvents {
     /**
+     * Published as a hit lands, before [player] takes it. [damage] may be lowered here, for effects
+     * that stop a hit from killing the player.
+     */
+    public class Landing(public val player: Player, public val hit: Hit, public var damage: Int) :
+        UnboundEvent
+
+    /**
      * Published once a hit has taken hitpoints from [player].
      *
      * @property damage what was actually taken, which is less than [Hit.damage] if the player had

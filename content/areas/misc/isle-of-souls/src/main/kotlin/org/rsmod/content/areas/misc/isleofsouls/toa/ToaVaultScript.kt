@@ -56,8 +56,8 @@ constructor(
         for (chest in toa_locs.vault_chest_open + toa_locs.vault_chest_empty) {
             onOpLoc1(chest) { openChest() }
         }
-        onOpLoc1(toa_locs.sarcophagus_rare) { openChest() }
-        onOpLoc1(toa_locs.sarcophagus_open) { openChest() }
+        onOpLoc1(toa_locs.sarcophagus_rare) { openSarcophagus() }
+        onOpLoc1(toa_locs.sarcophagus_open) { openSarcophagus() }
         onOpLoc1(toa_locs.rewards_niche) { openChest() }
 
         onOpNpc1(toa_npcs.osmumten_vault) { leave() }
@@ -82,6 +82,19 @@ constructor(
     private fun ProtectedAccess.openChest() {
         rewards.open(player)
         syncVault(player)
+    }
+
+    /**
+     * The purple sarcophagus is the finder's: they open it to claim the unique (their chest holds
+     * the same loot). With the league's team uniques, everyone else's unique is in their own chest.
+     */
+    private fun ProtectedAccess.openSarcophagus() {
+        val raid = raids.raidOf(player)
+        if (raid != null && raid.uniqueFinder !== player) {
+            mes("The sarcophagus holds someone else's reward. Yours is in your chest.")
+            return
+        }
+        openChest()
     }
 
     private suspend fun ProtectedAccess.discard() {
