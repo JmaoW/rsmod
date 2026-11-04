@@ -16,8 +16,12 @@
   }
 
   // Hand-written text may hold a few tags; everything else is escaped.
+  // {dir:<key>} becomes where that landmark is ("about 40 tiles south of the lobby"), from the game code.
   function rich(s) {
-    return esc(s).replace(/&lt;(\/?)(b|i)&gt;/g, "<$1$2>");
+    return esc(s).replace(/&lt;(\/?)(b|i)&gt;/g, "<$1$2>").replace(/\{dir:(\w+)\}/g, function (m, k) {
+      var e = G.entrances && G.entrances[k];
+      return e && e.dir ? e.dir : "on the isle";
+    });
   }
 
   function el(tag, cls, html) {
@@ -90,7 +94,7 @@
         var tile = el(s.page ? "a" : "div", "skill-tile" + (s.page ? "" : " soon"));
         if (s.page) tile.href = "skill.html?s=" + encodeURIComponent(s.id);
         tile.innerHTML = "<h3>" + esc(s.name) + "</h3><p>" + rich(s.summary) + "</p>" +
-          '<div class="tile-foot">' + (s.page ? "" : '<span class="tag">Page coming</span>') +
+          '<div class="tile-foot">' + (s.page ? "" : '<span class="tag">' + esc(s.soon || "Page coming") + "</span>") +
           '<span class="tile-state">' + stateLine(st) + "</span></div>";
         grid.appendChild(tile);
       });
@@ -120,7 +124,8 @@
       if (reach) cells += "<td>" + (reach[ri] ? '<span class="pill passed">Yes</span>' : '<span class="pill no">Not yet</span>') + "</td>";
       return "<tr" + (reach && !reach[ri] ? ' class="faded"' : "") + ">" + cells + "</tr>";
     }).join("");
-    return '<div class="table-wrap"><table class="data"><thead><tr>' + head + "</tr></thead><tbody>" + body + "</tbody></table></div>";
+    return (t.note ? '<p class="muted">' + rich(t.note) + "</p>" : "") +
+      '<div class="table-wrap"><table class="data"><thead><tr>' + head + "</tr></thead><tbody>" + body + "</tbody></table></div>";
   }
 
   function inBox(b, x, z) { return x >= b[0] && z >= b[1] && x <= b[2] && z <= b[3]; }
@@ -147,7 +152,7 @@
       if (!row) {
         row = {
           key: key, named: named, x: p.x, z: p.z, level: p.level, things: {},
-          name: named ? named.name : (p.dir ? "About " + p.dir.replace(/^about /, "") : "")
+          name: named ? named.name : (p.dir ? p.dir.charAt(0).toUpperCase() + p.dir.slice(1) : "")
         };
         byArea[p.area].push(row);
       }
@@ -249,10 +254,16 @@
     html += '<nav class="toc">' + nav.map(function (n) { return '<a href="#' + n[0] + '">' + esc(n[1]) + "</a>"; }).join("") + "</nav>";
 
     html += section("overview", "Overview", (skill.intro || []).map(function (p) { return "<p>" + rich(p) + "</p>"; }).join(""));
-    html += section("where", "Where to train", placesHtml(skill, gen));
+    var where = (skill.where || []).map(function (p) { return "<p>" + rich(p) + "</p>"; }).join("");
+    if (!skill.where || (gen.places && gen.places.length)) where += placesHtml(skill, gen);
+    html += section("where", "Where to train", where);
     (gen.tables || []).forEach(function (t) {
       var after = "";
       if (skill.id === "mining" && t.id === "rocks") after = miningGems(gen);
+      if (gen.lightChance && t.id === "logs") {
+        after = "<p>Every log is equally hard to light: at level 1 a try works " + gen.lightChance.level1 +
+          "% of the time, and from level " + gen.lightChance.certainFrom + " the first try always works.</p>";
+      }
       html += section("t-" + t.id, t.title, table(t) + after);
     });
     if (gen.targets) html += section("loot", "Loot", thievingLoot(gen));

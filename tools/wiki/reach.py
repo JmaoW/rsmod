@@ -33,6 +33,7 @@ EXTRA_AREAS = [
     ("essence", "Rune essence mine", 0, 2910, 4830),
     ("guild", "Mining Guild", 0, 3019, 9737),
     ("morulrek", "Mor Ul Rek", 0, 2479, 5175),
+    ("tower", "Crumbling Tower basement", 0, 1940, 9451),
 ]
 
 # Start tiles that differ from Dungeon.kt's arrival (the arrival is blocked or misses part of the area),

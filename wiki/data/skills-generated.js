@@ -17,6 +17,7 @@ window.ISLE_SKILLS_GEN = {
   "essence": "Rune essence mine",
   "guild": "Mining Guild",
   "morulrek": "Mor Ul Rek",
+  "tower": "Crumbling Tower basement",
   "taverley": "Taverley Dungeon",
   "edgeville": "Edgeville Dungeon",
   "varrock": "Varrock Sewers",
@@ -159,6 +160,66 @@ window.ISLE_SKILLS_GEN = {
    "x": 2253,
    "z": 2955,
    "dir": "about 110 tiles north of the lobby"
+  },
+  "tower": {
+   "x": 2131,
+   "z": 2994,
+   "dir": "about 160 tiles north-west of the lobby"
+  },
+  "pickaxe_rocks": {
+   "x": 2195,
+   "z": 2785,
+   "dir": "about 70 tiles south of the lobby"
+  },
+  "axe_stump": {
+   "x": 2168,
+   "z": 2808,
+   "dir": "about 60 tiles south-west of the lobby"
+  },
+  "gerrant": {
+   "x": 2088,
+   "z": 2894,
+   "dir": "about 130 tiles west of the lobby"
+  },
+  "shop_keeper": {
+   "x": 2162,
+   "z": 2805,
+   "dir": "about 70 tiles south-west of the lobby"
+  },
+  "furnace": {
+   "x": 2218,
+   "z": 2787,
+   "dir": "about 60 tiles south of the lobby"
+  },
+  "hammer": {
+   "x": 2217,
+   "z": 2789,
+   "dir": "about 60 tiles south of the lobby"
+  },
+  "altar": {
+   "x": 2208,
+   "z": 2857,
+   "dir": "at the lobby"
+  },
+  "turael": {
+   "x": 2218,
+   "z": 2788,
+   "dir": "about 60 tiles south of the lobby"
+  },
+  "duradel": {
+   "x": 2135,
+   "z": 2993,
+   "dir": "about 160 tiles north-west of the lobby"
+  },
+  "grace": {
+   "x": 2213,
+   "z": 2811,
+   "dir": "about 40 tiles south of the lobby"
+  },
+  "arena_hut": {
+   "x": 2280,
+   "z": 2802,
+   "dir": "about 80 tiles south-east of the lobby"
   }
  },
  "skills": {
@@ -3786,6 +3847,12104 @@ window.ISLE_SKILLS_GEN = {
      "points": 200,
      "name": "Reach Level 99 Thieving",
      "desc": "Reach level 99 in your Thieving skill",
+     "live": true
+    }
+   ]
+  },
+  "woodcutting": {
+   "tables": [
+    {
+     "id": "trees",
+     "title": "Trees",
+     "cols": [
+      "Level",
+      "Tree",
+      "Gives",
+      "XP each"
+     ],
+     "rows": [
+      [
+       1,
+       "Achey tree",
+       "Achey tree logs",
+       25
+      ],
+      [
+       1,
+       "Burnt tree",
+       "Charcoal",
+       25
+      ],
+      [
+       1,
+       "Dead tree",
+       "Logs",
+       25
+      ],
+      [
+       1,
+       "Evergreen tree",
+       "Logs",
+       25
+      ],
+      [
+       1,
+       "Jungle tree",
+       "Logs",
+       25
+      ],
+      [
+       1,
+       "Tree",
+       "Logs",
+       25
+      ],
+      [
+       15,
+       "Oak tree",
+       "Oak logs",
+       37.5
+      ],
+      [
+       30,
+       "Willow tree",
+       "Willow logs",
+       67.5
+      ],
+      [
+       35,
+       "Teak tree",
+       "Teak logs",
+       85
+      ],
+      [
+       42,
+       "Juniper tree",
+       "Juniper logs",
+       35
+      ],
+      [
+       45,
+       "Hollow tree",
+       "Bark",
+       82.5
+      ],
+      [
+       45,
+       "Maple tree",
+       "Maple logs",
+       100
+      ],
+      [
+       50,
+       "Mahogany tree",
+       "Mahogany logs",
+       125
+      ],
+      [
+       54,
+       "Arctic pine",
+       "Arctic pine logs",
+       40
+      ],
+      [
+       60,
+       "Yew tree",
+       "Yew logs",
+       175
+      ],
+      [
+       75,
+       "Magic tree",
+       "Magic logs",
+       250
+      ],
+      [
+       90,
+       "Redwood tree",
+       "Redwood logs",
+       380
+      ]
+     ]
+    },
+    {
+     "id": "axes",
+     "title": "Axes",
+     "cols": [
+      "Level",
+      "Axe"
+     ],
+     "rows": [
+      [
+       1,
+       "Bronze axe"
+      ],
+      [
+       1,
+       "Iron axe"
+      ],
+      [
+       6,
+       "Steel axe"
+      ],
+      [
+       11,
+       "Black axe"
+      ],
+      [
+       21,
+       "Mithril axe"
+      ],
+      [
+       31,
+       "Adamant axe"
+      ],
+      [
+       35,
+       "Blessed axe"
+      ],
+      [
+       41,
+       "Gilded axe"
+      ],
+      [
+       41,
+       "Rune axe"
+      ],
+      [
+       61,
+       "3rd age axe"
+      ],
+      [
+       61,
+       "Dragon axe"
+      ],
+      [
+       61,
+       "Infernal axe"
+      ],
+      [
+       71,
+       "Crystal axe"
+      ]
+     ]
+    }
+   ],
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2266,
+     "z": 2810,
+     "box": [
+      2254,
+      2794,
+      2275,
+      2831
+     ],
+     "dir": "about 70 tiles south-east of the lobby",
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 26
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2190,
+     "z": 2993,
+     "box": [
+      2190,
+      2993,
+      2190,
+      2993
+     ],
+     "dir": "about 140 tiles north of the lobby",
+     "things": [
+      {
+       "name": "Mahogany tree",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2206,
+     "z": 2989,
+     "box": [
+      2206,
+      2989,
+      2206,
+      2989
+     ],
+     "dir": "about 140 tiles north of the lobby",
+     "things": [
+      {
+       "name": "Mahogany tree",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2253,
+     "z": 2808,
+     "box": [
+      2245,
+      2795,
+      2263,
+      2822
+     ],
+     "dir": "about 60 tiles south-east of the lobby",
+     "things": [
+      {
+       "name": "Maple tree",
+       "count": 15
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2186,
+     "z": 2990,
+     "box": [
+      2185,
+      2988,
+      2187,
+      2992
+     ],
+     "dir": "about 140 tiles north of the lobby",
+     "things": [
+      {
+       "name": "Teak tree",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2205,
+     "z": 2890,
+     "box": [
+      2089,
+      2775,
+      2338,
+      3001
+     ],
+     "dir": "all over the isle",
+     "things": [
+      {
+       "name": "Tree",
+       "count": 884
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2242,
+     "z": 2977,
+     "box": [
+      2235,
+      2975,
+      2247,
+      2980
+     ],
+     "dir": "about 130 tiles north of the lobby",
+     "things": [
+      {
+       "name": "Tree",
+       "count": 7
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2269,
+     "z": 2976,
+     "box": [
+      2264,
+      2972,
+      2276,
+      2980
+     ],
+     "dir": "about 140 tiles north-east of the lobby",
+     "things": [
+      {
+       "name": "Tree",
+       "count": 10
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2148,
+     "z": 2972,
+     "box": [
+      2142,
+      2965,
+      2158,
+      2977
+     ],
+     "dir": "about 140 tiles north-west of the lobby",
+     "things": [
+      {
+       "name": "Yew tree",
+       "count": 4
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2165,
+     "z": 2861,
+     "box": [
+      2160,
+      2857,
+      2171,
+      2866
+     ],
+     "dir": "about 50 tiles west of the lobby",
+     "things": [
+      {
+       "name": "Yew tree",
+       "count": 6
+      }
+     ]
+    },
+    {
+     "area": "essence",
+     "title": "Rune essence mine",
+     "level": 0,
+     "x": 2893,
+     "z": 4840,
+     "box": [
+      2891,
+      4839,
+      2894,
+      4841
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "area": "essence",
+     "title": "Rune essence mine",
+     "level": 0,
+     "x": 2893,
+     "z": 4820,
+     "box": [
+      2893,
+      4820,
+      2893,
+      4820
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "essence",
+     "title": "Rune essence mine",
+     "level": 0,
+     "x": 2896,
+     "z": 4854,
+     "box": [
+      2895,
+      4854,
+      2897,
+      4855
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "essence",
+     "title": "Rune essence mine",
+     "level": 0,
+     "x": 2912,
+     "z": 4829,
+     "box": [
+      2907,
+      4823,
+      2918,
+      4837
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 6
+      }
+     ]
+    },
+    {
+     "area": "essence",
+     "title": "Rune essence mine",
+     "level": 0,
+     "x": 2922,
+     "z": 4856,
+     "box": [
+      2921,
+      4855,
+      2922,
+      4856
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "essence",
+     "title": "Rune essence mine",
+     "level": 0,
+     "x": 2934,
+     "z": 4821,
+     "box": [
+      2933,
+      4820,
+      2934,
+      4822
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "taverley",
+     "title": "Taverley Dungeon",
+     "level": 0,
+     "x": 2892,
+     "z": 9830,
+     "box": [
+      2890,
+      9827,
+      2897,
+      9833
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 4
+      }
+     ]
+    },
+    {
+     "area": "edgeville",
+     "title": "Edgeville Dungeon",
+     "level": 0,
+     "x": 3162,
+     "z": 9902,
+     "box": [
+      3161,
+      9901,
+      3162,
+      9904
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "edgeville",
+     "title": "Edgeville Dungeon",
+     "level": 0,
+     "x": 3252,
+     "z": 9916,
+     "box": [
+      3247,
+      9916,
+      3257,
+      9917
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "varrock",
+     "title": "Varrock Sewers",
+     "level": 0,
+     "x": 3255,
+     "z": 9911,
+     "box": [
+      3255,
+      9911,
+      3255,
+      9911
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Dead tree",
+       "count": 1
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 289,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Chop Some Logs",
+     "desc": "Chop any kind of logs",
+     "live": true
+    },
+    {
+     "id": 290,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Chop Some Logs With a Steel Axe",
+     "desc": "Chop any kind of logs using a Steel Axe",
+     "live": true
+    },
+    {
+     "id": 1315,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Chop a log from a potato tree",
+     "desc": "Chop a log from a tree that is curiously in a potato field",
+     "live": false
+    },
+    {
+     "id": 1292,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Chop down an arctic pine tree",
+     "desc": "Chop down an arctic pine tree",
+     "live": false
+    },
+    {
+     "id": 1581,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Cut the Swaying Tree",
+     "desc": "Cut the Swaying Tree",
+     "live": false
+    },
+    {
+     "id": 291,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Obtain a Bird Nest",
+     "desc": "Obtain a Bird Nest whilst cutting down trees",
+     "live": false
+    },
+    {
+     "id": 294,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Build a Waka Canoe",
+     "desc": "Build a Waka Canoe",
+     "live": false
+    },
+    {
+     "id": 1589,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop 100 Blisterwood Logs",
+     "desc": "Chop 100 Blisterwood Logs",
+     "live": false
+    },
+    {
+     "id": 1579,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop 100 Maple Logs",
+     "desc": "Chop 100 Maple Logs",
+     "live": true
+    },
+    {
+     "id": 292,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop 100 Willow Logs",
+     "desc": "Chop 100 Willow Logs from Willow Trees",
+     "live": true
+    },
+    {
+     "id": 1607,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop 15 Yew Logs",
+     "desc": "Chop 15 Yew Logs",
+     "live": true
+    },
+    {
+     "id": 1598,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop 25 Juniper Logs",
+     "desc": "Chop 25 Juniper Logs",
+     "live": false
+    },
+    {
+     "id": 293,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop Some Logs With a Rune Axe",
+     "desc": "Chop any kind of logs using a Rune Axe",
+     "live": true
+    },
+    {
+     "id": 465,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Chop a Sulliuscep Cap",
+     "desc": "Chop a Sulliuscep Cap on Fossil Island",
+     "live": false
+    },
+    {
+     "id": 1820,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cut 50 Maple Logs",
+     "desc": "Cut 50 Maple Logs",
+     "live": true
+    },
+    {
+     "id": 87,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Enter the Woodcutting Guild",
+     "desc": "Enter the Woodcutting Guild in Hosidius",
+     "live": false
+    },
+    {
+     "id": 1592,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Make 50 Oak Planks",
+     "desc": "Make 50 Oak Planks",
+     "live": false
+    },
+    {
+     "id": 1385,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Chop 100 Teak Logs",
+     "desc": "Chop 100 Teak Logs",
+     "live": true
+    },
+    {
+     "id": 1822,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Chop 100 Yew Logs",
+     "desc": "Chop 100 Yew Logs",
+     "live": true
+    },
+    {
+     "id": 1719,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Chop 20 Magic Logs",
+     "desc": "Chop 20 Magic Logs",
+     "live": true
+    },
+    {
+     "id": 1266,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Chop 200 Redwood Logs",
+     "desc": "Chop 200 Redwood Logs from Redwood Trees",
+     "live": false
+    },
+    {
+     "id": 1765,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Chop 50 Magic Logs",
+     "desc": "Chop 50 Magic Logs",
+     "live": true
+    },
+    {
+     "id": 295,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Chop 75 Magic Logs",
+     "desc": "Chop 75 Magic Logs from Magic Trees",
+     "live": true
+    },
+    {
+     "id": 1376,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Chop 500 Redwood logs",
+     "desc": "Chop 500 Redwood logs from a Redwood Tree",
+     "live": false
+    },
+    {
+     "id": 269,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Woodcutting XP",
+     "desc": "Obtain 25 million experience in your Woodcutting skill",
+     "live": true
+    },
+    {
+     "id": 1481,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Woodcutting XP",
+     "desc": "Obtain 35 million experience in your Woodcutting skill",
+     "live": true
+    },
+    {
+     "id": 1504,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Woodcutting XP",
+     "desc": "Obtain 50 million experience in your Woodcutting skill",
+     "live": true
+    },
+    {
+     "id": 268,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Woodcutting",
+     "desc": "Reach level 99 in your Woodcutting skill",
+     "live": true
+    }
+   ]
+  },
+  "fishing": {
+   "tables": [
+    {
+     "id": "fish",
+     "title": "Fish",
+     "cols": [
+      "Level",
+      "Fish",
+      "Spot and option",
+      "You need",
+      "XP each"
+     ],
+     "rows": [
+      [
+       1,
+       "Shrimps",
+       "Net/Bait spot: Net",
+       "Small fishing net",
+       10
+      ],
+      [
+       5,
+       "Karambwanji",
+       "Karambwanji spot",
+       "Small fishing net",
+       5
+      ],
+      [
+       5,
+       "Sardine",
+       "Net/Bait spot: Bait",
+       "Fishing rod and fishing bait",
+       20
+      ],
+      [
+       10,
+       "Herring",
+       "Net/Bait spot: Bait",
+       "Fishing rod and fishing bait",
+       30
+      ],
+      [
+       15,
+       "Anchovies",
+       "Net/Bait spot: Net",
+       "Small fishing net",
+       40
+      ],
+      [
+       16,
+       "Mackerel",
+       "Big Net/Harpoon spot: Big Net",
+       "Big fishing net",
+       20
+      ],
+      [
+       20,
+       "Trout",
+       "Lure/Bait spot: Lure",
+       "Fly fishing rod and feathers",
+       50
+      ],
+      [
+       23,
+       "Cod",
+       "Big Net/Harpoon spot: Big Net",
+       "Big fishing net",
+       45
+      ],
+      [
+       25,
+       "Pike",
+       "Lure/Bait spot: Bait",
+       "Fishing rod and fishing bait",
+       60
+      ],
+      [
+       30,
+       "Salmon",
+       "Lure/Bait spot: Lure",
+       "Fly fishing rod and feathers",
+       70
+      ],
+      [
+       35,
+       "Tuna",
+       "Cage/Harpoon or monkfish spot: Harpoon",
+       "Harpoon",
+       80
+      ],
+      [
+       40,
+       "Lobster",
+       "Cage/Harpoon spot: Cage",
+       "Lobster pot",
+       90
+      ],
+      [
+       46,
+       "Bass",
+       "Big Net/Harpoon spot: Big Net",
+       "Big fishing net",
+       100
+      ],
+      [
+       50,
+       "Swordfish",
+       "Cage/Harpoon or monkfish spot: Harpoon",
+       "Harpoon",
+       100
+      ],
+      [
+       62,
+       "Monkfish",
+       "Monkfish spot: Net",
+       "Small fishing net",
+       120
+      ],
+      [
+       65,
+       "Karambwan",
+       "Karambwan spot",
+       "Karambwan vessel with karambwanji",
+       50
+      ],
+      [
+       76,
+       "Shark",
+       "Big Net/Harpoon spot: Harpoon",
+       "Harpoon",
+       110
+      ],
+      [
+       82,
+       "Anglerfish",
+       "Anglerfish spot",
+       "Fishing rod and sandworms",
+       120
+      ]
+     ]
+    },
+    {
+     "id": "harpoons",
+     "title": "Harpoons",
+     "cols": [
+      "Level",
+      "Harpoon"
+     ],
+     "rows": [
+      [
+       1,
+       "Harpoon"
+      ],
+      [
+       61,
+       "Dragon harpoon"
+      ],
+      [
+       61,
+       "Infernal harpoon"
+      ],
+      [
+       71,
+       "Crystal harpoon"
+      ]
+     ]
+    }
+   ],
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2086,
+     "z": 2895,
+     "box": [
+      2085,
+      2890,
+      2087,
+      2902
+     ],
+     "dir": "about 130 tiles west of the lobby",
+     "things": [
+      {
+       "name": "Anglerfish spot",
+       "count": 1
+      },
+      {
+       "name": "Big Net/Harpoon spot",
+       "count": 1
+      },
+      {
+       "name": "Monkfish spot",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2164,
+     "z": 2782,
+     "box": [
+      2162,
+      2781,
+      2166,
+      2782
+     ],
+     "dir": "about 80 tiles south-west of the lobby",
+     "things": [
+      {
+       "name": "Net/Bait spot",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2265,
+     "z": 2786,
+     "box": [
+      2261,
+      2785,
+      2268,
+      2786
+     ],
+     "dir": "about 80 tiles south-east of the lobby",
+     "things": [
+      {
+       "name": "Karambwan spot",
+       "count": 2
+      },
+      {
+       "name": "Karambwanji spot",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2282,
+     "z": 2975,
+     "box": [
+      2276,
+      2974,
+      2287,
+      2976
+     ],
+     "dir": "about 140 tiles north-east of the lobby",
+     "things": [
+      {
+       "name": "Cage/Harpoon spot",
+       "count": 2
+      },
+      {
+       "name": "Lure/Bait spot",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2284,
+     "z": 2842,
+     "box": [
+      2280,
+      2837,
+      2288,
+      2847
+     ],
+     "dir": "about 70 tiles east of the lobby",
+     "things": [
+      {
+       "name": "Big Net/Harpoon spot",
+       "count": 2
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 1084,
+     "tier": "Easy",
+     "points": 10,
+     "name": "1 Tempoross Kill",
+     "desc": "Help the Spirit Anglers subdue the Tempoross",
+     "live": false
+    },
+    {
+     "id": 341,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch a Herring",
+     "desc": "Catch a Raw Herring whilst Fishing",
+     "live": true
+    },
+    {
+     "id": 644,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch a Karambwanji",
+     "desc": "Catch a Karambwanji",
+     "live": true
+    },
+    {
+     "id": 1548,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch a Salmon",
+     "desc": "Catch a Salmon",
+     "live": true
+    },
+    {
+     "id": 340,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch a Shrimp",
+     "desc": "Catch Raw Shrimp while Fishing",
+     "live": true
+    },
+    {
+     "id": 342,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch an Anchovy",
+     "desc": "Catch a Raw Anchovy whilst Fishing",
+     "live": true
+    },
+    {
+     "id": 1085,
+     "tier": "Medium",
+     "points": 30,
+     "name": "10 Tempoross Kills",
+     "desc": "Help the Spirit Anglers subdue the Tempoross 10 times",
+     "live": false
+    },
+    {
+     "id": 1827,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 10 Pike",
+     "desc": "Catch 10 Pike",
+     "live": true
+    },
+    {
+     "id": 343,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 100 Lobsters",
+     "desc": "Catch 100 Raw Lobsters whilst Fishing",
+     "live": true
+    },
+    {
+     "id": 1825,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 25 Sardines",
+     "desc": "Catch 25 Sardines",
+     "live": true
+    },
+    {
+     "id": 646,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 50 Karambwan",
+     "desc": "Catch 50 Karambwan",
+     "live": true
+    },
+    {
+     "id": 345,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 50 Salmon",
+     "desc": "Catch 50 Raw Salmon whilst Fishing",
+     "live": true
+    },
+    {
+     "id": 344,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 50 Swordfish",
+     "desc": "Catch 50 Raw Swordfish whilst Fishing",
+     "live": true
+    },
+    {
+     "id": 696,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Monkfish",
+     "desc": "Catch a Monkfish",
+     "live": true
+    },
+    {
+     "id": 695,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Enter the Fishing Guild",
+     "desc": "Enter the Fishing Guild",
+     "live": false
+    },
+    {
+     "id": 1701,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fish a House Key",
+     "desc": "Fish a House Key",
+     "live": false
+    },
+    {
+     "id": 1086,
+     "tier": "Hard",
+     "points": 80,
+     "name": "25 Tempoross Kills",
+     "desc": "Help the Spirit Anglers subdue the Tempoross 25 times",
+     "live": false
+    },
+    {
+     "id": 972,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Catch 100 Dark Crabs",
+     "desc": "Catch 100 Dark Crabs",
+     "live": false
+    },
+    {
+     "id": 346,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Catch 100 Shark",
+     "desc": "Catch 100 Raw Shark whilst Fishing",
+     "live": true
+    },
+    {
+     "id": 515,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Dissect 50 Sacred Eels",
+     "desc": "Dissect 50 Sacred Eels",
+     "live": false
+    },
+    {
+     "id": 699,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Equip a Full Angler's Outfit",
+     "desc": "Equip a full set of Angler gear",
+     "live": false
+    },
+    {
+     "id": 1814,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Trade in 1000 Minnows",
+     "desc": "Trade in 1000 Minnows in the Fishing guild",
+     "live": false
+    },
+    {
+     "id": 1816,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Barehand catch a Shark",
+     "desc": "Barehand catch a Shark",
+     "live": false
+    },
+    {
+     "id": 1609,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch 150 Anglerfish",
+     "desc": "Catch 150 Anglerfish",
+     "live": true
+    },
+    {
+     "id": 1764,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Dissect 250 Sacred Eels",
+     "desc": "Dissect 250 Sacred Eels",
+     "live": false
+    },
+    {
+     "id": 263,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Fishing XP",
+     "desc": "Obtain 25 million experience in your Fishing skill",
+     "live": true
+    },
+    {
+     "id": 1478,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Fishing XP",
+     "desc": "Obtain 35 million experience in your Fishing skill",
+     "live": true
+    },
+    {
+     "id": 1501,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Fishing XP",
+     "desc": "Obtain 50 million experience in your Fishing skill",
+     "live": true
+    },
+    {
+     "id": 262,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Fishing",
+     "desc": "Reach level 99 in your Fishing skill",
+     "live": true
+    }
+   ]
+  },
+  "firemaking": {
+   "tables": [
+    {
+     "id": "logs",
+     "title": "Logs",
+     "cols": [
+      "Level",
+      "Logs",
+      "XP each"
+     ],
+     "rows": [
+      [
+       1,
+       "Achey tree logs",
+       40
+      ],
+      [
+       1,
+       "Logs",
+       40
+      ],
+      [
+       15,
+       "Oak logs",
+       60
+      ],
+      [
+       30,
+       "Willow logs",
+       90
+      ],
+      [
+       35,
+       "Teak logs",
+       105
+      ],
+      [
+       42,
+       "Arctic pine logs",
+       125
+      ],
+      [
+       45,
+       "Maple logs",
+       135
+      ],
+      [
+       50,
+       "Mahogany logs",
+       157.5
+      ],
+      [
+       60,
+       "Yew logs",
+       202.5
+      ],
+      [
+       75,
+       "Magic logs",
+       303.8
+      ],
+      [
+       90,
+       "Redwood logs",
+       350
+      ]
+     ]
+    }
+   ],
+   "lightChance": {
+    "level1": 25.39,
+    "certainFrom": 43
+   },
+   "places": [],
+   "tasks": [
+    {
+     "id": 371,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Burn Some Normal Logs",
+     "desc": "Burn some Normal Logs",
+     "live": true
+    },
+    {
+     "id": 372,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Burn Some Oak Logs",
+     "desc": "Burn some Oak Logs",
+     "live": true
+    },
+    {
+     "id": 374,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Burn 100 Willow Logs",
+     "desc": "Burn 100 Willow Logs",
+     "live": true
+    },
+    {
+     "id": 1821,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Burn 25 Maple Logs",
+     "desc": "Burn 25 Maple Logs",
+     "live": true
+    },
+    {
+     "id": 377,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Burn 100 Yew Logs",
+     "desc": "Burn 100 Yew Logs",
+     "live": true
+    },
+    {
+     "id": 378,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Burn Some Magic Logs",
+     "desc": "Burn some Magic Logs",
+     "live": true
+    },
+    {
+     "id": 267,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Firemaking XP",
+     "desc": "Obtain 25 million experience in your Firemaking skill",
+     "live": true
+    },
+    {
+     "id": 1480,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Firemaking XP",
+     "desc": "Obtain 35 million experience in your Firemaking skill",
+     "live": true
+    },
+    {
+     "id": 1503,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Firemaking XP",
+     "desc": "Obtain 50 million experience in your Firemaking skill",
+     "live": true
+    },
+    {
+     "id": 266,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Firemaking",
+     "desc": "Reach level 99 in your Firemaking skill",
+     "live": true
+    }
+   ]
+  },
+  "prayer": {
+   "tables": [
+    {
+     "id": "bones",
+     "title": "Bones",
+     "cols": [
+      "Bones",
+      "XP buried",
+      "XP on an altar"
+     ],
+     "rows": [
+      [
+       "Bones",
+       4.5,
+       15.8
+      ],
+      [
+       "Burnt bones",
+       4.5,
+       15.8
+      ],
+      [
+       "Wolf bones",
+       4.5,
+       15.8
+      ],
+      [
+       "Bat bones",
+       5.3,
+       18.6
+      ],
+      [
+       "Big bones",
+       15,
+       52.5
+      ],
+      [
+       "Zogre bones",
+       22.5,
+       78.8
+      ],
+      [
+       "Babydragon bones",
+       30,
+       105
+      ],
+      [
+       "Wyrm bones",
+       50,
+       175
+      ],
+      [
+       "Dragon bones",
+       72,
+       252
+      ],
+      [
+       "Wyvern bones",
+       72,
+       252
+      ],
+      [
+       "Drake bones",
+       80,
+       280
+      ],
+      [
+       "Fayrg bones",
+       84,
+       294
+      ],
+      [
+       "Lava dragon bones",
+       85,
+       297.5
+      ],
+      [
+       "Raurg bones",
+       96,
+       336
+      ],
+      [
+       "Hydra bones",
+       110,
+       385
+      ],
+      [
+       "Dagannoth bones",
+       125,
+       437.5
+      ],
+      [
+       "Ourg bones",
+       140,
+       490
+      ],
+      [
+       "Superior dragon bones",
+       150,
+       525
+      ]
+     ]
+    }
+   ],
+   "altarMultiplier": 3.5,
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2208,
+     "z": 2857,
+     "box": [
+      2208,
+      2857,
+      2208,
+      2857
+     ],
+     "dir": "at the lobby",
+     "things": [
+      {
+       "name": "Altar",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "tower",
+     "title": "Crumbling Tower basement",
+     "level": 0,
+     "x": 1929,
+     "z": 9447,
+     "box": [
+      1929,
+      9447,
+      1929,
+      9447
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Chaos altar",
+       "count": 1
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 97,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Bury Some Bones",
+     "desc": "Bury any kind of Bones",
+     "live": true
+    },
+    {
+     "id": 94,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Restore 5 Prayer Points at an Altar",
+     "desc": "Restore 5 or more Prayer Points at any altar",
+     "live": true
+    },
+    {
+     "id": 95,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Superhuman Strength and Improved Reflexes",
+     "desc": "Use both the Superhuman Strength prayer and the Improved Reflexes prayer at the same time",
+     "live": true
+    },
+    {
+     "id": 188,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Bury Some Wyvern or Dragon Bones",
+     "desc": "Bury either some Wyvern Bones or some Dragon Bones",
+     "live": true
+    },
+    {
+     "id": 969,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Sacrifice Some Bones at the Chaos Temple",
+     "desc": "Sacrifice some Bones at the Western Chaos Temple altar",
+     "live": true
+    },
+    {
+     "id": 387,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Use the Protect from Melee Prayer",
+     "desc": "Use the Protect from Melee prayer",
+     "live": true
+    },
+    {
+     "id": 65,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Restore 75 Prayer Points at an Altar",
+     "desc": "Restore 75 or more Prayer Points at any altar",
+     "live": true
+    },
+    {
+     "id": 970,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Sacrifice Some Dragon Bones at the Chaos Temple",
+     "desc": "Sacrifice some Dragon Bones at the Western Chaos Temple altar",
+     "live": true
+    },
+    {
+     "id": 235,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Prayer XP",
+     "desc": "Obtain 25 million experience in your Prayer skill",
+     "live": true
+    },
+    {
+     "id": 1464,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Prayer XP",
+     "desc": "Obtain 35 million experience in your Prayer skill",
+     "live": true
+    },
+    {
+     "id": 1487,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Prayer XP",
+     "desc": "Obtain 50 million experience in your Prayer skill",
+     "live": true
+    },
+    {
+     "id": 234,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Prayer",
+     "desc": "Reach level 99 in your Prayer skill",
+     "live": true
+    }
+   ]
+  },
+  "hunter": {
+   "tables": [
+    {
+     "id": "traps",
+     "title": "Trapping",
+     "cols": [
+      "Level",
+      "Creature",
+      "Trap",
+      "XP each"
+     ],
+     "rows": [
+      [
+       1,
+       "Crimson swift",
+       "Bird snare",
+       34
+      ],
+      [
+       5,
+       "Golden warbler",
+       "Bird snare",
+       47
+      ],
+      [
+       9,
+       "Copper longtail",
+       "Bird snare",
+       61.2
+      ],
+      [
+       11,
+       "Cerulean twitch",
+       "Bird snare",
+       64.5
+      ],
+      [
+       19,
+       "Tropical wagtail",
+       "Bird snare",
+       95.2
+      ],
+      [
+       23,
+       "Wild kebbit",
+       "Deadfall",
+       102.4
+      ],
+      [
+       27,
+       "Ferret",
+       "Box trap",
+       115.2
+      ],
+      [
+       29,
+       "Swamp lizard",
+       "Net trap",
+       152
+      ],
+      [
+       31,
+       "Spined larupia",
+       "Pitfall",
+       180
+      ],
+      [
+       33,
+       "Barb-tailed kebbit",
+       "Deadfall",
+       134.4
+      ],
+      [
+       37,
+       "Prickly kebbit",
+       "Deadfall",
+       147.2
+      ],
+      [
+       39,
+       "Embertailed jerboa",
+       "Box trap",
+       137
+      ],
+      [
+       41,
+       "Horned graahk",
+       "Pitfall",
+       240
+      ],
+      [
+       47,
+       "Orange salamander",
+       "Net trap",
+       224
+      ],
+      [
+       51,
+       "Sabre-toothed kebbit",
+       "Deadfall",
+       160
+      ],
+      [
+       53,
+       "Chinchompa",
+       "Box trap",
+       198.4
+      ],
+      [
+       55,
+       "Sabre-toothed kyatt",
+       "Pitfall",
+       300
+      ],
+      [
+       57,
+       "Pyre fox",
+       "Deadfall",
+       177.6
+      ],
+      [
+       59,
+       "Red salamander",
+       "Net trap",
+       272
+      ],
+      [
+       63,
+       "Carnivorous chinchompa",
+       "Box trap",
+       265
+      ],
+      [
+       67,
+       "Black salamander",
+       "Net trap",
+       319.2
+      ],
+      [
+       72,
+       "Sunlight antelope",
+       "Pitfall",
+       380
+      ],
+      [
+       73,
+       "Black chinchompa",
+       "Box trap",
+       315
+      ],
+      [
+       79,
+       "Tecu salamander",
+       "Net trap",
+       344
+      ],
+      [
+       91,
+       "Moonlight antelope",
+       "Pitfall",
+       450
+      ]
+     ]
+    },
+    {
+     "id": "butterflies",
+     "title": "Butterflies and moths",
+     "cols": [
+      "Level with a net",
+      "Butterfly",
+      "XP",
+      "Level barehanded",
+      "XP barehanded"
+     ],
+     "rows": [
+      [
+       15,
+       "Ruby harvest",
+       24,
+       25,
+       44
+      ],
+      [
+       25,
+       "Sapphire glacialis",
+       34,
+       35,
+       54
+      ],
+      [
+       35,
+       "Snowy knight",
+       44,
+       45,
+       64
+      ],
+      [
+       45,
+       "Black warlock",
+       54,
+       55,
+       74
+      ],
+      [
+       65,
+       "Sunlight moth",
+       74,
+       75,
+       94
+      ],
+      [
+       75,
+       "Moonlight moth",
+       84,
+       85,
+       104
+      ]
+     ]
+    },
+    {
+     "id": "implings",
+     "title": "Implings",
+     "cols": [
+      "Level with a net",
+      "Impling",
+      "Level barehanded",
+      "XP"
+     ],
+     "rows": [
+      [
+       17,
+       "Baby impling",
+       27,
+       20
+      ],
+      [
+       22,
+       "Young impling",
+       32,
+       22
+      ],
+      [
+       28,
+       "Gourmet impling",
+       38,
+       24
+      ],
+      [
+       36,
+       "Earth impling",
+       46,
+       27
+      ],
+      [
+       42,
+       "Essence impling",
+       52,
+       29
+      ],
+      [
+       50,
+       "Eclectic impling",
+       60,
+       32
+      ],
+      [
+       58,
+       "Nature impling",
+       68,
+       36
+      ],
+      [
+       65,
+       "Magpie impling",
+       75,
+       216
+      ],
+      [
+       74,
+       "Ninja impling",
+       84,
+       240
+      ],
+      [
+       80,
+       "Crystal impling",
+       90,
+       280
+      ],
+      [
+       83,
+       "Dragon impling",
+       93,
+       300
+      ],
+      [
+       89,
+       "Lucky impling",
+       99,
+       380
+      ]
+     ]
+    },
+    {
+     "id": "falconry",
+     "title": "Falconry",
+     "cols": [
+      "Level",
+      "Kebbit",
+      "XP"
+     ],
+     "rows": [
+      [
+       43,
+       "Spotted kebbit",
+       104
+      ],
+      [
+       57,
+       "Dark kebbit",
+       132
+      ],
+      [
+       69,
+       "Dashing kebbit",
+       156
+      ]
+     ]
+    },
+    {
+     "id": "birdhouses",
+     "title": "Birdhouses",
+     "cols": [
+      "Hunter level",
+      "Birdhouse",
+      "Crafting level to build",
+      "Crafting XP",
+      "Hunter XP"
+     ],
+     "rows": [
+      [
+       5,
+       "Bird house",
+       5,
+       15,
+       112
+      ],
+      [
+       14,
+       "Oak bird house",
+       15,
+       20,
+       168
+      ],
+      [
+       24,
+       "Willow bird house",
+       25,
+       25,
+       224
+      ],
+      [
+       34,
+       "Teak bird house",
+       35,
+       30,
+       280
+      ],
+      [
+       44,
+       "Maple bird house",
+       45,
+       35,
+       369
+      ],
+      [
+       49,
+       "Mahogany bird house",
+       50,
+       40,
+       480
+      ],
+      [
+       59,
+       "Yew bird house",
+       60,
+       45,
+       612
+      ],
+      [
+       74,
+       "Magic bird house",
+       75,
+       50,
+       969
+      ],
+      [
+       89,
+       "Redwood bird house",
+       90,
+       55,
+       1200
+      ]
+     ]
+    }
+   ],
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2128,
+     "z": 2951,
+     "box": [
+      2126,
+      2949,
+      2130,
+      2953
+     ],
+     "dir": "about 130 tiles north-west of the lobby",
+     "things": [
+      {
+       "name": "Chinchompa",
+       "count": 5
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2208,
+     "z": 2963,
+     "box": [
+      2203,
+      2960,
+      2212,
+      2967
+     ],
+     "dir": "about 110 tiles north of the lobby",
+     "things": [
+      {
+       "name": "Copper longtail",
+       "count": 7
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2158,
+     "z": 2824,
+     "box": [
+      2152,
+      2818,
+      2165,
+      2829
+     ],
+     "dir": "about 60 tiles south-west of the lobby",
+     "things": [
+      {
+       "name": "Crimson swift",
+       "count": 6
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 379,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch a Baby Impling",
+     "desc": "Catch a Baby Impling",
+     "live": true
+    },
+    {
+     "id": 1369,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Catch a wild kebbit",
+     "desc": "Catch a wild kebbit",
+     "live": true
+    },
+    {
+     "id": 380,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Snare a Bird",
+     "desc": "Catch any bird with a Bird Snare",
+     "live": true
+    },
+    {
+     "id": 859,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 30 Orange Salamanders",
+     "desc": "Catch 30 Orange Salamanders",
+     "live": true
+    },
+    {
+     "id": 445,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch 50 Implings",
+     "desc": "Catch 50 Implings",
+     "live": true
+    },
+    {
+     "id": 977,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Black Chinchompa",
+     "desc": "Catch a Black Chinchompa",
+     "live": true
+    },
+    {
+     "id": 976,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Black Salamander",
+     "desc": "Catch a Black Salamander",
+     "live": true
+    },
+    {
+     "id": 519,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Crystal Impling",
+     "desc": "Catch a Crystal Impling",
+     "live": true
+    },
+    {
+     "id": 1614,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Grey Chinchompa",
+     "desc": "Catch a Grey Chinchompa",
+     "live": true
+    },
+    {
+     "id": 694,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Red Salamander",
+     "desc": "Catch a Red Salamander",
+     "live": true
+    },
+    {
+     "id": 1833,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Sabre-toothed Kebbit",
+     "desc": "Catch a Sabre-toothed Kebbit",
+     "live": true
+    },
+    {
+     "id": 912,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Swamp Lizard",
+     "desc": "Catch a Swamp Lizard",
+     "live": true
+    },
+    {
+     "id": 382,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Catch a Swamp Lizard or Salamander",
+     "desc": "Catch either a Swamp Lizard or any kind of Salamander",
+     "live": true
+    },
+    {
+     "id": 439,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Dismantle 20 Filled Bird Houses",
+     "desc": "Dismantle 20 filled Bird Houses",
+     "live": true
+    },
+    {
+     "id": 691,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Trap a Spined Larupia",
+     "desc": "Trap a Spined Larupia",
+     "live": true
+    },
+    {
+     "id": 1697,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Catch 25 Sunlight Antelopes",
+     "desc": "Catch 25 Sunlight Antelopes",
+     "live": true
+    },
+    {
+     "id": 1615,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Catch 50 Grey Chinchompas",
+     "desc": "Catch 50 Grey Chinchompas",
+     "live": true
+    },
+    {
+     "id": 384,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Catch a Dragon Impling",
+     "desc": "Catch a Dragon Impling",
+     "live": true
+    },
+    {
+     "id": 978,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Equip 100 Black Chinchompas",
+     "desc": "Equip a stack of at least 100 Black Chinchompas",
+     "live": true
+    },
+    {
+     "id": 979,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Equip 250 Black Chinchompas",
+     "desc": "Equip a stack of at least 250 Black Chinchompas",
+     "live": true
+    },
+    {
+     "id": 1513,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Receive a Dragonstone Amulet from an Impling",
+     "desc": "Receive a Dragonstone Amulet from a Crystal Impling",
+     "live": true
+    },
+    {
+     "id": 440,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Set up a Magic Bird House",
+     "desc": "Set up a Magic Bird House",
+     "live": true
+    },
+    {
+     "id": 578,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Trap a Sabre-toothed Kyatt",
+     "desc": "Trap a Sabre-toothed Kyatt",
+     "live": true
+    },
+    {
+     "id": 1720,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch 100 Tecu salamanders",
+     "desc": "Catch 100 Tecu salamanders",
+     "live": true
+    },
+    {
+     "id": 692,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch 150 Red Chinchompas",
+     "desc": "Catch 150 Red Chinchompas",
+     "live": true
+    },
+    {
+     "id": 1377,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch 300 Red Chinchompas",
+     "desc": "Catch 300 Red Chinchompas",
+     "live": true
+    },
+    {
+     "id": 1696,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch 50 Moonlight Antelopes",
+     "desc": "Catch 50 Moonlight Antelopes",
+     "live": true
+    },
+    {
+     "id": 1616,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch 500 Chinchompas",
+     "desc": "Catch 500 Chinchompas",
+     "live": true
+    },
+    {
+     "id": 385,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Catch a Lucky Impling Bare-Handed",
+     "desc": "Catch a Lucky Impling bare-handed",
+     "live": true
+    },
+    {
+     "id": 980,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip 500 Black Chinchompas",
+     "desc": "Equip a stack of at least 500 Black Chinchompas",
+     "live": true
+    },
+    {
+     "id": 1722,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip a Tecu Salamander",
+     "desc": "Equip a Tecu Salamander",
+     "live": true
+    },
+    {
+     "id": 257,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Hunter XP",
+     "desc": "Obtain 25 million experience in your Hunter skill",
+     "live": true
+    },
+    {
+     "id": 1475,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Hunter XP",
+     "desc": "Obtain 35 million experience in your Hunter skill",
+     "live": true
+    },
+    {
+     "id": 1498,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Hunter XP",
+     "desc": "Obtain 50 million experience in your Hunter skill",
+     "live": true
+    },
+    {
+     "id": 256,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Hunter",
+     "desc": "Reach level 99 in your Hunter skill",
+     "live": true
+    }
+   ]
+  },
+  "smithing": {
+   "tables": [
+    {
+     "id": "smelting",
+     "title": "Smelting",
+     "cols": [
+      "Level",
+      "Bar",
+      "Ores",
+      "XP",
+      "Works"
+     ],
+     "rows": [
+      [
+       1,
+       "Bronze bar",
+       "1 copper ore, 1 tin ore",
+       6.2,
+       "Always"
+      ],
+      [
+       15,
+       "Iron bar",
+       "1 iron ore",
+       12.5,
+       "50%"
+      ],
+      [
+       20,
+       "Silver bar",
+       "1 silver ore",
+       13.7,
+       "Always"
+      ],
+      [
+       30,
+       "Steel bar",
+       "1 iron ore, 2 coal",
+       17.5,
+       "Always"
+      ],
+      [
+       40,
+       "Gold bar",
+       "1 gold ore",
+       22.5,
+       "Always"
+      ],
+      [
+       50,
+       "Mithril bar",
+       "1 mithril ore, 4 coal",
+       30,
+       "Always"
+      ],
+      [
+       70,
+       "Adamantite bar",
+       "1 adamantite ore, 6 coal",
+       37.5,
+       "Always"
+      ],
+      [
+       85,
+       "Runite bar",
+       "1 runite ore, 8 coal",
+       50,
+       "Always"
+      ]
+     ]
+    },
+    {
+     "id": "anvil",
+     "title": "Anvil",
+     "cols": [
+      "Item",
+      "Bars",
+      "Bronze",
+      "Iron",
+      "Steel",
+      "Mithril",
+      "Adamant",
+      "Rune"
+     ],
+     "rows": [
+      [
+       "Dagger",
+       1,
+       1,
+       15,
+       30,
+       50,
+       70,
+       85
+      ],
+      [
+       "Sword",
+       1,
+       4,
+       19,
+       34,
+       54,
+       74,
+       89
+      ],
+      [
+       "Scimitar",
+       2,
+       5,
+       20,
+       35,
+       55,
+       75,
+       90
+      ],
+      [
+       "Long sword",
+       2,
+       6,
+       21,
+       36,
+       56,
+       76,
+       91
+      ],
+      [
+       "2-hand sword",
+       3,
+       14,
+       29,
+       44,
+       64,
+       84,
+       99
+      ],
+      [
+       "Axe",
+       1,
+       1,
+       16,
+       31,
+       51,
+       71,
+       86
+      ],
+      [
+       "Mace",
+       1,
+       2,
+       17,
+       32,
+       52,
+       72,
+       87
+      ],
+      [
+       "Warhammer",
+       3,
+       9,
+       24,
+       39,
+       59,
+       79,
+       94
+      ],
+      [
+       "Battle axe",
+       3,
+       10,
+       25,
+       40,
+       60,
+       80,
+       95
+      ],
+      [
+       "Claws",
+       2,
+       13,
+       28,
+       43,
+       63,
+       83,
+       98
+      ],
+      [
+       "Chain body",
+       3,
+       11,
+       26,
+       41,
+       61,
+       81,
+       96
+      ],
+      [
+       "Plate legs",
+       3,
+       16,
+       31,
+       46,
+       66,
+       86,
+       99
+      ],
+      [
+       "Plate skirt",
+       3,
+       16,
+       31,
+       46,
+       66,
+       86,
+       99
+      ],
+      [
+       "Plate body",
+       5,
+       18,
+       33,
+       48,
+       68,
+       88,
+       99
+      ],
+      [
+       "Nails (15)",
+       1,
+       4,
+       19,
+       34,
+       54,
+       74,
+       89
+      ],
+      [
+       "Medium helm",
+       1,
+       3,
+       18,
+       33,
+       53,
+       73,
+       88
+      ],
+      [
+       "Full helm",
+       2,
+       7,
+       22,
+       37,
+       57,
+       77,
+       92
+      ],
+      [
+       "Square shield",
+       2,
+       8,
+       23,
+       38,
+       58,
+       78,
+       93
+      ],
+      [
+       "Kite shield",
+       3,
+       12,
+       27,
+       42,
+       62,
+       82,
+       97
+      ],
+      [
+       "Oil lamp",
+       1,
+       "",
+       26,
+       "",
+       "",
+       "",
+       ""
+      ],
+      [
+       "Bullseye lamp",
+       1,
+       "",
+       "",
+       49,
+       "",
+       "",
+       ""
+      ],
+      [
+       "Dart tips (10)",
+       1,
+       4,
+       19,
+       34,
+       54,
+       74,
+       89
+      ],
+      [
+       "Arrowtips (15)",
+       1,
+       5,
+       20,
+       35,
+       55,
+       75,
+       90
+      ],
+      [
+       "Knives (5)",
+       1,
+       7,
+       22,
+       37,
+       57,
+       77,
+       92
+      ],
+      [
+       "Bronze wire",
+       1,
+       4,
+       "",
+       "",
+       "",
+       "",
+       ""
+      ],
+      [
+       "Iron spit",
+       1,
+       "",
+       17,
+       "",
+       "",
+       "",
+       ""
+      ],
+      [
+       "Studs",
+       1,
+       "",
+       "",
+       36,
+       "",
+       "",
+       ""
+      ],
+      [
+       "Grapple Tip",
+       1,
+       "",
+       "",
+       "",
+       59,
+       "",
+       ""
+      ],
+      [
+       "Javelin heads (5)",
+       1,
+       6,
+       21,
+       36,
+       56,
+       76,
+       91
+      ],
+      [
+       "Bolts (10)",
+       1,
+       3,
+       18,
+       33,
+       53,
+       73,
+       88
+      ],
+      [
+       "Limbs",
+       1,
+       6,
+       23,
+       36,
+       56,
+       76,
+       91
+      ]
+     ],
+     "note": "The numbers under each metal are the Smithing level needed. XP is the bars used times the metal's XP per bar (below)."
+    },
+    {
+     "id": "barxp",
+     "title": "XP per bar",
+     "cols": [
+      "Metal",
+      "Bar",
+      "XP per bar"
+     ],
+     "rows": [
+      [
+       "Bronze",
+       "Bronze bar",
+       12.5
+      ],
+      [
+       "Iron",
+       "Iron bar",
+       25
+      ],
+      [
+       "Steel",
+       "Steel bar",
+       37.5
+      ],
+      [
+       "Mithril",
+       "Mithril bar",
+       50
+      ],
+      [
+       "Adamant",
+       "Adamantite bar",
+       62.5
+      ],
+      [
+       "Rune",
+       "Runite bar",
+       75
+      ]
+     ]
+    }
+   ],
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2218,
+     "z": 2786,
+     "box": [
+      2218,
+      2784,
+      2218,
+      2787
+     ],
+     "dir": "about 60 tiles south of the lobby",
+     "things": [
+      {
+       "name": "Anvil",
+       "count": 1
+      },
+      {
+       "name": "Furnace",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "guild",
+     "title": "Mining Guild",
+     "level": 0,
+     "x": 3012,
+     "z": 9812,
+     "box": [
+      3012,
+      9811,
+      3012,
+      9814
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Anvil",
+       "count": 2
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 347,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Smelt a Bronze Bar",
+     "desc": "Use a Furnace to smelt a Bronze Bar",
+     "live": true
+    },
+    {
+     "id": 348,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Smelt an Iron Bar",
+     "desc": "Use a Furnace to smelt an Iron Bar",
+     "live": true
+    },
+    {
+     "id": 1373,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Smith a Bronze full helm",
+     "desc": "Use an Anvil to smith a Bronze full helm",
+     "live": true
+    },
+    {
+     "id": 1374,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Smith a Bronze plateskirt",
+     "desc": "Use an Anvil to smith a Bronze plateskirt",
+     "live": true
+    },
+    {
+     "id": 352,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Smelt a Steel Bar",
+     "desc": "Use a Furnace to smelt a Steel Bar",
+     "live": true
+    },
+    {
+     "id": 1375,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Smith 10 Steel bolts (unf)",
+     "desc": "Use an Anvil to smith 10 Steel bolts (unf)",
+     "live": true
+    },
+    {
+     "id": 349,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Smith 150 Iron Arrowtips",
+     "desc": "Use an Anvil to smith 150 Iron Arrowtips",
+     "live": true
+    },
+    {
+     "id": 1824,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Smith 250 Mithril bolts (unf)",
+     "desc": "Use an Anvil to smith 250 Mithril bolts (unf)",
+     "live": true
+    },
+    {
+     "id": 351,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Smith a Steel Platebody",
+     "desc": "Use an Anvil to smith a Steel Platebody",
+     "live": true
+    },
+    {
+     "id": 530,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft a Piece of Crystal Armour",
+     "desc": "Use a Singing Bowl to craft any piece of Crystal armour",
+     "live": true
+    },
+    {
+     "id": 354,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Smelt a Runite Bar",
+     "desc": "Use a Furnace to smelt a Runite Bar",
+     "live": true
+    },
+    {
+     "id": 1265,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Smith a Rune Item",
+     "desc": "Smith a Runite Item",
+     "live": true
+    },
+    {
+     "id": 261,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Smithing XP",
+     "desc": "Obtain 25 million experience in your Smithing skill",
+     "live": true
+    },
+    {
+     "id": 1477,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Smithing XP",
+     "desc": "Obtain 35 million experience in your Smithing skill",
+     "live": true
+    },
+    {
+     "id": 1500,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Smithing XP",
+     "desc": "Obtain 50 million experience in your Smithing skill",
+     "live": true
+    },
+    {
+     "id": 260,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Smithing",
+     "desc": "Reach level 99 in your Smithing skill",
+     "live": true
+    }
+   ]
+  },
+  "cooking": {
+   "tables": [
+    {
+     "id": "cook",
+     "title": "Cooking on a fire or range",
+     "cols": [
+      "Level",
+      "Food",
+      "From",
+      "XP",
+      "Stops burning on a fire",
+      "Stops burning on a range"
+     ],
+     "rows": [
+      [
+       1,
+       "Anchovies",
+       "Raw anchovies",
+       30,
+       34,
+       34
+      ],
+      [
+       1,
+       "Bread",
+       "Bread dough",
+       40,
+       "Can't",
+       38
+      ],
+      [
+       1,
+       "Cooked chicken",
+       "Raw chicken",
+       30,
+       34,
+       34
+      ],
+      [
+       1,
+       "Cooked meat",
+       "Raw beef",
+       30,
+       34,
+       34
+      ],
+      [
+       1,
+       "Cooked rabbit",
+       "Raw rabbit",
+       30,
+       34,
+       34
+      ],
+      [
+       1,
+       "Guanic bat (0)",
+       "Raw guanic bat (0)",
+       10,
+       1,
+       1
+      ],
+      [
+       1,
+       "Pysk fish (0)",
+       "Raw pysk fish (0)",
+       10,
+       1,
+       1
+      ],
+      [
+       1,
+       "Sardine",
+       "Raw sardine",
+       40,
+       38,
+       38
+      ],
+      [
+       1,
+       "Shrimps",
+       "Raw shrimps",
+       30,
+       34,
+       34
+      ],
+      [
+       1,
+       "Ugthanki meat",
+       "Raw ugthanki meat",
+       40,
+       "Never",
+       "Never"
+      ],
+      [
+       5,
+       "Herring",
+       "Raw herring",
+       50,
+       41,
+       41
+      ],
+      [
+       7,
+       "Baked potato",
+       "Potato",
+       15,
+       "Can't",
+       41
+      ],
+      [
+       10,
+       "Mackerel",
+       "Raw mackerel",
+       60,
+       45,
+       45
+      ],
+      [
+       10,
+       "Redberry pie",
+       "Uncooked berry pie",
+       78,
+       "Can't",
+       45
+      ],
+      [
+       11,
+       "Roast bird meat",
+       "Skewered bird meat",
+       62.5,
+       "Never",
+       "Never"
+      ],
+      [
+       12,
+       "Thin snail meat",
+       "Thin snail",
+       70,
+       47,
+       47
+      ],
+      [
+       13,
+       "Scrambled egg",
+       "Uncooked egg",
+       50,
+       "Can't",
+       48
+      ],
+      [
+       15,
+       "Prael bat (1)",
+       "Raw prael bat (1)",
+       13,
+       15,
+       15
+      ],
+      [
+       15,
+       "Suphi fish (1)",
+       "Raw suphi fish (1)",
+       13,
+       15,
+       15
+      ],
+      [
+       15,
+       "Trout",
+       "Raw trout",
+       70,
+       49,
+       49
+      ],
+      [
+       17,
+       "Lean snail meat",
+       "Lean snail",
+       80,
+       47,
+       50
+      ],
+      [
+       18,
+       "Cod",
+       "Raw cod",
+       75,
+       51,
+       49
+      ],
+      [
+       20,
+       "Meat pie",
+       "Uncooked meat pie",
+       110,
+       "Can't",
+       54
+      ],
+      [
+       20,
+       "Pike",
+       "Raw pike",
+       80,
+       54,
+       54
+      ],
+      [
+       21,
+       "Roast beast meat",
+       "Skewered beast",
+       82.5,
+       "Never",
+       "Never"
+      ],
+      [
+       22,
+       "Fat snail meat",
+       "Fat snail",
+       95,
+       56,
+       56
+      ],
+      [
+       23,
+       "Cooked wild kebbit",
+       "Raw wild kebbit",
+       73,
+       50,
+       50
+      ],
+      [
+       25,
+       "Salmon",
+       "Raw salmon",
+       90,
+       58,
+       58
+      ],
+      [
+       25,
+       "Stew",
+       "Uncooked stew",
+       117,
+       "Can't",
+       55
+      ],
+      [
+       28,
+       "Cooked slimy eel",
+       "Raw slimy eel",
+       95,
+       59,
+       59
+      ],
+      [
+       28,
+       "Cooked sweetcorn",
+       "Sweetcorn",
+       104,
+       54,
+       50
+      ],
+      [
+       30,
+       "Apple pie",
+       "Uncooked apple pie",
+       130,
+       "Can't",
+       63
+      ],
+      [
+       30,
+       "Cooked chompy",
+       "Skewered chompy",
+       100,
+       "Never",
+       "Never"
+      ],
+      [
+       30,
+       "Cooked karambwan",
+       "Raw karambwan",
+       190,
+       "Never",
+       "Never"
+      ],
+      [
+       30,
+       "Giral bat (2)",
+       "Raw giral bat (2)",
+       16,
+       30,
+       30
+      ],
+      [
+       30,
+       "Leckish fish (2)",
+       "Raw leckish fish (2)",
+       16,
+       30,
+       30
+      ],
+      [
+       30,
+       "Tuna",
+       "Raw tuna",
+       100,
+       63,
+       63
+      ],
+      [
+       31,
+       "Cooked fishcake",
+       "Raw fishcake",
+       100,
+       62,
+       62
+      ],
+      [
+       31,
+       "Cooked larupia",
+       "Raw larupia",
+       92,
+       59,
+       59
+      ],
+      [
+       32,
+       "Cooked barb-tailed kebbit",
+       "Raw barb-tailed kebbit",
+       106,
+       63,
+       63
+      ],
+      [
+       34,
+       "Garden pie",
+       "Raw garden pie",
+       138,
+       "Can't",
+       68
+      ],
+      [
+       35,
+       "Plain pizza",
+       "Uncooked pizza",
+       143,
+       "Can't",
+       68
+      ],
+      [
+       35,
+       "Rainbow fish",
+       "Raw rainbow fish",
+       110,
+       64,
+       64
+      ],
+      [
+       38,
+       "Cave eel",
+       "Raw cave eel",
+       115,
+       74,
+       74
+      ],
+      [
+       40,
+       "Cake",
+       "Uncooked cake",
+       180,
+       "Can't",
+       74
+      ],
+      [
+       40,
+       "Lobster",
+       "Raw lobster",
+       120,
+       74,
+       74
+      ],
+      [
+       41,
+       "Cooked graahk",
+       "Raw graahk",
+       124,
+       75,
+       75
+      ],
+      [
+       42,
+       "Fried onions",
+       "Chopped onion",
+       60,
+       "Can't",
+       73
+      ],
+      [
+       43,
+       "Bass",
+       "Raw bass",
+       130,
+       80,
+       80
+      ],
+      [
+       45,
+       "Brawk fish (3)",
+       "Raw brawk fish (3)",
+       19,
+       45,
+       45
+      ],
+      [
+       45,
+       "Phluxia bat (3)",
+       "Raw phluxia bat (3)",
+       19,
+       45,
+       45
+      ],
+      [
+       45,
+       "Swordfish",
+       "Raw swordfish",
+       140,
+       86,
+       80
+      ],
+      [
+       46,
+       "Fried mushrooms",
+       "Sliced mushrooms",
+       60,
+       "Can't",
+       85
+      ],
+      [
+       47,
+       "Fish pie",
+       "Raw fish pie",
+       164,
+       "Can't",
+       74
+      ],
+      [
+       51,
+       "Cooked kyatt",
+       "Raw kyatt",
+       143,
+       86,
+       86
+      ],
+      [
+       52,
+       "Botanical pie",
+       "Uncooked botanical pie",
+       180,
+       "Can't",
+       84
+      ],
+      [
+       53,
+       "Lava eel",
+       "Raw lava eel",
+       30,
+       53,
+       53
+      ],
+      [
+       59,
+       "Cooked pyre fox",
+       "Raw pyre fox",
+       154,
+       93,
+       92
+      ],
+      [
+       60,
+       "Curry",
+       "Uncooked curry",
+       280,
+       "Can't",
+       70
+      ],
+      [
+       60,
+       "Kryket bat (4)",
+       "Raw kryket bat (4)",
+       22,
+       60,
+       60
+      ],
+      [
+       60,
+       "Mushroom pie",
+       "Uncooked mushroom pie",
+       200,
+       "Can't",
+       89
+      ],
+      [
+       60,
+       "Mycil fish (4)",
+       "Raw mycil fish (4)",
+       22,
+       60,
+       60
+      ],
+      [
+       62,
+       "Monkfish",
+       "Raw monkfish",
+       150,
+       92,
+       91
+      ],
+      [
+       68,
+       "Cooked sunlight antelope",
+       "Raw sunlight antelope",
+       175,
+       "Never",
+       96
+      ],
+      [
+       70,
+       "Admiral pie",
+       "Raw admiral pie",
+       210,
+       "Can't",
+       94
+      ],
+      [
+       73,
+       "Dragonfruit pie",
+       "Uncooked dragonfruit pie",
+       220,
+       "Can't",
+       "Never"
+      ],
+      [
+       75,
+       "Murng bat (5)",
+       "Raw murng bat (5)",
+       25,
+       75,
+       75
+      ],
+      [
+       75,
+       "Roqed fish (5)",
+       "Raw roqed fish (5)",
+       25,
+       75,
+       75
+      ],
+      [
+       80,
+       "Shark",
+       "Raw shark",
+       210,
+       "Never",
+       "Never"
+      ],
+      [
+       82,
+       "Cooked dashing kebbit",
+       "Raw dashing kebbit",
+       215,
+       "Never",
+       "Never"
+      ],
+      [
+       82,
+       "Sea turtle",
+       "Raw sea turtle",
+       211.3,
+       "Never",
+       "Never"
+      ],
+      [
+       84,
+       "Anglerfish",
+       "Raw anglerfish",
+       230,
+       "Never",
+       "Never"
+      ],
+      [
+       85,
+       "Wild pie",
+       "Raw wild pie",
+       240,
+       "Can't",
+       "Never"
+      ],
+      [
+       90,
+       "Dark crab",
+       "Raw dark crab",
+       215,
+       99,
+       99
+      ],
+      [
+       90,
+       "Kyren fish (6)",
+       "Raw kyren fish (6)",
+       28,
+       "Never",
+       90
+      ],
+      [
+       90,
+       "Psykk bat (6)",
+       "Raw psykk bat (6)",
+       28,
+       90,
+       90
+      ],
+      [
+       91,
+       "Manta ray",
+       "Raw manta ray",
+       216.3,
+       "Never",
+       "Never"
+      ],
+      [
+       92,
+       "Cooked moonlight antelope",
+       "Raw moonlight antelope",
+       220,
+       "Never",
+       "Never"
+      ],
+      [
+       95,
+       "Summer pie",
+       "Raw summer pie",
+       260,
+       "Can't",
+       "Never"
+      ]
+     ]
+    },
+    {
+     "id": "prep",
+     "title": "Preparing food",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Bread dough",
+       "Pot of flour + a bucket, bowl or jug of water",
+       0
+      ],
+      [
+       1,
+       "Chocolate dust",
+       "Chocolate bar (with a knife)",
+       0
+      ],
+      [
+       1,
+       "Chopped onion",
+       "Bowl + Onion (with a knife)",
+       0
+      ],
+      [
+       1,
+       "Chopped tomato",
+       "Bowl + Tomato (with a knife)",
+       0
+      ],
+      [
+       1,
+       "Chopped tuna",
+       "Bowl + Tuna (with a knife)",
+       0
+      ],
+      [
+       1,
+       "Minced meat",
+       "Bowl + Cooked meat (with a knife)",
+       0
+      ],
+      [
+       1,
+       "Onion & tomato",
+       "Chopped onion + Tomato or Chopped tomato + Onion",
+       0
+      ],
+      [
+       1,
+       "Pastry dough",
+       "Pot of flour + a bucket, bowl or jug of water",
+       0
+      ],
+      [
+       1,
+       "Pie shell",
+       "Pastry dough + Pie dish",
+       0
+      ],
+      [
+       1,
+       "Sliced mushrooms",
+       "Bowl + Mushroom (with a knife)",
+       0
+      ],
+      [
+       9,
+       "Spicy sauce",
+       "Chopped garlic + Gnome spice",
+       25
+      ],
+      [
+       10,
+       "Uncooked berry pie",
+       "Redberries + Pie shell",
+       0
+      ],
+      [
+       11,
+       "Chilli con carne",
+       "Spicy sauce + Cooked meat or Spicy sauce + Minced meat",
+       0
+      ],
+      [
+       13,
+       "Uncooked egg",
+       "Egg + Bowl",
+       0
+      ],
+      [
+       20,
+       "Uncooked meat pie",
+       "Cooked meat + Pie shell or Cooked chicken + Pie shell",
+       0
+      ],
+      [
+       23,
+       "Egg and tomato",
+       "Scrambled egg + Tomato",
+       0
+      ],
+      [
+       25,
+       "Incomplete stew",
+       "Bowl of water + Potato or Bowl of water + Cooked meat or Bowl of water + Cooked chicken",
+       0
+      ],
+      [
+       25,
+       "Uncooked stew",
+       "Incomplete stew + Cooked meat or Incomplete stew + Cooked chicken or Incomplete stew + Potato",
+       0
+      ],
+      [
+       30,
+       "Uncooked apple pie",
+       "Cooking apple + Pie shell",
+       0
+      ],
+      [
+       34,
+       "Part garden pie",
+       "Pie shell + Tomato or Part garden pie + Onion",
+       0
+      ],
+      [
+       34,
+       "Raw garden pie",
+       "Part garden pie + Cabbage",
+       0
+      ],
+      [
+       35,
+       "Incomplete pizza",
+       "Pizza base + Tomato",
+       0
+      ],
+      [
+       35,
+       "Pizza base",
+       "Pot of flour + a bucket, bowl or jug of water",
+       0
+      ],
+      [
+       35,
+       "Uncooked pizza",
+       "Incomplete pizza + Cheese",
+       0
+      ],
+      [
+       35,
+       "Unfermented wine",
+       "Grapes + Jug of water",
+       0
+      ],
+      [
+       39,
+       "Potato with butter",
+       "Baked potato + Pat of butter",
+       40
+      ],
+      [
+       40,
+       "Uncooked cake",
+       "Cake tin + Egg + Pot of flour + Bucket of milk",
+       0
+      ],
+      [
+       41,
+       "Chilli potato",
+       "Chilli con carne + Potato with butter",
+       15
+      ],
+      [
+       45,
+       "Meat pizza",
+       "Plain pizza + Cooked meat or Plain pizza + Cooked chicken",
+       26
+      ],
+      [
+       47,
+       "Part fish pie",
+       "Pie shell + Trout or Part fish pie + Cod",
+       0
+      ],
+      [
+       47,
+       "Potato with cheese",
+       "Potato with butter + Cheese",
+       40
+      ],
+      [
+       47,
+       "Raw fish pie",
+       "Part fish pie + Potato",
+       0
+      ],
+      [
+       50,
+       "Chocolate cake",
+       "Cake + Chocolate bar or Cake + Chocolate dust",
+       30
+      ],
+      [
+       51,
+       "Egg potato",
+       "Egg and tomato + Potato with butter",
+       45
+      ],
+      [
+       52,
+       "Uncooked botanical pie",
+       "Golovanova fruit top + Pie shell",
+       0
+      ],
+      [
+       55,
+       "Anchovy pizza",
+       "Plain pizza + Anchovies",
+       39
+      ],
+      [
+       57,
+       "Mushroom & onion",
+       "Fried mushrooms + Fried onions",
+       0
+      ],
+      [
+       60,
+       "Uncooked curry",
+       "Uncooked stew + 3x Curry leaf or Uncooked stew + Spice",
+       0
+      ],
+      [
+       60,
+       "Uncooked mushroom pie",
+       "Sulliuscep cap + Pie shell",
+       0
+      ],
+      [
+       64,
+       "Mushroom potato",
+       "Mushroom & onion + Potato with butter",
+       55
+      ],
+      [
+       65,
+       "Pineapple pizza",
+       "Plain pizza + Pineapple ring or Plain pizza + Pineapple chunks",
+       45
+      ],
+      [
+       67,
+       "Tuna and corn",
+       "Cooked sweetcorn + Chopped tuna",
+       0
+      ],
+      [
+       68,
+       "Tuna potato",
+       "Tuna and corn + Potato with butter",
+       10
+      ],
+      [
+       70,
+       "Part admiral pie",
+       "Pie shell + Salmon or Part admiral pie + Tuna",
+       0
+      ],
+      [
+       70,
+       "Raw admiral pie",
+       "Part admiral pie + Potato",
+       0
+      ],
+      [
+       73,
+       "Uncooked dragonfruit pie",
+       "Dragonfruit + Pie shell",
+       0
+      ],
+      [
+       85,
+       "Part wild pie",
+       "Pie shell + Raw bear meat or Part wild pie + Raw chompy",
+       0
+      ],
+      [
+       85,
+       "Raw wild pie",
+       "Part wild pie + Raw rabbit",
+       0
+      ],
+      [
+       95,
+       "Part summer pie",
+       "Pie shell + Strawberry or Part summer pie + Watermelon",
+       0
+      ],
+      [
+       95,
+       "Raw summer pie",
+       "Part summer pie + Cooking apple",
+       0
+      ]
+     ],
+     "note": "Use one item on the other. Most steps give no XP; the XP comes when you cook the result."
+    }
+   ],
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2254,
+     "z": 2961,
+     "box": [
+      2241,
+      2953,
+      2268,
+      2970
+     ],
+     "dir": "about 120 tiles north of the lobby",
+     "things": [
+      {
+       "name": "Fire (always lit)",
+       "count": 66
+      }
+     ]
+    },
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2265,
+     "z": 2886,
+     "box": [
+      2265,
+      2886,
+      2265,
+      2886
+     ],
+     "dir": "about 70 tiles north-east of the lobby",
+     "things": [
+      {
+       "name": "Fire (always lit)",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "guild",
+     "title": "Mining Guild",
+     "level": 0,
+     "x": 2999,
+     "z": 9812,
+     "box": [
+      2998,
+      9811,
+      3000,
+      9812
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Fire (always lit)",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "area": "taverley",
+     "title": "Taverley Dungeon",
+     "level": 0,
+     "x": 2922,
+     "z": 9713,
+     "box": [
+      2922,
+      9713,
+      2922,
+      9713
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Range",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "edgeville",
+     "title": "Edgeville Dungeon",
+     "level": 0,
+     "x": 3124,
+     "z": 9878,
+     "box": [
+      3124,
+      9878,
+      3124,
+      9878
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Fire (always lit)",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "area": "forthos",
+     "title": "Forthos Dungeon",
+     "level": 0,
+     "x": 1814,
+     "z": 9938,
+     "box": [
+      1809,
+      9932,
+      1818,
+      9943
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Fire (always lit)",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "area": "forthos",
+     "title": "Forthos Dungeon",
+     "level": 0,
+     "x": 1828,
+     "z": 9932,
+     "box": [
+      1823,
+      9928,
+      1832,
+      9935
+     ],
+     "dir": null,
+     "things": [
+      {
+       "name": "Fire (always lit)",
+       "count": 2
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 297,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Burn Some Food",
+     "desc": "Burn any kind of food while trying to cook it",
+     "live": true
+    },
+    {
+     "id": 296,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Cook Shrimp",
+     "desc": "Cook Raw Shrimp",
+     "live": true
+    },
+    {
+     "id": 514,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Cook a Rabbit",
+     "desc": "Cook a Rabbit",
+     "live": true
+    },
+    {
+     "id": 1826,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cook 10 Sardines",
+     "desc": "Cook 10 Raw Sardines",
+     "live": true
+    },
+    {
+     "id": 300,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cook 100 Lobsters",
+     "desc": "Cook 100 Raw Lobsters",
+     "live": true
+    },
+    {
+     "id": 1828,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cook 20 Pike",
+     "desc": "Cook 20 Raw Pike",
+     "live": true
+    },
+    {
+     "id": 450,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cook Some Food on a Range",
+     "desc": "Cook some food on a Range",
+     "live": true
+    },
+    {
+     "id": 451,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Enter the Cooks' Guild",
+     "desc": "Enter the Cooks' Guild west of Varrock",
+     "live": false
+    },
+    {
+     "id": 1751,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Give a Dwarf Redberry Antelope",
+     "desc": "Give a Dwarf Redberry Antelope",
+     "live": false
+    },
+    {
+     "id": 301,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Make a Pineapple Pizza",
+     "desc": "Make a Pineapple Pizza",
+     "live": false
+    },
+    {
+     "id": 298,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Successfully Cook 5 Pieces of Food",
+     "desc": "Cook 5 pieces of food in a row without burning them",
+     "live": true
+    },
+    {
+     "id": 637,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 100 Karambwans",
+     "desc": "Cook 100 Karambwan",
+     "live": true
+    },
+    {
+     "id": 1711,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 100 Moonlight Antelopes",
+     "desc": "Cook 100 Moonlight Antelopes",
+     "live": false
+    },
+    {
+     "id": 302,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 100 Sharks",
+     "desc": "Cook 100 Raw Sharks",
+     "live": true
+    },
+    {
+     "id": 1347,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 100 pies",
+     "desc": "Cook 100 pies",
+     "live": true
+    },
+    {
+     "id": 1395,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 20 Karambwans in a row",
+     "desc": "Cook 20 Karambwans in a row without buring them",
+     "live": true
+    },
+    {
+     "id": 1348,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 20 Redberry Pies",
+     "desc": "Cook 20 Redberry Pies",
+     "live": true
+    },
+    {
+     "id": 1587,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cook 20 Sharks",
+     "desc": "Cook 20 Sharks",
+     "live": true
+    },
+    {
+     "id": 299,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Ferment 100 Jugs of Wine",
+     "desc": "Successfully ferment 100 Jugs of Wine",
+     "live": false
+    },
+    {
+     "id": 1349,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Cook 100 Anglerfish",
+     "desc": "Cook 100 Anglerfish",
+     "live": true
+    },
+    {
+     "id": 973,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Cook a Dark Crab",
+     "desc": "Cook a Dark Crab",
+     "live": false
+    },
+    {
+     "id": 265,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Cooking XP",
+     "desc": "Obtain 25 million experience in your Cooking skill",
+     "live": true
+    },
+    {
+     "id": 1479,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Cooking XP",
+     "desc": "Obtain 35 million experience in your Cooking skill",
+     "live": true
+    },
+    {
+     "id": 1502,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Cooking XP",
+     "desc": "Obtain 50 million experience in your Cooking skill",
+     "live": true
+    },
+    {
+     "id": 264,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Cooking",
+     "desc": "Reach level 99 in your Cooking skill",
+     "live": true
+    }
+   ]
+  },
+  "fletching": {
+   "tables": [
+    {
+     "id": "logs",
+     "title": "Cutting logs",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Arrow shaft (15)",
+       "Logs",
+       5
+      ],
+      [
+       3,
+       "Javelin shaft (15)",
+       "Logs",
+       5
+      ],
+      [
+       5,
+       "Shortbow (u)",
+       "Logs",
+       5
+      ],
+      [
+       9,
+       "Wooden stock",
+       "Logs",
+       6
+      ],
+      [
+       10,
+       "Longbow (u)",
+       "Logs",
+       10
+      ],
+      [
+       15,
+       "Arrow shaft (30)",
+       "Oak logs",
+       10
+      ],
+      [
+       20,
+       "Oak shortbow (u)",
+       "Oak logs",
+       16.5
+      ],
+      [
+       24,
+       "Oak stock",
+       "Oak logs",
+       16
+      ],
+      [
+       25,
+       "Oak longbow (u)",
+       "Oak logs",
+       25
+      ],
+      [
+       27,
+       "Oak shield",
+       "2 oak logs",
+       50
+      ],
+      [
+       30,
+       "Arrow shaft (45)",
+       "Willow logs",
+       15
+      ],
+      [
+       35,
+       "Willow shortbow (u)",
+       "Willow logs",
+       33.3
+      ],
+      [
+       39,
+       "Willow stock",
+       "Willow logs",
+       22
+      ],
+      [
+       40,
+       "Willow longbow (u)",
+       "Willow logs",
+       41.5
+      ],
+      [
+       42,
+       "Willow shield",
+       "2 willow logs",
+       83
+      ],
+      [
+       45,
+       "Arrow shaft (60)",
+       "Maple logs",
+       20
+      ],
+      [
+       46,
+       "Teak stock",
+       "Teak logs",
+       27
+      ],
+      [
+       50,
+       "Maple shortbow (u)",
+       "Maple logs",
+       50
+      ],
+      [
+       54,
+       "Maple stock",
+       "Maple logs",
+       32
+      ],
+      [
+       55,
+       "Maple longbow (u)",
+       "Maple logs",
+       58.3
+      ],
+      [
+       57,
+       "Maple shield",
+       "2 maple logs",
+       116.5
+      ],
+      [
+       60,
+       "Arrow shaft (75)",
+       "Yew logs",
+       25
+      ],
+      [
+       61,
+       "Mahogany stock",
+       "Mahogany logs",
+       41
+      ],
+      [
+       65,
+       "Yew shortbow (u)",
+       "Yew logs",
+       67.5
+      ],
+      [
+       69,
+       "Yew stock",
+       "Yew logs",
+       50
+      ],
+      [
+       70,
+       "Yew longbow (u)",
+       "Yew logs",
+       75
+      ],
+      [
+       72,
+       "Yew shield",
+       "2 yew logs",
+       150
+      ],
+      [
+       75,
+       "Arrow shaft (90)",
+       "Magic logs",
+       30
+      ],
+      [
+       78,
+       "Magic stock",
+       "Magic logs",
+       70
+      ],
+      [
+       80,
+       "Magic shortbow (u)",
+       "Magic logs",
+       83.3
+      ],
+      [
+       85,
+       "Magic longbow (u)",
+       "Magic logs",
+       91.5
+      ],
+      [
+       87,
+       "Magic shield",
+       "2 magic logs",
+       183
+      ],
+      [
+       90,
+       "Arrow shaft (105)",
+       "Redwood logs",
+       35
+      ],
+      [
+       92,
+       "Redwood shield",
+       "2 redwood logs",
+       216
+      ]
+     ],
+     "note": "Use a knife on the logs."
+    },
+    {
+     "id": "stringing",
+     "title": "Stringing",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       5,
+       "Shortbow",
+       "Shortbow (u) + bow string",
+       5
+      ],
+      [
+       9,
+       "Bronze crossbow",
+       "Bronze crossbow (u) + crossbow string",
+       6
+      ],
+      [
+       10,
+       "Longbow",
+       "Longbow (u) + bow string",
+       10
+      ],
+      [
+       20,
+       "Oak shortbow",
+       "Oak shortbow (u) + bow string",
+       16.5
+      ],
+      [
+       24,
+       "Blurite crossbow",
+       "Blurite crossbow (u) + crossbow string",
+       16
+      ],
+      [
+       25,
+       "Oak longbow",
+       "Oak longbow (u) + bow string",
+       25
+      ],
+      [
+       35,
+       "Willow shortbow",
+       "Willow shortbow (u) + bow string",
+       33.2
+      ],
+      [
+       39,
+       "Iron crossbow",
+       "Iron crossbow (u) + crossbow string",
+       22
+      ],
+      [
+       40,
+       "Willow longbow",
+       "Willow longbow (u) + bow string",
+       41.5
+      ],
+      [
+       46,
+       "Steel crossbow",
+       "Steel crossbow (u) + crossbow string",
+       27
+      ],
+      [
+       50,
+       "Maple shortbow",
+       "Maple shortbow (u) + bow string",
+       50
+      ],
+      [
+       54,
+       "Mithril crossbow",
+       "Mithril crossbow (u) + crossbow string",
+       32
+      ],
+      [
+       55,
+       "Maple longbow",
+       "Maple longbow (u) + bow string",
+       58.2
+      ],
+      [
+       61,
+       "Adamant crossbow",
+       "Adamant crossbow (u) + crossbow string",
+       41
+      ],
+      [
+       65,
+       "Yew shortbow",
+       "Yew shortbow (u) + bow string",
+       67.5
+      ],
+      [
+       69,
+       "Rune crossbow",
+       "Runite crossbow (u) + crossbow string",
+       50
+      ],
+      [
+       70,
+       "Yew longbow",
+       "Yew longbow (u) + bow string",
+       75
+      ],
+      [
+       78,
+       "Dragon crossbow",
+       "Dragon crossbow (u) + crossbow string",
+       70
+      ],
+      [
+       80,
+       "Magic shortbow",
+       "Magic shortbow (u) + bow string",
+       83.2
+      ],
+      [
+       85,
+       "Magic longbow",
+       "Magic longbow (u) + bow string",
+       91.5
+      ]
+     ]
+    },
+    {
+     "id": "crossbows",
+     "title": "Crossbows",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       9,
+       "Bronze crossbow (u)",
+       "Wooden stock + bronze limbs (with a hammer)",
+       12
+      ],
+      [
+       24,
+       "Blurite crossbow (u)",
+       "Oak stock + blurite limbs (with a hammer)",
+       32
+      ],
+      [
+       39,
+       "Iron crossbow (u)",
+       "Willow stock + iron limbs (with a hammer)",
+       44
+      ],
+      [
+       46,
+       "Steel crossbow (u)",
+       "Teak stock + steel limbs (with a hammer)",
+       54
+      ],
+      [
+       54,
+       "Mithril crossbow (u)",
+       "Maple stock + mithril limbs (with a hammer)",
+       64
+      ],
+      [
+       61,
+       "Adamant crossbow (u)",
+       "Mahogany stock + adamantite limbs (with a hammer)",
+       82
+      ],
+      [
+       69,
+       "Runite crossbow (u)",
+       "Yew stock + runite limbs (with a hammer)",
+       100
+      ],
+      [
+       78,
+       "Dragon crossbow (u)",
+       "Magic stock + dragon limbs (with a hammer)",
+       135
+      ]
+     ]
+    },
+    {
+     "id": "ammo",
+     "title": "Arrows, darts, bolts and javelins",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP each",
+      "Per action"
+     ],
+     "rows": [
+      [
+       1,
+       "Bronze arrow",
+       "Headless arrow + bronze arrowtips",
+       1.3,
+       15
+      ],
+      [
+       1,
+       "Headless arrow",
+       "Arrow shaft + feather",
+       1,
+       15
+      ],
+      [
+       3,
+       "Bronze javelin",
+       "Javelin shaft + bronze javelin heads",
+       1,
+       15
+      ],
+      [
+       9,
+       "Bronze bolts",
+       "Bronze bolts (unf) + feather",
+       0.5,
+       10
+      ],
+      [
+       10,
+       "Bronze dart",
+       "Bronze dart tip + feather",
+       1.8,
+       10
+      ],
+      [
+       11,
+       "Opal bolts",
+       "Opal bolt tips + bronze bolts",
+       1.6,
+       10
+      ],
+      [
+       15,
+       "Iron arrow",
+       "Headless arrow + iron arrowtips",
+       2.5,
+       15
+      ],
+      [
+       17,
+       "Iron javelin",
+       "Javelin shaft + iron javelin heads",
+       2,
+       15
+      ],
+      [
+       22,
+       "Iron dart",
+       "Iron dart tip + feather",
+       3.8,
+       10
+      ],
+      [
+       24,
+       "Blurite bolts",
+       "Blurite bolts (unf) + feather",
+       1,
+       10
+      ],
+      [
+       26,
+       "Jade bolts",
+       "Jade bolt tips + blurite bolts",
+       2.4,
+       10
+      ],
+      [
+       30,
+       "Steel arrow",
+       "Headless arrow + steel arrowtips",
+       5,
+       15
+      ],
+      [
+       32,
+       "Steel javelin",
+       "Javelin shaft + steel javelin heads",
+       5,
+       15
+      ],
+      [
+       37,
+       "Steel dart",
+       "Steel dart tip + feather",
+       7.5,
+       10
+      ],
+      [
+       39,
+       "Iron bolts",
+       "Iron bolts (unf) + feather",
+       1.5,
+       10
+      ],
+      [
+       41,
+       "Pearl bolts",
+       "Pearl bolt tips + iron bolts",
+       3.2,
+       10
+      ],
+      [
+       43,
+       "Silver bolts",
+       "Silver bolts (unf) + feather",
+       2.5,
+       10
+      ],
+      [
+       45,
+       "Mithril arrow",
+       "Headless arrow + mithril arrowtips",
+       7.5,
+       15
+      ],
+      [
+       46,
+       "Steel bolts",
+       "Steel bolts (unf) + feather",
+       3.5,
+       10
+      ],
+      [
+       47,
+       "Mithril javelin",
+       "Javelin shaft + mithril javelin heads",
+       8,
+       15
+      ],
+      [
+       48,
+       "Topaz bolts",
+       "Topaz bolt tips + steel bolts",
+       3.9,
+       10
+      ],
+      [
+       51,
+       "Barbed bolts",
+       "Barb bolttips + bronze bolts",
+       9.5,
+       10
+      ],
+      [
+       52,
+       "Broad arrows (needs the Broader Fletching Slayer unlock)",
+       "Headless arrow + broad arrowheads",
+       10,
+       15
+      ],
+      [
+       52,
+       "Mithril dart",
+       "Mithril dart tip + feather",
+       11.2,
+       10
+      ],
+      [
+       54,
+       "Mithril bolts",
+       "Mithril bolts (unf) + feather",
+       5,
+       10
+      ],
+      [
+       55,
+       "Broad bolts (needs the Broader Fletching Slayer unlock)",
+       "Unfinished broad bolts + feather",
+       3,
+       10
+      ],
+      [
+       56,
+       "Sapphire bolts",
+       "Sapphire bolt tips + mithril bolts",
+       4.7,
+       10
+      ],
+      [
+       58,
+       "Emerald bolts",
+       "Emerald bolt tips + mithril bolts",
+       5.5,
+       10
+      ],
+      [
+       60,
+       "Adamant arrow",
+       "Headless arrow + adamant arrowtips",
+       10,
+       15
+      ],
+      [
+       61,
+       "Adamant bolts",
+       "Adamant bolts(unf) + feather",
+       7,
+       10
+      ],
+      [
+       62,
+       "Adamant javelin",
+       "Javelin shaft + adamant javelin heads",
+       10,
+       15
+      ],
+      [
+       63,
+       "Ruby bolts",
+       "Ruby bolt tips + adamant bolts",
+       6.3,
+       10
+      ],
+      [
+       65,
+       "Diamond bolts",
+       "Diamond bolt tips + adamant bolts",
+       7,
+       10
+      ],
+      [
+       67,
+       "Adamant dart",
+       "Adamant dart tip + feather",
+       15,
+       10
+      ],
+      [
+       69,
+       "Runite bolts",
+       "Runite bolts (unf) + feather",
+       10,
+       10
+      ],
+      [
+       71,
+       "Dragonstone bolts",
+       "Dragonstone bolt tips + runite bolts",
+       8.2,
+       10
+      ],
+      [
+       73,
+       "Onyx bolts",
+       "Onyx bolt tips + runite bolts",
+       9.4,
+       10
+      ],
+      [
+       75,
+       "Rune arrow",
+       "Headless arrow + rune arrowtips",
+       12.5,
+       15
+      ],
+      [
+       76,
+       "Amethyst broad bolts (needs the Broader Fletching Slayer unlock)",
+       "Amethyst bolt tips + broad bolts",
+       10.6,
+       10
+      ],
+      [
+       77,
+       "Rune javelin",
+       "Javelin shaft + rune javelin heads",
+       12.4,
+       15
+      ],
+      [
+       81,
+       "Rune dart",
+       "Rune dart tip + feather",
+       18.8,
+       10
+      ],
+      [
+       82,
+       "Amethyst arrow",
+       "Headless arrow + amethyst arrowtips",
+       13.5,
+       15
+      ],
+      [
+       84,
+       "Amethyst javelin",
+       "Javelin shaft + amethyst javelin heads",
+       13.5,
+       15
+      ],
+      [
+       84,
+       "Diamond dragon bolts",
+       "Diamond bolt tips + dragon bolts",
+       7,
+       10
+      ],
+      [
+       84,
+       "Dragon bolts",
+       "Dragon bolts (unf) + feather",
+       12,
+       10
+      ],
+      [
+       84,
+       "Dragonstone dragon bolts",
+       "Dragonstone bolt tips + dragon bolts",
+       8.2,
+       10
+      ],
+      [
+       84,
+       "Emerald dragon bolts",
+       "Emerald bolt tips + dragon bolts",
+       5.5,
+       10
+      ],
+      [
+       84,
+       "Jade dragon bolts",
+       "Jade bolt tips + dragon bolts",
+       2.4,
+       10
+      ],
+      [
+       84,
+       "Onyx dragon bolts",
+       "Onyx bolt tips + dragon bolts",
+       9.4,
+       10
+      ],
+      [
+       84,
+       "Opal dragon bolts",
+       "Opal bolt tips + dragon bolts",
+       1.6,
+       10
+      ],
+      [
+       84,
+       "Pearl dragon bolts",
+       "Pearl bolt tips + dragon bolts",
+       3.2,
+       10
+      ],
+      [
+       84,
+       "Ruby dragon bolts",
+       "Ruby bolt tips + dragon bolts",
+       6.3,
+       10
+      ],
+      [
+       84,
+       "Sapphire dragon bolts",
+       "Sapphire bolt tips + dragon bolts",
+       4.7,
+       10
+      ],
+      [
+       84,
+       "Topaz dragon bolts",
+       "Topaz bolt tips + dragon bolts",
+       3.9,
+       10
+      ],
+      [
+       90,
+       "Amethyst dart",
+       "Amethyst dart tip + feather",
+       21,
+       10
+      ],
+      [
+       90,
+       "Dragon arrow",
+       "Headless arrow + dragon arrowtips",
+       15,
+       15
+      ],
+      [
+       92,
+       "Dragon javelin",
+       "Javelin shaft + dragon javelin heads",
+       15,
+       15
+      ],
+      [
+       95,
+       "Dragon dart",
+       "Dragon dart tip + feather",
+       25,
+       10
+      ]
+     ],
+     "note": "XP is for each one made; one action makes up to the number shown."
+    },
+    {
+     "id": "tips",
+     "title": "Bolt tips",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       11,
+       "Opal bolt tips (12)",
+       "Opal (with a chisel)",
+       1.5
+      ],
+      [
+       26,
+       "Jade bolt tips (12)",
+       "Jade (with a chisel)",
+       2
+      ],
+      [
+       41,
+       "Pearl bolt tips (24)",
+       "Oyster pearls (with a chisel)",
+       3.2
+      ],
+      [
+       41,
+       "Pearl bolt tips (6)",
+       "Oyster pearl (with a chisel)",
+       3.2
+      ],
+      [
+       48,
+       "Topaz bolt tips (12)",
+       "Red topaz (with a chisel)",
+       3.9
+      ],
+      [
+       56,
+       "Sapphire bolt tips (12)",
+       "Sapphire (with a chisel)",
+       4
+      ],
+      [
+       58,
+       "Emerald bolt tips (12)",
+       "Emerald (with a chisel)",
+       5.5
+      ],
+      [
+       63,
+       "Ruby bolt tips (12)",
+       "Ruby (with a chisel)",
+       6.3
+      ],
+      [
+       65,
+       "Diamond bolt tips (12)",
+       "Diamond (with a chisel)",
+       7
+      ],
+      [
+       71,
+       "Dragonstone bolt tips (12)",
+       "Dragonstone (with a chisel)",
+       8.2
+      ],
+      [
+       73,
+       "Onyx bolt tips (24)",
+       "Onyx (with a chisel)",
+       9.4
+      ]
+     ]
+    }
+   ],
+   "places": [],
+   "tasks": [
+    {
+     "id": 310,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Fletch Some Arrow Shafts",
+     "desc": "Fletch some Arrow Shafts",
+     "live": true
+    },
+    {
+     "id": 311,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Fletch an Oak Shortbow",
+     "desc": "Fletch an Oak Shortbow",
+     "live": true
+    },
+    {
+     "id": 1358,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fletch 1000 arrow shafts",
+     "desc": "Fletch 1000 arrow shafts",
+     "live": true
+    },
+    {
+     "id": 312,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fletch 150 Iron Arrows",
+     "desc": "Fletch 150 Iron Arrows",
+     "live": true
+    },
+    {
+     "id": 1357,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fletch 25 Oak Stocks",
+     "desc": "Fletch 25 Oak Stocks",
+     "live": true
+    },
+    {
+     "id": 313,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fletch a Willow Shortbow (u)",
+     "desc": "Fletch a Willow Shortbow (u)",
+     "live": true
+    },
+    {
+     "id": 315,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fletch some Broad Arrows or Bolts",
+     "desc": "Fletch either some Broad Arrows or some Broad Bolts",
+     "live": true
+    },
+    {
+     "id": 700,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Fletch 100 Maple Longbow (u)",
+     "desc": "Fletch 100 Maple Longbow (u)",
+     "live": true
+    },
+    {
+     "id": 1360,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Fletch 200 Magic Longbow (u)",
+     "desc": "Fletch 200 Magic Longbow (u)",
+     "live": true
+    },
+    {
+     "id": 1361,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Fletch a Magic Shield",
+     "desc": "Fletch a Magic Shield",
+     "live": true
+    },
+    {
+     "id": 1362,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Fletch a Redwood Shield",
+     "desc": "Fletch a Redwood Shield",
+     "live": true
+    },
+    {
+     "id": 317,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Fletch a Rune Crossbow",
+     "desc": "Fletch a Rune Crossbow",
+     "live": true
+    },
+    {
+     "id": 1364,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Fletch 100 Dragon Javelins",
+     "desc": "Fletch 100 Dragon Javelins",
+     "live": true
+    },
+    {
+     "id": 1365,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Fletch 200 Dragon Darts",
+     "desc": "Fletch 200 Dragon Darts",
+     "live": true
+    },
+    {
+     "id": 253,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Fletching XP",
+     "desc": "Obtain 25 million experience in your Fletching skill",
+     "live": true
+    },
+    {
+     "id": 1473,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Fletching XP",
+     "desc": "Obtain 35 million experience in your Fletching skill",
+     "live": true
+    },
+    {
+     "id": 1496,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Fletching XP",
+     "desc": "Obtain 50 million experience in your Fletching skill",
+     "live": true
+    },
+    {
+     "id": 252,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Fletching",
+     "desc": "Reach level 99 in your Fletching skill",
+     "live": true
+    }
+   ]
+  },
+  "runecraft": {
+   "tables": [
+    {
+     "id": "runes",
+     "title": "Runes",
+     "cols": [
+      "Level",
+      "Rune",
+      "XP per essence",
+      "Essence",
+      "More runes per essence at"
+     ],
+     "rows": [
+      [
+       1,
+       "Air rune",
+       5,
+       "Rune or pure",
+       "11, 22, 33, 44, 55, 66, 77, 88, 99"
+      ],
+      [
+       2,
+       "Mind rune",
+       5.5,
+       "Rune or pure",
+       "14, 28, 42, 56, 70, 84, 98"
+      ],
+      [
+       5,
+       "Water rune",
+       6,
+       "Rune or pure",
+       "19, 38, 57, 76, 95"
+      ],
+      [
+       9,
+       "Earth rune",
+       6.5,
+       "Rune or pure",
+       "26, 52, 78"
+      ],
+      [
+       14,
+       "Fire rune",
+       7,
+       "Rune or pure",
+       "35, 70"
+      ],
+      [
+       20,
+       "Body rune",
+       7.5,
+       "Rune or pure",
+       "46, 92"
+      ],
+      [
+       27,
+       "Cosmic rune",
+       8,
+       "Pure only",
+       "59"
+      ],
+      [
+       35,
+       "Chaos rune",
+       8.5,
+       "Pure only",
+       "74"
+      ],
+      [
+       40,
+       "Astral rune",
+       8.7,
+       "Pure only",
+       "82"
+      ],
+      [
+       44,
+       "Nature rune",
+       9,
+       "Pure only",
+       "91"
+      ],
+      [
+       54,
+       "Law rune",
+       9.5,
+       "Pure only",
+       "95"
+      ],
+      [
+       65,
+       "Death rune",
+       10,
+       "Pure only",
+       "99"
+      ],
+      [
+       77,
+       "Blood rune",
+       10.5,
+       "Pure only",
+       "-"
+      ],
+      [
+       95,
+       "Wrath rune",
+       8,
+       "Pure only",
+       "-"
+      ]
+     ]
+    },
+    {
+     "id": "combos",
+     "title": "Combination runes",
+     "cols": [
+      "Level",
+      "Rune",
+      "Where",
+      "XP per essence"
+     ],
+     "rows": [
+      [
+       6,
+       "Mist rune",
+       "Air or Water altar",
+       "8 at the air altar, 8.5 at the water altar"
+      ],
+      [
+       10,
+       "Dust rune",
+       "Air or Earth altar",
+       "8.3 at the air altar, 9 at the earth altar"
+      ],
+      [
+       13,
+       "Mud rune",
+       "Water or Earth altar",
+       "9.3 at the water altar, 9.5 at the earth altar"
+      ],
+      [
+       15,
+       "Smoke rune",
+       "Air or Fire altar",
+       "8.5 at the air altar, 9.5 at the fire altar"
+      ],
+      [
+       19,
+       "Steam rune",
+       "Water or Fire altar",
+       "9.3 at the water altar, 10 at the fire altar"
+      ],
+      [
+       23,
+       "Lava rune",
+       "Earth or Fire altar",
+       "10 at the earth altar, 10.5 at the fire altar"
+      ]
+     ],
+     "note": "Pure essence, the other element's runes and its talisman, used on the altar. Each one works half the time; a binding necklace makes it always work."
+    },
+    {
+     "id": "tiaras",
+     "title": "Tiaras",
+     "cols": [
+      "Tiara",
+      "XP"
+     ],
+     "rows": [
+      [
+       "Air tiara",
+       25
+      ],
+      [
+       "Mind tiara",
+       27.5
+      ],
+      [
+       "Water tiara",
+       30
+      ],
+      [
+       "Earth tiara",
+       32.5
+      ],
+      [
+       "Fire tiara",
+       35
+      ],
+      [
+       "Body tiara",
+       37.5
+      ],
+      [
+       "Cosmic tiara",
+       40
+      ],
+      [
+       "Chaos tiara",
+       42.5
+      ],
+      [
+       "Nature tiara",
+       45
+      ],
+      [
+       "Law tiara",
+       47.5
+      ],
+      [
+       "Death tiara",
+       50
+      ],
+      [
+       "Wrath tiara",
+       52.5
+      ]
+     ],
+     "note": "Use a blank tiara and the talisman on the altar."
+    },
+    {
+     "id": "pouches",
+     "title": "Essence pouches",
+     "cols": [
+      "Level",
+      "Pouch",
+      "Holds"
+     ],
+     "rows": [
+      [
+       1,
+       "Small pouch",
+       "3"
+      ],
+      [
+       25,
+       "Colossal pouch",
+       "8 at level 25, rising to 40 at 85"
+      ],
+      [
+       25,
+       "Medium pouch",
+       "6"
+      ],
+      [
+       50,
+       "Large pouch",
+       "9"
+      ],
+      [
+       75,
+       "Giant pouch",
+       "12"
+      ]
+     ]
+    }
+   ],
+   "places": [],
+   "tasks": [
+    {
+     "id": 854,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Craft a Fire Rune",
+     "desc": "Craft a Fire Rune from Essence at the Fire Altar",
+     "live": true
+    },
+    {
+     "id": 774,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Craft an Air Rune",
+     "desc": "Craft an Air Rune from Essence at the Air Altar",
+     "live": true
+    },
+    {
+     "id": 366,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Locate a Runecrafting Altar With a Talisman",
+     "desc": "Use any talisman to check the location of a Runecrafting Altar",
+     "live": true
+    },
+    {
+     "id": 364,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Visit the Rune Essence Mine",
+     "desc": "Visit the Rune Essence Mine",
+     "live": true
+    },
+    {
+     "id": 367,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft 200 Essence Into Runes",
+     "desc": "Use Runecrafting Altars to craft 200 essence into runes of any type",
+     "live": true
+    },
+    {
+     "id": 368,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft 4 Runes With 1 Essence",
+     "desc": "Use a Runecrafting Altar to craft 4 of any type of rune using a single essence",
+     "live": true
+    },
+    {
+     "id": 573,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft 50 Astral Runes",
+     "desc": "Craft 50 Astral Runes from Essence at the Astral Altar",
+     "live": true
+    },
+    {
+     "id": 463,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft 50 Cosmic Runes",
+     "desc": "Craft 50 Cosmic Runes",
+     "live": true
+    },
+    {
+     "id": 648,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft 50 Nature Runes",
+     "desc": "Craft 50 Nature Runes from Essence at the Nature Altar",
+     "live": true
+    },
+    {
+     "id": 462,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft 50 Water Runes",
+     "desc": "Craft 50 Water Runes from Essence at the Water Altar",
+     "live": true
+    },
+    {
+     "id": 369,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft Any Combination Rune",
+     "desc": "Use a Runecrafting Altar to craft any type of combination rune",
+     "live": true
+    },
+    {
+     "id": 775,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft a Body Rune",
+     "desc": "Craft a Body Rune from Essence at the Body Altar",
+     "live": true
+    },
+    {
+     "id": 855,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft a Lava Rune at the Fire Altar",
+     "desc": "Craft a Lava Rune at the Fire Altar",
+     "live": true
+    },
+    {
+     "id": 983,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Fill a Large Pouch",
+     "desc": "Fill a Large Pouch with Essence",
+     "live": true
+    },
+    {
+     "id": 982,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Use the Abyss",
+     "desc": "Use the Abyss to access a Runecrafting Altar",
+     "live": true
+    },
+    {
+     "id": 1603,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft 100 Blood Runes",
+     "desc": "Craft 100 Blood Runes",
+     "live": true
+    },
+    {
+     "id": 370,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft 2500 Essence Into Runes",
+     "desc": "Use Runecrafting Altars to craft 2500 essence into runes of any type",
+     "live": true
+    },
+    {
+     "id": 525,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft 50 Death Runes",
+     "desc": "Craft 50 Death Runes from Essence at the Death Altar",
+     "live": true
+    },
+    {
+     "id": 776,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft 50 Law Runes",
+     "desc": "Craft 50 Law Runes from Essence at the Law Altar",
+     "live": true
+    },
+    {
+     "id": 984,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Fill a Giant Pouch",
+     "desc": "Fill a Giant Pouch with Essence",
+     "live": true
+    },
+    {
+     "id": 239,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Runecraft XP",
+     "desc": "Obtain 25 million experience in your Runecraft skill",
+     "live": true
+    },
+    {
+     "id": 1466,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Runecraft XP",
+     "desc": "Obtain 35 million experience in your Runecraft skill",
+     "live": true
+    },
+    {
+     "id": 1489,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Runecraft XP",
+     "desc": "Obtain 50 million experience in your Runecraft skill",
+     "live": true
+    },
+    {
+     "id": 238,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Runecraft",
+     "desc": "Reach level 99 in your Runecraft skill",
+     "live": true
+    }
+   ]
+  },
+  "crafting": {
+   "tables": [
+    {
+     "id": "gems",
+     "title": "Gems and snelms",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Opal",
+       "Uncut opal (with a chisel)",
+       15
+      ],
+      [
+       13,
+       "Jade",
+       "Uncut jade (with a chisel)",
+       20
+      ],
+      [
+       15,
+       "Blood'n'tar snelm",
+       "Blamish red shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Broken bark snelm",
+       "Blamish bark shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Bruise blue snelm",
+       "Blamish blue shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Crab claw",
+       "Fresh crab claw (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Crab helmet",
+       "Fresh crab shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Myre snelm",
+       "Blamish myre shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Ochre snelm",
+       "Blamish ochre shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Pointed blood'n'tar snelm",
+       "Blamish red shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Pointed bruise blue snelm",
+       "Blamish blue shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Pointed myre snelm",
+       "Blamish myre shell (with a chisel)",
+       32.5
+      ],
+      [
+       15,
+       "Pointed ochre snelm",
+       "Blamish ochre shell (with a chisel)",
+       32.5
+      ],
+      [
+       16,
+       "Red topaz",
+       "Uncut red topaz (with a chisel)",
+       25
+      ],
+      [
+       20,
+       "Sapphire",
+       "Uncut sapphire (with a chisel)",
+       50
+      ],
+      [
+       27,
+       "Emerald",
+       "Uncut emerald (with a chisel)",
+       67.5
+      ],
+      [
+       34,
+       "Ruby",
+       "Uncut ruby (with a chisel)",
+       85
+      ],
+      [
+       43,
+       "Diamond",
+       "Uncut diamond (with a chisel)",
+       107.5
+      ],
+      [
+       55,
+       "Dragonstone",
+       "Uncut dragonstone (with a chisel)",
+       137.5
+      ],
+      [
+       67,
+       "Onyx",
+       "Uncut onyx (with a chisel)",
+       167.5
+      ],
+      [
+       83,
+       "Amethyst bolt tips (15)",
+       "Amethyst (with a chisel)",
+       60
+      ],
+      [
+       85,
+       "Amethyst arrowtips (15)",
+       "Amethyst (with a chisel)",
+       60
+      ],
+      [
+       87,
+       "Amethyst javelin heads (5)",
+       "Amethyst (with a chisel)",
+       60
+      ],
+      [
+       89,
+       "Amethyst dart tip (8)",
+       "Amethyst (with a chisel)",
+       60
+      ],
+      [
+       89,
+       "Zenyte",
+       "Uncut zenyte (with a chisel)",
+       50
+      ]
+     ],
+     "note": "Use a chisel on an uncut gem or a snail shell. Opal, jade and red topaz can be crushed, which gives a little XP."
+    },
+    {
+     "id": "leather",
+     "title": "Leather, dragonhide and snakeskin",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Leather gloves",
+       "Leather (with a needle)",
+       13.8
+      ],
+      [
+       7,
+       "Leather boots",
+       "Leather (with a needle)",
+       16.3
+      ],
+      [
+       9,
+       "Leather cowl",
+       "Leather (with a needle)",
+       18.5
+      ],
+      [
+       11,
+       "Leather vambraces",
+       "Leather (with a needle)",
+       22
+      ],
+      [
+       14,
+       "Leather body",
+       "Leather (with a needle)",
+       25
+      ],
+      [
+       14,
+       "Xerician hat",
+       "3 Xerician fabric (with a needle)",
+       66
+      ],
+      [
+       17,
+       "Xerician robe",
+       "4 Xerician fabric (with a needle)",
+       88
+      ],
+      [
+       18,
+       "Leather chaps",
+       "Leather (with a needle)",
+       27
+      ],
+      [
+       22,
+       "Xerician top",
+       "5 Xerician fabric (with a needle)",
+       110
+      ],
+      [
+       28,
+       "Hardleather body",
+       "Hard leather (with a needle)",
+       35
+      ],
+      [
+       38,
+       "Coif",
+       "Leather (with a needle)",
+       37
+      ],
+      [
+       43,
+       "Yak-hide armour",
+       "Cured yak-hide (with a needle)",
+       32
+      ],
+      [
+       45,
+       "Snakeskin boots",
+       "6 Snakeskin (with a needle)",
+       30
+      ],
+      [
+       46,
+       "Yak-hide armour",
+       "2 Cured yak-hide (with a needle)",
+       32
+      ],
+      [
+       47,
+       "Snakeskin vambraces",
+       "8 Snakeskin (with a needle)",
+       35
+      ],
+      [
+       48,
+       "Snakeskin bandana",
+       "5 Snakeskin (with a needle)",
+       45
+      ],
+      [
+       51,
+       "Snakeskin chaps",
+       "12 Snakeskin (with a needle)",
+       50
+      ],
+      [
+       53,
+       "Snakeskin body",
+       "15 Snakeskin (with a needle)",
+       55
+      ],
+      [
+       57,
+       "Green d'hide vambraces",
+       "Green dragon leather (with a needle)",
+       62
+      ],
+      [
+       60,
+       "Green d'hide chaps",
+       "2 Green dragon leather (with a needle)",
+       124
+      ],
+      [
+       60,
+       "Splitbark boots",
+       "Bark + Fine cloth (with a needle)",
+       62
+      ],
+      [
+       60,
+       "Splitbark gauntlets",
+       "Bark + Fine cloth (with a needle)",
+       62
+      ],
+      [
+       61,
+       "Splitbark helm",
+       "2 Bark + 2 Fine cloth (with a needle)",
+       124
+      ],
+      [
+       62,
+       "Splitbark body",
+       "4 Bark + 4 Fine cloth (with a needle)",
+       248
+      ],
+      [
+       62,
+       "Splitbark legs",
+       "3 Bark + 3 Fine cloth (with a needle)",
+       186
+      ],
+      [
+       63,
+       "Green d'hide body",
+       "3 Green dragon leather (with a needle)",
+       186
+      ],
+      [
+       66,
+       "Blue d'hide vambraces",
+       "Blue dragon leather (with a needle)",
+       70
+      ],
+      [
+       68,
+       "Blue d'hide chaps",
+       "2 Blue dragon leather (with a needle)",
+       140
+      ],
+      [
+       68,
+       "Mixed hide cape",
+       "Mixed hide base + Jaguar fur (with a needle)",
+       62
+      ],
+      [
+       69,
+       "Mixed hide boots",
+       "Mixed hide base + Sunlight antelope fur (with a needle)",
+       75
+      ],
+      [
+       71,
+       "Blue d'hide body",
+       "3 Blue dragon leather (with a needle)",
+       210
+      ],
+      [
+       71,
+       "Mixed hide legs",
+       "Mixed hide base + 3 Fox fur (with a needle)",
+       210
+      ],
+      [
+       72,
+       "Mixed hide top",
+       "Mixed hide base + 2 Sunlight antelope fur (with a needle)",
+       150
+      ],
+      [
+       73,
+       "Red d'hide vambraces",
+       "Red dragon leather (with a needle)",
+       78
+      ],
+      [
+       75,
+       "Red d'hide chaps",
+       "2 Red dragon leather (with a needle)",
+       156
+      ],
+      [
+       76,
+       "Hueycoatl hide coif",
+       "2 Hueycoatl hide (with a needle)",
+       190
+      ],
+      [
+       76,
+       "Hueycoatl hide vambraces",
+       "Hueycoatl hide (with a needle)",
+       95
+      ],
+      [
+       77,
+       "Hueycoatl hide chaps",
+       "2 Hueycoatl hide (with a needle)",
+       190
+      ],
+      [
+       77,
+       "Red d'hide body",
+       "3 Red dragon leather (with a needle)",
+       234
+      ],
+      [
+       78,
+       "Hueycoatl hide body",
+       "3 Hueycoatl hide (with a needle)",
+       285
+      ],
+      [
+       79,
+       "Black d'hide vambraces",
+       "Black dragon leather (with a needle)",
+       86
+      ],
+      [
+       82,
+       "Black d'hide chaps",
+       "2 Black dragon leather (with a needle)",
+       172
+      ],
+      [
+       84,
+       "Black d'hide body",
+       "3 Black dragon leather (with a needle)",
+       258
+      ]
+     ],
+     "note": "Use a needle on the leather; each piece also uses thread (one spool lasts 5 items)."
+    },
+    {
+     "id": "jewellery",
+     "title": "Jewellery",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Opal ring",
+       "Opal + Silver bar (with a ring mould)",
+       10
+      ],
+      [
+       5,
+       "Gold ring",
+       "Gold bar (with a ring mould)",
+       15
+      ],
+      [
+       6,
+       "Gold necklace",
+       "Gold bar (with a necklace mould)",
+       20
+      ],
+      [
+       7,
+       "Gold bracelet",
+       "Gold bar (with a bracelet mould)",
+       25
+      ],
+      [
+       8,
+       "Gold amulet (u)",
+       "Gold bar (with a amulet mould)",
+       30
+      ],
+      [
+       13,
+       "Jade ring",
+       "Jade + Silver bar (with a ring mould)",
+       32
+      ],
+      [
+       16,
+       "Opal necklace",
+       "Opal + Silver bar (with a necklace mould)",
+       35
+      ],
+      [
+       16,
+       "Topaz ring",
+       "Red topaz + Silver bar (with a ring mould)",
+       35
+      ],
+      [
+       16,
+       "Unstrung symbol",
+       "Silver bar (with a holy mould)",
+       50
+      ],
+      [
+       17,
+       "Unstrung emblem",
+       "Silver bar (with a unholy mould)",
+       50
+      ],
+      [
+       18,
+       "Silver sickle",
+       "Silver bar (with a sickle mould)",
+       50
+      ],
+      [
+       20,
+       "Sapphire ring",
+       "Sapphire + Gold bar (with a ring mould)",
+       40
+      ],
+      [
+       21,
+       "Silver bolts (unf) (10)",
+       "Silver bar (with a bolt mould)",
+       50
+      ],
+      [
+       22,
+       "Opal bracelet",
+       "Opal + Silver bar (with a bracelet mould)",
+       45
+      ],
+      [
+       22,
+       "Sapphire necklace",
+       "Sapphire + Gold bar (with a necklace mould)",
+       55
+      ],
+      [
+       23,
+       "Sapphire bracelet",
+       "Sapphire + Gold bar (with a bracelet mould)",
+       60
+      ],
+      [
+       23,
+       "Tiara",
+       "Silver bar (with a tiara mould)",
+       52.5
+      ],
+      [
+       24,
+       "Sapphire amulet (u)",
+       "Sapphire + Gold bar (with a amulet mould)",
+       65
+      ],
+      [
+       25,
+       "Jade necklace",
+       "Jade + Silver bar (with a necklace mould)",
+       54
+      ],
+      [
+       27,
+       "Emerald ring",
+       "Emerald + Gold bar (with a ring mould)",
+       55
+      ],
+      [
+       27,
+       "Opal amulet (u)",
+       "Opal + Silver bar (with a amulet mould)",
+       55
+      ],
+      [
+       29,
+       "Emerald necklace",
+       "Emerald + Gold bar (with a necklace mould)",
+       60
+      ],
+      [
+       29,
+       "Jade bracelet",
+       "Jade + Silver bar (with a bracelet mould)",
+       60
+      ],
+      [
+       30,
+       "Emerald bracelet",
+       "Emerald + Gold bar (with a bracelet mould)",
+       65
+      ],
+      [
+       31,
+       "Emerald amulet (u)",
+       "Emerald + Gold bar (with a amulet mould)",
+       70
+      ],
+      [
+       32,
+       "Topaz necklace",
+       "Red topaz + Silver bar (with a necklace mould)",
+       70
+      ],
+      [
+       34,
+       "Jade amulet (u)",
+       "Jade + Silver bar (with a amulet mould)",
+       70
+      ],
+      [
+       34,
+       "Ruby ring",
+       "Ruby + Gold bar (with a ring mould)",
+       70
+      ],
+      [
+       38,
+       "Topaz bracelet",
+       "Red topaz + Silver bar (with a bracelet mould)",
+       75
+      ],
+      [
+       40,
+       "Ruby necklace",
+       "Ruby + Gold bar (with a necklace mould)",
+       75
+      ],
+      [
+       42,
+       "Ruby bracelet",
+       "Ruby + Gold bar (with a bracelet mould)",
+       80
+      ],
+      [
+       43,
+       "Diamond ring",
+       "Diamond + Gold bar (with a ring mould)",
+       85
+      ],
+      [
+       45,
+       "Topaz amulet (u)",
+       "Red topaz + Silver bar (with a amulet mould)",
+       80
+      ],
+      [
+       50,
+       "Ruby amulet (u)",
+       "Ruby + Gold bar (with a amulet mould)",
+       85
+      ],
+      [
+       55,
+       "Dragonstone ring",
+       "Dragonstone + Gold bar (with a ring mould)",
+       100
+      ],
+      [
+       56,
+       "Diamond necklace",
+       "Diamond + Gold bar (with a necklace mould)",
+       90
+      ],
+      [
+       58,
+       "Diamond bracelet",
+       "Diamond + Gold bar (with a bracelet mould)",
+       95
+      ],
+      [
+       67,
+       "Onyx ring",
+       "Onyx + Gold bar (with a ring mould)",
+       115
+      ],
+      [
+       70,
+       "Diamond amulet (u)",
+       "Diamond + Gold bar (with a amulet mould)",
+       100
+      ],
+      [
+       72,
+       "Dragon necklace",
+       "Dragonstone + Gold bar (with a necklace mould)",
+       105
+      ],
+      [
+       74,
+       "Dragonstone bracelet",
+       "Dragonstone + Gold bar (with a bracelet mould)",
+       110
+      ],
+      [
+       75,
+       "Slayer ring (8)",
+       "Enchanted gem + Gold bar (with a ring mould)",
+       15
+      ],
+      [
+       75,
+       "Slayer ring (eternal)",
+       "Eternal gem + Gold bar (with a ring mould)",
+       15
+      ],
+      [
+       80,
+       "Dragonstone amulet (u)",
+       "Dragonstone + Gold bar (with a amulet mould)",
+       150
+      ],
+      [
+       82,
+       "Onyx necklace",
+       "Onyx + Gold bar (with a necklace mould)",
+       120
+      ],
+      [
+       84,
+       "Onyx bracelet",
+       "Onyx + Gold bar (with a bracelet mould)",
+       125
+      ],
+      [
+       89,
+       "Zenyte ring",
+       "Zenyte + Gold bar (with a ring mould)",
+       150
+      ],
+      [
+       90,
+       "Onyx amulet (u)",
+       "Onyx + Gold bar (with a amulet mould)",
+       165
+      ],
+      [
+       92,
+       "Zenyte necklace",
+       "Zenyte + Gold bar (with a necklace mould)",
+       165
+      ],
+      [
+       95,
+       "Zenyte bracelet",
+       "Zenyte + Gold bar (with a bracelet mould)",
+       180
+      ],
+      [
+       98,
+       "Zenyte amulet (u)",
+       "Zenyte + Gold bar (with a amulet mould)",
+       200
+      ]
+     ],
+     "note": "Use a gold or silver bar on a furnace with the mould (and gem) in your inventory."
+    },
+    {
+     "id": "stringing",
+     "title": "Stringing amulets",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Diamond amulet",
+       "Diamond amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Dragonstone amulet",
+       "Dragonstone amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Emerald amulet",
+       "Emerald amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Gold amulet",
+       "Gold amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Jade amulet",
+       "Jade amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Onyx amulet",
+       "Onyx amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Opal amulet",
+       "Opal amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Ruby amulet",
+       "Ruby amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Sapphire amulet",
+       "Sapphire amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Topaz amulet",
+       "Topaz amulet (u) + Ball of wool",
+       4
+      ],
+      [
+       1,
+       "Zenyte amulet",
+       "Zenyte amulet (u) + Ball of wool",
+       4
+      ]
+     ]
+    },
+    {
+     "id": "glass",
+     "title": "Glass",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Beer glass",
+       "Molten glass (with a glassblowing pipe)",
+       17.5
+      ],
+      [
+       1,
+       "Molten glass",
+       "Bucket of sand + Soda ash",
+       20
+      ],
+      [
+       4,
+       "Empty candle lantern",
+       "Molten glass (with a glassblowing pipe)",
+       19
+      ],
+      [
+       12,
+       "Empty oil lamp",
+       "Molten glass (with a glassblowing pipe)",
+       25
+      ],
+      [
+       33,
+       "Vial",
+       "Molten glass (with a glassblowing pipe)",
+       35
+      ],
+      [
+       42,
+       "Empty fishbowl",
+       "Molten glass (with a glassblowing pipe)",
+       42.5
+      ],
+      [
+       46,
+       "Unpowered orb",
+       "Molten glass (with a glassblowing pipe)",
+       52.5
+      ],
+      [
+       49,
+       "Lantern lens",
+       "Molten glass (with a glassblowing pipe)",
+       55
+      ],
+      [
+       87,
+       "Empty light orb",
+       "Molten glass (with a glassblowing pipe)",
+       70
+      ]
+     ],
+     "note": "Use a bucket of sand and soda ash on a furnace for molten glass, then a glassblowing pipe on it."
+    },
+    {
+     "id": "pottery",
+     "title": "Pottery",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Pot",
+       "Unfired pot",
+       6.3
+      ],
+      [
+       1,
+       "Soft clay",
+       "Clay + Bucket of water",
+       0
+      ],
+      [
+       1,
+       "Soft clay",
+       "Clay + Jug of water",
+       0
+      ],
+      [
+       1,
+       "Soft clay",
+       "Clay + Bowl of water",
+       0
+      ],
+      [
+       1,
+       "Soft clay",
+       "Clay + Vial of water",
+       0
+      ],
+      [
+       1,
+       "Unfired pot",
+       "Soft clay",
+       6.3
+      ],
+      [
+       3,
+       "Empty cup",
+       "Unfired cup",
+       8.5
+      ],
+      [
+       3,
+       "Unfired cup (4)",
+       "Soft clay",
+       8.5
+      ],
+      [
+       7,
+       "Pie dish",
+       "Unfired pie dish",
+       10
+      ],
+      [
+       7,
+       "Unfired pie dish",
+       "Soft clay",
+       15
+      ],
+      [
+       8,
+       "Bowl",
+       "Unfired bowl",
+       15
+      ],
+      [
+       8,
+       "Unfired bowl",
+       "Soft clay",
+       18
+      ],
+      [
+       19,
+       "Empty plant pot",
+       "Unfired plant pot",
+       17.5
+      ],
+      [
+       19,
+       "Unfired plant pot",
+       "Soft clay",
+       20
+      ],
+      [
+       25,
+       "Pot lid",
+       "Unfired pot lid",
+       20
+      ],
+      [
+       25,
+       "Unfired pot lid",
+       "Soft clay",
+       20
+      ]
+     ],
+     "note": "Soften clay with water, shape it on a potter's wheel, then fire it in a pottery oven."
+    },
+    {
+     "id": "spinning",
+     "title": "Spinning and weaving",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Ball of wool",
+       "Wool",
+       2.5
+      ],
+      [
+       10,
+       "Bow string",
+       "Flax",
+       15
+      ],
+      [
+       10,
+       "Crossbow string",
+       "Sinew or Oak roots or Willow roots or Maple roots or Yew roots",
+       15
+      ],
+      [
+       10,
+       "Strip of cloth",
+       "4 Ball of wool",
+       12
+      ],
+      [
+       19,
+       "Magic string",
+       "Magic roots",
+       30
+      ],
+      [
+       21,
+       "Empty sack",
+       "4 Jute fibre",
+       38
+      ],
+      [
+       30,
+       "Rope",
+       "Hair",
+       25
+      ],
+      [
+       36,
+       "Basket",
+       "6 Willow branch",
+       56
+      ]
+     ]
+    },
+    {
+     "id": "other",
+     "title": "Other crafts",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       5,
+       "Bird house",
+       "Logs + Clockwork (with a hammer, chisel)",
+       15
+      ],
+      [
+       15,
+       "Oak bird house",
+       "Oak logs + Clockwork (with a hammer, chisel)",
+       20
+      ],
+      [
+       25,
+       "Willow bird house",
+       "Willow logs + Clockwork (with a hammer, chisel)",
+       25
+      ],
+      [
+       26,
+       "Empty oil lantern",
+       "Empty oil lamp + Oil lantern frame",
+       50
+      ],
+      [
+       32,
+       "Black spiky vambraces",
+       "Black d'hide vambraces + Kebbit claws",
+       6
+      ],
+      [
+       32,
+       "Blue spiky vambraces",
+       "Blue d'hide vambraces + Kebbit claws",
+       6
+      ],
+      [
+       32,
+       "Green spiky vambraces",
+       "Green d'hide vambraces + Kebbit claws",
+       6
+      ],
+      [
+       32,
+       "Red spiky vambraces",
+       "Red d'hide vambraces + Kebbit claws",
+       6
+      ],
+      [
+       32,
+       "Spiky vambraces",
+       "Leather vambraces + Kebbit claws",
+       6
+      ],
+      [
+       35,
+       "Broodoo shield (10)",
+       "2 Snakeskin + Tribal mask + 8 Bronze nails or Iron nails or Black nails or Steel nails or Mithril nails or Adamantite nails or Rune nails (with a hammer)",
+       100
+      ],
+      [
+       35,
+       "Teak bird house",
+       "Teak logs + Clockwork (with a hammer, chisel)",
+       30
+      ],
+      [
+       41,
+       "Hard leather shield",
+       "2 Hard leather + Oak shield + 15 Bronze nails (with a hammer)",
+       70
+      ],
+      [
+       41,
+       "Studded body",
+       "Leather body + Steel studs",
+       40
+      ],
+      [
+       44,
+       "Studded chaps",
+       "Leather chaps + Steel studs",
+       42
+      ],
+      [
+       45,
+       "Maple bird house",
+       "Maple logs + Clockwork (with a hammer, chisel)",
+       35
+      ],
+      [
+       50,
+       "Mahogany bird house",
+       "Mahogany logs + Clockwork (with a hammer, chisel)",
+       40
+      ],
+      [
+       54,
+       "Water battlestaff",
+       "Battlestaff + Water orb",
+       100
+      ],
+      [
+       56,
+       "Snakeskin shield",
+       "2 Snakeskin + Willow shield + 15 Iron nails (with a hammer)",
+       100
+      ],
+      [
+       58,
+       "Earth battlestaff",
+       "Battlestaff + Earth orb",
+       112.5
+      ],
+      [
+       60,
+       "Yew bird house",
+       "Yew logs + Clockwork (with a hammer, chisel)",
+       45
+      ],
+      [
+       62,
+       "Fire battlestaff",
+       "Battlestaff + Fire orb",
+       125
+      ],
+      [
+       62,
+       "Green d'hide shield",
+       "2 Green dragon leather + Maple shield + 15 Steel nails (with a hammer)",
+       124
+      ],
+      [
+       66,
+       "Air battlestaff",
+       "Battlestaff + Air orb",
+       137.5
+      ],
+      [
+       69,
+       "Blue d'hide shield",
+       "2 Blue dragon leather + Yew shield + 15 Mithril nails (with a hammer)",
+       140
+      ],
+      [
+       75,
+       "Magic bird house",
+       "Magic logs + Clockwork (with a hammer, chisel)",
+       50
+      ],
+      [
+       76,
+       "Red d'hide shield",
+       "2 Red dragon leather + Magic shield + 15 Adamantite nails (with a hammer)",
+       156
+      ],
+      [
+       83,
+       "Black d'hide shield",
+       "2 Black dragon leather + Redwood shield + 15 Rune nails (with a hammer)",
+       172
+      ],
+      [
+       87,
+       "Light orb",
+       "Empty light orb + Cave goblin wire",
+       104
+      ],
+      [
+       90,
+       "Redwood bird house",
+       "Redwood logs + Clockwork (with a hammer, chisel)",
+       55
+      ]
+     ]
+    },
+    {
+     "id": "tanning",
+     "title": "Tanning",
+     "cols": [
+      "Hide",
+      "Leather",
+      "Cost each"
+     ],
+     "rows": [
+      [
+       "Cowhide",
+       "Leather",
+       "1 coin"
+      ],
+      [
+       "Cowhide",
+       "Hard leather",
+       "3 coins"
+      ],
+      [
+       "Snake hide",
+       "Snakeskin",
+       "15 coins"
+      ],
+      [
+       "Snake hide",
+       "Snakeskin",
+       "20 coins"
+      ],
+      [
+       "Green dragonhide",
+       "Green dragon leather",
+       "20 coins"
+      ],
+      [
+       "Blue dragonhide",
+       "Blue dragon leather",
+       "20 coins"
+      ],
+      [
+       "Red dragonhide",
+       "Red dragon leather",
+       "20 coins"
+      ],
+      [
+       "Black dragonhide",
+       "Black dragon leather",
+       "20 coins"
+      ]
+     ],
+     "note": "A tanner turns hides into leather for coins. No level needed and no XP."
+    }
+   ],
+   "places": [
+    {
+     "area": "isle",
+     "title": "Isle of Souls",
+     "level": 0,
+     "x": 2218,
+     "z": 2787,
+     "box": [
+      2218,
+      2787,
+      2218,
+      2787
+     ],
+     "dir": "about 60 tiles south of the lobby",
+     "things": [
+      {
+       "name": "Furnace",
+       "count": 1
+      }
+     ]
+    }
+   ],
+   "tasks": [
+    {
+     "id": 333,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Craft a Leather Body",
+     "desc": "Craft a Leather Body",
+     "live": true
+    },
+    {
+     "id": 913,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Craft a Snelm",
+     "desc": "Craft any Snelm",
+     "live": true
+    },
+    {
+     "id": 332,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Cut a Sapphire",
+     "desc": "Cut a Sapphire",
+     "live": true
+    },
+    {
+     "id": 331,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Spin a Ball of Wool",
+     "desc": "Use a Spinning Wheel to spin a Ball of Wool",
+     "live": true
+    },
+    {
+     "id": 1350,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Successfully Cut a Red Topaz",
+     "desc": "Successfully Cut a Red Topaz",
+     "live": true
+    },
+    {
+     "id": 336,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft a Ruby Amulet",
+     "desc": "Craft a Ruby Amulet",
+     "live": true
+    },
+    {
+     "id": 335,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft an Emerald Ring",
+     "desc": "Craft an Emerald Ring",
+     "live": true
+    },
+    {
+     "id": 1572,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Craft some Pottery",
+     "desc": "Craft some Pottery",
+     "live": true
+    },
+    {
+     "id": 1351,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Create a green d'hide shield",
+     "desc": "Create a green d'hide shield",
+     "live": true
+    },
+    {
+     "id": 1353,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Blow 100 Light Orbs",
+     "desc": "Blow 100 Light Orbs",
+     "live": true
+    },
+    {
+     "id": 334,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft 100 Unpowered Orbs",
+     "desc": "Craft 100 Unpowered Orbs",
+     "live": true
+    },
+    {
+     "id": 338,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft 30 Blue Dragonhide Bodies",
+     "desc": "Craft 30 Blue Dragonhide Bodies",
+     "live": true
+    },
+    {
+     "id": 337,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft a Dragonstone Amulet",
+     "desc": "Craft a Dragonstone Amulet",
+     "live": true
+    },
+    {
+     "id": 981,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Craft an Air Battlestaff",
+     "desc": "Craft an Air Battlestaff",
+     "live": true
+    },
+    {
+     "id": 1352,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Create a black d'hide shield",
+     "desc": "Create a black d'hide shield",
+     "live": true
+    },
+    {
+     "id": 339,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Craft an Onyx Amulet",
+     "desc": "Craft an Onyx Amulet",
+     "live": true
+    },
+    {
+     "id": 251,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Crafting XP",
+     "desc": "Obtain 25 million experience in your Crafting skill",
+     "live": true
+    },
+    {
+     "id": 1472,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Crafting XP",
+     "desc": "Obtain 35 million experience in your Crafting skill",
+     "live": true
+    },
+    {
+     "id": 1495,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Crafting XP",
+     "desc": "Obtain 50 million experience in your Crafting skill",
+     "live": true
+    },
+    {
+     "id": 250,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Crafting",
+     "desc": "Reach level 99 in your Crafting skill",
+     "live": true
+    }
+   ]
+  },
+  "herblore": {
+   "tables": [
+    {
+     "id": "clean",
+     "title": "Cleaning herbs",
+     "cols": [
+      "Level",
+      "Herb",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       3,
+       "Guam leaf",
+       "Grimy guam leaf",
+       2.5
+      ],
+      [
+       5,
+       "Marrentill",
+       "Grimy marrentill",
+       3.8
+      ],
+      [
+       11,
+       "Tarromin",
+       "Grimy tarromin",
+       5
+      ],
+      [
+       20,
+       "Harralander",
+       "Grimy harralander",
+       6.3
+      ],
+      [
+       25,
+       "Ranarr weed",
+       "Grimy ranarr weed",
+       7.5
+      ],
+      [
+       30,
+       "Toadflax",
+       "Grimy toadflax",
+       8
+      ],
+      [
+       40,
+       "Irit leaf",
+       "Grimy irit leaf",
+       8.8
+      ],
+      [
+       48,
+       "Avantoe",
+       "Grimy avantoe",
+       10
+      ],
+      [
+       54,
+       "Kwuarm",
+       "Grimy kwuarm",
+       11.3
+      ],
+      [
+       58,
+       "Huasca",
+       "Grimy huasca",
+       11.8
+      ],
+      [
+       59,
+       "Snapdragon",
+       "Grimy snapdragon",
+       11.8
+      ],
+      [
+       65,
+       "Cadantine",
+       "Grimy cadantine",
+       12.5
+      ],
+      [
+       67,
+       "Lantadyme",
+       "Grimy lantadyme",
+       13.1
+      ],
+      [
+       70,
+       "Dwarf weed",
+       "Grimy dwarf weed",
+       13.8
+      ],
+      [
+       75,
+       "Torstol",
+       "Grimy torstol",
+       15
+      ]
+     ],
+     "note": "Click a grimy herb to clean it."
+    },
+    {
+     "id": "unf",
+     "title": "Unfinished potions",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       3,
+       "Guam potion (unf)",
+       "Vial of water + Guam leaf",
+       0
+      ],
+      [
+       5,
+       "Marrentill potion (unf)",
+       "Vial of water + Marrentill",
+       0
+      ],
+      [
+       12,
+       "Tarromin potion (unf)",
+       "Vial of water + Tarromin",
+       0
+      ],
+      [
+       22,
+       "Harralander potion (unf)",
+       "Vial of water + Harralander",
+       0
+      ],
+      [
+       30,
+       "Ranarr potion (unf)",
+       "Vial of water + Ranarr weed",
+       0
+      ],
+      [
+       34,
+       "Toadflax potion (unf)",
+       "Vial of water + Toadflax",
+       0
+      ],
+      [
+       45,
+       "Irit potion (unf)",
+       "Vial of water + Irit leaf",
+       0
+      ],
+      [
+       50,
+       "Avantoe potion (unf)",
+       "Vial of water + Avantoe",
+       0
+      ],
+      [
+       55,
+       "Kwuarm potion (unf)",
+       "Vial of water + Kwuarm",
+       0
+      ],
+      [
+       58,
+       "Huasca potion (unf)",
+       "Vial of water + Huasca",
+       0
+      ],
+      [
+       63,
+       "Snapdragon potion (unf)",
+       "Vial of water + Snapdragon",
+       0
+      ],
+      [
+       66,
+       "Cadantine potion (unf)",
+       "Vial of water + Cadantine",
+       0
+      ],
+      [
+       69,
+       "Lantadyme potion (unf)",
+       "Vial of water + Lantadyme",
+       0
+      ],
+      [
+       72,
+       "Dwarf weed potion (unf)",
+       "Vial of water + Dwarf weed",
+       0
+      ],
+      [
+       78,
+       "Torstol potion (unf)",
+       "Vial of water + Torstol",
+       0
+      ]
+     ]
+    },
+    {
+     "id": "potions",
+     "title": "Potions",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       3,
+       "Attack potion(3)",
+       "Guam potion (unf) + Eye of newt",
+       25
+      ],
+      [
+       5,
+       "Antipoison(3)",
+       "Marrentill potion (unf) + Unicorn horn dust",
+       37.5
+      ],
+      [
+       12,
+       "Strength potion(3)",
+       "Tarromin potion (unf) + Limpwurt root",
+       50
+      ],
+      [
+       22,
+       "Restore potion(3)",
+       "Harralander potion (unf) + Red spiders' eggs",
+       62.5
+      ],
+      [
+       26,
+       "Energy potion(3)",
+       "Harralander potion (unf) + Chocolate dust",
+       67.5
+      ],
+      [
+       30,
+       "Defence potion(3)",
+       "Ranarr potion (unf) + White berries",
+       75
+      ],
+      [
+       34,
+       "Agility potion(3)",
+       "Toadflax potion (unf) + Toad's legs",
+       80
+      ],
+      [
+       36,
+       "Combat potion(3)",
+       "Harralander potion (unf) + Goat horn dust",
+       84
+      ],
+      [
+       38,
+       "Prayer potion(3)",
+       "Ranarr potion (unf) + Snape grass",
+       87.5
+      ],
+      [
+       45,
+       "Super attack(3)",
+       "Irit potion (unf) + Eye of newt",
+       100
+      ],
+      [
+       48,
+       "Superantipoison(3)",
+       "Irit potion (unf) + Unicorn horn dust",
+       106.3
+      ],
+      [
+       50,
+       "Fishing potion(3)",
+       "Avantoe potion (unf) + Snape grass",
+       112.5
+      ],
+      [
+       52,
+       "Super energy(3)",
+       "Avantoe potion (unf) + Mort myre fungus",
+       117.5
+      ],
+      [
+       53,
+       "Hunter potion(3)",
+       "Avantoe potion (unf) + Kebbit teeth dust",
+       120
+      ],
+      [
+       54,
+       "Goading potion(3)",
+       "Harralander potion (unf) + Aldarium",
+       132
+      ],
+      [
+       55,
+       "Super strength(3)",
+       "Kwuarm potion (unf) + Limpwurt root",
+       125
+      ],
+      [
+       58,
+       "Prayer regeneration potion(3)",
+       "Huasca potion (unf) + Aldarium",
+       132
+      ],
+      [
+       63,
+       "Super restore(3)",
+       "Snapdragon potion (unf) + Red spiders' eggs",
+       142.5
+      ],
+      [
+       66,
+       "Super defence(3)",
+       "Cadantine potion (unf) + White berries",
+       150
+      ],
+      [
+       69,
+       "Antifire potion(3)",
+       "Lantadyme potion (unf) + Dragon scale dust",
+       157.5
+      ],
+      [
+       72,
+       "Ranging potion(3)",
+       "Dwarf weed potion (unf) + Wine of zamorak",
+       162.5
+      ],
+      [
+       76,
+       "Magic potion(3)",
+       "Lantadyme potion (unf) + Potato cactus",
+       172.5
+      ],
+      [
+       78,
+       "Zamorak brew(3)",
+       "Torstol potion (unf) + Jangerberries",
+       175
+      ],
+      [
+       81,
+       "Saradomin brew(3)",
+       "Toadflax potion (unf) + Crushed nest",
+       180
+      ]
+     ]
+    },
+    {
+     "id": "upgrades",
+     "title": "Upgrades and mixes",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       70,
+       "Divine super attack potion (any dose)",
+       "Super attack + Crystal dust, one per dose",
+       "0.5-2"
+      ],
+      [
+       70,
+       "Divine super defence potion (any dose)",
+       "Super defence + Crystal dust, one per dose",
+       "0.5-2"
+      ],
+      [
+       70,
+       "Divine super strength potion (any dose)",
+       "Super strength + Crystal dust, one per dose",
+       "0.5-2"
+      ],
+      [
+       74,
+       "Divine ranging potion (any dose)",
+       "Ranging potion + Crystal dust, one per dose",
+       "0.5-2"
+      ],
+      [
+       77,
+       "Stamina potion (any dose)",
+       "Super energy + Amylase crystal, one per dose",
+       "25.5-102"
+      ],
+      [
+       78,
+       "Divine magic potion (any dose)",
+       "Magic potion + Crystal dust, one per dose",
+       "0.5-2"
+      ],
+      [
+       84,
+       "Extended antifire (any dose)",
+       "Antifire potion + Lava scale shard, one per dose",
+       "27.5-110"
+      ],
+      [
+       90,
+       "Super combat potion (any dose)",
+       "Torstol + Super attack + Super strength + Super defence, one per dose",
+       150
+      ],
+      [
+       92,
+       "Super antifire potion(4)",
+       "Antifire potion(4) + Crushed superior dragon bones",
+       130
+      ],
+      [
+       97,
+       "Divine super combat potion (any dose)",
+       "Super combat potion + Crystal dust, one per dose",
+       "0.5-2"
+      ],
+      [
+       98,
+       "Extended super antifire (any dose)",
+       "Super antifire potion + Lava scale shard, one per dose",
+       "40-160"
+      ]
+     ]
+    },
+    {
+     "id": "grinding",
+     "title": "Grinding",
+     "cols": [
+      "Level",
+      "Make",
+      "From",
+      "XP"
+     ],
+     "rows": [
+      [
+       1,
+       "Chocolate dust",
+       "Chocolate bar (with a pestle and mortar)",
+       0
+      ],
+      [
+       1,
+       "Crushed nest",
+       "Bird nest (with a pestle and mortar)",
+       0
+      ],
+      [
+       1,
+       "Crushed superior dragon bones",
+       "Superior dragon bones (with a pestle and mortar)",
+       0
+      ],
+      [
+       1,
+       "Dragon scale dust",
+       "Blue dragon scale (with a pestle and mortar)",
+       0
+      ],
+      [
+       1,
+       "Goat horn dust",
+       "Desert goat horn (with a pestle and mortar)",
+       0
+      ],
+      [
+       1,
+       "Lava scale shard (3-6)",
+       "Lava scale (with a chisel)",
+       0
+      ],
+      [
+       1,
+       "Unicorn horn dust",
+       "Unicorn horn (with a pestle and mortar)",
+       0
+      ]
+     ],
+     "note": "Use a pestle and mortar on the item."
+    }
+   ],
+   "places": [],
+   "tasks": [
+    {
+     "id": 1785,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Clean 15 Grimy Tarromin",
+     "desc": "Clean 15 Grimy Tarromin",
+     "live": true
+    },
+    {
+     "id": 1784,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Clean 25 Grimy Guam Leafs",
+     "desc": "Clean 25 Grimy Guam Leafs",
+     "live": true
+    },
+    {
+     "id": 391,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Clean a Grimy Guam",
+     "desc": "Clean a Grimy Guam",
+     "live": true
+    },
+    {
+     "id": 1366,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Create an Antipoison",
+     "desc": "Create an Antipoison",
+     "live": true
+    },
+    {
+     "id": 393,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Drink a Strength Potion",
+     "desc": "Drink a Strength Potion",
+     "live": true
+    },
+    {
+     "id": 392,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Make an Attack Potion",
+     "desc": "Make an Attack Potion",
+     "live": true
+    },
+    {
+     "id": 1788,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Clean 50 Grimy Cadantine",
+     "desc": "Clean 50 Grimy Cadantine",
+     "live": true
+    },
+    {
+     "id": 1786,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Clean 50 Grimy Ranarr Weed",
+     "desc": "Clean 50 Grimy Ranarr Weed",
+     "live": true
+    },
+    {
+     "id": 395,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Clean a Grimy Avantoe",
+     "desc": "Clean a Grimy Avantoe",
+     "live": true
+    },
+    {
+     "id": 778,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Make 20 Stamina Potions",
+     "desc": "Make 20 Stamina Potions",
+     "live": true
+    },
+    {
+     "id": 394,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Make 30 Prayer Potions",
+     "desc": "Make 30 Prayer Potions",
+     "live": true
+    },
+    {
+     "id": 396,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Make a 4 dose potion",
+     "desc": "Make a 4 dose potion that was originally supposed to be a 3 dose potion",
+     "live": true
+    },
+    {
+     "id": 1046,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Make a Combat Potion",
+     "desc": "Make a Combat Potion",
+     "live": true
+    },
+    {
+     "id": 1787,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Clean 100 Grimy Avantoe",
+     "desc": "Clean 100 Grimy Avantoe",
+     "live": true
+    },
+    {
+     "id": 1789,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Clean 50 Grimy Lantadyme",
+     "desc": "Clean 50 Grimy Lantadyme",
+     "live": true
+    },
+    {
+     "id": 1762,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Create 25 Divine Super Attack Potions",
+     "desc": "Create 25 Divine Super Attack Potions",
+     "live": true
+    },
+    {
+     "id": 1763,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Create 25 Divine Super Strength Potions",
+     "desc": "Create 25 Divine Super Strength Potions",
+     "live": true
+    },
+    {
+     "id": 1739,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Make 100 Prayer Regeneration Potions",
+     "desc": "Make 100 Prayer Regeneration Potions",
+     "live": true
+    },
+    {
+     "id": 856,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Make 20 Magic Potions",
+     "desc": "Make 20 Magic Potions",
+     "live": true
+    },
+    {
+     "id": 777,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Make 20 Ranging Potions",
+     "desc": "Make 20 Ranging Potions",
+     "live": true
+    },
+    {
+     "id": 1738,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Make 50 Goading Potions",
+     "desc": "Make 50 Goading Potions",
+     "live": true
+    },
+    {
+     "id": 397,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Make a Saradomin Brew",
+     "desc": "Make a Saradomin Brew",
+     "live": true
+    },
+    {
+     "id": 1381,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Create 100 Divine Ranging Potions",
+     "desc": "Create 100 Divine Ranging Potions",
+     "live": true
+    },
+    {
+     "id": 1380,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Create 100 Divine Super Combat Potions",
+     "desc": "Create 100 Divine Super Combat Potions",
+     "live": true
+    },
+    {
+     "id": 399,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Make a Super Combat Potion",
+     "desc": "Make a Super Combat Potion",
+     "live": true
+    },
+    {
+     "id": 974,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Make an Extended Antifire Potion",
+     "desc": "Make an Extended Antifire Potion",
+     "live": true
+    },
+    {
+     "id": 247,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Herblore XP",
+     "desc": "Obtain 25 million experience in your Herblore skill",
+     "live": true
+    },
+    {
+     "id": 1470,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Herblore XP",
+     "desc": "Obtain 35 million experience in your Herblore skill",
+     "live": true
+    },
+    {
+     "id": 1493,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Herblore XP",
+     "desc": "Obtain 50 million experience in your Herblore skill",
+     "live": true
+    },
+    {
+     "id": 246,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Herblore",
+     "desc": "Reach level 99 in your Herblore skill",
+     "live": true
+    }
+   ]
+  },
+  "melee": {
+   "tables": [
+    {
+     "id": "monsters",
+     "title": "Monsters you can reach",
+     "cols": [
+      "Combat level",
+      "Monster",
+      "Where",
+      "How many"
+     ],
+     "rows": [
+      [
+       1,
+       "Chicken",
+       "Isle of Souls",
+       7
+      ],
+      [
+       1,
+       "Chinchompa",
+       "Isle of Souls",
+       5
+      ],
+      [
+       1,
+       "Rat",
+       "Edgeville Dungeon",
+       2
+      ],
+      [
+       1,
+       "Rat",
+       "Isle of Souls",
+       8
+      ],
+      [
+       1,
+       "Rat",
+       "Karamja Dungeon",
+       2
+      ],
+      [
+       1,
+       "Rat",
+       "Mining Guild",
+       4
+      ],
+      [
+       1,
+       "Rat",
+       "Taverley Dungeon",
+       4
+      ],
+      [
+       1,
+       "Rat",
+       "Varrock Sewers",
+       24
+      ],
+      [
+       1,
+       "Spider",
+       "Crumbling Tower basement",
+       3
+      ],
+      [
+       1,
+       "Spider",
+       "Edgeville Dungeon",
+       6
+      ],
+      [
+       1,
+       "Spider",
+       "Taverley Dungeon",
+       3
+      ],
+      [
+       1,
+       "Spider",
+       "Varrock Sewers",
+       3
+      ],
+      [
+       2,
+       "Cow",
+       "Isle of Souls",
+       3
+      ],
+      [
+       2,
+       "Cow calf",
+       "Isle of Souls",
+       1
+      ],
+      [
+       2,
+       "Giant spider",
+       "Edgeville Dungeon",
+       4
+      ],
+      [
+       2,
+       "Imp",
+       "Isle of Souls",
+       4
+      ],
+      [
+       2,
+       "Rabbit",
+       "Isle of Souls",
+       5
+      ],
+      [
+       3,
+       "Giant rat",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       3,
+       "Giant rat",
+       "Varrock Sewers",
+       2
+      ],
+      [
+       5,
+       "Bird",
+       "Isle of Souls",
+       19
+      ],
+      [
+       6,
+       "Giant rat",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       6,
+       "Giant rat",
+       "Varrock Sewers",
+       4
+      ],
+      [
+       7,
+       "Imp",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       7,
+       "Revenant imp",
+       "Revenant Caves",
+       4
+      ],
+      [
+       10,
+       "Dwarf",
+       "Mining Guild",
+       36
+      ],
+      [
+       10,
+       "Dwarf",
+       "Taverley Dungeon",
+       2
+      ],
+      [
+       10,
+       "Thug",
+       "Edgeville Dungeon",
+       9
+      ],
+      [
+       12,
+       "Goblin",
+       "God Wars Dungeon",
+       6
+      ],
+      [
+       13,
+       "Chaos druid",
+       "Edgeville Dungeon",
+       11
+      ],
+      [
+       13,
+       "Chaos druid",
+       "Taverley Dungeon",
+       6
+      ],
+      [
+       13,
+       "Goblin",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       13,
+       "Zombie",
+       "Varrock Sewers",
+       2
+      ],
+      [
+       14,
+       "Scorpion",
+       "Mining Guild",
+       13
+      ],
+      [
+       14,
+       "Scorpion",
+       "Varrock Sewers",
+       2
+      ],
+      [
+       15,
+       "Goblin",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       15,
+       "Revenant goblin",
+       "Revenant Caves",
+       2
+      ],
+      [
+       15,
+       "Unicorn",
+       "Isle of Souls",
+       1
+      ],
+      [
+       17,
+       "Goblin",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       18,
+       "H.A.M. Guard",
+       "H.A.M. Hideout",
+       2
+      ],
+      [
+       18,
+       "Icefiend",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       18,
+       "Zombie",
+       "Edgeville Dungeon",
+       10
+      ],
+      [
+       19,
+       "Ghost",
+       "Catacombs of Kourend",
+       17
+      ],
+      [
+       19,
+       "Ghost",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       19,
+       "Ghost",
+       "Taverley Dungeon",
+       14
+      ],
+      [
+       20,
+       "Poison Scorpion",
+       "Taverley Dungeon",
+       5
+      ],
+      [
+       21,
+       "Skeleton",
+       "Edgeville Dungeon",
+       13
+      ],
+      [
+       22,
+       "H.A.M. Guard",
+       "H.A.M. Hideout",
+       1
+      ],
+      [
+       22,
+       "Skeleton",
+       "Catacombs of Kourend",
+       6
+      ],
+      [
+       22,
+       "Skeleton",
+       "Edgeville Dungeon",
+       6
+      ],
+      [
+       22,
+       "Skeleton",
+       "Karamja Dungeon",
+       5
+      ],
+      [
+       22,
+       "Skeleton",
+       "Taverley Dungeon",
+       6
+      ],
+      [
+       23,
+       "Cave crawler",
+       "Fremennik Slayer Dungeon",
+       8
+      ],
+      [
+       24,
+       "Zombie",
+       "Edgeville Dungeon",
+       8
+      ],
+      [
+       25,
+       "Skeleton",
+       "Edgeville Dungeon",
+       9
+      ],
+      [
+       25,
+       "Skeleton",
+       "Isle of Souls Dungeon",
+       4
+      ],
+      [
+       25,
+       "Skeleton",
+       "Karamja Dungeon",
+       7
+      ],
+      [
+       25,
+       "Skeleton",
+       "Taverley Dungeon",
+       1
+      ],
+      [
+       27,
+       "Giant bat",
+       "Karamja Dungeon",
+       3
+      ],
+      [
+       27,
+       "Giant bat",
+       "Taverley Dungeon",
+       9
+      ],
+      [
+       27,
+       "Giant spider",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       28,
+       "Hill Giant",
+       "Catacombs of Kourend",
+       5
+      ],
+      [
+       28,
+       "Hill Giant",
+       "Edgeville Dungeon",
+       12
+      ],
+      [
+       28,
+       "Hill Giant",
+       "Taverley Dungeon",
+       5
+      ],
+      [
+       28,
+       "Hobgoblin",
+       "Edgeville Dungeon",
+       2
+      ],
+      [
+       28,
+       "Kalphite Worker",
+       "Kalphite Lair",
+       13
+      ],
+      [
+       29,
+       "Rockslug",
+       "Fremennik Slayer Dungeon",
+       7
+      ],
+      [
+       32,
+       "King Scorpion",
+       "Mining Guild",
+       2
+      ],
+      [
+       33,
+       "Black Knight",
+       "Taverley Dungeon",
+       41
+      ],
+      [
+       34,
+       "Deadly red spider",
+       "Edgeville Dungeon",
+       18
+      ],
+      [
+       34,
+       "Deadly red spider",
+       "Karamja Dungeon",
+       5
+      ],
+      [
+       37,
+       "Cockatrice",
+       "Fremennik Slayer Dungeon",
+       7
+      ],
+      [
+       42,
+       "Hobgoblin",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       42,
+       "Magic axe",
+       "Catacombs of Kourend",
+       2
+      ],
+      [
+       42,
+       "Magic axe",
+       "Taverley Dungeon",
+       7
+      ],
+      [
+       42,
+       "Moss giant",
+       "Brimhaven Dungeon",
+       20
+      ],
+      [
+       42,
+       "Moss giant",
+       "Catacombs of Kourend",
+       9
+      ],
+      [
+       42,
+       "Moss giant",
+       "Edgeville Dungeon",
+       10
+      ],
+      [
+       42,
+       "Moss giant",
+       "Isle of Souls",
+       6
+      ],
+      [
+       43,
+       "Pyrefiend",
+       "Fremennik Slayer Dungeon",
+       13
+      ],
+      [
+       43,
+       "Pyrefiend",
+       "Isle of Souls",
+       10
+      ],
+      [
+       44,
+       "Dwarf gang member",
+       "Mining Guild",
+       1
+      ],
+      [
+       45,
+       "Monk of Zamorak",
+       "Taverley Dungeon",
+       6
+      ],
+      [
+       45,
+       "Skeleton",
+       "Edgeville Dungeon",
+       7
+      ],
+      [
+       45,
+       "Skeleton",
+       "Karamja Dungeon",
+       7
+      ],
+      [
+       47,
+       "Hobgoblin",
+       "God Wars Dungeon",
+       11
+      ],
+      [
+       47,
+       "Jailer",
+       "Taverley Dungeon",
+       1
+      ],
+      [
+       48,
+       "Baby blue dragon",
+       "Isle of Souls Dungeon",
+       3
+      ],
+      [
+       48,
+       "Baby blue dragon",
+       "Taverley Dungeon",
+       12
+      ],
+      [
+       48,
+       "Baby green dragon",
+       "Brimhaven Dungeon",
+       11
+      ],
+      [
+       48,
+       "Baby red dragon",
+       "Brimhaven Dungeon",
+       12
+      ],
+      [
+       48,
+       "Baby red dragon",
+       "Forthos Dungeon",
+       5
+      ],
+      [
+       48,
+       "Chaos dwarf",
+       "Taverley Dungeon",
+       2
+      ],
+      [
+       48,
+       "Dwarf gang member",
+       "Mining Guild",
+       1
+      ],
+      [
+       48,
+       "Pyrefiend",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       49,
+       "Dwarf gang member",
+       "Mining Guild",
+       1
+      ],
+      [
+       50,
+       "Possessed pickaxe",
+       "Catacombs of Kourend",
+       2
+      ],
+      [
+       52,
+       "Albino bat",
+       "Mos Le'Harmless Cave",
+       25
+      ],
+      [
+       52,
+       "Revenant pyrefiend",
+       "Revenant Caves",
+       4
+      ],
+      [
+       56,
+       "Cyclops",
+       "Catacombs of Kourend",
+       4
+      ],
+      [
+       58,
+       "Jogre",
+       "God Wars Dungeon",
+       12
+      ],
+      [
+       58,
+       "Ogre",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       60,
+       "Pyrelord",
+       "Isle of Souls",
+       3
+      ],
+      [
+       60,
+       "Revenant hobgoblin",
+       "Revenant Caves",
+       2
+      ],
+      [
+       61,
+       "Basilisk",
+       "Fremennik Slayer Dungeon",
+       8
+      ],
+      [
+       63,
+       "Wild dog",
+       "Brimhaven Dungeon",
+       12
+      ],
+      [
+       64,
+       "Poison spider",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       64,
+       "Poison spider",
+       "Taverley Dungeon",
+       8
+      ],
+      [
+       69,
+       "Aviansie",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       71,
+       "Aviansie",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       73,
+       "Aviansie",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       74,
+       "Dagannoth",
+       "Catacombs of Kourend",
+       7
+      ],
+      [
+       74,
+       "TzHaar-Hur",
+       "Mor Ul Rek",
+       46
+      ],
+      [
+       75,
+       "Ankou",
+       "Stronghold Slayer Cave",
+       3
+      ],
+      [
+       75,
+       "Temple Spider",
+       "Forthos Dungeon",
+       21
+      ],
+      [
+       76,
+       "Bloodveld",
+       "Slayer Tower Basement",
+       12
+      ],
+      [
+       76,
+       "Bloodveld",
+       "Stronghold Slayer Cave",
+       12
+      ],
+      [
+       76,
+       "Cyclops",
+       "Catacombs of Kourend",
+       2
+      ],
+      [
+       77,
+       "Feral Vampyre",
+       "God Wars Dungeon",
+       11
+      ],
+      [
+       78,
+       "Jelly",
+       "Fremennik Slayer Dungeon",
+       10
+      ],
+      [
+       79,
+       "Aviansie",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       80,
+       "Cave horror",
+       "Mos Le'Harmless Cave",
+       70
+      ],
+      [
+       81,
+       "Bloodveld",
+       "God Wars Dungeon",
+       7
+      ],
+      [
+       81,
+       "Cyclops",
+       "God Wars Dungeon",
+       13
+      ],
+      [
+       82,
+       "Ankou",
+       "Stronghold Slayer Cave",
+       3
+      ],
+      [
+       82,
+       "Lesser demon",
+       "Isle of Souls Dungeon",
+       4
+      ],
+      [
+       82,
+       "Lesser demon",
+       "Karamja Dungeon",
+       11
+      ],
+      [
+       82,
+       "Lesser demon",
+       "Taverley Dungeon",
+       5
+      ],
+      [
+       82,
+       "Revenant cyclops",
+       "Revenant Caves",
+       2
+      ],
+      [
+       83,
+       "Aviansie",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       83,
+       "Turoth",
+       "Fremennik Slayer Dungeon",
+       9
+      ],
+      [
+       84,
+       "Aviansie",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       85,
+       "Kalphite Soldier",
+       "Kalphite Lair",
+       7
+      ],
+      [
+       85,
+       "Turoth",
+       "Fremennik Slayer Dungeon",
+       9
+      ],
+      [
+       86,
+       "Ankou",
+       "Stronghold Slayer Cave",
+       2
+      ],
+      [
+       86,
+       "Fire giant",
+       "Brimhaven Dungeon",
+       13
+      ],
+      [
+       86,
+       "Fire giant",
+       "Isle of Souls Dungeon",
+       8
+      ],
+      [
+       86,
+       "Fire giant",
+       "Stronghold Slayer Cave",
+       12
+      ],
+      [
+       87,
+       "Turoth",
+       "Fremennik Slayer Dungeon",
+       3
+      ],
+      [
+       89,
+       "Aviansie",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       89,
+       "Turoth",
+       "Fremennik Slayer Dungeon",
+       1
+      ],
+      [
+       89,
+       "Twisted Banshee",
+       "Catacombs of Kourend",
+       6
+      ],
+      [
+       90,
+       "Revenant hellhound",
+       "Revenant Caves",
+       2
+      ],
+      [
+       92,
+       "Aviansie",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       92,
+       "Dagannoth",
+       "Catacombs of Kourend",
+       7
+      ],
+      [
+       92,
+       "Greater demon",
+       "Brimhaven Dungeon",
+       7
+      ],
+      [
+       92,
+       "Greater demon",
+       "Isle of Souls Dungeon",
+       7
+      ],
+      [
+       93,
+       "Werewolf",
+       "God Wars Dungeon",
+       16
+      ],
+      [
+       94,
+       "Aviansie",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       95,
+       "Ankou",
+       "Catacombs of Kourend",
+       10
+      ],
+      [
+       96,
+       "Aberrant spectre",
+       "Stronghold Slayer Cave",
+       13
+      ],
+      [
+       97,
+       "Aviansie",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       97,
+       "Wyrm",
+       "Karuulm Slayer Dungeon",
+       16
+      ],
+      [
+       98,
+       "Revenant demon",
+       "Revenant Caves",
+       4
+      ],
+      [
+       101,
+       "Knight of Saradomin",
+       "God Wars Dungeon",
+       5
+      ],
+      [
+       103,
+       "Knight of Saradomin",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       103,
+       "TzHaar-Mej",
+       "Mor Ul Rek",
+       31
+      ],
+      [
+       105,
+       "Revenant ork",
+       "Revenant Caves",
+       4
+      ],
+      [
+       105,
+       "Undead Druid",
+       "Forthos Dungeon",
+       18
+      ],
+      [
+       106,
+       "Kurask",
+       "Fremennik Slayer Dungeon",
+       5
+      ],
+      [
+       107,
+       "Ork",
+       "God Wars Dungeon",
+       21
+      ],
+      [
+       109,
+       "Fire giant",
+       "Catacombs of Kourend",
+       1
+      ],
+      [
+       110,
+       "Dust devil",
+       "Catacombs of Kourend",
+       13
+      ],
+      [
+       111,
+       "Blue dragon",
+       "Isle of Souls Dungeon",
+       4
+      ],
+      [
+       111,
+       "Blue dragon",
+       "Taverley Dungeon",
+       9
+      ],
+      [
+       111,
+       "Gargoyle",
+       "Slayer Tower Basement",
+       12
+      ],
+      [
+       112,
+       "Warped Jelly",
+       "Catacombs of Kourend",
+       18
+      ],
+      [
+       113,
+       "Saradomin priest",
+       "God Wars Dungeon",
+       8
+      ],
+      [
+       115,
+       "Nechryael",
+       "Slayer Tower Basement",
+       12
+      ],
+      [
+       115,
+       "Spiritual ranger",
+       "God Wars Dungeon",
+       13
+      ],
+      [
+       115,
+       "Waterfiend",
+       "Kraken Cove",
+       15
+      ],
+      [
+       118,
+       "Spiritual ranger",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       120,
+       "Revenant dark beast",
+       "Revenant Caves",
+       2
+      ],
+      [
+       120,
+       "Spiritual mage",
+       "God Wars Dungeon",
+       8
+      ],
+      [
+       121,
+       "Spiritual mage",
+       "God Wars Dungeon",
+       13
+      ],
+      [
+       122,
+       "Hellhound",
+       "Catacombs of Kourend",
+       9
+      ],
+      [
+       122,
+       "Hellhound",
+       "Stronghold Slayer Cave",
+       13
+      ],
+      [
+       122,
+       "Hellhound",
+       "Taverley Dungeon",
+       13
+      ],
+      [
+       122,
+       "Spiritual mage",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       122,
+       "Spiritual ranger",
+       "God Wars Dungeon",
+       10
+      ],
+      [
+       123,
+       "Mutated Bloodveld",
+       "Catacombs of Kourend",
+       12
+      ],
+      [
+       123,
+       "Spiritual warrior",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       124,
+       "Abyssal demon",
+       "Slayer Tower Basement",
+       14
+      ],
+      [
+       125,
+       "Spiritual warrior",
+       "God Wars Dungeon",
+       16
+      ],
+      [
+       126,
+       "Revenant knight",
+       "Revenant Caves",
+       2
+      ],
+      [
+       127,
+       "Hellhound",
+       "God Wars Dungeon",
+       4
+      ],
+      [
+       127,
+       "Spiritual ranger",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       131,
+       "Aviansie",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       131,
+       "Bronze dragon",
+       "Brimhaven Dungeon",
+       3
+      ],
+      [
+       133,
+       "TzHaar-Xil",
+       "Mor Ul Rek",
+       56
+      ],
+      [
+       134,
+       "Spiritual warrior",
+       "God Wars Dungeon",
+       10
+      ],
+      [
+       135,
+       "Revenant dragon",
+       "Revenant Caves",
+       2
+      ],
+      [
+       137,
+       "Aviansie",
+       "God Wars Dungeon",
+       2
+      ],
+      [
+       140,
+       "Shade",
+       "Catacombs of Kourend",
+       11
+      ],
+      [
+       141,
+       "Kalphite Guardian",
+       "Kalphite Lair",
+       2
+      ],
+      [
+       141,
+       "Sergeant Strongstack",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       141,
+       "Tortured gorilla",
+       "Crash Site Cavern",
+       5
+      ],
+      [
+       142,
+       "Sergeant Grimspike",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       142,
+       "Sergeant Steelwill",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       143,
+       "Wingman Skree",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       148,
+       "Aviansie",
+       "God Wars Dungeon",
+       3
+      ],
+      [
+       149,
+       "Flockleader Geerin",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       149,
+       "Gorak",
+       "God Wars Dungeon",
+       5
+      ],
+      [
+       149,
+       "TzHaar-Ket",
+       "Mor Ul Rek",
+       55
+      ],
+      [
+       150,
+       "Lizardman shaman",
+       "Lizardman Caves",
+       8
+      ],
+      [
+       152,
+       "Red dragon",
+       "Brimhaven Dungeon",
+       16
+      ],
+      [
+       152,
+       "Red dragon",
+       "Forthos Dungeon",
+       6
+      ],
+      [
+       159,
+       "Flight Kilisa",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       160,
+       "Smoke devil",
+       "Smoke Devil Dungeon",
+       30
+      ],
+      [
+       169,
+       "Deviant spectre",
+       "Catacombs of Kourend",
+       8
+      ],
+      [
+       170,
+       "Chronozon",
+       "Edgeville Dungeon",
+       1
+      ],
+      [
+       172,
+       "Black demon",
+       "Brimhaven Dungeon",
+       4
+      ],
+      [
+       172,
+       "Black demon",
+       "Edgeville Dungeon",
+       3
+      ],
+      [
+       172,
+       "Black demon",
+       "Taverley Dungeon",
+       24
+      ],
+      [
+       189,
+       "Iron dragon",
+       "Brimhaven Dungeon",
+       13
+      ],
+      [
+       189,
+       "Iron dragon",
+       "Isle of Souls Dungeon",
+       3
+      ],
+      [
+       194,
+       "Hydra",
+       "Karuulm Slayer Dungeon",
+       17
+      ],
+      [
+       200,
+       "Greater Nechryael",
+       "Catacombs of Kourend",
+       14
+      ],
+      [
+       221,
+       "TzHaar-Ket",
+       "Mor Ul Rek",
+       61
+      ],
+      [
+       227,
+       "Black dragon",
+       "Taverley Dungeon",
+       2
+      ],
+      [
+       246,
+       "Steel dragon",
+       "Brimhaven Dungeon",
+       4
+      ],
+      [
+       271,
+       "Brutal blue dragon",
+       "Catacombs of Kourend",
+       2
+      ],
+      [
+       274,
+       "Steel dragon",
+       "Catacombs of Kourend",
+       2
+      ],
+      [
+       275,
+       "Demonic gorilla",
+       "Crash Site Cavern",
+       18
+      ],
+      [
+       289,
+       "Brutal red dragon",
+       "Catacombs of Kourend",
+       3
+      ],
+      [
+       318,
+       "Brutal black dragon",
+       "Catacombs of Kourend",
+       4
+      ],
+      [
+       318,
+       "Sarachnis",
+       "Forthos Dungeon",
+       1
+      ],
+      [
+       426,
+       "Alchemical Hydra",
+       "Karuulm Slayer Dungeon",
+       1
+      ],
+      [
+       580,
+       "Kree'arra",
+       "God Wars Dungeon",
+       1
+      ],
+      [
+       624,
+       "General Graardor",
+       "God Wars Dungeon",
+       1
+      ]
+     ]
+    }
+   ],
+   "places": [],
+   "tasks": [
+    {
+     "id": 418,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip a Full Adamant Set",
+     "desc": "Equip an Adamant Platebody, a Adamant Full Helm and either some Adamant Platelegs or an Adamant Plateskirt",
+     "live": true
+    },
+    {
+     "id": 417,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip a Full Mithril Set",
+     "desc": "Equip a Mithril Platebody, a Mithril Full Helm and either some Mithril Platelegs or a Mithril Plateskirt",
+     "live": true
+    },
+    {
+     "id": 412,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip a Mithril Weapon",
+     "desc": "Equip any Mithril weapon",
+     "live": true
+    },
+    {
+     "id": 414,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip a Rune Weapon",
+     "desc": "Equip any Rune weapon",
+     "live": true
+    },
+    {
+     "id": 413,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip an Adamant Weapon",
+     "desc": "Equip any Adamant weapon",
+     "live": true
+    },
+    {
+     "id": 1072,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip some Steel armour",
+     "desc": "Equip either a Steel Platebody, some Steel Platelegs or a Steel Full Helm",
+     "live": true
+    },
+    {
+     "id": 1003,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Equip a Dragon 2-Handed Sword",
+     "desc": "Equip a Dragon 2-Handed Sword",
+     "live": true
+    },
+    {
+     "id": 419,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Equip a Full Rune Set",
+     "desc": "Equip a Rune Platebody, a Rune Full Helm and either some Rune Platelegs or a Rune Plateskirt",
+     "live": true
+    },
+    {
+     "id": 1232,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip Osmumten's Fang",
+     "desc": "Obtain and Equip Osmumten's Fang",
+     "live": true
+    },
+    {
+     "id": 910,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip Viggora's Chainmace",
+     "desc": "Equip Viggora's Chainmace",
+     "live": true
+    },
+    {
+     "id": 1259,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip the Ursine Chainmace",
+     "desc": "Obtain and Equip the Ursine Chainmace",
+     "live": true
+    },
+    {
+     "id": 1256,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip the Voidwaker",
+     "desc": "Obtain and Equip the Voidwaker",
+     "live": true
+    },
+    {
+     "id": 1233,
+     "tier": "Master",
+     "points": 400,
+     "name": "Equip Osmumten's Fang (or)",
+     "desc": "Obtain and Equip Osmumten's Fang (or)",
+     "live": true
+    }
+   ]
+  },
+  "ranged": {
+   "tables": [],
+   "places": [],
+   "tasks": [
+    {
+     "id": 1018,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip Craw's Bow",
+     "desc": "Equip Craw's Bow",
+     "live": true
+    },
+    {
+     "id": 1230,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip a Piece of Masori Armour",
+     "desc": "Equip either a Masori Mask, a Masori Body or some Masori chaps",
+     "live": true
+    },
+    {
+     "id": 1257,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip the Webweaver",
+     "desc": "Obtain and Equip the Webweaver",
+     "live": true
+    },
+    {
+     "id": 1231,
+     "tier": "Master",
+     "points": 400,
+     "name": "Equip a full set of Masori",
+     "desc": "Obtain and Equip Masori Mask, Body and chaps",
+     "live": true
+    }
+   ]
+  },
+  "hitpoints": {
+   "tables": [],
+   "places": [],
+   "tasks": []
+  },
+  "magic": {
+   "tables": [
+    {
+     "id": "spells-standard",
+     "title": "Standard spellbook",
+     "cols": [
+      "Level",
+      "Spell"
+     ],
+     "rows": [
+      [
+       0,
+       "Home Teleport"
+      ],
+      [
+       1,
+       "Wind Strike"
+      ],
+      [
+       3,
+       "Confuse"
+      ],
+      [
+       4,
+       "Crossbow Bolt Enchantments"
+      ],
+      [
+       5,
+       "Water Strike"
+      ],
+      [
+       7,
+       "Jewellery Enchantments"
+      ],
+      [
+       7,
+       "Lvl-1 Enchant"
+      ],
+      [
+       9,
+       "Earth Strike"
+      ],
+      [
+       11,
+       "Weaken"
+      ],
+      [
+       13,
+       "Fire Strike"
+      ],
+      [
+       15,
+       "Bones to Bananas"
+      ],
+      [
+       17,
+       "Wind Bolt"
+      ],
+      [
+       19,
+       "Curse"
+      ],
+      [
+       20,
+       "Bind"
+      ],
+      [
+       21,
+       "Low Level Alchemy"
+      ],
+      [
+       23,
+       "Water Bolt"
+      ],
+      [
+       25,
+       "Varrock Teleport"
+      ],
+      [
+       27,
+       "Lvl-2 Enchant"
+      ],
+      [
+       29,
+       "Earth Bolt"
+      ],
+      [
+       31,
+       "Lumbridge Teleport"
+      ],
+      [
+       33,
+       "Telekinetic Grab"
+      ],
+      [
+       35,
+       "Fire Bolt"
+      ],
+      [
+       37,
+       "Falador Teleport"
+      ],
+      [
+       39,
+       "Crumble Undead"
+      ],
+      [
+       40,
+       "Teleport to House"
+      ],
+      [
+       41,
+       "Wind Blast"
+      ],
+      [
+       42,
+       "Monster Inspect"
+      ],
+      [
+       43,
+       "Superheat Item"
+      ],
+      [
+       45,
+       "Camelot Teleport"
+      ],
+      [
+       47,
+       "Water Blast"
+      ],
+      [
+       48,
+       "Kourend Castle Teleport"
+      ],
+      [
+       49,
+       "Lvl-3 Enchant"
+      ],
+      [
+       50,
+       "Iban Blast"
+      ],
+      [
+       50,
+       "Magic Dart"
+      ],
+      [
+       50,
+       "Snare"
+      ],
+      [
+       51,
+       "Ardougne Teleport"
+      ],
+      [
+       53,
+       "Earth Blast"
+      ],
+      [
+       54,
+       "Civitas illa Fortis Teleport"
+      ],
+      [
+       55,
+       "High Level Alchemy"
+      ],
+      [
+       56,
+       "Charge Water Orb"
+      ],
+      [
+       57,
+       "Lvl-4 Enchant"
+      ],
+      [
+       58,
+       "Watchtower Teleport"
+      ],
+      [
+       59,
+       "Fire Blast"
+      ],
+      [
+       60,
+       "Bones to Peaches"
+      ],
+      [
+       60,
+       "Charge Earth Orb"
+      ],
+      [
+       60,
+       "Claws of Guthix"
+      ],
+      [
+       60,
+       "Flames of Zamorak"
+      ],
+      [
+       60,
+       "Saradomin Strike"
+      ],
+      [
+       61,
+       "Trollheim Teleport"
+      ],
+      [
+       62,
+       "Wind Wave"
+      ],
+      [
+       63,
+       "Charge Fire Orb"
+      ],
+      [
+       64,
+       "Ape Atoll Teleport"
+      ],
+      [
+       65,
+       "Water Wave"
+      ],
+      [
+       66,
+       "Charge Air Orb"
+      ],
+      [
+       66,
+       "Vulnerability"
+      ],
+      [
+       68,
+       "Lvl-5 Enchant"
+      ],
+      [
+       70,
+       "Earth Wave"
+      ],
+      [
+       73,
+       "Enfeeble"
+      ],
+      [
+       74,
+       "Teleother Lumbridge"
+      ],
+      [
+       75,
+       "Fire Wave"
+      ],
+      [
+       79,
+       "Entangle"
+      ],
+      [
+       80,
+       "Charge"
+      ],
+      [
+       80,
+       "Stun"
+      ],
+      [
+       81,
+       "Wind Surge"
+      ],
+      [
+       82,
+       "Teleother Falador"
+      ],
+      [
+       85,
+       "Tele Block"
+      ],
+      [
+       85,
+       "Water Surge"
+      ],
+      [
+       87,
+       "Lvl-6 Enchant"
+      ],
+      [
+       90,
+       "Earth Surge"
+      ],
+      [
+       90,
+       "Teleother Camelot"
+      ],
+      [
+       93,
+       "Lvl-7 Enchant"
+      ],
+      [
+       95,
+       "Fire Surge"
+      ]
+     ]
+    },
+    {
+     "id": "spells-ancient",
+     "title": "Ancient spellbook",
+     "cols": [
+      "Level",
+      "Spell"
+     ],
+     "rows": [
+      [
+       0,
+       "Home Teleport"
+      ],
+      [
+       50,
+       "Smoke Rush"
+      ],
+      [
+       52,
+       "Shadow Rush"
+      ],
+      [
+       54,
+       "Paddewwa Teleport"
+      ],
+      [
+       56,
+       "Blood Rush"
+      ],
+      [
+       58,
+       "Ice Rush"
+      ],
+      [
+       60,
+       "Senntisten Teleport"
+      ],
+      [
+       62,
+       "Smoke Burst"
+      ],
+      [
+       64,
+       "Shadow Burst"
+      ],
+      [
+       66,
+       "Kharyrll Teleport"
+      ],
+      [
+       68,
+       "Blood Burst"
+      ],
+      [
+       70,
+       "Ice Burst"
+      ],
+      [
+       72,
+       "Lassar Teleport"
+      ],
+      [
+       74,
+       "Smoke Blitz"
+      ],
+      [
+       76,
+       "Shadow Blitz"
+      ],
+      [
+       78,
+       "Dareeyak Teleport"
+      ],
+      [
+       80,
+       "Blood Blitz"
+      ],
+      [
+       82,
+       "Ice Blitz"
+      ],
+      [
+       84,
+       "Carrallanger Teleport"
+      ],
+      [
+       86,
+       "Smoke Barrage"
+      ],
+      [
+       88,
+       "Shadow Barrage"
+      ],
+      [
+       90,
+       "Annakarl Teleport"
+      ],
+      [
+       92,
+       "Blood Barrage"
+      ],
+      [
+       94,
+       "Ice Barrage"
+      ],
+      [
+       96,
+       "Ghorrock Teleport"
+      ]
+     ]
+    },
+    {
+     "id": "spells-lunar",
+     "title": "Lunar spellbook",
+     "cols": [
+      "Level",
+      "Spell"
+     ],
+     "rows": [
+      [
+       0,
+       "Home Teleport"
+      ],
+      [
+       65,
+       "Bake Pie"
+      ],
+      [
+       65,
+       "Geomancy"
+      ],
+      [
+       66,
+       "Cure Plant"
+      ],
+      [
+       66,
+       "Monster Examine"
+      ],
+      [
+       67,
+       "NPC Contact"
+      ],
+      [
+       68,
+       "Cure Other"
+      ],
+      [
+       68,
+       "Humidify"
+      ],
+      [
+       69,
+       "Moonclan Teleport"
+      ],
+      [
+       70,
+       "Tele Group Moonclan"
+      ],
+      [
+       71,
+       "Cure Me"
+      ],
+      [
+       71,
+       "Hunter Kit"
+      ],
+      [
+       71,
+       "Ourania Teleport"
+      ],
+      [
+       72,
+       "Waterbirth Teleport"
+      ],
+      [
+       73,
+       "Tele Group Waterbirth"
+      ],
+      [
+       74,
+       "Cure Group"
+      ],
+      [
+       75,
+       "Barbarian Teleport"
+      ],
+      [
+       75,
+       "Stat Spy"
+      ],
+      [
+       76,
+       "Spin Flax"
+      ],
+      [
+       76,
+       "Tele Group Barbarian"
+      ],
+      [
+       77,
+       "Superglass Make"
+      ],
+      [
+       78,
+       "Khazard Teleport"
+      ],
+      [
+       78,
+       "Tan Leather"
+      ],
+      [
+       79,
+       "Dream"
+      ],
+      [
+       79,
+       "Tele Group Khazard"
+      ],
+      [
+       80,
+       "String Jewellery"
+      ],
+      [
+       81,
+       "Stat Restore Pot Share"
+      ],
+      [
+       82,
+       "Magic Imbue"
+      ],
+      [
+       83,
+       "Fertile Soil"
+      ],
+      [
+       84,
+       "Boost Potion Share"
+      ],
+      [
+       85,
+       "Fishing Guild Teleport"
+      ],
+      [
+       86,
+       "Plank Make"
+      ],
+      [
+       86,
+       "Tele Group Fishing Guild"
+      ],
+      [
+       87,
+       "Catherby Teleport"
+      ],
+      [
+       88,
+       "Tele Group Catherby"
+      ],
+      [
+       89,
+       "Ice Plateau Teleport"
+      ],
+      [
+       89,
+       "Recharge Dragonstone"
+      ],
+      [
+       90,
+       "Tele Group Ice Plateau"
+      ],
+      [
+       91,
+       "Energy Transfer"
+      ],
+      [
+       92,
+       "Heal Other"
+      ],
+      [
+       93,
+       "Vengeance Other"
+      ],
+      [
+       94,
+       "Vengeance"
+      ],
+      [
+       95,
+       "Heal Group"
+      ],
+      [
+       96,
+       "Spellbook Swap"
+      ]
+     ]
+    },
+    {
+     "id": "spells-arceuus",
+     "title": "Arceuus spellbook",
+     "cols": [
+      "Level",
+      "Spell"
+     ],
+     "rows": [
+      [
+       0,
+       "Home Teleport"
+      ],
+      [
+       6,
+       "Arceuus Library Teleport"
+      ],
+      [
+       16,
+       "Basic Reanimation"
+      ],
+      [
+       17,
+       "Draynor Manor Teleport"
+      ],
+      [
+       23,
+       "Battlefront Teleport"
+      ],
+      [
+       28,
+       "Mind Altar Teleport"
+      ],
+      [
+       34,
+       "Respawn Teleport"
+      ],
+      [
+       35,
+       "Ghostly Grasp"
+      ],
+      [
+       38,
+       "Resurrect Lesser Ghost"
+      ],
+      [
+       38,
+       "Resurrect Lesser Skeleton"
+      ],
+      [
+       38,
+       "Resurrect Lesser Zombie"
+      ],
+      [
+       40,
+       "Salve Graveyard Teleport"
+      ],
+      [
+       41,
+       "Adept Reanimation"
+      ],
+      [
+       44,
+       "Inferior Demonbane"
+      ],
+      [
+       47,
+       "Shadow Veil"
+      ],
+      [
+       48,
+       "Fenkenstrain's Castle Teleport"
+      ],
+      [
+       50,
+       "Dark Lure"
+      ],
+      [
+       56,
+       "Skeletal Grasp"
+      ],
+      [
+       57,
+       "Resurrect Superior Ghost"
+      ],
+      [
+       57,
+       "Resurrect Superior Skeleton"
+      ],
+      [
+       57,
+       "Resurrect Superior Zombie"
+      ],
+      [
+       59,
+       "Mark of Darkness"
+      ],
+      [
+       61,
+       "West Ardougne Teleport"
+      ],
+      [
+       62,
+       "Superior Demonbane"
+      ],
+      [
+       64,
+       "Lesser Corruption"
+      ],
+      [
+       65,
+       "Harmony Island Teleport"
+      ],
+      [
+       66,
+       "Vile Vigour"
+      ],
+      [
+       70,
+       "Degrime"
+      ],
+      [
+       71,
+       "Cemetery Teleport"
+      ],
+      [
+       72,
+       "Expert Reanimation"
+      ],
+      [
+       73,
+       "Ward of Arceuus"
+      ],
+      [
+       76,
+       "Resurrect Greater Ghost"
+      ],
+      [
+       76,
+       "Resurrect Greater Skeleton"
+      ],
+      [
+       76,
+       "Resurrect Greater Zombie"
+      ],
+      [
+       78,
+       "Resurrect Crops"
+      ],
+      [
+       79,
+       "Undead Grasp"
+      ],
+      [
+       80,
+       "Death Charge"
+      ],
+      [
+       82,
+       "Dark Demonbane"
+      ],
+      [
+       83,
+       "Barrows Teleport"
+      ],
+      [
+       84,
+       "Demonic Offering"
+      ],
+      [
+       85,
+       "Greater Corruption"
+      ],
+      [
+       90,
+       "Ape Atoll Teleport"
+      ],
+      [
+       90,
+       "Master Reanimation"
+      ],
+      [
+       92,
+       "Sinister Offering"
+      ]
+     ]
+    },
+    {
+     "id": "teleports",
+     "title": "Where teleports go",
+     "cols": [
+      "Spell",
+      "Takes you to"
+     ],
+     "rows": [
+      [
+       "Varrock Teleport",
+       "Inside the air altar"
+      ],
+      [
+       "Lumbridge Teleport",
+       "Lobby, blue team graveyard"
+      ],
+      [
+       "Falador Teleport",
+       "Inside the earth altar"
+      ],
+      [
+       "Camelot Teleport",
+       "Lobby plaza"
+      ],
+      [
+       "Ardougne Teleport",
+       "Lobby, red team graveyard"
+      ],
+      [
+       "Watchtower Teleport",
+       "Inside the mind altar"
+      ],
+      [
+       "Trollheim Teleport",
+       "Inside the fire altar"
+      ],
+      [
+       "Ape Atoll Teleport",
+       "Inside the water altar"
+      ],
+      [
+       "Kourend Castle Teleport",
+       "Beside the Mage of Zamorak"
+      ],
+      [
+       "Civitas illa Fortis Teleport",
+       "Beside Aubury"
+      ],
+      [
+       "Teleother Lumbridge",
+       "Lobby, blue team graveyard"
+      ],
+      [
+       "Teleother Falador",
+       "Inside the earth altar"
+      ],
+      [
+       "Teleother Camelot",
+       "Lobby plaza"
+      ],
+      [
+       "Paddewwa Teleport",
+       "Inside the chaos altar"
+      ],
+      [
+       "Senntisten Teleport",
+       "Inside the death altar"
+      ],
+      [
+       "Kharyrll Teleport",
+       "Inside the blood altar"
+      ],
+      [
+       "Lassar Teleport",
+       "Inside the cosmic altar"
+      ],
+      [
+       "Dareeyak Teleport",
+       "Inside the nature altar"
+      ],
+      [
+       "Carrallanger Teleport",
+       "Inside the law altar"
+      ],
+      [
+       "Annakarl Teleport",
+       "Inside the wrath altar"
+      ],
+      [
+       "Ghorrock Teleport",
+       "The middle of the Abyss"
+      ],
+      [
+       "Moonclan Teleport",
+       "Beside the Mage of Zamorak"
+      ],
+      [
+       "Tele Group Moonclan",
+       "Beside the Mage of Zamorak"
+      ],
+      [
+       "Ourania Teleport",
+       "Rune essence mine"
+      ],
+      [
+       "Waterbirth Teleport",
+       "Mining Guild"
+      ],
+      [
+       "Tele Group Waterbirth",
+       "Mining Guild"
+      ],
+      [
+       "Barbarian Teleport",
+       "Inside the body altar"
+      ],
+      [
+       "Tele Group Barbarian",
+       "Inside the body altar"
+      ],
+      [
+       "Khazard Teleport",
+       "Lobby plaza"
+      ],
+      [
+       "Tele Group Khazard",
+       "Lobby plaza"
+      ],
+      [
+       "Fishing Guild Teleport",
+       "Inside the astral altar"
+      ],
+      [
+       "Tele Group Fishing Guild",
+       "Inside the astral altar"
+      ],
+      [
+       "Catherby Teleport",
+       "Beside Aubury"
+      ],
+      [
+       "Tele Group Catherby",
+       "Beside Aubury"
+      ],
+      [
+       "Ice Plateau Teleport",
+       "The middle of the Abyss"
+      ],
+      [
+       "Tele Group Ice Plateau",
+       "The middle of the Abyss"
+      ],
+      [
+       "Arceuus Library Teleport",
+       "Beside Aubury"
+      ],
+      [
+       "Draynor Manor Teleport",
+       "Beside the Mage of Zamorak"
+      ],
+      [
+       "Battlefront Teleport",
+       "Lobby plaza"
+      ],
+      [
+       "Mind Altar Teleport",
+       "Inside the mind altar"
+      ],
+      [
+       "Respawn Teleport",
+       "Lobby, blue team graveyard"
+      ],
+      [
+       "Salve Graveyard Teleport",
+       "Lobby, red team graveyard"
+      ],
+      [
+       "Fenkenstrain's Castle Teleport",
+       "Mining Guild"
+      ],
+      [
+       "West Ardougne Teleport",
+       "Inside the cosmic altar"
+      ],
+      [
+       "Harmony Island Teleport",
+       "Inside the water altar"
+      ],
+      [
+       "Cemetery Teleport",
+       "Inside the death altar"
+      ],
+      [
+       "Barrows Teleport",
+       "Inside the law altar"
+      ],
+      [
+       "Ape Atoll Teleport",
+       "Inside the air altar"
+      ]
+     ],
+     "note": "Teleports keep their real level, runes and XP, but land somewhere on the isle."
+    }
+   ],
+   "places": [],
+   "tasks": [
+    {
+     "id": 431,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Cast Home Teleport",
+     "desc": "Cast the Home Teleport spell",
+     "live": true
+    },
+    {
+     "id": 430,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Equip an Elemental Staff",
+     "desc": "Equip a basic elemental staff",
+     "live": true
+    },
+    {
+     "id": 565,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Switch to the Lunar Spellbook",
+     "desc": "Switch to the Lunar Spellbook",
+     "live": true
+    },
+    {
+     "id": 1024,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast Claws of Guthix",
+     "desc": "Cast the Claws of Guthix spell",
+     "live": true
+    },
+    {
+     "id": 1124,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast Degrime Spell Full Clean",
+     "desc": "Clean 26 herbs at the same time using the Degrime spell",
+     "live": true
+    },
+    {
+     "id": 1025,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast Flames of Zamorak",
+     "desc": "Cast the Flames of Zamorak spell",
+     "live": true
+    },
+    {
+     "id": 435,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast High Level Alchemy",
+     "desc": "Cast the High Level Alchemy spell",
+     "live": true
+    },
+    {
+     "id": 868,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast Ice Rush",
+     "desc": "Cast the Ice Rush spell",
+     "live": true
+    },
+    {
+     "id": 178,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast Kourend Castle Teleport",
+     "desc": "Cast the Kourend Castle Teleport spell",
+     "live": true
+    },
+    {
+     "id": 1023,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast Saradomin Strike",
+     "desc": "Cast the Saradomin Strike spell",
+     "live": true
+    },
+    {
+     "id": 434,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Cast a Blast Spell",
+     "desc": "Cast any blast spell",
+     "live": true
+    },
+    {
+     "id": 433,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Equip an Elemental Battlestaff or Mystic Staff",
+     "desc": "Equip either an elemental battlestaff or an elemental mystic staff",
+     "live": true
+    },
+    {
+     "id": 432,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Teleport Using Law Runes",
+     "desc": "Cast any teleport spell that uses Law Runes",
+     "live": true
+    },
+    {
+     "id": 1654,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Teleport to Civitas illa Fortis",
+     "desc": "Teleport to Civitas illa Fortis using the standard spellbook",
+     "live": true
+    },
+    {
+     "id": 869,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cast Ice Blitz",
+     "desc": "Cast the Ice Blitz spell",
+     "live": true
+    },
+    {
+     "id": 866,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cast Ice Burst",
+     "desc": "Cast the Ice Burst spell",
+     "live": true
+    },
+    {
+     "id": 566,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cast Moonclan Teleport",
+     "desc": "Cast the Moonclan Teleport spell",
+     "live": true
+    },
+    {
+     "id": 568,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cast Spellbook Swap",
+     "desc": "Cast the Spellbook Swap spell",
+     "live": true
+    },
+    {
+     "id": 438,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cast a Surge Spell",
+     "desc": "Cast any surge spell",
+     "live": true
+    },
+    {
+     "id": 437,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Cast a Wave Spell",
+     "desc": "Cast any wave spell",
+     "live": true
+    },
+    {
+     "id": 477,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Equip Bryophyta's Staff",
+     "desc": "Equip Bryophyta's Staff",
+     "live": true
+    },
+    {
+     "id": 872,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Cast Ice Barrage",
+     "desc": "Cast the Ice Barrage spell",
+     "live": true
+    },
+    {
+     "id": 1258,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip the Accursed Sceptre",
+     "desc": "Obtain and Equip the Accursed Sceptre",
+     "live": true
+    },
+    {
+     "id": 1228,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip the Elidinis Ward",
+     "desc": "Obtain and Equip the Elidinis Ward",
+     "live": true
+    },
+    {
+     "id": 1488,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Magic XP",
+     "desc": "Obtain 50 million experience in your Magic skill",
+     "live": true
+    },
+    {
+     "id": 236,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Magic",
+     "desc": "Reach level 99 in your Magic skill",
+     "live": true
+    },
+    {
+     "id": 1236,
+     "tier": "Master",
+     "points": 400,
+     "name": "Equip the Tumeken's Shadow",
+     "desc": "Obtain and Equip the Tumeken's Shadow",
+     "live": true
+    }
+   ]
+  },
+  "agility": {
+   "tables": [
+    {
+     "id": "obstacles",
+     "title": "Arena obstacles and traps",
+     "cols": [
+      "Level",
+      "Obstacle",
+      "XP",
+      "Stops failing"
+     ],
+     "rows": [
+      [
+       1,
+       "Ledge",
+       16,
+       "At 99"
+      ],
+      [
+       1,
+       "Log balance",
+       12,
+       "At 99"
+      ],
+      [
+       1,
+       "Low wall",
+       8,
+       "At 99"
+      ],
+      [
+       1,
+       "Monkey bars",
+       14,
+       "At 99"
+      ],
+      [
+       1,
+       "Plank",
+       6,
+       "Never"
+      ],
+      [
+       1,
+       "Rope balance",
+       10,
+       "At 99"
+      ],
+      [
+       1,
+       "Rope swing",
+       20,
+       "At 99"
+      ],
+      [
+       1,
+       "Stepping pillars",
+       18,
+       "At 99"
+      ],
+      [
+       20,
+       "Floor spikes",
+       24,
+       "At 99"
+      ],
+      [
+       20,
+       "Hand holds",
+       22,
+       "At 99"
+      ],
+      [
+       20,
+       "Pressure pads",
+       26,
+       "At 99"
+      ],
+      [
+       40,
+       "Dart trap",
+       30,
+       "At 99"
+      ],
+      [
+       40,
+       "Spinning blades",
+       28,
+       "At 99"
+      ]
+     ]
+    }
+   ],
+   "fee": 200,
+   "places": [],
+   "tasks": [
+    {
+     "id": 638,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Receive an Agility Arena Ticket",
+     "desc": "Receive an Agility Arena Ticket from the Agility Arena",
+     "live": true
+    },
+    {
+     "id": 386,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Obtain a Mark of Grace",
+     "desc": "Obtain a Mark of Grace from any Rooftop Agility Course",
+     "live": true
+    },
+    {
+     "id": 641,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Receive 30 Agility Arena Tickets With No Mistakes",
+     "desc": "Receive 30 Agility Arena Tickets without missing any pillars",
+     "live": true
+    },
+    {
+     "id": 769,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Equip a Full Graceful Outfit",
+     "desc": "Equip a full set of Graceful gear",
+     "live": true
+    },
+    {
+     "id": 245,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Agility XP",
+     "desc": "Obtain 25 million experience in your Agility skill",
+     "live": true
+    },
+    {
+     "id": 1469,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Agility XP",
+     "desc": "Obtain 35 million experience in your Agility skill",
+     "live": true
+    },
+    {
+     "id": 1492,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Agility XP",
+     "desc": "Obtain 50 million experience in your Agility skill",
+     "live": true
+    },
+    {
+     "id": 244,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Agility",
+     "desc": "Reach level 99 in your Agility skill",
+     "live": true
+    },
+    {
+     "id": 1576,
+     "tier": "Master",
+     "points": 400,
+     "name": "Equip a Pirate Hook",
+     "desc": "Equip a Pirate Hook from the Agility Arena",
+     "live": true
+    }
+   ]
+  },
+  "slayer": {
+   "tables": [
+    {
+     "id": "masters",
+     "title": "Slayer masters",
+     "cols": [
+      "Master",
+      "Combat level needed",
+      "Slayer level needed"
+     ],
+     "rows": [
+      [
+       "Turael",
+       0,
+       1
+      ],
+      [
+       "Vannaka",
+       40,
+       1
+      ],
+      [
+       "Duradel",
+       100,
+       50
+      ]
+     ]
+    },
+    {
+     "id": "tasks",
+     "title": "Slayer tasks",
+     "cols": [
+      "Slayer level",
+      "Task",
+      "Turael: weight (amount)",
+      "Vannaka: weight (amount)",
+      "Duradel: weight (amount)",
+      "Monsters you can reach"
+     ],
+     "rows": [
+      [
+       1,
+       "Ankou",
+       "",
+       "8 (25-35)",
+       "5 (50-80)",
+       18
+      ],
+      [
+       1,
+       "Aviansies",
+       "",
+       "",
+       "8 (120-200)",
+       40
+      ],
+      [
+       1,
+       "Bats",
+       "7 (15-30)",
+       "",
+       "",
+       37
+      ],
+      [
+       1,
+       "Bears",
+       "7 (10-20)",
+       "",
+       "",
+       0
+      ],
+      [
+       1,
+       "Birds",
+       "6 (15-30)",
+       "",
+       "",
+       26
+      ],
+      [
+       1,
+       "Black Demons",
+       "",
+       "",
+       "8 (130-200)",
+       31
+      ],
+      [
+       1,
+       "Black Dragons",
+       "",
+       "",
+       "9 (10-20)",
+       6
+      ],
+      [
+       1,
+       "Blue Dragons",
+       "",
+       "7 (40-90)",
+       "4 (110-170)",
+       30
+      ],
+      [
+       1,
+       "Cows",
+       "8 (15-30)",
+       "",
+       "",
+       4
+      ],
+      [
+       1,
+       "Crabs",
+       "",
+       "8 (40-90)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Crocodiles",
+       "",
+       "6 (40-90)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Dagannoth",
+       "",
+       "7 (40-90)",
+       "9 (130-200)",
+       14
+      ],
+      [
+       1,
+       "Dogs",
+       "7 (15-30)",
+       "",
+       "",
+       12
+      ],
+      [
+       1,
+       "Dwarves",
+       "7 (10-25)",
+       "",
+       "",
+       43
+      ],
+      [
+       1,
+       "Elves",
+       "",
+       "7 (30-70)",
+       "4 (110-170)",
+       0
+      ],
+      [
+       1,
+       "Fire Giants",
+       "",
+       "7 (40-90)",
+       "7 (130-200)",
+       34
+      ],
+      [
+       1,
+       "Ghosts",
+       "7 (15-30)",
+       "",
+       "",
+       34
+      ],
+      [
+       1,
+       "Ghouls",
+       "",
+       "7 (10-40)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Goblin",
+       "7 (15-30)",
+       "",
+       "",
+       19
+      ],
+      [
+       1,
+       "Greater Demons",
+       "",
+       "",
+       "9 (130-200)",
+       14
+      ],
+      [
+       1,
+       "Hellhounds",
+       "",
+       "7 (30-60)",
+       "10 (130-200)",
+       39
+      ],
+      [
+       1,
+       "Hill Giants",
+       "",
+       "7 (40-90)",
+       "",
+       41
+      ],
+      [
+       1,
+       "Hobgoblins",
+       "",
+       "7 (40-90)",
+       "",
+       16
+      ],
+      [
+       1,
+       "Ice Giants",
+       "",
+       "7 (30-80)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Ice Warriors",
+       "",
+       "7 (40-90)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Icefiends",
+       "8 (15-20)",
+       "",
+       "",
+       4
+      ],
+      [
+       1,
+       "Jungle Horrors",
+       "",
+       "8 (40-90)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Kalphite",
+       "6 (15-30)",
+       "7 (40-90)",
+       "9 (130-200)",
+       22
+      ],
+      [
+       1,
+       "Lesser Demons",
+       "",
+       "7 (40-90)",
+       "",
+       20
+      ],
+      [
+       1,
+       "Lizardmen",
+       "",
+       "",
+       "10 (130-210)",
+       8
+      ],
+      [
+       1,
+       "Metal Dragons",
+       "",
+       "",
+       "14 (35-45)",
+       25
+      ],
+      [
+       1,
+       "Minotaurs",
+       "7 (10-20)",
+       "",
+       "",
+       0
+      ],
+      [
+       1,
+       "Monkeys",
+       "6 (15-30)",
+       "",
+       "",
+       23
+      ],
+      [
+       1,
+       "Moss Giants",
+       "",
+       "7 (40-90)",
+       "",
+       45
+      ],
+      [
+       1,
+       "Ogres",
+       "",
+       "7 (40-90)",
+       "",
+       3
+      ],
+      [
+       1,
+       "Otherworldly Beings",
+       "",
+       "8 (40-90)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Rats",
+       "7 (15-30)",
+       "",
+       "",
+       56
+      ],
+      [
+       1,
+       "Red Dragons",
+       "",
+       "",
+       "8 (30-65)",
+       42
+      ],
+      [
+       1,
+       "Revenants",
+       "",
+       "5 (40-100)",
+       "5 (40-100)",
+       30
+      ],
+      [
+       1,
+       "Scorpions",
+       "7 (15-30)",
+       "",
+       "",
+       22
+      ],
+      [
+       1,
+       "Shades",
+       "",
+       "8 (40-90)",
+       "",
+       11
+      ],
+      [
+       1,
+       "Shadow warriors",
+       "",
+       "8 (30-80)",
+       "",
+       0
+      ],
+      [
+       1,
+       "Skeletons",
+       "7 (15-30)",
+       "",
+       "",
+       71
+      ],
+      [
+       1,
+       "Spiders",
+       "6 (15-30)",
+       "",
+       "",
+       78
+      ],
+      [
+       1,
+       "Suqahs",
+       "",
+       "",
+       "8 (60-90)",
+       0
+      ],
+      [
+       1,
+       "Trolls",
+       "",
+       "7 (40-90)",
+       "6 (130-200)",
+       0
+      ],
+      [
+       1,
+       "Tzhaar",
+       "",
+       "",
+       "10 (130-199)",
+       249
+      ],
+      [
+       1,
+       "Vampyres",
+       "",
+       "7 (10-20)",
+       "8 (100-210)",
+       11
+      ],
+      [
+       1,
+       "Waterfiends",
+       "",
+       "",
+       "2 (130-200)",
+       15
+      ],
+      [
+       1,
+       "Werewolves",
+       "",
+       "7 (30-60)",
+       "",
+       16
+      ],
+      [
+       1,
+       "Wolves",
+       "7 (15-30)",
+       "",
+       "",
+       0
+      ],
+      [
+       1,
+       "Zombies",
+       "7 (15-30)",
+       "",
+       "",
+       38
+      ],
+      [
+       5,
+       "Crawling Hands",
+       "8 (15-30)",
+       "",
+       "",
+       0
+      ],
+      [
+       7,
+       "Cave Bugs",
+       "8 (10-30)",
+       "",
+       "",
+       0
+      ],
+      [
+       10,
+       "Cave Crawlers",
+       "8 (15-30)",
+       "",
+       "",
+       8
+      ],
+      [
+       15,
+       "Banshees",
+       "8 (15-30)",
+       "",
+       "",
+       6
+      ],
+      [
+       17,
+       "Cave Slimes",
+       "8 (10-20)",
+       "",
+       "",
+       0
+      ],
+      [
+       22,
+       "Lizards",
+       "8 (15-30)",
+       "",
+       "",
+       0
+      ],
+      [
+       25,
+       "Cockatrice",
+       "",
+       "8 (40-90)",
+       "",
+       7
+      ],
+      [
+       30,
+       "Pyrefiends",
+       "",
+       "8 (40-90)",
+       "",
+       30
+      ],
+      [
+       33,
+       "Harpie Bug Swarms",
+       "",
+       "8 (40-90)",
+       "",
+       0
+      ],
+      [
+       40,
+       "Basilisks",
+       "",
+       "8 (40-90)",
+       "7 (130-200)",
+       8
+      ],
+      [
+       40,
+       "Sea Snakes",
+       "",
+       "6 (40-90)",
+       "",
+       0
+      ],
+      [
+       40,
+       "Terror Dogs",
+       "",
+       "6 (20-45)",
+       "",
+       0
+      ],
+      [
+       45,
+       "Infernal Mages",
+       "",
+       "8 (40-90)",
+       "",
+       0
+      ],
+      [
+       50,
+       "Bloodveld",
+       "",
+       "8 (40-90)",
+       "8 (130-200)",
+       43
+      ],
+      [
+       52,
+       "Jellies",
+       "",
+       "8 (40-90)",
+       "",
+       28
+      ],
+      [
+       55,
+       "Turoth",
+       "",
+       "8 (30-90)",
+       "",
+       22
+      ],
+      [
+       58,
+       "Cave Horrors",
+       "",
+       "",
+       "4 (130-200)",
+       70
+      ],
+      [
+       60,
+       "Aberrant Spectres",
+       "",
+       "8 (40-90)",
+       "7 (130-200)",
+       21
+      ],
+      [
+       62,
+       "Wyrms",
+       "",
+       "",
+       "8 (100-160)",
+       16
+      ],
+      [
+       63,
+       "Spiritual Creatures",
+       "",
+       "8 (40-90)",
+       "7 (130-200)",
+       81
+      ],
+      [
+       65,
+       "Dust Devils",
+       "",
+       "8 (40-90)",
+       "5 (130-200)",
+       13
+      ],
+      [
+       66,
+       "Fossil Island Wyverns",
+       "",
+       "",
+       "7 (20-50)",
+       0
+      ],
+      [
+       70,
+       "Kurask",
+       "",
+       "7 (40-90)",
+       "4 (130-200)",
+       5
+      ],
+      [
+       72,
+       "Skeletal Wyverns",
+       "",
+       "",
+       "7 (20-40)",
+       0
+      ],
+      [
+       75,
+       "Gargoyles",
+       "",
+       "5 (40-90)",
+       "8 (130-200)",
+       12
+      ],
+      [
+       80,
+       "Nechryael",
+       "",
+       "5 (40-90)",
+       "9 (130-200)",
+       26
+      ],
+      [
+       84,
+       "Drakes",
+       "",
+       "",
+       "8 (50-110)",
+       0
+      ],
+      [
+       85,
+       "Abyssal Demons",
+       "",
+       "5 (40-90)",
+       "12 (130-200)",
+       14
+      ],
+      [
+       87,
+       "Cave Kraken",
+       "",
+       "",
+       "9 (100-120)",
+       19
+      ],
+      [
+       90,
+       "Dark Beasts",
+       "",
+       "",
+       "11 (10-20)",
+       0
+      ],
+      [
+       93,
+       "Smoke Devils",
+       "",
+       "",
+       "9 (130-200)",
+       30
+      ]
+     ],
+     "reachable": [
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      false,
+      true,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      false,
+      true,
+      true,
+      false,
+      true,
+      true,
+      false,
+      true
+     ],
+     "note": "A higher weight means the master gives that task more often. The last column counts the monsters of that task standing somewhere you can walk to."
+    }
+   ],
+   "places": [],
+   "tasks": [
+    {
+     "id": 319,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Check Your Slayer Task",
+     "desc": "Use an Enchanted Gem to check your Slayer Task",
+     "live": true
+    },
+    {
+     "id": 721,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Defeat a Bloodveld",
+     "desc": "Defeat a Bloodveld",
+     "live": true
+    },
+    {
+     "id": 588,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Defeat a Cockatrice",
+     "desc": "Defeat a Cockatrice",
+     "live": true
+    },
+    {
+     "id": 724,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Defeat a Fire Giant",
+     "desc": "Defeat a Fire Giant",
+     "live": true
+    },
+    {
+     "id": 592,
+     "tier": "Easy",
+     "points": 10,
+     "name": "Defeat a Pyrefiend",
+     "desc": "Defeat a Pyrefiend",
+     "live": true
+    },
+    {
+     "id": 917,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Assemble a Slayer Helm",
+     "desc": "Assemble a Slayer Helm",
+     "live": true
+    },
+    {
+     "id": 1524,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Complete 1 Slayer Task",
+     "desc": "Complete 1 Slayer Task",
+     "live": true
+    },
+    {
+     "id": 1058,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Drake",
+     "desc": "Defeat a Drake in the Mount Karuulm Slayer Dungeon",
+     "live": true
+    },
+    {
+     "id": 918,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Gargoyle",
+     "desc": "Defeat a Gargoyle",
+     "live": true
+    },
+    {
+     "id": 611,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Jelly",
+     "desc": "Defeat a Jelly",
+     "live": true
+    },
+    {
+     "id": 537,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Kurask",
+     "desc": "Defeat a Kurask",
+     "live": true
+    },
+    {
+     "id": 787,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Skeletal Wyvern",
+     "desc": "Defeat a Skeletal Wyvern in the Asgarnian Ice Dungeon",
+     "live": true
+    },
+    {
+     "id": 322,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Superior Slayer Creature",
+     "desc": "Defeat any Superior Slayer Creature",
+     "live": true
+    },
+    {
+     "id": 606,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat a Turoth",
+     "desc": "Defeat a Turoth",
+     "live": true
+    },
+    {
+     "id": 926,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat an Abyssal Demon",
+     "desc": "Defeat an Abyssal Demon",
+     "live": true
+    },
+    {
+     "id": 719,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Defeat the Thermonuclear Smoke Devil",
+     "desc": "Defeat the Thermonuclear Smoke Devil in the Smoke Devil Dungeon",
+     "live": true
+    },
+    {
+     "id": 320,
+     "tier": "Medium",
+     "points": 30,
+     "name": "Slay 250 Creatures",
+     "desc": "Slay 250 creatures whilst on a Slayer Task",
+     "live": true
+    },
+    {
+     "id": 326,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Defeat 10 Superior Slayer Creatures",
+     "desc": "Defeat 10 Superior Slayer Creatures",
+     "live": true
+    },
+    {
+     "id": 327,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Defeat 20 Superior Slayer Creatures",
+     "desc": "Defeat 20 Superior Slayer Creatures",
+     "live": true
+    },
+    {
+     "id": 584,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Defeat a Basilisk Knight",
+     "desc": "Defeat a Basilisk Knight in the Jormungand's Prison",
+     "live": true
+    },
+    {
+     "id": 542,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Defeat a Dark Beast",
+     "desc": "Defeat a Dark Beast",
+     "live": true
+    },
+    {
+     "id": 555,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Defeat a Nechryael",
+     "desc": "Defeat a Nechryael",
+     "live": true
+    },
+    {
+     "id": 707,
+     "tier": "Hard",
+     "points": 80,
+     "name": "Defeat a Smoke Devil",
+     "desc": "Defeat a Smoke Devil in the Smoke Devil Dungeon",
+     "live": true
+    },
+    {
+     "id": 330,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Defeat 50 Superior Slayer Creatures",
+     "desc": "Defeat 50 Superior Slayer Creatures",
+     "live": true
+    },
+    {
+     "id": 255,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 25 Million Slayer XP",
+     "desc": "Obtain 25 million experience in your Slayer skill",
+     "live": true
+    },
+    {
+     "id": 1474,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 35 Million Slayer XP",
+     "desc": "Obtain 35 million experience in your Slayer skill",
+     "live": true
+    },
+    {
+     "id": 1497,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Obtain 50 Million Slayer XP",
+     "desc": "Obtain 50 million experience in your Slayer skill",
+     "live": true
+    },
+    {
+     "id": 254,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Reach Level 99 Slayer",
+     "desc": "Reach level 99 in your Slayer skill",
+     "live": true
+    },
+    {
+     "id": 328,
+     "tier": "Elite",
+     "points": 200,
+     "name": "Slay an Abyssal Demon",
+     "desc": "Kill an Abyssal Demon whilst on an Abyssal Demon Slayer Task",
      "live": true
     }
    ]
