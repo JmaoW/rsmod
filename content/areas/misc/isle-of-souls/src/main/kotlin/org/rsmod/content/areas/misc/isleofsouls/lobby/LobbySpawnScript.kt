@@ -7,6 +7,7 @@ import org.rsmod.api.script.onEvent
 import org.rsmod.content.areas.misc.isleofsouls.colosseum.Colosseum
 import org.rsmod.content.areas.misc.isleofsouls.gauntlet.Gauntlet
 import org.rsmod.content.areas.misc.isleofsouls.toa.ToaRaids
+import org.rsmod.content.areas.misc.isleofsouls.tob.TobRaids
 import org.rsmod.game.entity.player.SessionStateEvent
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
@@ -21,17 +22,20 @@ constructor(
     private val random: GameRandom,
     private val gauntlet: Gauntlet,
     private val toa: ToaRaids,
+    private val tob: TobRaids,
     private val colosseum: Colosseum,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onEvent<SessionStateEvent.NewPlayerSpawn> { coords = SoulWarsLobby.randomSpawn(random) }
         // Someone who died in the Gauntlet wakes up in its lobby, someone who died in the Tombs of
-        // Amascut at the start of their room, and someone who died in the Fortis Colosseum in its
+        // Amascut at the start of their room, someone who died in the Theatre of Blood in its jail
+        // (or at their room's arrival), and someone who died in the Fortis Colosseum in its
         // lobby; everyone else in the graveyards.
         onEvent<PlayerDeathEvents.Respawn> {
             coords =
                 gauntlet.respawnFor(player)
                     ?: toa.respawnFor(player)
+                    ?: tob.respawnFor(player)
                     ?: colosseum.respawnFor(player)
                     ?: SoulWarsLobby.randomSpawn(random)
         }

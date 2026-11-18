@@ -35,6 +35,7 @@ import org.rsmod.content.areas.misc.isleofsouls.revenant.RevenantTolerance
 import org.rsmod.content.areas.misc.isleofsouls.revenant.RevenantWeapons
 import org.rsmod.content.areas.misc.isleofsouls.scurrius.Scurrius
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
+import org.rsmod.content.areas.misc.isleofsouls.tob.TobWeapons
 import org.rsmod.content.areas.misc.isleofsouls.vorkath.Vorkath
 import org.rsmod.content.areas.misc.isleofsouls.wilderness.WildBosses
 import org.rsmod.content.areas.misc.isleofsouls.zulrah.Zulrah
@@ -52,6 +53,7 @@ class IsleOfSoulsModule : PluginModule() {
         addSetBinding<SpecialAttackMap>(RevenantSpecials::class.java)
         addSetBinding<WeaponMap>(GauntletWeapons::class.java)
         addSetBinding<WeaponMap>(ColosseumWeapons::class.java)
+        addSetBinding<WeaponMap>(TobWeapons::class.java)
         addSetBinding<HuntTolerance>(RevenantTolerance::class.java)
 
         // One shared roster, progress store and set of live instances: every script must see the

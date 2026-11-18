@@ -11,6 +11,7 @@ import org.rsmod.content.areas.misc.isleofsouls.fightcaves.FightCaveSettings
 import org.rsmod.content.areas.misc.isleofsouls.pvp.PvpSettings
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueFiles
 import org.rsmod.content.areas.misc.isleofsouls.toa.ToaSettings
+import org.rsmod.content.areas.misc.isleofsouls.tob.TobSettings
 
 /**
  * The event's tunable numbers, read once at startup from `.data/league/event-settings.json`:
@@ -61,6 +62,8 @@ class EventSettings(
     val pvp: PvpSettings = PvpSettings(),
     /** The Tombs of Amascut: how many paths a raid needs, and the unique chance multiplier. */
     val toa: ToaSettings = ToaSettings(),
+    /** The Theatre of Blood: the party cap and the unique chance (see [TobSettings]). */
+    val tob: TobSettings = TobSettings(),
     /**
      * The Fortis Colosseum: which waves a run plays, and its Glory gates (see [ColosseumSettings]).
      */
@@ -118,6 +121,7 @@ class EventSettings(
             val autosave = root.obj("autosave")
             val pvp = root.obj("pvp")
             val toa = root.obj("toa")
+            val tob = root.obj("tob")
             val colosseum = root.obj("colosseum")
             val known =
                 OTHER_KEYS +
@@ -134,6 +138,7 @@ class EventSettings(
                         "autosave",
                         "pvp",
                         "toa",
+                        "tob",
                         "colosseum",
                     )
             val unknown =
@@ -146,6 +151,7 @@ class EventSettings(
                     autosave.unknown(setOf("intervalTicks", "requestDelayTicks"), "autosave.") +
                     pvp.unknown(PvpSettings.KEYS, "pvp.") +
                     toa.unknown(ToaSettings.KEYS, "toa.") +
+                    tob.unknown(TobSettings.KEYS, "tob.") +
                     colosseum.unknown(ColosseumSettings.KEYS, "colosseum.")
             return EventSettings(
                 baseXpRate = root.number("baseXpRate", above = 0.0),
@@ -182,6 +188,7 @@ class EventSettings(
                         ?: DEFAULT_AUTOSAVE_REQUEST_DELAY,
                 pvp = pvp.pvpSettings(),
                 toa = toa.toaSettings(),
+                tob = tob.tobSettings(),
                 colosseum = colosseum.colosseumSettings(),
                 unknownKeys = unknown,
             )
@@ -230,6 +237,23 @@ class EventSettings(
             val unique = number("uniqueMultiplier", above = 0.0, path = "toa") ?: 1.0
             val teamUniques = whole("teamUniquesFromLevel", atLeast = 0, path = "toa") ?: 0
             return ToaSettings(paths, unique, teamUniques)
+        }
+
+        private fun JsonNode?.tobSettings(): TobSettings {
+            if (this == null) {
+                return TobSettings()
+            }
+            val cap = whole("partyCap", atLeast = 1, path = "tob") ?: TobSettings.DEFAULT_PARTY_CAP
+            require(cap <= TobSettings.MAX_PARTY_CAP) {
+                "tob.partyCap must be 1 to ${TobSettings.MAX_PARTY_CAP}, not $cap"
+            }
+            val unique = number("uniqueMultiplier", above = 0.0, path = "tob") ?: 1.0
+            val teamUniques =
+                get("teamUniques")?.let { node ->
+                    require(node.isBoolean) { "tob.teamUniques must be true or false, not $node" }
+                    node.asBoolean()
+                } ?: true
+            return TobSettings(cap, unique, teamUniques)
         }
 
         private fun JsonNode?.colosseumSettings(): ColosseumSettings {

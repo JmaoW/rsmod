@@ -12817,6 +12817,24 @@
     } ]
   } ]
 }, {
+  "name" : "Theatre of Blood: Multiway",
+  "levels" : [ 0, 1, 2, 3 ],
+  "polygons" : [ {
+    "vertices" : [ {
+      "x" : 3136,
+      "z" : 4224
+    }, {
+      "x" : 3391,
+      "z" : 4224
+    }, {
+      "x" : 3391,
+      "z" : 4479
+    }, {
+      "x" : 3136,
+      "z" : 4479
+    } ]
+  } ]
+}, {
   "name" : "Wilderness: Slayer Cave",
   "levels" : [ 0, 1, 2, 3 ],
   "polygons" : [ {

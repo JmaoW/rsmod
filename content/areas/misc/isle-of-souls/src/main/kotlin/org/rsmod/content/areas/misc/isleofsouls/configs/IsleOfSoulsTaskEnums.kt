@@ -603,6 +603,20 @@ internal object IsleOfSoulsTaskEnums : EnumBuilder() {
             this[565] = 3835
             this[566] = 3846
             this[567] = 3847
+            // The Theatre of Blood: the Avernic defender, Sanguinesti staff, Scythe of Vitur, a
+            // Justiciar piece and the set, the Ghrazi rapier, 25 / 50 / 100 completions and the two
+            // ornament kits on the scythe (structs 2449-2454, 2080, 3888, 2089, 5278, 3876).
+            this[568] = 2449
+            this[569] = 2450
+            this[570] = 2451
+            this[571] = 2452
+            this[572] = 2453
+            this[573] = 2454
+            this[574] = 2080
+            this[575] = 3888
+            this[576] = 2089
+            this[577] = 5278
+            this[578] = 3876
         }
     }
 }

@@ -36,6 +36,13 @@ object BaseVarObjBits : VarObjBitBuilder() {
             endBit = 15
         }
 
+    /** The charges in a Scythe of Vitur or a Sanguinesti staff (and their ornamented forms). */
+    val tob_charges =
+        build("tob_charges") {
+            startBit = 0
+            endBit = 14
+        }
+
     val stamina_charges =
         build("stamina_charges") {
             startBit = 0

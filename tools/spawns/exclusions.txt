@@ -43,3 +43,7 @@ rect 2880 4352 2943 4479 0
 # Vorkath sleeps in a team's instance of the Ungael crater (vorkath package), reached by a boat on
 # the isle; the spawn list's sleeping Vorkath in the real crater would be a second one.
 rect 2258 4054 2286 4078 0
+
+# The Theatre of Blood: each raid spawns its own bosses in a copy of the theatre (tob/), so the
+# real map keeps none.
+rect 3136 4224 3391 4479

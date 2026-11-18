@@ -34921,58 +34921,6 @@ npc = 'earthwarrior'
 coords = '0_48_156_54_8'
 
 [[spawn]]
-npc = 'verzik_initial'
-coords = '0_49_67_30_35'
-
-[[spawn]]
-npc = 'tob_xarpus_combat_story'
-coords = '2_49_68_32_33'
-
-[[spawn]]
-npc = 'tob_maiden_100'
-coords = '0_49_69_26_28'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_34_22'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_34_26'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_34_30'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_34_34'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_34_38'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_40_22'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_40_26'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_40_30'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_40_34'
-
-[[spawn]]
-npc = 'tob_verzik_phase2_bloodnylocas_story'
-coords = '0_49_69_40_38'
-
-[[spawn]]
 npc = 'lotr_zombie2_lvl_25'
 coords = '0_49_71_5_13'
 
@@ -38163,18 +38111,6 @@ coords = '0_50_195_42_40'
 [[spawn]]
 npc = 'prif_citizen_finarfin'
 coords = '0_50_195_46_56'
-
-[[spawn]]
-npc = 'nylocas_boss_melee'
-coords = '0_51_66_30_23'
-
-[[spawn]]
-npc = 'tob_sotetseg_combat'
-coords = '0_51_67_13_40'
-
-[[spawn]]
-npc = 'tob_bloat'
-coords = '0_51_69_35_24'
 
 [[spawn]]
 npc = 'wildwars_redeemer'

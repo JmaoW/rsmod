@@ -24,6 +24,8 @@ internal object LeagueTaskSeries {
             listOf(1404, 1405, 1406),
             listOf(1398, 1399, 1400),
             listOf(1401, 1402, 1403),
+            // Complete the Theatre of Blood 25 / 50 / 100 times.
+            listOf(946, 947, 948),
             // Defeat Vorkath 50 / 150 / 300 times.
             listOf(608, 609, 610),
             // Defeat any God Wars Dungeon boss 100 / 250 / 500 times.

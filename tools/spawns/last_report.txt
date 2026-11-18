@@ -1,6 +1,6 @@
 Source spawns: 24143
-Written:       22681  (surface 11745, underground 10936)
-Dropped:       1462
+Written:       22607  (surface 11745, underground 10862)
+Dropped:       1536
 
 == Dropped, by reason ==
 
@@ -97,6 +97,17 @@ Dropped:       1462
           id  4689 x1    spawn name 'Angry giant rat'                  cache name ['Angry giant rat']
           id  4690 x1    spawn name 'Angry giant rat'                  cache name ['Angry giant rat']
 
+    56  exclusions.txt: rect 2880 4352 2943 4479 0
+          id  5962 x13   spawn name 'Suspicious water'                 cache name ['Suspicious water']
+          id  5961 x10   spawn name 'Spinolyp'                         cache name ['Spinolyp']
+          id  5948 x8    spawn name 'Suspicious water'                 cache name ['Suspicious water']
+          id  5946 x7    spawn name 'Suspicious water'                 cache name ['Suspicious water']
+          id  5947 x7    spawn name 'Spinolyp'                         cache name ['Spinolyp']
+          id  5963 x5    spawn name 'Spinolyp'                         cache name ['Spinolyp']
+          id  2265 x2    spawn name 'Dagannoth Supreme'                cache name ['Dagannoth Supreme']
+          id  2266 x2    spawn name 'Dagannoth Prime'                  cache name ['Dagannoth Prime']
+          id  2267 x2    spawn name 'Dagannoth Rex'                    cache name ['Dagannoth Rex']
+
     31  id now belongs to a different npc (name changed)
           id  3959 x19   spawn name 'Jungle savage'                    cache name ['Tormented Warrior']
           id  1223 x1    spawn name 'Local'                            cache name ['Spectator']
@@ -111,6 +122,15 @@ Dropped:       1462
           id  9504 x1    spawn name 'Account security tutor'           cache name ['Agitated bees']
           id  9195 x1    spawn name 'Ian'                              cache name ['Floki']
           id  6957 x1    spawn name 'Chief Farmer'                     cache name ['Dale']
+
+    16  exclusions.txt: rect 3136 4224 3391 4479
+          id 10845 x10   spawn name 'Nylocas Matomenos'                cache name ['Nylocas Matomenos']
+          id  8360 x1    spawn name 'The Maiden of Sugadinti'          cache name ['The Maiden of Sugadinti']
+          id  8359 x1    spawn name 'Pestilent Bloat'                  cache name ['Pestilent Bloat']
+          id  8388 x1    spawn name 'Sotetseg'                         cache name ['Sotetseg']
+          id 10768 x1    spawn name 'Xarpus'                           cache name ['Xarpus']
+          id  8355 x1    spawn name 'Nylocas Vasilias'                 cache name ['Nylocas Vasilias']
+          id  8369 x1    spawn name 'Verzik Vitur'                     cache name ['Verzik Vitur']
 
      6  duplicate entry in the source
           id  7074 x4    spawn name '<col=ff9040>Blasted ore</col>'    cache name ['<col=ff9040>Blasted ore</col>']
@@ -153,11 +173,17 @@ Dropped:       1462
      1  exclusions.txt: npc 7935
           id  7935 x1    spawn name 'Revenant hellhound'               cache name ['Revenant hellhound']
 
+     1  exclusions.txt: npc 239
+          id   239 x1    spawn name 'King Black Dragon'                cache name ['King Black Dragon']
+
      1  exclusions.txt: npc 6610
           id  6610 x1    spawn name 'Venenatis'                        cache name ['Venenatis']
 
      1  exclusions.txt: npc 7934
           id  7934 x1    spawn name 'Revenant cyclops'                 cache name ['Revenant cyclops']
+
+     1  exclusions.txt: rect 2258 4054 2286 4078 0
+          id  8058 x1    spawn name 'Vorkath'                          cache name ['Vorkath']
 
      1  exclusions.txt: npc 7931
           id  7931 x1    spawn name 'Revenant goblin'                  cache name ['Revenant goblin']
@@ -188,7 +214,7 @@ Tempoross: 14 spawns  rect=(3000,2960)-(3060,3040)
 Isle of Souls (our isle): 158 spawns  rect=(2080,2770)-(2300,2980)
    Butterfly x23, Squirrel x20, Sandy rocks x15, Bird x13, Pyrefiend x10, Crab x9, Rat x8, Chicken x7
 
-== Written spawns on blocked terrain: 1636 (mostly water dwellers) ==
+== Written spawns on blocked terrain: 1582 (mostly water dwellers) ==
      85  Iceberg (id 5817)
      82  Will o' the wisp (id 3483)
      80  Duck (id 1839)
@@ -206,14 +232,14 @@ Isle of Souls (our isle): 158 spawns  rect=(2080,2770)-(2300,2980)
      16  Butterfly (id 234)
      16  Respiratory system (id 5914)
      15  Rod Fishing spot (id 3418)
-     13  Suspicious water (id 5962)
      12  Fishing spot (id 4476)
      11  Ducklings (id 2002)
      11  Fishing spot (id 1510)
      10  Gull (id 285)
-     10  Spinolyp (id 5961)
      10  Gourmet impling (id 1647)
       9  Light creature (id 5783)
+      9  Undead tree (id 4418)
+      9  Vyrewatch (id 3753)
 
 == Written spawns per npc (top 40) ==
     575  Rat (id 2854, rat)
