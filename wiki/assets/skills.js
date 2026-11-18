@@ -31,6 +31,13 @@
     return e;
   }
 
+  // Skills-tab icons from the cache (tools/wiki/gen_skill_icons.py), one per skill the page covers.
+  function icons(skill) {
+    return '<span class="skill-icons">' + (skill.icons || [skill.id]).map(function (n) {
+      return '<img src="assets/skills/' + esc(n) + '.png" alt="" width="25" height="25">';
+    }).join("") + "</span>";
+  }
+
   // ------------------------------------------------------------------ tracker state
 
   function trackerItems(skill) {
@@ -93,7 +100,7 @@
         var st = state(s);
         var tile = el(s.page ? "a" : "div", "skill-tile" + (s.page ? "" : " soon"));
         if (s.page) tile.href = "skill.html?s=" + encodeURIComponent(s.id);
-        tile.innerHTML = "<h3>" + esc(s.name) + "</h3><p>" + rich(s.summary) + "</p>" +
+        tile.innerHTML = "<h3>" + icons(s) + esc(s.name) + "</h3><p>" + rich(s.summary) + "</p>" +
           '<div class="tile-foot">' + (s.page ? "" : '<span class="tag">' + esc(s.soon || "Page coming") + "</span>") +
           '<span class="tile-state">' + stateLine(st) + "</span></div>";
         grid.appendChild(tile);
@@ -238,7 +245,7 @@
     var st = state(skill);
 
     var html = '<p class="crumbs"><a href="skills.html">Skills</a> &rsaquo; ' + esc(skill.name) + "</p>" +
-      '<div class="page-head"><h1>' + esc(skill.name) + "</h1><p>" + rich(skill.summary) + "</p>" +
+      '<div class="page-head"><h1>' + icons(skill) + esc(skill.name) + "</h1><p>" + rich(skill.summary) + "</p>" +
       '<div class="skill-state">' + stateLine(st) +
       (skill.osrs ? '<a href="' + OSRS + encodeURIComponent(skill.osrs) + '" target="_blank" rel="noopener">OSRS Wiki: ' + esc(skill.osrs) + "</a>" : "") +
       "</div></div>";
@@ -274,7 +281,9 @@
     }
     if (skill.relics && skill.relics.length) {
       html += section("relics", "Relics", "<dl class='defs'>" + skill.relics.map(function (r) {
-        return "<dt>" + esc(r.name) + ' <span class="muted">tier ' + r.tier + "</span></dt><dd>" + rich(r.text) + "</dd>";
+        var anchor = r.name.toLowerCase().replace(/'/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+        return '<dt><a href="relics.html#' + anchor + '">' + esc(r.name) + '</a> <span class="muted">tier ' + r.tier +
+          "</span></dt><dd>" + rich(r.text) + "</dd>";
       }).join("") + "</dl>");
     }
     if (skill.differences && skill.differences.length) {

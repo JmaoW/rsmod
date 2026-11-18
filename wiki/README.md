@@ -9,6 +9,11 @@ The player wiki for the Isle of Souls league. Plain HTML, no build step.
 - `data/skills.js`: the hand-written half of the skill pages (overview, gear, relics, place names)
 - `data/skills-generated.js`: the generated half (level tables, where things are, league tasks).
   Do not edit; re-run `python tools/wiki/gen_skills.py` after changing a skill
+- `relics.html`: the Relics page (every tier, its passive and its relics)
+- `data/relics.js`: the hand-written half of the Relics page (what each relic does)
+- `data/relics-generated.js` and `assets/relics/*.png`: the generated half (point thresholds, XP and
+  drop rates from the event settings, relic icons from the cache). Do not edit; re-run
+  `python tools/wiki/gen_relics.py` after changing a threshold or multiplier
 - `assets/`: shared styles and scripts
 
 ## Updating the tracker

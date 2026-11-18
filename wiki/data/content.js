@@ -13,7 +13,7 @@
 // This is a .js file rather than .json so the page also works when opened straight from disk.
 
 window.ISLE_CONTENT = {
-  updated: "2026-11-03",
+  updated: "2026-11-04",
   sections: [
     {
       id: "skills",
@@ -185,7 +185,7 @@ window.ISLE_CONTENT = {
         { name: "Dress rehearsal", priority: "P0", built: 0, tested: "no", about: "A full run with at least four players before the day.", left: "Plan and run it." },
         { name: "10-hour soak test", priority: "P0", built: 0, tested: "no", about: "Server left running for 10 hours with players, watching memory and saves.", left: "Plan and run it." },
         { name: "Backups and restart plan", priority: "P1", built: 0, tested: "no", about: "What happens if the server goes down mid-event.", left: "All of it." },
-        { name: "Player wiki", priority: "P1", built: 10, tested: "no", about: "This wiki: the tracker now, guides for skills, bosses and relics later.", left: "Player guide pages." },
+        { name: "Player wiki", priority: "P1", built: 50, tested: "no", about: "This wiki: the tracker, skill pages and the relics page, with boss guides still to come.", left: "Boss pages." },
         { name: "Connection guide", priority: "P2", built: 25, tested: "no", about: "A one-page guide for players to connect to the server.", left: "Write the page; the setup script exists." }
       ]
     }

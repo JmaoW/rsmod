@@ -36,3 +36,25 @@ becomes "about 60 tiles south of the lobby" worked out from the code.
 
 To add a skill: write a `<skill>(reach, all_tasks, ...)` function returning `tables`, `places` and
 `tasks`, add it to `main()`, then write the hand half in `wiki/data/skills.js` and set `page: true`.
+
+**Skill icons**: `gen_skill_icons.py` writes the Skills-tab icons (sprite groups 197 to 221) to
+`wiki/assets/skills/<skill>.png`. The pages pick them by skill id; a page covering several skills
+lists them in `icons: [...]` in `skills.js` (Melee). Only needed again if the cache changes.
+
+```bash
+python tools/wiki/gen_skill_icons.py
+```
+
+## Relics
+
+`gen_relics.py` writes `wiki/data/relics-generated.js` and the relic icons in `wiki/assets/relics/`:
+
+```bash
+python tools/wiki/gen_relics.py
+```
+
+Re-run it after changing `relicPointThresholds`, `xpMultiplier` or `dropMultiplier` in
+`.data/league/event-settings.json` (a key left out falls back to the default in `EventSettings.kt`),
+the relic layout in `RelicData.kt`, or the task list. It reads each relic's icon from its cache struct
+(param 884, a 120 x 120 sprite) through `tools/cs2/sprites.py`, which writes PNGs with no image
+library. What each relic does is hand-written in `wiki/data/relics.js`.

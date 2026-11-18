@@ -373,6 +373,10 @@ a.skill-tile:hover { border-color: var(--accent); }
 .skill-tile h3 { font-size: 18px; margin-bottom: 4px; }
 .skill-tile p { margin: 0 0 12px; font-size: 14px; color: var(--ink-2); flex: 1; }
 .skill-tile.soon h3, .skill-tile.soon p { opacity: .75; }
+.skill-tile h3, .page-head h1 { display: flex; align-items: center; gap: 8px; }
+.skill-icons { display: inline-flex; gap: 2px; flex: none; }
+.skill-icons img { image-rendering: pixelated; display: block; }
+.page-head h1 .skill-icons img { width: 38px; height: 38px; }
 .tile-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
 .tile-foot .tag { font-size: 12px; color: var(--ink-3); }
 .tile-state { display: flex; align-items: center; gap: 10px; flex: 1; justify-content: flex-end; min-width: 150px; }
@@ -460,3 +464,67 @@ ul.loot { margin: 0; padding-left: 20px; font-size: 14px; columns: 2 220px; colu
 }
 .things .coords { align-self: center; }
 table.data th.n:first-child, table.data td.n:first-child { width: 48px; padding-right: 14px; }
+
+/* ---------------------------------------------------------------- relics page */
+.page-head p + p { margin-top: 8px; }
+.tier-block { margin-bottom: 30px; }
+.tier-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 10px; }
+.tier-head h2 { font-size: 23px; }
+.tier-head .muted { font-size: 14px; }
+.passives {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.passives .k, .relic .k {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.passives ul.bullets li { margin-bottom: 3px; }
+.passives p { margin: 0; }
+.relic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.relic {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  scroll-margin-top: 12px;
+}
+.relic:target { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.relic-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+.relic-icon { flex: none; width: 64px; height: 64px; }
+.relic-head h3 { font-size: 18px; margin-bottom: 2px; }
+.relic-sum { margin: 0 0 6px; font-size: 14px; color: var(--ink-2); }
+.relic-state { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; }
+.relic-state .built { width: 120px; }
+.relic-state .tag { font-size: 12px; color: var(--ink-3); border: 1px dashed var(--line-2); border-radius: 999px; padding: 1px 9px; }
+.relic-body { font-size: 14px; }
+.relic-body p { margin: 0 0 8px; }
+.relic-body ul.bullets { margin-bottom: 8px; }
+.relic-body ul.bullets li { margin-bottom: 4px; }
+.relic-item { background: var(--panel-2); border-radius: 6px; padding: 6px 9px; }
+.relic-item .k, .relic-use .k, .relic-helps .k { display: inline; margin: 0 4px 0 0; }
+.relic-note { color: var(--ink-3); font-style: italic; }
+.relic-helps { margin-bottom: 0 !important; color: var(--ink-2); }
+.relic.soon .relic-icon { filter: grayscale(1); opacity: .6; }
+.relic.soon h3, .relic.soon .relic-body { opacity: .8; }
+a.soon-link { color: var(--ink-3); }
+
+.pill.boost { background: var(--warn-bg); color: var(--warn-ink); font-size: 11px; }
+.fight + .fight { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 12px; }
+.stat-notes { font-size: 14px; color: var(--ink-2); margin-top: 8px; }
+.thing.faded { opacity: .5; }
+ol.waves { font-size: 14px; padding-left: 22px; }

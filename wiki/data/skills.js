@@ -48,6 +48,7 @@ window.ISLE_SKILLS = {
   skills: [
     {
       id: "melee", name: "Melee", group: "combat", tracker: ["Attack", "Strength", "Defence"], page: true,
+      icons: ["attack", "strength", "defence"],
       summary: "Attack, Strength and Defence, trained on the monsters across the isle and its dungeons.",
       intro: [
         "Attack, Strength and Defence are trained together by fighting with a melee weapon. Your attack style decides which one gets the XP: 4 XP per damage in that skill (split three ways on a shared style), plus 1.33 Hitpoints XP per damage.",
@@ -463,6 +464,7 @@ window.ISLE_SKILLS = {
         { name: "Grace's shop", text: "Grace, {dir:grace}, sells the graceful outfit for marks of grace, and amylase packs." }
       ],
       relics: [
+        { name: "Corner Cutter", tier: 2, text: "Gives Sage's greaves: running in them gives Agility XP. Every arena obstacle and trap succeeds, with or without them." },
         { name: "Equilibrium", tier: 4, text: "Every XP drop gives extra XP equal to 10% of your total level, or 20% in your lowest skill. The extra is not multiplied." }
       ],
       differences: [
