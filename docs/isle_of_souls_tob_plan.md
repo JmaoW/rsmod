@@ -85,6 +85,10 @@ Facts found while building:
 - The ornament kits drop only in Hard Mode in the real game, which is not built; they are rolled in the vault at Hard Mode rates (holy 1/100, sanguine 1/150, scaled by standing) so the two kit tasks can be done.
 - Sotetseg's unblocked ball turns all prayers off (the engine has no protection-prayer lock-out).
 - Verzik phase 1: a Dawnbringer hit counts as Pulsate (uncapped) when it does 75 or more; the Dawnbringer has no regular attack here.
+- Treasure room: a monumental chest appears only for each player still in the raid (at most five). The loot is rolled when Verzik falls but given, and a unique or pet announced, only when the player opens their chest; whoever leaves the raid first finds it in the Rewards Chest by the bank (nothing announced). The chests still glow purple with a unique, as in the real game.
+- The treasure room door opens from two tiles away: the throne's steps leave no floor in front of it.
+- Vasilias changing form drops every attack on it and any auto-retaliate already queued from its bites; a player with auto-retaliate on still hits back at its next bite.
+- Projectile arcs (Xarpus's exhumed orbs and spit) are by eye: slopes 32, 40 and 30.
 - Every guess listed in each fight's class comment (most are TSPS's; see `tsps/docs/theatre-of-blood.md`, "Estimates").
 - Not built: spectating, the scoreboard and info board (363/459), MVP points, Combat Achievements, the Mysterious Stranger's first talk and shop, the escape crystal's Configure and Auto-afk, the first-time death warning, Xarpus absorbing exhumed into its stats, the Vyre well.
 

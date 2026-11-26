@@ -6,6 +6,7 @@ import org.rsmod.api.combat.NpcAttack
 import org.rsmod.api.combat.NpcAttackStyle
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.config.refs.varps
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
@@ -1044,7 +1045,7 @@ class WardensRuntime(env: ToaRoomEnv, raid: ToaRaid) :
             return
         }
         val amount = (npc.baseHitpointsLvl * SHIELD_REGEN_PERCENT / 100).coerceAtLeast(1)
-        npc.hitpoints = minOf(npc.baseHitpointsLvl, npc.hitpoints + amount)
+        npc.healHitpoints(amount)
     }
 
     /** The shield breaks: the Warden kneels and throws out its core. */

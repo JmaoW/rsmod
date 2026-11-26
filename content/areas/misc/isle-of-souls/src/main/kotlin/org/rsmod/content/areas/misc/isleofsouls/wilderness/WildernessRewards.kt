@@ -96,7 +96,7 @@ constructor(
             winners.map { (player, _) ->
                 val modify = NpcDropEvents.Modify(npc, player)
                 eventBus.publish(modify)
-                dropRoller.roll(table, modify.multiplier)
+                dropRoller.roll(table, modify.multiplier, modify.chanceMultipliers)
             }
         // One unique roll per kill: the top damager's, given to one of the ten by share.
         val unique = rolls.first().firstOrNull { kind(it) == Kind.Unique }
@@ -133,7 +133,10 @@ constructor(
             if (unique != null && player === uniqueOwner) {
                 kept += unique
             }
-            for (drop in kept) {
+            // Claimed drops (a pet) are handed over by their claimer instead of the floor.
+            val claim = NpcDropEvents.Claim(npc, player, kept.toMutableList())
+            eventBus.publish(claim)
+            for (drop in claim.drops) {
                 objRepo.add(drop.obj, at, duration, player, count = drop.count)
             }
             // These drops skip `NpcDeath`, so the loot tracker must be told about them here.

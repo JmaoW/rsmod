@@ -13,6 +13,7 @@ import org.rsmod.api.script.onOpLoc3
 import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.script.onOpNpc1
 import org.rsmod.api.script.onOpNpcU
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.interfaces.bank.openBank
 import org.rsmod.events.EventBus
 import org.rsmod.game.entity.Npc
@@ -45,6 +46,7 @@ constructor(
     private val eventBus: EventBus,
     private val objRepo: ObjRepository,
     private val objTypes: ObjTypeList,
+    private val pets: Pets,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onGameStartup { placeLobby() }
@@ -213,7 +215,7 @@ constructor(
      * Heredit (wiki; a player who has the pet is only offered the splinters).
      */
     private suspend fun ProtectedAccess.exchangeQuiver(npc: Npc) {
-        val hasPet = colosseum_objs.pet in inv || colosseum_objs.pet in bank
+        val hasPet = pets.owns(player, pets.pet("smol_heredit"))
         startDialogue(npc) {
             chatPlayer(neutral, "I have a spare Dizana's quiver (uncharged).")
             chatNpc(
@@ -248,7 +250,7 @@ constructor(
                     ColosseumLoot.QUIVER_SPLINTERS,
                 )
                 chatNpc(neutral, "A fine trade. Here are your splinters.")
-            } else if (random.of(ColosseumLoot.PET_ODDS) == 0) {
+            } else if (pets.roll(ColosseumLoot.PET_ODDS)) {
                 colosseum.givePet(player)
             } else {
                 chatNpc(neutral, "No luck this time, I'm afraid. He just isn't interested.")

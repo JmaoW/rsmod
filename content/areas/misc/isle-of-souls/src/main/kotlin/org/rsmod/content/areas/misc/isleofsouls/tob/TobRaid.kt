@@ -41,6 +41,9 @@ class TobMember(val player: Player, val slot: Int) {
     /** The amount of the supply shop's last Buy-X. */
     var lastBuy: Int = 1
 
+    /** The loot rolled when Verzik fell, until they open their chest (or leave the raid). */
+    var unclaimed: TobUnclaimed? = null
+
     val damage: Int
         get() = damageIn.values.sum()
 }

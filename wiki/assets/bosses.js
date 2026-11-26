@@ -27,6 +27,8 @@
     zulrahScales: function () { return S.zulrahScaleMultiplier || 1; },
     toaPaths: function () { return (S.toa && S.toa.pathsRequired) || 4; },
     toaTeamUniques: function () { return (S.toa && S.toa.teamUniquesFromLevel) || 0; },
+    tobCap: function () { return (S.tob && S.tob.partyCap) || 8; },
+    coxCap: function () { return (S.cox && S.cox.partyCap) || 100; },
     nodes: function () { return S.gauntletNodesDeplete === false ? "never run out" : "run out as in the main game"; }
   };
 
@@ -169,6 +171,11 @@
     var gen = G.fights[f.id] || {};
     var html = '<div class="fight" id="f-' + esc(f.id) + '">' + (f.name ? "<h3>" + esc(f.name) + "</h3>" : "");
     html += statsHtml(gen.stats);
+    if (gen.hpBySize && gen.hpBySize.length) {
+      html += "<p class='muted'>Hitpoints by party size:</p>" + dataTable(["Party size", "Head", "Each claw"], gen.hpBySize.map(function (r) {
+        return { cells: [esc(r.size), esc(r.head.toLocaleString("en-GB")), esc(r.claw.toLocaleString("en-GB"))] };
+      }), [true, true, true]);
+    }
     html += paras(f.text);
     if (f.attacks && f.attacks.length) {
       html += "<dl class='defs'>" + f.attacks.map(function (a) {

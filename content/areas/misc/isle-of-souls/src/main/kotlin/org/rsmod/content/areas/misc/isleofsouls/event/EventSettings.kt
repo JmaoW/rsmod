@@ -7,6 +7,7 @@ import java.nio.file.Path
 import java.util.SortedMap
 import org.rsmod.content.areas.misc.isleofsouls.colosseum.ColosseumMode
 import org.rsmod.content.areas.misc.isleofsouls.colosseum.ColosseumSettings
+import org.rsmod.content.areas.misc.isleofsouls.cox.CoxSettings
 import org.rsmod.content.areas.misc.isleofsouls.fightcaves.FightCaveSettings
 import org.rsmod.content.areas.misc.isleofsouls.pvp.PvpSettings
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueFiles
@@ -31,7 +32,8 @@ import org.rsmod.content.areas.misc.isleofsouls.tob.TobSettings
  *   "pvp": { "soulWarsArena": false, "revenantCaves": false, "wildernessBossLairs": false,
  *            "escapeCaves": false },
  *   "colosseum": { "mode": "full", "shortenedWaves": [1, 4, 7, 10, 12], "bankChestGlory": 0,
- *                  "ringGlory": 0 }
+ *                  "ringGlory": 0 },
+ *   "petOdds": 1.0
  * }
  * ```
  *
@@ -64,10 +66,17 @@ class EventSettings(
     val toa: ToaSettings = ToaSettings(),
     /** The Theatre of Blood: the party cap and the unique chance (see [TobSettings]). */
     val tob: TobSettings = TobSettings(),
+    /** The Chambers of Xeric: the party cap and the unique chance (see [CoxSettings]). */
+    val cox: CoxSettings = CoxSettings(),
     /**
      * The Fortis Colosseum: which waves a run plays, and its Glory gates (see [ColosseumSettings]).
      */
     val colosseum: ColosseumSettings = ColosseumSettings(),
+    /**
+     * Makes every pet this many times as likely (1 = the game's own odds). Drop-table pets, raid
+     * and minigame pets and skilling pets all use it; the relics' drop boost never applies to pets.
+     */
+    val petOdds: Double = DEFAULT_PET_ODDS,
     /** Keys in the file that no setting reads, most likely typos. */
     val unknownKeys: List<String> = emptyList(),
 ) {
@@ -85,6 +94,7 @@ class EventSettings(
         const val DEFAULT_SCALE_MULTIPLIER = 10.0
         const val DEFAULT_AUTOSAVE_INTERVAL = 200
         const val DEFAULT_AUTOSAVE_REQUEST_DELAY = 50
+        const val DEFAULT_PET_ODDS = 1.0
 
         /** How many relic tiers there are; the threshold list must have one entry for each. */
         const val RELIC_TIERS = 8
@@ -122,6 +132,7 @@ class EventSettings(
             val pvp = root.obj("pvp")
             val toa = root.obj("toa")
             val tob = root.obj("tob")
+            val cox = root.obj("cox")
             val colosseum = root.obj("colosseum")
             val known =
                 OTHER_KEYS +
@@ -139,7 +150,9 @@ class EventSettings(
                         "pvp",
                         "toa",
                         "tob",
+                        "cox",
                         "colosseum",
+                        "petOdds",
                     )
             val unknown =
                 root.unknown(known) +
@@ -152,6 +165,7 @@ class EventSettings(
                     pvp.unknown(PvpSettings.KEYS, "pvp.") +
                     toa.unknown(ToaSettings.KEYS, "toa.") +
                     tob.unknown(TobSettings.KEYS, "tob.") +
+                    cox.unknown(CoxSettings.KEYS, "cox.") +
                     colosseum.unknown(ColosseumSettings.KEYS, "colosseum.")
             return EventSettings(
                 baseXpRate = root.number("baseXpRate", above = 0.0),
@@ -189,7 +203,9 @@ class EventSettings(
                 pvp = pvp.pvpSettings(),
                 toa = toa.toaSettings(),
                 tob = tob.tobSettings(),
+                cox = cox.coxSettings(),
                 colosseum = colosseum.colosseumSettings(),
+                petOdds = root.number("petOdds", above = 0.0) ?: DEFAULT_PET_ODDS,
                 unknownKeys = unknown,
             )
         }
@@ -254,6 +270,24 @@ class EventSettings(
                     node.asBoolean()
                 } ?: true
             return TobSettings(cap, unique, teamUniques)
+        }
+
+        private fun JsonNode?.coxSettings(): CoxSettings {
+            if (this == null) {
+                return CoxSettings()
+            }
+            val cap = whole("partyCap", atLeast = 1, path = "cox") ?: CoxSettings.DEFAULT_PARTY_CAP
+            require(cap <= CoxSettings.MAX_PARTY_CAP) {
+                "cox.partyCap must be 1 to ${CoxSettings.MAX_PARTY_CAP}, not $cap"
+            }
+            val unique = number("uniqueMultiplier", above = 0.0, path = "cox") ?: 1.0
+            val teamUniques =
+                get("teamUniques")?.let { node ->
+                    require(node.isBoolean) { "cox.teamUniques must be true or false, not $node" }
+                    node.asBoolean()
+                } ?: true
+            val from = whole("teamUniquesFromPoints", atLeast = 0, path = "cox") ?: 0
+            return CoxSettings(cap, unique, teamUniques, from)
         }
 
         private fun JsonNode?.colosseumSettings(): ColosseumSettings {

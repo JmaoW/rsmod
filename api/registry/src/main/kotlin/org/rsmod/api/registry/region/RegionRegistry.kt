@@ -41,6 +41,7 @@ constructor(
     private val npcRegistry: NpcRegistry,
     private val conRegistry: ControllerRegistry,
     private val zoneActivity: ZonePlayerActivityBitSet,
+    private val copySquares: RegionCopySquares,
 ) {
     init {
         workingAreaSmall.assertValidBounds(smallRegions.capacity)
@@ -190,6 +191,12 @@ constructor(
     public fun registerZone(region: Region, regionZone: ZoneKey, copyZone: RegionZoneCopy) {
         require(copyZone != RegionZoneCopy.NULL) { "`copyZone` cannot be null." }
         check(regionZone !in zones) { "Region zone is already occupied: ${zones[regionZone]}" }
+
+        // A zone from a map square the server has no key for is left out (see RegionCopySquares):
+        // it has nothing here, and a client shown it never finishes loading its scene.
+        if (!copySquares.isCopyable(copyZone.normalZone())) {
+            return
+        }
 
         val regionBase = regionZone.toCoords()
         val normalZone = copyZone.normalZone()

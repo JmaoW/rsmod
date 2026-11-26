@@ -22,6 +22,7 @@ import org.rsmod.content.areas.misc.isleofsouls.instances.InstanceTargetScope
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
 import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTasks
 import org.rsmod.content.areas.misc.isleofsouls.masteries.MasteryKills
+import org.rsmod.content.areas.misc.isleofsouls.pets.pet_varps
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueGearTasks
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueProgressVarps
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
@@ -137,10 +138,10 @@ class InfernoRewardsTest {
     fun GameTestState.`the pet is a one in a hundred chance`() = runRewardsTest { deps, alice, _ ->
         random.next = 3
         assertFalse(deps.rewards.petRoll(alice), "nothing on an ordinary roll")
-        assertFalse(inferno_objs.pet in alice.inv)
+        assertEquals(0, alice.vars[pet_varps.follower])
         random.next = 0
         assertTrue(deps.rewards.petRoll(alice))
-        assertTrue(inferno_objs.pet in alice.inv)
+        assertEquals(inferno_objs.pet.id, alice.vars[pet_varps.follower], "it follows Alice")
     }
 
     @Test
@@ -163,13 +164,18 @@ class InfernoRewardsTest {
             alice.inv[0] = InvObj(inferno_objs.infernal_cape)
             assertEquals(false, deps.unlock.tradeInCape(alice), "no pet on this roll")
             assertFalse(inferno_objs.infernal_cape in alice.inv, "the cape is taken")
-            assertFalse(inferno_objs.pet in alice.inv)
+            assertEquals(0, alice.vars[pet_varps.follower])
 
             random.next = 0
             alice.inv[0] = InvObj(inferno_objs.infernal_cape)
             assertEquals(true, deps.unlock.tradeInCape(alice))
-            assertTrue(inferno_objs.pet in alice.inv)
+            assertEquals(inferno_objs.pet.id, alice.vars[pet_varps.follower], "it follows Alice")
             assertFalse(inferno_objs.infernal_cape in alice.inv)
+
+            // Wiki: no gamble while the pet is owned.
+            alice.inv[0] = InvObj(inferno_objs.infernal_cape)
+            assertNull(deps.unlock.tradeInCape(alice))
+            assertTrue(inferno_objs.infernal_cape in alice.inv, "the cape is kept")
         }
 
     @Test

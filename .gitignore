@@ -47,3 +47,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Python bytecode from the tools/ scripts
+__pycache__/

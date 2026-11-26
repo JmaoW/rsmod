@@ -3,6 +3,8 @@ package org.rsmod.content.skills.fishing.scripts
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.output.spam
@@ -19,6 +21,7 @@ import org.rsmod.content.skills.fishing.configs.FishingCatches
 import org.rsmod.content.skills.fishing.configs.FishingMethod
 import org.rsmod.content.skills.fishing.configs.FishingNpcs
 import org.rsmod.content.skills.fishing.configs.FishingObjs
+import org.rsmod.content.skills.fishing.configs.FishingPets
 import org.rsmod.content.skills.fishing.configs.FishingSeqs
 import org.rsmod.content.skills.fishing.configs.FishingSpots
 import org.rsmod.content.skills.fishing.configs.SpotMethods
@@ -148,6 +151,9 @@ constructor(
         val xp = caught.xp * xpMods.get(player, stats.fishing)
         spam(caught.catchMessage)
         statAdvance(stats.fishing, xp)
+        // The pet roll comes first: a pet takes the last free slot ahead of the fish.
+        val raw = objTypes[caught.raw].name
+        publish(SkillingPetRoll(player, SkillingPet.Heron, FishingPets.baseChance(raw)))
         if (!roll.bank || !invAdd(bank, roll.product).success) {
             invAdd(inv, roll.product)
         }

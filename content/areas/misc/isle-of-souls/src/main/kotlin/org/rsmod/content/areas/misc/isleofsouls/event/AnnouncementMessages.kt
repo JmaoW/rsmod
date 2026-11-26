@@ -34,6 +34,12 @@ object AnnouncementMessages {
     fun pet(who: String, pet: String): String =
         "$prefix $who has a funny feeling like they are being followed: ${blue(pet)}."
 
+    fun petBackpack(who: String, pet: String): String =
+        "$prefix $who feels something weird sneaking into their backpack: ${blue(pet)}."
+
+    fun petDuplicate(who: String, pet: String): String =
+        "$prefix $who has a funny feeling like they would have been followed: ${blue(pet)}."
+
     fun leadTaken(team: String, points: Int): String =
         "$prefix ${blue(team)} has taken the lead with ${points(points)}."
 

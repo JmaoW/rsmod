@@ -3,7 +3,6 @@ package org.rsmod.content.areas.misc.isleofsouls.colosseum
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.death.NpcDeathEvents
-import org.rsmod.api.invtx.invAddOrDrop
 import org.rsmod.api.npc.queueDeath
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.stat.statRestoreAll
@@ -14,6 +13,7 @@ import org.rsmod.content.areas.misc.isleofsouls.event.AnnouncementMessages
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
 import org.rsmod.content.areas.misc.isleofsouls.instances.EnterResult
 import org.rsmod.content.areas.misc.isleofsouls.instances.TeamInstances
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.content.interfaces.collectionlog.CollectionLog
 import org.rsmod.events.EventBus
@@ -70,6 +70,7 @@ constructor(
     private val announcer: LeagueAnnouncer,
     private val objRepo: ObjRepository,
     private val eventBus: EventBus,
+    private val pets: Pets,
 ) {
     /** Set when the server starts, from `event-settings.json`. */
     var settings: ColosseumSettings = ColosseumSettings()
@@ -650,7 +651,7 @@ constructor(
         hazards.cleared(run)
         for (member in run.fighters()) {
             val player = member.player
-            if (world.roll(ColosseumLoot.PET_ODDS) == 0) {
+            if (pets.roll(ColosseumLoot.PET_ODDS)) {
                 givePet(player)
             }
             keepGlory(member)
@@ -667,10 +668,7 @@ constructor(
     }
 
     fun givePet(player: Player) {
-        player.invAddOrDrop(objRepo, colosseum_objs.pet, count = 1)
-        collectionLog.receive(player, colosseum_objs.pet.id, 1)
-        announcer.pet(player, colosseum_objs.pet)
-        player.mes("You have a funny feeling like you're being followed.")
+        pets.award(player, pets.pet("smol_heredit"))
     }
 
     /** The run is over with its loot: the chest comes out with Minimus beside it. */

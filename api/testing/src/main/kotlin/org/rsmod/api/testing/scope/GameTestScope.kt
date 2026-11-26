@@ -80,9 +80,9 @@ import org.rsmod.api.registry.player.PlayerRegistry
 import org.rsmod.api.registry.region.RegionRegistry
 import org.rsmod.api.registry.zone.ZonePlayerActivityBitSet
 import org.rsmod.api.registry.zone.ZoneUpdateMap
+import org.rsmod.api.repo.RespawnSpeed
 import org.rsmod.api.repo.controller.ControllerRepository
 import org.rsmod.api.repo.loc.LocRepository
-import org.rsmod.api.repo.RespawnSpeed
 import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.api.repo.player.PlayerRepository
@@ -137,6 +137,7 @@ import org.rsmod.game.loc.LocShape
 import org.rsmod.game.loc.LocZoneKey
 import org.rsmod.game.map.LocZoneStorage
 import org.rsmod.game.map.collision.addLoc
+import org.rsmod.game.map.xtea.XteaMap
 import org.rsmod.game.movement.MoveSpeed
 import org.rsmod.game.movement.RouteRequestLoc
 import org.rsmod.game.queue.EngineQueueCache
@@ -877,16 +878,17 @@ constructor(
     public class Builder(state: GameTestState, private val scripts: Set<KClass<out PluginScript>>) {
         private val cacheTypes: TypeListMap = state.cacheTypes
         private val collisionMap: CollisionFlagMap = state.collision
+        private val xteas: XteaMap = state.xteaRepository
 
         internal fun build(): GameTestScope {
-            val module = TestModule(cacheTypes, collisionMap)
+            val module = TestModule(cacheTypes, collisionMap, xteas)
             val injector = Guice.createInjector(module)
             bindScriptEvents(injector)
             return injector.getInstance(GameTestScope::class.java)
         }
 
         internal fun buildInjector(optionalChildModule: AbstractModule?): Injector {
-            val module = TestModule(cacheTypes, collisionMap)
+            val module = TestModule(cacheTypes, collisionMap, xteas)
             val parentInjector = Guice.createInjector(module)
             val injector =
                 if (optionalChildModule != null) {
@@ -910,6 +912,7 @@ constructor(
     private class TestModule(
         private val cacheTypes: TypeListMap,
         private val gameCollisionMap: CollisionFlagMap,
+        private val xteas: XteaMap,
     ) : AbstractModule() {
         override fun configure() {
             bindInstances()
@@ -940,6 +943,7 @@ constructor(
             }
 
             bind(Realm::class.java).toInstance(createTestRealm())
+            bind(XteaMap::class.java).toInstance(xteas)
             bind(Database::class.java).to(ThrowDatabase::class.java).`in`(Scopes.SINGLETON)
 
             bind(EventBus::class.java).`in`(Scopes.SINGLETON)

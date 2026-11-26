@@ -14,6 +14,8 @@ import org.rsmod.api.player.ui.ifSetEvents
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.random.GameRandom
 import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
+import org.rsmod.content.areas.misc.isleofsouls.pets.PetAward
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRelicTracker
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.toa.ToaItems
@@ -29,6 +31,18 @@ import org.rsmod.game.type.obj.UnpackedObjType
 
 /** One stack of a player's loot. */
 class TobLootEntry(val obj: UnpackedObjType, val count: Int)
+
+/**
+ * A player's rolled loot, waiting in the treasure room: nothing is given or announced until they
+ * open their chest. [unique] and [pet] are told to the party then; [cabbage] marks the loot of a
+ * player who dealt no damage.
+ */
+class TobUnclaimed(
+    val loot: List<TobLootEntry>,
+    val unique: TobUnique?,
+    val pet: Boolean,
+    val cabbage: Boolean,
+)
 
 /** The theatre's uniques and their weights out of 19 (wiki). */
 enum class TobUnique(val label: String, val weight: Int) {
@@ -164,6 +178,7 @@ constructor(
     private val relics: LeagueRelicTracker,
     private val kills: CollectionKillCounts,
     private val collectionLog: CollectionLog,
+    private val pets: Pets,
 ) {
     private val items: ToaItems by lazy { ToaItems(objTypes) }
 
@@ -199,31 +214,58 @@ constructor(
                     teamUniques -> TobLootMath.pickUnique(pick)
                     else -> null
                 }
+            val cabbage = unique == null && member.damage <= 0
             when {
-                unique != null -> {
-                    items.named(unique.label)?.let { loot += TobLootEntry(it, 1) }
-                    for (other in members) {
-                        other.player.mes(
-                            "<col=ff0000>${player.displayName}</col> found something special: " +
-                                "<col=ff0000>${unique.label}</col>"
-                        )
-                    }
-                }
-                member.damage <= 0 -> {
-                    items.named("Cabbage")?.let { loot += TobLootEntry(it, 1) }
-                    player.mes("You receive a cabbage, as you did not contribute to the fight.")
-                }
+                unique != null -> items.named(unique.label)?.let { loot += TobLootEntry(it, 1) }
+                cabbage -> items.named("Cabbage")?.let { loot += TobLootEntry(it, 1) }
                 else -> repeat(TobLootMath.COMMON_ROLLS) { common(standing)?.let(loot::add) }
             }
-            tertiaries(raid, player, standing, loot)
-            for (entry in loot) {
-                player.invAdd(chest(player), entry.obj, entry.count)
+            val pet = tertiaries(player, standing, loot)
+            member.unclaimed = TobUnclaimed(loot, unique, pet, cabbage)
+        }
+    }
+
+    /**
+     * [player] opens their chest in the treasure room: the loot rolled for them goes into it, and
+     * the party hears of a unique or a pet. With [announce] off (they left the raid first) nobody
+     * is told, and the loot waits in the Rewards Chest in Ver Sinhaza. `false` if nothing was
+     * waiting.
+     */
+    fun claim(raid: TobRaid, player: Player, announce: Boolean = true): Boolean {
+        val member = raid.member(player) ?: return false
+        val unclaimed = member.unclaimed ?: return false
+        member.unclaimed = null
+        for (entry in unclaimed.loot) {
+            player.invAdd(chest(player), entry.obj, entry.count)
+        }
+        sync(player)
+        if (!announce) {
+            if (unclaimed.loot.isNotEmpty()) {
+                player.mes("Your unclaimed loot awaits you in the Rewards Chest in Ver Sinhaza.")
             }
-            sync(player)
-            if (loot.isNotEmpty()) {
-                player.mes("Your loot awaits you in your chest.")
+            return true
+        }
+        val party = raid.active.map { it.player }.ifEmpty { listOf(player) }
+        unclaimed.unique?.let { unique ->
+            for (other in party) {
+                other.mes(
+                    "<col=ff0000>${player.displayName}</col> found something special: " +
+                        "<col=ff0000>${unique.label}</col>"
+                )
             }
         }
+        if (unclaimed.pet) {
+            for (other in party) {
+                other.mes(
+                    "<col=ff0000>${player.displayName} has a funny feeling like they would have " +
+                        "been followed...</col>"
+                )
+            }
+        }
+        if (unclaimed.cabbage) {
+            player.mes("You receive a cabbage, as you did not contribute to the fight.")
+        }
+        return true
     }
 
     /** The completion count goes up, with the game's message, and the league's tasks hear of it. */
@@ -304,12 +346,12 @@ constructor(
         return TobLootEntry(obj, count)
     }
 
+    /** Adds the tertiary drops to [loot]; `true` if the pet is among them. */
     private fun tertiaries(
-        raid: TobRaid,
         player: Player,
         standing: Double,
         loot: MutableList<TobLootEntry>,
-    ) {
+    ): Boolean {
         if (roll(TobLootMath.CLUE_CHANCE * standing)) {
             items.named("Clue scroll (elite)")?.let { loot += TobLootEntry(it, 1) }
         }
@@ -319,18 +361,15 @@ constructor(
         if (roll(TobLootMath.SANGUINE_KIT_CHANCE * standing)) {
             items.named("Sanguine ornament kit")?.let { loot += TobLootEntry(it, 1) }
         }
-        if (roll(TobLootMath.PET_CHANCE * standing)) {
-            val pet = byInternal("verzikpet") ?: return
+        if (roll(TobLootMath.PET_CHANCE * standing * pets.oddsMultiplier)) {
+            val pet = byInternal("verzikpet") ?: return false
             if (owns(player, pet)) {
-                return
+                return false
             }
             loot += TobLootEntry(pet, 1)
-            for (member in raid.active) {
-                member.player.mes(
-                    "<col=ff0000>${player.displayName} has a funny feeling like they would have been followed...</col>"
-                )
-            }
+            return true
         }
+        return false
     }
 
     private fun byInternal(name: String): UnpackedObjType? =
@@ -423,6 +462,9 @@ constructor(
     }
 
     private fun intoInventory(player: Player, obj: Int, count: Int): Int {
+        claimPet(player, obj)?.let {
+            return count
+        }
         val type = objTypes[obj] ?: return 0
         val inventory = player.inv
         val fits =
@@ -438,7 +480,19 @@ constructor(
         return if (player.invAdd(inventory, type, fits).success) fits else 0
     }
 
+    /**
+     * A pet leaving the chest is handed out as pets are (follower, backpack, Probita), not put in
+     * the inventory or bank like loot. The chest's claim logs it.
+     */
+    private fun claimPet(player: Player, obj: Int): PetAward? {
+        val (pet, form) = pets.ofObj(obj) ?: return null
+        return pets.award(player, pet, form, log = false)
+    }
+
     private fun intoBank(player: Player, obj: Int, count: Int): Int {
+        claimPet(player, obj)?.let {
+            return count
+        }
         val type = objTypes[obj] ?: return 0
         val bank = player.invMap.getOrPut(invTypes[invs.bank])
         if (!player.invAdd(bank, type, count).success) {

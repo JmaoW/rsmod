@@ -58,3 +58,30 @@ Re-run it after changing `relicPointThresholds`, `xpMultiplier` or `dropMultipli
 the relic layout in `RelicData.kt`, or the task list. It reads each relic's icon from its cache struct
 (param 884, a 120 x 120 sprite) through `tools/cs2/sprites.py`, which writes PNGs with no image
 library. What each relic does is hand-written in `wiki/data/relics.js`.
+
+## Bosses
+
+`gen_bosses.py` writes `wiki/data/bosses-generated.js`, the generated half of the boss pages:
+
+```bash
+python tools/wiki/gen_bosses.py
+```
+
+Re-run it after changing a boss, its drops, its entrance, its tasks or the event settings it reads
+(`toa`, `tob`, `cox`, the cave modes, PvP). It gives each fight its stats (from the cache, or from the
+code where the code sets them: ToB hitpoints, the Chambers of Xeric base figures in `CoxScaling.kt`
+and the Great Olm's hitpoints by party size), drop tables with league rates, the collection log
+category, where the entrance is and the league tasks. A new page needs an entry in `FIGHTS` and
+`PAGES` here and its hand-written half in `wiki/data/bosses.js`.
+
+## Pets
+
+`gen_pets.py` writes `wiki/data/pets-generated.js` from the game's pet table
+(`tools/pets/gen_pets.py`):
+
+```bash
+python -I tools/wiki/gen_pets.py
+```
+
+Where each pet comes from on the isle is hand-written in its `SOURCES`; add a pet there when the
+content that gives it is built.

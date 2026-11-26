@@ -17,6 +17,13 @@ public class NpcDropEvents {
         public val countMultipliers: MutableMap<ObjType, Double> = HashMap()
 
         /**
+         * Items whose chance to be rolled is multiplied by their own factor, keyed by obj id. A
+         * listed item ignores [multiplier] (the league's pets have their own odds setting and are
+         * never boosted by the relics). Items not listed are unchanged.
+         */
+        public val chanceMultipliers: MutableMap<Int, Double> = HashMap()
+
+        /**
          * The variant of the monster's table to roll for [hero], if it has one. `null` rolls the
          * usual table.
          */

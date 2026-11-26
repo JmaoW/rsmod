@@ -2,6 +2,7 @@ package org.rsmod.content.areas.misc.isleofsouls.fightcaves
 
 import jakarta.inject.Inject
 import org.rsmod.api.death.NpcDeathEvents
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.npc.interact.AiPlayerInteractions
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.repo.npc.NpcRepository
@@ -170,7 +171,7 @@ constructor(
             healer.actionDelay = mapClock.cycle + HEAL_INTERVAL
             healer.anim(cave_seqs.yt_mejkot_heal)
             jad.spotanim(cave_spotanims.heal)
-            jad.hitpoints = minOf(jad.baseHitpointsLvl, jad.hitpoints + HEAL_AMOUNT)
+            jad.healHitpoints(HEAL_AMOUNT)
         }
     }
 

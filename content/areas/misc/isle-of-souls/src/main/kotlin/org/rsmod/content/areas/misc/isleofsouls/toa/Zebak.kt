@@ -5,6 +5,7 @@ import kotlin.math.max
 import org.rsmod.api.combat.NpcAttack
 import org.rsmod.api.combat.NpcAttackStyle
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.vars.varMoveSpeed
@@ -522,7 +523,7 @@ class ZebakRuntime(env: ToaRoomEnv, raid: ToaRaid) :
             player.soundSynth(toa_synths.zebak_barrage)
         }
         if (heal > 0) {
-            boss.hitpoints = minOf(boss.baseHitpointsLvl, boss.hitpoints + heal)
+            boss.healHitpoints(heal)
         }
     }
 
@@ -579,7 +580,7 @@ class ZebakRuntime(env: ToaRoomEnv, raid: ToaRaid) :
             for (player in players) {
                 if (gap(npc, player.coords) <= 1) {
                     hurtFlat(player, 2)
-                    npc.hitpoints = minOf(npc.baseHitpointsLvl, npc.hitpoints + 2)
+                    npc.healHitpoints(2)
                 }
             }
         }

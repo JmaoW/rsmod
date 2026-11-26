@@ -3,6 +3,7 @@ package org.rsmod.content.areas.misc.isleofsouls.toa
 import org.rsmod.api.combat.NpcAttack
 import org.rsmod.api.combat.NpcAttackStyle
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.output.mes
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
@@ -677,8 +678,7 @@ class WardensFinalRuntime(env: ToaRoomEnv, raid: ToaRaid) :
         }
         phase = 3
         skullsOut = false
-        boss.hitpoints =
-            minOf(boss.baseHitpointsLvl, boss.hitpoints + boss.baseHitpointsLvl * 20 / 100)
+        boss.healHitpoints(boss.baseHitpointsLvl * 20 / 100)
         boss.defenceLvl = ENRAGED_DEFENCE
         boss.anim(wardens_seqs.enraging)
         sound(toa_synths.wardens_revive, roomPlayers())

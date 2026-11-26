@@ -212,7 +212,9 @@ class GauntletRewardsTest {
             deps.rewards
                 .roll(RewardKind.Completed, GauntletMode.Corrupted, false) { 0 }
                 .map { it.obj.id }
-        assertTrue(GauntletRewardObjs.gauntletpet_corrupt.id in hm)
+        // Wiki: the Corrupted Gauntlet gives the ordinary Youngllef too.
+        assertTrue(GauntletRewardObjs.gauntletpet.id in hm)
+        assertFalse(GauntletRewardObjs.gauntletpet_corrupt.id in hm)
     }
 
     @Test

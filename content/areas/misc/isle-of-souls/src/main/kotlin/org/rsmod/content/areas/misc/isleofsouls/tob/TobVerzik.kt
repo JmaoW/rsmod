@@ -14,6 +14,7 @@ import org.rsmod.api.player.stat.statBase
 import org.rsmod.api.repo.npc.NpcRepository
 import org.rsmod.api.script.onOpLoc1
 import org.rsmod.api.script.onOpNpc1
+import org.rsmod.api.type.builders.mesanim.MesAnimBuilder
 import org.rsmod.api.type.refs.loc.LocReferences
 import org.rsmod.api.type.refs.npc.NpcReferences
 import org.rsmod.api.type.refs.seq.SeqReferences
@@ -21,16 +22,20 @@ import org.rsmod.api.type.refs.spot.SpotanimReferences
 import org.rsmod.api.type.refs.synth.SynthReferences
 import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
+import org.rsmod.game.entity.util.PathingEntityCommon
 import org.rsmod.game.hit.Hit
 import org.rsmod.game.hit.HitBuilder
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.loc.LocAngle
 import org.rsmod.game.map.Direction
+import org.rsmod.game.movement.RouteRequestCoord
 import org.rsmod.game.type.npc.NpcType
 import org.rsmod.game.type.obj.ObjTypeList
 import org.rsmod.map.CoordGrid
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
+import org.rsmod.routefinder.collision.CollisionStrategy
+import org.rsmod.routefinder.flag.CollisionFlag
 
 object VerzikNpcs : NpcReferences() {
     val waiting = find("verzik_initial")
@@ -80,6 +85,27 @@ object VerzikSeqs : SeqReferences() {
     val p3_death = find("verzik_phase3_death_a")
     val pillar_collapse = find("verzik_pillar_collapse")
     val pillar_fade = find("verzik_pillar_fade")
+    val chat_talk = find("verzik_chathead_talk")
+    val chat_laugh = find("verzik_chathead_laugh")
+}
+
+/** Verzik's chat head moves with her own talking and laughing animations, not a human's. */
+object VerzikMesAnims : MesAnimBuilder() {
+    val talk =
+        build("verzik_talk") {
+            len1 = VerzikSeqs.chat_talk
+            len2 = VerzikSeqs.chat_talk
+            len3 = VerzikSeqs.chat_talk
+            len4 = VerzikSeqs.chat_talk
+        }
+
+    val laugh =
+        build("verzik_laugh") {
+            len1 = VerzikSeqs.chat_laugh
+            len2 = VerzikSeqs.chat_laugh
+            len3 = VerzikSeqs.chat_laugh
+            len4 = VerzikSeqs.chat_laugh
+        }
 }
 
 object VerzikSpots : SpotanimReferences() {
@@ -181,6 +207,13 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
     private var special = 0
     private var busyUntil = 0
     private var enraged = false
+
+    /** On her way to the middle for the web spin, and for how many ticks. */
+    private var webWalking = false
+    private var webWalkTicks = 0
+
+    /** Her tiles while she spins, closed to players (region tiles this room flagged). */
+    private val closedTiles = ArrayList<CoordGrid>()
 
     override fun build() {
         val npc = spawn(VerzikNpcs.waiting, THRONE, scale = true, facing = Direction.South)
@@ -699,6 +732,10 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
         val alive = target != null && target in fightPlayers()
         if ((alive && gap(npc, checkNotNull(target).coords) <= 1) || minion.age >= NYLO_FUSE) {
             minions.remove(npc)
+            npc.resetMovement()
+            npc.resetFaceEntity()
+            npc.anim(NylocasSeqs.detonate.getValue(minion.style))
+            realOf(npc.coords)?.let { graphic(NylocasSpots.detonate.getValue(minion.style), it) }
             for (player in fightPlayers()) {
                 val distance = gap(npc, player.coords)
                 val damage = NYLO_FALLOFF.getOrNull((distance - 1).coerceAtLeast(0)) ?: 0
@@ -706,7 +743,8 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
                     hurt(player, damage)
                 }
             }
-            despawn(npc)
+            // Gone once the blast has played.
+            later(ticksOf(NylocasSeqs.detonate.getValue(minion.style), least = 2)) { despawn(npc) }
             return
         }
         if (alive) {
@@ -789,6 +827,10 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
                 sendTornado(player)
             }
         }
+        if (webWalking) {
+            walkToWebs(npc)
+            return
+        }
         if (now < busyUntil) {
             return
         }
@@ -865,34 +907,120 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
         }
     }
 
+    /**
+     * The web spin: she drops her target and walks to the middle of the room (passing through the
+     * party), and only once she stands there does she spin.
+     */
     private fun webs(npc: Npc) {
-        busyUntil = now + WEB_SPIN
+        target = null
+        webWalking = true
+        webWalkTicks = 0
+        npc.resetFaceEntity()
+        npc.collisionOverride = CollisionStrategy.IgnoreEntities
         npc.walk(regionOf(WEB_CENTRE))
-        later(3) {
-            if (phase != 3) return@later
-            npc.resetMovement()
-            val centre = centre(npc)
-            for (player in fightPlayers()) {
-                if (gap(npc, player.coords) > 3) continue
-                val from = realOf(player.coords) ?: continue
-                val to = from.translate((from.x - centre.x).sign * 4, (from.z - centre.z).sign * 4)
-                if (room.inArena(to) && walkable(to)) {
-                    knockback(player, to)
-                }
+    }
+
+    private fun walkToWebs(npc: Npc) {
+        val centre = regionOf(WEB_CENTRE)
+        if (npc.coords != centre && ++webWalkTicks < WEB_WALK_MAX) {
+            if (npc.routeDestination.isEmpty()) {
+                npc.walk(centre)
             }
-            npc.anim(VerzikSeqs.p3_webs)
-            val players = fightPlayers()
-            for (i in 0 until WEB_SPIN - 10) {
-                if (players.isEmpty()) break
-                later(i) {
-                    val target = players[(i / 3) % players.size]
-                    if (target !in fightPlayers()) return@later
-                    val end = realOf(target.coords) ?: return@later
-                    shootWeb(npc, end)
-                    repeat(2) { shootWeb(npc, end.translate(roll(-3, 3), roll(-3, 3))) }
+            return
+        }
+        webWalking = false
+        npc.collisionOverride = null
+        npc.resetMovement()
+        if (npc.coords != centre) {
+            // Something held her up: she gets there all the same.
+            PathingEntityCommon.telejump(npc, env.collision, centre)
+        }
+        spinWebs(npc)
+    }
+
+    private fun spinWebs(npc: Npc) {
+        busyUntil = now + WEB_SPIN
+        pushOutFromUnder(npc)
+        closeTiles(npc)
+        npc.anim(VerzikSeqs.p3_webs)
+        val players = fightPlayers()
+        for (i in 0 until WEB_SPIN - 10) {
+            if (players.isEmpty()) break
+            later(i) {
+                val target = players[(i / 3) % players.size]
+                if (target !in fightPlayers()) return@later
+                val end = realOf(target.coords) ?: return@later
+                shootWeb(npc, end)
+                repeat(2) { shootWeb(npc, end.translate(roll(-3, 3), roll(-3, 3))) }
+            }
+        }
+        later(WEB_SPIN) { openTiles() }
+    }
+
+    /** Anyone under her is slid out to the nearest free tile beside her. */
+    private fun pushOutFromUnder(npc: Npc) {
+        val sw = realOf(npc.coords) ?: return
+        val ring =
+            (-1..npc.size)
+                .flatMap { dx -> (-1..npc.size).map { dz -> sw.translate(dx, dz) } }
+                .filter { gap(npc, regionOf(it)) == 1 && room.inArena(it) && walkable(it) }
+        for (player in fightPlayers()) {
+            if (gap(npc, player.coords) != 0) {
+                continue
+            }
+            val at = realOf(player.coords) ?: continue
+            val to = ring.minByOrNull { abs(it.x - at.x) + abs(it.z - at.z) } ?: continue
+            knockback(player, to, cycles = 20)
+        }
+    }
+
+    /**
+     * While she spins nobody can step under her. Her tiles are closed as blocked floor, which the
+     * pathfinder routes round (a player-only flag would only stop each step, so a click past her
+     * would end at her edge). Anyone already walking is routed again to where they were going.
+     */
+    private fun closeTiles(npc: Npc) {
+        openTiles()
+        for (dx in 0 until npc.size) {
+            for (dz in 0 until npc.size) {
+                val tile = npc.coords.translate(dx, dz)
+                if ((env.collision[tile.x, tile.z, tile.level] and CLOSED_FLAG) == 0) {
+                    env.collision.add(tile.x, tile.z, tile.level, CLOSED_FLAG)
+                    closedTiles += tile
                 }
             }
         }
+        for (player in roomPlayers()) {
+            val goingTo = player.routeDestination.lastOrNull() ?: continue
+            if (player.interaction != null) {
+                // The interaction routes itself again next tick.
+                player.abortRoute()
+            } else {
+                player.routeRequest = RouteRequestCoord(goingTo)
+            }
+        }
+    }
+
+    /** Whether [region] is one of her tiles closed for the web spin. */
+    fun isClosed(region: CoordGrid): Boolean = region in closedTiles
+
+    /** She is spinning webs (her tiles are closed). */
+    val isSpinning: Boolean
+        get() = closedTiles.isNotEmpty()
+
+    /** Sends her off to spin webs now, as her next special would (phase 3 only; for tests). */
+    fun spinWebsNow() {
+        val npc = verzik ?: return
+        if (phase == 3 && !transition && !webWalking && now >= busyUntil) {
+            webs(npc)
+        }
+    }
+
+    private fun openTiles() {
+        for (tile in closedTiles) {
+            env.collision.remove(tile.x, tile.z, tile.level, CLOSED_FLAG)
+        }
+        closedTiles.clear()
     }
 
     private fun shootWeb(npc: Npc, tile: CoordGrid) {
@@ -1076,6 +1204,8 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
 
     private fun die(npc: Npc) {
         transition = true
+        webWalking = false
+        openTiles()
         npc.resetMovement()
         for (minion in minions.values.toList()) {
             despawn(minion.npc)
@@ -1092,6 +1222,10 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
             verzik = null
             complete()
         }
+    }
+
+    override fun onDestroy() {
+        openTiles()
     }
 
     override fun onComplete() {
@@ -1158,6 +1292,12 @@ class VerzikRuntime(env: TobRoomEnv, raid: TobRaid, private val objTypes: ObjTyp
         private const val P3_RANGED_MAGIC = 33
         private const val SPECIAL_EVERY = 4
         private const val WEB_SPIN = 35
+
+        /** What closes her tiles to the party during the web spin. */
+        private const val CLOSED_FLAG = CollisionFlag.BLOCK_WALK
+
+        /** The longest she walks towards the middle before simply standing there. */
+        private const val WEB_WALK_MAX = 15
         private const val WEB_LIFE = 12
         private const val WEB_MAX = 40
         private const val WEB_FREEZE = 20
@@ -1196,11 +1336,11 @@ constructor(
         deaths[VerzikNpcs.web] = null
         deaths[VerzikNpcs.tornado] = null
         tobMonsterDeaths(rooms, npcRepo, deaths)
-        onOpNpc1(VerzikNpcs.waiting) { talkToVerzik() }
+        onOpNpc1(VerzikNpcs.waiting) { talkToVerzik(it.npc) }
         onOpLoc1(XarpusLocs.skeleton) { searchSkeleton() }
     }
 
-    private suspend fun ProtectedAccess.talkToVerzik() {
+    private suspend fun ProtectedAccess.talkToVerzik(verzik: Npc) {
         val raid = raids.raidOf(player) ?: return
         if (raid.member(player)?.room != TobRoom.Verzik || raids.isStarted(raid, TobRoom.Verzik)) {
             return
@@ -1211,12 +1351,15 @@ constructor(
             return
         }
         var begin = false
-        startDialogue {
-            mesbox(
-                "Verzik Vitur: Now that was quite the show! I haven't been that entertained in a long time."
+        startDialogue(verzik) {
+            chatNpcNoTurn(
+                VerzikMesAnims.talk,
+                "Now that was quite the show! I haven't been that entertained in a long time.",
             )
-            mesbox(
-                "Verzik Vitur: Of course, you know I can't let you leave here alive. Time for your final performance..."
+            chatNpcNoTurn(
+                VerzikMesAnims.laugh,
+                "Of course, you know I can't let you leave here alive. Time for your final " +
+                    "performance...",
             )
             begin =
                 choice2(

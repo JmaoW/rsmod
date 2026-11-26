@@ -6,13 +6,15 @@ import org.rsmod.api.config.locParam
 import org.rsmod.api.config.locXpParam
 import org.rsmod.api.config.objParam
 import org.rsmod.api.config.refs.content
-import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.controllers
+import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
 import org.rsmod.api.config.refs.varcons
 import org.rsmod.api.controller.vars.intVarCon
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.ClientScripts
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.righthand
@@ -28,6 +30,7 @@ import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.stats.levelmod.InvisibleLevels
 import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.content.skills.woodcutting.configs.WoodcuttingParams
+import org.rsmod.content.skills.woodcutting.configs.WoodcuttingPets
 import org.rsmod.events.UnboundEvent
 import org.rsmod.game.MapClock
 import org.rsmod.game.entity.Controller
@@ -41,8 +44,8 @@ import org.rsmod.game.type.loc.LocTypeList
 import org.rsmod.game.type.loc.UnpackedLocType
 import org.rsmod.game.type.obj.ObjType
 import org.rsmod.game.type.obj.ObjTypeList
-import org.rsmod.game.type.obj.isType
 import org.rsmod.game.type.obj.UnpackedObjType
+import org.rsmod.game.type.obj.isType
 import org.rsmod.game.type.seq.SeqType
 import org.rsmod.map.zone.ZoneKey
 import org.rsmod.plugin.scripts.PluginScript
@@ -157,6 +160,14 @@ constructor(
             val xp = type.treeXp * xpMods.get(player, stats.woodcutting)
             spam("You get some ${product.name.lowercase()}.")
             statAdvance(stats.woodcutting, xp)
+            // The pet roll comes first: a pet takes the last free slot ahead of the logs.
+            publish(
+                SkillingPetRoll(
+                    player,
+                    SkillingPet.Beaver,
+                    WoodcuttingPets.baseChance(product.name),
+                )
+            )
             val given = rolled?.product ?: product
             val givenCount = rolled?.productCount ?: 1
             if (rolled?.consume != true) {

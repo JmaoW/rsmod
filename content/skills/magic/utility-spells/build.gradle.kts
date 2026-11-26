@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(projects.api.combat.combatManager)
     implementation(projects.api.death)
+    implementation(projects.api.gameProcess)
     implementation(projects.api.npc)
     implementation(projects.api.invtx)
     implementation(projects.api.pluginCommons)

@@ -16,11 +16,13 @@ import org.rsmod.api.inv.HeldOpScript
 import org.rsmod.api.player.ui.IfOverlayButton
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.player.vars.typeNpcUidVarp
+import org.rsmod.api.registry.npc.NpcRegistry
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.factory.npcTypeFactory
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.configs.isle_objs
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.entity.NpcList
 import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.entity.npc.NpcUid
@@ -32,7 +34,9 @@ import org.rsmod.game.type.util.ParamMap
 import org.rsmod.map.CoordGrid
 
 class LeagueGuardianTest {
-    class Deps @Inject constructor(val guardian: LeagueGuardian)
+    class Deps
+    @Inject
+    constructor(val guardian: LeagueGuardian, val npcList: NpcList, val npcRegistry: NpcRegistry)
 
     /** The script the server registers must be the one the test reads. */
     private object GuardianModule : AbstractModule() {
@@ -46,6 +50,9 @@ class LeagueGuardianTest {
 
     private val spot = CoordGrid(0, 50, 50, 20, 20)
 
+    private fun Npc.isFacing(player: Player): Boolean =
+        faceEntity.isPlayer && faceEntity.playerSlot == player.slotId
+
     private fun GameTestState.runGuardianTest(body: GameTestScope.(LeagueGuardian) -> Unit) =
         runInjectedGameTest(
             Deps::class,
@@ -57,7 +64,14 @@ class LeagueGuardianTest {
             player.clearInv()
             player.teleport(spot)
             advance(1)
-            body(deps.guardian)
+            // Npcs left in the world keep their collision in the map the next test shares, and
+            // would stand in a walking guardian's way: delete them when the test ends.
+            try {
+                body(deps.guardian)
+            } finally {
+                val leftover = buildList { for (npc in deps.npcList) add(npc) }
+                leftover.forEach(deps.npcRegistry::del)
+            }
         }
 
     private fun GameTestScope.choose(chosen: Boolean) {
@@ -110,7 +124,8 @@ class LeagueGuardianTest {
         player.inv[0] = InvObj(isle_objs.guardian_horn)
         horn(1)
         val npc = checkNotNull(guardian.guardianOf(player))
-        assertEquals(NpcMode.PlayerFollow, npc.mode)
+        assertEquals(NpcMode.None, npc.mode)
+        assertTrue(npc.isFacing(player), "looks at its owner")
 
         horn(2)
         assertNull(guardian.guardianOf(player), "dismissed")
@@ -136,6 +151,76 @@ class LeagueGuardianTest {
             assertTrue(target.hitpoints < 500, "hit points ${target.hitpoints}")
             assertTrue(500 - target.hitpoints <= 4 * LeagueGuardian.MAX_HIT * 2)
             assertNotNull(guardian.guardianOf(player))
+        }
+
+    @Test
+    fun GameTestState.`it looks at what the player is fighting, and at the player otherwise`() =
+        runGuardianTest { guardian ->
+            choose(chosen = true)
+            player.inv[0] = InvObj(isle_objs.guardian_horn)
+            horn(1)
+            val npc = checkNotNull(guardian.guardianOf(player))
+            val target = monster(at = spot.translateX(3))
+            player.aggressiveNpc = target.uid
+            advance(2)
+            assertTrue(npc.faceEntity.isNpc && npc.faceEntity.npcSlot == target.slotId, "target")
+            assertEquals(NpcMode.None, npc.mode)
+
+            player.aggressiveNpc = null
+            advance(1)
+            assertTrue(npc.isFacing(player), "back to its owner")
+        }
+
+    @Test
+    fun GameTestState.`with melee it walks up to the target, then back to the player`() =
+        runGuardianTest { guardian ->
+            choose(chosen = true)
+            player.inv[0] = InvObj(isle_objs.guardian_horn)
+            horn(1)
+            val npc = checkNotNull(guardian.guardianOf(player))
+            val target = monster(stab = 0, ranged = 50, magic = 50, at = spot.translateX(5))
+            player.aggressiveNpc = target.uid
+            advance(LeagueGuardian.ATTACK_INTERVAL * 4)
+            val at = npc.coords
+            val to = target.coords
+            val beside =
+                (at.z == to.z && kotlin.math.abs(at.x - to.x) == 1) ||
+                    (at.x == to.x && kotlin.math.abs(at.z - to.z) == 1)
+            assertTrue(beside, "stands beside its target: $at, target $to")
+            assertTrue(target.hitpoints < 500, "struck it: ${target.hitpoints}")
+
+            player.aggressiveNpc = null
+            advance(8)
+            assertTrue(npc.isWithinDistance(player, 1), "back beside its owner: ${npc.coords}")
+        }
+
+    @Test
+    fun GameTestState.`ranged and magic attack from where it stands`() =
+        runGuardianTest { guardian ->
+            choose(chosen = true)
+            player.inv[0] = InvObj(isle_objs.guardian_horn)
+            horn(1)
+            val npc = checkNotNull(guardian.guardianOf(player))
+            val target = monster(stab = 300, ranged = 300, magic = -60, at = spot.translateX(5))
+            player.aggressiveNpc = target.uid
+            advance(LeagueGuardian.ATTACK_INTERVAL * 4)
+            assertTrue(npc.isWithinDistance(player, 1), "stayed with its owner: ${npc.coords}")
+            assertTrue(target.hitpoints < 500, "hit it: ${target.hitpoints}")
+        }
+
+    @Test
+    fun GameTestState.`changing the outfit keeps the same guardian where it is`() =
+        runGuardianTest { guardian ->
+            choose(chosen = true)
+            player.inv[0] = InvObj(isle_objs.guardian_horn)
+            horn(1)
+            val npc = checkNotNull(guardian.guardianOf(player))
+            val coords = npc.coords
+            horn(4)
+            assertTrue(npc === guardian.guardianOf(player), "the same npc, not a new one")
+            assertEquals(coords, npc.coords)
+            assertEquals(GuardianNpcs.outfits[1].id, npc.visType.id)
+            assertTrue(npc.isFacing(player), "still looks at its owner")
         }
 
     @Test

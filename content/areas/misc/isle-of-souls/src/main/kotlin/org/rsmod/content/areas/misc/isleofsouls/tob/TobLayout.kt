@@ -24,15 +24,29 @@ object TobLayout {
     private const val REAL_ZONE_X = REAL_MIN_X / ZoneGrid.LENGTH
     private const val REAL_ZONE_Z = REAL_MIN_Z / ZoneGrid.LENGTH
 
+    /**
+     * Map square (52, 69), the theatre's north-east corner past the Bloat's room, is left out: its
+     * locs are encrypted and `xteas.json` has no key for it, so a client asked to load it waits for
+     * it forever (the scene never loads and the room's red fade never clears). Nothing of the
+     * theatre is there; square (52, 67) holds the Shadow Realm and is kept.
+     */
     fun template(): RegionStaticTemplate =
         RegionTemplate.createLarge {
             copyAllLevels(REAL_ZONE_X, REAL_ZONE_Z) {
-                zoneWidth = ZONES
+                zoneWidth = ZONES - SQUARE_ZONES
                 zoneLength = ZONES
                 regionZoneX = 0
                 regionZoneZ = 0
             }
+            copyAllLevels(REAL_ZONE_X + ZONES - SQUARE_ZONES, REAL_ZONE_Z) {
+                zoneWidth = SQUARE_ZONES
+                zoneLength = ZONES - SQUARE_ZONES
+                regionZoneX = ZONES - SQUARE_ZONES
+                regionZoneZ = 0
+            }
         }
+
+    private const val SQUARE_ZONES = 64 / ZoneGrid.LENGTH
 
     fun isTheatre(real: CoordGrid): Boolean =
         real.x - REAL_MIN_X in 0 until SIZE && real.z - REAL_MIN_Z in 0 until SIZE
@@ -194,11 +208,11 @@ enum class TobRoom(
     Sotetseg(
         label = "Sotetseg",
         wave = 4,
-        // The capture's arrival (3294, 4315) is walled off in the static map; the walkway beside
-        // it.
-        arrival = CoordGrid(3291, 4318, 0),
+        // Just inside the Formidable passage (3279-3280, 4293), at the foot of the corridor up to
+        // the barrier.
+        arrival = CoordGrid(3279, 4294, 0),
         spreadX = 1,
-        spreadZ = 2,
+        spreadZ = 1,
         bounds = TobBox(3270, 4290, 3296, 4335),
         arena = TobBox(3273, 4306, 3286, 4332),
         barriers = listOf(TobBarrier(line(3278, 4307, 3281, 4307), fightIsGreater = true)),

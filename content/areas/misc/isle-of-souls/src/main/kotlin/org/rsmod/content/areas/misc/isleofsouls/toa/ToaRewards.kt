@@ -14,6 +14,8 @@ import org.rsmod.api.player.ui.ifSetEvents
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.random.GameRandom
 import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
+import org.rsmod.content.areas.misc.isleofsouls.pets.PetAward
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRelicTracker
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.interfaces.collectionlog.CollectionKillCounts
@@ -87,6 +89,7 @@ constructor(
     private val relics: LeagueRelicTracker,
     private val kills: CollectionKillCounts,
     private val collectionLog: CollectionLog,
+    private val pets: Pets,
 ) {
     private val items: ToaItems by lazy { ToaItems(objTypes) }
 
@@ -196,7 +199,11 @@ constructor(
 
     /** Wiki: the pet is rolled like a unique, once for the team, and given out the same way. */
     private fun petWinner(raid: ToaRaid, level: Int): ToaMember? {
-        val chance = ToaLootMath.petChance(raid.points.teamLootPoints, level)
+        val chance =
+            minOf(
+                1.0,
+                ToaLootMath.petChance(raid.points.teamLootPoints, level) * pets.oddsMultiplier,
+            )
         if (pick(PRECISION) >= chance * PRECISION) {
             return null
         }
@@ -404,6 +411,9 @@ constructor(
     }
 
     private fun intoInventory(player: Player, obj: Int, count: Int): Int {
+        claimPet(player, obj)?.let {
+            return count
+        }
         val type = objTypes[obj] ?: return 0
         val inventory = player.inv
         val fits =
@@ -419,7 +429,19 @@ constructor(
         return if (player.invAdd(inventory, type, fits).success) fits else 0
     }
 
+    /**
+     * A pet leaving the chest is handed out as pets are (follower, backpack, Probita), not put in
+     * the inventory or bank like loot. The chest's claim logs it.
+     */
+    private fun claimPet(player: Player, obj: Int): PetAward? {
+        val (pet, form) = pets.ofObj(obj) ?: return null
+        return pets.award(player, pet, form, log = false)
+    }
+
     private fun intoBank(player: Player, obj: Int, count: Int): Int {
+        claimPet(player, obj)?.let {
+            return count
+        }
         val type = objTypes[obj] ?: return 0
         val bank = player.invMap.getOrPut(invTypes[invs.bank])
         if (!player.invAdd(bank, type, count).success) {

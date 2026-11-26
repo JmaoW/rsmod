@@ -5,6 +5,7 @@ import kotlin.math.abs
 import org.rsmod.api.combat.NpcAttack
 import org.rsmod.api.combat.NpcAttacks
 import org.rsmod.api.config.refs.projanims
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.player.output.mes
@@ -364,7 +365,7 @@ constructor(
                 if (zuk.hitpoints < zuk.baseHitpointsLvl) {
                     zuk.spotanim(cave_spotanims.heal)
                     val heal = HEAL_MIN + random.of(HEAL_SPREAD)
-                    zuk.hitpoints = minOf(zuk.baseHitpointsLvl, zuk.hitpoints + heal)
+                    zuk.healHitpoints(heal)
                 }
             } else if (players.isNotEmpty()) {
                 // Hit, it turns round from Zuk to face the arena and throws its lava there.

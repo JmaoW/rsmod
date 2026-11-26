@@ -3,6 +3,8 @@ package org.rsmod.content.skills.thieving.scripts
 import jakarta.inject.Inject
 import java.util.WeakHashMap
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.thievingLvl
@@ -13,6 +15,7 @@ import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.content.skills.thieving.configs.Drop
 import org.rsmod.content.skills.thieving.configs.Stall
 import org.rsmod.content.skills.thieving.configs.Stalls
+import org.rsmod.content.skills.thieving.configs.ThievingPets
 import org.rsmod.content.skills.thieving.configs.ThievingSeqs
 import org.rsmod.events.UnboundEvent
 import org.rsmod.game.entity.Player
@@ -97,6 +100,8 @@ constructor(
     }
 
     private fun ProtectedAccess.award(stall: Stall) {
+        // The pet roll comes first: a pet takes the last free slot ahead of the loot.
+        publish(SkillingPetRoll(player, SkillingPet.Rocky, ThievingPets.stallChance(stall.key)))
         val item = roll(stall)
         val added = invAdd(inv, item.obj, item.count).success
         if (!added) {

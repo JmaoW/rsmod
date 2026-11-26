@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import kotlin.math.abs
 import kotlin.math.sign
 import org.rsmod.api.config.refs.queues
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.npc.interact.AiPlayerInteractions
 import org.rsmod.api.player.clearInteractionRoute
 import org.rsmod.api.player.isValidTarget
@@ -426,7 +427,7 @@ constructor(
             }
             val done = attacks.hurt(boss, player, attacks.rollPool())
             specialDamage(run, player, done)
-            boss.hitpoints = minOf(HITPOINTS, boss.hitpoints + done)
+            boss.healHitpoints(done, HITPOINTS)
         }
 
         val shotsDone = run.rapidLeft == 0 && run.rapidShots.isEmpty()

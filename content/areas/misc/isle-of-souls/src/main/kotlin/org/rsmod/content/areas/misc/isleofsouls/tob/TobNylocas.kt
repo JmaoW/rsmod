@@ -3,6 +3,7 @@ package org.rsmod.content.areas.misc.isleofsouls.tob
 import jakarta.inject.Inject
 import org.rsmod.api.combat.NpcAttack
 import org.rsmod.api.combat.NpcAttackStyle
+import org.rsmod.api.config.refs.queues
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.player.stat.stat
 import org.rsmod.api.repo.npc.NpcRepository
@@ -14,6 +15,7 @@ import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.Player
 import org.rsmod.game.hit.HitBuilder
 import org.rsmod.game.hit.HitType
+import org.rsmod.game.interact.InteractionNpc
 import org.rsmod.game.loc.LocAngle
 import org.rsmod.game.type.npc.NpcType
 import org.rsmod.game.type.seq.SeqType
@@ -192,10 +194,18 @@ object NylocasWaves {
  * every 4 ticks, explosions reaching one tile, Vasilias's tile.
  */
 class NylocasRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, TobRoom.Nylocas) {
+    /**
+     * A tunnel: [start] is its far end (the map's tunnels run x 3280-3289 west, x 3302-3311 east
+     * and z 4233-4241 south, two tiles wide), [mouth] where it opens into the room.
+     */
     enum class Lane(val start: CoordGrid, val mouth: CoordGrid, val supports: List<Corner>) {
-        East(CoordGrid(3307, 4248, 0), CoordGrid(3301, 4248, 0), listOf(Corner.NE, Corner.SE)),
-        South(CoordGrid(3295, 4237, 0), CoordGrid(3295, 4243, 0), listOf(Corner.SW, Corner.SE)),
-        West(CoordGrid(3283, 4248, 0), CoordGrid(3290, 4248, 0), listOf(Corner.NW, Corner.SW)),
+        East(CoordGrid(3311, 4248, 0), CoordGrid(3301, 4248, 0), listOf(Corner.NE, Corner.SE)),
+        South(CoordGrid(3295, 4233, 0), CoordGrid(3295, 4243, 0), listOf(Corner.SW, Corner.SE)),
+        West(CoordGrid(3280, 4248, 0), CoordGrid(3290, 4248, 0), listOf(Corner.NW, Corner.SW));
+
+        /** Where a nylocas of [size] appears: a big one still fits inside the tunnel's end. */
+        fun startFor(size: Int): CoordGrid =
+            if (this == East) start.translate(1 - size, 0) else start
     }
 
     enum class Corner(val sw: CoordGrid, val angle: LocAngle, val spots: List<CoordGrid>) {
@@ -317,10 +327,11 @@ class NylocasRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid,
 
     private fun spawnNylo(spawn: NyloSpawn, lane: Lane, at: CoordGrid?): Npc {
         val first = spawn.flickers.firstOrNull() ?: spawn.style
+        val type = typeOf(spawn, first)
         val npc =
             spawn(
-                typeOf(spawn, first),
-                at ?: lane.start,
+                type,
+                at ?: lane.startFor(env.npcTypes[type].size),
                 hitpoints = if (spawn.big) BIG_HITPOINTS else SMALL_HITPOINTS,
                 ignoreCollision = at == null,
             )
@@ -541,11 +552,25 @@ class NylocasRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid,
         if (++formTicks >= FORM_TICKS) {
             formTicks = 0
             changeForm(npc, pick(NyloStyle.entries.filter { it != vasiliasStyle }))
-            for (player in fightPlayers()) {
-                player.clearInteraction()
-            }
+            stopAttacking(npc)
         }
         driveMonsters()
+    }
+
+    /**
+     * Everyone attacking Vasilias stops when it changes form, so nobody swings the old style at the
+     * new one: their attack is dropped, along with an auto-retaliate already queued from one of its
+     * bites (which would otherwise start them attacking again straight away).
+     */
+    private fun stopAttacking(npc: Npc) {
+        for (player in roomPlayers()) {
+            val interaction = player.interaction
+            if (interaction is InteractionNpc && interaction.target === npc) {
+                player.clearInteraction()
+                player.resetFaceEntity()
+            }
+            player.clearQueue(queues.com_retaliate_npc)
+        }
     }
 
     private fun changeForm(npc: Npc, style: NyloStyle) {

@@ -6,6 +6,8 @@ import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.varps
 import org.rsmod.api.death.PlayerDeathEvents
+import org.rsmod.api.game.process.GameLifecycle
+import org.rsmod.api.game.process.npc.NpcFollowWalker
 import org.rsmod.api.npc.hit.modifier.NpcHitModifier
 import org.rsmod.api.npc.hit.queueHit
 import org.rsmod.api.npc.isValidTarget
@@ -31,7 +33,6 @@ import org.rsmod.game.entity.Npc
 import org.rsmod.game.entity.NpcList
 import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
-import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.entity.npc.NpcUid
 import org.rsmod.game.hit.HitType
 import org.rsmod.game.queue.WorldQueueList
@@ -39,7 +40,6 @@ import org.rsmod.game.type.npc.NpcTypeList
 import org.rsmod.map.CoordGrid
 import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
-import org.rsmod.routefinder.collision.CollisionFlagMap
 
 object GuardianNpcs : NpcReferences() {
     /**
@@ -83,8 +83,14 @@ object GuardianSpotanims : SpotanimReferences() {
  * The hits are the player's, so the kills and drops are theirs. It never attacks players, works
  * alongside an Arceuus thrall, and leaves when the player dies or logs out.
  *
- * Guesses: the area attack reaches the npcs within one tile of the target; the guardian hits from
- * where it stands, like the Arceuus thralls; "Toggle-modes" only switches the area attack (the
+ * It appears beside its owner and walks behind them ([NpcFollowWalker]), looking at its owner, or
+ * at the npc they are fighting while that is within [RANGE].
+ *
+ * With melee it walks up to the target and strikes from beside it; with ranged or magic it attacks
+ * from where it stands.
+ *
+ * Guesses: the area attack reaches the npcs within one tile of the target; ranged and magic reach
+ * [RANGE] tiles, like the Arceuus thralls; "Toggle-modes" only switches the area attack (the
  * auto-summon mode is not built) and the choice is not saved over logout.
  */
 class LeagueGuardian
@@ -97,11 +103,12 @@ constructor(
     private val worldQueues: WorldQueueList,
     private val worldRepo: WorldRepository,
     private val modifier: NpcHitModifier,
-    private val collision: CollisionFlagMap,
+    private val walker: NpcFollowWalker,
     private val random: GameRandom,
 ) : PluginScript() {
     private class Guardian(val npc: Npc, val expires: Int) {
         var nextAttack: Int = 0
+        val trail = NpcFollowWalker.Trail()
     }
 
     private val guardians = WeakHashMap<Player, Guardian>()
@@ -120,6 +127,9 @@ constructor(
         onOpHeld4(isle_objs.guardian_horn) { changeOutfit() }
         onPlayerLogout { dismiss(player) }
         onEvent<PlayerDeathEvents.Died> { dismiss(player) }
+        // In the line behind the owner the guardian walks last, after a pet and a thrall.
+        walker.register(NpcFollowWalker.Rank.Guardian) { lateCycle() }
+        onEvent<GameLifecycle.LateCycle> { walker.lateCycle() }
     }
 
     private fun ProtectedAccess.summon() {
@@ -139,8 +149,9 @@ constructor(
     /** Spawns [player]'s guardian beside them. @return whether there was room for it. */
     private fun spawn(player: Player, expires: Int? = null): Boolean {
         val outfit = GuardianNpcs.outfits[outfits[player] ?: 0]
-        val npc = Npc(npcTypes[outfit], player.coords)
-        npc.mode = NpcMode.PlayerFollow
+        val type = npcTypes[outfit]
+        val npc = Npc(type, walker.tileBeside(player, type.size))
+        walker.claim(npc)
         npc.facePlayer(player)
         if (!npcRegistry.add(npc).isSuccess()) {
             return false
@@ -179,11 +190,15 @@ constructor(
         }
         val next = ((outfits[player] ?: 0) + 1) % GuardianNpcs.outfits.size
         outfits[player] = next
-        val guardian = guardians[player]
-        if (guardian != null) {
-            removeNpc(guardian)
-            guardians.remove(player)
-            spawn(player, guardian.expires)
+        // Only the look changes: the same npc is transmogged, keeping its tile, walk and facing.
+        val npc = guardians[player]?.npc
+        if (npc != null) {
+            val type = npcTypes[GuardianNpcs.outfits[next]]
+            if (npc.type.isType(type)) {
+                npc.resetTransmog()
+            } else {
+                npc.transmog(type, Int.MAX_VALUE)
+            }
         }
         mes("Your guardian takes on a new look.")
     }
@@ -203,33 +218,70 @@ constructor(
             }
             return
         }
-        keepUp(owner, guardian.npc)
         if (clock >= guardian.nextAttack && attack(owner, guardian.npc)) {
             guardian.nextAttack = clock + ATTACK_INTERVAL
         }
         worldQueues.add(1) { tick(owner, guardian) }
     }
 
-    /** A guardian left behind (a teleport, a ladder) jumps back to its owner. */
-    private fun keepUp(owner: Player, npc: Npc) {
-        val far = npc.coords.level != owner.coords.level || !npc.isWithinDistance(owner, LEASH)
-        if (far) {
-            npc.telejump(collision, owner.coords)
+    /**
+     * Once a tick, after players have moved: every guardian walks behind its owner (jumping back
+     * after a teleport or a ladder), looking at what they are fighting while it is within reach,
+     * and at its owner otherwise.
+     */
+    private fun lateCycle() {
+        if (guardians.isEmpty()) {
+            return
         }
+        for ((owner, guardian) in guardians.entries.toList()) {
+            val npc = guardian.npc
+            if (
+                owner.slotId == PathingEntity.INVALID_SLOT ||
+                    npc.slotId == PathingEntity.INVALID_SLOT
+            ) {
+                continue
+            }
+            val target = target(owner, npc)
+            val melee = target != null && weakestStyle(target) == HitType.Melee
+            if (
+                melee &&
+                    npc.coords.level == owner.coords.level &&
+                    npc.isWithinDistance(owner, LEASH)
+            ) {
+                walker.approach(npc, checkNotNull(target), guardian.trail)
+            } else {
+                walker.walk(npc, owner, guardian.trail, LEASH)
+            }
+            if (target != null) {
+                npc.faceNpc(target)
+            } else {
+                npc.facePlayer(owner)
+            }
+        }
+    }
+
+    /** The npc [owner] is fighting, while it can be attacked and is within the guardian's reach. */
+    private fun target(owner: Player, npc: Npc): Npc? {
+        val uid = owner.aggressiveNpc ?: return null
+        val target = npcList[uid.slotId] ?: return null
+        if (target.uid != uid || !target.isValidTarget() || target.hitpoints <= 0) {
+            return null
+        }
+        if (!npc.isWithinDistance(target, RANGE)) {
+            return null
+        }
+        return target
     }
 
     /** Attacks what [owner] is fighting, if that is near. @return whether it attacked. */
     private fun attack(owner: Player, npc: Npc): Boolean {
-        val uid = owner.aggressiveNpc ?: return false
-        val target = npcList[uid.slotId] ?: return false
-        if (target.uid != uid || !target.isValidTarget() || target.hitpoints <= 0) {
-            return false
-        }
-        if (!npc.isWithinDistance(target, RANGE)) {
-            return false
-        }
+        val target = target(owner, npc) ?: return false
         val style = weakestStyle(target)
-        npc.facePathingEntitySquare(target)
+        if (style == HitType.Melee && !walker.inMeleeReach(npc, target)) {
+            // Melee strikes only from beside the target; it is still walking up.
+            return false
+        }
+        npc.faceNpc(target)
         when (style) {
             HitType.Melee -> {
                 npc.anim(target.visType.paramOrNull(params.attack_anim) ?: GuardianSeqs.punch)

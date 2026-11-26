@@ -80,7 +80,9 @@ constructor(
 
         val rolled = modify.variant?.let { dropTables.variantOf(type, it) } ?: table
         val roll =
-            dropRoller.roll(rolled, modify.multiplier).map { it.copy(count = modify.countOf(it)) }
+            dropRoller.roll(rolled, modify.multiplier, modify.chanceMultipliers).map {
+                it.copy(count = modify.countOf(it))
+            }
         val drops =
             roll + modify.guaranteed.filter { extra -> roll.none { it.obj.id == extra.obj.id } }
         val claim = NpcDropEvents.Claim(this, hero, drops.toMutableList())

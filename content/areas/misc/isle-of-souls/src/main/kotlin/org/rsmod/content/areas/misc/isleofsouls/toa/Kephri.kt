@@ -8,6 +8,7 @@ import org.rsmod.api.combat.NpcAttackStyle
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.config.refs.varps
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.npc.queueDeath
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.type.refs.loc.LocReferences
@@ -383,7 +384,7 @@ class KephriRuntime(env: ToaRoomEnv, raid: ToaRaid) :
             return
         }
         val amount = (boss.baseHitpointsLvl * share).roundToInt().coerceAtLeast(1)
-        boss.hitpoints = minOf(cap, boss.hitpoints + amount)
+        boss.healHitpoints(amount, cap)
         if (boss.hitpoints >= cap && isDazed) {
             swarmsLeft = 0
         }

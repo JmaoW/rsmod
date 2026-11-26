@@ -14,6 +14,14 @@ The player wiki for the Isle of Souls league. Plain HTML, no build step.
 - `data/relics-generated.js` and `assets/relics/*.png`: the generated half (point thresholds, XP and
   drop rates from the event settings, relic icons from the cache). Do not edit; re-run
   `python tools/wiki/gen_relics.py` after changing a threshold or multiplier
+- `bosses.html`, `boss.html?b=<id>`: the Bosses section, one template for every boss, raid and
+  minigame page
+- `data/bosses.js`: the hand-written half of the boss pages (getting there, team rules, fights, loot)
+- `data/bosses-generated.js`: the generated half (stats, drops at league rates, collection log,
+  entrances, tasks). Do not edit; re-run `python tools/wiki/gen_bosses.py` after changing a boss
+- `pets.html`: every pet, its source on the isle, its looks, and Probita
+- `data/pets-generated.js`: the pets page's data. Do not edit; re-run
+  `python -I tools/wiki/gen_pets.py`
 - `assets/`: shared styles and scripts
 
 ## Updating the tracker

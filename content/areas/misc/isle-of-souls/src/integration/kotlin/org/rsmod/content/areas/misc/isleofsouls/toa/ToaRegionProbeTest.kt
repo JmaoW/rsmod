@@ -20,6 +20,7 @@ import org.rsmod.game.map.collision.isZoneValid
 import org.rsmod.game.region.Region
 import org.rsmod.game.region.zone.RegionZoneCopy
 import org.rsmod.map.CoordGrid
+import org.rsmod.map.square.MapSquareKey
 import org.rsmod.map.zone.ZoneGrid
 import org.rsmod.map.zone.ZoneKey
 import org.rsmod.routefinder.collision.CollisionFlagMap
@@ -98,12 +99,21 @@ class ToaRegionProbeTest {
             val region = build(deps)
             val sw = region.southWestZone
             var copied = 0
+            var keyless = 0
             for (level in 0 until CoordGrid.LEVEL_COUNT) {
                 for (column in ToaPacking.columns) {
                     for (dx in 0 until column.zoneWidth) {
                         for (dz in 0 until ToaPacking.ZONE_ROWS) {
                             val zone = ZoneKey(sw.x + column.regionZoneX + dx, sw.z + dz, level)
                             val copy = deps.registry[zone]
+                            val normal =
+                                ZoneKey(column.realZoneX + dx, ToaPacking.REAL_ZONE_Z + dz, 0)
+                            if (MapSquareKey.from(normal.toCoords()) !in xteaRepository) {
+                                // A map square without an xtea key is left out (RegionCopySquares).
+                                assertEquals(RegionZoneCopy.NULL, copy, "$zone")
+                                keyless++
+                                continue
+                            }
                             assertNotEquals(RegionZoneCopy.NULL, copy, "$zone")
                             assertEquals(column.realZoneX + dx, copy.normalX)
                             assertEquals(ToaPacking.REAL_ZONE_Z + dz, copy.normalZ)
@@ -115,7 +125,7 @@ class ToaRegionProbeTest {
                     }
                 }
             }
-            assertEquals(33 * 40 * 4, copied)
+            assertEquals(33 * 40 * 4, copied + keyless)
 
             // The two zone columns after each path stay blank, so rooms never see each other.
             for (column in ToaPacking.columns.dropLast(1)) {

@@ -10,6 +10,7 @@ import org.rsmod.api.config.refs.queues
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.npc.access.StandardNpcAccess
 import org.rsmod.api.npc.events.NpcHitEvents
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.player.stat.statSub
@@ -135,7 +136,7 @@ constructor(
             val patient = hurt.minBy { it.hitpoints }
             npc.anim(cave_seqs.yt_mejkot_heal)
             patient.spotanim(cave_spotanims.heal)
-            patient.hitpoints = minOf(patient.baseHitpointsLvl, patient.hitpoints + HEAL_AMOUNT)
+            patient.healHitpoints(HEAL_AMOUNT)
             return null
         }
         return melee(target, FightCaveAttacks.ytMejKot)

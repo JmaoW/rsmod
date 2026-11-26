@@ -2,6 +2,7 @@ package org.rsmod.content.areas.misc.isleofsouls.colosseum
 
 import jakarta.inject.Inject
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.disablePrayers
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
@@ -334,7 +335,7 @@ constructor(
                 if (!monster.isSlotAssigned || monster.hitpoints <= 0) {
                     return@later
                 }
-                monster.hitpoints = minOf(max, monster.hitpoints + amount)
+                monster.healHitpoints(amount, max)
                 monster.spotanim(colosseum_spotanims.totem_impact)
             }
         }

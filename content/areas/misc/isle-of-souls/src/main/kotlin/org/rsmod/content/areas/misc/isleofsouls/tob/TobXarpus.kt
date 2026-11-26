@@ -213,7 +213,18 @@ class XarpusRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
             return
         }
         val to = centre(npc)
-        val flight = projectileBy(entry.tile, to, XarpusSpots.orb, 0, 0, 10, heights = 0 to 67)
+        val flight =
+            projectileBy(
+                entry.tile,
+                to,
+                XarpusSpots.orb,
+                0,
+                20,
+                10,
+                heights = 0 to 67,
+                arc = EXHUMED_ARC,
+                target = npc,
+            )
         later((flight - 1).coerceAtLeast(1)) { heal(npc, heal) }
     }
 
@@ -251,9 +262,13 @@ class XarpusRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
     }
 
     private fun spit(from: CoordGrid, tile: CoordGrid, target: Player?, first: Boolean) {
+        // A slow lob onto the tile, high off Xarpus's mouth and lower for the splash on.
         val flight =
-            if (first) projectileBy(from, tile, XarpusSpots.spit, 30, 0, 30, heights = 100 to 0)
-            else projectileBy(from, tile, XarpusSpots.spit, 15, 15, 30, heights = 0 to 0)
+            if (first) {
+                projectileBy(from, tile, XarpusSpots.spit, 30, 60, 15, 100 to 0, arc = SPIT_ARC)
+            } else {
+                projectileBy(from, tile, XarpusSpots.spit, 0, 45, 12, 0 to 0, arc = SPLASH_ARC)
+            }
         later(flight) {
             if (!isStarted) {
                 return@later
@@ -369,6 +384,11 @@ class XarpusRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
         val EXHUMED_EVERY = intArrayOf(0, 13, 8, 8, 4, 4, 3, 3, 3)
         private const val EXHUMED_LIFE = 11
         private const val EXHUMED_RISING = 3
+
+        /** The client slopes the exhumed's orbs and the spit fly off at (guesses, by eye). */
+        private const val EXHUMED_ARC = 32
+        private const val SPIT_ARC = 40
+        private const val SPLASH_ARC = 30
         private const val PAUSE = 7
         private const val SPIT_EVERY = 4
         private const val SPLAT_MIN = 2

@@ -109,6 +109,18 @@ FIGHTS = {
     "hunllef": dict(npcs=["crystal_hunllef_melee", "crystal_hunllef_melee_hm"], tables=[]),
     "sol": dict(npcs=["colosseum_sol_p1"], tables=[]),
     "toa": dict(npcs=[], tables=[]),
+    # ToB hitpoints from the decoded npc configs (docs/isle_of_souls_tob_plan.md), for a party of 5.
+    "tob": dict(npcs=["name:The Maiden of Sugadinti", "name:Pestilent Bloat", "name:Nylocas Vasilias", "name:Sotetseg",
+                      "name:Xarpus", "name:Verzik Vitur"],
+                hp={"name:The Maiden of Sugadinti": 3500, "name:Pestilent Bloat": 2000, "name:Nylocas Vasilias": 2500,
+                    "name:Sotetseg": 4000, "name:Xarpus": 5000, "name:Verzik Vitur": 2000},
+                labels=["The Maiden of Sugadinti", "Pestilent Bloat", "Nylocas Vasilias", "Sotetseg", "Xarpus",
+                        "Verzik Vitur (phase 1; phases 2 and 3 have 3,500)"], tables=[]),
+    # CoX monsters scale with the party. The cache holds 1s, so the stats are CoxScaling.kt's base
+    # figures (a solo raid's scale), via `cox_base`.
+    "olm": dict(npcs=["olm_head", "olm_hand_left", "olm_hand_right"],
+                labels=["Head", "Left claw", "Right claw"], tables=[],
+                cox_base={"olm_head": "olm_head", "olm_hand_left": "olm_left_claw", "olm_hand_right": "olm_right_claw"}),
     # Not built yet: stats only, so the planned page has something to show.
     "cerberus": dict(npcs=["name:Cerberus"], tables=[]),
     "grotesque_guardians": dict(npcs=["name:Dusk", "name:Dawn"], tables=[]),
@@ -135,6 +147,8 @@ def isle_entrances():
     out["kbd"] = ("Lever", *coord(kt("kingblackdragon", "KingBlackDragon.kt"), "coords"))
     out["toa"] = ("Pyramid door", *coord(kt("toa", "ToaLobbyScript.kt"), "ENTRANCE"))
     out["gauntlet"] = ("Portal", *coord(kt("gauntlet", "GauntletScript.kt"), "PORTAL"))
+    out["tob"] = ("Theatre of Blood portal", *coord(kt("tob", "TobLayout.kt"), "PORTAL"))
+    out["cox"] = ("Mount Quidamortem portal", *coord(kt("cox", "CoxScript.kt"), "ISLE_PORTAL"))
     out["colosseum"] = ("Arch", *coord(kt("colosseum", "ColosseumArena.kt"), "isleEntrance"))
     lairs = kt("wilderness", "WildernessLairs.kt")
     for name, x, z, lvl in re.findall(r"wild_locs\.(\w+)_entrance,\s*CoordGrid\((\d+), (\d+), (\d+)\)", lairs):
@@ -169,6 +183,10 @@ PAGES = {
     "inferno": dict(fights=["zuk"], clog=["The Inferno"], tasks=[661, 667, 668, 669, 654], entrances=[], waves="inferno"),
     "toa": dict(fights=["toa"], clog=["Tombs of Amascut"], tasks=[1186, 1187, 1188, 1189, 1228, 1230, 1231, 1232, 1233, 1236],
                 entrances=["toa"]),
+    "tob": dict(fights=["tob"], clog=["Theatre of Blood"], tasks=[946, 947, 948, 940, 941, 942, 943, 944, 945, 1135, 1136],
+                entrances=["tob"]),
+    "cox": dict(fights=["olm"], clog=["Chambers of Xeric"], tasks=[114, 115, 116, 117, 120, 177, 1061, 1067, 131],
+                entrances=["cox"]),
     "gauntlet": dict(fights=["hunllef"], clog=["The Gauntlet"], tasks=[534, 535, 547, 548, 530, 1512, 531, 546, 549, 1396],
                      entrances=["gauntlet"]),
     "colosseum": dict(fights=["sol"], clog=["Fortis Colosseum"],
@@ -181,6 +199,22 @@ PAGES = {
 
 
 # ---------------------------------------------------------------- npc stats
+
+def cox_bases():
+    """{name: stats} of the `val <name> = CoxBase(hp, att, str, def, ranged, magic)` figures in CoxScaling.kt."""
+    out = {}
+    for name, nums in re.findall(r"val (\w+) = CoxBase\(([\d, ]+)", kt("cox", "CoxScaling.kt")):
+        out[name] = dict(zip(["hitpoints", "attack", "strength", "defence", "ranged", "magic"], map(int, nums.split(","))))
+    return out
+
+
+def olm_hitpoints():
+    """The Great Olm's head and claw hitpoints for some party sizes (CoxScaling.olmHitpoints)."""
+    def hp(n, head):
+        k = min(n - 1, 50) - 3 * (min(n, 50) // 8)
+        return (800 + 400 * k) if head else (600 + 300 * k)
+    return [{"size": n, "head": hp(n, True), "claw": hp(n, False)} for n in (1, 2, 3, 5, 8, 10, 15, 24)]
+
 
 def parse_npc(d):
     """Name, combat level, size and the six combat stats of a cache npc config."""
@@ -513,6 +547,10 @@ def event_settings(settings):
     """The event settings the boss pages talk about, with the code's defaults filled in."""
     toa = kt_defaults(("toa", "ToaSettings.kt"), ["pathsRequired", "uniqueMultiplier", "teamUniquesFromLevel"])
     toa.update(settings.get("toa", {}))
+    tob = {"partyCap": 8, "uniqueMultiplier": 1.0, "teamUniques": True}  # TobSettings.kt defaults
+    tob.update(settings.get("tob", {}))
+    cox = {"partyCap": 100, "uniqueMultiplier": 1.0, "teamUniques": True, "teamUniquesFromPoints": 0}  # CoxSettings.kt
+    cox.update(settings.get("cox", {}))
     return {
         "fightCaveMode": settings.get("fightCaveMode", "full"),
         "infernoMode": settings.get("infernoMode", "full"),
@@ -520,6 +558,8 @@ def event_settings(settings):
         "gauntletNodesDeplete": settings.get("gauntletNodesDeplete", True),
         "pvp": settings.get("pvp", {}),
         "toa": toa,
+        "tob": tob,
+        "cox": cox,
     }
 
 
@@ -554,9 +594,15 @@ def main():
                     uniques |= {n.lower() for n in clog.get(c, [])}
         tables = [table(label, src, npcs, data, multipliers, uniques) for label, src, npcs in f["tables"]]
         stats = [stats_row(s, f.get("hp", {})) for s in f["npcs"]]
+        if f.get("cox_base"):
+            bases = cox_bases()
+            for row, spec in zip(stats, f["npcs"]):
+                row.update(bases[f["cox_base"][spec]])
+        if fid == "olm":
+            fights[fid] = {"hpBySize": olm_hitpoints()}
         for row, label in zip(stats, f.get("labels", [])):
             row["label"] = label
-        fights[fid] = {"stats": stats,
+        fights[fid] = {**fights.get(fid, {}), "stats": stats,
                        "uniques": per_kill(tables, multipliers),
                        "tables": [strip(t) for t in tables]}
 

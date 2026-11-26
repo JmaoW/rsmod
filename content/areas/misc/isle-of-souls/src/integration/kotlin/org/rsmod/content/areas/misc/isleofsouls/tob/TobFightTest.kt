@@ -13,6 +13,7 @@ import org.rsmod.api.combat.weapon.scripts.WeaponAttackStylesScript
 import org.rsmod.api.combat.weapon.styles.AttackStyles
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.npc.queueDeath
+import org.rsmod.api.route.RouteFactory
 import org.rsmod.api.testing.GameTestState
 import org.rsmod.api.testing.scope.GameTestScope
 import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
@@ -22,6 +23,7 @@ import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.util.PathingEntityCommon
 import org.rsmod.game.hit.HitBuilder
 import org.rsmod.game.hit.HitType
+import org.rsmod.game.movement.RouteRequestCoord
 import org.rsmod.map.CoordGrid
 import org.rsmod.map.zone.ZoneGrid
 import org.rsmod.routefinder.collision.CollisionFlagMap
@@ -46,6 +48,7 @@ class TobFightTest {
         val rooms: TobRoomRegistry,
         val rewards: TobRewards,
         val collision: CollisionFlagMap,
+        val routes: RouteFactory,
     )
 
     class Run(
@@ -202,6 +205,25 @@ class TobFightTest {
         }
 
     @Test
+    fun GameTestState.`after the Maiden the party walks on to the Bloat through the fade`() =
+        runFight(TobRoom.Maiden) { run ->
+            startFight(run, CoordGrid(3175, 4446, 0))
+            val maiden = run.runtime<MaidenRuntime>()
+            tick(run, 30)
+            kill(run, checkNotNull(maiden.maiden))
+            tick(run, 20)
+            open(run.deps, run.raid, TobRoom.Bloat.bounds)
+            run.deps.raids.fadeTicks = TobRaids.FADE_TICKS
+            assertEquals(TobRaids.PassResult.Moved, run.deps.raids.pass(run.alice))
+            tick(run, 5)
+            assertEquals(TobRoom.Bloat, run.raid.member(run.alice)?.room)
+            assertEquals(TobRoom.Bloat, TobRoom.at(run.real(run.alice)))
+            val bloat = run.deps.rooms.runtime(run.raid, TobRoom.Bloat) as BloatRuntime
+            assertNotNull(bloat.bloat)
+            tick(run, 30)
+        }
+
+    @Test
     fun GameTestState.`the Bloat walks, sleeps and falls, and hits on it walking are halved`() =
         runFight(TobRoom.Bloat) { run ->
             startFight(run, CoordGrid(3291, 4453, 0))
@@ -274,6 +296,51 @@ class TobFightTest {
         }
 
     @Test
+    fun GameTestState.`Sotetseg's tornado is centred on the maze path it follows`() =
+        runFight(TobRoom.Sotetseg) { run ->
+            startFight(run, CoordGrid(3276, 4315, 0))
+            val sotetseg = run.runtime<SotetsegRuntime>()
+            val npc = checkNotNull(sotetseg.sotetseg)
+            tick(run, 5)
+            npc.hitpoints = npc.baseHitpointsLvl * 60 / 100
+            tick(run, 2)
+            assertTrue(sotetseg.inMaze)
+            val runner = checkNotNull(sotetseg.runner)
+            val other = if (runner === run.alice) run.bob else run.alice
+            // Someone on the maze's fourth row sets the tornado off.
+            val row = SotetsegRuntime.MAZE_FLOOR
+            PathingEntityCommon.telejump(
+                other,
+                run.deps.collision,
+                run.raid.regionOf(CoordGrid(row.maxX, row.minZ + 3, 0)),
+            )
+            var tornado: Npc? = null
+            repeat(5) {
+                if (tornado == null) {
+                    tick(run)
+                    tornado = sotetseg.tornado
+                }
+            }
+            val spawned = checkNotNull(tornado)
+            val trail = sotetseg.tornadoTrail
+            assertEquals(3, spawned.size)
+            fun centre() = checkNotNull(run.raid.realOf(spawned.coords)).translate(1, 1)
+            assertEquals(trail[0], centre())
+            // It walks the path one tile at a time, never cutting a corner.
+            var at = 0
+            repeat(12) {
+                tick(run)
+                if (sotetseg.tornado === spawned) {
+                    val next = trail.indexOf(centre())
+                    assertTrue(next >= 0, "tornado centre ${centre()} is off the path")
+                    assertTrue(next - at in 0..1, "tornado jumped from tile $at to $next")
+                    at = next
+                }
+            }
+            assertTrue(at >= 8, "tornado only got to tile $at")
+        }
+
+    @Test
     fun GameTestState.`Xarpus feeds, spits, turns on a quadrant and falls`() =
         runFight(TobRoom.Xarpus) { run ->
             startFight(run, CoordGrid(3165, 4382, 1))
@@ -324,9 +391,62 @@ class TobFightTest {
             assertTrue(verzik.isCompleted)
             assertTrue(run.raid.won)
             assertEquals(1, run.alice.vars[tob_varps.completions])
+            assertTrue(run.deps.rewards.claim(run.raid, run.alice))
             assertTrue(run.deps.rewards.hasLoot(run.alice))
             // The treasure room opens: the way on is the vault.
             assertEquals(TobRaids.PassResult.Moved, run.deps.raids.pass(run.alice))
             assertEquals(TobRoom.Vault, run.raid.member(run.alice)?.room)
+        }
+
+    @Test
+    fun GameTestState.`clicking past Verzik while she spins webs walks round her`() =
+        runFight(TobRoom.Verzik) { run ->
+            startFight(run, CoordGrid(3160, 4309, 0))
+            val verzik = run.runtime<VerzikRuntime>()
+            tick(run, 2)
+            kill(run, checkNotNull(verzik.verzik))
+            tick(run, 20)
+            kill(run, checkNotNull(verzik.verzik))
+            tick(run, 6)
+            assertEquals(3, verzik.phase)
+            verzik.spinWebsNow()
+            var waited = 0
+            while (!verzik.isSpinning && waited++ < 30) {
+                tick(run)
+            }
+            assertTrue(verzik.isSpinning, "she never started spinning")
+            val boss = checkNotNull(verzik.verzik)
+            assertEquals(run.raid.regionOf(VerzikRuntime.WEB_CENTRE), boss.coords)
+
+            // A click from her west side to her east side, straight through her tiles.
+            val from = run.raid.regionOf(CoordGrid(3163, 4313, 0))
+            val to = run.raid.regionOf(CoordGrid(3173, 4313, 0))
+            assertTrue(verzik.isClosed(run.raid.regionOf(CoordGrid(3168, 4313, 0))))
+            PathingEntityCommon.telejump(run.alice, run.deps.collision, from)
+            tick(run)
+            val route = run.deps.routes.create(run.alice.avatar, to)
+            assertTrue(route.success && !route.alternative, "route $route")
+            var at = from
+            for (waypoint in route) {
+                while (at.x != waypoint.x || at.z != waypoint.z) {
+                    at =
+                        at.translate(
+                            Integer.signum(waypoint.x - at.x),
+                            Integer.signum(waypoint.z - at.z),
+                        )
+                    assertFalse(verzik.isClosed(at), "the route goes under her at $at")
+                }
+            }
+            assertEquals(to, at)
+
+            // And walking it gets there.
+            run.alice.routeRequest = RouteRequestCoord(to, clientRequest = true)
+            var steps = 0
+            while (run.alice.coords != to && steps++ < 30) {
+                run.alice.frozenUntil = Int.MIN_VALUE
+                tick(run)
+                assertFalse(verzik.isClosed(run.alice.coords), "walked under her")
+            }
+            assertEquals(to, run.alice.coords)
         }
 }

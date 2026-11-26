@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import org.rsmod.api.invtx.invDel
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.content.areas.misc.isleofsouls.fightcaves.cave_objs
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.game.entity.Player
 
 /**
@@ -14,7 +15,11 @@ import org.rsmod.game.entity.Player
  */
 class InfernoUnlock
 @Inject
-constructor(private val completions: InfernoCompletions, private val rewards: InfernoRewards) {
+constructor(
+    private val completions: InfernoCompletions,
+    private val rewards: InfernoRewards,
+    private val pets: Pets,
+) {
     fun isUnlocked(player: Player): Boolean = player.vars[inferno_vars.unlocked] != 0
 
     /** Whether [player] holds a fire cape, in their pack or on their back. */
@@ -38,10 +43,14 @@ constructor(private val completions: InfernoCompletions, private val rewards: In
 
     /**
      * Takes an infernal cape from [player]'s pack for another chance at the pet. Returns `null` if
-     * they had none to hand in, otherwise whether the pet came.
+     * they had none to hand in, or already own the pet (wiki: it cannot be gambled for again until
+     * it is lost), otherwise whether the pet came.
      */
     fun tradeInCape(player: Player): Boolean? {
         if (inferno_objs.infernal_cape !in player.inv) {
+            return null
+        }
+        if (pets.owns(player, pets.pet("jal_nib_rek"))) {
             return null
         }
         if (!player.invDel(player.inv, inferno_objs.infernal_cape, 1).success) {

@@ -6,7 +6,10 @@ import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.vars.VarPlayerIntMapSetter
 import org.rsmod.api.repo.obj.ObjRepository
+import org.rsmod.content.areas.misc.isleofsouls.event.EventSettings
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
+import org.rsmod.content.areas.misc.isleofsouls.pets.PetUnlock
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRelicTracker
 import org.rsmod.content.interfaces.collectionlog.CollectionLog
 import org.rsmod.game.entity.Player
@@ -55,6 +58,7 @@ constructor(
     private val announcer: LeagueAnnouncer,
     private val collectionLog: CollectionLog,
     private val relics: LeagueRelicTracker,
+    private val pets: Pets,
 ) {
     /** The noted form of an obj, by the obj's id. */
     private val notes: Map<Int, ObjType> by lazy {
@@ -121,9 +125,14 @@ constructor(
                 for ((obj, odds) in tertiary(mode)) {
                     // The relics make the three seeds likelier, as the wiki's boosted list has
                     // them.
+                    // The pet follows the event's pet odds, never the relics.
                     val boosted =
-                        if (obj.id in BOOSTED) (odds / multiplier).toInt().coerceAtLeast(1)
-                        else odds
+                        when {
+                            obj.id in BOOSTED -> (odds / multiplier).toInt().coerceAtLeast(1)
+                            obj.id == GauntletRewardObjs.gauntletpet.id ->
+                                (odds / EventSettings.current.petOdds).toInt().coerceAtLeast(1)
+                            else -> odds
+                        }
                     if (pick(boosted) == 0) items += RewardItem(obj, 1)
                 }
             }
@@ -140,7 +149,9 @@ constructor(
                 GauntletRewardObjs.crystal_seed_old to 50,
                 GauntletRewardObjs.prif_armour_seed to 50,
                 GauntletRewardObjs.prif_weapon_seed_enhanced to 400,
-                GauntletRewardObjs.gauntletpet_corrupt to 800,
+                // Wiki: the pet is always the ordinary Youngllef, even from the Corrupted
+                // Gauntlet (beating it unlocks the corrupted look instead).
+                GauntletRewardObjs.gauntletpet to 800,
             )
         } else {
             listOf(
@@ -191,7 +202,15 @@ constructor(
         VarPlayerIntMapSetter.set(player, gauntlet_varps.reward, 0)
         VarPlayerIntMapSetter.set(player, gauntlet_varbits.reward_available, 0)
         mes("You open the chest.")
+        if (kind == RewardKind.Completed && mode.corrupted) {
+            pets.unlock(player, PetUnlock.CorruptedGauntlet)
+        }
         for (item in items) {
+            val pet = pets.ofObj(item.obj)
+            if (pet != null) {
+                pets.award(player, pet.first)
+                continue
+            }
             player.invAddOrDrop(objRepo, item.obj, count = item.count)
             collectionLog.receive(player, item.obj.id, item.count)
             announcer.drop(player, item.obj, item.count)

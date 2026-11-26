@@ -121,10 +121,12 @@ constructor(
      */
     fun drop(player: Player, obj: ObjType, count: Int, boosted: Boolean = false) {
         val type = objTypes[obj]
-        val pet = LeaguePets.isPet(type.name)
+        val pet = LeaguePets.isPet(type.name) || LeaguePets.isPetObj(type.id)
         val quiet = type.internalName?.lowercase() in QUIET_BOOSTED_DROPS
-        if (pet && config.dropPets) {
-            broadcast(AnnouncementMessages.pet(who(player), type.name))
+        if (pet) {
+            // The pet module announces pets as it hands them out (following, backpack, lost or
+            // duplicate), so the drop itself says nothing.
+            return
         } else if (
             config.announcesDrop(boosted && !quiet, pet = false) ||
                 config.announcesDrop(type.internalName)
@@ -133,10 +135,31 @@ constructor(
         }
     }
 
-    /** Announces a pet that did not come from a drop table (the Fight Cave and Inferno pets). */
+    /** Announces a pet that appeared as [player]'s follower. */
     fun pet(player: Player, obj: ObjType) {
         if (config.dropPets) {
             broadcast(AnnouncementMessages.pet(who(player), objTypes[obj].name))
+        }
+    }
+
+    /** Announces a pet that went into [player]'s inventory (they had a follower out). */
+    fun petBackpack(player: Player, obj: ObjType) {
+        if (config.dropPets) {
+            broadcast(AnnouncementMessages.petBackpack(who(player), objTypes[obj].name))
+        }
+    }
+
+    /** Announces a pet that [player] could not take (Probita has it) or already owned. */
+    fun petLost(player: Player, obj: ObjType) {
+        if (config.dropPets) {
+            broadcast(AnnouncementMessages.petDuplicate(who(player), objTypes[obj].name))
+        }
+    }
+
+    /** Announces a pet [player] already owned. */
+    fun petDuplicate(player: Player, obj: ObjType) {
+        if (config.dropPets) {
+            broadcast(AnnouncementMessages.petDuplicate(who(player), objTypes[obj].name))
         }
     }
 

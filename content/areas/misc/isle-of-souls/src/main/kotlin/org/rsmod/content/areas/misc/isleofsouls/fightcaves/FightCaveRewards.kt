@@ -8,6 +8,7 @@ import org.rsmod.api.repo.obj.ObjRepository
 import org.rsmod.content.areas.misc.isleofsouls.chat.LeagueChat
 import org.rsmod.content.areas.misc.isleofsouls.event.AnnouncementMessages
 import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
 import org.rsmod.content.interfaces.collectionlog.CollectionLog
 import org.rsmod.game.entity.Player
@@ -23,6 +24,7 @@ constructor(
     private val teams: LeagueTeams,
     private val completions: FightCaveCompletions,
     private val collectionLog: CollectionLog,
+    private val pets: Pets,
 ) {
     fun win(players: List<Player>, run: FightCaveRun) {
         // The "complete the Fight Caves" counters belong to the team: count the run once for each.
@@ -31,10 +33,8 @@ constructor(
             val countRun = counted.add(teams.teamOf(player) ?: player.username)
             give(player, cave_objs.fire_cape, 1)
             give(player, cave_objs.tokkul, TOKKUL_REWARD)
-            if (random.of(PET_ODDS) == 0) {
-                give(player, cave_objs.jad_pet, 1)
-                announcer.pet(player, cave_objs.jad_pet)
-                player.mes("You have a funny feeling like you're being followed.")
+            if (pets.roll(PET_ODDS)) {
+                pets.award(player, pets.pet("tzrek_jad"))
             }
             player.mes("Congratulations! You have defeated TzTok-Jad and completed the Fight Cave.")
             completions.completed(player, countRun)

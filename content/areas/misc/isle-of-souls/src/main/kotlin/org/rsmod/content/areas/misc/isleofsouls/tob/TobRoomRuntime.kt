@@ -10,6 +10,7 @@ import org.rsmod.api.combat.NpcAttacks
 import org.rsmod.api.combat.NpcImpactListener
 import org.rsmod.api.config.refs.hitmark_groups
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.npc.interact.AiPlayerInteractions
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
@@ -25,6 +26,7 @@ import org.rsmod.content.areas.misc.isleofsouls.zulrah.PlayerVenom
 import org.rsmod.events.EventBus
 import org.rsmod.game.MapClock
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.entity.PathingEntity
 import org.rsmod.game.entity.Player
 import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.entity.util.PathingEntityCommon
@@ -294,7 +296,7 @@ abstract class TobRoomRuntime(protected val env: TobRoomEnv, val raid: TobRaid, 
         if (amount <= 0 || !npc.isSlotAssigned) {
             return
         }
-        npc.hitpoints = minOf(npc.baseHitpointsLvl, npc.hitpoints + amount)
+        npc.healHitpoints(amount)
     }
 
     /** Swaps [npc] for another form ([type]) in place, keeping its hitpoints. */
@@ -370,6 +372,10 @@ abstract class TobRoomRuntime(protected val env: TobRoomEnv, val raid: TobRaid, 
     /**
      * A projectile from the real tile [fromReal] to [toReal], leaving at client cycle
      * `flight.first` and landing at `flight.last`. Returns the ticks until it lands.
+     *
+     * [arc] is the climb it sets off at (the client's slope: 0 flies straight, 16 a low lob, 40 or
+     * so a high one). With a [target] the client steers it onto that player or npc wherever they
+     * move; [toReal] then only times the flight.
      */
     fun projectile(
         fromReal: CoordGrid,
@@ -378,20 +384,24 @@ abstract class TobRoomRuntime(protected val env: TobRoomEnv, val raid: TobRaid, 
         flight: IntRange,
         heights: Pair<Int, Int> = 43 to 31,
         type: ProjAnimType = ToaProjAnims.orb,
+        arc: Int? = null,
+        target: PathingEntity? = null,
     ): Int {
+        val from = raid.regionOf(fromReal)
+        val unpacked = env.projAnimTypes[type]
         val proj =
-            ProjAnim.fromCoordToCoord(
-                raid.regionOf(fromReal),
-                raid.regionOf(toReal),
-                spot.id,
-                env.projAnimTypes[type],
-            )
+            when (target) {
+                is Player -> ProjAnim.fromCoordToPlayer(from, target, spot.id, unpacked)
+                is Npc -> ProjAnim.fromCoordToNpc(from, target, spot.id, unpacked)
+                else -> ProjAnim.fromCoordToCoord(from, raid.regionOf(toReal), spot.id, unpacked)
+            }
         env.worldRepo.projAnim(
             proj.copy(
                 startTime = flight.first,
                 endTime = flight.last,
                 startHeight = heights.first,
                 endHeight = heights.second,
+                angle = arc ?: proj.angle,
             )
         )
         return ticksFor(flight.last)
@@ -406,6 +416,8 @@ abstract class TobRoomRuntime(protected val env: TobRoomEnv, val raid: TobRaid, 
         base: Int,
         perTile: Int,
         heights: Pair<Int, Int> = 43 to 31,
+        arc: Int? = null,
+        target: PathingEntity? = null,
     ): Int {
         val distance = max(abs(fromReal.x - toReal.x), abs(fromReal.z - toReal.z))
         return projectile(
@@ -414,6 +426,8 @@ abstract class TobRoomRuntime(protected val env: TobRoomEnv, val raid: TobRaid, 
             spot,
             delay..(delay + base + perTile * distance),
             heights,
+            arc = arc,
+            target = target,
         )
     }
 

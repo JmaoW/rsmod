@@ -39,11 +39,14 @@ constructor(
         val source = run.killed ?: return
         val modify = NpcDropEvents.Modify(source, player)
         eventBus.publish(modify)
-        val rolled = dropRoller.roll(table, modify.multiplier)
+        val rolled = dropRoller.roll(table, modify.multiplier, modify.chanceMultipliers)
         val drops = rolled.map { DropResult(it.obj, modify.countOf(it), it.boosted) }.withDiamonds()
         val at = run.real(lair.loot)
         val duration = player.lootDropDuration ?: constants.lootdrop_duration
-        for (drop in drops) {
+        // Claimed drops (a pet) are handed over by their claimer instead of the floor.
+        val claim = NpcDropEvents.Claim(source, player, drops.toMutableList())
+        eventBus.publish(claim)
+        for (drop in claim.drops) {
             objRepo.add(drop.obj, at, duration, player, count = drop.count)
         }
         // These drops skip `NpcDeath`, so the loot tracker must be told about them here.

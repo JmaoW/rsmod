@@ -5,6 +5,7 @@ import org.rsmod.api.death.PlayerDeathEvents
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onEvent
 import org.rsmod.content.areas.misc.isleofsouls.colosseum.Colosseum
+import org.rsmod.content.areas.misc.isleofsouls.cox.CoxRaids
 import org.rsmod.content.areas.misc.isleofsouls.gauntlet.Gauntlet
 import org.rsmod.content.areas.misc.isleofsouls.toa.ToaRaids
 import org.rsmod.content.areas.misc.isleofsouls.tob.TobRaids
@@ -24,6 +25,7 @@ constructor(
     private val toa: ToaRaids,
     private val tob: TobRaids,
     private val colosseum: Colosseum,
+    private val cox: CoxRaids,
 ) : PluginScript() {
     override fun ScriptContext.startup() {
         onEvent<SessionStateEvent.NewPlayerSpawn> { coords = SoulWarsLobby.randomSpawn(random) }
@@ -37,6 +39,7 @@ constructor(
                     ?: toa.respawnFor(player)
                     ?: tob.respawnFor(player)
                     ?: colosseum.respawnFor(player)
+                    ?: cox.respawnFor(player)
                     ?: SoulWarsLobby.randomSpawn(random)
         }
     }

@@ -99,6 +99,14 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
     val runner: Player?
         get() = maze?.runner
 
+    /** The maze's tornado, while one is out. */
+    val tornado: Npc?
+        get() = maze?.tornado
+
+    /** The real tiles the tornado follows: the realm path alone, else its twin on the arena. */
+    val tornadoTrail: List<CoordGrid>
+        get() = maze?.let { if (it.solo) it.path else it.path.map(::toMaze) } ?: emptyList()
+
     override fun build() {
         val npc = spawn(SotetsegNpcs.waiting, SPAWN, scale = true, facing = Direction.South)
         sotetseg = npc
@@ -182,7 +190,8 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
         balls++
         val from = centre(npc)
         val to = realOf(target.coords) ?: return
-        val ticks = projectile(from, to, SotetsegSpots.magic, 23..203, heights = 26 to 31)
+        val ticks =
+            projectile(from, to, SotetsegSpots.magic, 23..203, heights = 26 to 31, target = target)
         later(ticks) {
             if (maze == null && target in fightPlayers()) {
                 ballLands(target, NpcAttackStyle.Magic)
@@ -203,7 +212,7 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
             val to = realOf(player.coords) ?: return@forEachIndexed
             val spot =
                 if (style == NpcAttackStyle.Magic) SotetsegSpots.magic else SotetsegSpots.ranged
-            val ticks = projectile(start, to, spot, 15..216, heights = 31 to 24)
+            val ticks = projectile(start, to, spot, 15..216, heights = 31 to 24, target = player)
             later(ticks) {
                 if (maze == null && player in fightPlayers()) {
                     ballLands(player, style)
@@ -230,7 +239,15 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
         val present = players.size
         val from = centre(npc)
         val to = realOf(target.coords) ?: return
-        val ticks = projectile(from, to, SotetsegSpots.big_ball, 23..480, heights = 26 to 31)
+        val ticks =
+            projectile(
+                from,
+                to,
+                SotetsegSpots.big_ball,
+                23..480,
+                heights = 26 to 31,
+                target = target,
+            )
         later(ticks) {
             if (maze != null || target !in fightPlayers()) {
                 return@later
@@ -352,6 +369,9 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
         val players =
             if (maze.solo) listOf(maze.runner) else fightPlayers().filter { it !== maze.runner }
         val onTile: (CoordGrid) -> CoordGrid = if (maze.solo) ({ it }) else ::toMaze
+        // The tornado is 3x3: its south-west tile sits one tile south-west of the path tile so its
+        // centre (where the model is drawn) follows the path.
+        val swOf: (CoordGrid) -> CoordGrid = { onTile(it).translate(-TORNADO_HALF, -TORNADO_HALF) }
         val tornado = maze.tornado
         if (tornado == null) {
             val box = if (maze.solo) REALM else MAZE_FLOOR
@@ -362,22 +382,27 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
                 }
             if (triggered) {
                 maze.tornado =
-                    spawn(SotetsegNpcs.tornado, onTile(maze.path[0]), ignoreCollision = true)
+                    spawn(SotetsegNpcs.tornado, swOf(maze.path[0]), ignoreCollision = true)
                 maze.tornadoStep = 0
             }
             return
         }
+        val centre = tornado.coords.translate(TORNADO_HALF, TORNADO_HALF)
         for (player in players) {
-            if (gap(tornado, player.coords) == 0) {
+            if (player.coords == centre) {
                 hurt(player, roll(TORNADO_MIN, TORNADO_MAX))
             }
         }
-        if (++maze.tornadoStep >= maze.path.size) {
-            despawn(tornado)
-            maze.tornado = null
-            return
+        // Only step on once it stands on its current tile: walking toward a tile further ahead
+        // makes it cut the path's corners diagonally.
+        if (centre == regionOf(onTile(maze.path[maze.tornadoStep]))) {
+            if (++maze.tornadoStep >= maze.path.size) {
+                despawn(tornado)
+                maze.tornado = null
+                return
+            }
         }
-        tornado.walk(regionOf(onTile(maze.path[maze.tornadoStep])))
+        tornado.walk(regionOf(swOf(maze.path[maze.tornadoStep])))
     }
 
     /** The runner stepped into the portal: the maze is over. */
@@ -427,6 +452,9 @@ class SotetsegRuntime(env: TobRoomEnv, raid: TobRaid) :
         private const val WRONG_FLAT = 15
         private const val TORNADO_MIN = 35
         private const val TORNADO_MAX = 45
+
+        /** Half of the tornado's size (3, from its npc config) rounded down. */
+        private const val TORNADO_HALF = 1
 
         /** Wiki: 121 for two, 188 for five (the steps between are a straight line); 70 alone. */
         fun bigBallDamage(present: Int): Int =

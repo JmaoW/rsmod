@@ -275,7 +275,7 @@ class TobRaidTest {
         }
 
     @Test
-    fun GameTestState.`beating Verzik counts the completion and fills each chest`() =
+    fun GameTestState.`beating Verzik counts the completion and opening a chest gives the loot`() =
         runTobTest { deps, alice, bob ->
             deps.party(alice, bob)
             deps.raids.enter(alice)
@@ -290,9 +290,17 @@ class TobRaidTest {
             assertEquals(1, alice.vars[tob_varps.completions])
             assertEquals(1, bob.vars[tob_varps.completions])
             assertFalse(raid.uniqueFound)
+            // Nothing is given until the chest is opened.
+            assertFalse(deps.rewards.hasLoot(alice))
+            assertEquals(0, alice.vars[tob_varbits.should_have_loot])
+            assertTrue(deps.rewards.claim(raid, alice))
+            assertFalse(deps.rewards.claim(raid, alice))
             assertTrue(deps.rewards.hasLoot(alice))
-            assertTrue(deps.rewards.hasLoot(bob))
             assertEquals(1, alice.vars[tob_varbits.should_have_loot])
+            // Leaving first sends the loot to the Rewards Chest.
+            assertFalse(deps.rewards.hasLoot(bob))
+            deps.raids.leave(bob, TobExit.Resigned)
+            assertTrue(deps.rewards.hasLoot(bob))
 
             deps.rewards.takeAll(alice, toBank = true)
             assertFalse(deps.rewards.hasLoot(alice))
@@ -313,6 +321,8 @@ class TobRaidTest {
             deps.raids.raidWon(raid)
             assertTrue(raid.uniqueFound)
             val hilt = deps.objTypes.values.first { it.internalName == "infernal_defender_hilt" }
+            deps.rewards.claim(raid, alice)
+            deps.rewards.claim(raid, bob)
             assertEquals(1, deps.rewards.chest(alice).count(hilt))
             assertEquals(1, deps.rewards.chest(bob).count(hilt))
         }

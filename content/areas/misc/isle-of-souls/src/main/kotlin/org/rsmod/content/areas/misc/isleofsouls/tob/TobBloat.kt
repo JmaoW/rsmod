@@ -20,7 +20,6 @@ object BloatNpcs : NpcReferences() {
 
 object BloatSeqs : SeqReferences() {
     val sleep = find("tob_bloat_sleep")
-    val flies = find("tob_bloat_flies_large")
     val death = find("tob_bloat_death")
 }
 
@@ -163,7 +162,7 @@ class BloatRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, T
         if (seen.isEmpty()) {
             return
         }
-        npc.anim(BloatSeqs.flies)
+        // The flies leave the Bloat on their own: it plays no animation for them.
         val bitten = LinkedHashSet(seen)
         for (player in seen) {
             for (other in players) {

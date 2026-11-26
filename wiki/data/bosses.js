@@ -24,11 +24,11 @@
 //   osrs        the OSRS Wiki page
 //
 // Text may use <b>, <i> and <a> tags. {secs:N} becomes how long N ticks of respawn time take at the
-// league's respawn speed ("about 9 seconds"). {zulrahScales}, {toaPaths}, {toaTeamUniques} and {nodes}
+// league's respawn speed ("about 9 seconds"). {zulrahScales}, {toaPaths}, {toaTeamUniques}, {tobCap}, {coxCap} and {nodes}
 // come from the event settings.
 
 window.ISLE_BOSSES = {
-  updated: "2026-11-04",
+  updated: "2026-11-25",
   intro: [
     "Bosses are fought as a team: most put your team in a private copy of the lair, so you never wait for another team. Kills count for the whole team's tasks.",
     "Drop rates on these pages are the main game's. Drops marked <b>boosted</b> get the league's relic drop boost on top, shown in their own columns."
@@ -570,6 +570,92 @@ window.ISLE_BOSSES = {
         "Some numbers are guesses (see the build notes). Still being polished after playtests."
       ],
       osrs: "Tombs of Amascut"
+    },
+    {
+      id: "tob", name: "Theatre of Blood", group: "raids", tracker: ["Theatre of Blood"],
+      summary: "Normal mode for parties of up to {tobCap}: the six fights, the supply chests and the vault.",
+      intro: [
+        "The Theatre of Blood (Normal mode) in a copy of its own for your party: the Maiden of Sugadinti, the Pestilent Bloat, the Nylocas, Sotetseg, Xarpus and Verzik Vitur, then the vault. Every run is all six rooms."
+      ],
+      getThere: [
+        "A portal in the Soul Wars lobby takes you to the real Ver Sinhaza, with its bank. The portal beside the notice board brings you back.",
+        "Make or join a party at the notice board (up to <b>{tobCap}</b> players, not only your league team), then go in through the theatre's entrance together."
+      ],
+      team: [
+        "Bosses scale with the party as in the main game up to 5. Past 5 they get 12.5% more hitpoints a player.",
+        "The board and the health bars show the first five players; players six to eight are listed in chat.",
+        "A player who dies waits in the room's jail until the room is cleared. If everyone dies, the party is put outside. Your items are kept (the isle's rule), so the retrieval chest is always empty.",
+        "There are supply chests after the Bloat and after Sotetseg, paid for with points earned from damage."
+      ],
+      fights: [
+        {
+          id: "tob", name: "The six rooms",
+          attacks: [
+            { name: "The Maiden of Sugadinti", text: "Blood throws and splats, and Matomenos that walk to her and heal her if they reach her." },
+            { name: "The Pestilent Bloat", text: "Walks its loop dropping flies and hands from the ceiling. Hit it while it sleeps." },
+            { name: "The Nylocas", text: "Waves crawl out of the tunnels at the pillars; kill each colour with the matching style. Then Nylocas Vasilias, who changes style." },
+            { name: "Sotetseg", text: "Red and blue balls, the big ball shared by the party, and the maze: one player runs it in the Shadow Realm while the rest follow the glowing path." },
+            { name: "Xarpus", text: "Exhumed pools to heal it first, then spit and poison pools, then the stare: don't hit it in the quadrant it faces." },
+            { name: "Verzik Vitur", text: "Talk to her to start. Phase 1 behind the pillars (use the Dawnbringer), phase 2's flight, bounces and Nylocas, phase 3's webs, yellows, tornadoes and green ball." }
+          ]
+        }
+      ],
+      loot: [
+        "One roll for a purple (unique) per raid, at the wiki's rate (1 in 9.1 with no deaths). The league's drop relics multiply it on top, each player's boost counting by their share of the party's points. Lil' Zik is not boosted.",
+        "The finder gets the unique. When team uniques are on (they are by default), everyone else still in the raid gets a unique of their own in place of their common loot.",
+        "Each player's loot waits in their own monumental chest in the vault (purple if it holds a unique). Leave before opening it and it goes to the Rewards Chest by Ver Sinhaza's bank."
+      ],
+      differences: [
+        "Normal mode only. Parties of up to {tobCap} (the main game stops at 5).",
+        "The ornament kits are rolled in the vault at Hard Mode rates, so their tasks can be done.",
+        "The scythe and staff are charged straight from the inventory, not through the Vyre well.",
+        "Logging out or teleporting leaves the raid. No spectating, scoreboard or MVP.",
+        "Some numbers are guesses (see the build notes). Still being polished after playtests."
+      ],
+      osrs: "Theatre of Blood"
+    },
+    {
+      id: "cox", name: "Chambers of Xeric", group: "raids", tracker: ["Chambers of Xeric"],
+      summary: "Normal and Challenge Mode, random layouts, the full prep and the Great Olm.",
+      intro: [
+        "The Chambers of Xeric on the real Mount Quidamortem, in a copy of its own for your party. Normal raids get a random layout from the main game's patterns: two floors of combat rooms, puzzles, scavengers and resource rooms, then the Great Olm. Challenge Mode is the fixed three-floor layout with every room."
+      ],
+      getThere: [
+        "A portal in the Soul Wars lobby, beside the Theatre of Blood's, takes you to Mount Quidamortem; the portal there brings you back. Xeric's talisman's <i>Xeric's Honour</i> lands there too, once you've read the ancient tablet from the raid.",
+        "The way down the mountain is fenced off for the event.",
+        "Make a party at the recruiting board (up to <b>{coxCap}</b> players, not only your league team) and go in through the entrance. The leader starts the raid from the side panel."
+      ],
+      team: [
+        "Monsters scale with the party's size and levels, as in the main game, for any size up to the cap.",
+        "Gather and make your own supplies inside: fish and bats, herbs, the raid's potions (overloads, Xeric's aid, revitalisation, prayer enhance), kindling, and storage units built from mallignum planks.",
+        "Points come from damage, cooking, potions, storage units, shortcuts and thieving. A death costs 40% of your points. Your items are kept (the isle's rule).",
+        "A player who dies wakes at the start of the floor they reached."
+      ],
+      fights: [
+        {
+          id: "olm", name: "The Great Olm",
+          text: ["At least four phases (one more for every 8 players). Kill both claws each phase, then the head on the last."],
+          attacks: [
+            { name: "Phase specials", text: "Crystal bursts, lightning and teleport swaps, in the main game's order." },
+            { name: "Head attacks", text: "Ranged and magic, with a 20% chance to switch style after each attack. Spheres take half your hitpoints unless prayed against." },
+            { name: "Acid, fire and crystals", text: "Acid spray and drip, deep burn, the fire wall, falling crystals and crystal bombs." },
+            { name: "Left claw", text: "Heals, shocks, stuns or brings the roof down." }
+          ]
+        }
+      ],
+      loot: [
+        "The chance of a unique is the wiki's: 1% for every 8,676 points the party earns (65.7% at 570,000; more points roll more). The league's drop relics multiply it on top, with each player's boost counting by their share of the points. The olmlet is not boosted.",
+        "When team uniques are on (they are by default), everyone else in the raid also gets a unique of their own in place of their commons.",
+        "Loot waits in the ancient chest at the end. Leaving with loot still in it sends it to your bank.",
+        "Challenge Mode within the target time adds the twisted ancestral kit (1 in 75) and metamorphic dust (1 in 400). Captain Rimor hands out capes for Challenge Mode completions."
+      ],
+      differences: [
+        "Parties are made on the board only (there is no friends chat), so the channel's rank rules are left out.",
+        "Logging out leaves the raid. Some rooms open their way on when done instead of with an exit crystal.",
+        "The crab puzzle is simplified. Xeric's talisman only does Xeric's Honour. The Kodai wand's rune saving isn't built.",
+        "Some numbers are guesses (see the build notes). Still being polished after playtests."
+      ],
+      osrs: "Chambers of Xeric"
     },
     {
       id: "gauntlet", name: "The Gauntlet", group: "raids", tracker: ["The Gauntlet"],

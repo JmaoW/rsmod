@@ -4,6 +4,7 @@ import jakarta.inject.Inject
 import java.util.IdentityHashMap
 import org.rsmod.api.combat.NpcAttackStyle
 import org.rsmod.api.death.NpcDeathEvents
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.npc.interact.AiPlayerInteractions
 import org.rsmod.api.player.isValidTarget
 import org.rsmod.api.random.GameRandom
@@ -542,7 +543,7 @@ constructor(
             healer.anim(cave_seqs.yt_mejkot_heal)
             owner.spotanim(cave_spotanims.heal)
             val heal = HEAL_MIN + random.of(HEAL_SPREAD)
-            owner.hitpoints = minOf(owner.baseHitpointsLvl, owner.hitpoints + heal)
+            owner.healHitpoints(heal)
         }
     }
 

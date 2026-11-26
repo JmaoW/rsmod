@@ -14,6 +14,7 @@ import org.rsmod.api.hit.plugin.NpcHitScript
 import org.rsmod.api.hit.plugin.PlayerHitScript
 import org.rsmod.api.player.stat.prayerLvl
 import org.rsmod.api.player.ui.IfOverlayButton
+import org.rsmod.api.registry.npc.NpcRegistry
 import org.rsmod.api.spells.MagicSpellModule
 import org.rsmod.api.spells.MagicSpellRegistry
 import org.rsmod.api.spells.runes.combo.ComboRuneRepository
@@ -35,6 +36,7 @@ import org.rsmod.content.skills.magic.utility.scripts.ArceuusUtilities
 import org.rsmod.content.skills.magic.utility.scripts.DisabledSpells
 import org.rsmod.content.skills.magic.utility.scripts.Thralls
 import org.rsmod.game.entity.Npc
+import org.rsmod.game.entity.NpcList
 import org.rsmod.game.entity.npc.NpcMode
 import org.rsmod.game.inv.InvObj
 import org.rsmod.game.queue.WorldQueueList
@@ -50,6 +52,8 @@ class ArceuusSpellsTest {
         val spells: MagicSpellRegistry,
         val thralls: Thralls,
         val random: GameTestScope.VariableGameRandom,
+        val npcList: NpcList,
+        val npcRegistry: NpcRegistry,
     )
 
     object SpellModule : AbstractModule() {
@@ -107,7 +111,13 @@ class ArceuusSpellsTest {
             DisabledSpells::class,
             *RUNE_SCRIPTS,
         ) { deps ->
-            body(deps)
+            // Npcs left in the world keep their collision in the map the next test shares, and
+            // would stand in a walking thrall's way: delete them when the test ends.
+            try {
+                body(deps)
+            } finally {
+                clearLeftoverNpcs(deps.npcList, deps.npcRegistry)
+            }
         }
 
     private fun GameTestScope.obj(internal: String): UnpackedObjType =
@@ -299,7 +309,12 @@ class ArceuusSpellsTest {
                 "A lesser thrall costs 2 Prayer points, left ${player.prayerLvl}."
             }
 
+            check(thrall.coords != player.coords) { "It should appear beside its owner." }
             repeat(20) { advance() }
+            check(thrall.mode == NpcMode.None) { "Its walk is the follow walker's, not a mode." }
+            check(thrall.faceEntity.isNpc && thrall.faceEntity.npcSlot == target.slotId) {
+                "It should look at what its owner is fighting."
+            }
             check(target.hitpoints <= 498) {
                 "The thrall should have hit the target, it has ${target.hitpoints}."
             }
@@ -313,6 +328,39 @@ class ArceuusSpellsTest {
                 }
             }
             check(deps.thralls.thrallOf(player) == null) { "The thrall should be gone." }
+        }
+
+    @Test
+    fun GameTestState.`a zombie thrall walks up to what the player is fighting`() =
+        runArceuus { deps ->
+            prepare(38, "airrune" to 10, "cosmicrune" to 1, "mindrune" to 5)
+            // An open strip of the test map (around `here` some tiles are walled off).
+            val open = CoordGrid(0, 50, 50, 20, 35)
+            player.teleport(open)
+            advance()
+            val target = spawnNpc(open.translate(6, 0), npcType())
+            player.withProtectedAccess { vars[varps.aggressive_npc] = target.uid.packed }
+            repeat(60) { deps.random.next = 1 }
+
+            cast(deps, objs.spell_resurrect_lesser_zombie)
+            val thrall = checkNotNull(deps.thralls.thrallOf(player)) { "Expected a thrall." }
+
+            repeat(16) { advance() }
+            val at = thrall.coords
+            val to = target.coords
+            val beside =
+                (at.z == to.z && kotlin.math.abs(at.x - to.x) == 1) ||
+                    (at.x == to.x && kotlin.math.abs(at.z - to.z) == 1)
+            check(beside) { "The zombie should stand beside its target: $at, target $to." }
+            check(target.hitpoints < 500) {
+                "It should strike once beside it: ${target.hitpoints}."
+            }
+            check(thrall.faceEntity.isNpc && thrall.faceEntity.npcSlot == target.slotId)
+
+            // The fight is over: it walks back to its owner.
+            player.withProtectedAccess { vars[varps.aggressive_npc] = -1 }
+            repeat(8) { advance() }
+            check(thrall.isWithinDistance(player, 1)) { "Back beside its owner: ${thrall.coords}." }
         }
 
     @Test
@@ -360,5 +408,13 @@ class ArceuusSpellsTest {
         cast(deps, objs.spell_ward_of_arceuus, DisabledSpells.UNAVAILABLE)
 
         check(player.count(obj("soulrune")) == 4) { "Nothing should be spent." }
+    }
+}
+
+/** Deletes every npc in the test world, so its collision is gone before the next test. */
+internal fun clearLeftoverNpcs(npcList: NpcList, npcRegistry: NpcRegistry) {
+    val all = buildList { for (npc in npcList) add(npc) }
+    for (npc in all) {
+        npcRegistry.del(npc)
     }
 }

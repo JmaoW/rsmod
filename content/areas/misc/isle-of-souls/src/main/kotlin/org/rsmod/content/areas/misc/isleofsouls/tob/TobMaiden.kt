@@ -85,6 +85,9 @@ class MaidenRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
     private val trails = LinkedHashMap<CoordGrid, Int>()
     val matomenos = LinkedHashSet<Npc>()
     val bloodSpawns = LinkedHashMap<Npc, CoordGrid>()
+
+    /** Matomenos playing their death after reaching her. */
+    val sinking = LinkedHashSet<Npc>()
     private var dying = false
 
     override fun build() {
@@ -120,11 +123,12 @@ class MaidenRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
         dying = true
         transform(npc, MaidenNpcs.dying_a)
         npc.anim(MaidenSeqs.death_a)
-        for (other in matomenos.toList() + bloodSpawns.keys.toList()) {
+        for (other in matomenos.toList() + bloodSpawns.keys.toList() + sinking.toList()) {
             despawn(other)
         }
         matomenos.clear()
         bloodSpawns.clear()
+        sinking.clear()
         clearTrails()
         splats.clear()
         complete()
@@ -305,7 +309,7 @@ class MaidenRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
                 heal(boss, 2 * nylo.hitpoints)
                 absorbed++
                 matomenos -= nylo
-                despawn(nylo)
+                sink(nylo)
                 continue
             }
             if (nylo.isFrozen) {
@@ -319,6 +323,23 @@ class MaidenRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
                     home.level,
                 )
             stepToward(nylo, towards, keepOff = false)
+        }
+    }
+
+    /**
+     * A Matomenos that reached her gives itself up: it stops, can no longer be fought and plays its
+     * death before it goes.
+     */
+    private fun sink(nylo: Npc) {
+        sinking += nylo
+        monsters.remove(nylo)
+        nylo.resetMovement()
+        nylo.noneMode()
+        nylo.hideAllOps()
+        nylo.anim(MaidenSeqs.matomenos_death)
+        later(ticksOf(MaidenSeqs.matomenos_death, least = SINK_TICKS)) {
+            sinking -= nylo
+            despawn(nylo)
         }
     }
 
@@ -384,6 +405,7 @@ class MaidenRuntime(env: TobRoomEnv, raid: TobRaid) : TobRoomRuntime(env, raid, 
         private const val TRAIL_MAX = 13
         val THRESHOLDS = listOf(70, 50, 30)
         private const val MAX_MATOMENOS = 10
+        private const val SINK_TICKS = 3
 
         /** Five each side, north then south, as TSPS captured them. */
         val MATOMENOS_TILES =

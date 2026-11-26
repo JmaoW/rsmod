@@ -27,6 +27,7 @@ import org.rsmod.content.areas.misc.isleofsouls.kalphite.KalphiteQueen
 import org.rsmod.content.areas.misc.isleofsouls.magic.IsleTeleportProvider
 import org.rsmod.content.areas.misc.isleofsouls.magic.LeagueSpellTeams
 import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTracker
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueGoldenGod
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueRunDrainMod
 import org.rsmod.content.areas.misc.isleofsouls.relics.LeagueXpMod
@@ -76,6 +77,8 @@ class IsleOfSoulsModule : PluginModule() {
         bindInstance<DagannothKings>()
         bindInstance<Vorkath>()
         bindInstance<Colosseum>()
+        // Every player's follower lives here: one pet system for the whole isle.
+        bindInstance<Pets>()
 
         // The teleport spells go to places on the isle, not to the cache's real-world towns.
         bindProvider<TeleportDestinations>(IsleTeleportProvider::class.java)

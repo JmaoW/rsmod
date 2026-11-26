@@ -7,6 +7,7 @@ import org.rsmod.api.combat.NpcAttacks
 import org.rsmod.api.combat.NpcImpactListener
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.varbits
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.npc.interact.AiPlayerInteractions
 import org.rsmod.api.player.hit.queueHit
 import org.rsmod.api.player.isValidTarget
@@ -416,7 +417,7 @@ constructor(
         if (fight.bites % 2 == 1) {
             val inside = instances.playersIn(run.instance).count { it.isValidTarget() }
             val heal = HEAL_PER_PLAYER * maxOf(1, inside)
-            boss.hitpoints = minOf(boss.baseHitpointsLvl, boss.hitpoints + heal)
+            boss.healHitpoints(heal)
         }
         fight.bites++
         fight.nextBiteAt = now + BITE_TICKS

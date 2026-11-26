@@ -7,6 +7,8 @@ import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.hunt.NpcSearch
 import org.rsmod.api.player.back
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.feet
 import org.rsmod.api.player.front
 import org.rsmod.api.player.hands
@@ -30,6 +32,7 @@ import org.rsmod.content.skills.thieving.configs.Drop
 import org.rsmod.content.skills.thieving.configs.PickpocketTarget
 import org.rsmod.content.skills.thieving.configs.PickpocketTargets
 import org.rsmod.content.skills.thieving.configs.ThievingObjs
+import org.rsmod.content.skills.thieving.configs.ThievingPets
 import org.rsmod.content.skills.thieving.configs.ThievingSeqs
 import org.rsmod.content.skills.thieving.configs.ThievingSpotanims
 import org.rsmod.content.skills.thieving.configs.ThievingSynths
@@ -180,6 +183,10 @@ constructor(
                 victims++
             }
         }
+        // The pet roll comes first: a pet takes the last free slot ahead of the loot.
+        publish(
+            SkillingPetRoll(player, SkillingPet.Rocky, ThievingPets.pickpocketChance(target.key))
+        )
         for (item in loot) {
             give(item, mods.noted)
         }

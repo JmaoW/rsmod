@@ -7,6 +7,7 @@ import org.rsmod.api.invtx.invDel
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.repo.loc.LocRepository
+import org.rsmod.api.script.onApLoc1
 import org.rsmod.api.script.onEvent
 import org.rsmod.api.script.onGameStartup
 import org.rsmod.api.script.onIfModalButton
@@ -74,6 +75,12 @@ constructor(
         for (exit in listOf(tob_locs.passage, tob_locs.xarpus_exit)) {
             onOpLoc1(exit) { passOn(ask = true) }
             onOpLoc2(exit) { passOn(ask = false) }
+        }
+        // The throne's steps stand between the floor and the door, so it opens from a tile away.
+        onApLoc1(tob_locs.treasure_door) {
+            if (isWithinApRange(it.loc, TREASURE_DOOR_RANGE)) {
+                passOn(ask = false)
+            }
         }
         onOpLoc1(tob_locs.treasure_door) { passOn(ask = false) }
         for (orator in listOf(tob_locs.orator, tob_locs.orator_seated)) {
@@ -335,6 +342,9 @@ constructor(
     private companion object {
         /** The way home from Ver Sinhaza: a portal beside the notice board. */
         val VER_SINHAZA_PORTAL = CoordGrid(3660, 3220, 0)
+
+        /** The floor ends two tiles short of the treasure room's door (steps between). */
+        const val TREASURE_DOOR_RANGE = 2
     }
 }
 

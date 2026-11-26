@@ -12,13 +12,31 @@ public class DropRoller @Inject constructor(private val random: GameRandom) {
      * relics use this). Other entries, and entries that are always dropped, are not affected. If
      * the boost makes a main table add up to more than 100%, its entries are scaled back down in
      * proportion so one of them is always hit.
+     *
+     * [chanceMultipliers] gives single items (by obj id) their own factor instead of [multiplier],
+     * whether or not their entry is boosted, at any depth of the table.
      */
-    public fun roll(table: DropTable, multiplier: Double = 1.0): List<DropResult> {
+    public fun roll(
+        table: DropTable,
+        multiplier: Double = 1.0,
+        chanceMultipliers: Map<Int, Double> = emptyMap(),
+    ): List<DropResult> {
         require(multiplier > 0.0) { "Drop multiplier must be positive: $multiplier" }
+        require(chanceMultipliers.values.all { it > 0.0 }) {
+            "Drop chance multipliers must be positive: $chanceMultipliers"
+        }
         val results = ArrayList<DropResult>()
-        collect(table, multiplier, results, depth = 0)
+        objMultipliers = chanceMultipliers
+        try {
+            collect(table, multiplier, results, depth = 0)
+        } finally {
+            objMultipliers = emptyMap()
+        }
         return results
     }
+
+    /** The item factors of the roll in progress (rolls never overlap: the game is one thread). */
+    private var objMultipliers: Map<Int, Double> = emptyMap()
 
     private fun collect(
         table: DropTable,
@@ -75,8 +93,15 @@ public class DropRoller @Inject constructor(private val random: GameRandom) {
         }
     }
 
-    private fun DropEntry.effectiveChance(multiplier: Double): Double =
-        if (boosted) chance * multiplier else chance
+    private fun DropEntry.effectiveChance(multiplier: Double): Double {
+        val item = outcome as? DropOutcome.Item
+        val own = item?.let { objMultipliers[it.stack.obj.id] }
+        return when {
+            own != null -> chance * own
+            boosted -> chance * multiplier
+            else -> chance
+        }
+    }
 
     private fun DropStack.roll(boosted: Boolean): DropResult =
         DropResult(obj, random.of(min, max), boosted)

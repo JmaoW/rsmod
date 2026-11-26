@@ -1,0 +1,4778 @@
+{
+ "pets": [
+  {
+   "id": 13262,
+   "sym": "abyssalsire_pet",
+   "name": "Abyssal orphan",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 22746,
+   "sym": "hydrapet",
+   "name": "Ikkle hydra",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 2176
+   }
+  },
+  {
+   "id": 13178,
+   "sym": "callisto_pet",
+   "name": "Callisto cub",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 4904
+   }
+  },
+  {
+   "id": 13247,
+   "sym": "hell_pet",
+   "name": "Hellpuppy",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 11995,
+   "sym": "chaoselepet",
+   "name": "Pet chaos elemental",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12651,
+   "sym": "saradominpet",
+   "name": "Pet zilyana",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12816,
+   "sym": "corepet",
+   "name": "Pet dark core",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 285
+   }
+  },
+  {
+   "id": 12644,
+   "sym": "primepet",
+   "name": "Pet dagannoth prime",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12643,
+   "sym": "supremepet",
+   "name": "Pet dagannoth supreme",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12645,
+   "sym": "rexpet",
+   "name": "Pet dagannoth rex",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 13225,
+   "sym": "jad_pet",
+   "name": "Tzrek-jad",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3665
+   }
+  },
+  {
+   "id": 12650,
+   "sym": "bandospet",
+   "name": "Pet general graardor",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12646,
+   "sym": "molepet",
+   "name": "Baby mole",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3733
+   }
+  },
+  {
+   "id": 21748,
+   "sym": "dawnpet",
+   "name": "Noon",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 49
+   }
+  },
+  {
+   "id": 21291,
+   "sym": "infernopet",
+   "name": "Jal-nib-rek",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1893
+   }
+  },
+  {
+   "id": 12647,
+   "sym": "kqpet_walking",
+   "name": "Kalphite princess",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1686
+   }
+  },
+  {
+   "id": 12653,
+   "sym": "kbdpet",
+   "name": "Prince black dragon",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12655,
+   "sym": "krakenpet",
+   "name": "Pet kraken",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12649,
+   "sym": "armadylpet",
+   "name": "Pet kree'arra",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12652,
+   "sym": "zamorakpet",
+   "name": "Pet k'ril tsutsaroth",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 13181,
+   "sym": "scorpia_pet",
+   "name": "Scorpia's offspring",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 21273,
+   "sym": "skotizopet",
+   "name": "Skotos",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12648,
+   "sym": "smokepet",
+   "name": "Pet smoke devil",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 995
+   }
+  },
+  {
+   "id": 13177,
+   "sym": "venenatis_pet",
+   "name": "Venenatis spiderling",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 4905
+   }
+  },
+  {
+   "id": 13179,
+   "sym": "vetion_pet",
+   "name": "Vet'ion jr.",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1688
+   }
+  },
+  {
+   "id": 21992,
+   "sym": "vorkathpet",
+   "name": "Vorki",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 20693,
+   "sym": "phoenixpet",
+   "name": "Phoenix",
+   "iop": [
+    "",
+    "",
+    "Metamorphosis",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 2788
+   }
+  },
+  {
+   "id": 12921,
+   "sym": "snakepet",
+   "name": "Pet snakeling",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1687
+   }
+  },
+  {
+   "id": 20851,
+   "sym": "olmpet",
+   "name": "Olmlet",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1711
+   }
+  },
+  {
+   "id": 22473,
+   "sym": "verzikpet",
+   "name": "Lil' zik",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3856
+   }
+  },
+  {
+   "id": 19730,
+   "sym": "bloodhound_pet",
+   "name": "Bloodhound",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 12703,
+   "sym": "penancepet",
+   "name": "Pet penance queen",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 13320,
+   "sym": "skillpetfish",
+   "name": "Heron",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3713
+   }
+  },
+  {
+   "id": 13321,
+   "sym": "skillpetmining",
+   "name": "Rock golem",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1691
+   }
+  },
+  {
+   "id": 13322,
+   "sym": "skillpetwc",
+   "name": "Beaver",
+   "iop": [
+    "",
+    "",
+    "Metamorphosis",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3754
+   }
+  },
+  {
+   "id": 13324,
+   "sym": "skillpethunter_grey",
+   "name": "Baby chinchompa",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1689
+   }
+  },
+  {
+   "id": 20659,
+   "sym": "skillpetagility",
+   "name": "Giant squirrel",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 2861
+   }
+  },
+  {
+   "id": 20661,
+   "sym": "skillpetfarming",
+   "name": "Tangleroot",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 2849
+   }
+  },
+  {
+   "id": 20663,
+   "sym": "skillpetthieving",
+   "name": "Rocky",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 2946
+   }
+  },
+  {
+   "id": 20665,
+   "sym": "skillpetrunecrafting_fire",
+   "name": "Rift guardian",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 1690
+   }
+  },
+  {
+   "id": 21509,
+   "sym": "herbiboarpet",
+   "name": "Herbi",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 13071,
+   "sym": "chompybird_pet",
+   "name": "Chompy chick",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 23495,
+   "sym": "sarachnispet",
+   "name": "Sraracha",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3939
+   }
+  },
+  {
+   "id": 23760,
+   "sym": "zalcanopet",
+   "name": "Smolcano",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 23757,
+   "sym": "gauntletpet",
+   "name": "Youngllef",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 2364
+   }
+  },
+  {
+   "id": 24491,
+   "sym": "nightmarepet",
+   "name": "Little nightmare",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3938
+   }
+  },
+  {
+   "id": 25348,
+   "sym": "soulwarspet_blue",
+   "name": "Lil' creator",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3554
+   }
+  },
+  {
+   "id": 25602,
+   "sym": "temporosspet",
+   "name": "Tiny tempor",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 26348,
+   "sym": "nexpet",
+   "name": "Nexling",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 26901,
+   "sym": "abyssalpet",
+   "name": "Abyssal protector",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 27352,
+   "sym": "wardenpet_tumeken",
+   "name": "Tumeken's guardian",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 4802
+   }
+  },
+  {
+   "id": 27590,
+   "sym": "muspahpet",
+   "name": "Muphin",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 4918
+   }
+  },
+  {
+   "id": 28246,
+   "sym": "whispererpet",
+   "name": "Wisp",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 28250,
+   "sym": "dukesucelluspet",
+   "name": "Baron",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 28248,
+   "sym": "vardorvispet",
+   "name": "Butch",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 28252,
+   "sym": "leviathanpet",
+   "name": "Lil'viathan",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "params": {}
+  },
+  {
+   "id": 28801,
+   "sym": "scurriuspet",
+   "name": "Scurry",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 28960,
+   "sym": "solhereditpet",
+   "name": "Smol heredit",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "params": {}
+  },
+  {
+   "id": 28962,
+   "sym": "quetzalpet",
+   "name": "Quetzin",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 29836,
+   "sym": "araxxorpet",
+   "name": "Nid",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 4823
+   }
+  },
+  {
+   "id": 30152,
+   "sym": "hueypet",
+   "name": "Huberte",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 30154,
+   "sym": "amoxliatlpet",
+   "name": "Moxi",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 30622,
+   "sym": "rtbrandapet",
+   "name": "Bran",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {
+    "446": 3349
+   }
+  },
+  {
+   "id": 30888,
+   "sym": "yamapet",
+   "name": "Yami",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  },
+  {
+   "id": 31130,
+   "sym": "dompet",
+   "name": "Dom",
+   "iop": [
+    "",
+    "",
+    "",
+    "",
+    "Drop"
+   ],
+   "params": {}
+  }
+ ],
+ "followers": {
+  "318": {
+   "name": "Dark core",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    11069
+   ],
+   "params": {},
+   "readyanim": 7980,
+   "walkanim": 2417,
+   "sym": "core_pet"
+  },
+  "1619": {
+   "name": "Cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6435
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "growncat"
+  },
+  "1620": {
+   "name": "Cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6435
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "growncat_light"
+  },
+  "1621": {
+   "name": "Cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6435
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "growncat_brown"
+  },
+  "1622": {
+   "name": "Cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6435
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "growncat_black"
+  },
+  "1623": {
+   "name": "Cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6435
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "growncat_browngrey"
+  },
+  "1624": {
+   "name": "Cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6435
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "growncat_bluegrey"
+  },
+  "1625": {
+   "name": "Hellcat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    12742
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "growncat_hell"
+  },
+  "1626": {
+   "name": "Lazy cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9422
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "lazycat_light"
+  },
+  "1627": {
+   "name": "Lazy cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9422
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "lazycat"
+  },
+  "1628": {
+   "name": "Lazy cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9422
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "lazycat_brown"
+  },
+  "1629": {
+   "name": "Lazy cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9422
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "lazycat_black"
+  },
+  "1630": {
+   "name": "Lazy cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9422
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "lazycat_browngrey"
+  },
+  "1631": {
+   "name": "Lazy cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9422
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "lazycat_bluegrey"
+  },
+  "1632": {
+   "name": "Lazy hellcat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    12744
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "lazycat_hell"
+  },
+  "2055": {
+   "name": "Chaos Elemental Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    5805
+   ],
+   "params": {},
+   "walkanim": 3145,
+   "readyanim": 3144,
+   "sym": "chaos_elemental_pet"
+  },
+  "2130": {
+   "name": "Snakeling",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    10418
+   ],
+   "params": {},
+   "readyanim": 1721,
+   "walkanim": 2405,
+   "sym": "snake_pet_green"
+  },
+  "2131": {
+   "name": "Snakeling",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    10417
+   ],
+   "params": {},
+   "readyanim": 1721,
+   "walkanim": 2405,
+   "sym": "snake_pet_orange"
+  },
+  "2132": {
+   "name": "Snakeling",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    10419
+   ],
+   "params": {},
+   "readyanim": 1721,
+   "walkanim": 2405,
+   "sym": "snake_pet_blue"
+  },
+  "2144": {
+   "name": "Sraracha",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    37347
+   ],
+   "params": {},
+   "walkanim": 8319,
+   "readyanim": 8320,
+   "sym": "sarachnispet"
+  },
+  "2782": {
+   "name": "Clockwork cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "4": "Shoo"
+   },
+   "follower": true,
+   "heads": [],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "poh_toy_cat"
+  },
+  "3081": {
+   "name": "Phoenix",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39152
+   ],
+   "params": {},
+   "walkanim": 6808,
+   "readyanim": 6809,
+   "sym": "phoenix_pet_green"
+  },
+  "3082": {
+   "name": "Phoenix",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39150
+   ],
+   "params": {},
+   "walkanim": 6808,
+   "readyanim": 6809,
+   "sym": "phoenix_pet_blue"
+  },
+  "3083": {
+   "name": "Phoenix",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39151
+   ],
+   "params": {},
+   "walkanim": 6808,
+   "readyanim": 6809,
+   "sym": "phoenix_pet_white"
+  },
+  "3084": {
+   "name": "Phoenix",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39153
+   ],
+   "params": {},
+   "walkanim": 6808,
+   "readyanim": 6809,
+   "sym": "phoenix_pet_purple"
+  },
+  "3099": {
+   "name": "Hellpuppy",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29392
+   ],
+   "params": {},
+   "walkanim": 6560,
+   "readyanim": 6561,
+   "sym": "hellpet"
+  },
+  "3566": {
+   "name": "Lil' Creator",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    41239
+   ],
+   "params": {},
+   "walkanim": 8846,
+   "readyanim": 8842,
+   "sym": "soulwars_pet_blue"
+  },
+  "4002": {
+   "name": "Chompy chick",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    14387
+   ],
+   "params": {},
+   "walkanim": 6765,
+   "readyanim": 6764,
+   "sym": "chompy_bird_pet"
+  },
+  "4508": {
+   "name": "Zanik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    23243,
+    15561
+   ],
+   "params": {},
+   "readyanim": 6040,
+   "walkanim": 6041,
+   "sym": "dttd_zanik_follower"
+  },
+  "4509": {
+   "name": "Zanik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    23242
+   ],
+   "params": {},
+   "readyanim": 6040,
+   "walkanim": 6041,
+   "sym": "dttd_zanik_follower_ham"
+  },
+  "4510": {
+   "name": "Zanik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    23243,
+    15561
+   ],
+   "params": {},
+   "readyanim": 6040,
+   "sym": "dttd_zanik_follower_jumping_into_crate"
+  },
+  "4511": {
+   "name": "Zanik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    23243,
+    15561
+   ],
+   "params": {},
+   "readyanim": 6040,
+   "walkanim": 6041,
+   "sym": "dttd_zanik_follower_showdown"
+  },
+  "5008": {
+   "name": "Lil' Destructor",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    41241
+   ],
+   "params": {},
+   "walkanim": 8847,
+   "readyanim": 3079,
+   "sym": "soulwars_pet_red"
+  },
+  "5147": {
+   "name": "Zanik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    23243,
+    15561
+   ],
+   "params": {},
+   "readyanim": 6040,
+   "walkanim": 6041,
+   "sym": "slice_zanik_follower"
+  },
+  "5557": {
+   "name": "Venenatis spiderling",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47402
+   ],
+   "params": {},
+   "walkanim": 9987,
+   "readyanim": 9986,
+   "sym": "venenatispet"
+  },
+  "5558": {
+   "name": "Callisto cub",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47408
+   ],
+   "params": {},
+   "walkanim": 10010,
+   "readyanim": 10011,
+   "sym": "callistopet"
+  },
+  "5559": {
+   "name": "Vet'ion Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47409
+   ],
+   "params": {},
+   "walkanim": 9967,
+   "readyanim": 9965,
+   "sym": "vetionpet"
+  },
+  "5560": {
+   "name": "Vet'ion Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47404
+   ],
+   "params": {},
+   "walkanim": 9967,
+   "readyanim": 9965,
+   "sym": "vetionpet_2"
+  },
+  "5561": {
+   "name": "Scorpia's offspring",
+   "size": 2,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29185
+   ],
+   "params": {},
+   "walkanim": 6257,
+   "readyanim": 6258,
+   "sym": "scorpiapet"
+  },
+  "5584": {
+   "name": "Wily cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9424
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat_light"
+  },
+  "5585": {
+   "name": "Wily cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9424
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat"
+  },
+  "5586": {
+   "name": "Wily cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9424
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat_brown"
+  },
+  "5587": {
+   "name": "Wily cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9424
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat_black"
+  },
+  "5588": {
+   "name": "Wily cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9424
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat_browngrey"
+  },
+  "5589": {
+   "name": "Wily cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    9424
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat_bluegrey"
+  },
+  "5590": {
+   "name": "Wily hellcat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    12745
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "wileycat_hell"
+  },
+  "5591": {
+   "name": "Kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6438
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet1"
+  },
+  "5592": {
+   "name": "Kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6438
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet_light"
+  },
+  "5593": {
+   "name": "Kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6438
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet_brown"
+  },
+  "5594": {
+   "name": "Kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6438
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet_black"
+  },
+  "5595": {
+   "name": "Kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6438
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet_browngrey"
+  },
+  "5596": {
+   "name": "Kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6438
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet_bluegrey"
+  },
+  "5597": {
+   "name": "Hell-kitten",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "1": "Hidden",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    12743
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 2662,
+   "readyanim": 317,
+   "sym": "kittenpet_hell"
+  },
+  "5598": {
+   "name": "Overgrown cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6436
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "overgrowncat"
+  },
+  "5599": {
+   "name": "Overgrown cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6436
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "overgrowncat_light"
+  },
+  "5600": {
+   "name": "Overgrown cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6436
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "overgrowncat_brown"
+  },
+  "5601": {
+   "name": "Overgrown cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6436
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "overgrowncat_black"
+  },
+  "5602": {
+   "name": "Overgrown cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6436
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "overgrowncat_browngrey"
+  },
+  "5603": {
+   "name": "Overgrown cat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    6436
+   ],
+   "params": {
+    "26": 1
+   },
+   "walkanim": 314,
+   "readyanim": 317,
+   "sym": "overgrowncat_bluegrey"
+  },
+  "5604": {
+   "name": "Overgrown hellcat",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up",
+    "2": "Talk-to",
+    "3": "Chase",
+    "4": "Interact"
+   },
+   "follower": true,
+   "heads": [
+    12742
+   ],
+   "params": {
+    "26": 1
+   },
+   "readyanim": 317,
+   "walkanim": 314,
+   "sym": "overgrowncat_hell"
+  },
+  "5884": {
+   "name": "Abyssal orphan",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29632
+   ],
+   "params": {},
+   "readyanim": 7125,
+   "walkanim": 7124,
+   "sym": "abyssalsire_pet"
+  },
+  "5893": {
+   "name": "TzRek-Jad",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29320
+   ],
+   "params": {},
+   "walkanim": 5805,
+   "readyanim": 2650,
+   "sym": "jadpet"
+  },
+  "6628": {
+   "name": "Dagannoth Supreme Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28862
+   ],
+   "params": {},
+   "walkanim": 2849,
+   "readyanim": 2850,
+   "sym": "supreme_pet"
+  },
+  "6629": {
+   "name": "Dagannoth Prime Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28855
+   ],
+   "params": {},
+   "walkanim": 2849,
+   "readyanim": 2850,
+   "sym": "prime_pet"
+  },
+  "6630": {
+   "name": "Dagannoth Rex Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28857
+   ],
+   "params": {},
+   "walkanim": 2849,
+   "readyanim": 2850,
+   "sym": "rex_pet"
+  },
+  "6631": {
+   "name": "Kree'arra Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28859
+   ],
+   "params": {},
+   "walkanim": 7167,
+   "readyanim": 7166,
+   "sym": "armadyl_pet"
+  },
+  "6632": {
+   "name": "General Graardor Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28860
+   ],
+   "params": {},
+   "walkanim": 7016,
+   "readyanim": 7017,
+   "sym": "bandos_pet"
+  },
+  "6633": {
+   "name": "Zilyana Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28864
+   ],
+   "params": {},
+   "walkanim": 6965,
+   "readyanim": 6966,
+   "sym": "saradomin_pet"
+  },
+  "6634": {
+   "name": "K'ril Tsutsaroth Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28858
+   ],
+   "params": {},
+   "walkanim": 4070,
+   "readyanim": 6935,
+   "sym": "zamorak_pet"
+  },
+  "6635": {
+   "name": "Baby Mole",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42013
+   ],
+   "params": {},
+   "readyanim": 3309,
+   "walkanim": 3313,
+   "sym": "mole_pet"
+  },
+  "6636": {
+   "name": "Prince Black Dragon",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28865
+   ],
+   "params": {},
+   "walkanim": 4635,
+   "readyanim": 90,
+   "sym": "kbd_pet"
+  },
+  "6637": {
+   "name": "Kalphite Princess",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28866
+   ],
+   "params": {},
+   "walkanim": 6236,
+   "readyanim": 6236,
+   "sym": "kq_pet_flying"
+  },
+  "6638": {
+   "name": "Kalphite Princess",
+   "size": 2,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28867
+   ],
+   "params": {},
+   "walkanim": 6238,
+   "readyanim": 6239,
+   "sym": "kq_pet_walking"
+  },
+  "6639": {
+   "name": "Smoke Devil",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    36011
+   ],
+   "params": {},
+   "walkanim": 1828,
+   "readyanim": 1829,
+   "sym": "smoke_pet"
+  },
+  "6640": {
+   "name": "Kraken",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28861
+   ],
+   "params": {},
+   "readyanim": 3989,
+   "walkanim": 3989,
+   "sym": "kraken_pet"
+  },
+  "6674": {
+   "name": "Penance Pet",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    28898
+   ],
+   "params": {},
+   "readyanim": 5410,
+   "walkanim": 5409,
+   "sym": "penance_pet"
+  },
+  "6722": {
+   "name": "Heron",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29762
+   ],
+   "params": {},
+   "walkanim": 6774,
+   "readyanim": 6772,
+   "sym": "skillpet_fish"
+  },
+  "6756": {
+   "name": "Baby Chinchompa",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    29759
+   ],
+   "params": {},
+   "walkanim": 5181,
+   "readyanim": 5182,
+   "sym": "skillpet_hunter_red"
+  },
+  "6757": {
+   "name": "Baby Chinchompa",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    29759
+   ],
+   "params": {},
+   "walkanim": 5181,
+   "readyanim": 5182,
+   "sym": "skillpet_hunter_grey"
+  },
+  "6758": {
+   "name": "Baby Chinchompa",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    29759
+   ],
+   "params": {},
+   "walkanim": 5181,
+   "readyanim": 5182,
+   "sym": "skillpet_hunter_black"
+  },
+  "6759": {
+   "name": "Baby Chinchompa",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    29760
+   ],
+   "params": {},
+   "walkanim": 5181,
+   "readyanim": 5182,
+   "sym": "skillpet_hunter_gold"
+  },
+  "7109": {
+   "name": "Nieve",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    10031
+   ],
+   "params": {},
+   "walkanim": 1205,
+   "readyanim": 813,
+   "sym": "mm2_nieve_follower"
+  },
+  "7110": {
+   "name": "Nieve",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    10031
+   ],
+   "params": {
+    "26": 0
+   },
+   "walkanim": 1205,
+   "readyanim": 813,
+   "sym": "mm2_nieve_follower_bossfight"
+  },
+  "7232": {
+   "name": "Bloodhound",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    31948
+   ],
+   "params": {},
+   "walkanim": 7280,
+   "readyanim": 7269,
+   "sym": "bloodhoundpet"
+  },
+  "7351": {
+   "name": "Giant Squirrel",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32209
+   ],
+   "params": {},
+   "walkanim": 7310,
+   "readyanim": 7309,
+   "sym": "skillpet_agility"
+  },
+  "7352": {
+   "name": "Tangleroot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32207
+   ],
+   "params": {},
+   "walkanim": 7313,
+   "readyanim": 7312,
+   "sym": "skillpet_farming"
+  },
+  "7353": {
+   "name": "Rocky",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32208
+   ],
+   "params": {},
+   "walkanim": 7316,
+   "readyanim": 7315,
+   "sym": "skillpet_thieving"
+  },
+  "7354": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_fire"
+  },
+  "7355": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_air"
+  },
+  "7356": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_mind"
+  },
+  "7357": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_water"
+  },
+  "7358": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_earth"
+  },
+  "7359": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_body"
+  },
+  "7360": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_cosmic"
+  },
+  "7361": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_chaos"
+  },
+  "7362": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_nature"
+  },
+  "7363": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_law"
+  },
+  "7364": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_death"
+  },
+  "7365": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_soul"
+  },
+  "7366": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_astral"
+  },
+  "7367": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_blood"
+  },
+  "7370": {
+   "name": "Phoenix",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32290
+   ],
+   "params": {},
+   "walkanim": 6808,
+   "readyanim": 6809,
+   "sym": "phoenix_pet"
+  },
+  "7451": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_default"
+  },
+  "7452": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_tin"
+  },
+  "7453": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_copper"
+  },
+  "7454": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_iron"
+  },
+  "7455": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_blurite"
+  },
+  "7520": {
+   "name": "Olmlet",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32775
+   ],
+   "params": {},
+   "readyanim": 7396,
+   "walkanim": 7395,
+   "sym": "raids_olm_pet"
+  },
+  "7616": {
+   "name": "Scurry",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    50157
+   ],
+   "params": {},
+   "walkanim": 10715,
+   "readyanim": 10687,
+   "sym": "scurrius_pet"
+  },
+  "7642": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_silver"
+  },
+  "7643": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_coal"
+  },
+  "7644": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_gold"
+  },
+  "7645": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_mithril"
+  },
+  "7646": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_granite"
+  },
+  "7647": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_adamantite"
+  },
+  "7648": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_runite"
+  },
+  "7671": {
+   "name": "Skotos",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32996
+   ],
+   "params": {},
+   "walkanim": 4070,
+   "readyanim": 6935,
+   "sym": "skotizo_pet"
+  },
+  "7675": {
+   "name": "Jal-Nib-Rek",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    33136
+   ],
+   "params": {},
+   "readyanim": 7573,
+   "walkanim": 7572,
+   "sym": "inferno_pet"
+  },
+  "7711": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_amethyst"
+  },
+  "7739": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_lovakite"
+  },
+  "7740": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_elemental"
+  },
+  "7741": {
+   "name": "Rock Golem",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29761
+   ],
+   "params": {},
+   "walkanim": 7181,
+   "readyanim": 7180,
+   "sym": "skillpet_mining_daeyalt"
+  },
+  "7760": {
+   "name": "Herbi",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    34010
+   ],
+   "params": {},
+   "walkanim": 7695,
+   "readyanim": 7694,
+   "sym": "herbiboar_pet"
+  },
+  "7892": {
+   "name": "Noon",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    34243
+   ],
+   "params": {},
+   "readyanim": 7768,
+   "walkanim": 7768,
+   "sym": "dawn_pet"
+  },
+  "7893": {
+   "name": "Midnight",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    34244
+   ],
+   "params": {},
+   "readyanim": 7807,
+   "walkanim": 7806,
+   "sym": "dusk_pet"
+  },
+  "8010": {
+   "name": "Corporeal Critter",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    34588
+   ],
+   "params": {},
+   "readyanim": 1678,
+   "walkanim": 7974,
+   "sym": "corp_pet"
+  },
+  "8011": {
+   "name": "TzRek-Zuk",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    34587
+   ],
+   "params": {},
+   "readyanim": 7975,
+   "walkanim": 7977,
+   "sym": "zuk_pet"
+  },
+  "8028": {
+   "name": "Rift guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    32210
+   ],
+   "params": {},
+   "walkanim": 7306,
+   "readyanim": 7307,
+   "sym": "skillpet_runecrafting_wrath"
+  },
+  "8029": {
+   "name": "Vorki",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    35024
+   ],
+   "params": {},
+   "walkanim": 7959,
+   "readyanim": 7948,
+   "sym": "vorkath_pet"
+  },
+  "8201": {
+   "name": "Puppadile",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    34598
+   ],
+   "params": {},
+   "readyanim": 7417,
+   "walkanim": 7982,
+   "sym": "dogadile_pet"
+  },
+  "8202": {
+   "name": "Tektiny",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    34602
+   ],
+   "params": {},
+   "readyanim": 7476,
+   "walkanim": 7983,
+   "sym": "tekton_pet"
+  },
+  "8203": {
+   "name": "Vanguard",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    34604
+   ],
+   "params": {},
+   "readyanim": 7430,
+   "walkanim": 7984,
+   "sym": "vanguard_pet"
+  },
+  "8204": {
+   "name": "Vasa Minirio",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    34597
+   ],
+   "params": {},
+   "readyanim": 7416,
+   "walkanim": 7985,
+   "sym": "vasa_pet"
+  },
+  "8205": {
+   "name": "Vespina",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    35118
+   ],
+   "params": {},
+   "readyanim": 7449,
+   "walkanim": 7986,
+   "sym": "vespula_pet"
+  },
+  "8337": {
+   "name": "Lil' Zik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42869
+   ],
+   "params": {},
+   "readyanim": 8120,
+   "walkanim": 8122,
+   "sym": "verzik_pet"
+  },
+  "8483": {
+   "name": "Smoke Devil",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Metamorphosis"
+   },
+   "follower": true,
+   "heads": [
+    28856
+   ],
+   "params": {},
+   "walkanim": 1828,
+   "readyanim": 1829,
+   "sym": "smoke_pet_old"
+  },
+  "8492": {
+   "name": "Ikkle Hydra",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    36197
+   ],
+   "params": {},
+   "readyanim": 8233,
+   "walkanim": 8296,
+   "sym": "hydra_pet"
+  },
+  "8493": {
+   "name": "Ikkle Hydra",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    36196
+   ],
+   "params": {},
+   "readyanim": 8298,
+   "walkanim": 8297,
+   "sym": "hydra_pet_electric"
+  },
+  "8494": {
+   "name": "Ikkle Hydra",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    36195
+   ],
+   "params": {},
+   "readyanim": 8247,
+   "walkanim": 8299,
+   "sym": "hydra_pet_fire"
+  },
+  "8495": {
+   "name": "Ikkle Hydra",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    36198
+   ],
+   "params": {},
+   "readyanim": 8254,
+   "walkanim": 8300,
+   "sym": "hydra_pet_extinguished"
+  },
+  "8541": {
+   "name": "Little Parasite",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42588
+   ],
+   "params": {},
+   "readyanim": 8553,
+   "walkanim": 8553,
+   "sym": "nightmare_pet_parasite"
+  },
+  "8737": {
+   "name": "Youngllef",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    38598
+   ],
+   "params": {},
+   "readyanim": 8417,
+   "walkanim": 8428,
+   "sym": "gauntlet_pet"
+  },
+  "8738": {
+   "name": "Corrupted Youngllef",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    38599
+   ],
+   "params": {},
+   "readyanim": 8417,
+   "walkanim": 8428,
+   "sym": "gauntlet_pet_corrupt"
+  },
+  "8739": {
+   "name": "Smolcano",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    38593
+   ],
+   "params": {},
+   "readyanim": 8429,
+   "walkanim": 8447,
+   "sym": "zalcano_pet"
+  },
+  "9399": {
+   "name": "Little Nightmare",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39193
+   ],
+   "params": {},
+   "walkanim": 8634,
+   "readyanim": 8593,
+   "sym": "nightmare_pet"
+  },
+  "9497": {
+   "name": "Tangleroot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39576
+   ],
+   "params": {},
+   "walkanim": 7313,
+   "readyanim": 7312,
+   "sym": "skillpet_farming_crystal"
+  },
+  "9498": {
+   "name": "Tangleroot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39578
+   ],
+   "params": {},
+   "walkanim": 7313,
+   "readyanim": 7312,
+   "sym": "skillpet_farming_dragon"
+  },
+  "9499": {
+   "name": "Tangleroot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39580
+   ],
+   "params": {},
+   "walkanim": 7313,
+   "readyanim": 7312,
+   "sym": "skillpet_farming_herb"
+  },
+  "9500": {
+   "name": "Tangleroot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39579
+   ],
+   "params": {},
+   "walkanim": 7313,
+   "readyanim": 7312,
+   "sym": "skillpet_farming_lily"
+  },
+  "9501": {
+   "name": "Tangleroot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    39577
+   ],
+   "params": {},
+   "walkanim": 7313,
+   "readyanim": 7312,
+   "sym": "skillpet_farming_redwood"
+  },
+  "9513": {
+   "name": "Enraged Tektiny",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    34602
+   ],
+   "params": {},
+   "readyanim": 7485,
+   "walkanim": 8637,
+   "sym": "tekton_enraged_pet"
+  },
+  "9514": {
+   "name": "Flying Vespina",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    35118
+   ],
+   "params": {},
+   "readyanim": 8639,
+   "walkanim": 8639,
+   "sym": "vespula_flying_pet"
+  },
+  "9637": {
+   "name": "Dark Squirrel",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    32209
+   ],
+   "params": {},
+   "walkanim": 7310,
+   "readyanim": 7309,
+   "sym": "skillpet_agility_dark"
+  },
+  "9852": {
+   "name": "Red",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    14392
+   ],
+   "params": {},
+   "walkanim": 7316,
+   "readyanim": 7315,
+   "sym": "skillpet_thieving_panda"
+  },
+  "9853": {
+   "name": "Ziggy",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    14394
+   ],
+   "params": {},
+   "walkanim": 7316,
+   "readyanim": 7315,
+   "sym": "skillpet_thieving_tanuki"
+  },
+  "10625": {
+   "name": "JalRek-Jad",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    41568
+   ],
+   "params": {},
+   "walkanim": 8857,
+   "readyanim": 7589,
+   "sym": "jadpet_inferno"
+  },
+  "10636": {
+   "name": "Great blue heron",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    41970
+   ],
+   "params": {},
+   "walkanim": 6774,
+   "readyanim": 6772,
+   "sym": "skillpet_fish_tempoross"
+  },
+  "10637": {
+   "name": "Tiny Tempor",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    41814
+   ],
+   "params": {},
+   "walkanim": 8895,
+   "readyanim": 8895,
+   "sym": "tempoross_pet"
+  },
+  "10651": {
+   "name": "Baby Mole-rat",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42013
+   ],
+   "params": {},
+   "readyanim": 3309,
+   "walkanim": 3313,
+   "sym": "mole_pet_naked"
+  },
+  "10870": {
+   "name": "Lil' Maiden",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42288
+   ],
+   "params": {},
+   "readyanim": 8090,
+   "walkanim": 8090,
+   "sym": "verzik_pet_maiden"
+  },
+  "10871": {
+   "name": "Lil' Bloat",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42287
+   ],
+   "params": {},
+   "readyanim": 8080,
+   "walkanim": 9031,
+   "sym": "verzik_pet_bloat"
+  },
+  "10872": {
+   "name": "Lil' Nylo",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42285
+   ],
+   "params": {},
+   "readyanim": 8002,
+   "walkanim": 8003,
+   "sym": "verzik_pet_nylocas"
+  },
+  "10873": {
+   "name": "Lil' Sot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42286
+   ],
+   "params": {},
+   "readyanim": 8137,
+   "walkanim": 9032,
+   "sym": "verzik_pet_sotetseg"
+  },
+  "10874": {
+   "name": "Lil' Xarp",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    42284
+   ],
+   "params": {},
+   "readyanim": 9033,
+   "walkanim": 9033,
+   "sym": "verzik_pet_xarpus"
+  },
+  "11159": {
+   "name": "Sraracha",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    37347
+   ],
+   "params": {},
+   "walkanim": 8319,
+   "readyanim": 8320,
+   "sym": "sarachnispet_orange"
+  },
+  "11160": {
+   "name": "Sraracha",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    37347
+   ],
+   "params": {},
+   "walkanim": 8319,
+   "readyanim": 8320,
+   "sym": "sarachnispet_blue"
+  },
+  "11259": {
+   "name": "Grubfoot",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    24209
+   ],
+   "params": {},
+   "readyanim": 6181,
+   "walkanim": 6180,
+   "sym": "lotg_grubfoot_follower"
+  },
+  "11261": {
+   "name": "Zanik",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to"
+   },
+   "follower": true,
+   "heads": [
+    23243,
+    15561
+   ],
+   "params": {},
+   "readyanim": 6040,
+   "walkanim": 6041,
+   "sym": "lotg_zanik_follower"
+  },
+  "11277": {
+   "name": "Nexling",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    43225
+   ],
+   "params": {},
+   "walkanim": 9176,
+   "readyanim": 9177,
+   "sym": "nex_pet"
+  },
+  "11428": {
+   "name": "Greatish guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Locking"
+   },
+   "follower": true,
+   "heads": [
+    44075
+   ],
+   "params": {},
+   "walkanim": 9378,
+   "readyanim": 9379,
+   "sym": "skillpet_runecrafting_gotr"
+  },
+  "11429": {
+   "name": "Abyssal protector",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    44081
+   ],
+   "params": {},
+   "walkanim": 2184,
+   "readyanim": 2185,
+   "sym": "abyssal_pet"
+  },
+  "11812": {
+   "name": "Tumeken's Guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46456
+   ],
+   "params": {},
+   "walkanim": 9651,
+   "readyanim": 9655,
+   "sym": "warden_pet_tumeken"
+  },
+  "11813": {
+   "name": "Elidinis' Guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46457
+   ],
+   "params": {},
+   "walkanim": 9652,
+   "readyanim": 9656,
+   "sym": "warden_pet_elidinis"
+  },
+  "11846": {
+   "name": "Akkhito",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46515
+   ],
+   "params": {},
+   "walkanim": 9421,
+   "readyanim": 9760,
+   "sym": "warden_pet_akkha"
+  },
+  "11847": {
+   "name": "Babi",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46516
+   ],
+   "params": {},
+   "walkanim": 9739,
+   "readyanim": 9741,
+   "sym": "warden_pet_baba"
+  },
+  "11848": {
+   "name": "Kephriti",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46517
+   ],
+   "params": {},
+   "readyanim": 9572,
+   "walkanim": 9419,
+   "sym": "warden_pet_kephri"
+  },
+  "11849": {
+   "name": "Zebo",
+   "size": 2,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46514
+   ],
+   "params": {},
+   "readyanim": 2037,
+   "walkanim": 2036,
+   "sym": "warden_pet_zebak"
+  },
+  "11850": {
+   "name": "Tumeken's Damaged Guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46512
+   ],
+   "params": {},
+   "walkanim": 9420,
+   "readyanim": 9420,
+   "sym": "warden_pet_tumeken_destroyed"
+  },
+  "11851": {
+   "name": "Elidinis' Damaged Guardian",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    46513
+   ],
+   "params": {},
+   "walkanim": 9420,
+   "readyanim": 9420,
+   "sym": "warden_pet_elidinis_destroyed"
+  },
+  "11985": {
+   "name": "Venenatis spiderling",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47403
+   ],
+   "params": {},
+   "walkanim": 5325,
+   "readyanim": 5326,
+   "sym": "venenatispet_legacy"
+  },
+  "11986": {
+   "name": "Callisto cub",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47406
+   ],
+   "params": {},
+   "walkanim": 4923,
+   "readyanim": 4919,
+   "sym": "callistopet_legacy"
+  },
+  "11987": {
+   "name": "Vet'ion Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47407
+   ],
+   "params": {},
+   "walkanim": 5497,
+   "readyanim": 5505,
+   "sym": "vetionpet_legacy"
+  },
+  "11988": {
+   "name": "Vet'ion Jr.",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47405
+   ],
+   "params": {},
+   "walkanim": 5497,
+   "readyanim": 5505,
+   "sym": "vetionpet_2_legacy"
+  },
+  "12014": {
+   "name": "Muphin",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47179
+   ],
+   "params": {},
+   "walkanim": 9915,
+   "readyanim": 9913,
+   "sym": "muspah_pet"
+  },
+  "12015": {
+   "name": "Muphin",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47178
+   ],
+   "params": {},
+   "walkanim": 9915,
+   "readyanim": 9913,
+   "sym": "muspah_pet_melee"
+  },
+  "12016": {
+   "name": "Muphin",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    47180
+   ],
+   "params": {},
+   "walkanim": 9915,
+   "readyanim": 9913,
+   "sym": "muspah_pet_shielded"
+  },
+  "12157": {
+   "name": "Wisp",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Emote"
+   },
+   "follower": true,
+   "heads": [
+    49374
+   ],
+   "params": {},
+   "walkanim": 10233,
+   "readyanim": 10230,
+   "sym": "whisperer_pet"
+  },
+  "12158": {
+   "name": "Butch",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Emote"
+   },
+   "follower": true,
+   "heads": [
+    49356
+   ],
+   "params": {},
+   "walkanim": 10339,
+   "readyanim": 10337,
+   "sym": "vardorvis_pet"
+  },
+  "12159": {
+   "name": "Baron",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    49382
+   ],
+   "params": {},
+   "readyanim": 10217,
+   "walkanim": 10218,
+   "sym": "duke_sucellus_pet"
+  },
+  "12160": {
+   "name": "Lil'viathan",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    49381
+   ],
+   "params": {},
+   "walkanim": 10292,
+   "readyanim": 10277,
+   "sym": "leviathan_pet"
+  },
+  "12181": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29758
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpetwc"
+  },
+  "12182": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48273
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_oak"
+  },
+  "12183": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48272
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_willow"
+  },
+  "12184": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48274
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_maple"
+  },
+  "12185": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48275
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_yew"
+  },
+  "12186": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48276
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_magic"
+  },
+  "12187": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48271
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_redwood"
+  },
+  "12188": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48270
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_teak"
+  },
+  "12189": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48269
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_mahogany"
+  },
+  "12190": {
+   "name": "Beaver",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    48268
+   ],
+   "params": {},
+   "walkanim": 7178,
+   "readyanim": 7177,
+   "sym": "skillpet_wc_arctic"
+  },
+  "12296": {
+   "name": "null",
+   "size": 1,
+   "ops": {},
+   "follower": true,
+   "heads": [],
+   "params": {},
+   "walkanim": 819,
+   "readyanim": 808,
+   "multi": {
+    "varbit": 14862,
+    "varp": 65535,
+    "default": null,
+    "forms": [
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     65535,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293,
+     12293
+    ]
+   },
+   "sym": "dt2_banikan_follower"
+  },
+  "12549": {
+   "name": "Pheasant",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    49912
+   ],
+   "params": {},
+   "walkanim": 2369,
+   "readyanim": 2370,
+   "sym": "skillpet_wc_pheasant"
+  },
+  "12550": {
+   "name": "Fox",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    49910
+   ],
+   "params": {},
+   "walkanim": 6560,
+   "readyanim": 6561,
+   "sym": "skillpet_wc_fox"
+  },
+  "12593": {
+   "name": "Bran",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorph",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    55932
+   ],
+   "params": {},
+   "walkanim": 11972,
+   "readyanim": 11970,
+   "sym": "rtbranda_pet"
+  },
+  "12595": {
+   "name": "Ric",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorph",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    55931
+   ],
+   "params": {},
+   "walkanim": 11971,
+   "readyanim": 11969,
+   "sym": "rteldric_pet"
+  },
+  "12754": {
+   "name": "null",
+   "size": 1,
+   "ops": {},
+   "follower": true,
+   "heads": [],
+   "params": {},
+   "walkanim": 819,
+   "readyanim": 808,
+   "multi": {
+    "varbit": 9658,
+    "varp": 65535,
+    "default": null,
+    "forms": [
+     65535,
+     12610
+    ]
+   },
+   "sym": "dov_elias_white_follower"
+  },
+  "12857": {
+   "name": "Smol Heredit",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    52737
+   ],
+   "params": {},
+   "readyanim": 10874,
+   "walkanim": 10880,
+   "sym": "solheredit_pet"
+  },
+  "12858": {
+   "name": "Quetzin",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    52824
+   ],
+   "params": {},
+   "walkanim": 10952,
+   "readyanim": 10952,
+   "sym": "quetzal_pet"
+  },
+  "13393": {
+   "name": "null",
+   "size": 1,
+   "ops": {},
+   "follower": true,
+   "heads": [],
+   "params": {},
+   "walkanim": 2769,
+   "readyanim": 2770,
+   "multi": {
+    "varbit": 9834,
+    "varp": 65535,
+    "default": null,
+    "forms": [
+     65535,
+     65535,
+     12912
+    ]
+   },
+   "sym": "vmq2_knight_5_follower"
+  },
+  "13518": {
+   "name": "Broav",
+   "size": 1,
+   "ops": {
+    "0": "Pick-up"
+   },
+   "follower": true,
+   "heads": [],
+   "params": {},
+   "walkanim": 11234,
+   "readyanim": 11232,
+   "sym": "wgs_broav"
+  },
+  "13522": {
+   "name": "null",
+   "size": 1,
+   "ops": {},
+   "follower": true,
+   "heads": [],
+   "params": {},
+   "walkanim": 819,
+   "readyanim": 808,
+   "multi": {
+    "varbit": 10780,
+    "varp": 65535,
+    "default": null,
+    "forms": [
+     13521
+    ]
+   },
+   "sym": "wgs_silif_follower_armour"
+  },
+  "13683": {
+   "name": "Nid",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorph",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29391
+   ],
+   "params": {},
+   "walkanim": 11474,
+   "readyanim": 11473,
+   "sym": "araxxor_pet"
+  },
+  "13684": {
+   "name": "Rax",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorph",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    29615
+   ],
+   "params": {},
+   "walkanim": 9139,
+   "readyanim": 8340,
+   "sym": "araxxor_pet_cute"
+  },
+  "14044": {
+   "name": "Bone Squirrel",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Metamorphosis",
+    "3": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    54332
+   ],
+   "params": {},
+   "walkanim": 11663,
+   "readyanim": 11662,
+   "sym": "skillpet_agility_bone"
+  },
+  "14045": {
+   "name": "Huberte",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    54331
+   ],
+   "params": {},
+   "walkanim": 11733,
+   "readyanim": 11732,
+   "sym": "huey_pet"
+  },
+  "14046": {
+   "name": "Moxi",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    54339
+   ],
+   "params": {},
+   "walkanim": 11529,
+   "readyanim": 11528,
+   "sym": "amoxliatl_pet"
+  },
+  "14053": {
+   "name": "null",
+   "size": 1,
+   "ops": {},
+   "follower": true,
+   "heads": [],
+   "params": {},
+   "walkanim": 819,
+   "readyanim": 808,
+   "multi": {
+    "varbit": 11117,
+    "varp": 65535,
+    "default": 13691,
+    "forms": [
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690,
+     13690
+    ]
+   },
+   "sym": "vmq3_itzla_follower"
+  },
+  "14204": {
+   "name": "Yami",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up",
+    "3": "Emote"
+   },
+   "follower": true,
+   "heads": [
+    4703
+   ],
+   "params": {},
+   "walkanim": 12143,
+   "readyanim": 12140,
+   "sym": "yama_pet"
+  },
+  "14785": {
+   "name": "Dom",
+   "size": 1,
+   "ops": {
+    "0": "Talk-to",
+    "2": "Pick-up"
+   },
+   "follower": true,
+   "heads": [
+    56352
+   ],
+   "params": {},
+   "walkanim": 12402,
+   "readyanim": 12401,
+   "sym": "dom_pet"
+  }
+ }
+}

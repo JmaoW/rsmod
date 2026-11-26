@@ -7,6 +7,8 @@ import kotlin.math.max
 import kotlin.math.min
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.hunt.NpcSearch
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.hunterLvl
@@ -638,6 +640,12 @@ constructor(
         }
         val loot = ArrayList<Item>()
         repeat(collecting.catches) { loot += HunterLoot.roll(creature, stat(stats.hunter), random) }
+        // The baby chinchompa (wiki base chances), rolled ahead of the catch like other pets.
+        CHINCHOMPA_PETS[creature.key]?.let { (base, colour) ->
+            repeat(collecting.catches) {
+                publish(SkillingPetRoll(player, SkillingPet.BabyChinchompa, base, colour))
+            }
+        }
         val refund = if (trap.kind == TrapKind.MagicBox) emptyList() else trap.refund
         if (reset && trap.kind != TrapKind.MagicBox) {
             again(trap)
@@ -804,6 +812,14 @@ constructor(
     private fun BoundLocInfo.toInfo(): LocInfo = LocInfo(layer, coords, entity)
 
     companion object {
+        /** Wiki `Baby chinchompa#Drop rates`: base chance and the pet's colour per creature. */
+        private val CHINCHOMPA_PETS =
+            mapOf(
+                "chinchompa" to (131_395 to "grey"),
+                "carnivorous_chinchompa" to (98_373 to "red"),
+                "black_chinchompa" to (82_758 to "black"),
+            )
+
         /** Ticks the owner spends laying a trap. */
         const val LAY_TICKS = 3
 

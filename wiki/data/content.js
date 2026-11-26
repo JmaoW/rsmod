@@ -13,7 +13,7 @@
 // This is a .js file rather than .json so the page also works when opened straight from disk.
 
 window.ISLE_CONTENT = {
-  updated: "2026-11-04",
+  updated: "2026-11-25",
   sections: [
     {
       id: "skills",
@@ -62,6 +62,8 @@ window.ISLE_CONTENT = {
         { name: "Vorkath", priority: "P1", built: 100, tested: "no", about: "The full fight in a team crater, reached by boat from the isle.", left: "", doc: "isle_of_souls_vorkath.md" },
         { name: "God Wars Dungeon", priority: "P1", built: 100, tested: "no", about: "Kree'arra, General Graardor, Commander Zilyana and K'ril Tsutsaroth with their bodyguards, altars and the ecumenical key. 40 kills to enter a room the first time.", left: "Nex is not included.", doc: "isle_of_souls_godwars_plan.md" },
         { name: "Tombs of Amascut", priority: "P1", built: 90, tested: "no", about: "The full raid for your team: all four paths, the Wardens, invocations and loot points.", left: "Still being polished after playtests.", doc: "isle_of_souls_toa_plan.md" },
+        { name: "Theatre of Blood", priority: "P1", built: 90, tested: "no", about: "Normal mode for parties of up to 8 from the real Ver Sinhaza: all six fights, supply chests, the vault and the reward items.", left: "Playtest fixes are going in. Some numbers are guesses; no spectating, scoreboard or Hard Mode.", doc: "isle_of_souls_tob_plan.md" },
+        { name: "Chambers of Xeric", priority: "P1", built: 90, tested: "no", about: "Normal and Challenge Mode on the real Mount Quidamortem: random layouts, the full prep layer, every room, the Great Olm and the ancient chest.", left: "Some numbers are guesses (points, gathering, Olm details). Logging out leaves the raid.", doc: "isle_of_souls_cox_plan.md" },
         { name: "The Gauntlet", priority: "P1", built: 75, tested: "no", about: "Normal and Corrupted, as a duo: gathering, crystal tools, cooking, potions and the Hunllef.", left: "A list of open questions to work through (looks, scoreboard text, overlays).", doc: "isle_of_souls_gauntlet_issues.md" },
         { name: "Fortis Colosseum", priority: "P1", built: 90, tested: "no", about: "As a duo, with all 14 modifiers and Sol Heredit at the end.", left: "Some numbers are guesses and may need tuning.", doc: "isle_of_souls_colosseum_plan.md" },
         { name: "Cerberus", priority: "P1", built: 0, tested: "no", about: "Planned. Needed first for the Cerberus echo boss.", left: "The whole boss." },
@@ -162,6 +164,7 @@ window.ISLE_CONTENT = {
         { name: "League task list", priority: "P0", built: 80, tested: "no", about: "Raging Echoes tasks that the isle can support, plus new ones for isle content. Grows as content is added.", left: "Check every task can be completed, and add tasks for content still to come." },
         { name: "Relic tier thresholds", priority: "P0", built: 0, tested: "no", about: "How many points unlock each tier.", left: "Set last, from the finished task list and XP rates." },
         { name: "Collection log", priority: "P1", built: 100, tested: "no", about: "The real collection log with kill counts and an overview page.", left: "", doc: "isle_of_souls_collection_log_plan.md" },
+        { name: "Pets", priority: "P1", built: 90, tested: "no", about: "All 65 pets as followers with every look, Talk-to conversations, metamorphosis, skilling pets, Probita and her insurance screen.", left: "Guessed: some messages, pet emotes, Probita's spot. Pets with no source on the isle can only be handed out by an admin.", doc: "isle_of_souls_pets_plan.md" },
         { name: "Clue scrolls and caskets", priority: "P1", built: 25, tested: "no", about: "Planned: clues drop from monsters and skilling, and reading one gives the casket straight away. No treasure trails.", left: "Scroll and casket items, real reward tables, sources and tasks." }
       ]
     },

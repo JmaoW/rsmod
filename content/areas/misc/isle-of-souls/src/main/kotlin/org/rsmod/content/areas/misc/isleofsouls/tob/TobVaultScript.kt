@@ -19,9 +19,11 @@ import org.rsmod.plugin.scripts.PluginScript
 import org.rsmod.plugin.scripts.ScriptContext
 
 /**
- * Verzik Vitur's vault: when she falls the loot is rolled and the five monumental chests appear,
- * each player's own showing as theirs (and purple with a unique). The client draws five chests, so
- * a party of six to eight shares them: the player in slot six uses the first chest, and so on; each
+ * Verzik Vitur's vault: when she falls the loot is rolled and a monumental chest appears for each
+ * player still in the raid (at most five), each player's own showing as theirs (and purple with a
+ * unique). Nothing is given or announced until a player opens their chest; whoever leaves first
+ * finds their loot in the Rewards Chest by Ver Sinhaza's bank. The client draws five chests, so a
+ * party of six to eight shares them: the player in slot six uses the first chest, and so on; each
  * player opening one sees only their own loot.
  *
  * The chests' interface (23) is [TobRewards]'; this script routes its buttons, and the Rewards
@@ -38,7 +40,11 @@ constructor(
     override fun ScriptContext.startup() {
         onEvent<TobEvents.RaidWon> {
             rewards.rollRaid(raid)
+            val slots = raid.active.map { it.slot % CHESTS.size }.toSet()
             for ((slot, chest) in CHESTS.withIndex()) {
+                if (slot !in slots) {
+                    continue
+                }
                 locRepo.add(
                     raid.regionOf(chest.first),
                     locTypes[tob_locs.vault_chests[slot]],
@@ -54,6 +60,13 @@ constructor(
         onEvent<TobEvents.RoomEntered> {
             if (room == TobRoom.Vault) {
                 sync(raid, player)
+            }
+        }
+        // Loot nobody opened their chest for goes to the Rewards Chest in Ver Sinhaza.
+        onEvent<TobEvents.PlayerLeft> { rewards.claim(raid, player, announce = false) }
+        onEvent<TobEvents.RaidEnded> {
+            for (member in raid.members) {
+                rewards.claim(raid, member.player, announce = false)
             }
         }
         for ((slot, chest) in tob_locs.vault_chests.withIndex()) {
@@ -80,6 +93,7 @@ constructor(
             return
         }
         anim(tob_seqs.open_chest)
+        rewards.claim(raid, player)
         rewards.open(player)
         sync(raid, player)
     }

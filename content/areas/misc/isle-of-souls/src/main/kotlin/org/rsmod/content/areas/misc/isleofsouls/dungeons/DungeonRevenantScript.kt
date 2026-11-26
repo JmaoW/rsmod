@@ -8,6 +8,7 @@ import org.rsmod.api.combat.NpcImpactListener
 import org.rsmod.api.config.refs.projanims
 import org.rsmod.api.config.refs.varbits
 import org.rsmod.api.npc.access.StandardNpcAccess
+import org.rsmod.api.npc.hit.healHitpoints
 import org.rsmod.api.player.bonus.WornBonuses
 import org.rsmod.api.random.GameRandom
 import org.rsmod.api.script.onAiOpPlayer2
@@ -163,7 +164,7 @@ constructor(
         }
         state.healsLeft--
         state.nextHeal = now + HEAL_COOLDOWN
-        npc.hitpoints = minOf(max, npc.hitpoints + maxOf(1, max / HEAL_DIVISOR))
+        npc.healHitpoints(maxOf(1, max / HEAL_DIVISOR), max)
     }
 
     companion object {

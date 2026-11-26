@@ -11,6 +11,7 @@ import org.rsmod.content.areas.misc.isleofsouls.event.LeagueAnnouncer
 import org.rsmod.content.areas.misc.isleofsouls.fightcaves.cave_objs
 import org.rsmod.content.areas.misc.isleofsouls.masteries.LeagueMasteryTasks
 import org.rsmod.content.areas.misc.isleofsouls.masteries.MasteryKills
+import org.rsmod.content.areas.misc.isleofsouls.pets.Pets
 import org.rsmod.content.areas.misc.isleofsouls.tasks.LeagueTaskTracker
 import org.rsmod.content.areas.misc.isleofsouls.tasks.league_progress
 import org.rsmod.content.areas.misc.isleofsouls.teams.LeagueTeams
@@ -60,6 +61,7 @@ constructor(
     private val teams: LeagueTeams,
     private val completions: InfernoCompletions,
     private val collectionLog: CollectionLog,
+    private val pets: Pets,
 ) {
     /**
      * Gives each of [players] the infernal cape, the Tokkul and a chance at the pet, finishes their
@@ -92,12 +94,10 @@ constructor(
      * Returns whether the pet came.
      */
     fun petRoll(player: Player): Boolean {
-        if (random.of(PET_ODDS) != 0) {
+        if (!pets.roll(PET_ODDS)) {
             return false
         }
-        give(player, inferno_objs.pet, 1)
-        announcer.pet(player, inferno_objs.pet)
-        player.mes("You have a funny feeling like you're being followed.")
+        pets.award(player, pets.pet("jal_nib_rek"))
         return true
     }
 

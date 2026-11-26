@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pets · Isle of Souls wiki</title>
+  <link rel="stylesheet" href="assets/wiki.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Isle of <span>Souls</span> wiki</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="bosses.html">Bosses</a>
+        <a href="relics.html">Relics</a>
+        <a href="pets.html" aria-current="page">Pets</a>
+        <a href="tracker.html">Content tracker</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <h1>Pets</h1>
+      <p>Every pet works as it does in Old School RuneScape: the same drop chances (the event can raise them for everyone), the same messages, looks and conversations.</p>
+    </div>
+
+    <section class="section">
+      <h2>How pets work</h2>
+      <ul>
+        <li><b>Getting one:</b> with no pet out, it appears and follows you (<i>"You have a funny feeling like you're being followed."</i>). With a pet already out it goes into your inventory (<i>"You feel something weird sneaking into your backpack."</i>). With no space either, Probita keeps it for you.</li>
+        <li><b>Duplicates:</b> if you already have that pet (following you, in your inventory or in your bank) you get nothing (<i>"...would have been followed..."</i>). Smol Heredit is a main drop, so a second one really comes.</li>
+        <li><b>One at a time:</b> use "Drop" on a pet to bring it out, "Pick-up" to put it away. Only you see your pet's options.</li>
+        <li><b>It keeps up:</b> a pet follows you through teleports, ladders and team instances, leaves when you log out and comes back when you log in. "Call follower" on the Worn Equipment tab brings it to you when it is 5 or more tiles away.</li>
+        <li><b>Hidden:</b> pets wait outside the Brimhaven Agility Arena (<i>"Your pet has been hidden as you enter this area."</i>).</li>
+        <li><b>Dying:</b> nothing is lost when you die on the isle, so neither is your pet.</li>
+        <li><b>Talk-to:</b> every pet has its own conversations from the game, one set per look.</li>
+        <li><b>Skilling pets:</b> each action rolls 1 in (base chance &minus; your base level &times; 25), fifteen times as likely at 200 million experience. Rock golems come in the colour of the ore, rift guardians in the colour of the altar, baby chinchompas in the colour of the chinchompa.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Probita</h2>
+      <p>Probita has moved into the Soul Wars lobby, south of the two graveyards. Every pet you get is insured for free. If one is lost (no space when it dropped), talk to her or use "Check" to open the pet insurance screen and reclaim it for free.</p>
+    </section>
+
+    <div id="pets-list"></div>
+  </main>
+
+  <script src="data/pets-generated.js"></script>
+  <script src="assets/pets.js"></script>
+</body>
+</html>

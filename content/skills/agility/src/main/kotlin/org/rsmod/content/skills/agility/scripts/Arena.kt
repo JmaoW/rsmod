@@ -5,6 +5,8 @@ import java.util.WeakHashMap
 import org.rsmod.api.config.refs.objs
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.market.MarketPrices
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.HintArrows
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
@@ -218,6 +220,8 @@ constructor(
         lastTag[player] = activation
         streaks[player] = streak
 
+        // Wiki: the giant squirrel is rolled for every ticket, ahead of the ticket itself.
+        publish(SkillingPetRoll(player, SkillingPet.GiantSquirrel, SQUIRREL_CHANCE))
         invAddOrDrop(objRepo, ArenaObjs.ticket, 1)
         invAddOrDrop(objRepo, ArenaObjs.voucher, 1)
         val xp = minOf(30 * (player.agilityLvl / 10), MAX_TAG_XP)
@@ -353,6 +357,9 @@ constructor(
     class PlayerTick(val player: Player, val now: Int) : UnboundEvent
 
     companion object {
+        /** Wiki `Giant squirrel#Drop rates`: the Brimhaven Agility Arena's base chance. */
+        const val SQUIRREL_CHANCE = 26_404
+
         /** How long a dispenser stays marked, a minute. */
         const val LIT_TICKS = 100
 

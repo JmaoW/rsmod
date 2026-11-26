@@ -3,6 +3,8 @@ package org.rsmod.content.skills.runecraft.scripts
 import jakarta.inject.Inject
 import kotlin.math.abs
 import org.rsmod.api.config.refs.stats
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.protect.ProtectedAccess
 import org.rsmod.api.player.stat.runecraftingLvl
@@ -99,6 +101,7 @@ constructor(
         }
 
         playCraftEffects()
+        rollRiftGuardian(altar, essence)
         statAdvance(stats.runecrafting, essence * altar.xp * xpMods.get(player, stats.runecrafting))
         mes("You bind the temple's power into ${altar.name} runes.")
         publish(RunesCrafted(player, altar, essence, runes))
@@ -141,6 +144,7 @@ constructor(
             }
         }
         playCraftEffects()
+        rollRiftGuardian(altar, attempts)
         if (made == 0) {
             mes("You fail to combine the runes, and they are lost.")
             return
@@ -155,6 +159,15 @@ constructor(
         )
         mes("You bind the temple's power into ${nameOf(combo.rune)}s.")
         publish(ComboRunesCrafted(player, altar, combo, made))
+    }
+
+    /**
+     * The rift guardian: one roll per essence bound (wiki `Rift guardian#Drop rates`), in the
+     * altar's colour. A following rift guardian also takes the altar's colour.
+     */
+    private fun ProtectedAccess.rollRiftGuardian(altar: RuneAltar, essence: Int) {
+        val base = if (altar.name == "soul") SOUL_PET_CHANCE else ALTAR_PET_CHANCE
+        publish(SkillingPetRoll(player, SkillingPet.RiftGuardian, base, altar.name, essence))
     }
 
     private fun ProtectedAccess.bindTiara(altar: RuneAltar) {
@@ -247,6 +260,10 @@ constructor(
     class TalismanLocated(val player: Player) : UnboundEvent
 
     companion object {
+        /** Wiki: the rift guardian's base chance per essence (soul runes are likelier). */
+        const val ALTAR_PET_CHANCE = 1_795_758
+        const val SOUL_PET_CHANCE = 782_999
+
         private const val COMBINE_CHANCE = 0.5
         private const val NEAR = 10
 

@@ -11,6 +11,8 @@ import org.rsmod.api.config.refs.params
 import org.rsmod.api.config.refs.stats
 import org.rsmod.api.config.refs.synths
 import org.rsmod.api.invtx.invAdd
+import org.rsmod.api.player.events.SkillingPet
+import org.rsmod.api.player.events.SkillingPetRoll
 import org.rsmod.api.player.output.mes
 import org.rsmod.api.player.output.soundSynth
 import org.rsmod.api.player.output.spam
@@ -25,6 +27,7 @@ import org.rsmod.api.script.onOpLoc3
 import org.rsmod.api.script.onOpLocU
 import org.rsmod.api.stats.xpmod.XpModifiers
 import org.rsmod.content.skills.mining.configs.MiningGems
+import org.rsmod.content.skills.mining.configs.MiningPets
 import org.rsmod.content.skills.mining.configs.MiningRocks
 import org.rsmod.game.MapClock
 import org.rsmod.game.entity.Player
@@ -137,6 +140,17 @@ constructor(
                 val xp = type.miningXp * xpMods.get(player, stats.mining)
                 spam("You mine some ${product.name.lowercase()}.")
                 statAdvance(stats.mining, xp)
+                // The pet roll comes first: a pet takes the last free slot ahead of the ore.
+                MiningPets.baseChance(product.name)?.let { base ->
+                    publish(
+                        SkillingPetRoll(
+                            player,
+                            SkillingPet.RockGolem,
+                            base,
+                            MiningPets.golemLook(product.name),
+                        )
+                    )
+                }
                 val given = roll.product ?: product
                 if (!roll.bank || !invAdd(bank, given).success) {
                     invAdd(inv, given)
